@@ -1,5 +1,15 @@
+/*
+rgb(2, 43, 58)    dark green       5%
+rgb(31, 122, 140) medium green     10%
+rgb(191, 219, 247)light green      30   
+rgb(225, 229, 242)      grey       40
+rbg(225, 225, 225)      White
+*/
+
+
 .body{
-    background-color: bisque;
+    font-family: "Times New Roman", Times, serif;
+    background-color:rgb(191, 219, 247);
     width: 95%;
     margin-left: 2.5%;
     
@@ -9,21 +19,53 @@
     min-height: 4000px;
 }
 
-.pic_01{
-max-width: 80%;
-min-width: 80%;
+.navigation {
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 200PX);
+    grid-template-rows:repeat(3, 200px);
+    height: 700px;
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
 
+
+}
+
+.container_1{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(225, 229, 242);
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+/*------------pictures-------------*/
+.titel_img{
+max-width: 80%;
+}
+
+.pic_1{
+max-width: 80%;
 max-height: 80%;
 }
 
-.parent {
-    width: 80%;
-    margin-left: 10%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    height: 500px;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    }
+/*-------titels---------*/
+.titel{
+    padding: 5px;
+    padding-bottom: 10px;
+    letter-spacing: 5px;
+    font-size: 100px;
+    color: rgb(2, 43, 58);
+    background-color: rgb(225, 229, 242);
+}
+
+.titel_small{
+    font-size: 80px;
+    color: rgb(2, 43, 58);
+    background-color: rgb(225, 229, 242);
+}
     
