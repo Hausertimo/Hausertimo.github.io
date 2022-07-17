@@ -1,0 +1,120 @@
+/*
+rgb(2, 43, 58)    dark green       5%
+rgb(31, 122, 140) medium green     10%
+rgb(191, 219, 247)light green      30   
+rgb(225, 229, 242)      grey       40
+rbg(225, 225, 225)      White
+*/
+ .empty{
+    visibility: visible;
+ }
+
+.body{
+    font-family: "Times New Roman", Times, serif;
+    background-color:rgb(255, 255, 255);
+    width: 95%;
+    margin-left: 2.5%;
+    text-align: center;
+    align-items: center;
+    min-height: 4000px;
+}
+
+.navigation {
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+    grid-template-rows:repeat(3, 33%);
+    height: 700px;
+    margin-bottom: 150px;
+    grid-column-gap: 4.5%;
+    grid-row-gap: 5%;
+
+
+}
+
+.container_1{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(146, 232, 237, 0.256);
+    text-align: center;
+    font-size:37px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: rgb(2, 43, 58);
+}
+
+.container_1:hover{
+    opacity: 0.9;
+    background-color: rgba(146, 232, 237, 0.08);
+}
+
+/*------------pictures-------------*/
+.pic_1{
+max-width: 80%;
+margin-left: 10%;
+height: 80%;
+margin-bottom: 0%;
+}
+
+/*-------titels---------*/
+.titel{
+    width: 96%;
+    margin-left: 2%;
+    padding: 5px;
+    padding-bottom: 10px;
+    letter-spacing: 5px;
+    font-size: 100px;
+    color: rgb(2, 43, 58);
+    background-color: rgba(146, 232, 237, 0.256);
+}
+
+.subb_titel{
+    font-size: 50px;
+    color: rgb(2, 43, 58);
+
+}
+
+.textbox_center{
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: lighter;
+    line-height: 39px;
+    padding-top: 50px;
+    padding-left: 17%;
+    padding-right: 17%;
+    margin-left: 3%;
+    color: rgb(2, 43, 58);
+    background-color: rgba(146, 232, 237, 0.256);
+    border-radius: 5px;
+    width: 60%;
+}
+
+.textbox_left{
+    margin-top: 50px;
+    text-align: left;
+    font-size: 30px;
+    font-weight: lighter;
+    line-height: 39px;
+    padding-top: 50px;
+    padding-left: 17%;
+    padding-right: 17%;
+    margin-left: 3%;
+    color: rgb(2, 43, 58);
+    background-color: rgba(146, 232, 237, 0.256);
+    border-radius: 5px;
+    width: 60%;
+}
+
+.text{
+    font-size: 30px;
+    color: rgb(2, 43, 58);
+    background-color: rgba(146, 232, 237, 0.256);
+    margin: 30px;
+    border-radius: 10px;
+}
+
+
+
