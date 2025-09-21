@@ -98,6 +98,19 @@ p {
     color: var(--text-light);
 }
 
+/* Global Section Styles */
+.section-title {
+    text-align: left;
+    margin-bottom: var(--spacing-xl);
+    color: var(--text-dark);
+}
+
+@media (min-width: 1024px) {
+    .section-title {
+        text-align: center;
+    }
+}
+
 /* Button Styles */
 .btn {
     display: inline-flex;
@@ -242,24 +255,23 @@ p {
     opacity: 0.6;
 }
 
-/* How It Works Section */
+/* ================================================
+   HOW IT WORKS SECTION
+   ================================================ */
+
 .how-it-works {
     padding: var(--spacing-2xl) 0;
     background-color: var(--white);
 }
 
-.section-title {
-    text-align: left;
-    margin-bottom: var(--spacing-xl);
-    color: var(--text-dark);
-}
-
+/* Steps Grid Layout */
 .steps-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
 }
 
+/* Step Card Components */
 .step-card {
     text-align: center;
     padding: var(--spacing-lg);
@@ -267,6 +279,10 @@ p {
     background-color: var(--white);
     border: 1px solid var(--medium-gray);
     transition: all 0.3s ease;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .step-card:hover {
@@ -275,6 +291,7 @@ p {
     border-color: var(--accent-blue);
 }
 
+/* Step Card Links */
 .step-card-link {
     text-decoration: none;
     color: inherit;
@@ -291,6 +308,7 @@ p {
     cursor: pointer;
 }
 
+/* Step Card Content */
 .step-icon {
     margin-bottom: var(--spacing-md);
     display: flex;
@@ -353,13 +371,17 @@ p {
     margin-top: var(--spacing-xl);
 }
 
-/* Demo Section */
+/* ================================================
+   TRY NORMSCOUT SECTION
+   ================================================ */
+
 .demo-section {
     padding: var(--spacing-2xl) 0;
-    background-color: var(--medium-gray);
+    background-color: var(--white);
     text-align: center;
 }
 
+/* Demo Section Titles */
 .demo-section .section-title {
     color: var(--royal-blue);
     font-weight: 700;
@@ -375,18 +397,20 @@ p {
     margin-right: auto;
 }
 
+/* Demo Cards Grid Layout */
 .demo-cards-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
-    max-width: 1000px;
+    max-width: var(--container-max-width);
     margin: 0 auto;
 }
 
+/* Demo Card Components */
 .demo-card {
     background-color: var(--white);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--medium-gray);
     transition: all 0.3s ease;
@@ -399,6 +423,7 @@ p {
     border-color: var(--accent-blue);
 }
 
+/* Demo Card Header */
 .demo-card-header {
     display: flex;
     align-items: flex-start;
@@ -417,6 +442,7 @@ p {
     justify-content: center;
 }
 
+/* Demo Card Titles */
 .demo-card-title h3 {
     font-size: var(--font-size-xl);
     color: var(--text-dark);
@@ -435,10 +461,12 @@ p {
     margin: 0;
 }
 
+/* Demo Card Content */
 .demo-card-content {
     margin-top: var(--spacing-md);
 }
 
+/* Demo Form Inputs */
 .demo-input {
     width: 100%;
     padding: var(--spacing-sm);
@@ -466,6 +494,7 @@ p {
     min-height: 48px;
 }
 
+/* Demo Button */
 .demo-button {
     width: 100%;
     height: 56px;
@@ -492,6 +521,7 @@ p {
     font-size: 18px;
 }
 
+/* Helper Text */
 .input-helper {
     font-size: var(--font-size-small);
     color: var(--text-light);
