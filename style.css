@@ -361,11 +361,13 @@ p {
     font-size: var(--font-size-base);
     resize: vertical;
     min-height: 120px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .product-input:focus {
     outline: none;
     border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(68, 140, 247, 0.1);
 }
 
 .country-selector {
@@ -377,11 +379,14 @@ p {
     font-size: var(--font-size-base);
     background-color: var(--white);
     min-height: 48px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
 }
 
 .country-selector:focus {
     outline: none;
     border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(68, 140, 247, 0.1);
 }
 
 /* Footer */
