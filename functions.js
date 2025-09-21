@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSmoothScrolling();
     initializeDemoSection();
     initializeAnimations();
+    initializeEnhancedFormInteractions();
 });
 
 // Mobile Menu Functionality
@@ -58,19 +59,22 @@ function initializeSmoothScrolling() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // Special handling for demo section
-                if (targetId === '#demo') {
-                    showDemoSection();
-                }
-                
                 // Calculate offset for fixed header
                 const headerHeight = document.querySelector('.header').offsetHeight;
                 const targetPosition = targetElement.offsetTop - headerHeight - 20;
                 
+                // Smooth scroll to target
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+                
+                // Add visual feedback for demo cards when coming from step cards
+                if (targetId === '#demo' && this.classList.contains('step-card-link')) {
+                    setTimeout(() => {
+                        highlightDemoCards();
+                    }, 500);
+                }
             }
         });
     });
@@ -190,6 +194,85 @@ function showDemoResults(product, country) {
 
 function contactForFullAccess() {
     alert('Thank you for your interest! Please contact us at hello@normscout.ch for full access and investor information.');
+}
+
+// Highlight demo cards with animation
+function highlightDemoCards() {
+    const demoCards = document.querySelectorAll('.demo-card');
+    demoCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.style.transform = 'scale(1.02)';
+            card.style.borderColor = '#448CF7';
+            card.style.boxShadow = '0 10px 25px rgba(68, 140, 247, 0.15)';
+            
+            setTimeout(() => {
+                card.style.transform = '';
+                card.style.borderColor = '';
+                card.style.boxShadow = '';
+            }, 800);
+        }, index * 100);
+    });
+}
+
+// Enhanced form interactions
+function initializeEnhancedFormInteractions() {
+    const productInput = document.getElementById('product-description');
+    const countrySelect = document.getElementById('country-selector');
+    
+    if (productInput) {
+        // Auto-resize textarea
+        productInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        });
+        
+        // Focus card highlighting
+        productInput.addEventListener('focus', function() {
+            const card = this.closest('.demo-card');
+            if (card) {
+                card.style.borderColor = '#448CF7';
+                card.style.boxShadow = '0 8px 20px rgba(68, 140, 247, 0.12)';
+            }
+        });
+        
+        productInput.addEventListener('blur', function() {
+            const card = this.closest('.demo-card');
+            if (card) {
+                card.style.borderColor = '';
+                card.style.boxShadow = '';
+            }
+        });
+    }
+    
+    if (countrySelect) {
+        countrySelect.addEventListener('focus', function() {
+            const card = this.closest('.demo-card');
+            if (card) {
+                card.style.borderColor = '#448CF7';
+                card.style.boxShadow = '0 8px 20px rgba(68, 140, 247, 0.12)';
+            }
+        });
+        
+        countrySelect.addEventListener('blur', function() {
+            const card = this.closest('.demo-card');
+            if (card) {
+                card.style.borderColor = '';
+                card.style.boxShadow = '';
+            }
+        });
+        
+        countrySelect.addEventListener('change', function() {
+            if (this.value) {
+                const card = this.closest('.demo-card');
+                if (card) {
+                    card.style.borderColor = '#2048D5';
+                    setTimeout(() => {
+                        card.style.borderColor = '';
+                    }, 1000);
+                }
+            }
+        });
+    }
 }
 
 // Scroll Animations
