@@ -162,7 +162,7 @@
                             </svg>
                         </div>
                         <div class="demo-card-title">
-                            <h3>1. Describe Your Product</h3>
+                            <h3><span class="step-number">1.</span> Describe Your Product</h3>
                             <p>Tell us what you're planning to sell</p>
                         </div>
                     </div>
@@ -171,6 +171,7 @@
                             placeholder="e.g., 'Wireless Bluetooth headphones with noise cancellation and 30-hour battery life'" 
                             class="demo-input demo-textarea" 
                             id="product-description"
+                            aria-label="Product description"
                             rows="3"
                         ></textarea>
                         <div class="input-helper">Be specific about materials, features, and intended use</div>
@@ -187,12 +188,12 @@
                             </svg>
                         </div>
                         <div class="demo-card-title">
-                            <h3>2. Select Target Market</h3>
+                            <h3><span class="step-number">2.</span> Select Target Market</h3>
                             <p>Choose where you'll sell or ship</p>
                         </div>
                     </div>
                     <div class="demo-card-content">
-                        <select class="demo-input demo-select" id="country-selector">
+                        <select class="demo-input demo-select" id="country-selector" aria-label="Target country selection">
                             <option value="">🌍 Select your target country/region</option>
                             <option value="us">🇺🇸 United States</option>
                             <option value="eu">🇪🇺 European Union</option>
@@ -216,12 +217,12 @@
                             </svg>
                         </div>
                         <div class="demo-card-title">
-                            <h3>3. Scout Norms</h3>
+                            <h3><span class="step-number">3.</span> Scout Norms</h3>
                             <p>Get instant compliance insights</p>
                         </div>
                     </div>
                     <div class="demo-card-content">
-                        <button class="btn btn-accent btn-large demo-button" onclick="startDemo()">
+                        <button class="btn btn-accent btn-large demo-button" onclick="startDemo()" aria-label="Start norm scouting process">
                             <span class="button-icon">🔍</span>
                             Scout Norms Now
                         </button>
