@@ -178,7 +178,14 @@ p {
 .logo-text {
     font-size: var(--font-size-large);
     font-weight: 700;
-    color: var(--royal-blue);
+}
+
+.logo-norm {
+    color: var(--text-dark);
+}
+
+.logo-scout {
+    color: #87CEEB;
 }
 
 .nav {
