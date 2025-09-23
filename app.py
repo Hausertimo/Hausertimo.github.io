@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 # OpenRouter API settings - all in one place, no config files
-OPENROUTER_API_KEY = os.environ.get("OPENROUTER")
+OPENROUTER_API_KEY = os.environ.get("openrouter")
 OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions'
 
 @app.route("/")
