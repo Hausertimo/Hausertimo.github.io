@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # OpenRouter API Configuration
-OPENROUTER_API_KEY = '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'
+OPENROUTER_API_KEY = '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'
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Default AI Model Settings
