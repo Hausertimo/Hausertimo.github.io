@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify, send_file
-import asyncio
 import os
-from openrouter_api import generate_compliance_analysis
+from openrouter_sync import generate_compliance_analysis_sync
 
 app = Flask(__name__)
 
@@ -37,13 +36,8 @@ def run_python_code():
     country_full_name = country_names.get(country, country)
 
     try:
-        # Run the async AI analysis
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        ai_result = loop.run_until_complete(
-            generate_compliance_analysis(product, country_full_name)
-        )
-        loop.close()
+        # Call the synchronous AI analysis
+        ai_result = generate_compliance_analysis_sync(product, country_full_name)
 
         return jsonify({
             "result": ai_result,
