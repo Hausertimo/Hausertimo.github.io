@@ -94,6 +94,15 @@ Created multiple test scripts to validate different aspects:
 3. Run app: `python app.py`
 4. Test API: `python test_api.py`
 
+### IMPORTANT: Version Control
+**ALWAYS commit and push changes after making updates:**
+```bash
+git add .
+git commit -m "Descriptive message about changes"
+git push
+```
+The user expects all changes to be committed and pushed to GitHub immediately.
+
 ### Deployment to Fly.io
 1. Set secret: `fly secrets set openrouter='your-key'`
 2. Deploy: `fly deploy`
