@@ -160,10 +160,16 @@ function startDemo() {
     })
     .then(response => response.json())
     .then(data => {
+        // Show results first
         showDemoResults(productDescription, countrySelector, data.result);
-        button.innerHTML = originalHTML;
-        button.disabled = false;
-        button.style.opacity = '1';
+
+        // Reset button after a small delay to ensure smooth transition
+        setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.disabled = false;
+            button.style.opacity = '1';
+            button.classList.remove('loading');
+        }, 100);
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -171,6 +177,7 @@ function startDemo() {
         button.innerHTML = originalHTML;
         button.disabled = false;
         button.style.opacity = '1';
+        button.classList.remove('loading');
     });
 }
 
