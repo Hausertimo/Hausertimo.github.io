@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify, send_file
 import requests
 import json
+import os
 
 app = Flask(__name__)
 
 # OpenRouter API settings - all in one place, no config files
-OPENROUTER_API_KEY = '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'
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER")
 OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions'
 
 @app.route("/")
