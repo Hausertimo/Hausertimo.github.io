@@ -111,6 +111,23 @@ function showDemoSection() {
 }
 
 // Demo Form Functionality
+// Helper function to format markdown-like text to HTML
+function formatMarkdownToHTML(text) {
+    if (!text) return '';
+
+    // Convert markdown to HTML
+    return text
+        .replace(/### (.*?)(?:\n|$)/g, '<h3 style="color: #2048D5; margin: 20px 0 10px 0; font-size: 1.2em;">$1</h3>')
+        .replace(/## (.*?)(?:\n|$)/g, '<h2 style="color: #2048D5; margin: 20px 0 10px 0; font-size: 1.4em;">$1</h2>')
+        .replace(/# (.*?)(?:\n|$)/g, '<h1 style="color: #2048D5; margin: 20px 0 10px 0; font-size: 1.6em;">$1</h1>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/#### (.*?)(?:\n|$)/g, '<h4 style="color: #333; margin: 15px 0 8px 0; font-size: 1.1em;">$1</h4>')
+        .replace(/^- (.*?)$/gm, '<li style="margin: 5px 0;">$1</li>')
+        .replace(/(<li[^>]*>.*<\/li>\s*)+/g, '<ul style="margin: 10px 0; padding-left: 25px;">$&</ul>')
+        .replace(/\n\n/g, '</p><p style="margin: 12px 0; line-height: 1.6;">')
+        .replace(/\n/g, '<br>');
+}
+
 function startDemo() {
     const productDescription = document.getElementById('product-description').value;
     const countrySelector = document.getElementById('country-selector').value;
@@ -125,12 +142,13 @@ function startDemo() {
         return;
     }
 
-    const button = event.target;
-    const originalText = button.textContent;
+    const button = event.currentTarget || event.target;
+    const originalHTML = button.innerHTML;
 
-    button.textContent = 'Scouting Norms...';
+    // Add loading animation with inline spinner
+    button.innerHTML = '<span class="spinner"></span> Analyzing regulations...';
     button.disabled = true;
-    button.style.opacity = '0.7';
+    button.style.opacity = '0.8';
 
     fetch("/api/run", {
         method: "POST",
@@ -143,13 +161,14 @@ function startDemo() {
     .then(response => response.json())
     .then(data => {
         showDemoResults(productDescription, countrySelector, data.result);
-        button.textContent = originalText;
+        button.innerHTML = originalHTML;
         button.disabled = false;
         button.style.opacity = '1';
     })
-    .catch(() => {
+    .catch((error) => {
+        console.error('Error:', error);
         alert("Backend connection failed; try again later");
-        button.textContent = originalText;
+        button.innerHTML = originalHTML;
         button.disabled = false;
         button.style.opacity = '1';
     });
@@ -178,17 +197,12 @@ function showDemoResults(product, country, backendResult) {
             <h3 style="color: #2048D5; margin-bottom: 16px;"> Demo Results</h3>
             <p><strong>Product:</strong> ${product}</p>
             <p><strong>Target Market:</strong> ${countryNames[country] || country}</p>
-            <p><strong>Backend Response:</strong> ${backendResult}</p>
-            <p><strong>Compliance Requirements Found:</strong></p>
-            <ul style="margin: 16px 0; padding-left: 20px;">
-                <li>Safety Standards: EN 71-1, EN 71-2 (if applicable)</li>
-                <li>Labeling Requirements: CE marking mandatory</li>
-                <li>Import Documentation: Declaration of conformity required</li>
-                <li>Testing Certificates: Third-party testing may be required</li>
-            </ul>
-            <p style="font-size: 14px; color: #666;">
-                <strong>Note:</strong> This is a simplified demo. The full version provides detailed compliance reports with actionable steps.
-            </p>
+            <div style="margin-top: 20px; padding: 20px; background: #f0f7ff; border-radius: 8px;">
+                <h4 style="color: #2048D5; margin-bottom: 12px;">Analysis Results:</h4>
+                <div style="line-height: 1.8; color: #333;">
+                    ${formatMarkdownToHTML(backendResult)}
+                </div>
+            </div>
             <div style="margin-top: 16px;">
                 <button onclick="contactForFullAccess()" style="
                     background: #448CF7; 
