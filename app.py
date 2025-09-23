@@ -208,5 +208,13 @@ def run_python_code():
             "error": error_msg
         })
 
+# Import and register the modular API framework
+try:
+    from api_framework import register_modular_api
+    register_modular_api(app)
+    logger.info("Modular API framework loaded successfully")
+except ImportError:
+    logger.warning("Modular API framework not available - using basic API only")
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
