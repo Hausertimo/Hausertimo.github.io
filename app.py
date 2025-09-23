@@ -1,8 +1,12 @@
 from flask import Flask, request, jsonify, send_file
-import os
-from openrouter_sync import generate_compliance_analysis_sync
+import requests
+import json
 
 app = Flask(__name__)
+
+# OpenRouter API settings - all in one place, no config files
+OPENROUTER_API_KEY = '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'
+OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions'
 
 @app.route("/")
 def serve_index():
@@ -35,26 +39,78 @@ def run_python_code():
 
     country_full_name = country_names.get(country, country)
 
+    # Call OpenRouter API directly - simple and straightforward
     try:
-        # Call the synchronous AI analysis
-        ai_result = generate_compliance_analysis_sync(product, country_full_name)
+        # CRITICAL: OpenRouter requires these headers!
+        headers = {
+            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+            "HTTP-Referer": "https://normscout.fly.dev",  # YOUR SITE URL - REQUIRED!
+            "X-Title": "NormScout",  # YOUR APP NAME - REQUIRED!
+            "Content-Type": "application/json"
+        }
 
-        return jsonify({
-            "result": ai_result,
-            "product": product,
-            "country": country_full_name,
-            "status": "success"
-        })
+        # System prompt and user message
+        messages = [
+            {
+                "role": "system",
+                "content": "You are a compliance expert specializing in product regulations. Provide detailed, actionable compliance requirements for products entering different markets. Focus on safety standards, labeling requirements, certifications, and import documentation."
+            },
+            {
+                "role": "user",
+                "content": f"Analyze compliance requirements for this product: '{product}' being sold in {country_full_name}. Provide specific standards, certifications, and regulatory requirements."
+            }
+        ]
+
+        # API request payload
+        payload = {
+            "model": "openai/gpt-4o-mini",  # Using cheap, fast model
+            "messages": messages,
+            "temperature": 0.3,  # Lower = more factual
+            "max_tokens": 512
+        }
+
+        print(f"Calling OpenRouter API for product: {product}, country: {country_full_name}")
+
+        # Make the API call
+        response = requests.post(OPENROUTER_API_URL, headers=headers, json=payload)
+
+        print(f"API Response Status: {response.status_code}")
+
+        if response.status_code == 200:
+            result = response.json()
+            ai_content = result['choices'][0]['message']['content']
+
+            return jsonify({
+                "result": ai_content,
+                "product": product,
+                "country": country_full_name,
+                "status": "success"
+            })
+        else:
+            # Log the full error for debugging
+            error_detail = f"Status {response.status_code}: {response.text}"
+            print(f"OpenRouter API Error: {error_detail}")
+
+            # Return error details to help debug
+            return jsonify({
+                "result": f"API Error: {error_detail}",
+                "product": product,
+                "country": country_full_name,
+                "status": "error",
+                "error": error_detail
+            })
 
     except Exception as e:
-        # Fallback to simple response if AI fails
-        fallback_result = f"Demo mode: Received product '{product}' for '{country_full_name}'. AI analysis temporarily unavailable."
+        error_msg = str(e)
+        print(f"Exception calling API: {error_msg}")
+
+        # Return fallback with error details
         return jsonify({
-            "result": fallback_result,
+            "result": f"Error connecting to AI service: {error_msg}",
             "product": product,
             "country": country_full_name,
-            "status": "fallback",
-            "error": str(e)
+            "status": "exception",
+            "error": error_msg
         })
 
 if __name__ == "__main__":
