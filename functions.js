@@ -114,41 +114,56 @@ function showDemoSection() {
 function startDemo() {
     const productDescription = document.getElementById('product-description').value;
     const countrySelector = document.getElementById('country-selector').value;
-    
+
     if (!productDescription.trim()) {
         alert('Please describe your product first.');
         return;
     }
-    
+
     if (!countrySelector) {
         alert('Please select a country.');
         return;
     }
-    
-    // Simulate demo process
+
     const button = event.target;
     const originalText = button.textContent;
-    
+
     button.textContent = 'Scouting Norms...';
     button.disabled = true;
     button.style.opacity = '0.7';
-    
-    // Simulate processing time
-    setTimeout(() => {
-        showDemoResults(productDescription, countrySelector);
+
+    fetch("/api/run", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            product: productDescription,
+            country: countrySelector
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        showDemoResults(productDescription, countrySelector, data.result);
         button.textContent = originalText;
         button.disabled = false;
         button.style.opacity = '1';
-    }, 2000);
+    })
+    .catch(() => {
+        alert("Backend connection failed; try again later");
+        button.textContent = originalText;
+        button.disabled = false;
+        button.style.opacity = '1';
+    });
 }
 
-function showDemoResults(product, country) {
+function showDemoResults(product, country, backendResult) {
     const countryNames = {
         'us': 'United States',
         'eu': 'European Union',
         'uk': 'United Kingdom',
         'ca': 'Canada',
-        'au': 'Australia'
+        'au': 'Australia',
+        'jp': 'Japan',
+        'ch': 'Switzerland'
     };
     
     const mockResults = `
@@ -162,7 +177,8 @@ function showDemoResults(product, country) {
         ">
             <h3 style="color: #2048D5; margin-bottom: 16px;"> Demo Results</h3>
             <p><strong>Product:</strong> ${product}</p>
-            <p><strong>Target Market:</strong> ${countryNames[country]}</p>
+            <p><strong>Target Market:</strong> ${countryNames[country] || country}</p>
+            <p><strong>Backend Response:</strong> ${backendResult}</p>
             <p><strong>Compliance Requirements Found:</strong></p>
             <ul style="margin: 16px 0; padding-left: 20px;">
                 <li>Safety Standards: EN 71-1, EN 71-2 (if applicable)</li>
@@ -186,9 +202,9 @@ function showDemoResults(product, country) {
         </div>
     `;
     
-    const demoForm = document.querySelector('.demo-form');
-    if (demoForm) {
-        demoForm.innerHTML += mockResults;
+    const demoSection = document.querySelector('.demo-section');
+    if (demoSection) {
+        demoSection.innerHTML += mockResults;
     }
 }
 
