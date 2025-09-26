@@ -52,6 +52,10 @@ def serve_css():
 def serve_js():
     return send_file('functions.js')
 
+@app.route("/logo.ico")
+def serve_favicon():
+    return send_file('logo.ico')
+
 @app.route("/api/run", methods=["POST"])
 def run_python_code():
     logger.info("=== API Request Received ===")
@@ -208,13 +212,7 @@ def run_python_code():
             "error": error_msg
         })
 
-# Import and register the modular API framework
-try:
-    from api_framework import register_modular_api
-    register_modular_api(app)
-    logger.info("Modular API framework loaded successfully")
-except ImportError:
-    logger.warning("Modular API framework not available - using basic API only")
+# Core API is ready
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)

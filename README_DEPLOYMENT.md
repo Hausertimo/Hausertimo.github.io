@@ -34,7 +34,7 @@ export openrouter='sk-or-v1-your-actual-api-key-here'
 
 ### 3. Test the API Key
 ```bash
-python test_api.py
+python tests/test_api.py
 ```
 
 This script will:
@@ -162,7 +162,7 @@ curl -X POST https://normscout.fly.dev/api/run \
 ```
 .
 ├── app.py              # Main Flask application
-├── test_api.py         # API testing script
+├── tests/test_api.py   # API testing script
 ├── requirements.txt    # Python dependencies
 ├── Dockerfile         # Container configuration
 ├── fly.toml           # Fly.io configuration
@@ -204,7 +204,7 @@ fly logs -n 100
 ## Testing Checklist
 
 - [ ] API key is set correctly
-- [ ] `test_api.py` passes all tests
+- [ ] `tests/test_api.py` passes all tests
 - [ ] Local app responds to requests
 - [ ] Deployed app shows "API key found" in logs
 - [ ] Frontend can make successful API calls

@@ -39,13 +39,13 @@ NormScout is a compliance intelligence platform that helps businesses navigate i
   - Professional blue/white color scheme
 
 ### Testing & Documentation
-- **test_api.py**: Comprehensive API testing script
+- **tests/test_api.py**: Comprehensive API testing script
   - Tests API key configuration
   - Direct OpenRouter API testing
   - Local Flask app testing
   - Color-coded terminal output for clarity
 
-- **simple_test.py**: Minimal API test for quick debugging
+- **tests/simple_test.py**: Minimal API test for quick debugging
 - **README_DEPLOYMENT.md**: Deployment instructions for Fly.io
 - **requirements.txt**: Python dependencies (Flask, requests, gunicorn, python-dotenv)
 
@@ -92,7 +92,7 @@ Created multiple test scripts to validate different aspects:
 1. Set API key in .env file: `openrouter=sk-or-v1-...`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run app: `python app.py`
-4. Test API: `python test_api.py`
+4. Test API: `python tests/test_api.py`
 
 ### IMPORTANT: Version Control
 **ALWAYS commit and push changes after making updates:**
@@ -134,10 +134,10 @@ The user expects all changes to be committed and pushed to GitHub immediately.
 ## Testing Commands
 ```bash
 # Test API directly
-python simple_test.py
+python tests/simple_test.py
 
 # Comprehensive testing
-python test_api.py
+python tests/test_api.py
 
 # Test Flask endpoint
 curl -X POST http://localhost:8080/api/run \
