@@ -2,8 +2,9 @@ from flask import Flask, request, jsonify, send_file
 import os
 import logging
 from dotenv import load_dotenv
-from api.fields import field_bp
-from api.openrouter import analyze_product_compliance
+from api.fields import field_bp, field_renderer
+from api.openrouter import analyze_product_compliance, validate_product_input
+from api.field_framework import FieldRenderer, MarkdownField
 
 # Load environment variables from .env file
 # Look for .env in parent directory (Website folder)
@@ -38,7 +39,30 @@ def run_python_code():
     product = data.get("product", "")
     country = data.get("country", "")
 
-    # Call the extracted OpenRouter API function
+    # First validate if it's a real product
+    is_valid = validate_product_input(product)
+
+    if not is_valid:
+        # Create field renderer with error message
+        from api.fields import field_renderer
+        import api.fields as fields_module
+
+        fields_module.field_renderer = FieldRenderer()
+
+        block = fields_module.field_renderer.create_block("error_block", "")
+        block.add_field(MarkdownField("error", "### No product detected"))
+        block.add_field(MarkdownField("hint", "Please enter a real product description (e.g., 'wireless headphones', 'coffee maker', 'laptop computer') and try again."))
+        block.add_field(MarkdownField("tip", "*Tip: Describe what the product is and what it does.*"))
+
+        return jsonify({
+            "result": "Invalid product description",
+            "product": product,
+            "country": country,
+            "status": "invalid",
+            "show_fields": True  # Signal frontend to load fields
+        })
+
+    # Valid product - proceed with normal analysis
     result = analyze_product_compliance(product, country)
 
     # Return appropriate HTTP status based on result

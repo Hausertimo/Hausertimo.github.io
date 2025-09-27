@@ -223,7 +223,7 @@
                         </div>
                     </div>
                     <div class="demo-card-content">
-                        <button class="btn btn-accent btn-large demo-button" onclick="startDemo()" aria-label="Start norm scouting process">
+                        <button class="btn btn-accent btn-large demo-button" onclick="startDemo(event)" aria-label="Start norm scouting process">
                             <span class="button-icon">🔍</span>
                             Scout Norms Now
                         </button>
@@ -231,6 +231,9 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Container for dynamic fields (error messages, follow-up questions, etc.) -->
+            <div id="dynamic-fields-container"></div>
         </div>
     </section>
 

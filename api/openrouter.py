@@ -109,6 +109,46 @@ def call_openrouter(messages: list, model: str = "openai/gpt-4o-mini",
         }
 
 
+def validate_product_input(product: str) -> bool:
+    """
+    Check if the input is a valid product description or just random text
+    Uses a cheap model with minimal tokens
+
+    Args:
+        product: User's input text
+
+    Returns:
+        True if valid product, False if gibberish/invalid
+    """
+    messages = [
+        {
+            "role": "system",
+            "content": "You are a product validator. Reply with only 'YES' if the text describes a real product, service, or item. Reply with only 'NO' if it's random letters, gibberish, or nonsense."
+        },
+        {
+            "role": "user",
+            "content": f"Is this a real product description: '{product}'"
+        }
+    ]
+
+    # Use Mistral 7B - very cheap and fast
+    result = call_openrouter(
+        messages,
+        model="mistralai/mistral-7b-instruct",  # Cheap model
+        temperature=0.1,  # Low temperature for consistency
+        max_tokens=10  # Only need YES/NO
+    )
+
+    if result["success"]:
+        response = result["content"].strip().upper()
+        logger.info(f"Product validation result for '{product[:30]}...': {response}")
+        return "YES" in response
+
+    # Default to true if API fails (don't block users)
+    logger.warning("Product validation API failed, allowing through")
+    return True
+
+
 def analyze_product_compliance(product: str, country: str) -> dict:
     """
     Analyze compliance requirements for a product in a specific country

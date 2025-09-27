@@ -128,7 +128,7 @@ function formatMarkdownToHTML(text) {
         .replace(/\n/g, '<br>');
 }
 
-function startDemo() {
+function startDemo(event) {
     const productDescription = document.getElementById('product-description').value;
     const countrySelector = document.getElementById('country-selector').value;
 
@@ -142,13 +142,15 @@ function startDemo() {
         return;
     }
 
-    const button = event.currentTarget || event.target;
+    // Get button from event or find it by class
+    const button = event ? (event.currentTarget || event.target) : document.querySelector('.demo-button');
     const originalHTML = button.innerHTML;
 
     // Add loading animation with inline spinner
     button.innerHTML = '<span class="spinner"></span> Analyzing regulations...';
     button.disabled = true;
     button.style.opacity = '0.8';
+    button.classList.add('loading');
 
     fetch("/api/run", {
         method: "POST",
@@ -160,16 +162,28 @@ function startDemo() {
     })
     .then(response => response.json())
     .then(data => {
-        // Show results first
-        showDemoResults(productDescription, countrySelector, data.result);
+        // Check if product was invalid
+        if (data.status === 'invalid' && data.show_fields) {
+            // Don't show normal results, just load error fields
+            loadFieldBlocks();
 
-        // Reset button after a small delay to ensure smooth transition
-        setTimeout(() => {
+            // Reset button immediately
             button.innerHTML = originalHTML;
             button.disabled = false;
             button.style.opacity = '1';
             button.classList.remove('loading');
-        }, 100);
+        } else {
+            // Show results for valid products
+            showDemoResults(productDescription, countrySelector, data.result);
+
+            // Reset button after a small delay to ensure smooth transition
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.disabled = false;
+                button.style.opacity = '1';
+                button.classList.remove('loading');
+            }, 100);
+        }
     })
     .catch((error) => {
         console.error('Error:', error);
