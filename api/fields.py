@@ -7,6 +7,8 @@ from flask import Blueprint, jsonify, request
 from .field_framework import FieldRenderer
 import json
 import logging
+from datetime import datetime
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -52,3 +54,43 @@ def submit_field_data():
         "message": f"Received data for block: {block_id}",
         "received_fields": fields
     })
+
+
+@field_bp.route("/api/feedback/submit", methods=["POST"])
+def submit_feedback():
+    """Save user feedback to a file"""
+    data = request.get_json()
+
+    # Create feedback directory if it doesn't exist
+    feedback_dir = "feedback"
+    if not os.path.exists(feedback_dir):
+        os.makedirs(feedback_dir)
+
+    # Save to JSON Lines file (one JSON object per line)
+    feedback_file = os.path.join(feedback_dir, "feedback.jsonl")
+
+    feedback_entry = {
+        "timestamp": datetime.now().isoformat(),
+        "name": data.get("name"),
+        "email": data.get("email"),
+        "product": data.get("product"),
+        "message": data.get("message")
+    }
+
+    try:
+        with open(feedback_file, "a", encoding="utf-8") as f:
+            f.write(json.dumps(feedback_entry) + "\n")
+
+        logger.info(f"Feedback saved from {data.get('email', 'unknown')}")
+
+        return jsonify({
+            "status": "success",
+            "message": "Thank you for your feedback! We'll review it shortly."
+        })
+
+    except Exception as e:
+        logger.error(f"Failed to save feedback: {str(e)}")
+        return jsonify({
+            "status": "error",
+            "message": "Failed to save feedback. Please try again."
+        }), 500

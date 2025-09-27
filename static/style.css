@@ -800,18 +800,28 @@ p {
     font-size: 0.95em;
 }
 
-.field input {
+.field input,
+.field textarea {
     padding: 10px 12px;
     border: 1px solid #dee2e6;
     border-radius: 6px;
     font-size: 0.95em;
     transition: border-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.field input:focus {
+.field input:focus,
+.field textarea:focus {
     outline: none;
     border-color: #448CF7;
     box-shadow: 0 0 0 3px rgba(68, 140, 247, 0.1);
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
 }
 
 /* Markdown field styles */
@@ -880,4 +890,23 @@ p {
     background: #a0a8b8;
     cursor: not-allowed;
     transform: none;
+}
+
+/* Button field type */
+.field-type-button button,
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95em;
+}
+
+.field-type-button button:hover,
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
 }

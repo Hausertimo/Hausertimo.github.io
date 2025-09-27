@@ -434,8 +434,18 @@ document.head.appendChild(style);
 // ========== FIELD FRAMEWORK FUNCTIONS ==========
 // Functions to dynamically load and render field blocks
 
+function clearFieldBlocks() {
+    const container = document.getElementById('dynamic-fields-container');
+    if (container) {
+        container.innerHTML = '';
+    }
+}
+
 async function loadFieldBlocks() {
     try {
+        // Clear existing fields first
+        clearFieldBlocks();
+
         const response = await fetch('/api/fields/get');
         const data = await response.json();
 
@@ -464,6 +474,11 @@ function createBlockElement(block) {
     blockDiv.className = `field-block field-block-${block.background}`;
     blockDiv.id = block.block_id;
 
+    // Hide block if marked as hidden
+    if (block.hidden) {
+        blockDiv.style.display = 'none';
+    }
+
     // Add title if exists
     if (block.title) {
         const titleDiv = document.createElement('div');
@@ -491,7 +506,13 @@ function createBlockElement(block) {
         const button = document.createElement('button');
         button.className = 'btn btn-primary field-submit-btn';
         button.textContent = block.submit_button_text || 'Send & Continue';
-        button.onclick = () => submitBlockData(block.block_id);
+
+        // Use custom endpoint if specified
+        if (block.submit_endpoint) {
+            button.onclick = () => submitFormData(block.block_id, block.submit_endpoint);
+        } else {
+            button.onclick = () => submitBlockData(block.block_id);
+        }
 
         buttonDiv.appendChild(button);
         blockDiv.appendChild(buttonDiv);
@@ -510,17 +531,49 @@ function createFieldElement(field) {
             break;
 
         case 'input':
-            const label = document.createElement('label');
-            label.htmlFor = field.field_id;
-            label.textContent = field.label;
-            fieldDiv.appendChild(label);
+            if (field.label) {
+                const label = document.createElement('label');
+                label.htmlFor = field.field_id;
+                label.textContent = field.label;
+                fieldDiv.appendChild(label);
+            }
 
             const input = document.createElement('input');
-            input.type = 'text';
+            input.type = field.input_type || 'text';
             input.id = field.field_id;
             input.name = field.field_id;
             input.placeholder = field.placeholder || '';
+            input.value = field.value || '';
+            if (field.required) input.required = true;
+
+            // Hide the field if it's a hidden input
+            if (field.input_type === 'hidden') {
+                fieldDiv.style.display = 'none';
+            }
+
             fieldDiv.appendChild(input);
+            break;
+
+        case 'textarea':
+            const textLabel = document.createElement('label');
+            textLabel.htmlFor = field.field_id;
+            textLabel.textContent = field.label;
+            fieldDiv.appendChild(textLabel);
+
+            const textarea = document.createElement('textarea');
+            textarea.id = field.field_id;
+            textarea.name = field.field_id;
+            textarea.placeholder = field.placeholder || '';
+            textarea.rows = field.rows || 4;
+            fieldDiv.appendChild(textarea);
+            break;
+
+        case 'button':
+            const button = document.createElement('button');
+            button.className = 'btn btn-secondary';
+            button.textContent = field.text;
+            button.onclick = () => handleFieldButton(field.field_id, field.action);
+            fieldDiv.appendChild(button);
             break;
 
         case 'custom_html':
@@ -531,12 +584,78 @@ function createFieldElement(field) {
     return fieldDiv;
 }
 
+function handleFieldButton(buttonId, action) {
+    if (action === 'expand') {
+        // Show the feedback form
+        const feedbackForm = document.getElementById('feedback_form');
+        if (feedbackForm) {
+            feedbackForm.style.display = 'block';
+            // Smooth scroll to form
+            feedbackForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+}
+
+async function submitFormData(blockId, endpoint) {
+    const block = document.getElementById(blockId);
+    if (!block) return;
+
+    // Collect all input values including textarea
+    const inputs = block.querySelectorAll('input, textarea');
+    const fieldData = {};
+
+    inputs.forEach(input => {
+        if (input.type !== 'checkbox') {
+            fieldData[input.id || input.name] = input.value;
+        }
+    });
+
+    // Find the submit button
+    const button = block.querySelector('.field-submit-btn');
+    if (button) {
+        button.disabled = true;
+        button.textContent = 'Sending...';
+    }
+
+    try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(fieldData)
+        });
+
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            // Replace form with thank you message
+            const blockContent = block.querySelector('.field-block-content');
+            if (blockContent) {
+                blockContent.innerHTML = formatMarkdownToHTML('### ✅ ' + result.message);
+            }
+            // Hide submit button
+            const actions = block.querySelector('.field-block-actions');
+            if (actions) actions.style.display = 'none';
+        }
+
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Failed to submit feedback. Please try again.');
+    } finally {
+        if (button) {
+            button.disabled = false;
+            button.textContent = 'Send Feedback';
+        }
+    }
+}
+
 async function submitBlockData(blockId) {
     const block = document.getElementById(blockId);
     if (!block) return;
 
     // Collect all input values
-    const inputs = block.querySelectorAll('input');
+    const inputs = block.querySelectorAll('input, textarea');
     const checkboxes = block.querySelectorAll('input[type="checkbox"]:checked');
     const fieldData = {};
 
