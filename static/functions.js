@@ -416,3 +416,163 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ========== FIELD FRAMEWORK FUNCTIONS ==========
+// Functions to dynamically load and render field blocks
+
+async function loadFieldBlocks() {
+    try {
+        const response = await fetch('/api/fields/get');
+        const data = await response.json();
+
+        if (data.status === 'success' && data.blocks.length > 0) {
+            renderFieldBlocks(data.blocks);
+        }
+    } catch (error) {
+        console.error('Error loading field blocks:', error);
+    }
+}
+
+function renderFieldBlocks(blocks) {
+    const container = document.getElementById('dynamic-fields-container');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    blocks.forEach(block => {
+        const blockElement = createBlockElement(block);
+        container.appendChild(blockElement);
+    });
+}
+
+function createBlockElement(block) {
+    const blockDiv = document.createElement('div');
+    blockDiv.className = `field-block field-block-${block.background}`;
+    blockDiv.id = block.block_id;
+
+    // Add title if exists
+    if (block.title) {
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'field-block-title';
+        titleDiv.textContent = block.title;
+        blockDiv.appendChild(titleDiv);
+    }
+
+    // Add fields
+    const fieldsContainer = document.createElement('div');
+    fieldsContainer.className = 'field-block-content';
+
+    block.fields.forEach(field => {
+        const fieldElement = createFieldElement(field);
+        fieldsContainer.appendChild(fieldElement);
+    });
+
+    blockDiv.appendChild(fieldsContainer);
+
+    // Add send button if block has inputs
+    if (block.has_inputs) {
+        const buttonDiv = document.createElement('div');
+        buttonDiv.className = 'field-block-actions';
+
+        const button = document.createElement('button');
+        button.className = 'btn btn-primary field-submit-btn';
+        button.textContent = block.submit_button_text || 'Send & Continue';
+        button.onclick = () => submitBlockData(block.block_id);
+
+        buttonDiv.appendChild(button);
+        blockDiv.appendChild(buttonDiv);
+    }
+
+    return blockDiv;
+}
+
+function createFieldElement(field) {
+    const fieldDiv = document.createElement('div');
+    fieldDiv.className = `field field-type-${field.field_type}`;
+
+    switch(field.field_type) {
+        case 'markdown':
+            fieldDiv.innerHTML = formatMarkdownToHTML(field.content);
+            break;
+
+        case 'input':
+            const label = document.createElement('label');
+            label.htmlFor = field.field_id;
+            label.textContent = field.label;
+            fieldDiv.appendChild(label);
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.id = field.field_id;
+            input.name = field.field_id;
+            input.placeholder = field.placeholder || '';
+            fieldDiv.appendChild(input);
+            break;
+
+        case 'custom_html':
+            fieldDiv.innerHTML = field.html_content;
+            break;
+    }
+
+    return fieldDiv;
+}
+
+async function submitBlockData(blockId) {
+    const block = document.getElementById(blockId);
+    if (!block) return;
+
+    // Collect all input values
+    const inputs = block.querySelectorAll('input');
+    const checkboxes = block.querySelectorAll('input[type="checkbox"]:checked');
+    const fieldData = {};
+
+    inputs.forEach(input => {
+        if (input.type !== 'checkbox') {
+            fieldData[input.id || input.name] = input.value;
+        }
+    });
+
+    // Handle checkboxes if any exist in custom HTML
+    if (checkboxes.length > 0) {
+        const checkboxValues = {};
+        checkboxes.forEach(cb => {
+            const name = cb.name;
+            if (!checkboxValues[name]) {
+                checkboxValues[name] = [];
+            }
+            checkboxValues[name].push(cb.value);
+        });
+        Object.assign(fieldData, checkboxValues);
+    }
+
+    // Find the submit button
+    const button = block.querySelector('.field-submit-btn');
+    if (button) {
+        button.disabled = true;
+        button.textContent = 'Sending...';
+    }
+
+    try {
+        const response = await fetch('/api/fields/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                block_id: blockId,
+                fields: fieldData
+            })
+        });
+
+        const result = await response.json();
+        console.log('Field data submitted:', result);
+
+    } catch (error) {
+        console.error('Error submitting field data:', error);
+    } finally {
+        if (button) {
+            button.disabled = false;
+            button.textContent = 'Sent!';
+        }
+    }
+}
