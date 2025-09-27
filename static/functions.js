@@ -128,6 +128,9 @@ function formatMarkdownToHTML(text) {
         .replace(/\n/g, '<br>');
 }
 
+// Store original button HTML globally
+let demoButtonOriginalHTML = null;
+
 function startDemo(event) {
     const productDescription = document.getElementById('product-description').value;
     const countrySelector = document.getElementById('country-selector').value;
@@ -144,7 +147,11 @@ function startDemo(event) {
 
     // Get button from event or find it by class
     const button = event ? (event.currentTarget || event.target) : document.querySelector('.demo-button');
-    const originalHTML = button.innerHTML;
+
+    // Store original HTML only once (first time)
+    if (!demoButtonOriginalHTML) {
+        demoButtonOriginalHTML = button.innerHTML;
+    }
 
     // Add loading animation with inline spinner
     button.innerHTML = '<span class="spinner"></span> Analyzing regulations...';
@@ -168,7 +175,7 @@ function startDemo(event) {
             loadFieldBlocks();
 
             // Reset button immediately
-            button.innerHTML = originalHTML;
+            button.innerHTML = demoButtonOriginalHTML;
             button.disabled = false;
             button.style.opacity = '1';
             button.classList.remove('loading');
@@ -178,7 +185,7 @@ function startDemo(event) {
 
             // Reset button after a small delay to ensure smooth transition
             setTimeout(() => {
-                button.innerHTML = originalHTML;
+                button.innerHTML = demoButtonOriginalHTML;
                 button.disabled = false;
                 button.style.opacity = '1';
                 button.classList.remove('loading');
@@ -188,7 +195,7 @@ function startDemo(event) {
     .catch((error) => {
         console.error('Error:', error);
         alert("Backend connection failed; try again later");
-        button.innerHTML = originalHTML;
+        button.innerHTML = demoButtonOriginalHTML;
         button.disabled = false;
         button.style.opacity = '1';
         button.classList.remove('loading');
