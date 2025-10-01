@@ -396,6 +396,32 @@ const NormScoutBusinessPlan = () => {
     optimistic: optimisticData[idx].revenue
   }));
 
+  // Expenses breakdown
+  const founderSalaryQuarterly = 4500 * 3; // CHF 4500/month * 3 months
+  const swissTaxRate = 0.24; // 24% effective tax rate for Swiss companies
+
+  const expenseData = quarters.map((q, idx) => ({
+    quarter: q,
+    pessimistic: {
+      upkeepCost: pessimisticData[idx].operationalCost,
+      founderSalary: founderSalaryQuarterly,
+      taxOnRevenue: pessimisticData[idx].revenue * swissTaxRate,
+      totalExpenses: pessimisticData[idx].operationalCost + founderSalaryQuarterly + (pessimisticData[idx].revenue * swissTaxRate)
+    },
+    normal: {
+      upkeepCost: normalData[idx].operationalCost,
+      founderSalary: founderSalaryQuarterly,
+      taxOnRevenue: normalData[idx].revenue * swissTaxRate,
+      totalExpenses: normalData[idx].operationalCost + founderSalaryQuarterly + (normalData[idx].revenue * swissTaxRate)
+    },
+    optimistic: {
+      upkeepCost: optimisticData[idx].operationalCost,
+      founderSalary: founderSalaryQuarterly,
+      taxOnRevenue: optimisticData[idx].revenue * swissTaxRate,
+      totalExpenses: optimisticData[idx].operationalCost + founderSalaryQuarterly + (optimisticData[idx].revenue * swissTaxRate)
+    }
+  }));
+
   const formatCurrency = (value) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -902,6 +928,16 @@ const NormScoutBusinessPlan = () => {
             Details
           </button>
           <button
+            onClick={() => setActiveTab('expenses')}
+            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all whitespace-nowrap text-sm sm:text-base ${
+              activeTab === 'expenses'
+                ? 'bg-blue-600 text-white'
+                : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800'
+            }`}
+          >
+            Expenses
+          </button>
+          <button
             onClick={() => setActiveTab('legend')}
             className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all whitespace-nowrap text-sm sm:text-base ${
               activeTab === 'legend'
@@ -1261,6 +1297,243 @@ const NormScoutBusinessPlan = () => {
                 </div>
               ))
             )}
+          </div>
+        )}
+
+        {activeTab === 'expenses' && (
+          <div className="space-y-6 sm:space-y-8">
+            <div className="bg-zinc-900 rounded-xl p-4 sm:p-6 border border-zinc-800">
+              <h3 className="text-lg font-semibold mb-4 text-green-500">Net Income After All Expenses</h3>
+              <ResponsiveContainer width="100%" height={isMobile ? 250 : 400}>
+                <LineChart data={expenseData.map((row, idx) => ({
+                  quarter: row.quarter,
+                  revenue: normalData[idx].revenue,
+                  expenses: row.normal.totalExpenses,
+                  netIncome: normalData[idx].revenue - row.normal.totalExpenses
+                }))}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+                  <XAxis
+                    dataKey="quarter"
+                    stroke="#71717a"
+                    fontSize={isMobile ? 10 : 12}
+                    angle={isMobile ? -45 : 0}
+                    textAnchor={isMobile ? "end" : "middle"}
+                  />
+                  <YAxis
+                    stroke="#71717a"
+                    tickFormatter={(value) => formatCompactCurrency(value)}
+                    fontSize={isMobile ? 10 : 12}
+                  />
+                  <Tooltip
+                    contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '8px' }}
+                    formatter={(value) => formatCurrency(value)}
+                  />
+                  {!isMobile && <Legend />}
+                  <ReferenceLine y={0} stroke="#666" strokeDasharray="3 3" />
+                  <Line type="monotone" dataKey="revenue" stroke="#22c55e" strokeWidth={2} name="Revenue" />
+                  <Line type="monotone" dataKey="expenses" stroke="#f59e0b" strokeWidth={2} name="Total Expenses" />
+                  <Line type="monotone" dataKey="netIncome" stroke="#3b82f6" strokeWidth={3} name="Net Income" />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div className="bg-zinc-900 rounded-xl p-4 sm:p-6 border border-zinc-800">
+              <h3 className="text-lg font-semibold mb-4 text-orange-500">Expense Breakdown (Normal Scenario)</h3>
+              <ResponsiveContainer width="100%" height={isMobile ? 250 : 400}>
+                <BarChart data={expenseData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+                  <XAxis
+                    dataKey="quarter"
+                    stroke="#71717a"
+                    fontSize={isMobile ? 10 : 12}
+                    angle={isMobile ? -45 : 0}
+                    textAnchor={isMobile ? "end" : "middle"}
+                  />
+                  <YAxis
+                    stroke="#71717a"
+                    tickFormatter={(value) => formatCompactCurrency(value)}
+                    fontSize={isMobile ? 10 : 12}
+                  />
+                  <Tooltip
+                    contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '8px' }}
+                    formatter={(value) => formatCurrency(value)}
+                  />
+                  {!isMobile && <Legend />}
+                  <Bar dataKey={(data) => data.normal.upkeepCost} fill="#3b82f6" name="User Upkeep" />
+                  <Bar dataKey={(data) => data.normal.founderSalary} fill="#8b5cf6" name="Founder Salary" />
+                  <Bar dataKey={(data) => data.normal.taxOnRevenue} fill="#ef4444" name="Swiss Tax (24%)" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-3 gap-6'}`}>
+              <div className="bg-zinc-900 rounded-xl p-4 sm:p-6 border border-zinc-800">
+                <h3 className="text-lg font-semibold mb-4 text-blue-500">User Upkeep Cost</h3>
+                <ResponsiveContainer width="100%" height={isMobile ? 200 : 300}>
+                  <LineChart data={expenseData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+                    <XAxis
+                      dataKey="quarter"
+                      stroke="#71717a"
+                      fontSize={isMobile ? 8 : 10}
+                      angle={-45}
+                      textAnchor="end"
+                    />
+                    <YAxis
+                      stroke="#71717a"
+                      tickFormatter={(value) => formatCompactCurrency(value)}
+                      fontSize={isMobile ? 8 : 10}
+                    />
+                    <Tooltip
+                      contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '8px' }}
+                      formatter={(value) => formatCurrency(value)}
+                    />
+                    {!isMobile && <Legend />}
+                    <Line type="monotone" dataKey={(data) => data.optimistic.upkeepCost} stroke="#22c55e" strokeWidth={2} name="Optimistic" />
+                    <Line type="monotone" dataKey={(data) => data.normal.upkeepCost} stroke="#3b82f6" strokeWidth={3} name="Normal" />
+                    <Line type="monotone" dataKey={(data) => data.pessimistic.upkeepCost} stroke="#ef4444" strokeWidth={2} name="Pessimistic" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+
+              <div className="bg-zinc-900 rounded-xl p-4 sm:p-6 border border-zinc-800">
+                <h3 className="text-lg font-semibold mb-4 text-purple-500">Founder Salary</h3>
+                <div className="space-y-4">
+                  <div className="bg-zinc-800 rounded-lg p-4">
+                    <p className="text-zinc-400 text-sm">Monthly Salary</p>
+                    <p className="text-3xl font-bold text-purple-400 mt-2">CHF 4,500</p>
+                  </div>
+                  <div className="bg-zinc-800 rounded-lg p-4">
+                    <p className="text-zinc-400 text-sm">Quarterly Cost</p>
+                    <p className="text-2xl font-bold text-purple-400 mt-2">CHF 13,500</p>
+                  </div>
+                  <div className="bg-zinc-800 rounded-lg p-4">
+                    <p className="text-zinc-400 text-sm">Annual Cost</p>
+                    <p className="text-2xl font-bold text-purple-400 mt-2">CHF 54,000</p>
+                  </div>
+                  <div className="bg-zinc-800 rounded-lg p-4">
+                    <p className="text-zinc-400 text-sm">Total 2026-2028</p>
+                    <p className="text-2xl font-bold text-purple-400 mt-2">CHF 162,000</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-zinc-900 rounded-xl p-4 sm:p-6 border border-zinc-800">
+                <h3 className="text-lg font-semibold mb-4 text-red-500">Swiss Tax (24%)</h3>
+                <ResponsiveContainer width="100%" height={isMobile ? 200 : 300}>
+                  <LineChart data={expenseData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+                    <XAxis
+                      dataKey="quarter"
+                      stroke="#71717a"
+                      fontSize={isMobile ? 8 : 10}
+                      angle={-45}
+                      textAnchor="end"
+                    />
+                    <YAxis
+                      stroke="#71717a"
+                      tickFormatter={(value) => formatCompactCurrency(value)}
+                      fontSize={isMobile ? 8 : 10}
+                    />
+                    <Tooltip
+                      contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '8px' }}
+                      formatter={(value) => formatCurrency(value)}
+                    />
+                    {!isMobile && <Legend />}
+                    <Line type="monotone" dataKey={(data) => data.optimistic.taxOnRevenue} stroke="#22c55e" strokeWidth={2} name="Optimistic" />
+                    <Line type="monotone" dataKey={(data) => data.normal.taxOnRevenue} stroke="#3b82f6" strokeWidth={3} name="Normal" />
+                    <Line type="monotone" dataKey={(data) => data.pessimistic.taxOnRevenue} stroke="#ef4444" strokeWidth={2} name="Pessimistic" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            <div className="bg-zinc-900 rounded-xl p-4 sm:p-6 border border-zinc-800">
+              <h3 className="text-lg font-semibold mb-4 text-green-500">Net Income After Expenses</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead className="bg-zinc-950/50">
+                    <tr>
+                      <th className="px-4 py-3 text-left text-zinc-400">Quarter</th>
+                      <th className="px-4 py-3 text-right text-zinc-400">Revenue</th>
+                      <th className="px-4 py-3 text-right text-zinc-400">User Upkeep</th>
+                      <th className="px-4 py-3 text-right text-zinc-400">Founder Salary</th>
+                      <th className="px-4 py-3 text-right text-zinc-400">Tax (24%)</th>
+                      <th className="px-4 py-3 text-right text-zinc-400">Total Expenses</th>
+                      <th className="px-4 py-3 text-right text-zinc-400">Net Income</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {expenseData.map((row, idx) => {
+                      const revenue = normalData[idx].revenue;
+                      const expenses = row.normal.totalExpenses;
+                      const netIncome = revenue - expenses;
+                      return (
+                        <tr key={idx} className="border-t border-zinc-800 hover:bg-zinc-800/50">
+                          <td className="px-4 py-3">{row.quarter}</td>
+                          <td className="px-4 py-3 text-right font-medium text-green-400">{formatCurrency(revenue)}</td>
+                          <td className="px-4 py-3 text-right text-blue-400">{formatCurrency(row.normal.upkeepCost)}</td>
+                          <td className="px-4 py-3 text-right text-purple-400">{formatCurrency(row.normal.founderSalary)}</td>
+                          <td className="px-4 py-3 text-right text-red-400">{formatCurrency(row.normal.taxOnRevenue)}</td>
+                          <td className="px-4 py-3 text-right font-medium text-orange-400">{formatCurrency(expenses)}</td>
+                          <td className={`px-4 py-3 text-right font-bold ${netIncome >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                            {formatCurrency(netIncome)}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                  <tfoot className="bg-zinc-950/50 border-t-2 border-zinc-700">
+                    <tr>
+                      <td className="px-4 py-3 font-bold">TOTAL</td>
+                      <td className="px-4 py-3 text-right font-bold text-green-400">
+                        {formatCurrency(normalData.reduce((sum, d) => sum + d.revenue, 0))}
+                      </td>
+                      <td className="px-4 py-3 text-right font-bold text-blue-400">
+                        {formatCurrency(expenseData.reduce((sum, d) => sum + d.normal.upkeepCost, 0))}
+                      </td>
+                      <td className="px-4 py-3 text-right font-bold text-purple-400">
+                        {formatCurrency(founderSalaryQuarterly * 12)}
+                      </td>
+                      <td className="px-4 py-3 text-right font-bold text-red-400">
+                        {formatCurrency(expenseData.reduce((sum, d) => sum + d.normal.taxOnRevenue, 0))}
+                      </td>
+                      <td className="px-4 py-3 text-right font-bold text-orange-400">
+                        {formatCurrency(expenseData.reduce((sum, d) => sum + d.normal.totalExpenses, 0))}
+                      </td>
+                      <td className="px-4 py-3 text-right font-bold text-green-500">
+                        {formatCurrency(
+                          normalData.reduce((sum, d) => sum + d.revenue, 0) -
+                          expenseData.reduce((sum, d) => sum + d.normal.totalExpenses, 0)
+                        )}
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+
+            <div className="bg-zinc-900 rounded-xl p-4 sm:p-6 border border-zinc-800">
+              <h3 className="text-lg font-semibold mb-4 text-yellow-500">Tax & Expense Notes</h3>
+              <div className="space-y-3 text-sm text-zinc-300">
+                <div className="bg-zinc-800 p-4 rounded-lg">
+                  <p className="font-semibold text-yellow-400 mb-2">Swiss Corporate Tax Rate</p>
+                  <p className="text-zinc-400">Effective rate of 24% applied to gross revenue. This represents a mid-to-high range estimate (federal ~8.5% + cantonal ~15.5% = 24% combined). Actual Swiss corporate tax varies by canton: federal rate is ~8.5%, cantonal rates range from 12-24%, resulting in a combined effective rate of 20.5-32.5%. Tax is normally calculated on profit, not revenue, but for modeling purposes we show the maximum potential tax burden on revenue.</p>
+                </div>
+                <div className="bg-zinc-800 p-4 rounded-lg">
+                  <p className="font-semibold text-purple-400 mb-2">Founder Salary</p>
+                  <p className="text-zinc-400">CHF 4,500/month (CHF 54,000/year) represents a below-market founder salary for Swiss standards, typical during early-stage bootstrapping. This does not include employer social security contributions (~6%) which would add ~CHF 270/month.</p>
+                </div>
+                <div className="bg-zinc-800 p-4 rounded-lg">
+                  <p className="font-semibold text-blue-400 mb-2">User Upkeep Cost</p>
+                  <p className="text-zinc-400">Operational cost per user varies by scenario (Pessimistic: CHF 4.50/user/month, Normal: CHF 3.00/user/month, Optimistic: CHF 2.00/user/month). This includes server hosting, data storage, third-party API costs, and customer support overhead.</p>
+                </div>
+                <div className="bg-zinc-800 p-4 rounded-lg">
+                  <p className="font-semibold text-green-400 mb-2">Net Income Interpretation</p>
+                  <p className="text-zinc-400">Net Income = Revenue - (User Upkeep + Founder Salary + Tax). This shows the actual take-home profit after covering all operational expenses and regulatory obligations. Negative values indicate the business needs funding to cover these fixed costs during growth phase.</p>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
