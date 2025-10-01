@@ -642,7 +642,7 @@ const NormScoutBusinessPlan = () => {
           <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6'}`}>
             <div>
               <label className="block text-xs sm:text-sm font-medium text-zinc-400 mb-2 sm:mb-3">
-                💰 Pre-seed
+                🌱 Pre-seed (Q1 2026)
               </label>
               <div className="grid grid-cols-4 sm:grid-cols-2 gap-1 sm:gap-2">
                 {Object.entries(preSeedFunding).map(([key, value]) => (
@@ -705,7 +705,7 @@ const NormScoutBusinessPlan = () => {
 
             <div>
               <label className="block text-xs sm:text-sm font-medium text-zinc-400 mb-2 sm:mb-3">
-                💵 Price/mo
+                 📈 Price/mo
               </label>
               <div className="grid grid-cols-4 gap-1 sm:gap-2">
                 {pricePoints.map(price => (
@@ -853,8 +853,8 @@ const NormScoutBusinessPlan = () => {
                       formatter={(value) => formatCurrency(value)}
                     />
                     {!isMobile && <Legend />}
-                    <Area type="monotone" dataKey="preSeed" stackId="1" stroke="#8b5cf6" fill="#8b5cf6" name="Pre-seed" />
-                    <Area type="monotone" dataKey="seriesA" stackId="1" stroke="#10b981" fill="#10b981" name="Series A" />
+                    <Area type="monotone" dataKey="preSeed" stackId="1" stroke="#10b981" fill="#10b981" name="Pre-seed" />
+                    <Area type="monotone" dataKey="seriesA" stackId="1" stroke="#8b5cf6" fill="#8b5cf6" name="Series A" />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>

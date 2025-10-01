@@ -1,72 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NormScout Business Plan - Interactive financial modeling and investment projections for 2026-2028">
-    <title>NormScout Business Plan - Investment Model</title>
-    <link rel="icon" type="image/x-icon" href="logo.ico">
-
-    <!-- Tailwind CSS CDN for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- React and React DOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-
-    <!-- PropTypes (required by Recharts) -->
-    <script crossorigin src="https://unpkg.com/prop-types@15.8.1/prop-types.min.js"></script>
-
-    <!-- Recharts UMD build -->
-    <script src="https://unpkg.com/recharts@2.5.0/umd/Recharts.js"></script>
-
-    <!-- Babel Standalone for JSX transformation -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <!-- XLSX library for Excel export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-                sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        #root {
-            min-height: 100vh;
-        }
-
-        /* Loading animation */
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(to bottom, #18181b, #000);
-            color: white;
-        }
-    </style>
-</head>
-<body>
-    <div id="root">
-        <div class="loading">
-            <div style="text-align: center;">
-                <div style="font-size: 24px; margin-bottom: 16px;">Loading NormScout Business Plan...</div>
-                <div style="color: #71717a;">Please wait while we initialize the interactive model</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Embedded Business Plan Component -->
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-        const { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, AreaChart, Area } = Recharts;
-
 
 const NormScoutBusinessPlan = () => {
   const [selectedPrice, setSelectedPrice] = useState(12);
@@ -99,9 +30,9 @@ const NormScoutBusinessPlan = () => {
   
   const preSeedFunding = {
     none: 0,
-    pessimistic: 60000,
-    normal: 75000,
-    optimistic: 100000
+    pessimistic: 10000,
+    normal: 25000,
+    optimistic: 50000
   };
   
   const seriesAFunding = {
@@ -361,14 +292,7 @@ const NormScoutBusinessPlan = () => {
     seriesA: idx >= 4 ? seriesAFunding[selectedSeriesA] / 8 : 0,
     total: getAdSpendPerQuarter(idx)
   }));
-
-  const netIncomeData = quarters.map((q, idx) => ({
-    quarter: q,
-    pessimistic: pessimisticData[idx].revenue,
-    normal: normalData[idx].revenue,
-    optimistic: optimisticData[idx].revenue
-  }));
-
+  
   const formatCurrency = (value) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -685,7 +609,7 @@ const NormScoutBusinessPlan = () => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <h1 className="text-2xl sm:text-3xl font-bold">
-                <span className="text-blue-500 font-bold">Norm</span><span className="text-white">Scout</span> Model
+                <span className="text-blue-500">NormScout</span> Model
               </h1>
               <p className="text-zinc-400 mt-1 text-sm sm:text-base">Investment Projections 2026-2028</p>
             </div>
@@ -716,7 +640,7 @@ const NormScoutBusinessPlan = () => {
           <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6'}`}>
             <div>
               <label className="block text-xs sm:text-sm font-medium text-zinc-400 mb-2 sm:mb-3">
-                🌱 Pre-seed
+                💰 Pre-seed
               </label>
               <div className="grid grid-cols-4 sm:grid-cols-2 gap-1 sm:gap-2">
                 {Object.entries(preSeedFunding).map(([key, value]) => (
@@ -725,8 +649,8 @@ const NormScoutBusinessPlan = () => {
                     onClick={() => setSelectedPreSeed(key)}
                     className={`px-2 sm:px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                       selectedPreSeed === key
-                        ? 'bg-green-600 text-white shadow-lg'
-                        : 'bg-blue-600 text-zinc-200 hover:bg-blue-700'
+                        ? 'bg-purple-600 text-white shadow-lg'
+                        : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
                     }`}
                   >
                     {key === 'none' ? 'None' : `$${(value/1000).toFixed(0)}k`}
@@ -863,22 +787,12 @@ const NormScoutBusinessPlan = () => {
           <button
             onClick={() => setActiveTab('financials')}
             className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all whitespace-nowrap text-sm sm:text-base ${
-              activeTab === 'financials'
-                ? 'bg-blue-600 text-white'
+              activeTab === 'financials' 
+                ? 'bg-blue-600 text-white' 
                 : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800'
             }`}
           >
             Details
-          </button>
-          <button
-            onClick={() => setActiveTab('legend')}
-            className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all whitespace-nowrap text-sm sm:text-base ${
-              activeTab === 'legend'
-                ? 'bg-blue-600 text-white'
-                : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800'
-            }`}
-          >
-            Legend
           </button>
         </div>
 
@@ -908,9 +822,9 @@ const NormScoutBusinessPlan = () => {
                     />
                     {!isMobile && <Legend />}
                     <ReferenceLine y={0} stroke="#666" strokeDasharray="3 3" />
-                    <Line type="monotone" dataKey="optimistic" stroke="#22c55e" strokeWidth={2} name="Optimistic" />
-                    <Line type="monotone" dataKey="normal" stroke="#3b82f6" strokeWidth={3} name="Normal" />
                     <Line type="monotone" dataKey="pessimistic" stroke="#ef4444" strokeWidth={2} name="Pessimistic" />
+                    <Line type="monotone" dataKey="normal" stroke="#3b82f6" strokeWidth={3} name="Normal" />
+                    <Line type="monotone" dataKey="optimistic" stroke="#22c55e" strokeWidth={2} name="Optimistic" />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -940,60 +854,6 @@ const NormScoutBusinessPlan = () => {
                     <Area type="monotone" dataKey="preSeed" stackId="1" stroke="#8b5cf6" fill="#8b5cf6" name="Pre-seed" />
                     <Area type="monotone" dataKey="seriesA" stackId="1" stroke="#10b981" fill="#10b981" name="Series A" />
                   </AreaChart>
-                </ResponsiveContainer>
-              </div>
-
-              <div className="bg-zinc-900 rounded-xl p-4 sm:p-6 border border-zinc-800">
-                <h3 className="text-base sm:text-lg font-semibold mb-4 text-cyan-500">Revenue</h3>
-                <ResponsiveContainer width="100%" height={isMobile ? 250 : 350}>
-                  <LineChart data={netIncomeData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
-                    <XAxis
-                      dataKey="quarter"
-                      stroke="#71717a"
-                      fontSize={isMobile ? 10 : 12}
-                      angle={isMobile ? -45 : 0}
-                      textAnchor={isMobile ? "end" : "middle"}
-                    />
-                    <YAxis
-                      stroke="#71717a"
-                      tickFormatter={(value) => formatCompactCurrency(value)}
-                      fontSize={isMobile ? 10 : 12}
-                    />
-                    <Tooltip
-                      contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '8px' }}
-                      formatter={(value) => formatCurrency(value)}
-                    />
-                    {!isMobile && <Legend />}
-                    <ReferenceLine y={0} stroke="#666" strokeDasharray="3 3" />
-                    <Line type="monotone" dataKey="optimistic" stroke="#22c55e" strokeWidth={2} name="Optimistic" />
-                    <Line type="monotone" dataKey="normal" stroke="#3b82f6" strokeWidth={3} name="Normal" />
-                    <Line type="monotone" dataKey="pessimistic" stroke="#ef4444" strokeWidth={2} name="Pessimistic" />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-
-              <div className="bg-zinc-900 rounded-xl p-4 sm:p-6 border border-zinc-800">
-                <h3 className="text-base sm:text-lg font-semibold mb-4 text-blue-500">Active Users</h3>
-                <ResponsiveContainer width="100%" height={isMobile ? 250 : 350}>
-                  <LineChart data={userGrowthData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
-                    <XAxis
-                      dataKey="quarter"
-                      stroke="#71717a"
-                      fontSize={isMobile ? 10 : 12}
-                      angle={isMobile ? -45 : 0}
-                      textAnchor={isMobile ? "end" : "middle"}
-                    />
-                    <YAxis stroke="#71717a" fontSize={isMobile ? 10 : 12} />
-                    <Tooltip
-                      contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '8px' }}
-                    />
-                    {!isMobile && <Legend />}
-                    <Line type="monotone" dataKey="optimistic" stroke="#22c55e" strokeWidth={2} name="Optimistic" />
-                    <Line type="monotone" dataKey="normal" stroke="#3b82f6" strokeWidth={3} name="Normal" />
-                    <Line type="monotone" dataKey="pessimistic" stroke="#ef4444" strokeWidth={2} name="Pessimistic" />
-                  </LineChart>
                 </ResponsiveContainer>
               </div>
             </div>
@@ -1057,9 +917,9 @@ const NormScoutBusinessPlan = () => {
                       contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '8px' }}
                     />
                     {!isMobile && <Legend />}
-                    <Line type="monotone" dataKey="optimistic" stroke="#22c55e" strokeWidth={2} name="Optimistic" />
-                    <Line type="monotone" dataKey="normal" stroke="#3b82f6" strokeWidth={3} name="Normal" />
                     <Line type="monotone" dataKey="pessimistic" stroke="#ef4444" strokeWidth={2} name="Pessimistic" />
+                    <Line type="monotone" dataKey="normal" stroke="#3b82f6" strokeWidth={3} name="Normal" />
+                    <Line type="monotone" dataKey="optimistic" stroke="#22c55e" strokeWidth={2} name="Optimistic" />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -1126,9 +986,9 @@ const NormScoutBusinessPlan = () => {
                     formatter={(value) => formatCurrency(value)}
                   />
                   {!isMobile && <Legend />}
-                  <Bar dataKey="optimistic" fill="#22c55e" name="Optimistic" />
-                  <Bar dataKey="normal" fill="#3b82f6" name="Normal" />
                   <Bar dataKey="pessimistic" fill="#ef4444" name="Pessimistic" />
+                  <Bar dataKey="normal" fill="#3b82f6" name="Normal" />
+                  <Bar dataKey="optimistic" fill="#22c55e" name="Optimistic" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -1225,140 +1085,9 @@ const NormScoutBusinessPlan = () => {
             )}
           </div>
         )}
-
-        {activeTab === 'legend' && (
-          <div className="space-y-6">
-            <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
-              <h2 className="text-2xl font-bold text-blue-400 mb-6">Mathematical Model Overview</h2>
-
-              <div className="space-y-8">
-                <section>
-                  <h3 className="text-xl font-semibold text-green-400 mb-3">1. Core Functions</h3>
-                  <div className="bg-zinc-800 p-4 rounded-lg space-y-3 text-sm">
-                    <div>
-                      <p className="text-cyan-300 font-mono">Active Users: A(t) = Σ cohorts with retention applied</p>
-                      <p className="text-zinc-400 mt-1">Sum of all user cohorts after applying churn over time</p>
-                    </div>
-                    <div>
-                      <p className="text-cyan-300 font-mono">Retention: R(c,t) = n × (1 - λ)^(3t)</p>
-                      <p className="text-zinc-400 mt-1">Where λ = monthly churn rate, t = quarters since acquisition</p>
-                    </div>
-                    <div>
-                      <p className="text-cyan-300 font-mono">Revenue: Rev(t) = A(t) × price × 3</p>
-                      <p className="text-zinc-400 mt-1">Quarterly subscription revenue from active users</p>
-                    </div>
-                  </div>
-                </section>
-
-                <section>
-                  <h3 className="text-xl font-semibold text-yellow-400 mb-3">2. User Growth</h3>
-                  <div className="bg-zinc-800 p-4 rounded-lg space-y-3 text-sm">
-                    <div>
-                      <p className="text-cyan-300 font-mono">Target Users: U(t) = Base × ρ_price + β(ads) + γ(legacy)</p>
-                      <p className="text-zinc-400 mt-1">Growth trajectory adjusted for price point and advertising</p>
-                    </div>
-                    <div>
-                      <p className="text-cyan-300 font-mono">Ad Boost: β(t) = AdSpend × effectiveness × 1.05^t</p>
-                      <p className="text-zinc-400 mt-1">User acquisition boost from marketing spend (0.5-1.5% effectiveness)</p>
-                    </div>
-                    <div>
-                      <p className="text-cyan-300 font-mono">New Users: N(t) = max(0, TargetGrowth)</p>
-                      <p className="text-zinc-400 mt-1">Users needed each quarter to maintain growth trajectory</p>
-                    </div>
-                  </div>
-                </section>
-
-                <section>
-                  <h3 className="text-xl font-semibold text-purple-400 mb-3">3. Customer Acquisition Cost (CAC)</h3>
-                  <div className="bg-zinc-800 p-4 rounded-lg space-y-3 text-sm">
-                    <div>
-                      <p className="text-cyan-300 font-mono">CAC(t) = Base_CAC × κ_price × Ψ_reductions</p>
-                      <p className="text-zinc-400 mt-1">Acquisition cost adjusted for price point and efficiencies</p>
-                    </div>
-                    <div>
-                      <p className="text-cyan-300 font-mono">Brand Reduction: Ψ = 1 - min(0.4, PreSeed/50k × 0.4)</p>
-                      <p className="text-zinc-400 mt-1">CAC decreases up to 40% with brand awareness from funding</p>
-                    </div>
-                    <div>
-                      <p className="text-cyan-300 font-mono">Ad Efficiency: Ψ = 1 - min(0.3, AdSpend/100k × 0.3)</p>
-                      <p className="text-zinc-400 mt-1">CAC improves up to 30% with sustained advertising</p>
-                    </div>
-                  </div>
-                </section>
-
-                <section>
-                  <h3 className="text-xl font-semibold text-orange-400 mb-3">4. Financial Metrics</h3>
-                  <div className="bg-zinc-800 p-4 rounded-lg space-y-3 text-sm">
-                    <div>
-                      <p className="text-cyan-300 font-mono">LTV = price / λ (or price × 36 if no churn)</p>
-                      <p className="text-zinc-400 mt-1">Customer Lifetime Value based on subscription price and churn</p>
-                    </div>
-                    <div>
-                      <p className="text-cyan-300 font-mono">Profit: Π(t) = Revenue - OpCost - AcqCost - AdSpend</p>
-                      <p className="text-zinc-400 mt-1">Quarterly profit after all operational and acquisition costs</p>
-                    </div>
-                    <div>
-                      <p className="text-cyan-300 font-mono">Bank: B(t) = B(t-1) + Π(t) + Funding(t)</p>
-                      <p className="text-zinc-400 mt-1">Cumulative cash position with funding injections at Q1 and Q4</p>
-                    </div>
-                  </div>
-                </section>
-
-                <section>
-                  <h3 className="text-xl font-semibold text-pink-400 mb-3">5. Key Parameters</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-zinc-800 p-4 rounded-lg text-sm">
-                      <p className="text-yellow-300 font-semibold mb-2">Price Multipliers (ρ)</p>
-                      <p className="text-zinc-300">$8: 1.8x users | $12: 1.4x | $18: 1.0x | $24: 0.7x</p>
-                      <p className="text-zinc-400 text-xs mt-1">Lower price = more users</p>
-                    </div>
-                    <div className="bg-zinc-800 p-4 rounded-lg text-sm">
-                      <p className="text-yellow-300 font-semibold mb-2">Churn Rates (λ)</p>
-                      <p className="text-zinc-300">3mo: 33.3% | 1yr: 8.3% | 2yr: 4.2% | None: 0%</p>
-                      <p className="text-zinc-400 text-xs mt-1">Monthly churn percentage</p>
-                    </div>
-                    <div className="bg-zinc-800 p-4 rounded-lg text-sm">
-                      <p className="text-yellow-300 font-semibold mb-2">OpCost/User/Month (θ)</p>
-                      <p className="text-zinc-300">Pessimistic: $4.50 | Normal: $3.00 | Optimistic: $2.00</p>
-                      <p className="text-zinc-400 text-xs mt-1">Cost to serve each user</p>
-                    </div>
-                    <div className="bg-zinc-800 p-4 rounded-lg text-sm">
-                      <p className="text-yellow-300 font-semibold mb-2">Ad Effectiveness (ε)</p>
-                      <p className="text-zinc-300">Pessimistic: 0.5% | Normal: 1.0% | Optimistic: 1.5%</p>
-                      <p className="text-zinc-400 text-xs mt-1">Users per $ spent on ads</p>
-                    </div>
-                  </div>
-                </section>
-
-                <section>
-                  <h3 className="text-xl font-semibold text-red-400 mb-3">6. System Flow</h3>
-                  <div className="bg-zinc-800 p-4 rounded-lg text-sm">
-                    <p className="text-zinc-300 mb-2">For each quarter t:</p>
-                    <ol className="list-decimal list-inside space-y-1 text-zinc-400">
-                      <li>Apply churn to all existing cohorts</li>
-                      <li>Calculate target users from growth model</li>
-                      <li>Determine new users needed (growth + churn replacement)</li>
-                      <li>Add new cohort with N(t) users</li>
-                      <li>Calculate CAC with efficiency improvements</li>
-                      <li>Compute revenue from active users</li>
-                      <li>Deduct all costs (operational + acquisition + ads)</li>
-                      <li>Update bank balance with profit/loss + funding</li>
-                    </ol>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
 };
 
-        // Render the component
-        const container = document.getElementById('root');
-        const root = ReactDOM.createRoot(container);
-        root.render(<NormScoutBusinessPlan />);
-    </script>
-</body>
-</html>
+export default NormScoutBusinessPlan;
