@@ -537,6 +537,7 @@ const NormScoutBusinessPlan = () => {
       ['Optimistic Scenario', 'Detailed quarterly projections for aggressive case'],
       ['User Metrics', 'User acquisition, retention, and churn analysis'],
       ['Financial Metrics', 'Revenue, costs, and profitability breakdown'],
+      ['Expenses', 'Detailed expense breakdown: User Upkeep, Founder Salary (CHF 4,500/mo), Swiss Tax (24%)'],
       ['Cohort Analysis', 'Customer cohort retention patterns'],
       ['Sensitivity Analysis', 'Impact of key variables on outcomes']
     ];
@@ -731,7 +732,62 @@ const NormScoutBusinessPlan = () => {
     const sensitivitySheet = XLSX.utils.aoa_to_sheet(sensitivityData);
     sensitivitySheet['!cols'] = [{ wch: 20 }, { wch: 15 }, { wch: 20 }, { wch: 20 }, { wch: 20 }, { wch: 15 }];
     XLSX.utils.book_append_sheet(wb, sensitivitySheet, 'Sensitivity Analysis');
-    
+
+    // Expenses Sheet
+    const expensesData = [
+      ['EXPENSE ANALYSIS'],
+      ['Tax Rate: 24% | Founder Salary: CHF 4,500/month (CHF 13,500/quarter)'],
+      [],
+      ['Quarter', 'Revenue', 'User Upkeep', 'Founder Salary', 'Tax (24%)', 'Total Expenses', 'Net Income'],
+      ...quarters.map((q, idx) => {
+        const revenue = normalData[idx].revenue;
+        const upkeep = expenseData[idx].normal.upkeepCost;
+        const salary = expenseData[idx].normal.founderSalary;
+        const tax = expenseData[idx].normal.taxOnRevenue;
+        const totalExp = expenseData[idx].normal.totalExpenses;
+        const netIncome = revenue - totalExp;
+        return [q, revenue, upkeep, salary, tax, totalExp, netIncome];
+      }),
+      [],
+      ['TOTALS',
+        normalData.reduce((sum, d) => sum + d.revenue, 0),
+        expenseData.reduce((sum, d) => sum + d.normal.upkeepCost, 0),
+        founderSalaryQuarterly * 12,
+        expenseData.reduce((sum, d) => sum + d.normal.taxOnRevenue, 0),
+        expenseData.reduce((sum, d) => sum + d.normal.totalExpenses, 0),
+        normalData.reduce((sum, d) => sum + d.revenue, 0) - expenseData.reduce((sum, d) => sum + d.normal.totalExpenses, 0)
+      ],
+      [],
+      ['EXPENSE BREAKDOWN BY SCENARIO'],
+      [],
+      ['Quarter', 'Pessimistic Upkeep', 'Pessimistic Tax', 'Pessimistic Total',
+       'Normal Upkeep', 'Normal Tax', 'Normal Total',
+       'Optimistic Upkeep', 'Optimistic Tax', 'Optimistic Total'],
+      ...quarters.map((q, idx) => [
+        q,
+        expenseData[idx].pessimistic.upkeepCost,
+        expenseData[idx].pessimistic.taxOnRevenue,
+        expenseData[idx].pessimistic.totalExpenses,
+        expenseData[idx].normal.upkeepCost,
+        expenseData[idx].normal.taxOnRevenue,
+        expenseData[idx].normal.totalExpenses,
+        expenseData[idx].optimistic.upkeepCost,
+        expenseData[idx].optimistic.taxOnRevenue,
+        expenseData[idx].optimistic.totalExpenses
+      ]),
+      [],
+      ['NOTES'],
+      ['Swiss Tax Rate', '24% effective rate (federal ~8.5% + cantonal ~15.5%)'],
+      ['Founder Salary', 'CHF 4,500/month fixed across all quarters'],
+      ['User Upkeep', 'Pessimistic: CHF 4.50/user/month | Normal: CHF 3.00/user/month | Optimistic: CHF 2.00/user/month'],
+      ['Tax Calculation', 'Applied to gross revenue (simplified model for maximum burden estimation)'],
+      ['Net Income', 'Revenue minus all expenses (User Upkeep + Founder Salary + Tax)']
+    ];
+
+    const expensesSheet = XLSX.utils.aoa_to_sheet(expensesData);
+    expensesSheet['!cols'] = Array(10).fill({ wch: 15 });
+    XLSX.utils.book_append_sheet(wb, expensesSheet, 'Expenses');
+
     XLSX.writeFile(wb, `NormScout_Model_${new Date().toISOString().slice(0,10)}.xlsx`);
   };
 
