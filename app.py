@@ -33,6 +33,11 @@ app.register_blueprint(field_bp)
 def serve_index():
     return send_file('static/index.html')
 
+@app.route("/bp")
+def serve_business_plan():
+    """Serve the interactive business plan / investment model"""
+    return send_file('static/bp.html')
+
 @app.route("/api/run", methods=["POST"])
 def run_python_code():
     """Handle product compliance analysis requests"""
