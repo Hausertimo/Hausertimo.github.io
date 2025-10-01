@@ -161,19 +161,19 @@ const NormScoutBusinessPlan = () => {
   
   const calculateUserBoost = (baseUsers, quarterIdx, scenario) => {
     const adSpend = getAdSpendPerQuarter(quarterIdx);
-    if (adSpend === 0) return baseUsers;
-    
+    if (adSpend === 0) return { totalUsers: baseUsers, adUsers: 0 };
+
     const effectiveness = {
       pessimistic: 0.005,  // Reduced from 0.01
       normal: 0.01,        // Reduced from 0.02
       optimistic: 0.015    // Reduced from 0.03
     };
-    
+
     // More gradual multipliers
     const earlyUserMultiplier = quarterIdx < 4 ? 1.2 : 1.0;  // Reduced from 1.5
     const networkEffect = Math.pow(1.05, quarterIdx);  // Reduced from 1.1
     const boost = Math.round(adSpend * effectiveness[scenario] * earlyUserMultiplier * networkEffect);
-    
+
     let preSeedLegacyBoost = 0;
     if (quarterIdx >= 4 && preSeedMarketing[selectedPreSeed] > 0) {
       const momentumMultiplier = {
@@ -185,8 +185,11 @@ const NormScoutBusinessPlan = () => {
         preSeedMarketing[selectedPreSeed] * 0.0005 * momentumMultiplier[selectedPreSeed] * (quarterIdx - 3)  // Reduced from 0.001
       );
     }
-    
-    return baseUsers + boost + preSeedLegacyBoost;
+
+    return {
+      totalUsers: baseUsers + boost + preSeedLegacyBoost,
+      adUsers: boost + preSeedLegacyBoost // Users acquired from ad spend
+    };
   };
   
   const calculateImprovedCAC = (baseCac, quarterIdx, scenario) => {
@@ -213,18 +216,25 @@ const NormScoutBusinessPlan = () => {
   const scaleAndBoostUsers = (baseUsers, price, scenario) => {
     return baseUsers.map((u, idx) => {
       const scaled = Math.round(u * priceMultipliers[price]);
-      const boosted = calculateUserBoost(scaled, idx, scenario);
-      
+      const boostResult = calculateUserBoost(scaled, idx, scenario);
+      const boostedTotal = boostResult.totalUsers;
+      const adAcquiredUsers = boostResult.adUsers;
+
+      let finalTotal = boostedTotal;
       if (selectedPreSeed !== 'none' && idx > 0) {
         const growthMultiplier = {
           pessimistic: 1.02,
           normal: 1.03,
           optimistic: 1.04
         };
-        return Math.round(boosted * Math.pow(growthMultiplier[selectedPreSeed], idx));
+        finalTotal = Math.round(boostedTotal * Math.pow(growthMultiplier[selectedPreSeed], idx));
       }
-      
-      return boosted;
+
+      return {
+        totalUsers: finalTotal,
+        adUsers: adAcquiredUsers,
+        organicUsers: scaled // Base organic users before ad boost
+      };
     });
   };
   
@@ -271,16 +281,21 @@ const NormScoutBusinessPlan = () => {
       
       // FIXED: Only acquire new users based on target growth, NOT replacing all churn
       // This makes churn actually impact the active user count
-      const targetGrowth = idx === 0 ? targetUsers[idx] : 
-        targetUsers[idx] - targetUsers[idx - 1];
-      
+      const currentTargetData = targetUsers[idx];
+      const previousTargetData = idx === 0 ? { totalUsers: 0, organicUsers: 0, adUsers: 0 } : targetUsers[idx - 1];
+
+      const targetGrowth = currentTargetData.totalUsers - previousTargetData.totalUsers;
+      const organicGrowth = currentTargetData.organicUsers - previousTargetData.organicUsers;
+      const adGrowth = currentTargetData.adUsers - previousTargetData.adUsers;
+
       // Option 1: Acquire exactly the target growth (churn reduces total active)
       const newUsersNeeded = Math.max(0, targetGrowth);
-      
+      const organicUsersNeeded = Math.max(0, organicGrowth);
+
       // Option 2 (commented): Try to maintain trajectory but with some churn impact
       // const replacementFactor = 0.5; // Only replace 50% of churned users
       // const newUsersNeeded = Math.max(0, targetGrowth + (churnedThisQ * replacementFactor));
-      
+
       if (newUsersNeeded > 0) {
         cohorts.push({
           quarter: idx,
@@ -288,19 +303,20 @@ const NormScoutBusinessPlan = () => {
           currentUsers: newUsersNeeded
         });
       }
-      
+
       const activeUsers = cohorts.reduce((sum, c) => sum + c.currentUsers, 0);
-      const organicAcquisitionCost = newUsersNeeded * cac[idx];
+      const organicAcquisitionCost = organicUsersNeeded * cac[idx]; // Only organic users pay CAC
       const adSpend = getAdSpendPerQuarter(idx);
       const totalAcquisitionCost = organicAcquisitionCost + adSpend;
       const quarterlyOperationalCost = activeUsers * opCost * 3;
       const quarterlyRevenue = activeUsers * price * 3;
       const quarterlyProfit = quarterlyRevenue - quarterlyOperationalCost - totalAcquisitionCost;
+      const operationalProfit = quarterlyRevenue - quarterlyOperationalCost - organicAcquisitionCost; // Excludes funded ad spend
       bankBalance += quarterlyProfit;
-      
-      const ltv = lifetime.monthlyChurn > 0 ? 
+
+      const ltv = lifetime.monthlyChurn > 0 ?
         price / lifetime.monthlyChurn : price * 36;
-      
+
       results.push({
         quarter: quarters[idx],
         newUsers: newUsersNeeded,
@@ -311,6 +327,7 @@ const NormScoutBusinessPlan = () => {
         acquisitionCost: organicAcquisitionCost,
         adSpend: adSpend,
         profit: quarterlyProfit,
+        operationalProfit: operationalProfit,
         bankBalance: bankBalance,
         cac: cac[idx],
         ltv: ltv,
@@ -368,7 +385,8 @@ const NormScoutBusinessPlan = () => {
     quarter: q,
     preSeed: idx < 4 ? preSeedMarketing[selectedPreSeed] / 4 : 0,
     seriesA: idx >= 4 ? seriesAFunding[selectedSeriesA] / 8 : 0,
-    total: getAdSpendPerQuarter(idx)
+    organicCAC: normalData[idx].acquisitionCost,
+    total: getAdSpendPerQuarter(idx) + normalData[idx].acquisitionCost
   }));
 
   const netIncomeData = quarters.map((q, idx) => ({
@@ -388,9 +406,11 @@ const NormScoutBusinessPlan = () => {
   };
   
   const formatCompactCurrency = (value) => {
-    if (value >= 1000000) return `$${(value/1000000).toFixed(1)}M`;
-    if (value >= 1000) return `$${(value/1000).toFixed(0)}k`;
-    return `$${value}`;
+    const absValue = Math.abs(value);
+    const sign = value < 0 ? '-' : '';
+    if (absValue >= 1000000) return `${sign}$${(absValue/1000000).toFixed(1)}M`;
+    if (absValue >= 1000) return `${sign}$${(absValue/1000).toFixed(0)}k`;
+    return `${sign}$${Math.round(absValue)}`;
   };
   
   const calculateTotals = (data) => {
@@ -399,18 +419,20 @@ const NormScoutBusinessPlan = () => {
     const totalNewUsers = data.reduce((sum, q) => sum + q.newUsers, 0);
     const totalChurned = data.reduce((sum, q) => sum + q.churnedUsers, 0);
     const finalBalance = data[data.length - 1].bankBalance;
+    const finalQuarterProfit = data[data.length - 1].operationalProfit; // Excludes funded ad spend
     const totalFunding = preSeedMarketing[selectedPreSeed] + seriesAFunding[selectedSeriesA];
     const roi = totalFunding > 0 ? ((finalBalance - totalFunding) / totalFunding * 100) : 0;
     const finalUsers = data[data.length - 1].activeUsers;
     const avgLtvCac = data.reduce((sum, q) => sum + q.ltvCacRatio, 0) / data.length;
     const netUserGrowth = totalNewUsers - totalChurned;
-    
-    return { 
-      totalRevenue, 
-      totalCosts, 
-      finalBalance, 
-      totalFunding, 
-      roi, 
+
+    return {
+      totalRevenue,
+      totalCosts,
+      finalBalance,
+      finalQuarterProfit,
+      totalFunding,
+      roi,
       finalUsers,
       totalNewUsers,
       totalChurned,
@@ -929,25 +951,26 @@ const NormScoutBusinessPlan = () => {
                 <ResponsiveContainer width="100%" height={isMobile ? 250 : 350}>
                   <AreaChart data={adSpendData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
-                    <XAxis 
-                      dataKey="quarter" 
-                      stroke="#71717a" 
+                    <XAxis
+                      dataKey="quarter"
+                      stroke="#71717a"
                       fontSize={isMobile ? 10 : 12}
                       angle={isMobile ? -45 : 0}
                       textAnchor={isMobile ? "end" : "middle"}
                     />
-                    <YAxis 
-                      stroke="#71717a" 
-                      tickFormatter={(value) => formatCompactCurrency(value)} 
-                      fontSize={isMobile ? 10 : 12} 
+                    <YAxis
+                      stroke="#71717a"
+                      tickFormatter={(value) => formatCompactCurrency(value)}
+                      fontSize={isMobile ? 10 : 12}
                     />
-                    <Tooltip 
+                    <Tooltip
                       contentStyle={{ backgroundColor: '#18181b', border: '1px solid #27272a', borderRadius: '8px' }}
                       formatter={(value) => formatCurrency(value)}
                     />
                     {!isMobile && <Legend />}
-                    <Area type="monotone" dataKey="preSeed" stackId="1" stroke="#8b5cf6" fill="#8b5cf6" name="Pre-seed" />
-                    <Area type="monotone" dataKey="seriesA" stackId="1" stroke="#10b981" fill="#10b981" name="Series A" />
+                    <Area type="monotone" dataKey="preSeed" stackId="1" stroke="#22c55e" fill="#22c55e" name="Pre-seed Ads" />
+                    <Area type="monotone" dataKey="seriesA" stackId="1" stroke="#3b82f6" fill="#3b82f6" name="Series A Ads" />
+                    <Area type="monotone" dataKey="organicCAC" stackId="1" stroke="#f59e0b" fill="#f59e0b" name="Organic CAC" />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
@@ -1029,6 +1052,12 @@ const NormScoutBusinessPlan = () => {
                       <p className="text-zinc-500 text-xs uppercase">Final Balance</p>
                       <p className={`text-xl sm:text-2xl font-bold mt-1 ${data.finalBalance >= 0 ? 'text-green-500' : 'text-red-500'}`}>
                         {formatCompactCurrency(data.finalBalance)}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-zinc-500 text-xs uppercase">Q4 2028 Profit</p>
+                      <p className={`text-lg sm:text-xl font-bold ${data.finalQuarterProfit >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                        {formatCompactCurrency(data.finalQuarterProfit)}
                       </p>
                     </div>
                     <div>
@@ -1180,9 +1209,9 @@ const NormScoutBusinessPlan = () => {
               </div>
             ) : (
               [
+                { data: optimisticData, title: 'Optimistic Scenario', colorClass: 'text-green-500' },
                 { data: normalData, title: 'Normal Scenario', colorClass: 'text-blue-500' },
-                { data: pessimisticData, title: 'Pessimistic Scenario', colorClass: 'text-red-500' },
-                { data: optimisticData, title: 'Optimistic Scenario', colorClass: 'text-green-500' }
+                { data: pessimisticData, title: 'Pessimistic Scenario', colorClass: 'text-red-500' }
               ].map(({ data, title, colorClass }) => (
                 <div key={title} className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden">
                   <div className="px-6 py-4 bg-zinc-950 border-b border-zinc-800">
@@ -1237,6 +1266,112 @@ const NormScoutBusinessPlan = () => {
 
         {activeTab === 'legend' && (
           <div className="space-y-6">
+            <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+              <h2 className="text-2xl font-bold text-blue-400 mb-6">Financial Model Guide</h2>
+
+              <div className="space-y-8">
+                <section>
+                  <h3 className="text-xl font-semibold text-cyan-400 mb-3">Key Visualizations</h3>
+                  <div className="space-y-4">
+                    <div className="bg-zinc-800 p-4 rounded-lg">
+                      <h4 className="text-green-400 font-semibold mb-2">📊 Bank Balance</h4>
+                      <p className="text-zinc-300 text-sm mb-2">Cumulative cash position tracking total capital deployed and generated across three market scenarios.</p>
+                      <div className="text-xs text-zinc-400 space-y-1">
+                        <p><strong>Interpretation:</strong> Reflects total cash reserves after accounting for all revenue, operational costs, acquisition spend, and capital injections.</p>
+                        <p><strong>Initial Negative Position:</strong> Represents the natural J-curve of SaaS economics where upfront CAC investment precedes compounding MRR.</p>
+                        <p><strong>Break-even Point:</strong> When the line crosses zero, the business becomes self-sustaining without additional capital requirements.</p>
+                        <p><strong>Scenario Lines:</strong> Green (Optimistic) | Blue (Base Case) | Red (Conservative)</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-zinc-800 p-4 rounded-lg">
+                      <h4 className="text-yellow-400 font-semibold mb-2">💰 Marketing Spend Composition</h4>
+                      <p className="text-zinc-300 text-sm mb-2">Quarterly customer acquisition investment breakdown by funding source.</p>
+                      <div className="text-xs text-zinc-400 space-y-1">
+                        <p><strong>Capital Deployment:</strong></p>
+                        <p className="ml-4">🌱 <span className="text-green-400">Pre-seed Allocation (Green):</span> Initial marketing capital deployed Q1-Q4 2026</p>
+                        <p className="ml-4">🚀 <span className="text-blue-400">Series A Allocation (Blue):</span> Scale capital deployed Q1 2027 onwards</p>
+                        <p className="ml-4">🔄 <span className="text-orange-400">Organic CAC (Orange):</span> Operational customer acquisition costs from ongoing revenue</p>
+                        <p><strong>Investment Thesis:</strong> Early capital accelerates market penetration and brand awareness, creating compounding effects that reduce future CAC and improve unit economics.</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-zinc-800 p-4 rounded-lg">
+                      <h4 className="text-cyan-400 font-semibold mb-2">💵 Quarterly Revenue</h4>
+                      <p className="text-zinc-300 text-sm mb-2">Recurring revenue generated from active subscriber base each quarter.</p>
+                      <div className="text-xs text-zinc-400 space-y-1">
+                        <p><strong>Calculation:</strong> Active Subscribers × Monthly Subscription × 3 months</p>
+                        <p><strong>Growth Driver:</strong> Demonstrates top-line expansion potential across market scenarios</p>
+                        <p><strong>Compounding Effect:</strong> Retained customers provide predictable base while new acquisition layers on incremental growth</p>
+                        <p><strong>Path to Profitability:</strong> Revenue trajectory must exceed combined operational and acquisition costs for sustainable unit economics</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-zinc-800 p-4 rounded-lg">
+                      <h4 className="text-blue-400 font-semibold mb-2">👥 Active User Base</h4>
+                      <p className="text-zinc-300 text-sm mb-2">Paying customer count at quarter-end, net of churn.</p>
+                      <div className="text-xs text-zinc-400 space-y-1">
+                        <p><strong>Cohort Dynamics:</strong> New customer cohorts are tracked separately with retention curves applied based on selected churn assumptions</p>
+                        <p><strong>Retention Sensitivity:</strong> User lifetime assumptions significantly impact long-term economics - test scenarios via "Customer Lifetime" parameter</p>
+                        <p><strong>Growth Velocity:</strong> Steeper curves indicate aggressive scaling requiring proportional CAC investment</p>
+                        <p><strong>Market Penetration:</strong> User growth reflects market receptivity and competitive positioning across scenarios</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-zinc-800 p-4 rounded-lg">
+                      <h4 className="text-purple-400 font-semibold mb-2">📋 Scenario Summary Cards</h4>
+                      <p className="text-zinc-300 text-sm mb-2">Terminal outcomes (Q4 2028) for each market scenario.</p>
+                      <div className="text-xs text-zinc-400 space-y-1">
+                        <p><strong>Final Users:</strong> Total active paying customers at model horizon</p>
+                        <p><strong>Final Balance:</strong> Net cash position after all operations and capital deployment</p>
+                        <p><strong>Q4 2028 Profit:</strong> Quarterly profitability demonstrating sustainable unit economics at scale</p>
+                        <p><strong>ROI:</strong> (Final Balance - Total Capital Invested) / Total Capital Invested</p>
+                        <p><strong>Net Cohort Growth:</strong> Total acquired customers minus churned, showing customer base expansion efficiency</p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section>
+                  <h3 className="text-xl font-semibold text-orange-400 mb-3">Investment Considerations</h3>
+                  <div className="bg-zinc-800 p-4 rounded-lg space-y-3 text-sm">
+                    <div>
+                      <p className="text-yellow-300 font-semibold">Why is initial cash position negative?</p>
+                      <p className="text-zinc-400">This reflects standard SaaS economics where customer acquisition costs are incurred upfront while subscription revenue accrues over the customer lifetime. The negative working capital period is why pre-revenue or early-stage SaaS companies require venture financing.</p>
+                    </div>
+                    <div>
+                      <p className="text-yellow-300 font-semibold">How is capital allocated between funding rounds?</p>
+                      <p className="text-zinc-400">Pre-seed investments shown ($60k/$75k/$100k) represent total round size, with a portion allocated to marketing and the remainder to product development and operations. Series A capital is primarily deployed toward scaling customer acquisition and operational infrastructure.</p>
+                    </div>
+                    <div>
+                      <p className="text-yellow-300 font-semibold">What do the three scenarios represent?</p>
+                      <p className="text-zinc-400">Pessimistic models conservative market adoption with elevated CAC. Base Case represents realistic expectations under normal market conditions. Optimistic assumes strong product-market fit with efficient viral growth mechanics. This range provides downside protection analysis and upside capture potential.</p>
+                    </div>
+                    <div>
+                      <p className="text-yellow-300 font-semibold">How does pricing strategy affect outcomes?</p>
+                      <p className="text-zinc-400">Price elasticity is modeled with multipliers: lower pricing increases addressable market and user volume but reduces per-customer LTV. Premium pricing targets smaller segments with higher revenue per user. The model dynamically adjusts CAC based on price point to reflect market acquisition difficulty.</p>
+                    </div>
+                    <div>
+                      <p className="text-yellow-300 font-semibold">What drives CAC improvement over time?</p>
+                      <p className="text-zinc-400">CAC efficiency improves through: (1) Brand awareness from early marketing investment creating organic inbound, (2) Network effects as user base scales, (3) Optimization of paid channels through data and iteration. This is modeled as CAC reduction functions applied quarterly.</p>
+                    </div>
+                    <div>
+                      <p className="text-yellow-300 font-semibold">How should retention assumptions be interpreted?</p>
+                      <p className="text-zinc-400">Customer lifetime selections (3 months to infinite) represent different market segments and product stickiness. Enterprise or embedded products may approach zero churn, while consumer applications typically see higher turnover. Retention directly impacts LTV and therefore maximum viable CAC.</p>
+                    </div>
+                    <div>
+                      <p className="text-yellow-300 font-semibold">What makes unit economics sustainable?</p>
+                      <p className="text-zinc-400">LTV:CAC ratio &gt;3.0 indicates strong unit economics with healthy payback periods. Ratios between 1.0-3.0 are viable but may indicate competitive market dynamics or early-stage inefficiency. Ratios &lt;1.0 are unsustainable without CAC reduction or LTV improvement through pricing or retention.</p>
+                    </div>
+                    <div>
+                      <p className="text-yellow-300 font-semibold">How to interpret Q4 2028 profitability?</p>
+                      <p className="text-zinc-400">Quarterly profit in the terminal period demonstrates whether the business model achieves sustainable profitability at scale. Positive Q4 2028 profit indicates the company can scale efficiently beyond the model horizon without additional capital requirements, critical for Series A due diligence.</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+
             <div className="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
               <h2 className="text-2xl font-bold text-blue-400 mb-6">Mathematical Model Overview</h2>
 
