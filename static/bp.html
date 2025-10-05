@@ -446,7 +446,7 @@ const NormScoutBusinessPlan = () => {
     const totalChurned = data.reduce((sum, q) => sum + q.churnedUsers, 0);
     const finalBalance = data[data.length - 1].bankBalance;
     const finalQuarterProfit = data[data.length - 1].operationalProfit; // Excludes funded ad spend
-    const totalFunding = preSeedMarketing[selectedPreSeed] + seriesAFunding[selectedSeriesA];
+    const totalFunding = preSeedFunding[selectedPreSeed] + seriesAFunding[selectedSeriesA];
     const roi = totalFunding > 0 ? ((finalBalance - totalFunding) / totalFunding * 100) : 0;
     const finalUsers = data[data.length - 1].activeUsers;
     const avgLtvCac = data.reduce((sum, q) => sum + q.ltvCacRatio, 0) / data.length;
