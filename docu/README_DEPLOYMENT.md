@@ -209,3 +209,35 @@ fly logs -n 100
 - [ ] Deployed app shows "API key found" in logs
 - [ ] Frontend can make successful API calls
 - [ ] Error messages are helpful for debugging
+  
+# For the user 
+
+How to Run NormScout Website Locally (Step-by-Step)
+Quick Start Commands:
+Option 1: From the root directory (Normscout folder):
+cd Website/Hausertimo.github.io
+python app.py
+Option 2: If you're already in the Website folder:
+cd Hausertimo.github.io
+python app.py
+Then:
+Open your web browser
+Go to: http://localhost:8080
+That's it! The website should be running
+To Stop the Server:
+Press CTRL+C in the terminal window where it's running
+If You Get Errors:
+Missing dependencies error? Run this first:
+pip install -r requirements.txt
+Python not found? Make sure Python is installed:
+python --version
+If not installed, download from python.org
+Complete Step-by-Step:
+Open Command Prompt or Terminal
+Navigate to the website folder:
+cd c:\_git\Startup\Normscout\Website\Hausertimo.github.io
+Run the app:
+python app.py
+You'll see: "Running on http://127.0.0.1:8080"
+Open browser to: http://localhost:8080
+That's all you need! The app will automatically find the API key from the .env file.
