@@ -38,6 +38,15 @@ NormScout is a compliance intelligence platform that helps businesses navigate i
   - Loading animations (spinner, slideUp)
   - Professional blue/white color scheme
 
+### Logo Styling & Branding
+- **Logo structure**: "NormScout" displayed as two parts
+  - "Norm": Bold (font-weight: 700), Blue (#4c7fdc)
+  - "Scout": Normal weight (font-weight: 400), Grey (#6b7280)
+- **Logo size**: 27px font size
+- **Header background**: Light grey (#f9fafb) with transparency (rgba(249, 250, 251, 0.95)) for contrast with grey "Scout" text
+- **Logo classes**: `.logo-norm` and `.logo-scout` for consistent branding across the site
+- **Usage**: Applied to both header logo and "Why NormScout?" section title
+
 ### Testing & Documentation
 - **tests/test_api.py**: Comprehensive API testing script
   - Tests API key configuration
