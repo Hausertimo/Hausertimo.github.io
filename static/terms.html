@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NormScout Terms of Service - Our agreement with users of our AI-powered compliance service">
+    <title>Terms of Service - NormScout</title>
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --royal-blue: #2048D5;
+            --white: #FFFFFF;
+            --medium-gray: #EEF0F3;
+            --accent-blue: #448CF7;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            --spacing-2xl: 64px;
+            --radius-md: 8px;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--medium-gray);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-md) var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 24px;
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            font-size: 28px;
+        }
+
+        .logo-norm {
+            color: var(--text-dark);
+        }
+
+        .logo-scout {
+            color: var(--royal-blue);
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-family);
+            font-size: 16px;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--royal-blue);
+            border: 2px solid var(--royal-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--royal-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary {
+            background-color: var(--royal-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl) var(--spacing-md);
+            margin-top: 80px; /* Account for fixed header */
+        }
+
+        .policy-container {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--medium-gray);
+        }
+
+        h1 {
+            color: var(--royal-blue);
+            font-size: 36px;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--text-dark);
+            font-size: 24px;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+            padding-top: var(--spacing-md);
+            border-top: 2px solid var(--medium-gray);
+        }
+
+        h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        h3 {
+            color: var(--royal-blue);
+            font-size: 20px;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--text-light);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            color: var(--text-light);
+            margin-bottom: var(--spacing-md);
+            padding-left: var(--spacing-lg);
+            line-height: 1.8;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .intro-text {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--medium-gray);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            color: var(--text-light);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .footer-text {
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                padding: var(--spacing-sm);
+            }
+
+            .main-content {
+                margin-top: 120px;
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            .policy-container {
+                padding: var(--spacing-md);
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .intro-text {
+                font-size: 16px;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .header, .footer {
+                display: none;
+            }
+
+            .main-content {
+                margin-top: 0;
+            }
+
+            .policy-container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text"><span class="logo-norm">Norm</span><span class="logo-scout">Scout</span></span>
+            </a>
+            <div class="nav-buttons">
+                <a href="/" class="btn btn-outline">← Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="policy-container">
+            <h1>Terms of Service</h1>
+
+            <p class="intro-text">
+                Welcome to NormScout ("the Service," "we," "us," "our"). By accessing or using normscout.ch, you acknowledge and agree to be bound by these Terms of Service ("Agreement"). Please review them carefully before proceeding.
+            </p>
+
+            <div class="section">
+                <h2>1. Acceptance of Terms</h2>
+                <p>Your visit or continued use of this website constitutes express acceptance of and agreement to these Terms. Should you disagree with any provision herein, please discontinue all use of this Service.</p>
+            </div>
+
+            <div class="section">
+                <h2>2. Scope of Service</h2>
+                <p>NormScout provides AI-powered assistance regarding product norms and standards. Our Service utilizes third-party infrastructure and external providers—including but not limited to Fly.io for hosting and Anthropic and OpenAI for language model responses—to facilitate automated, AI-driven content and guidance.</p>
+            </div>
+
+            <div class="section">
+                <h2>3. User Conduct</h2>
+                <p>Users shall refrain from any activity that is unlawful, abusive, misleading, or disruptive. Malicious use, unauthorized data extraction, misrepresentation, or attempts to compromise the integrity of the Service are strictly prohibited. We reserve the right to suspend or terminate access for violations at our sole discretion.</p>
+            </div>
+
+            <div class="section">
+                <h2>4. Data Processing and Privacy</h2>
+                <p>By submitting inquiries, including contact information and product requests, you consent to processing and transmission of your data via third-party platforms where such processing is required to deliver AI-generated results. Please consult our Privacy Policy for details regarding collection, usage, and protection of personal information.</p>
+            </div>
+
+            <div class="section">
+                <h2>5. Third-Party Interactions</h2>
+                <p>You acknowledge that select data may be transmitted to external providers (such as Fly.io, Anthropic, OpenAI, and related infrastructure partners) for technical processing, fulfillment, and generation of responses. We strive to engage only reputable, secure third-party partners, yet cannot guarantee service continuity or data locality.</p>
+            </div>
+
+            <div class="section">
+                <h2>6. Intellectual Property</h2>
+                <p>All original content, trademarks, architecture, and proprietary data arising from or displayed within NormScout shall remain the exclusive property of the operator or its licensors. Unauthorized use, reproduction, or adaptation is expressly forbidden.</p>
+            </div>
+
+            <div class="section">
+                <h2>7. Disclaimer of Warranties</h2>
+                <p>NormScout and its AI-driven outputs are provided on an "as is" and "as available" basis. No warranty, express or implied, is made as to the accuracy, reliability, or suitability of the content generated. Responses may include automated outputs and should not be relied upon as professional or legally binding advice.</p>
+            </div>
+
+            <div class="section">
+                <h2>8. Limitation of Liability</h2>
+                <p>Under no circumstances shall NormScout, its operator, affiliates, partners, or providers be liable for any direct, indirect, incidental, special, punitive, or consequential damages arising out of your use, misuse, or inability to use the Service, including reliance upon AI-generated advice or technical interruptions.</p>
+            </div>
+
+            <div class="section">
+                <h2>9. Changes and Modifications</h2>
+                <p>NormScout reserves the right to update or modify these Terms of Service at any time, for any reason. Changes become effective immediately upon posting. Continued use following notice shall constitute acceptance of the revised Agreement.</p>
+            </div>
+
+            <div class="section">
+                <h2>10. Governing Law</h2>
+                <p>These Terms and any related disputes are governed exclusively by the laws of Switzerland, irrespective of conflict-of-law principles.</p>
+            </div>
+
+            <div class="section">
+                <h2>11. Contact</h2>
+                <p>Should you have questions or concerns regarding these Terms, please refer to our website imprint or reach out via the contact details provided therein.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2024 NormScout. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

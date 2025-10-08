@@ -57,6 +57,21 @@ def serve_business_plan():
     """Serve the interactive business plan / investment model"""
     return send_file('static/bp.html')
 
+@app.route("/privacy")
+def serve_privacy():
+    """Serve the privacy policy page"""
+    return send_file('static/privacy.html')
+
+@app.route("/terms")
+def serve_terms():
+    """Serve the terms of service page"""
+    return send_file('static/terms.html')
+
+@app.route("/contact")
+def serve_contact():
+    """Serve the contact page"""
+    return send_file('static/contact.html')
+
 @app.route("/api/visitor-count", methods=["GET", "POST"])
 def visitor_count():
     """Get and increment visitor count - counts every page view"""

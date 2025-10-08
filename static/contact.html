@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact NormScout - Get in touch with us for inquiries about investments or general information">
+    <title>Contact - NormScout</title>
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --royal-blue: #2048D5;
+            --white: #FFFFFF;
+            --medium-gray: #EEF0F3;
+            --accent-blue: #448CF7;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            --spacing-2xl: 64px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--medium-gray);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-md) var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 24px;
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            font-size: 28px;
+        }
+
+        .logo-norm {
+            color: var(--text-dark);
+        }
+
+        .logo-scout {
+            color: var(--royal-blue);
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-family);
+            font-size: 16px;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--royal-blue);
+            border: 2px solid var(--royal-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--royal-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl) var(--spacing-md);
+            margin-top: 80px; /* Account for fixed header */
+        }
+
+        .contact-container {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--medium-gray);
+        }
+
+        h1 {
+            color: var(--royal-blue);
+            font-size: 36px;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .contact-section {
+            background-color: #f8f9fa;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--medium-gray);
+            transition: all 0.3s ease;
+        }
+
+        .contact-section:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .section-icon {
+            font-size: 32px;
+            margin-bottom: var(--spacing-sm);
+            display: block;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--text-dark);
+            font-size: 20px;
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .company-info {
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--royal-blue);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .address-block {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .phone-number {
+            display: inline-block;
+            color: var(--royal-blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: all 0.2s ease;
+        }
+
+        .phone-number:hover {
+            color: var(--accent-blue);
+            transform: translateX(3px);
+        }
+
+        .email-section {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .email-label {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .email-link {
+            display: inline-block;
+            color: var(--royal-blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            word-break: break-word;
+        }
+
+        .email-link:hover {
+            color: var(--accent-blue);
+            transform: translateX(3px);
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background-color: var(--royal-blue);
+            margin: var(--spacing-md) auto;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--medium-gray);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            color: var(--text-light);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .footer-text {
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                padding: var(--spacing-sm);
+            }
+
+            .main-content {
+                margin-top: 120px;
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            .contact-container {
+                padding: var(--spacing-md);
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .company-name {
+                font-size: 20px;
+            }
+
+            .phone-number {
+                font-size: 16px;
+            }
+        }
+
+        /* Icon styling */
+        .icon-office::before {
+            content: "🏢";
+        }
+
+        .icon-email::before {
+            content: "✉️";
+        }
+
+        /* Print styles */
+        @media print {
+            .header, .footer {
+                display: none;
+            }
+
+            .main-content {
+                margin-top: 0;
+            }
+
+            .contact-container {
+                box-shadow: none;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text"><span class="logo-norm">Norm</span><span class="logo-scout">Scout</span></span>
+            </a>
+            <div class="nav-buttons">
+                <a href="/" class="btn btn-outline">← Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="contact-container">
+            <h1>Contact Us</h1>
+
+            <div class="contact-grid">
+                <!-- Office & Phone Section -->
+                <div class="contact-section">
+                    <span class="section-icon icon-office"></span>
+                    <h2>Office & Phone</h2>
+
+                    <div class="company-info">
+                        <div class="company-name">NormScout</div>
+                        <div class="address-block">
+                            Timo Hauser<br>
+                            Malixerstrasse 1<br>
+                            7000 Chur<br>
+                            Switzerland
+                        </div>
+                        <div class="divider"></div>
+                        <a href="tel:+41763369709" class="phone-number">
+                            📞 +41 76 336 97 09
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Email Section -->
+                <div class="contact-section">
+                    <span class="section-icon icon-email"></span>
+                    <h2>Email Inquiries</h2>
+
+                    <div class="email-section">
+                        <div class="email-label">For Investment Inquiries</div>
+                        <a href="mailto:invest@normscout.com" class="email-link">
+                            invest@normscout.com
+                        </a>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="email-section">
+                        <div class="email-label">For General Inquiries</div>
+                        <a href="mailto:info@normscout.com" class="email-link">
+                            info@normscout.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2024 NormScout. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

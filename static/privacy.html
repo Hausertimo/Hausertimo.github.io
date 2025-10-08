@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NormScout Privacy Policy - Learn how we protect your data and handle your information">
+    <title>Privacy Policy - NormScout</title>
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --royal-blue: #2048D5;
+            --white: #FFFFFF;
+            --medium-gray: #EEF0F3;
+            --accent-blue: #448CF7;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            --spacing-2xl: 64px;
+            --radius-md: 8px;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--medium-gray);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-md) var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 24px;
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            font-size: 28px;
+        }
+
+        .logo-norm {
+            color: var(--text-dark);
+        }
+
+        .logo-scout {
+            color: var(--royal-blue);
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-family);
+            font-size: 16px;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--royal-blue);
+            border: 2px solid var(--royal-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--royal-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary {
+            background-color: var(--royal-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl) var(--spacing-md);
+            margin-top: 80px; /* Account for fixed header */
+        }
+
+        .policy-container {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--medium-gray);
+        }
+
+        h1 {
+            color: var(--royal-blue);
+            font-size: 36px;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--text-dark);
+            font-size: 24px;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+            padding-top: var(--spacing-md);
+            border-top: 2px solid var(--medium-gray);
+        }
+
+        h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        h3 {
+            color: var(--royal-blue);
+            font-size: 20px;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--text-light);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            color: var(--text-light);
+            margin-bottom: var(--spacing-md);
+            padding-left: var(--spacing-lg);
+            line-height: 1.8;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .intro-text {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .disclaimer-section {
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-xl);
+            border-top: 3px solid var(--medium-gray);
+        }
+
+        .disclaimer-section h2 {
+            color: var(--accent-blue);
+            border-top: none;
+            padding-top: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--medium-gray);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            color: var(--text-light);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .footer-text {
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                padding: var(--spacing-sm);
+            }
+
+            .main-content {
+                margin-top: 120px;
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            .policy-container {
+                padding: var(--spacing-md);
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .intro-text {
+                font-size: 16px;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .header, .footer {
+                display: none;
+            }
+
+            .main-content {
+                margin-top: 0;
+            }
+
+            .policy-container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔍</span>
+                <span class="logo-text"><span class="logo-norm">Norm</span><span class="logo-scout">Scout</span></span>
+            </a>
+            <div class="nav-buttons">
+                <a href="/" class="btn btn-outline">← Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="policy-container">
+            <h1>Privacy Policy</h1>
+
+            <p class="intro-text">
+                NormScout ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and share information about you when you use our website (normscout.ch) and related services.
+            </p>
+
+            <div class="section">
+                <h2>1. Data Collection and Use</h2>
+                <p>We collect your email address when you contact us or submit a product inquiry form.</p>
+                <p>If you use our inquiry form to request information about norms for specific products, the content of your request—including any information you voluntarily provide—may be processed and shared with trusted third-party service providers (such as Anthropic, OpenAI, or selected external hosting providers) to generate responses using AI models.</p>
+                <p>We process your data solely to provide the requested AI-based assistance or to respond to your inquiries.</p>
+            </div>
+
+            <div class="section">
+                <h2>2. Sharing of Data</h2>
+                <p>Data you submit via product requests may be transmitted to and processed by third-party AI platform providers and infrastructure hosts for the purposes of generating automated responses.</p>
+                <p>Our third-party partners and hosting providers may process your data on servers located inside or outside Switzerland or the EEA, depending on the technical circumstances.</p>
+                <p>We do not sell your personal data to any third parties.</p>
+            </div>
+
+            <div class="section">
+                <h2>3. Tracking and Analytics</h2>
+                <p>We do not use cookies, tracking tools, or analytics software on normscout.ch.</p>
+            </div>
+
+            <div class="section">
+                <h2>4. Data Security</h2>
+                <p>We maintain appropriate technical and organizational measures to secure your data against unauthorized access or breaches.</p>
+                <p>Access to your data is limited to those who require it for processing your inquiry.</p>
+            </div>
+
+            <div class="section">
+                <h2>5. Your Rights</h2>
+                <p>Upon request, you may obtain information about the personal data stored about you, request correction, deletion, or restriction of processing, and—where applicable—withdraw consent for future processing.</p>
+                <p>To exercise these rights, please contact us via the contact details provided on the website.</p>
+            </div>
+
+            <div class="section">
+                <h2>6. Hosting and Data Transfers</h2>
+                <p>NormScout is currently hosted on fly.io or such providers as determined by operational requirements, which may involve data transfers outside your country of residence.</p>
+                <p>We require our hosts and partners to comply with applicable data protection laws.</p>
+            </div>
+
+            <div class="section">
+                <h2>7. Updates</h2>
+                <p>This policy may be updated periodically. The latest version will always be available on our website.</p>
+                <p>For privacy concerns, please use the contact information found in our website imprint.</p>
+            </div>
+
+            <div class="disclaimer-section">
+                <h2>Disclaimer / Limitation of Liability</h2>
+                <p>The information and AI-generated responses provided via normscout.ch are for general informational purposes only and are generated by automated systems.</p>
+                <p>While we strive for accuracy and reliability, content produced using AI may contain inaccuracies, errors, or may require further verification.</p>
+                <p>NormScout does not accept liability for the correctness, completeness, or timeliness of provided information, or for decisions made based on this content.</p>
+                <p>All use of the information provided is at your own risk. For professional or legally binding advice, we recommend consulting a qualified expert.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2024 NormScout. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
