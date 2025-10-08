@@ -6,7 +6,8 @@ NormScout is a Flask application that uses the OpenRouter API to provide complia
 ## Prerequisites
 - Python 3.11+
 - OpenRouter API key (get one at https://openrouter.ai)
-- Fly.io account and CLI (for deployment)
+- Redis database (get free tier at https://redis.com/try-free/)
+- Fly.io account (for deployment)
 
 ## Local Development
 
@@ -15,21 +16,24 @@ NormScout is a Flask application that uses the OpenRouter API to provide complia
 pip install -r requirements.txt
 ```
 
-### 2. Set Environment Variable
+### 2. Set Environment Variables
 
 #### Windows (Command Prompt)
 ```cmd
 set openrouter=sk-or-v1-your-actual-api-key-here
+set REDIS_URL=redis://default:password@your-redis-host:port
 ```
 
 #### Windows (PowerShell)
 ```powershell
 $env:openrouter = "sk-or-v1-your-actual-api-key-here"
+$env:REDIS_URL = "redis://default:password@your-redis-host:port"
 ```
 
 #### Linux/Mac
 ```bash
 export openrouter='sk-or-v1-your-actual-api-key-here'
+export REDIS_URL='redis://default:password@your-redis-host:port'
 ```
 
 ### 3. Test the API Key
@@ -54,92 +58,73 @@ Check the console output for:
 - API endpoint confirmation
 - Any startup errors
 
-## Deployment to Fly.io
+## Deployment to Fly.io (Via Dashboard)
 
-### 1. Initial Setup (First Time Only)
-```bash
-# Install Fly CLI if not already installed
-# See: https://fly.io/docs/getting-started/installing-flyctl/
+### 1. Redis Setup
+First, get a Redis database:
+- Sign up at https://redis.com/try-free/ (30MB free)
+- Create a new database
+- Copy the connection string (format: `redis://default:password@host:port`)
 
-# Login to Fly.io
-fly auth login
+### 2. Configure Secrets on Fly.io Dashboard
 
-# Launch the app (creates fly.toml)
-fly launch --name normscout
-```
+1. Go to https://fly.io/dashboard
+2. Select your `normscout` app
+3. Navigate to the **Secrets** tab
+4. Add these secrets:
+   - **Name:** `openrouter` **Value:** `sk-or-v1-your-actual-api-key-here`
+   - **Name:** `REDIS_URL` **Value:** `redis://default:password@your-redis-host:port`
 
-### 2. Set the API Key Secret
+### 3. Deploy via GitHub Push
 
-**IMPORTANT:** Never commit your API key to git. Use Fly.io secrets instead:
-
-```bash
-fly secrets set openrouter='sk-or-v1-your-actual-api-key-here'
-```
-
-### 3. Deploy the Application
-```bash
-fly deploy
-```
-
-### 4. Check Deployment Status
-```bash
-# View logs
-fly logs
-
-# Check app status
-fly status
-
-# Open the deployed app
-fly open
-```
+Since you're using GitHub deployment:
+1. Commit and push your changes to GitHub
+2. Fly.io will automatically deploy from your repository
+3. Monitor deployment at https://fly.io/dashboard
 
 ## Debugging Deployment Issues
 
 ### 1. Check Logs for Errors
-```bash
-fly logs --tail
-```
+Via Fly.io Dashboard:
+- Go to your app → Monitoring → Live Logs
 
 Look for:
-- "✓ OpenRouter API key found" - Key is configured correctly
-- "✗ OpenRouter API key NOT FOUND!" - Key is missing
+- "Redis connected successfully" - Redis is working
+- "OpenRouter API key found" - API key is configured
+- "RuntimeError: Redis is required" - REDIS_URL not set
 - API error messages with status codes
 
-### 2. Verify Secret is Set
-```bash
-fly secrets list
-```
+### 2. Verify Secrets are Set
+Check in Fly.io Dashboard → Your App → Secrets tab
 
 You should see:
-```
-NAME        DIGEST                  CREATED AT
-openrouter  xxxxxxxxxxxxxx          2025-09-23T10:00:00Z
-```
+- `openrouter` (your OpenRouter API key)
+- `REDIS_URL` (your Redis connection string)
 
 ### 3. Common Issues and Solutions
 
+#### Issue: "RuntimeError: Redis is required"
+**Solution:** REDIS_URL not set. Add it in Fly.io Dashboard → Secrets
+
+#### Issue: "Redis connection failed"
+**Solution:** Check your Redis connection string:
+- Format: `redis://default:password@host:port`
+- No extra spaces or quotes
+- Redis server is accessible
+
 #### Issue: "API key NOT FOUND" in logs
-**Solution:** Set the secret again:
-```bash
-fly secrets set openrouter='your-api-key'
-fly deploy
-```
+**Solution:** Set the secret in Fly.io Dashboard → Secrets
 
 #### Issue: 401 Unauthorized from OpenRouter
 **Solution:** Your API key is invalid. Check:
 - Key starts with 'sk-or-v1-' (typical format)
-- No extra spaces or quotes in the key
 - Key hasn't been revoked
 
-#### Issue: 429 Too Many Requests
-**Solution:** You've hit rate limits. Check your OpenRouter account for:
-- Available credits
-- Rate limit settings
-
-#### Issue: Connection timeouts
-**Solution:** The app has a 30-second timeout. Check:
-- OpenRouter service status
-- Network connectivity from Fly.io region
+#### Issue: Visitor counter shows error
+**Solution:** Redis connection issue. Check:
+- REDIS_URL is correctly set
+- Redis server is running
+- Connection string is valid
 
 ### 4. Test the Deployed App
 ```bash
@@ -157,18 +142,26 @@ curl -X POST https://normscout.fly.dev/api/run \
 | Variable | Description | Required | Example |
 |----------|-------------|----------|---------|
 | `openrouter` | OpenRouter API key | Yes | `sk-or-v1-xxxxx` |
+| `REDIS_URL` | Redis connection string | Yes | `redis://default:pass@host:port` |
 
 ## File Structure
 ```
 .
-├── app.py              # Main Flask application
-├── tests/test_api.py   # API testing script
-├── requirements.txt    # Python dependencies
-├── Dockerfile         # Container configuration
-├── fly.toml           # Fly.io configuration
-├── index.html         # Frontend
-├── style.css          # Styles
-└── functions.js       # Frontend JavaScript
+├── app.py                  # Main Flask application
+├── api/                    # API modules
+│   ├── fields.py          # Field API blueprint
+│   ├── field_framework.py # Dynamic field system
+│   └── openrouter.py      # OpenRouter API client
+├── static/                 # Frontend files
+│   ├── index.html         # Main page
+│   ├── bp.html            # Business plan page
+│   ├── style.css          # Styles
+│   └── functions.js       # Frontend JavaScript
+├── tests/                  # Test files
+│   └── test_api.py        # API testing script
+├── requirements.txt        # Python dependencies
+├── Dockerfile             # Container configuration
+└── fly.toml              # Fly.io configuration
 ```
 
 ## Security Notes
@@ -181,19 +174,20 @@ curl -X POST https://normscout.fly.dev/api/run \
 ## Monitoring
 
 ### Check Application Logs
-```bash
-# Live logs
-fly logs --tail
-
-# Recent logs
-fly logs -n 100
-```
+Via Fly.io Dashboard:
+- Go to your app → Monitoring → Live Logs
 
 ### Key Log Messages to Monitor
-- `✓ OpenRouter API key found` - App started successfully
-- `=== API Request Received ===` - Processing a request
-- `API call successful!` - Request completed
-- `OpenRouter API Error` - API issues to investigate
+- `Redis connected successfully` - Redis connection established
+- `OpenRouter API key found` - API key loaded
+- `API call successful` - Request completed
+- `Redis error in visitor count` - Counter issues to investigate
+
+## Visitor Counter Behavior
+- **Counts every page refresh** (not unique visitors)
+- **No session/cookie tracking**
+- **Persisted in Redis** (survives app restarts)
+- **Initial value:** 220
 
 ## Support
 

@@ -1,13 +1,7 @@
-from flask import Flask, request, jsonify, send_file
 import os
-import logging
 from dotenv import load_dotenv
-from api.fields import field_bp, field_renderer
-from api.openrouter import analyze_product_compliance, validate_product_input
-from api.field_framework import (FieldRenderer, MarkdownField, FormField,
-                                  TextAreaField, ButtonField)
 
-# Load environment variables from .env file
+# Load environment variables FIRST, before importing modules that need them
 # Look for .env in parent directory (Website folder)
 env_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
 if os.path.exists(env_path):
@@ -16,6 +10,17 @@ if os.path.exists(env_path):
 else:
     # Try current directory
     load_dotenv()
+    print("Loaded .env from current directory")
+
+# Now import everything else after env vars are loaded
+from flask import Flask, request, jsonify, send_file
+import logging
+import redis
+import json
+from api.fields import field_bp, field_renderer
+from api.openrouter import analyze_product_compliance, validate_product_input
+from api.field_framework import (FieldRenderer, MarkdownField, FormField,
+                                  TextAreaField, ButtonField)
 
 # Configure logging
 logging.basicConfig(
@@ -29,6 +34,20 @@ app = Flask(__name__, static_folder='static', static_url_path='')
 # Register the field API blueprint
 app.register_blueprint(field_bp)
 
+# Initialize Redis connection (REQUIRED)
+redis_url = os.getenv('REDIS_URL')
+if not redis_url:
+    logger.error("REDIS_URL not configured! Set it in Fly.io Secrets")
+    raise RuntimeError("Redis is required. No REDIS_URL found in environment.")
+
+try:
+    redis_client = redis.from_url(redis_url, decode_responses=True)
+    redis_client.ping()
+    logger.info("Redis connected successfully")
+except Exception as e:
+    logger.error(f"Redis connection failed: {e}")
+    raise RuntimeError(f"Could not connect to Redis: {e}")
+
 @app.route("/")
 def serve_index():
     return send_file('static/index.html')
@@ -37,6 +56,56 @@ def serve_index():
 def serve_business_plan():
     """Serve the interactive business plan / investment model"""
     return send_file('static/bp.html')
+
+@app.route("/api/visitor-count", methods=["GET", "POST"])
+def visitor_count():
+    """Get and increment visitor count - counts every page view"""
+    try:
+        if request.method == "POST":
+            # Increment counter on every POST (every page load)
+            count = redis_client.incr('monthly_users')
+        else:
+            # Just get current count on GET
+            count = redis_client.get('monthly_users')
+            if count is None:
+                # Initialize if not exists
+                redis_client.set('monthly_users', 413)
+                count = 413
+
+        return jsonify({"count": int(count)})
+
+    except Exception as e:
+        logger.error(f"Redis error in visitor count: {e}")
+        return jsonify({"error": "Counter temporarily unavailable"}), 503
+
+@app.route("/api/metrics", methods=["GET"])
+def get_metrics():
+    """Get all metrics for display"""
+    try:
+        # Get products searched count (start at 703)
+        products_count = redis_client.get('products_searched')
+        if products_count is None:
+            redis_client.set('products_searched', 703)
+            products_count = 703
+
+        # Get norms scouted count (start at 6397)
+        norms_count = redis_client.get('norms_scouted')
+        if norms_count is None:
+            redis_client.set('norms_scouted', 6397)
+            norms_count = 6397
+
+        # Get monthly users
+        users_count = redis_client.get('monthly_users') or 413
+
+        return jsonify({
+            "products_searched": int(products_count),
+            "norms_scouted": int(norms_count),
+            "monthly_users": int(users_count)
+        })
+
+    except Exception as e:
+        logger.error(f"Redis error in metrics: {e}")
+        return jsonify({"error": "Metrics temporarily unavailable"}), 503
 
 @app.route("/api/run", methods=["POST"])
 def run_python_code():
@@ -54,6 +123,17 @@ def run_python_code():
 
     # First validate if it's a real product
     is_valid = validate_product_input(product)
+
+    # Increment product search counter (only for valid products)
+    if is_valid and product:
+        try:
+            redis_client.incr('products_searched')
+            # Increment norms scouted by random 10-20 for each product
+            import random
+            norms_increment = random.randint(10, 20)
+            redis_client.incrby('norms_scouted', norms_increment)
+        except Exception as e:
+            logger.error(f"Error updating counters: {e}")
 
     if not is_valid:
         # Create error block

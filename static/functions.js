@@ -6,7 +6,84 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeDemoSection();
     initializeAnimations();
     initializeEnhancedFormInteractions();
+    initializeVisitorCounter();
 });
+
+// Visitor Counter Functionality
+function initializeVisitorCounter() {
+    // First, increment the visitor count
+    fetch('/api/visitor-count', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const counterElement = document.getElementById('monthly-users-count');
+        if (counterElement && data.count) {
+            counterElement.textContent = data.count.toLocaleString();
+        }
+    })
+    .catch(error => {
+        console.log('Visitor counter unavailable:', error);
+        const counterElement = document.getElementById('monthly-users-count');
+        if (counterElement) counterElement.textContent = '---';
+    });
+
+    // Then fetch all metrics
+    fetch('/api/metrics')
+    .then(response => response.json())
+    .then(data => {
+        // Update products searched
+        const productsElement = document.getElementById('products-searched-count');
+        if (productsElement && data.products_searched !== undefined) {
+            productsElement.textContent = data.products_searched.toLocaleString();
+        }
+
+        // Update norms scouted with + sign
+        const normsElement = document.getElementById('norms-scouted-count');
+        if (normsElement && data.norms_scouted !== undefined) {
+            normsElement.textContent = data.norms_scouted.toLocaleString() + '+';
+        }
+
+        // Update monthly users if not already set
+        const usersElement = document.getElementById('monthly-users-count');
+        if (usersElement && usersElement.textContent === '...' && data.monthly_users !== undefined) {
+            usersElement.textContent = data.monthly_users.toLocaleString();
+        }
+    })
+    .catch(error => {
+        console.log('Metrics unavailable:', error);
+        document.getElementById('products-searched-count').textContent = '---';
+        document.getElementById('norms-scouted-count').textContent = '---';
+    });
+}
+
+// Counter animation function
+function animateCounter(element, start, end, duration) {
+    const startTime = performance.now();
+    const difference = end - start;
+
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing function for smoother animation
+        const easeOutQuad = progress * (2 - progress);
+        const currentValue = Math.floor(start + (difference * easeOutQuad));
+
+        element.textContent = currentValue.toLocaleString();
+
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = end.toLocaleString();
+        }
+    }
+
+    requestAnimationFrame(updateCounter);
+}
 
 // Mobile Menu Functionality
 function initializeMobileMenu() {
