@@ -11,22 +11,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
+            --brand-blue: #3869FA;
             --royal-blue: #2048D5;
             --white: #FFFFFF;
+            --light-bg: #f7f9fc;
+            --card-bg: #ffffff;
             --medium-gray: #EEF0F3;
             --accent-blue: #448CF7;
             --text-dark: #1a1a1a;
             --text-light: #666666;
+            --text-muted: #94a3b8;
             --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --spacing-sm: 16px;
             --spacing-md: 24px;
             --spacing-lg: 32px;
             --spacing-xl: 48px;
             --spacing-2xl: 64px;
+            --spacing-3xl: 96px;
             --radius-md: 8px;
             --radius-lg: 12px;
+            --radius-xl: 16px;
             --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -44,12 +52,33 @@
             font-size: 16px;
             line-height: 1.6;
             color: var(--text-dark);
-            background-color: var(--white);
+            background-color: var(--light-bg);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            position: relative;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(56, 105, 250, 0.01) 100px,
+                    rgba(56, 105, 250, 0.01) 200px
+                );
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Header */
@@ -98,7 +127,7 @@
         }
 
         .logo-scout {
-            color: var(--royal-blue);
+            color: var(--brand-blue);
         }
 
         /* Navigation */
@@ -109,12 +138,14 @@
         }
 
         .btn {
-            display: inline-block;
-            padding: 10px 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
             border-radius: var(--radius-md);
             font-weight: 500;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             cursor: pointer;
             border: none;
             font-family: var(--font-family);
@@ -123,67 +154,93 @@
 
         .btn-outline {
             background-color: transparent;
-            color: var(--royal-blue);
-            border: 2px solid var(--royal-blue);
+            color: var(--brand-blue);
+            border: 2px solid var(--brand-blue);
         }
 
         .btn-outline:hover {
-            background-color: var(--royal-blue);
+            background-color: var(--brand-blue);
             color: var(--white);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
 
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: var(--spacing-2xl) var(--spacing-md);
-            margin-top: 80px; /* Account for fixed header */
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 500;
+            border: none;
+            box-shadow: 0 2px 4px rgba(68, 140, 247, 0.2);
         }
 
-        .contact-container {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
+        .btn-primary:hover {
+            background-color: var(--brand-blue);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(56, 105, 250, 0.25);
+        }
+
+        /* Main Content */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xl) var(--spacing-md);
+            margin-top: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-xl);
             padding: var(--spacing-xl);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--medium-gray);
+            box-shadow: var(--shadow-xl);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
         }
 
         h1 {
-            color: var(--royal-blue);
-            font-size: 36px;
-            margin-bottom: var(--spacing-lg);
+            color: var(--brand-blue);
+            font-size: 42px;
+            margin-bottom: var(--spacing-sm);
             font-weight: 700;
-            text-align: center;
         }
 
-        .contact-grid {
+        .separator-line {
+            width: 80px;
+            height: 3px;
+            background-color: var(--brand-blue);
+            margin: var(--spacing-md) auto var(--spacing-xl);
+            border-radius: 2px;
+        }
+
+        .contact-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--spacing-xl);
-            margin-top: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
         }
 
-        .contact-section {
-            background-color: #f8f9fa;
-            border-radius: var(--radius-md);
-            padding: var(--spacing-lg);
-            border: 1px solid var(--medium-gray);
-            transition: all 0.3s ease;
-        }
-
-        .contact-section:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-
-        .section-icon {
-            font-size: 32px;
-            margin-bottom: var(--spacing-sm);
-            display: block;
+        .contact-column {
             text-align: center;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        /* SVG Icons */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            fill: var(--accent-blue);
         }
 
         h2 {
@@ -191,18 +248,12 @@
             font-size: 20px;
             margin-bottom: var(--spacing-md);
             font-weight: 600;
-            text-align: center;
-        }
-
-        .company-info {
-            margin-bottom: var(--spacing-lg);
-            text-align: center;
         }
 
         .company-name {
             font-size: 24px;
             font-weight: 700;
-            color: var(--royal-blue);
+            color: var(--brand-blue);
             margin-bottom: var(--spacing-sm);
         }
 
@@ -212,67 +263,80 @@
             margin-bottom: var(--spacing-md);
         }
 
-        .phone-number {
-            display: inline-block;
-            color: var(--royal-blue);
+        .phone-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-blue);
             text-decoration: none;
             font-weight: 500;
             font-size: 18px;
             transition: all 0.2s ease;
         }
 
-        .phone-number:hover {
-            color: var(--accent-blue);
+        .phone-link:hover {
+            color: var(--brand-blue);
             transform: translateX(3px);
         }
 
-        .email-section {
+        .email-group {
             margin-bottom: var(--spacing-md);
         }
 
         .email-label {
             color: var(--text-light);
             font-size: 14px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-weight: 500;
         }
 
         .email-link {
-            display: inline-block;
-            color: var(--royal-blue);
+            color: var(--accent-blue);
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
             transition: all 0.2s ease;
-            word-break: break-word;
+            display: inline-block;
         }
 
         .email-link:hover {
-            color: var(--accent-blue);
+            color: var(--brand-blue);
             transform: translateX(3px);
         }
 
-        .divider {
-            width: 60px;
-            height: 3px;
-            background-color: var(--royal-blue);
-            margin: var(--spacing-md) auto;
+        .divider-vertical {
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--medium-gray), transparent);
+            margin: 0 var(--spacing-md);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--medium-gray);
+        }
+
+        /* Tagline */
+        .tagline {
+            margin-top: var(--spacing-xl);
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         /* Footer */
         .footer {
-            background-color: var(--medium-gray);
+            background-color: transparent;
             padding: var(--spacing-lg) 0;
             text-align: center;
-            color: var(--text-light);
-            margin-top: auto;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
+            color: var(--text-muted);
+            position: relative;
+            z-index: 1;
         }
 
         .footer-text {
@@ -287,22 +351,30 @@
                 padding: var(--spacing-sm);
             }
 
-            .main-content {
+            .main-wrapper {
                 margin-top: 120px;
                 padding: var(--spacing-lg) var(--spacing-sm);
             }
 
-            .contact-container {
-                padding: var(--spacing-md);
+            .contact-card {
+                padding: var(--spacing-lg);
             }
 
             h1 {
-                font-size: 28px;
+                font-size: 32px;
             }
 
-            .contact-grid {
+            .contact-columns {
                 grid-template-columns: 1fr;
-                gap: var(--spacing-md);
+                gap: var(--spacing-lg);
+            }
+
+            .contact-column {
+                padding: var(--spacing-md);
+            }
+
+            .divider-vertical {
+                display: none;
             }
 
             .nav-buttons {
@@ -314,33 +386,33 @@
                 font-size: 20px;
             }
 
-            .phone-number {
+            .phone-link {
+                font-size: 16px;
+            }
+
+            .btn-primary {
+                width: 100%;
+                padding: 14px 24px;
                 font-size: 16px;
             }
         }
 
-        /* Icon styling */
-        .icon-office::before {
-            content: "🏢";
-        }
-
-        .icon-email::before {
-            content: "✉️";
-        }
-
         /* Print styles */
         @media print {
+            body::before {
+                display: none;
+            }
+
             .header, .footer {
                 display: none;
             }
 
-            .main-content {
+            .main-wrapper {
                 margin-top: 0;
             }
 
-            .contact-container {
+            .contact-card {
                 box-shadow: none;
-                border: none;
             }
         }
     </style>
@@ -360,46 +432,56 @@
     </header>
 
     <!-- Main Content -->
-    <main class="main-content">
-        <div class="contact-container">
+    <div class="main-wrapper">
+        <div class="contact-card">
             <h1>Contact Us</h1>
+            <div class="separator-line"></div>
 
-            <div class="contact-grid">
+            <div class="contact-columns">
                 <!-- Office & Phone Section -->
-                <div class="contact-section">
-                    <span class="section-icon icon-office"></span>
+                <div class="contact-column">
+                    <div class="icon-container">
+                        <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
                     <h2>Office & Phone</h2>
 
-                    <div class="company-info">
-                        <div class="company-name">NormScout</div>
-                        <div class="address-block">
-                            Timo Hauser<br>
-                            Malixerstrasse 1<br>
-                            7000 Chur<br>
-                            Switzerland
-                        </div>
-                        <div class="divider"></div>
-                        <a href="tel:+41763369709" class="phone-number">
-                            📞 +41 76 336 97 09
-                        </a>
+                    <div class="company-name">NormScout</div>
+                    <div class="address-block">
+                        Timo Hauser<br>
+                        Malixerstrasse 1<br>
+                        7000 Chur<br>
+                        Switzerland
                     </div>
+
+                    <a href="tel:+41763369709" class="phone-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        +41 76 336 97 09
+                    </a>
                 </div>
 
                 <!-- Email Section -->
-                <div class="contact-section">
-                    <span class="section-icon icon-email"></span>
+                <div class="contact-column">
+                    <div class="icon-container">
+                        <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
                     <h2>Email Inquiries</h2>
 
-                    <div class="email-section">
+                    <div class="email-group">
                         <div class="email-label">For Investment Inquiries</div>
                         <a href="mailto:invest@normscout.com" class="email-link">
                             invest@normscout.com
                         </a>
                     </div>
 
-                    <div class="divider"></div>
+                    <div style="height: 20px;"></div>
 
-                    <div class="email-section">
+                    <div class="email-group">
                         <div class="email-label">For General Inquiries</div>
                         <a href="mailto:info@normscout.com" class="email-link">
                             info@normscout.com
@@ -407,14 +489,22 @@
                     </div>
                 </div>
             </div>
+
+            <div class="cta-section">
+                <a href="mailto:info@normscout.com" class="btn btn-primary">
+                    Send an Inquiry
+                </a>
+            </div>
+
+            <div class="tagline">
+                Swiss based. Globally connected.
+            </div>
         </div>
-    </main>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">© 2024 NormScout. All rights reserved.</p>
-        </div>
+        <p class="footer-text">© 2024 NormScout. All rights reserved.</p>
     </footer>
 </body>
 </html>
