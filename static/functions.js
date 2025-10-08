@@ -52,11 +52,30 @@ function initializeVisitorCounter() {
         if (usersElement && usersElement.textContent === '...' && data.monthly_users !== undefined) {
             usersElement.textContent = data.monthly_users.toLocaleString();
         }
+
+        // Update investment section stats (same data, different location)
+        const investmentNormsElement = document.getElementById('investment-norms-count');
+        if (investmentNormsElement && data.norms_scouted !== undefined) {
+            investmentNormsElement.textContent = data.norms_scouted.toLocaleString() + '+';
+        }
+
+        const investmentProductsElement = document.getElementById('investment-products-count');
+        if (investmentProductsElement && data.products_searched !== undefined) {
+            investmentProductsElement.textContent = data.products_searched.toLocaleString();
+        }
+
+        const investmentUsersElement = document.getElementById('investment-users-count');
+        if (investmentUsersElement && data.monthly_users !== undefined) {
+            investmentUsersElement.textContent = data.monthly_users.toLocaleString();
+        }
     })
     .catch(error => {
         console.log('Metrics unavailable:', error);
         document.getElementById('products-searched-count').textContent = '---';
         document.getElementById('norms-scouted-count').textContent = '---';
+        document.getElementById('investment-norms-count').textContent = '---';
+        document.getElementById('investment-products-count').textContent = '---';
+        document.getElementById('investment-users-count').textContent = '---';
     });
 }
 
@@ -256,6 +275,39 @@ function updateMetricsDisplay() {
                 // Slower animation for bigger numbers (2-3 seconds based on increment)
                 const duration = Math.min(2000 + (increment * 50), 3000);
                 animateCounterWithPlus(normsElement, currentValue, data.norms_scouted, duration);
+            }
+        }
+
+        // Also update investment section stats with animations
+        const investmentProductsElement = document.getElementById('investment-products-count');
+        if (investmentProductsElement && data.products_searched !== undefined) {
+            const currentText = investmentProductsElement.textContent.replace(/,/g, '');
+            const currentValue = parseInt(currentText) || 0;
+
+            if (data.products_searched > currentValue) {
+                animateCounter(investmentProductsElement, currentValue, data.products_searched, 800);
+            }
+        }
+
+        const investmentNormsElement = document.getElementById('investment-norms-count');
+        if (investmentNormsElement && data.norms_scouted !== undefined) {
+            const currentText = investmentNormsElement.textContent.replace('+', '').replace(/,/g, '');
+            const currentValue = parseInt(currentText) || 0;
+
+            if (data.norms_scouted > currentValue) {
+                const increment = data.norms_scouted - currentValue;
+                const duration = Math.min(2000 + (increment * 50), 3000);
+                animateCounterWithPlus(investmentNormsElement, currentValue, data.norms_scouted, duration);
+            }
+        }
+
+        const investmentUsersElement = document.getElementById('investment-users-count');
+        if (investmentUsersElement && data.monthly_users !== undefined) {
+            const currentText = investmentUsersElement.textContent.replace(/,/g, '');
+            const currentValue = parseInt(currentText) || 0;
+
+            if (data.monthly_users > currentValue) {
+                animateCounter(investmentUsersElement, currentValue, data.monthly_users, 800);
             }
         }
     })
