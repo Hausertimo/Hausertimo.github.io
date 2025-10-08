@@ -183,11 +183,33 @@ Via Fly.io Dashboard:
 - `API call successful` - Request completed
 - `Redis error in visitor count` - Counter issues to investigate
 
-## Visitor Counter Behavior
+## Metrics & Counter Behavior
+
+### Visitor Counter
 - **Counts every page refresh** (not unique visitors)
 - **No session/cookie tracking**
 - **Persisted in Redis** (survives app restarts)
-- **Initial value:** 220
+- **Initial value:** 413
+
+### Product Metrics
+- **Products Searched:** Increments when valid product is searched (starts at 703)
+- **Norms Scouted:** Adds 10-20 randomly per product search (starts at 6,397)
+- **Monthly Active Users:** Increments on every page load (starts at 413)
+
+### Product Validation
+- Uses confidence scoring (0.0-1.0) to detect garbage input
+- Only rejects input with 0.9+ confidence of being garbage
+- Allows creative/weird products (e.g., "flying toilet paper")
+- Blocks obvious garbage:
+  - Keyboard mashing: "asdfgh"
+  - Personal statements: "I ate lunch"
+  - Random text: "xxx yyy zzz"
+  - Test inputs: "test test test"
+
+### Known Issues Fixed
+- Loading spinner now stops immediately after API response
+- Scout Norms button can be used multiple times without page reload
+- Validation is less aggressive - allows unusual product ideas
 
 ## Support
 

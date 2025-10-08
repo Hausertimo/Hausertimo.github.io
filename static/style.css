@@ -291,7 +291,8 @@ p {
     min-height: 280px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    height: 100%;
 }
 
 .step-card:hover {
@@ -306,6 +307,7 @@ p {
     color: inherit;
     display: block;
     transition: all 0.3s ease;
+    height: 100%;
 }
 
 .step-card-link:hover {
@@ -334,6 +336,7 @@ p {
     color: var(--text-light);
     max-width: 300px;
     margin: 0 auto;
+    flex-grow: 1;
 }
 
 /* Value Proposition Section */
@@ -493,6 +496,32 @@ p {
     box-shadow: 0 0 0 3px rgba(68, 140, 247, 0.1);
 }
 
+/* Validation highlight animation */
+@keyframes validation-highlight {
+    0% {
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 0 rgba(68, 140, 247, 0.4);
+    }
+    50% {
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 6px rgba(68, 140, 247, 0.2);
+    }
+    100% {
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 3px rgba(68, 140, 247, 0.1);
+    }
+}
+
+.validation-error {
+    animation: validation-highlight 0.6s ease 2;
+    border-color: var(--accent-blue) !important;
+}
+
+.demo-card-highlight {
+    animation: validation-highlight 0.9s ease 1;
+    border-color: var(--accent-blue) !important;
+}
+
 .demo-textarea {
     resize: vertical;
     min-height: 80px;
@@ -624,6 +653,7 @@ p {
     
     .steps-grid {
         grid-template-columns: repeat(4, 1fr);
+        align-items: stretch;
     }
     
     .section-title {

@@ -113,6 +113,7 @@ def validate_product_input(product: str) -> bool:
     """
     Check if the input is deliberate garbage (not just weird products)
     Uses confidence scoring to be less aggressive
+    Caches results in Redis for exact matches
 
     Args:
         product: User's input text
@@ -120,25 +121,40 @@ def validate_product_input(product: str) -> bool:
     Returns:
         True if valid/weird product, False only if definitely garbage
     """
+    # Try to get cached validation result first
+    try:
+        import redis
+        import os
+        redis_url = os.getenv('REDIS_URL')
+        if redis_url:
+            redis_client = redis.from_url(redis_url, decode_responses=True)
+            cache_key = f"validation:{product}"
+            cached = redis_client.get(cache_key)
+            if cached is not None:
+                logger.info(f"Cache hit for validation: '{product[:30]}...'")
+                return cached == "true"
+    except Exception as e:
+        logger.warning(f"Cache check failed: {e}, proceeding without cache")
     messages = [
         {
             "role": "system",
-            "content": """Rate if this is a PRODUCT DESCRIPTION vs garbage/offtopic.
+            "content": """Rate if user is DESCRIBING A PRODUCT TO BUY/SELL vs just chatting.
 Reply with ONLY a number between 0.0 and 1.0:
-- 0.0-0.5: Product/service description (even weird ones)
-- 0.6-0.8: Unclear but might be product-related
-- 0.9-1.0: NOT a product (personal statements, random text, profanity)
+- 0.0-0.5: Describing a product/item for commerce
+- 0.6-0.8: Unclear intent
+- 0.9-1.0: NOT describing a product (personal feelings, chat, garbage)
 
 Examples:
-"wireless headphones" = 0.0 (clear product)
-"flying toilet paper" = 0.2 (weird but still product)
-"invisible socks" = 0.1 (silly product)
-"I ate sandwich this morning" = 0.95 (personal statement, not product)
-"I hate this website" = 0.95 (complaint, not product)
-"hello how are you" = 0.9 (greeting, not product)
-"asdfkjhasd" = 1.0 (keyboard mashing)
-"xxx yyy zzz" = 1.0 (random letters)
-"test test test" = 0.9 (testing input, not product)
+"wireless headphones" = 0.0 (product to sell)
+"bluetooth speaker with bass" = 0.0 (product description)
+"flying toilet paper" = 0.2 (weird product but still commerce)
+"I love chicken" = 0.95 (personal preference, not selling chicken)
+"I ate sandwich" = 0.95 (personal action, not product)
+"chicken" = 0.3 (could be product)
+"I love this" = 0.95 (emotion, not product)
+"pretty much whatever" = 0.95 (vague chat)
+"hello" = 0.9 (greeting)
+"asdfgh" = 1.0 (garbage)
 
 ONLY OUTPUT THE NUMBER, NOTHING ELSE."""
         },
@@ -154,25 +170,38 @@ ONLY OUTPUT THE NUMBER, NOTHING ELSE."""
             messages,
             model="mistralai/mistral-7b-instruct",
             temperature=0.1,  # Low temperature for consistency
-            max_tokens=5  # Only need a number like "0.9"
+            max_tokens=3  # Just "0.9" or "1.0" - no room for extra text
         )
 
         if result["success"]:
             response = result["content"].strip()
             try:
-                # Try to parse the confidence score
-                confidence = float(response)
+                # Extract just the number (handle cases like "0.9 (explanation)")
+                # Take only the first word/number
+                number_part = response.split()[0] if response else ""
+                # Remove any trailing punctuation
+                number_part = number_part.rstrip('.,;:()')
+
+                confidence = float(number_part)
                 logger.info(f"Garbage confidence for '{product[:30]}...': {confidence}")
 
                 # Only reject if VERY confident it's garbage (0.9 or higher)
-                if confidence >= 0.9:
-                    return False  # It's garbage
-                else:
-                    return True  # Allow through
+                result = False if confidence >= 0.9 else True
 
-            except ValueError:
+                # Cache the result for 24 hours
+                try:
+                    if redis_url:
+                        cache_key = f"validation:{product}"
+                        redis_client.setex(cache_key, 86400, "true" if result else "false")  # 24 hour TTL
+                        logger.info(f"Cached validation result for '{product[:30]}...'")
+                except Exception as e:
+                    logger.warning(f"Failed to cache validation: {e}")
+
+                return result
+
+            except (ValueError, IndexError):
                 # Couldn't parse number, allow through
-                logger.warning(f"Could not parse confidence: {response}, allowing through")
+                logger.warning(f"Could not parse confidence: '{response}', allowing through")
                 return True
 
     except Exception as e:
@@ -186,6 +215,7 @@ def analyze_product_compliance(product: str, country: str) -> dict:
     """
     Analyze compliance requirements for a product in a specific country
     This is a specific use case of the generic call_openrouter function
+    Caches results in Redis for exact product+country matches
 
     Args:
         product: Product description
@@ -195,6 +225,22 @@ def analyze_product_compliance(product: str, country: str) -> dict:
         Dictionary with analysis result, status, and metadata
     """
     logger.info(f"Analyzing compliance for product: {product}, country: {country}")
+
+    # Try to get cached compliance result first
+    try:
+        import redis
+        import os
+        redis_url = os.getenv('REDIS_URL')
+        if redis_url:
+            redis_client = redis.from_url(redis_url, decode_responses=True)
+            cache_key = f"compliance:{product}:{country}"
+            cached = redis_client.get(cache_key)
+            if cached is not None:
+                logger.info(f"Cache hit for compliance: '{product[:30]}...' in {country}")
+                import json
+                return json.loads(cached)
+    except Exception as e:
+        logger.warning(f"Cache check failed: {e}, proceeding without cache")
 
     # Country mapping for better AI responses
     country_names = {
@@ -225,12 +271,24 @@ def analyze_product_compliance(product: str, country: str) -> dict:
     result = call_openrouter(messages)
 
     if result["success"]:
-        return {
+        response_dict = {
             "result": result["content"],
             "product": product,
             "country": country_full_name,
             "status": "success"
         }
+
+        # Cache the successful result for 7 days
+        try:
+            if redis_url:
+                cache_key = f"compliance:{product}:{country}"
+                import json
+                redis_client.setex(cache_key, 604800, json.dumps(response_dict))  # 7 day TTL
+                logger.info(f"Cached compliance result for '{product[:30]}...' in {country}")
+        except Exception as e:
+            logger.warning(f"Failed to cache compliance: {e}")
+
+        return response_dict
     else:
         return {
             "result": f"Error: {result['error']}",

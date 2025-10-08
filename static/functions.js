@@ -146,11 +146,11 @@ function initializeSmoothScrolling() {
                     behavior: 'smooth'
                 });
                 
-                // Add visual feedback for demo cards when coming from step cards
-                if (targetId === '#demo' && this.classList.contains('step-card-link')) {
+                // Add visual feedback for demo cards when clicking any link to demo
+                if (targetId === '#demo') {
                     setTimeout(() => {
-                        highlightDemoCards();
-                    }, 500);
+                        highlightDemoCardsSequentially();
+                    }, 600);
                 }
             }
         });
@@ -159,14 +159,7 @@ function initializeSmoothScrolling() {
 
 // Demo Section Functionality
 function initializeDemoSection() {
-    // Show demo section when "Try Now" is clicked
-    const tryNowButtons = document.querySelectorAll('a[href="#demo"]');
-    tryNowButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            showDemoSection();
-        });
-    });
+    // No need for separate handler - smooth scrolling handles everything
 }
 
 function showDemoSection() {
@@ -192,35 +185,158 @@ function showDemoSection() {
 function formatMarkdownToHTML(text) {
     if (!text) return '';
 
-    // Convert markdown to HTML
-    return text
+    // Clean up problematic patterns
+    // Remove lone # symbols that appear as section separators
+    // More aggressive: any # on a line by itself (with optional whitespace)
+    text = text.replace(/^\s*#\s*$/gm, '')
+           // Also remove # that appear between sections (with newline before and after)
+           .replace(/\n\s*#\s*\n/g, '\n\n');
+
+    // Convert markdown to HTML - process lists first to avoid paragraph breaks
+    text = text
+        // Convert bullet points to list items with tight spacing
+        .replace(/^- (.*?)$/gm, '<li>$1</li>')
+        // Group consecutive list items into <ul> tags
+        .replace(/(<li>.*<\/li>\s*)+/g, function(match) {
+            // Remove any line breaks between list items for tighter spacing
+            const cleaned = match.replace(/<\/li>\s*\n\s*<li>/g, '</li><li>');
+            return '<ul style="margin: 10px 0; padding-left: 25px; line-height: 1.4;">' + cleaned + '</ul>';
+        });
+
+    // Now process other markdown elements
+    text = text
         .replace(/### (.*?)(?:\n|$)/g, '<h3 style="color: #2048D5; margin: 20px 0 10px 0; font-size: 1.2em;">$1</h3>')
         .replace(/## (.*?)(?:\n|$)/g, '<h2 style="color: #2048D5; margin: 20px 0 10px 0; font-size: 1.4em;">$1</h2>')
         .replace(/# (.*?)(?:\n|$)/g, '<h1 style="color: #2048D5; margin: 20px 0 10px 0; font-size: 1.6em;">$1</h1>')
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
         .replace(/#### (.*?)(?:\n|$)/g, '<h4 style="color: #333; margin: 15px 0 8px 0; font-size: 1.1em;">$1</h4>')
-        .replace(/^- (.*?)$/gm, '<li style="margin: 5px 0;">$1</li>')
-        .replace(/(<li[^>]*>.*<\/li>\s*)+/g, '<ul style="margin: 10px 0; padding-left: 25px;">$&</ul>')
         .replace(/\n\n/g, '</p><p style="margin: 12px 0; line-height: 1.6;">')
         .replace(/\n/g, '<br>');
+
+    // Final cleanup: remove any standalone # or &#35; that appear after HTML tags
+    text = text.replace(/>(\s*<br>)*\s*#\s*(<br>)*/g, '>$1$2')
+               .replace(/&#35;/g, '');
+
+    return text;
 }
 
 // Store original button HTML globally
 let demoButtonOriginalHTML = null;
+
+// Function to update metrics display
+function updateMetricsDisplay() {
+    // Fetch updated metrics
+    fetch('/api/metrics')
+    .then(response => response.json())
+    .then(data => {
+        // Update products searched with animation (just the increment)
+        const productsElement = document.getElementById('products-searched-count');
+        if (productsElement && data.products_searched !== undefined) {
+            // Parse current value removing commas
+            const currentText = productsElement.textContent.replace(/,/g, '');
+            const currentValue = parseInt(currentText) || 0;
+
+            // Only animate if value increased
+            if (data.products_searched > currentValue) {
+                animateCounter(productsElement, currentValue, data.products_searched, 800);
+            }
+        }
+
+        // Update norms scouted with smoother animation
+        const normsElement = document.getElementById('norms-scouted-count');
+        if (normsElement && data.norms_scouted !== undefined) {
+            // Remove the '+' and commas for parsing
+            const currentText = normsElement.textContent.replace('+', '').replace(/,/g, '');
+            const currentValue = parseInt(currentText) || 0;
+
+            // Only animate if value increased, with slower animation for visual effect
+            if (data.norms_scouted > currentValue) {
+                // Calculate the increment for smoother animation
+                const increment = data.norms_scouted - currentValue;
+                // Slower animation for bigger numbers (2-3 seconds based on increment)
+                const duration = Math.min(2000 + (increment * 50), 3000);
+                animateCounterWithPlus(normsElement, currentValue, data.norms_scouted, duration);
+            }
+        }
+    })
+    .catch(error => {
+        console.log('Could not update metrics:', error);
+    });
+}
+
+// Special animation function for counters with '+' sign
+function animateCounterWithPlus(element, start, end, duration) {
+    const startTime = performance.now();
+    const difference = end - start;
+
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing function for smoother animation
+        const easeOutQuad = progress * (2 - progress);
+        const currentValue = Math.floor(start + (difference * easeOutQuad));
+
+        element.textContent = currentValue.toLocaleString() + '+';
+
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = end.toLocaleString() + '+';
+        }
+    }
+
+    requestAnimationFrame(updateCounter);
+}
+
+function clearPreviousResults() {
+    // This function is now deprecated - we handle clearing at the right time
+}
+
+function clearDemoResults() {
+    // Clear demo results container
+    const resultsContainer = document.getElementById('demo-results-container');
+    if (resultsContainer) {
+        resultsContainer.innerHTML = '';
+    }
+}
+
+// Function to highlight field with blue glow animation
+function highlightField(fieldId) {
+    const field = document.getElementById(fieldId);
+    if (field) {
+        // Remove the class first to reset animation if it's already present
+        field.classList.remove('validation-error');
+        // Force a reflow to restart the animation
+        void field.offsetWidth;
+        // Add the class to trigger animation
+        field.classList.add('validation-error');
+
+        // Focus the field for better user experience
+        field.focus();
+
+        // Remove the class after animation completes (1.2 seconds for 2 pulses)
+        setTimeout(() => {
+            field.classList.remove('validation-error');
+        }, 1200);
+    }
+}
 
 function startDemo(event) {
     const productDescription = document.getElementById('product-description').value;
     const countrySelector = document.getElementById('country-selector').value;
 
     if (!productDescription.trim()) {
-        alert('Please describe your product first.');
+        highlightField('product-description');
         return;
     }
 
     if (!countrySelector) {
-        alert('Please select a country.');
+        highlightField('country-selector');
         return;
     }
+
+    // Don't clear anything here - wait for response
 
     // Get button from event or find it by class
     const button = event ? (event.currentTarget || event.target) : document.querySelector('.demo-button');
@@ -254,11 +370,16 @@ function startDemo(event) {
 
         // Then handle the response
         if (data.status === 'invalid' && data.show_fields) {
-            // Don't show normal results, just load error fields
+            // Invalid product - load error fields (loadFieldBlocks handles clearing)
+            clearDemoResults(); // Clear any old demo results
             loadFieldBlocks();
         } else {
-            // Show results for valid products
+            // Valid product - show new results (automatically replaces old ones)
+            clearFieldBlocks(); // Clear any error fields
             showDemoResults(productDescription, countrySelector, data.result);
+
+            // Update the metrics to show increased counts
+            updateMetricsDisplay();
         }
     })
     .catch((error) => {
@@ -315,9 +436,20 @@ function showDemoResults(product, country, backendResult) {
         </div>
     `;
     
-    const demoSection = document.querySelector('.demo-section');
-    if (demoSection) {
-        demoSection.innerHTML += mockResults;
+    // Find or create a container for results
+    let resultsContainer = document.getElementById('demo-results-container');
+    if (!resultsContainer) {
+        const demoSection = document.querySelector('.demo-section');
+        if (demoSection) {
+            resultsContainer = document.createElement('div');
+            resultsContainer.id = 'demo-results-container';
+            demoSection.appendChild(resultsContainer);
+        }
+    }
+
+    if (resultsContainer) {
+        // Replace content instead of appending
+        resultsContainer.innerHTML = mockResults;
     }
 }
 
@@ -325,21 +457,19 @@ function contactForFullAccess() {
     alert('Thank you for your interest! Please contact us at hello@normscout.ch for full access and investor information.');
 }
 
-// Highlight demo cards with animation
-function highlightDemoCards() {
+// Highlight demo cards with blue glow animation sequentially
+function highlightDemoCardsSequentially() {
     const demoCards = document.querySelectorAll('.demo-card');
     demoCards.forEach((card, index) => {
         setTimeout(() => {
-            card.style.transform = 'scale(1.02)';
-            card.style.borderColor = '#448CF7';
-            card.style.boxShadow = '0 10px 25px rgba(68, 140, 247, 0.15)';
-            
+            // Apply the demo-card-highlight class (single pulse)
+            card.classList.add('demo-card-highlight');
+
+            // Remove the class after animation completes
             setTimeout(() => {
-                card.style.transform = '';
-                card.style.borderColor = '';
-                card.style.boxShadow = '';
-            }, 800);
-        }, index * 100);
+                card.classList.remove('demo-card-highlight');
+            }, 900);
+        }, index * 100); // Faster stagger - only 100ms between cards
     });
 }
 
@@ -521,13 +651,12 @@ function clearFieldBlocks() {
 
 async function loadFieldBlocks() {
     try {
-        // Clear existing fields first
-        clearFieldBlocks();
-
         const response = await fetch('/api/fields/get');
         const data = await response.json();
 
         if (data.status === 'success' && data.blocks.length > 0) {
+            // Clear existing fields only when new ones are ready
+            clearFieldBlocks();
             renderFieldBlocks(data.blocks);
         }
     } catch (error) {
