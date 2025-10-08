@@ -111,41 +111,74 @@ def call_openrouter(messages: list, model: str = "openai/gpt-4o-mini",
 
 def validate_product_input(product: str) -> bool:
     """
-    Check if the input is a valid product description or just random text
-    Uses a cheap model with minimal tokens
+    Check if the input is deliberate garbage (not just weird products)
+    Uses confidence scoring to be less aggressive
 
     Args:
         product: User's input text
 
     Returns:
-        True if valid product, False if gibberish/invalid
+        True if valid/weird product, False only if definitely garbage
     """
     messages = [
         {
             "role": "system",
-            "content": "You are a product validator. Reply with only 'YES' if the text describes a real product, service, or item. Reply with only 'NO' if it's random letters, gibberish, or nonsense."
+            "content": """Rate if this is a PRODUCT DESCRIPTION vs garbage/offtopic.
+Reply with ONLY a number between 0.0 and 1.0:
+- 0.0-0.5: Product/service description (even weird ones)
+- 0.6-0.8: Unclear but might be product-related
+- 0.9-1.0: NOT a product (personal statements, random text, profanity)
+
+Examples:
+"wireless headphones" = 0.0 (clear product)
+"flying toilet paper" = 0.2 (weird but still product)
+"invisible socks" = 0.1 (silly product)
+"I ate sandwich this morning" = 0.95 (personal statement, not product)
+"I hate this website" = 0.95 (complaint, not product)
+"hello how are you" = 0.9 (greeting, not product)
+"asdfkjhasd" = 1.0 (keyboard mashing)
+"xxx yyy zzz" = 1.0 (random letters)
+"test test test" = 0.9 (testing input, not product)
+
+ONLY OUTPUT THE NUMBER, NOTHING ELSE."""
         },
         {
             "role": "user",
-            "content": f"Is this a real product description: '{product}'"
+            "content": f"Rate this: '{product}'"
         }
     ]
 
-    # Use Mistral 7B - very cheap and fast
-    result = call_openrouter(
-        messages,
-        model="mistralai/mistral-7b-instruct",  # Cheap model
-        temperature=0.1,  # Low temperature for consistency
-        max_tokens=10  # Only need YES/NO
-    )
+    try:
+        # Use Mistral 7B - very cheap and fast
+        result = call_openrouter(
+            messages,
+            model="mistralai/mistral-7b-instruct",
+            temperature=0.1,  # Low temperature for consistency
+            max_tokens=5  # Only need a number like "0.9"
+        )
 
-    if result["success"]:
-        response = result["content"].strip().upper()
-        logger.info(f"Product validation result for '{product[:30]}...': {response}")
-        return "YES" in response
+        if result["success"]:
+            response = result["content"].strip()
+            try:
+                # Try to parse the confidence score
+                confidence = float(response)
+                logger.info(f"Garbage confidence for '{product[:30]}...': {confidence}")
 
-    # Default to true if API fails (don't block users)
-    logger.warning("Product validation API failed, allowing through")
+                # Only reject if VERY confident it's garbage (0.9 or higher)
+                if confidence >= 0.9:
+                    return False  # It's garbage
+                else:
+                    return True  # Allow through
+
+            except ValueError:
+                # Couldn't parse number, allow through
+                logger.warning(f"Could not parse confidence: {response}, allowing through")
+                return True
+
+    except Exception as e:
+        logger.warning(f"Product validation error: {e}, allowing through")
+
+    # Default to true if anything fails (don't block users)
     return True
 
 

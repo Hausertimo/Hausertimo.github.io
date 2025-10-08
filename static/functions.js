@@ -246,32 +246,26 @@ function startDemo(event) {
     })
     .then(response => response.json())
     .then(data => {
-        // Check if product was invalid
+        // Always reset button first, regardless of result
+        button.innerHTML = demoButtonOriginalHTML;
+        button.disabled = false;
+        button.style.opacity = '1';
+        button.classList.remove('loading');
+
+        // Then handle the response
         if (data.status === 'invalid' && data.show_fields) {
             // Don't show normal results, just load error fields
             loadFieldBlocks();
-
-            // Reset button immediately
-            button.innerHTML = demoButtonOriginalHTML;
-            button.disabled = false;
-            button.style.opacity = '1';
-            button.classList.remove('loading');
         } else {
             // Show results for valid products
             showDemoResults(productDescription, countrySelector, data.result);
-
-            // Reset button after a small delay to ensure smooth transition
-            setTimeout(() => {
-                button.innerHTML = demoButtonOriginalHTML;
-                button.disabled = false;
-                button.style.opacity = '1';
-                button.classList.remove('loading');
-            }, 100);
         }
     })
     .catch((error) => {
         console.error('Error:', error);
         alert("Backend connection failed; try again later");
+
+        // Reset button on error
         button.innerHTML = demoButtonOriginalHTML;
         button.disabled = false;
         button.style.opacity = '1';
