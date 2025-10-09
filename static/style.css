@@ -1,5 +1,6 @@
 /* CSS Variables for Design System */
 :root {
+    --brand-blue: #3869FA;
     --royal-blue: #2048D5;
     --white: #FFFFFF;
     --medium-gray: #EEF0F3;
@@ -211,6 +212,10 @@ p {
 
 .nav-link:hover {
     color: var(--royal-blue);
+}
+
+.nav-link.btn-accent {
+    color: var(--white) !important;
 }
 
 .mobile-menu-toggle {
@@ -683,6 +688,42 @@ p {
     left: 100%;
 }
 
+/* Business Plan Button */
+.btn-business-plan {
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #448CF7 0%, #3869FA 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(56, 105, 250, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-business-plan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-business-plan:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(68, 140, 247, 0.35);
+}
+
+.btn-business-plan:hover::before {
+    left: 100%;
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
@@ -905,8 +946,9 @@ p {
     flex-direction: row;
     align-items: flex-start;
     gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     text-align: left;
+    min-height: 120px;
 }
 
 /* Large animated icon */
@@ -945,6 +987,10 @@ p {
 }
 
 /* Demo Card Titles */
+.demo-card-title {
+    flex: 1;
+}
+
 .demo-card-title h3 {
     font-size: 24px;
     color: var(--text-dark);
@@ -971,8 +1017,7 @@ p {
 
 /* Demo Card Content */
 .demo-card-content {
-    margin-top: auto;
-    padding-top: var(--spacing-lg);
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -1070,7 +1115,7 @@ p {
 
 /* Footer */
 .footer {
-    background-color: var(--royal-blue);
+    background: linear-gradient(135deg, var(--brand-blue) 0%, var(--royal-blue) 100%);
     color: var(--white);
     padding: var(--spacing-xl) 0 var(--spacing-md);
 }
@@ -1091,6 +1136,11 @@ p {
 .footer-brand .logo-text {
     color: var(--white);
     font-size: var(--font-size-large);
+}
+
+.footer-brand .logo-norm,
+.footer-brand .logo-scout {
+    color: var(--white) !important;
 }
 
 .footer-svg-icon {
@@ -1151,10 +1201,16 @@ p {
 
     .demo-card-header {
         flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .demo-card {
         text-align: center;
+    }
+
+    .demo-card-content {
+        align-items: center;
     }
     
     .footer-content {
