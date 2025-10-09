@@ -743,8 +743,8 @@ const NormScoutBusinessPlan = () => {
                 <div className="text-center">
                   <p className="text-zinc-500 text-xs uppercase tracking-wider">LTV</p>
                   <p className="text-lg sm:text-xl font-bold text-purple-500 mt-1">
-                    ${customerLifetimes[selectedLifetime].monthlyChurn > 0 ? 
-                      Math.round(selectedPrice / customerLifetimes[selectedLifetime].monthlyChurn) : 
+                    CHF {customerLifetimes[selectedLifetime].monthlyChurn > 0 ?
+                      Math.round(selectedPrice / customerLifetimes[selectedLifetime].monthlyChurn) :
                       (selectedPrice * 36)}
                   </p>
                 </div>

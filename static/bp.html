@@ -423,9 +423,9 @@ const NormScoutBusinessPlan = () => {
   }));
 
   const formatCurrency = (value) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('de-CH', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'CHF',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(value);
@@ -434,9 +434,9 @@ const NormScoutBusinessPlan = () => {
   const formatCompactCurrency = (value) => {
     const absValue = Math.abs(value);
     const sign = value < 0 ? '-' : '';
-    if (absValue >= 1000000) return `${sign}$${(absValue/1000000).toFixed(1)}M`;
-    if (absValue >= 1000) return `${sign}$${(absValue/1000).toFixed(0)}k`;
-    return `${sign}$${Math.round(absValue)}`;
+    if (absValue >= 1000000) return `${sign}CHF ${(absValue/1000000).toFixed(1)}M`;
+    if (absValue >= 1000) return `${sign}CHF ${(absValue/1000).toFixed(0)}k`;
+    return `${sign}CHF ${Math.round(absValue)}`;
   };
   
   const calculateTotals = (data) => {
@@ -496,7 +496,7 @@ const NormScoutBusinessPlan = () => {
       ['Parameter', 'Selected Value', 'Description'],
       ['Pre-seed Funding', formatCurrency(preSeedFunding[selectedPreSeed]), 'Early stage funding for initial growth and market validation'],
       ['Series A Funding', formatCurrency(seriesAFunding[selectedSeriesA]), 'Growth capital for scaling operations and customer acquisition'],
-      ['Monthly Subscription', '$' + selectedPrice, 'Recurring monthly revenue per active customer'],
+      ['Monthly Subscription', 'CHF ' + selectedPrice, 'Recurring monthly revenue per active customer'],
       ['Customer Lifetime', customerLifetimes[selectedLifetime].label, `Average customer retention period (${(customerLifetimes[selectedLifetime].monthlyChurn * 100).toFixed(1)}% monthly churn)`],
       [],
       ['KEY METRICS GLOSSARY'],
@@ -556,7 +556,7 @@ const NormScoutBusinessPlan = () => {
       ['Total Funding', formatCurrency(preSeedFunding[selectedPreSeed] + seriesAFunding[selectedSeriesA])],
       ['Pre-seed', formatCurrency(preSeedFunding[selectedPreSeed])],
       ['Series A', formatCurrency(seriesAFunding[selectedSeriesA])],
-      ['Monthly Price', '$' + selectedPrice],
+      ['Monthly Price', 'CHF ' + selectedPrice],
       ['Customer Lifetime', customerLifetimes[selectedLifetime].label],
       ['Monthly Churn Rate', (customerLifetimes[selectedLifetime].monthlyChurn * 100).toFixed(1) + '%'],
       [],
@@ -707,7 +707,7 @@ const NormScoutBusinessPlan = () => {
       ['How key variables impact the Normal scenario outcome'],
       [],
       ['Variable', 'Current Value', '-20%', 'Base', '+20%', 'Impact'],
-      ['Monthly Price', '$' + selectedPrice, 
+      ['Monthly Price', 'CHF ' + selectedPrice, 
         'Balance: ' + formatCompactCurrency(normalTotals.finalBalance * 0.8),
         'Balance: ' + formatCompactCurrency(normalTotals.finalBalance),
         'Balance: ' + formatCompactCurrency(normalTotals.finalBalance * 1.2),
@@ -722,7 +722,7 @@ const NormScoutBusinessPlan = () => {
         'Current',
         'Higher costs',
         'Medium Impact'],
-      ['Operational Costs', '$' + opCosts.normal + '/user/month',
+      ['Operational Costs', 'CHF ' + opCosts.normal + '/user/month',
         'Lean operations',
         'Current',
         'Higher costs',
@@ -842,7 +842,7 @@ const NormScoutBusinessPlan = () => {
                         : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
                     }`}
                   >
-                    {key === 'none' ? 'None' : `$${(value/1000).toFixed(0)}k`}
+                    {key === 'none' ? 'None' : `CHF ${(value/1000).toFixed(0)}k`}
                   </button>
                 ))}
               </div>
@@ -905,7 +905,7 @@ const NormScoutBusinessPlan = () => {
                         : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
                     }`}
                   >
-                    ${price}
+                    CHF {price}
                   </button>
                 ))}
               </div>
@@ -930,8 +930,8 @@ const NormScoutBusinessPlan = () => {
                 <div className="text-center">
                   <p className="text-zinc-500 text-xs uppercase tracking-wider">LTV</p>
                   <p className="text-lg sm:text-xl font-bold text-purple-500 mt-1">
-                    ${customerLifetimes[selectedLifetime].monthlyChurn > 0 ? 
-                      Math.round(selectedPrice / customerLifetimes[selectedLifetime].monthlyChurn) : 
+                    CHF {customerLifetimes[selectedLifetime].monthlyChurn > 0 ?
+                      Math.round(selectedPrice / customerLifetimes[selectedLifetime].monthlyChurn) :
                       (selectedPrice * 36)}
                   </p>
                 </div>
@@ -1209,7 +1209,7 @@ const NormScoutBusinessPlan = () => {
                     <div className="bg-zinc-800 rounded-lg p-3">
                       <p className="text-xs text-zinc-500 uppercase">LTV</p>
                       <p className="text-lg sm:text-xl font-bold text-purple-400">
-                        ${customerLifetimes[selectedLifetime].monthlyChurn > 0 
+                        CHF {customerLifetimes[selectedLifetime].monthlyChurn > 0
                           ? Math.round(selectedPrice / customerLifetimes[selectedLifetime].monthlyChurn)
                           : selectedPrice * 36}
                       </p>
@@ -1217,7 +1217,7 @@ const NormScoutBusinessPlan = () => {
                     <div className="bg-zinc-800 rounded-lg p-3">
                       <p className="text-xs text-zinc-500 uppercase">CAC</p>
                       <p className="text-lg sm:text-xl font-bold text-blue-400">
-                        ${Math.round((normalCAC[0] + normalCAC[11]) / 2)}
+                        CHF {Math.round((normalCAC[0] + normalCAC[11]) / 2)}
                       </p>
                     </div>
                   </div>
@@ -1670,7 +1670,7 @@ const NormScoutBusinessPlan = () => {
                     </div>
                     <div>
                       <p className="text-yellow-300 font-semibold">How is capital allocated between funding rounds?</p>
-                      <p className="text-zinc-400">Pre-seed investments shown ($60k/$75k/$100k) represent total round size, with a portion allocated to marketing and the remainder to product development and operations. Series A capital is primarily deployed toward scaling customer acquisition and operational infrastructure.</p>
+                      <p className="text-zinc-400">Pre-seed investments shown (CHF 60k/CHF 75k/CHF 100k) represent total round size, with a portion allocated to marketing and the remainder to product development and operations. Series A capital is primarily deployed toward scaling customer acquisition and operational infrastructure.</p>
                     </div>
                     <div>
                       <p className="text-yellow-300 font-semibold">What do the three scenarios represent?</p>
@@ -1782,7 +1782,7 @@ const NormScoutBusinessPlan = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-zinc-800 p-4 rounded-lg text-sm">
                       <p className="text-yellow-300 font-semibold mb-2">Price Multipliers (ρ)</p>
-                      <p className="text-zinc-300">$8: 1.8x users | $12: 1.4x | $18: 1.0x | $24: 0.7x</p>
+                      <p className="text-zinc-300">CHF 8: 1.8x users | CHF 12: 1.4x | CHF 18: 1.0x | CHF 24: 0.7x</p>
                       <p className="text-zinc-400 text-xs mt-1">Lower price = more users</p>
                     </div>
                     <div className="bg-zinc-800 p-4 rounded-lg text-sm">
@@ -1792,13 +1792,13 @@ const NormScoutBusinessPlan = () => {
                     </div>
                     <div className="bg-zinc-800 p-4 rounded-lg text-sm">
                       <p className="text-yellow-300 font-semibold mb-2">OpCost/User/Month (θ)</p>
-                      <p className="text-zinc-300">Pessimistic: $4.50 | Normal: $3.00 | Optimistic: $2.00</p>
+                      <p className="text-zinc-300">Pessimistic: CHF 4.50 | Normal: CHF 3.00 | Optimistic: CHF 2.00</p>
                       <p className="text-zinc-400 text-xs mt-1">Cost to serve each user</p>
                     </div>
                     <div className="bg-zinc-800 p-4 rounded-lg text-sm">
                       <p className="text-yellow-300 font-semibold mb-2">Ad Effectiveness (ε)</p>
                       <p className="text-zinc-300">Pessimistic: 0.5% | Normal: 1.0% | Optimistic: 1.5%</p>
-                      <p className="text-zinc-400 text-xs mt-1">Users per $ spent on ads</p>
+                      <p className="text-zinc-400 text-xs mt-1">Users per CHF spent on ads</p>
                     </div>
                   </div>
                 </section>
