@@ -296,18 +296,18 @@ const NormScoutBusinessPlan = () => {
   }));
   
   const formatCurrency = (value) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('de-CH', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'CHF',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(value);
   };
-  
+
   const formatCompactCurrency = (value) => {
-    if (value >= 1000000) return `$${(value/1000000).toFixed(1)}M`;
-    if (value >= 1000) return `$${(value/1000).toFixed(0)}k`;
-    return `$${value}`;
+    if (value >= 1000000) return `CHF ${(value/1000000).toFixed(1)}M`;
+    if (value >= 1000) return `CHF ${(value/1000).toFixed(0)}k`;
+    return `CHF ${value}`;
   };
   
   const calculateTotals = (data) => {
@@ -365,7 +365,7 @@ const NormScoutBusinessPlan = () => {
       ['Parameter', 'Selected Value', 'Description'],
       ['Pre-seed Funding', formatCurrency(preSeedFunding[selectedPreSeed]), 'Early stage funding for initial growth and market validation'],
       ['Series A Funding', formatCurrency(seriesAFunding[selectedSeriesA]), 'Growth capital for scaling operations and customer acquisition'],
-      ['Monthly Subscription', '$' + selectedPrice, 'Recurring monthly revenue per active customer'],
+      ['Monthly Subscription', 'CHF ' + selectedPrice, 'Recurring monthly revenue per active customer'],
       ['Customer Lifetime', customerLifetimes[selectedLifetime].label, `Average customer retention period (${(customerLifetimes[selectedLifetime].monthlyChurn * 100).toFixed(1)}% monthly churn)`],
       [],
       ['KEY METRICS GLOSSARY'],
@@ -424,7 +424,7 @@ const NormScoutBusinessPlan = () => {
       ['Total Funding', formatCurrency(preSeedFunding[selectedPreSeed] + seriesAFunding[selectedSeriesA])],
       ['Pre-seed', formatCurrency(preSeedFunding[selectedPreSeed])],
       ['Series A', formatCurrency(seriesAFunding[selectedSeriesA])],
-      ['Monthly Price', '$' + selectedPrice],
+      ['Monthly Price', 'CHF ' + selectedPrice],
       ['Customer Lifetime', customerLifetimes[selectedLifetime].label],
       ['Monthly Churn Rate', (customerLifetimes[selectedLifetime].monthlyChurn * 100).toFixed(1) + '%'],
       [],
@@ -575,7 +575,7 @@ const NormScoutBusinessPlan = () => {
       ['How key variables impact the Normal scenario outcome'],
       [],
       ['Variable', 'Current Value', '-20%', 'Base', '+20%', 'Impact'],
-      ['Monthly Price', '$' + selectedPrice, 
+      ['Monthly Price', 'CHF ' + selectedPrice,
         'Balance: ' + formatCompactCurrency(normalTotals.finalBalance * 0.8),
         'Balance: ' + formatCompactCurrency(normalTotals.finalBalance),
         'Balance: ' + formatCompactCurrency(normalTotals.finalBalance * 1.2),
@@ -590,7 +590,7 @@ const NormScoutBusinessPlan = () => {
         'Current',
         'Higher costs',
         'Medium Impact'],
-      ['Operational Costs', '$' + opCosts.normal + '/user/month',
+      ['Operational Costs', 'CHF ' + opCosts.normal + '/user/month',
         'Lean operations',
         'Current',
         'Higher costs',
@@ -655,7 +655,7 @@ const NormScoutBusinessPlan = () => {
                         : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
                     }`}
                   >
-                    {key === 'none' ? 'None' : `$${(value/1000).toFixed(0)}k`}
+                    {key === 'none' ? 'None' : `CHF ${(value/1000).toFixed(0)}k`}
                   </button>
                 ))}
               </div>
@@ -718,7 +718,7 @@ const NormScoutBusinessPlan = () => {
                         : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
                     }`}
                   >
-                    ${price}
+                    CHF {price}
                   </button>
                 ))}
               </div>
@@ -941,7 +941,7 @@ const NormScoutBusinessPlan = () => {
                     <div className="bg-zinc-800 rounded-lg p-3">
                       <p className="text-xs text-zinc-500 uppercase">LTV</p>
                       <p className="text-lg sm:text-xl font-bold text-purple-400">
-                        ${customerLifetimes[selectedLifetime].monthlyChurn > 0 
+                        CHF {customerLifetimes[selectedLifetime].monthlyChurn > 0
                           ? Math.round(selectedPrice / customerLifetimes[selectedLifetime].monthlyChurn)
                           : selectedPrice * 36}
                       </p>
@@ -949,7 +949,7 @@ const NormScoutBusinessPlan = () => {
                     <div className="bg-zinc-800 rounded-lg p-3">
                       <p className="text-xs text-zinc-500 uppercase">CAC</p>
                       <p className="text-lg sm:text-xl font-bold text-blue-400">
-                        ${Math.round((normalCAC[0] + normalCAC[11]) / 2)}
+                        CHF {Math.round((normalCAC[0] + normalCAC[11]) / 2)}
                       </p>
                     </div>
                   </div>
