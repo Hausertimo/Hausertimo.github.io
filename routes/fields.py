@@ -4,7 +4,7 @@ Handles dynamic field blocks for the NormScout application
 """
 
 from flask import Blueprint, jsonify, request
-from .field_framework import FieldRenderer
+from services.field_framework import FieldRenderer
 import json
 import logging
 from datetime import datetime

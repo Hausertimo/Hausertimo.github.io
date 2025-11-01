@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="NormScout Privacy Policy - Learn how we protect your data and handle your information">
     <title>Privacy Policy - NormScout</title>
-    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="icon" type="image/svg+xml" href="/img/logo_icon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -76,11 +76,7 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
             text-decoration: none;
-            color: var(--text-dark);
-            font-size: 24px;
-            font-weight: 700;
             transition: transform 0.2s ease;
         }
 
@@ -88,16 +84,9 @@
             transform: scale(1.05);
         }
 
-        .logo-icon {
-            font-size: 28px;
-        }
-
-        .logo-norm {
-            color: var(--text-dark);
-        }
-
-        .logo-scout {
-            color: var(--royal-blue);
+        .logo-svg {
+            height: 32px;
+            width: auto;
         }
 
         /* Navigation */
@@ -313,8 +302,7 @@
     <header class="header">
         <div class="header-content">
             <a href="/" class="logo">
-                <span class="logo-icon">🔍</span>
-                <span class="logo-text"><span class="logo-norm">Norm</span><span class="logo-scout">Scout</span></span>
+                <img src="/img/full_logo.svg" alt="NormScout" class="logo-svg">
             </a>
             <div class="nav-buttons">
                 <a href="/" class="btn btn-outline">← Back to Home</a>

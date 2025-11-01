@@ -169,17 +169,16 @@ p {
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
 }
 
+.logo-svg {
+    height: 32px;
+    width: auto;
+}
+
+/* Legacy text logo styles - kept for compatibility */
 .logo-icon {
     font-size: 20px;
-}
-
-.logo-svg-icon {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
 }
 
 .logo-text {
@@ -688,42 +687,6 @@ p {
     left: 100%;
 }
 
-/* Business Plan Button */
-.btn-business-plan {
-    display: inline-block;
-    padding: 14px 28px;
-    background: linear-gradient(135deg, #448CF7 0%, #3869FA 100%);
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(56, 105, 250, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-business-plan::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.btn-business-plan:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 16px rgba(68, 140, 247, 0.35);
-}
-
-.btn-business-plan:hover::before {
-    left: 100%;
-}
-
 /* Animations */
 @keyframes fadeInUp {
     from {
@@ -1133,6 +1096,13 @@ p {
     gap: 12px;
 }
 
+.footer-logo-svg {
+    height: 28px;
+    width: auto;
+    filter: brightness(0) invert(1); /* Makes logo white */
+}
+
+/* Legacy footer text logo styles */
 .footer-brand .logo-text {
     color: var(--white);
     font-size: var(--font-size-large);
@@ -1141,12 +1111,6 @@ p {
 .footer-brand .logo-norm,
 .footer-brand .logo-scout {
     color: var(--white) !important;
-}
-
-.footer-svg-icon {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
 }
 
 .footer-links {
