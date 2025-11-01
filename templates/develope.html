@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Develope - NormScout AI Workspace</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .develope-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .chat-messages {
+            max-height: 500px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .message {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        .message.user {
+            background: #e3f2ff;
+            margin-left: 2rem;
+        }
+
+        .message.assistant {
+            background: #f5f5f5;
+            margin-right: 2rem;
+        }
+
+        .message strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2563eb;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .input-group button {
+            padding: 0.75rem 1.5rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .input-group button:hover {
+            background: #1d4ed8;
+        }
+
+        .input-group button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .results-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            padding: 2rem;
+            display: none;
+        }
+
+        .results-container.visible {
+            display: block;
+        }
+
+        .product-description {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #2563eb;
+        }
+
+        .norm-item {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .norm-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.75rem;
+        }
+
+        .norm-title {
+            font-weight: 600;
+            color: #1f2937;
+            flex: 1;
+        }
+
+        .confidence-badge {
+            background: #10b981;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .confidence-badge.medium {
+            background: #f59e0b;
+        }
+
+        .confidence-badge.low {
+            background: #ef4444;
+        }
+
+        .norm-id {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .norm-reasoning {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid #e5e7eb;
+            border-top-color: #2563eb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .analyze-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .analyze-btn:hover {
+            background: #059669;
+        }
+
+        .analyze-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="/img/logo-white.svg" alt="NormScout">
+            </a>
+            <nav>
+                <a href="contact.html">Contact</a>
+                <a href="/" class="cta-button">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="develope-container">
+        <h1 style="text-align: center; margin-bottom: 2rem;">AI Product Compliance Workspace</h1>
+
+        <div class="chat-container">
+            <div id="chatMessages" class="chat-messages">
+                <div class="message assistant">
+                    <strong>NormScout AI</strong>
+                    <p>Welcome! Tell me about your product and I'll help identify all applicable EU compliance norms. Describe what you're making, and I'll ask follow-up questions if needed.</p>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="e.g., USB-powered LED desk lamp"
+                    autocomplete="off"
+                >
+                <button id="sendBtn" onclick="sendMessage()">Send</button>
+            </div>
+
+            <button id="analyzeBtn" class="analyze-btn" onclick="analyzeNorms()" style="display: none;">
+                Analyze Compliance Norms
+            </button>
+        </div>
+
+        <div id="resultsContainer" class="results-container">
+            <h2>Analysis Results</h2>
+
+            <div id="productDescription" class="product-description"></div>
+
+            <h3>Applicable Norms (<span id="normsCount">0</span>)</h3>
+            <div id="normsList"></div>
+        </div>
+    </div>
+
+    <script>
+        let sessionId = null;
+        let conversationComplete = false;
+
+        // Send message on Enter key
+        document.getElementById('userInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Disable input
+            input.disabled = true;
+            document.getElementById('sendBtn').disabled = true;
+
+            // Add user message to chat
+            addMessage('user', message);
+            input.value = '';
+
+            try {
+                if (!sessionId) {
+                    // Start new conversation
+                    const response = await fetch('/api/develope/start', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({initial_input: message})
+                    });
+
+                    const data = await response.json();
+
+                    if (data.error) {
+                        addMessage('assistant', 'Error: ' + data.error);
+                    } else {
+                        sessionId = data.session_id;
+                        addMessage('assistant', data.message);
+
+                        if (data.complete) {
+                            conversationComplete = true;
+                            showAnalyzeButton();
+                        }
+                    }
+                } else {
+                    // Continue conversation
+                    const response = await fetch('/api/develope/respond', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            session_id: sessionId,
+                            message: message
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.error) {
+                        addMessage('assistant', 'Error: ' + data.error);
+                    } else {
+                        addMessage('assistant', data.message);
+
+                        if (data.complete) {
+                            conversationComplete = true;
+                            showAnalyzeButton();
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage('assistant', 'Sorry, something went wrong. Please try again.');
+            }
+
+            // Re-enable input
+            input.disabled = false;
+            document.getElementById('sendBtn').disabled = false;
+            input.focus();
+        }
+
+        function addMessage(role, content) {
+            const messagesDiv = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ' + role;
+
+            const label = role === 'user' ? 'You' : 'NormScout AI';
+            messageDiv.innerHTML = `<strong>${label}</strong><p>${content}</p>`;
+
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function showAnalyzeButton() {
+            document.getElementById('analyzeBtn').style.display = 'block';
+            document.getElementById('userInput').disabled = true;
+            document.getElementById('sendBtn').disabled = true;
+        }
+
+        async function analyzeNorms() {
+            if (!sessionId || !conversationComplete) return;
+
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const originalText = analyzeBtn.textContent;
+
+            analyzeBtn.disabled = true;
+            analyzeBtn.innerHTML = '<span class="spinner"></span> Analyzing norms... This may take a minute';
+
+            try {
+                const response = await fetch('/api/develope/analyze', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({session_id: sessionId})
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    alert('Error: ' + data.error);
+                } else {
+                    displayResults(data);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, something went wrong during analysis.');
+            }
+
+            analyzeBtn.disabled = false;
+            analyzeBtn.textContent = originalText;
+        }
+
+        function displayResults(data) {
+            // Show results container
+            document.getElementById('resultsContainer').classList.add('visible');
+
+            // Display product description
+            document.getElementById('productDescription').innerHTML =
+                '<h3>Product Description</h3><p>' + data.product_description + '</p>';
+
+            // Display norms count
+            document.getElementById('normsCount').textContent = data.total_norms;
+
+            // Display norms
+            const normsList = document.getElementById('normsList');
+            normsList.innerHTML = '';
+
+            if (data.norms.length === 0) {
+                normsList.innerHTML = '<p>No applicable norms found.</p>';
+            } else {
+                data.norms.forEach(norm => {
+                    const normDiv = document.createElement('div');
+                    normDiv.className = 'norm-item';
+
+                    let confidenceClass = 'high';
+                    if (norm.confidence < 80) confidenceClass = 'medium';
+                    if (norm.confidence < 60) confidenceClass = 'low';
+
+                    normDiv.innerHTML = `
+                        <div class="norm-header">
+                            <div class="norm-title">${norm.norm_name}</div>
+                            <div class="confidence-badge ${confidenceClass}">${norm.confidence}%</div>
+                        </div>
+                        <div class="norm-id">ID: ${norm.norm_id}</div>
+                        <div class="norm-reasoning">${norm.reasoning}</div>
+                    `;
+
+                    normsList.appendChild(normDiv);
+                });
+            }
+
+            // Scroll to results
+            document.getElementById('resultsContainer').scrollIntoView({behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
