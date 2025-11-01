@@ -6,108 +6,208 @@
     <title>Develope - NormScout AI Workspace</title>
     <link rel="stylesheet" href="/style.css">
     <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
         .develope-container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 1.5rem 3rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.125rem;
+            color: var(--text-light);
         }
 
         .chat-container {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             padding: 2rem;
             margin-bottom: 2rem;
+            border: 1px solid rgba(56, 105, 250, 0.1);
         }
 
         .chat-messages {
             max-height: 500px;
             overflow-y: auto;
             margin-bottom: 1.5rem;
+            padding-right: 0.5rem;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--brand-blue);
+            border-radius: 10px;
         }
 
         .message {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            padding: 1.25rem;
+            border-radius: 12px;
             line-height: 1.6;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .message.user {
-            background: #e3f2ff;
-            margin-left: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-left: 3rem;
         }
 
         .message.assistant {
-            background: #f5f5f5;
-            margin-right: 2rem;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            margin-right: 3rem;
         }
 
         .message strong {
             display: block;
             margin-bottom: 0.5rem;
-            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .message.user strong {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .message.assistant strong {
+            color: var(--brand-blue);
+        }
+
+        .message.user p {
+            color: white;
         }
 
         .input-group {
             display: flex;
             gap: 0.75rem;
+            align-items: stretch;
         }
 
         .input-group input {
             flex: 1;
-            padding: 0.75rem;
+            padding: 1rem 1.25rem;
             border: 2px solid #e5e7eb;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1rem;
+            font-family: var(--font-family);
+            transition: all 0.2s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--brand-blue);
+            box-shadow: 0 0 0 3px rgba(56, 105, 250, 0.1);
         }
 
         .input-group button {
-            padding: 0.75rem 1.5rem;
-            background: #2563eb;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--brand-blue) 0%, var(--royal-blue) 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.2s;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(56, 105, 250, 0.3);
         }
 
         .input-group button:hover {
-            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 105, 250, 0.4);
+        }
+
+        .input-group button:active {
+            transform: translateY(0);
         }
 
         .input-group button:disabled {
             background: #9ca3af;
             cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
         }
 
         .results-container {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 2.5rem;
             display: none;
+            border: 1px solid rgba(56, 105, 250, 0.1);
         }
 
         .results-container.visible {
             display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .product-description {
-            background: #f9fafb;
-            padding: 1.5rem;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e3e8f0 100%);
+            padding: 2rem;
+            border-radius: 12px;
             margin-bottom: 2rem;
-            border-left: 4px solid #2563eb;
+            border-left: 4px solid var(--brand-blue);
+        }
+
+        .product-description h3 {
+            color: var(--brand-blue);
+            margin-bottom: 1rem;
         }
 
         .norm-item {
             background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+
+        .norm-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
         }
 
         .norm-header {
@@ -115,6 +215,7 @@
             justify-content: space-between;
             align-items: start;
             margin-bottom: 0.75rem;
+            gap: 1rem;
         }
 
         .norm-title {
@@ -124,26 +225,28 @@
         }
 
         .confidence-badge {
-            background: #10b981;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
             font-size: 0.875rem;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .confidence-badge.medium {
-            background: #f59e0b;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         }
 
         .confidence-badge.low {
-            background: #ef4444;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
         }
 
         .norm-id {
             color: #6b7280;
             font-size: 0.875rem;
             margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
         .norm-reasoning {
@@ -162,7 +265,7 @@
             width: 24px;
             height: 24px;
             border: 3px solid #e5e7eb;
-            border-top-color: #2563eb;
+            border-top-color: var(--brand-blue);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -174,42 +277,69 @@
         .analyze-btn {
             display: block;
             width: 100%;
-            padding: 1rem;
-            background: #10b981;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1.125rem;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
         .analyze-btn:hover {
-            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .analyze-btn:active {
+            transform: translateY(0);
         }
 
         .analyze-btn:disabled {
             background: #9ca3af;
             cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .results-container h2 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .results-container h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        #normsCount {
+            color: var(--brand-blue);
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="nav-container">
+    <header class="header">
+        <div class="container header-content">
             <a href="/" class="logo">
-                <img src="/img/logo-white.svg" alt="NormScout">
+                <img src="/img/full_logo.svg" alt="NormScout" class="logo-svg">
             </a>
-            <nav>
-                <a href="contact.html">Contact</a>
-                <a href="/" class="cta-button">Home</a>
+            <nav class="nav">
+                <a href="/contact">Contact</a>
+                <a href="/" class="btn btn-accent">Home</a>
             </nav>
         </div>
     </header>
 
     <div class="develope-container">
-        <h1 style="text-align: center; margin-bottom: 2rem;">AI Product Compliance Workspace</h1>
+        <div class="page-header">
+            <h1>AI Product Compliance Workspace</h1>
+            <p>Get instant EU compliance guidance for your product</p>
+        </div>
 
         <div class="chat-container">
             <div id="chatMessages" class="chat-messages">

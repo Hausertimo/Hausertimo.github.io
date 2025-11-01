@@ -34,4 +34,4 @@ def serve_contact():
 @main_bp.route("/img/<path:filename>")
 def serve_image(filename):
     """Serve images from the img directory for email signatures"""
-    return send_from_directory('img', filename)
+    return send_from_directory('static/img', filename)
