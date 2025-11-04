@@ -71,14 +71,28 @@ Be critical, accurate, and precise with numbers."""
     confidence = 50  # default
     reasoning = ""
 
-    for line in lines:
+    # Find the reasoning line and capture everything after it
+    reasoning_started = False
+    reasoning_parts = []
+
+    for i, line in enumerate(lines):
         if "CONFIDENCE:" in line.upper():
             try:
                 confidence = int(''.join(filter(str.isdigit, line)))
             except:
                 confidence = 50
+
         if "REASONING:" in line.upper():
-            reasoning = line.split(":", 1)[1].strip()
+            # Get text after "REASONING:" on the same line
+            parts = line.split(":", 1)
+            if len(parts) > 1 and parts[1].strip():
+                reasoning_parts.append(parts[1].strip())
+            reasoning_started = True
+        elif reasoning_started and line.strip():
+            # Continue capturing reasoning from following lines
+            reasoning_parts.append(line.strip())
+
+    reasoning = " ".join(reasoning_parts) if reasoning_parts else ""
 
     return {
         "norm_id": norm["id"],
@@ -141,3 +155,60 @@ def match_norms(product_description: str, max_workers: int = 10, progress_callba
 
     logger.info(f"Found {len(results)} applicable norms")
     return results
+
+
+def match_norms_streaming(product_description: str, max_workers: int = 10):
+    """
+    Match all norms against a product description in parallel, yielding progress events immediately.
+    This is a generator that streams progress updates in real-time.
+
+    Args:
+        product_description: Description of the product
+        max_workers: Maximum concurrent API calls
+
+    Yields:
+        Tuples of:
+        - ('progress', completed, total, norm_id) for each completed norm
+        - ('complete', results) when all norms are checked
+    """
+    norms = load_norms()
+    results = []
+    completed = 0
+    total = len(norms)
+
+    logger.info(f"Checking {total} norms in parallel (max {max_workers} at a time)")
+
+    # Use ThreadPoolExecutor for parallel API calls
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Submit all tasks
+        future_to_norm = {
+            executor.submit(check_norm_applies, product_description, norm): norm
+            for norm in norms
+        }
+
+        # Process as they complete and yield immediately
+        for future in as_completed(future_to_norm):
+            completed += 1
+            norm = future_to_norm[future]
+
+            try:
+                result = future.result()
+                if result["applies"]:
+                    results.append(result)
+                logger.info(f"[{completed}/{total}] OK {norm['id']}")
+
+                # Yield progress immediately
+                yield ('progress', completed, total, norm['id'])
+
+            except Exception as e:
+                logger.error(f"[{completed}/{total}] ERROR {norm['id']} - {e}")
+                # Still yield progress even on error
+                yield ('progress', completed, total, norm['id'])
+
+    # Sort by confidence
+    results.sort(key=lambda x: x["confidence"], reverse=True)
+
+    logger.info(f"Found {len(results)} applicable norms")
+
+    # Yield final results
+    yield ('complete', results)

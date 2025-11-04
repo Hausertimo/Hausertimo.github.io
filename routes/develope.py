@@ -2,17 +2,18 @@
 /develope route - AI-powered product compliance development workspace
 Conversational norm matching and compliance guidance
 """
-from flask import Blueprint, render_template, request, jsonify, session
+from flask import Blueprint, render_template, request, jsonify, session, Response, stream_with_context
 import logging
 import uuid
 from datetime import datetime
+import json
 
 from services.product_conversation import (
     analyze_completeness,
     generate_next_question,
     build_final_summary
 )
-from services.norm_matcher import match_norms
+from services.norm_matcher import match_norms, match_norms_streaming
 
 logger = logging.getLogger(__name__)
 
@@ -201,6 +202,83 @@ def analyze_norms():
     except Exception as e:
         logger.exception(f"Error analyzing norms: {e}")
         return jsonify({"error": str(e)}), 500
+
+
+@develope_bp.route('/api/develope/analyze-stream', methods=['GET'])
+def analyze_norms_stream():
+    """
+    Analyze norms with real-time progress updates via Server-Sent Events
+
+    Expects:
+        ?session_id=uuid (query parameter)
+
+    Returns:
+        SSE stream with progress updates
+    """
+    session_id = request.args.get('session_id')
+
+    if not session_id or session_id not in conversation_sessions:
+        return jsonify({"error": "Invalid session"}), 400
+
+    session_data = conversation_sessions[session_id]
+
+    if not session_data.get("complete"):
+        return jsonify({"error": "Conversation not complete"}), 400
+
+    def generate():
+        try:
+            # Phase 1: Building summary
+            yield f"data: {json.dumps({'phase': 'summary', 'status': 'Building product summary...'})}\n\n"
+
+            product_description = build_final_summary(session_data["history"])
+
+            # Phase 2: Stream norm matching with real-time progress
+            matched_norms = None
+
+            for event_type, *event_data in match_norms_streaming(product_description, max_workers=10):
+                if event_type == 'progress':
+                    completed, total, norm_id = event_data
+
+                    # Create varied, descriptive status messages
+                    if completed <= total * 0.33:
+                        status = f"Analyzing safety requirements... ({completed}/{total})"
+                    elif completed <= total * 0.66:
+                        status = f"Checking compliance standards... ({completed}/{total})"
+                    else:
+                        status = f"Reviewing regulations... ({completed}/{total})"
+
+                    progress_data = {
+                        'phase': 'analyzing',
+                        'progress': completed,
+                        'total': total,
+                        'status': status
+                    }
+                    yield f"data: {json.dumps(progress_data)}\n\n"
+
+                elif event_type == 'complete':
+                    matched_norms = event_data[0]
+
+            # Phase 3: Finalization
+            yield f"data: {json.dumps({'phase': 'finalizing', 'status': 'Finalizing results...'})}\n\n"
+
+            # Store results in session
+            session_data["product_description"] = product_description
+            session_data["matched_norms"] = matched_norms
+            session_data["analyzed"] = datetime.now().isoformat()
+
+            logger.info(f"Analyzed norms for session {session_id}: {len(matched_norms)} norms matched")
+
+            # Phase 4: Complete with results
+            yield f"data: {json.dumps({'phase': 'complete', 'product_description': product_description, 'norms': matched_norms, 'total_norms': len(matched_norms)})}\n\n"
+
+        except Exception as e:
+            logger.exception(f"Error in streaming analysis: {e}")
+            yield f"data: {json.dumps({'phase': 'error', 'error': str(e)})}\n\n"
+
+    response = Response(stream_with_context(generate()), mimetype='text/event-stream')
+    response.headers['Cache-Control'] = 'no-cache'
+    response.headers['X-Accel-Buffering'] = 'no'
+    return response
 
 
 @develope_bp.route('/api/develope/session/<session_id>', methods=['GET'])
