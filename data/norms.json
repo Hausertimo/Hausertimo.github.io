@@ -6,476 +6,544 @@
       "name": "Low Voltage Directive (LVD)",
       "category": "Horizontal Standards",
       "applies_to": "All electrical equipment 50-1000V AC or 75-1500V DC",
-      "description": "Core safety directive ensuring protection against electric shock, fire, and mechanical hazards"
+      "description": "Core safety directive ensuring protection against electric shock, fire, and mechanical hazards",
+      "url": "https://eur-lex.europa.eu/eli/dir/2014/35/oj"
     },
     {
       "id": "DIR-2014/30/EU",
       "name": "Electromagnetic Compatibility Directive (EMC)",
       "category": "Horizontal Standards",
       "applies_to": "All equipment capable of generating or being affected by electromagnetic disturbance",
-      "description": "Ensures equipment doesn't generate excessive EM interference and has adequate immunity"
+      "description": "Ensures equipment doesn't generate excessive EM interference and has adequate immunity",
+      "url": "https://eur-lex.europa.eu/eli/dir/2014/30/oj"
     },
     {
       "id": "DIR-2011/65/EU",
       "name": "RoHS Directive (Restriction of Hazardous Substances)",
       "category": "Horizontal Standards",
       "applies_to": "Most electrical and electronic equipment",
-      "description": "Restricts use of specific hazardous materials (lead, mercury, cadmium, hexavalent chromium, PBB, PBDE, and phthalates)"
+      "description": "Restricts use of specific hazardous materials (lead, mercury, cadmium, hexavalent chromium, PBB, PBDE, and phthalates)",
+      "url": "https://eur-lex.europa.eu/eli/dir/2011/65/oj"
     },
     {
       "id": "DIR-2012/19/EU",
       "name": "WEEE Directive (Waste Electrical and Electronic Equipment)",
       "category": "Horizontal Standards",
       "applies_to": "All electrical and electronic equipment",
-      "description": "Requires proper disposal/recycling marking and producer responsibility for end-of-life equipment"
+      "description": "Requires proper disposal/recycling marking and producer responsibility for end-of-life equipment",
+      "url": "https://eur-lex.europa.eu/eli/dir/2012/19/oj"
     },
     {
       "id": "EN-IEC 63000",
       "name": "Technical Documentation for Assessment of Electrical and Electronic Products",
       "category": "Horizontal Standards",
       "applies_to": "Products subject to RoHS",
-      "description": "Standard for technical documentation demonstrating RoHS compliance"
+      "description": "Standard for technical documentation demonstrating RoHS compliance",
+      "url": "https://www.en-standard.eu/EN-IEC-63000"
     },
     {
       "id": "EN 62368-1",
       "name": "Audio/Video, ICT and Communication Technology Equipment - Safety",
       "category": "General Product Safety",
       "applies_to": "IT equipment, AV equipment, communication equipment",
-      "description": "Modern hazard-based safety standard replacing EN 60950-1 and EN 60065. Covers safeguards against electric shock, fire, heat, mechanical, radiation hazards"
+      "description": "Modern hazard-based safety standard replacing EN 60950-1 and EN 60065. Covers safeguards against electric shock, fire, heat, mechanical, radiation hazards",
+      "url": "https://www.en-standard.eu/EN-62368-1"
     },
     {
       "id": "EN 62311",
       "name": "Assessment of Electronic Equipment Related to Human Exposure to EM Fields",
       "category": "General Product Safety",
       "applies_to": "Equipment with RF transmitters or strong EM fields",
-      "description": "Evaluation of equipment against basic restrictions for human exposure to EM fields 0Hz-300GHz"
+      "description": "Evaluation of equipment against basic restrictions for human exposure to EM fields 0Hz-300GHz",
+      "url": "https://www.en-standard.eu/EN-62311"
     },
     {
       "id": "EN 60204-1",
       "name": "Safety of Machinery - Electrical Equipment",
       "category": "General Product Safety",
       "applies_to": "Products with machinery/motor components",
-      "description": "Safety requirements for electrical equipment of machines operating at voltages above 50V AC or 75V DC"
+      "description": "Safety requirements for electrical equipment of machines operating at voltages above 50V AC or 75V DC",
+      "url": "https://www.en-standard.eu/EN-60204-1"
     },
     {
       "id": "EN 61000-6-1",
       "name": "Generic Immunity Standard - Residential/Commercial/Light Industry",
       "category": "EMC Standards",
       "applies_to": "Products for residential, commercial, and light industrial environments",
-      "description": "Immunity requirements for emissions in non-industrial environments"
+      "description": "Immunity requirements for emissions in non-industrial environments",
+      "url": "https://www.en-standard.eu/EN-61000-6-1"
     },
     {
       "id": "EN 61000-6-2",
       "name": "Generic Immunity Standard - Industrial",
       "category": "EMC Standards",
       "applies_to": "Products for industrial environments",
-      "description": "Immunity requirements for harsh industrial environments with higher disturbance levels"
+      "description": "Immunity requirements for harsh industrial environments with higher disturbance levels",
+      "url": "https://www.en-standard.eu/EN-61000-6-2"
     },
     {
       "id": "EN 61000-6-3",
       "name": "Generic Emission Standard - Residential/Commercial/Light Industry",
       "category": "EMC Standards",
       "applies_to": "Products for residential, commercial, and light industrial environments",
-      "description": "Emission limits to prevent disturbance to other equipment in residential areas"
+      "description": "Emission limits to prevent disturbance to other equipment in residential areas",
+      "url": "https://www.en-standard.eu/EN-61000-6-3"
     },
     {
       "id": "EN 61000-6-4",
       "name": "Generic Emission Standard - Industrial",
       "category": "EMC Standards",
       "applies_to": "Products for industrial environments",
-      "description": "Emission limits for industrial environment equipment"
+      "description": "Emission limits for industrial environment equipment",
+      "url": "https://www.en-standard.eu/EN-61000-6-4"
     },
     {
       "id": "EN 55032",
       "name": "Multimedia Equipment - Emission Requirements",
       "category": "EMC Standards",
       "applies_to": "IT equipment, multimedia equipment, receivers",
-      "description": "Limits and methods for measuring radio disturbance from multimedia equipment"
+      "description": "Limits and methods for measuring radio disturbance from multimedia equipment",
+      "url": "https://www.en-standard.eu/EN-55032"
     },
     {
       "id": "EN 55035",
       "name": "Multimedia Equipment - Immunity Requirements",
       "category": "EMC Standards",
       "applies_to": "IT equipment, multimedia equipment, receivers",
-      "description": "Immunity requirements for multimedia equipment against EM disturbances"
+      "description": "Immunity requirements for multimedia equipment against EM disturbances",
+      "url": "https://www.en-standard.eu/EN-55035"
     },
     {
       "id": "EN 55014-1",
       "name": "Household Appliances - Emissions",
       "category": "EMC Standards",
       "applies_to": "Household appliances, electric tools, similar apparatus",
-      "description": "Emission limits for household electrical appliances and similar equipment"
+      "description": "Emission limits for household electrical appliances and similar equipment",
+      "url": "https://www.en-standard.eu/EN-55014-1"
     },
     {
       "id": "EN 55014-2",
       "name": "Household Appliances - Immunity",
       "category": "EMC Standards",
       "applies_to": "Household appliances, electric tools, similar apparatus",
-      "description": "Immunity requirements for household appliances"
+      "description": "Immunity requirements for household appliances",
+      "url": "https://www.en-standard.eu/EN-55014-2"
     },
     {
       "id": "EN 61000-4-2",
       "name": "ESD (Electrostatic Discharge) Immunity",
       "category": "EMC Standards",
       "applies_to": "All electronic equipment",
-      "description": "Testing immunity to static electricity discharge (contact and air discharge)"
+      "description": "Testing immunity to static electricity discharge (contact and air discharge)",
+      "url": "https://www.en-standard.eu/EN-61000-4-2"
     },
     {
       "id": "EN 61000-4-3",
       "name": "Radiated RF Immunity",
       "category": "EMC Standards",
       "applies_to": "All electronic equipment",
-      "description": "Immunity to radiated electromagnetic fields (80MHz-6GHz)"
+      "description": "Immunity to radiated electromagnetic fields (80MHz-6GHz)",
+      "url": "https://www.en-standard.eu/EN-61000-4-3"
     },
     {
       "id": "EN 61000-4-4",
       "name": "EFT (Electrical Fast Transient) Immunity",
       "category": "EMC Standards",
       "applies_to": "Equipment with AC/DC power and signal ports",
-      "description": "Immunity to fast transients/bursts on power and signal lines"
+      "description": "Immunity to fast transients/bursts on power and signal lines",
+      "url": "https://www.en-standard.eu/EN-61000-4-4"
     },
     {
       "id": "EN 61000-4-5",
       "name": "Surge Immunity",
       "category": "EMC Standards",
       "applies_to": "Equipment connected to power/outdoor cables",
-      "description": "Immunity to voltage surges caused by lightning or switching"
+      "description": "Immunity to voltage surges caused by lightning or switching",
+      "url": "https://www.en-standard.eu/EN-61000-4-5"
     },
     {
       "id": "EN 61000-4-6",
       "name": "Conducted RF Immunity",
       "category": "EMC Standards",
       "applies_to": "Equipment with cables longer than 3m",
-      "description": "Immunity to conducted RF disturbances on cables (150kHz-80MHz)"
+      "description": "Immunity to conducted RF disturbances on cables (150kHz-80MHz)",
+      "url": "https://www.en-standard.eu/EN-61000-4-6"
     },
     {
       "id": "EN 61000-4-8",
       "name": "Power Frequency Magnetic Field Immunity",
       "category": "EMC Standards",
       "applies_to": "Equipment near transformers/motors",
-      "description": "Immunity to 50Hz magnetic fields"
+      "description": "Immunity to 50Hz magnetic fields",
+      "url": "https://www.en-standard.eu/EN-61000-4-8"
     },
     {
       "id": "EN 61000-4-11",
       "name": "Voltage Dips, Interruptions and Variations Immunity",
       "category": "EMC Standards",
       "applies_to": "Mains-powered equipment",
-      "description": "Immunity to voltage dips, short interruptions, and voltage variations on AC supply"
+      "description": "Immunity to voltage dips, short interruptions, and voltage variations on AC supply",
+      "url": "https://www.en-standard.eu/EN-61000-4-11"
     },
     {
       "id": "DIR-2014/53/EU",
       "name": "Radio Equipment Directive (RED)",
       "category": "Wireless & Radio Equipment",
       "applies_to": "All equipment intentionally transmitting/receiving radio waves",
-      "description": "Replaces R&TTE Directive. Covers radio equipment safety, EMC, and efficient spectrum use"
+      "description": "Replaces R&TTE Directive. Covers radio equipment safety, EMC, and efficient spectrum use",
+      "url": "https://eur-lex.europa.eu/eli/dir/2014/53/oj"
     },
     {
       "id": "EN 301 489-1",
       "name": "EMC for Radio Equipment - Part 1: Common Technical Requirements",
       "category": "Wireless & Radio Equipment",
       "applies_to": "All radio equipment",
-      "description": "General EMC requirements for radio equipment and services"
+      "description": "General EMC requirements for radio equipment and services",
+      "url": "https://www.en-standard.eu/EN-301-489-1"
     },
     {
       "id": "EN 301 489-17",
       "name": "EMC for Radio - Wideband Data Transmission Systems",
       "category": "Wireless & Radio Equipment",
       "applies_to": "Wideband transmission equipment (WiFi, etc.)",
-      "description": "Specific EMC requirements for wideband data transmission systems"
+      "description": "Specific EMC requirements for wideband data transmission systems",
+      "url": "https://www.en-standard.eu/EN-301-489-17"
     },
     {
       "id": "EN 300 328",
       "name": "Wideband Transmission Systems - 2.4GHz",
       "category": "Wireless & Radio Equipment",
       "applies_to": "Equipment operating in 2.4GHz ISM band (WiFi, Bluetooth)",
-      "description": "Technical requirements for 2.4GHz band equipment including spectrum efficiency"
+      "description": "Technical requirements for 2.4GHz band equipment including spectrum efficiency",
+      "url": "https://www.en-standard.eu/EN-300-328"
     },
     {
       "id": "EN 300 440",
       "name": "Short Range Devices (SRD)",
       "category": "Wireless & Radio Equipment",
       "applies_to": "Low power radio equipment <25MHz or >1GHz",
-      "description": "Requirements for various short-range devices including remote controls, alarms, telemetry"
+      "description": "Requirements for various short-range devices including remote controls, alarms, telemetry",
+      "url": "https://www.en-standard.eu/EN-300-440"
     },
     {
       "id": "EN 303 417",
       "name": "Broadband Radio Access Networks (BRAN) 5GHz",
       "category": "Wireless & Radio Equipment",
       "applies_to": "5GHz WLAN/RLAN equipment",
-      "description": "Harmonized standard for 5GHz wireless LAN equipment"
+      "description": "Harmonized standard for 5GHz wireless LAN equipment",
+      "url": "https://www.en-standard.eu/EN-303-417"
     },
     {
       "id": "EN 301 511",
       "name": "Global System for Mobile Communications (GSM)",
       "category": "Wireless & Radio Equipment",
       "applies_to": "GSM/cellular radio devices",
-      "description": "Requirements for GSM and similar mobile communication devices"
+      "description": "Requirements for GSM and similar mobile communication devices",
+      "url": "https://www.en-standard.eu/EN-301-511"
     },
     {
       "id": "EN 301 908",
       "name": "IMT Cellular Networks (3G/4G/5G)",
       "category": "Wireless & Radio Equipment",
       "applies_to": "3G/4G/5G cellular equipment",
-      "description": "Requirements for equipment operating in IMT-2000/LTE/5G networks"
+      "description": "Requirements for equipment operating in IMT-2000/LTE/5G networks",
+      "url": "https://www.en-standard.eu/EN-301-908"
     },
     {
       "id": "REG-2023/1542",
       "name": "Battery Regulation (replaces 2006/66/EC)",
       "category": "Battery & Power Related",
       "applies_to": "Products containing batteries",
-      "description": "New battery regulation with requirements for labeling, documentation, recycling, supply chain traceability, and digital battery passport. Mandatory from August 2025."
+      "description": "New battery regulation with requirements for labeling, documentation, recycling, supply chain traceability, and digital battery passport. Mandatory from August 2025.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/1542/oj"
     },
     {
       "id": "EN 62133-2",
       "name": "Safety of Portable Sealed Secondary Lithium Cells and Batteries",
       "category": "Battery & Power Related",
       "applies_to": "Products with lithium-ion/polymer batteries",
-      "description": "Safety requirements and tests for lithium batteries in portable applications"
+      "description": "Safety requirements and tests for lithium batteries in portable applications",
+      "url": "https://www.en-standard.eu/EN-62133-2"
     },
     {
       "id": "EN 62368-1 (Clause 5.3-5.4)",
       "name": "Power Sources (PS1/PS2/PS3)",
       "category": "Battery & Power Related",
       "applies_to": "All powered equipment",
-      "description": "Classification of power sources and associated safeguards in modern safety standard"
+      "description": "Classification of power sources and associated safeguards in modern safety standard",
+      "url": "https://www.en-standard.eu/EN-62368-1-(Clause-5.3-5.4)"
     },
     {
       "id": "EN 61000-3-2",
       "name": "Harmonic Current Emissions",
       "category": "Battery & Power Related",
       "applies_to": "Equipment drawing >75W from AC mains",
-      "description": "Limits for harmonic currents injected into AC supply (up to 40th harmonic)"
+      "description": "Limits for harmonic currents injected into AC supply (up to 40th harmonic)",
+      "url": "https://www.en-standard.eu/EN-61000-3-2"
     },
     {
       "id": "EN 61000-3-3",
       "name": "Voltage Fluctuations and Flicker",
       "category": "Battery & Power Related",
       "applies_to": "Equipment that may cause voltage fluctuations",
-      "description": "Limits for voltage fluctuations and flicker caused by equipment"
+      "description": "Limits for voltage fluctuations and flicker caused by equipment",
+      "url": "https://www.en-standard.eu/EN-61000-3-3"
     },
     {
       "id": "EN 62031",
       "name": "LED Modules for General Lighting - Safety",
       "category": "Lighting Products",
       "applies_to": "LED lighting products and modules",
-      "description": "Safety requirements specifically for LED modules"
+      "description": "Safety requirements specifically for LED modules",
+      "url": "https://www.en-standard.eu/EN-62031"
     },
     {
       "id": "EN 60598-1",
       "name": "Luminaires - General Requirements and Tests",
       "category": "Lighting Products",
       "applies_to": "Complete lighting fixtures",
-      "description": "General safety requirements for all luminaires"
+      "description": "General safety requirements for all luminaires",
+      "url": "https://www.en-standard.eu/EN-60598-1"
     },
     {
       "id": "EN 62471",
       "name": "Photobiological Safety of Lamps and Lamp Systems",
       "category": "Lighting Products",
       "applies_to": "All lighting products",
-      "description": "Assessment of blue light and other optical radiation hazards"
+      "description": "Assessment of blue light and other optical radiation hazards",
+      "url": "https://www.en-standard.eu/EN-62471"
     },
     {
       "id": "EN 61547",
       "name": "Lighting Equipment - EMC Immunity Requirements",
       "category": "Lighting Products",
       "applies_to": "Lighting equipment and systems",
-      "description": "EMC immunity requirements specific to lighting equipment"
+      "description": "EMC immunity requirements specific to lighting equipment",
+      "url": "https://www.en-standard.eu/EN-61547"
     },
     {
       "id": "EN 55015",
       "name": "Radio Disturbance from Lighting Equipment",
       "category": "Lighting Products",
       "applies_to": "All lighting equipment",
-      "description": "Limits and measurement methods for radio disturbance from lighting equipment"
+      "description": "Limits and measurement methods for radio disturbance from lighting equipment",
+      "url": "https://www.en-standard.eu/EN-55015"
     },
     {
       "id": "DIR-2009/125/EC",
       "name": "Ecodesign Directive",
       "category": "Environmental & Energy",
       "applies_to": "Energy-related products",
-      "description": "Framework for setting ecodesign requirements (energy efficiency, resource use)"
+      "description": "Framework for setting ecodesign requirements (energy efficiency, resource use)",
+      "url": "https://eur-lex.europa.eu/eli/dir/2009/125/oj"
     },
     {
       "id": "REG-2019/1782",
       "name": "Ecodesign for External Power Supplies",
       "category": "Environmental & Energy",
       "applies_to": "External AC-DC and AC-AC power supplies",
-      "description": "Energy efficiency requirements for external power supplies"
+      "description": "Energy efficiency requirements for external power supplies",
+      "url": "https://eur-lex.europa.eu/eli/reg/2019/1782/oj"
     },
     {
       "id": "REG-2019/2020",
       "name": "Ecodesign for Light Sources and Control Gear",
       "category": "Environmental & Energy",
       "applies_to": "Lighting products",
-      "description": "Energy efficiency and functionality requirements for lighting"
+      "description": "Energy efficiency and functionality requirements for lighting",
+      "url": "https://eur-lex.europa.eu/eli/reg/2019/2020/oj"
     },
     {
       "id": "DIR-2010/30/EU",
       "name": "Energy Labeling Directive",
       "category": "Environmental & Energy",
       "applies_to": "Energy-related products sold to end-users",
-      "description": "Framework for energy efficiency labeling (A-G scale)"
+      "description": "Framework for energy efficiency labeling (A-G scale)",
+      "url": "https://eur-lex.europa.eu/eli/dir/2010/30/oj"
     },
     {
       "id": "REG-1907/2006",
       "name": "REACH Regulation",
       "category": "Environmental & Energy",
       "applies_to": "All products containing chemical substances",
-      "description": "Registration, evaluation, and authorization of chemicals. SVHC substance restrictions"
+      "description": "Registration, evaluation, and authorization of chemicals. SVHC substance restrictions",
+      "url": "https://eur-lex.europa.eu/eli/reg/1907/2006/oj"
     },
     {
       "id": "REG-2016/679",
       "name": "GDPR (General Data Protection Regulation)",
       "category": "Software, Cybersecurity & Data",
       "applies_to": "Products/services processing personal data",
-      "description": "Data protection and privacy requirements for EU residents' personal data"
+      "description": "Data protection and privacy requirements for EU residents' personal data",
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
     },
     {
       "id": "DIR-2002/58/EC",
       "name": "ePrivacy Directive (Cookie Law)",
       "category": "Software, Cybersecurity & Data",
       "applies_to": "Electronic communications, web-connected devices",
-      "description": "Privacy requirements for electronic communications and cookies"
+      "description": "Privacy requirements for electronic communications and cookies",
+      "url": "https://eur-lex.europa.eu/eli/dir/2002/58/oj"
     },
     {
       "id": "EN-IEC 62443",
       "name": "Industrial Communication Networks - Security (Series)",
       "category": "Software, Cybersecurity & Data",
       "applies_to": "Connected/IoT devices, industrial systems",
-      "description": "Cybersecurity standards for industrial automation and control systems. Increasingly relevant for IoT"
+      "description": "Cybersecurity standards for industrial automation and control systems. Increasingly relevant for IoT",
+      "url": "https://www.en-standard.eu/EN-IEC-62443"
     },
     {
       "id": "ETSI EN 303 645",
       "name": "Cybersecurity for Consumer IoT",
       "category": "Software, Cybersecurity & Data",
       "applies_to": "Consumer IoT devices",
-      "description": "Baseline security requirements for consumer IoT (becoming increasingly important)"
+      "description": "Baseline security requirements for consumer IoT (becoming increasingly important)",
+      "url": "https://eur-lex.europa.eu/search.html?q=ETSI+EN+303+645"
     },
     {
       "id": "DIR-94/62/EC",
       "name": "Packaging and Packaging Waste Directive",
       "category": "Packaging & Labeling",
       "applies_to": "All packaged products",
-      "description": "Requirements for packaging material composition and recycling/recovery targets"
+      "description": "Requirements for packaging material composition and recycling/recovery targets",
+      "url": "https://eur-lex.europa.eu/eli/dir/94/62/oj"
     },
     {
       "id": "REG-1169/2011",
       "name": "Consumer Information Regulation",
       "category": "Packaging & Labeling",
       "applies_to": "Products requiring consumer information",
-      "description": "Requirements for clear product information and labeling"
+      "description": "Requirements for clear product information and labeling",
+      "url": "https://eur-lex.europa.eu/eli/reg/1169/2011/oj"
     },
     {
       "id": "EN 62052",
       "name": "Electricity Metering Equipment",
       "category": "Testing & Quality Management",
       "applies_to": "Products with power measurement functions",
-      "description": "Requirements for accuracy and reliability of metering equipment"
+      "description": "Requirements for accuracy and reliability of metering equipment",
+      "url": "https://www.en-standard.eu/EN-62052"
     },
     {
       "id": "EN 50332",
       "name": "Sound System Equipment - Headphones Maximum Sound Pressure",
       "category": "Specific Product Categories",
       "applies_to": "Headphones and personal audio",
-      "description": "Limits for sound pressure to protect hearing"
+      "description": "Limits for sound pressure to protect hearing",
+      "url": "https://www.en-standard.eu/EN-50332"
     },
     {
       "id": "USB-IF Specs",
       "name": "USB Specifications (USB 2.0/3.x/4/Type-C/PD)",
       "category": "Specific Product Categories",
       "applies_to": "USB devices and hosts",
-      "description": "Not EU standards but required for USB compliance. Includes electrical, protocol, and power delivery specs"
+      "description": "Not EU standards but required for USB compliance. Includes electrical, protocol, and power delivery specs",
+      "url": "https://eur-lex.europa.eu/search.html?q=USB-IF+Specs"
     },
     {
       "id": "EN 62680-1",
       "name": "Universal Serial Bus for Data and Power",
       "category": "Specific Product Categories",
       "applies_to": "USB interfaces",
-      "description": "Covers USB electrical interface requirements"
+      "description": "Covers USB electrical interface requirements",
+      "url": "https://www.en-standard.eu/EN-62680-1"
     },
     {
       "id": "EN 55032/35",
       "name": "ICT Equipment EMC",
       "category": "Specific Product Categories",
       "applies_to": "Computers, peripherals, displays",
-      "description": "Combined emission and immunity for IT equipment"
+      "description": "Combined emission and immunity for IT equipment",
+      "url": "https://www.en-standard.eu/EN-55032-35"
     },
     {
       "id": "EN 62368-1-ICT",
       "name": "ICT Safety",
       "category": "Specific Product Categories",
       "applies_to": "Computers, servers, storage",
-      "description": "Primary safety standard for IT equipment"
+      "description": "Primary safety standard for IT equipment",
+      "url": "https://www.en-standard.eu/EN-62368-1-ICT"
     },
     {
       "id": "EN 60730-1",
       "name": "Automatic Electrical Controls - General Requirements",
       "category": "Specific Product Categories",
       "applies_to": "Smart home controls, thermostats, relays",
-      "description": "Safety requirements for automatic controls"
+      "description": "Safety requirements for automatic controls",
+      "url": "https://www.en-standard.eu/EN-60730-1"
     },
     {
       "id": "EN 50491-2",
       "name": "General Requirements for Home and Building Systems (HBES)",
       "category": "Specific Product Categories",
       "applies_to": "Home automation systems",
-      "description": "Requirements for home automation and building control systems"
+      "description": "Requirements for home automation and building control systems",
+      "url": "https://www.en-standard.eu/EN-50491-2"
     },
     {
       "id": "EN 62368-1-wearable",
       "name": "Portable Device Safety",
       "category": "Specific Product Categories",
       "applies_to": "Wearables, fitness trackers, smart watches",
-      "description": "Safety requirements applicable to wearable electronics"
+      "description": "Safety requirements applicable to wearable electronics",
+      "url": "https://www.en-standard.eu/EN-62368-1-wearable"
     },
     {
       "id": "EN 50364",
       "name": "Product Standard for Human Exposure to EM Fields (Body-Worn)",
       "category": "Specific Product Categories",
       "applies_to": "Body-worn RF transmitting devices",
-      "description": "SAR limits and testing for devices worn on the body"
+      "description": "SAR limits and testing for devices worn on the body",
+      "url": "https://www.en-standard.eu/EN-50364"
     },
     {
       "id": "DIR-2014/34/EU",
       "name": "ATEX Directive (Equipment for Explosive Atmospheres)",
       "category": "Specific Product Categories",
       "applies_to": "Equipment and protective systems intended for use in potentially explosive atmospheres",
-      "description": "Mandatory for products marketed for use in hazardous areas with risk of explosion (industrial, mining, chemical plants)"
+      "description": "Mandatory for products marketed for use in hazardous areas with risk of explosion (industrial, mining, chemical plants)",
+      "url": "https://eur-lex.europa.eu/eli/dir/2014/34/oj"
     },
     {
       "id": "REG-2017/1369",
       "name": "Energy Labelling Regulation",
       "category": "Environmental & Energy",
       "applies_to": "Energy-related products sold to end-users (lighting, HVAC, displays, refrigeration)",
-      "description": "Requires energy efficiency labeling (A-G scale) for covered product groups. Replaces 2010/30/EU."
+      "description": "Requires energy efficiency labeling (A-G scale) for covered product groups. Replaces 2010/30/EU.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2017/1369/oj"
     },
     {
       "id": "REG-2019/2020",
       "name": "Ecodesign for Light Sources and Control Gear (ErP)",
       "category": "Lighting Products",
       "applies_to": "LED lighting products, flashlights, luminaires",
-      "description": "Specific ecodesign requirements for LED light sources: energy efficiency, product disclosure, life-cycle information"
+      "description": "Specific ecodesign requirements for LED light sources: energy efficiency, product disclosure, life-cycle information",
+      "url": "https://eur-lex.europa.eu/eli/reg/2019/2020/oj"
     },
     {
       "id": "EN 62311",
       "name": "Assessment of Electronic Equipment Related to Human Exposure to EM Fields",
       "category": "General Product Safety",
       "applies_to": "Equipment with RF transmitters or strong EM fields, especially wearables",
-      "description": "Mandatory evaluation of equipment against basic restrictions for human exposure to EM fields 0Hz-300GHz. SAR assessment for body-worn RF devices."
+      "description": "Mandatory evaluation of equipment against basic restrictions for human exposure to EM fields 0Hz-300GHz. SAR assessment for body-worn RF devices.",
+      "url": "https://www.en-standard.eu/EN-62311"
     },
     {
       "id": "EN 50364",
       "name": "Product Standard for Human Exposure to EM Fields (Body-Worn)",
       "category": "Specific Product Categories",
       "applies_to": "Body-worn RF transmitting devices (wearables, headphones with Bluetooth)",
-      "description": "SAR limits and testing for devices worn on the body. Mandatory for body-worn wireless devices."
+      "description": "SAR limits and testing for devices worn on the body. Mandatory for body-worn wireless devices.",
+      "url": "https://www.en-standard.eu/EN-50364"
     },
     {
       "id": "DIR-2018/852",
       "name": "Packaging and Packaging Waste Directive (Amendment)",
       "category": "Packaging & Labeling",
       "applies_to": "All packaged products",
-      "description": "Updated packaging requirements for recyclability, labeling, and traceability. Amends DIR-94/62/EC."
+      "description": "Updated packaging requirements for recyclability, labeling, and traceability. Amends DIR-94/62/EC.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2018/852/oj"
     }
   ]
 }

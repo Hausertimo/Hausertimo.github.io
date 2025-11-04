@@ -175,6 +175,19 @@
             border-color: var(--brand-blue);
         }
 
+        .norm-item.clickable {
+            cursor: pointer;
+        }
+
+        .norm-item.clickable * {
+            pointer-events: none;
+        }
+
+        .norm-item.clickable:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
         .norm-header {
             display: flex;
             justify-content: space-between;
@@ -280,9 +293,10 @@
                 <h2 class="section-title">Applicable Norms ({{ workspace.analysis.total_matched }})</h2>
                 <div id="normsList">
                     {% for norm in workspace.analysis.matched_norms %}
-                    <div class="norm-item">
+                    <div class="norm-item{% if norm.url %} clickable{% endif %}"
+                         {% if norm.url %}onclick="window.open('{{ norm.url }}', '_blank')" style="cursor: pointer;" title="Click to view official document"{% endif %}>
                         <div class="norm-header">
-                            <span class="norm-id">{{ norm.norm_id }}</span>
+                            <span class="norm-id">{{ norm.norm_id }} {% if norm.url %}🔗{% endif %}</span>
                             <span class="confidence-badge {% if norm.confidence >= 80 %}high{% else %}medium{% endif %}">
                                 {{ norm.confidence }}% confidence
                             </span>
@@ -302,40 +316,70 @@
 
         // Format product description with structured HTML
         function formatProductDescription(description) {
-            if (!description) return '';
-
-            let formatted = description
-                // Main headers (ALL CAPS followed by colon)
-                .replace(/^([A-Z\s]{3,}:)/gm, '<h4 style="color: var(--brand-blue); margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1rem; font-weight: 700;">$1</h4>')
-                // Section headers (Title Case followed by colon)
-                .replace(/^([A-Z][a-zA-Z\s&\/]+:)(?=\s*\n|$)/gm, '<h5 style="color: var(--text-dark); margin-top: 1rem; margin-bottom: 0.5rem; font-size: 0.95rem; font-weight: 600;">$1</h5>')
-                // Bullet points with *
-                .replace(/^\s*\*\s+(.+)$/gm, '<li style="margin-left: 1.5rem; margin-bottom: 0.25rem;">$1</li>')
-                // Bullet points with -
-                .replace(/^\s*-\s+(.+)$/gm, '<li style="margin-left: 1.5rem; margin-bottom: 0.25rem; list-style-type: disc;">$1</li>')
-                // Multiple line breaks to paragraph breaks
-                .replace(/\n\n+/g, '</p><p style="margin-bottom: 0.75rem;">')
-                // Single line breaks to <br>
-                .replace(/\n/g, '<br>');
-
-            // Wrap consecutive <li> elements in <ul>
-            formatted = formatted.replace(/(<li[^>]*>.*?<\/li>(?:\s*<br>)?)+/gs, function(match) {
-                return '<ul style="margin: 0.5rem 0; padding-left: 0;">' + match.replace(/<br>/g, '') + '</ul>';
-            });
-
-            // Wrap in initial paragraph tag
-            if (!formatted.startsWith('<h4') && !formatted.startsWith('<h5') && !formatted.startsWith('<ul')) {
-                formatted = '<p style="margin-bottom: 0.75rem;">' + formatted + '</p>';
+            if (!description) {
+                console.warn('formatProductDescription: No description provided');
+                return '';
             }
 
-            return formatted;
+            console.log('Formatting description, length:', description.length);
+            console.log('First 100 chars:', description.substring(0, 100));
+
+            try {
+                let formatted = description;
+
+                // Process headers FIRST (before modifying newlines)
+                // Main headers (ALL CAPS followed by colon)
+                formatted = formatted.replace(/^([A-Z\s]{3,}:)/gm, '<h4 style="color: var(--brand-blue); margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1rem; font-weight: 700;">$1</h4>');
+
+                // Section headers (Title Case or numbered sections like "1. ")
+                formatted = formatted.replace(/^(\d+\.\s+[A-Z][a-zA-Z\s&\/]+)/gm, '<h5 style="color: var(--text-dark); margin-top: 1rem; margin-bottom: 0.5rem; font-size: 0.95rem; font-weight: 600;">$1</h5>');
+                formatted = formatted.replace(/^([A-Z][a-zA-Z\s&\/]+:)(?=\s*\n|$)/gm, '<h5 style="color: var(--text-dark); margin-top: 1rem; margin-bottom: 0.5rem; font-size: 0.95rem; font-weight: 600;">$1</h5>');
+
+                // Process bullet points SECOND
+                formatted = formatted.replace(/^\s*\*\s+(.+)$/gm, '<li>$1</li>');
+                formatted = formatted.replace(/^\s*-\s+(.+)$/gm, '<li>$1</li>');
+
+                // Wrap consecutive <li> elements in <ul> BEFORE converting newlines
+                formatted = formatted.replace(/(<li>.*?<\/li>\n?)+/g, function(match) {
+                    return '<ul style="margin: 0.5rem 0 1rem 1.5rem; padding-left: 1rem;">' + match + '</ul>';
+                });
+
+                // Convert newlines LAST
+                formatted = formatted.replace(/\n\n+/g, '</p><p style="margin-bottom: 0.75rem;">');
+                formatted = formatted.replace(/\n/g, '<br>');
+
+                // Wrap in initial paragraph tag if needed
+                if (!formatted.startsWith('<h4') && !formatted.startsWith('<h5') && !formatted.startsWith('<ul') && !formatted.startsWith('<p')) {
+                    formatted = '<p style="margin-bottom: 0.75rem;">' + formatted + '</p>';
+                }
+
+                console.log('Formatted successfully, result length:', formatted.length);
+                return formatted;
+            } catch (error) {
+                console.error('Error formatting description:', error);
+                return '<pre style="white-space: pre-wrap; font-family: inherit;">' + description + '</pre>';
+            }
         }
 
         // Initialize formatted product description on page load
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOMContentLoaded fired');
+            console.log('rawProductDescription exists:', typeof rawProductDescription !== 'undefined');
+
             const descElement = document.getElementById('productDescriptionFormatted');
-            if (descElement && rawProductDescription) {
-                descElement.innerHTML = formatProductDescription(rawProductDescription);
+            console.log('descElement found:', !!descElement);
+
+            if (descElement && typeof rawProductDescription !== 'undefined' && rawProductDescription) {
+                try {
+                    const formatted = formatProductDescription(rawProductDescription);
+                    descElement.innerHTML = formatted;
+                    console.log('Description formatted and inserted successfully');
+                } catch (error) {
+                    console.error('Error during formatting:', error);
+                    descElement.innerHTML = '<pre style="white-space: pre-wrap;">' + rawProductDescription + '</pre>';
+                }
+            } else {
+                console.error('Cannot format description - missing element or data');
             }
         });
 

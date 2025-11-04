@@ -99,7 +99,8 @@ Be critical, accurate, and precise with numbers."""
         "norm_name": norm["name"],
         "applies": applies,
         "confidence": confidence,
-        "reasoning": reasoning
+        "reasoning": reasoning,
+        "url": norm.get("url", "")  # Include URL if available
     }
 
 

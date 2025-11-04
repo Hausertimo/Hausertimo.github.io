@@ -3,7 +3,9 @@
     "allow": [
       "Bash(python:*)",
       "Bash(pip show:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(timeout /t 3 /nobreak:*)",
+      "Bash(nul)"
     ],
     "deny": [],
     "ask": []
