@@ -403,6 +403,10 @@
                 <div class="analyze-btn-progress" id="analyzeBtnProgress"></div>
                 <span class="analyze-btn-text" id="analyzeBtnText">Analyze Compliance Norms</span>
             </button>
+
+            <button id="createWorkspaceBtn" class="analyze-btn" onclick="createWorkspace()" style="display: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin-top: 1rem;">
+                <span class="analyze-btn-text">💾 Create Workspace</span>
+            </button>
         </div>
 
         <div id="resultsContainer" class="results-container">
@@ -418,6 +422,7 @@
     <script>
         let sessionId = null;
         let conversationComplete = false;
+        let analysisComplete = false;  // NEW - tracks if analysis is done
 
         // Send message on Enter key
         document.getElementById('userInput').addEventListener('keypress', function(e) {
@@ -441,7 +446,12 @@
             input.value = '';
 
             try {
-                if (!sessionId) {
+                // POST-ANALYSIS Q&A MODE
+                if (analysisComplete) {
+                    await askAnalysisQuestion(message);
+                }
+                // PRE-ANALYSIS CONVERSATION MODE
+                else if (!sessionId) {
                     // Start new conversation
                     const response = await fetch('/api/develope/start', {
                         method: 'POST',
@@ -513,6 +523,38 @@
             document.getElementById('analyzeBtn').style.display = 'block';
             document.getElementById('userInput').disabled = true;
             document.getElementById('sendBtn').disabled = true;
+        }
+
+        async function askAnalysisQuestion(question) {
+            /**
+             * Ask questions about completed analysis (POST-ANALYSIS Q&A)
+             */
+            try {
+                const response = await fetch('/api/develope/ask-analysis', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        session_id: sessionId,
+                        question: question
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    addMessage('assistant', 'Error: ' + data.error);
+                } else {
+                    addMessage('assistant', data.answer);
+
+                    // Optional: Highlight relevant norms if mentioned
+                    if (data.relevant_norms && data.relevant_norms.length > 0) {
+                        console.log('Relevant norms:', data.relevant_norms);
+                    }
+                }
+            } catch (error) {
+                console.error('Q&A Error:', error);
+                addMessage('assistant', 'Sorry, I had trouble answering that question. Please try again.');
+            }
         }
 
         async function analyzeNorms() {
@@ -609,9 +651,30 @@
             // Show results container
             document.getElementById('resultsContainer').classList.add('visible');
 
-            // Display product description
-            document.getElementById('productDescription').innerHTML =
-                '<h3>Product Description</h3><p>' + data.product_description + '</p>';
+            // Display product description with edit button
+            const formattedDescription = formatProductDescription(data.product_description);
+
+            document.getElementById('productDescription').innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>Product Description</h3>
+                    <button onclick="editProductDescription()" class="edit-btn" style="padding: 0.5rem 1rem; background: #6c757d; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.875rem;">
+                        📝 Edit Description
+                    </button>
+                </div>
+                <div id="productDescText" style="line-height: 1.8; color: var(--text-dark);" data-raw="${data.product_description.replace(/"/g, '&quot;')}">
+                    ${formattedDescription}
+                </div>
+                <textarea id="productDescTextarea" style="display: none; width: 100%; min-height: 150px; padding: 0.75rem; border: 2px solid var(--brand-blue); border-radius: 8px; font-family: inherit; font-size: 0.95rem; resize: vertical; line-height: 1.6;"></textarea>
+                <div id="editActions" style="display: none; margin-top: 1rem; gap: 0.5rem;">
+                    <button onclick="saveProductDescription()" style="padding: 0.5rem 1.5rem; background: var(--brand-blue); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Save Changes</button>
+                    <button onclick="cancelEdit()" style="padding: 0.5rem 1.5rem; background: #6c757d; color: white; border: none; border-radius: 6px; cursor: pointer;">Cancel</button>
+                </div>
+                <div id="regeneratePrompt" style="display: none; margin-top: 1rem; padding: 1rem; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 6px;">
+                    <strong>⚠️ Product description modified</strong>
+                    <p style="margin: 0.5rem 0 0 0;">The analysis results may be outdated. Click the button below to regenerate.</p>
+                    <button onclick="regenerateAnalysis()" style="margin-top: 0.75rem; padding: 0.75rem 1.5rem; background: #ffc107; color: #000; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">🔄 Regenerate Analysis</button>
+                </div>
+            `;
 
             // Display norms count
             document.getElementById('normsCount').textContent = data.total_norms;
@@ -646,6 +709,262 @@
 
             // Scroll to results
             document.getElementById('resultsContainer').scrollIntoView({behavior: 'smooth'});
+
+            // *** PHASE 1: RE-ENABLE CHAT FOR POST-ANALYSIS Q&A ***
+            analysisComplete = true;
+
+            // Re-enable input for Q&A
+            document.getElementById('userInput').disabled = false;
+            document.getElementById('sendBtn').disabled = false;
+            document.getElementById('userInput').placeholder =
+                "Ask questions about the analysis (e.g., 'Why does this norm apply?')";
+            document.getElementById('userInput').focus();
+
+            // Add separator message
+            addMessage('assistant',
+                '✓ Analysis complete! Ask me questions about the results, or you can modify your product description and regenerate the analysis.');
+
+            // *** PHASE 3: SHOW CREATE WORKSPACE BUTTON ***
+            document.getElementById('createWorkspaceBtn').style.display = 'block';
+        }
+
+        // *** FORMAT PRODUCT DESCRIPTION ***
+        function formatProductDescription(description) {
+            // Parse and format the technical product description
+
+            // Replace headers (all caps with colon)
+            let formatted = description
+                // Main headers
+                .replace(/^([A-Z\s]{3,}:)/gm, '<h4 style="color: var(--brand-blue); margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1rem;">$1</h4>')
+                // Section headers (Title Case:)
+                .replace(/^([A-Z][a-zA-Z\s&\/]+:)(?=\s*\n|$)/gm, '<h5 style="color: var(--text-dark); margin-top: 1rem; margin-bottom: 0.5rem; font-size: 0.95rem; font-weight: 600;">$1</h5>')
+                // Bullet points with *
+                .replace(/^\s*\*\s+(.+)$/gm, '<li style="margin-left: 1.5rem; margin-bottom: 0.25rem;">$1</li>')
+                // Bullet points with -
+                .replace(/^\s*-\s+(.+)$/gm, '<li style="margin-left: 1.5rem; margin-bottom: 0.25rem; list-style-type: disc;">$1</li>')
+                // Line breaks to paragraphs
+                .replace(/\n\n+/g, '</p><p style="margin-bottom: 0.75rem;">')
+                // Single line breaks to br
+                .replace(/\n/g, '<br>');
+
+            // Wrap bullet points in ul
+            formatted = formatted.replace(/(<li[^>]*>.*?<\/li>(?:\s*<br>)?)+/gs, '<ul style="margin: 0.5rem 0; padding-left: 0;">$&</ul>');
+
+            // Remove <br> after list items
+            formatted = formatted.replace(/<\/li><br>/g, '</li>');
+
+            // Wrap in paragraph if not already wrapped
+            if (!formatted.startsWith('<h4') && !formatted.startsWith('<p')) {
+                formatted = '<p style="margin-bottom: 0.75rem;">' + formatted + '</p>';
+            }
+
+            // Clean up empty paragraphs
+            formatted = formatted.replace(/<p[^>]*>\s*<\/p>/g, '');
+
+            return formatted;
+        }
+
+        // *** PHASE 2: EDIT & REGENERATE FUNCTIONS ***
+        let originalDescription = '';
+        let needsRegeneration = false;
+
+        function editProductDescription() {
+            const textEl = document.getElementById('productDescText');
+            const textareaEl = document.getElementById('productDescTextarea');
+            const editActionsEl = document.getElementById('editActions');
+
+            // Get raw text from data attribute
+            originalDescription = textEl.getAttribute('data-raw');
+            textareaEl.value = originalDescription;
+
+            textEl.style.display = 'none';
+            textareaEl.style.display = 'block';
+            editActionsEl.style.display = 'flex';
+        }
+
+        function cancelEdit() {
+            const textEl = document.getElementById('productDescText');
+            const textareaEl = document.getElementById('productDescTextarea');
+            const editActionsEl = document.getElementById('editActions');
+
+            textEl.style.display = 'block';
+            textareaEl.style.display = 'none';
+            editActionsEl.style.display = 'none';
+        }
+
+        function saveProductDescription() {
+            const textEl = document.getElementById('productDescText');
+            const textareaEl = document.getElementById('productDescTextarea');
+            const editActionsEl = document.getElementById('editActions');
+            const regeneratePromptEl = document.getElementById('regeneratePrompt');
+
+            const newDescription = textareaEl.value.trim();
+
+            if (!newDescription) {
+                alert('Product description cannot be empty');
+                return;
+            }
+
+            if (newDescription !== originalDescription) {
+                // Update both the raw data and formatted display
+                textEl.setAttribute('data-raw', newDescription);
+                textEl.innerHTML = formatProductDescription(newDescription);
+                needsRegeneration = true;
+                regeneratePromptEl.style.display = 'block';
+
+                // Add overlay to dim results
+                document.getElementById('normsList').style.opacity = '0.5';
+                document.getElementById('normsList').style.pointerEvents = 'none';
+            }
+
+            textEl.style.display = 'block';
+            textareaEl.style.display = 'none';
+            editActionsEl.style.display = 'none';
+        }
+
+        async function regenerateAnalysis() {
+            if (!needsRegeneration) return;
+
+            const newDescription = document.getElementById('productDescText').textContent;
+            const regeneratePromptEl = document.getElementById('regeneratePrompt');
+
+            // Hide regenerate prompt
+            regeneratePromptEl.style.display = 'none';
+
+            // Reset results opacity
+            document.getElementById('normsList').style.opacity = '1';
+            document.getElementById('normsList').style.pointerEvents = 'auto';
+
+            // Show analyze button with progress bar again
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const btnText = document.getElementById('analyzeBtnText');
+            const btnProgress = document.getElementById('analyzeBtnProgress');
+
+            analyzeBtn.disabled = true;
+            analyzeBtn.classList.add('analyzing');
+            btnText.textContent = 'Starting re-analysis...';
+            btnProgress.style.width = '0%';
+            analyzeBtn.style.display = 'block';
+
+            try {
+                // Create EventSource for SSE (reuse analyze logic)
+                const eventSource = new EventSource('/api/develope/analyze-stream?' + new URLSearchParams({
+                    session_id: sessionId
+                }));
+
+                // Update session with new description first (we'll do this in backend)
+                // For now, rebuild summary with new description - actually, let's just re-run analysis
+                // The backend will use the stored conversation history
+
+                // Handle incoming progress updates (same as analyzeNorms)
+                eventSource.onmessage = function(event) {
+                    const data = JSON.parse(event.data);
+
+                    if (data.phase === 'summary') {
+                        btnText.textContent = data.status;
+                        btnProgress.style.width = '5%';
+                    }
+                    else if (data.phase === 'analyzing') {
+                        btnText.textContent = data.status;
+                        const progressPercent = 5 + ((data.progress / data.total) * 90);
+                        btnProgress.style.width = progressPercent + '%';
+                    }
+                    else if (data.phase === 'finalizing') {
+                        btnText.textContent = data.status;
+                        btnProgress.style.width = '95%';
+                    }
+                    else if (data.phase === 'complete') {
+                        btnText.textContent = 'Complete!';
+                        btnProgress.style.width = '100%';
+                        eventSource.close();
+
+                        // Display new results
+                        displayResults(data);
+
+                        // Reset state
+                        needsRegeneration = false;
+
+                        // Hide button after a moment
+                        setTimeout(() => {
+                            analyzeBtn.style.display = 'none';
+                            analyzeBtn.classList.remove('analyzing');
+                            analyzeBtn.disabled = false;
+                            btnText.textContent = 'Analyze Compliance Norms';
+                            btnProgress.style.width = '0%';
+                        }, 1000);
+                    }
+                    else if (data.phase === 'error') {
+                        eventSource.close();
+                        alert('Error: ' + data.error);
+
+                        // Reset button
+                        analyzeBtn.classList.remove('analyzing');
+                        analyzeBtn.disabled = false;
+                        btnText.textContent = 'Analyze Compliance Norms';
+                        btnProgress.style.width = '0%';
+                    }
+                };
+
+                eventSource.onerror = function(error) {
+                    console.error('SSE Error:', error);
+                    eventSource.close();
+                    alert('Connection error during re-analysis. Please try again.');
+
+                    // Reset button
+                    analyzeBtn.classList.remove('analyzing');
+                    analyzeBtn.disabled = false;
+                    btnText.textContent = 'Analyze Compliance Norms';
+                    btnProgress.style.width = '0%';
+                };
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, something went wrong during re-analysis.');
+
+                // Reset button
+                analyzeBtn.classList.remove('analyzing');
+                analyzeBtn.disabled = false;
+                btnText.textContent = 'Analyze Compliance Norms';
+                btnProgress.style.width = '0%';
+            }
+        }
+
+        // *** PHASE 3: CREATE WORKSPACE FUNCTION ***
+        async function createWorkspace() {
+            if (!analysisComplete) {
+                alert('Please complete the analysis first');
+                return;
+            }
+
+            const btn = document.getElementById('createWorkspaceBtn');
+            const originalText = btn.innerHTML;
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="analyze-btn-text">Creating workspace...</span>';
+
+            try {
+                const response = await fetch('/api/workspace/create', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({session_id: sessionId})
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    alert('Error creating workspace: ' + data.error);
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                } else {
+                    // Redirect to workspace page
+                    window.location.href = data.url;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, something went wrong creating the workspace.');
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
         }
     </script>
 </body>

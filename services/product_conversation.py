@@ -204,3 +204,95 @@ PRODUCT DESCRIPTION:"""
         description = description.replace("PRODUCT DESCRIPTION:", "").strip()
 
     return description
+
+
+def answer_analysis_question(
+    product_description: str,
+    matched_norms: list,
+    all_norms: list,
+    question: str
+) -> dict:
+    """
+    Answer user questions about completed compliance analysis.
+
+    Args:
+        product_description: The final product summary
+        matched_norms: Norms that applied (confidence > threshold)
+        all_norms: ALL norm check results including rejected ones
+        question: User's question about the analysis
+
+    Returns:
+        {
+            "answer": str,
+            "relevant_norms": [norm_ids],
+            "confidence": int
+        }
+    """
+    import json
+
+    # Build context - separate matched and rejected norms
+    matched_ids = [n['norm_id'] for n in matched_norms]
+    rejected_norms = [n for n in all_norms if n['norm_id'] not in matched_ids]
+
+    # Prepare norm context (show samples to stay within token limits)
+    matched_context = json.dumps(matched_norms[:20], indent=2) if len(matched_norms) > 0 else "None"
+    rejected_context = json.dumps(rejected_norms[:10], indent=2) if len(rejected_norms) > 0 else "None"
+
+    prompt = f"""You are an EU compliance expert. Answer the user's question about this product's compliance analysis.
+
+PRODUCT:
+{product_description}
+
+APPLICABLE NORMS ({len(matched_norms)} total):
+{matched_context}
+
+REJECTED NORMS ({len(rejected_norms)} total, showing first 10):
+{rejected_context}
+
+USER QUESTION:
+{question}
+
+INSTRUCTIONS:
+- Provide clear, accurate answers based on the analysis results
+- Reference specific norms by their ID (e.g., "EN 62368-1") when relevant
+- If asked "why", quote the reasoning field from the norm analysis
+- If asked about consequences, explain legal/business implications
+- If asked about missing norms, check the rejected list
+- Be concise but thorough (2-4 paragraphs max)
+- Use bullet points for multi-part answers
+- Provide actionable guidance when appropriate
+
+ANSWER:"""
+
+    messages = [{"role": "user", "content": prompt}]
+
+    result = call_openrouter(
+        messages,
+        model="anthropic/claude-3.5-sonnet",
+        temperature=0.5,
+        max_tokens=800
+    )
+
+    if not result["success"]:
+        logger.error(f"Q&A failed: {result.get('error')}")
+        return {
+            "answer": "I'm having trouble answering that question right now. Please try rephrasing or ask another question.",
+            "relevant_norms": [],
+            "confidence": 0
+        }
+
+    # Extract norm IDs mentioned in the answer
+    answer_text = result["content"]
+    relevant_norms = []
+
+    # Simple extraction: look for norm IDs in format "XX XXXXX" or "XX-XXXXX"
+    import re
+    norm_pattern = r'\b[A-Z]{2}[\s\-]?\d{4,5}[\-\d]*\b'
+    found_ids = re.findall(norm_pattern, answer_text)
+    relevant_norms = list(set(found_ids))  # Remove duplicates
+
+    return {
+        "answer": answer_text,
+        "relevant_norms": relevant_norms,
+        "confidence": 85  # High confidence for factual Q&A based on analysis
+    }

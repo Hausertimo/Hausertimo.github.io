@@ -169,10 +169,11 @@ def match_norms_streaming(product_description: str, max_workers: int = 10):
     Yields:
         Tuples of:
         - ('progress', completed, total, norm_id) for each completed norm
-        - ('complete', results) when all norms are checked
+        - ('complete', matched_results, all_results) when all norms are checked
     """
     norms = load_norms()
-    results = []
+    matched_results = []  # Norms that apply
+    all_results = []      # ALL checks (for Q&A context)
     completed = 0
     total = len(norms)
 
@@ -193,8 +194,9 @@ def match_norms_streaming(product_description: str, max_workers: int = 10):
 
             try:
                 result = future.result()
+                all_results.append(result)  # Store ALL results
                 if result["applies"]:
-                    results.append(result)
+                    matched_results.append(result)
                 logger.info(f"[{completed}/{total}] OK {norm['id']}")
 
                 # Yield progress immediately
@@ -205,10 +207,10 @@ def match_norms_streaming(product_description: str, max_workers: int = 10):
                 # Still yield progress even on error
                 yield ('progress', completed, total, norm['id'])
 
-    # Sort by confidence
-    results.sort(key=lambda x: x["confidence"], reverse=True)
+    # Sort matched results by confidence
+    matched_results.sort(key=lambda x: x["confidence"], reverse=True)
 
-    logger.info(f"Found {len(results)} applicable norms")
+    logger.info(f"Found {len(matched_results)} applicable norms out of {len(all_results)} total")
 
-    # Yield final results
-    yield ('complete', results)
+    # Yield final results - both matched AND all results
+    yield ('complete', matched_results, all_results)

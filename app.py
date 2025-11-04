@@ -47,6 +47,7 @@ from routes.analytics import analytics_bp, init_redis as init_analytics_redis
 from routes.compliance import compliance_bp, init_dependencies as init_compliance_deps
 from routes.fields import field_bp
 from routes.develope import develope_bp
+from routes.workspace import workspace_bp
 
 # Import services
 from services.openrouter import analyze_product_compliance, validate_product_input
@@ -59,6 +60,7 @@ app.register_blueprint(analytics_bp)
 app.register_blueprint(compliance_bp)
 app.register_blueprint(field_bp)
 app.register_blueprint(develope_bp)
+app.register_blueprint(workspace_bp)
 
 # Initialize blueprint dependencies
 init_analytics_redis(redis_client)

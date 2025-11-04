@@ -11,7 +11,8 @@ import json
 from services.product_conversation import (
     analyze_completeness,
     generate_next_question,
-    build_final_summary
+    build_final_summary,
+    answer_analysis_question
 )
 from services.norm_matcher import match_norms, match_norms_streaming
 
@@ -234,6 +235,7 @@ def analyze_norms_stream():
 
             # Phase 2: Stream norm matching with real-time progress
             matched_norms = None
+            all_norm_results = None
 
             for event_type, *event_data in match_norms_streaming(product_description, max_workers=10):
                 if event_type == 'progress':
@@ -257,14 +259,17 @@ def analyze_norms_stream():
 
                 elif event_type == 'complete':
                     matched_norms = event_data[0]
+                    all_norm_results = event_data[1]  # Store ALL results for Q&A
 
             # Phase 3: Finalization
             yield f"data: {json.dumps({'phase': 'finalizing', 'status': 'Finalizing results...'})}\n\n"
 
-            # Store results in session
+            # Store results in session - including ALL results for post-analysis Q&A
             session_data["product_description"] = product_description
             session_data["matched_norms"] = matched_norms
+            session_data["all_norm_results"] = all_norm_results  # NEW - for Q&A context
             session_data["analyzed"] = datetime.now().isoformat()
+            session_data["qa_history"] = []  # Initialize Q&A history
 
             logger.info(f"Analyzed norms for session {session_id}: {len(matched_norms)} norms matched")
 
@@ -279,6 +284,73 @@ def analyze_norms_stream():
     response.headers['Cache-Control'] = 'no-cache'
     response.headers['X-Accel-Buffering'] = 'no'
     return response
+
+
+@develope_bp.route('/api/develope/ask-analysis', methods=['POST'])
+def ask_about_analysis():
+    """
+    Answer questions about completed analysis (POST-ANALYSIS Q&A)
+
+    Expects:
+        {
+            "session_id": "uuid",
+            "question": "Why does EN 62368-1 apply?"
+        }
+
+    Returns:
+        {
+            "answer": "...",
+            "relevant_norms": ["EN 62368-1", ...],
+            "confidence": 85
+        }
+    """
+    try:
+        data = request.get_json()
+        session_id = data.get('session_id')
+        question = data.get('question', '').strip()
+
+        if not session_id or session_id not in conversation_sessions:
+            return jsonify({"error": "Invalid or expired session"}), 400
+
+        if not question:
+            return jsonify({"error": "Question is required"}), 400
+
+        session_data = conversation_sessions[session_id]
+
+        # Check if analysis has been completed
+        if not session_data.get('analyzed'):
+            return jsonify({"error": "Please complete the analysis first"}), 400
+
+        # Get analysis data
+        product_description = session_data.get("product_description", "")
+        matched_norms = session_data.get("matched_norms", [])
+        all_norm_results = session_data.get("all_norm_results", [])
+
+        # Call Q&A function
+        result = answer_analysis_question(
+            product_description=product_description,
+            matched_norms=matched_norms,
+            all_norms=all_norm_results,
+            question=question
+        )
+
+        # Store Q&A in history
+        if 'qa_history' not in session_data:
+            session_data['qa_history'] = []
+
+        session_data['qa_history'].append({
+            "question": question,
+            "answer": result["answer"],
+            "timestamp": datetime.now().isoformat()
+        })
+
+        logger.info(f"Q&A for session {session_id}: question_length={len(question)}")
+
+        return jsonify(result)
+
+    except Exception as e:
+        logger.exception(f"Error in post-analysis Q&A: {e}")
+        return jsonify({"error": str(e)}), 500
 
 
 @develope_bp.route('/api/develope/session/<session_id>', methods=['GET'])
