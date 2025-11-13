@@ -633,7 +633,8 @@
                     bottom: 0;
                     left: 0;
                     right: 0;
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: rgba(26, 26, 26, 0.95);
+                    backdrop-filter: blur(10px);
                     color: white;
                     padding: 1.5rem;
                     box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
@@ -672,10 +673,11 @@
                 .cookie-consent-text p {
                     margin: 0;
                     line-height: 1.5;
+                    color: white;
                 }
 
                 .cookie-consent-text a {
-                    color: white;
+                    color: #448CF7;
                     text-decoration: underline;
                     font-weight: 600;
                 }

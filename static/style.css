@@ -99,6 +99,16 @@ p {
     color: var(--text-light);
 }
 
+ul, ol {
+    margin-bottom: var(--spacing-sm);
+    padding-left: 1.5em;
+}
+
+ul li, ol li {
+    margin-bottom: 0.5em;
+    line-height: 1.6;
+}
+
 /* Global Section Styles */
 .section-title {
     text-align: left;
@@ -279,7 +289,7 @@ p {
    ================================================ */
 
 .how-it-works {
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-lg) 0 var(--spacing-2xl) 0;
     background-color: var(--white);
 }
 
@@ -1131,10 +1141,12 @@ p {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    text-align: left;
 }
 
 .teaser-message p {
     margin: 0;
+    text-align: left;
 }
 
 .teaser-user {
