@@ -32,7 +32,7 @@ try:
 except (ImportError, OSError) as e:
     WEASYPRINT_AVAILABLE = False
     print(f"WARNING: WeasyPrint not available - PDF export will be disabled: {e}")
-    print("   For local development, this is fine. For production, install GTK libraries.")
+    print("         For local development, this is fine. For production, install GTK libraries.")
 
 # ============================================================================
 # CONFIGURATION
@@ -738,6 +738,13 @@ def ask_question(workspace_id: str):
 @require_auth
 def export_workspace_pdf(workspace_id: str):
     """Export workspace as PDF"""
+    # Check if WeasyPrint is available
+    if not WEASYPRINT_AVAILABLE:
+        return jsonify({
+            "error": "PDF export is not available. WeasyPrint library is not installed.",
+            "hint": "This feature requires GTK libraries. It may not work on Windows locally."
+        }), 503
+
     try:
         user_id = get_current_user_id()
 
