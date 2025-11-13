@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace - NormScout</title>
+    <link rel="icon" type="image/svg+xml" href="/img/logo_icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/img/full_logo.svg" alt="NormScout" class="logo-svg">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <a href="/dashboard" class="nav-link">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 4px;">
+                            <path d="M2 8l6-6 6 6M4 6v8h3V10h2v4h3V6"/>
+                        </svg>
+                        Dashboard
+                    </a>
+
+                    <!-- User Dropdown -->
+                    <div id="userDropdown" class="user-dropdown" style="display: none;">
+                        <button class="user-menu-btn" onclick="toggleUserMenu()">
+                            <img id="userAvatar" src="" alt="User" class="user-avatar">
+                            <span id="userEmail">Loading...</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 11L3 6h10l-5 5z"/>
+                            </svg>
+                        </button>
+                        <div id="userMenu" class="user-menu">
+                            <a href="/dashboard" class="user-menu-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M2 2h5v5H2V2zm7 0h5v5H9V2zM2 9h5v5H2V9zm7 0h5v5H9V9z"/>
+                                </svg>
+                                Dashboard
+                            </a>
+                            <a href="/dashboard#account" class="user-menu-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 8a3 3 0 100-6 3 3 0 000 6zm-5 6a5 5 0 0110 0H3z"/>
+                                </svg>
+                                Account
+                            </a>
+                            <hr class="user-menu-divider">
+                            <button onclick="signOut()" class="user-menu-item user-menu-button">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M6 14V2M2 8l4-4m0 8l-4-4m8-6h4v12h-4"/>
+                                </svg>
+                                Sign Out
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Workspace Content -->
+    <div class="workspace-view-container">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="workspaceLoading" class="loading-state" style="display: flex;">
+                <div class="loading-spinner"></div>
+                <p>Loading workspace...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="workspaceError" class="error-state" style="display: none;">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="error-icon">
+                    <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2"/>
+                    <path d="M32 20v16M32 44v.5" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h2>Workspace Not Found</h2>
+                <p id="errorMessage">This workspace doesn't exist or you don't have access to it.</p>
+                <a href="/dashboard" class="btn btn-accent">Back to Dashboard</a>
+            </div>
+
+            <!-- Workspace Content (hidden until loaded) -->
+            <div id="workspaceContent" style="display: none;">
+                <!-- Workspace Header -->
+                <div class="workspace-header">
+                    <div>
+                        <div class="workspace-breadcrumb">
+                            <a href="/dashboard">Dashboard</a>
+                            <span>/</span>
+                            <span id="workspaceNumber">Workspace</span>
+                        </div>
+                        <h1 id="workspaceName" class="workspace-title">Loading...</h1>
+                    </div>
+                    <div class="workspace-header-actions">
+                        <button class="btn btn-secondary" onclick="exportWorkspace()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 2v10M5 9l3 3 3-3M2 14h12"/>
+                            </svg>
+                            Export PDF
+                        </button>
+                        <button class="btn btn-secondary" onclick="showRenameModal()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2 12l10-10 2 2-10 10H2v-2z"/>
+                            </svg>
+                            Rename
+                        </button>
+                        <button class="btn btn-danger" onclick="showDeleteModal()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M4 4l8 8M12 4l-8 8"/>
+                            </svg>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+
+                <div class="workspace-grid">
+                    <!-- Main Content -->
+                    <div class="workspace-main">
+                        <!-- Product Description -->
+                        <div class="workspace-section">
+                            <h2 class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M4 4h12v12H4V4z"/>
+                                    <path d="M7 8h6M7 11h4"/>
+                                </svg>
+                                Product Description
+                            </h2>
+                            <div class="section-content">
+                                <p id="productDescription">Loading...</p>
+                            </div>
+                        </div>
+
+                        <!-- Compliance Results -->
+                        <div class="workspace-section">
+                            <h2 class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10 2L3 7v6c0 4 7 5 7 5s7-1 7-5V7l-7-5z"/>
+                                    <path d="M7 10l2 2 4-4"/>
+                                </svg>
+                                Compliance Results
+                            </h2>
+                            <div class="section-content">
+                                <div id="complianceResults">Loading...</div>
+                            </div>
+                        </div>
+
+                        <!-- Q&A Section -->
+                        <div class="workspace-section">
+                            <h2 class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M18 10c0 4.4-3.6 8-8 8-1.4 0-2.8-.4-4-1l-4 1 1-4c-.6-1.2-1-2.6-1-4 0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+                                </svg>
+                                Questions & Answers
+                            </h2>
+                            <div class="section-content">
+                                <div id="qaHistory" class="qa-history">
+                                    <!-- Q&A items will be inserted here -->
+                                </div>
+
+                                <!-- Ask Question Form -->
+                                <div class="ask-question-form">
+                                    <textarea
+                                        id="questionInput"
+                                        placeholder="Ask a question about this workspace..."
+                                        rows="3"
+                                    ></textarea>
+                                    <button class="btn btn-accent" onclick="askQuestion()" id="askBtn">
+                                        Send Question
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="workspace-sidebar">
+                        <div class="sidebar-section">
+                            <h3>Workspace Info</h3>
+                            <div class="sidebar-info">
+                                <div class="info-item">
+                                    <label>Created</label>
+                                    <span id="createdDate">Loading...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Last Updated</label>
+                                    <span id="updatedDate">Loading...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Questions Asked</label>
+                                    <span id="qaCount">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rename Modal -->
+    <div id="renameModal" class="modal" style="display: none;">
+        <div class="modal-content modal-small">
+            <button class="modal-close" onclick="hideRenameModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Rename Workspace</h2>
+            </div>
+            <div class="modal-body">
+                <label for="newWorkspaceName">Workspace Name</label>
+                <input type="text" id="newWorkspaceName" class="input-field" placeholder="Enter new name">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="hideRenameModal()">Cancel</button>
+                <button class="btn btn-accent" onclick="saveRename()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="modal" style="display: none;">
+        <div class="modal-content modal-small">
+            <button class="modal-close" onclick="hideDeleteModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Delete Workspace?</h2>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this workspace?</p>
+                <p class="text-muted">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="hideDeleteModal()">Cancel</button>
+                <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/auth.js"></script>
+    <script src="/workspace.js"></script>
+    <script src="/tracking.js"></script>
+</body>
+</html>
