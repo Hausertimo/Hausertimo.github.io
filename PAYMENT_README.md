@@ -167,67 +167,71 @@ stripe trigger payment_intent.succeeded
 
 ## 💻 Frontend Integration
 
-### Simple Checkout Button
+### Stripe Checkout (Recommended - Full Redirect) 🔒
+
+This is the simplest and most secure approach. Users click a button and are redirected to Stripe's hosted payment page.
+
+**Why this is better for you:**
+- 🔒 Card data **never touches your server**
+- 🎨 Stripe handles all the UI (mobile-optimized)
+- ✅ PCI compliance out of the box
+- 💳 Supports all payment methods automatically
+- 🌍 Localized in 25+ languages
 
 ```html
-<script src="https://js.stripe.com/v3/"></script>
+<!-- No Stripe.js needed! Super simple: -->
 <script>
-const stripe = Stripe('pk_test_your_key');
-
-async function checkout() {
-  // Create payment intent
-  const response = await fetch('/api/payment/create-payment-intent', {
+async function subscribeToPro() {
+  // Call your backend
+  const response = await fetch('/api/payment/create-checkout-session', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      amount: 2999,  // $29.99
-      currency: 'usd'
+      price_id: 'price_xxx',  // Your Stripe price ID
+      mode: 'subscription',   // or 'payment' for one-time
+      plan: 'pro'
     })
   });
 
-  const {client_secret} = await response.json();
+  const {checkout_url} = await response.json();
 
-  // Confirm payment
-  const {error} = await stripe.confirmCardPayment(client_secret, {
-    payment_method: {
-      card: cardElement,
-      billing_details: {email: userEmail}
-    }
-  });
-
-  if (!error) {
-    alert('Payment successful!');
-  }
+  // Redirect to Stripe's hosted page
+  window.location.href = checkout_url;
 }
 </script>
+
+<!-- Button -->
+<button onclick="subscribeToPro()">Subscribe to Pro</button>
 ```
 
-See `static/payment_example.html` for complete working example.
+**That's it!** User pays on Stripe → Redirected back to your site → Webhook confirms payment.
+
+See `static/payment_example.html` for complete working example with beautiful pricing cards.
 
 ## 🔗 Available Endpoints
 
 All endpoints are prefixed with `/api/payment/`
 
-### Customer Management
-- `POST /customer/create` - Create customer
-- `GET /customer/info` - Get customer details
-
-### One-Time Payments
-- `POST /create-payment-intent` - Create payment
-- `GET /payment-status/<id>` - Check payment status
+### 🌟 Stripe Checkout (Recommended)
+- `POST /create-checkout-session` - Create checkout session (redirects to Stripe)
+- `GET /checkout-session/<id>` - Get session details after payment
 
 ### Subscriptions
-- `POST /subscription/create` - Create subscription
 - `POST /subscription/cancel` - Cancel subscription
 - `GET /subscription/list` - List subscriptions
 
 ### Webhooks
-- `POST /webhook` - Handle Stripe webhooks
+- `POST /webhook` - Handle Stripe webhooks (automatic payment confirmation)
 
 ### Other
+- `POST /customer/create` - Create customer
+- `GET /customer/info` - Get customer details
 - `POST /refund` - Create refund
 - `GET /payment-methods` - List saved cards
-- `GET /config` - Get publishable key
+
+### Success/Cancel Pages
+- `/payment/success` - User redirected here after successful payment
+- `/payment/cancel` - User redirected here if they cancel on Stripe
 
 ## 📊 Pricing Plans
 

@@ -35,3 +35,17 @@ def serve_contact():
 def serve_image(filename):
     """Serve images from the img directory for email signatures"""
     return send_from_directory('static/img', filename)
+
+
+# ==================== PAYMENT PAGES ====================
+
+@main_bp.route("/payment/success")
+def payment_success():
+    """Serve the payment success page (redirect from Stripe)"""
+    return send_file('static/payment_success.html')
+
+
+@main_bp.route("/payment/cancel")
+def payment_cancel():
+    """Serve the payment cancelled page (redirect from Stripe)"""
+    return send_file('static/payment_cancel.html')

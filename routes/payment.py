@@ -142,6 +142,138 @@ def revoke_access(user_id: str):
     pass
 
 
+# ==================== STRIPE CHECKOUT (RECOMMENDED) ====================
+
+@payment_bp.route('/create-checkout-session', methods=['POST'])
+def create_checkout_session():
+    """
+    Create a Stripe Checkout session - redirects user to Stripe's hosted payment page.
+    This is the RECOMMENDED approach as Stripe handles all payment UI and security.
+
+    Request body:
+        {
+            "price_id": "price_xxx",  // Stripe price ID from Dashboard
+            "mode": "subscription",   // 'subscription' or 'payment' (one-time)
+            "plan": "pro"            // Optional: plan name for metadata
+        }
+
+    Returns:
+        {
+            "success": true,
+            "checkout_url": "https://checkout.stripe.com/...",
+            "session_id": "cs_xxx"
+        }
+
+    Frontend usage:
+        const response = await fetch('/api/payment/create-checkout-session', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({price_id: 'price_xxx', mode: 'subscription'})
+        });
+        const {checkout_url} = await response.json();
+        window.location.href = checkout_url;  // Redirect to Stripe
+    """
+    # TODO: Add authentication check
+    # user = get_current_user()
+    # if not user:
+    #     return jsonify({'success': False, 'error': 'Not authenticated'}), 401
+
+    try:
+        import stripe
+        data = request.get_json()
+
+        price_id = data.get('price_id')
+        mode = data.get('mode', 'subscription')  # 'subscription' or 'payment'
+        plan = data.get('plan', 'pro')
+
+        if not price_id:
+            return jsonify({'success': False, 'error': 'Price ID required'}), 400
+
+        # Get base URL for success/cancel redirects
+        # In production, use your actual domain
+        base_url = os.getenv('BASE_URL', 'http://localhost:8080')
+
+        # Create Checkout Session
+        session_config = {
+            'payment_method_types': ['card'],
+            'line_items': [{
+                'price': price_id,
+                'quantity': 1,
+            }],
+            'mode': mode,
+            'success_url': f'{base_url}/payment/success?session_id={{CHECKOUT_SESSION_ID}}',
+            'cancel_url': f'{base_url}/payment/cancel',
+            'metadata': {
+                # TODO: Add user_id when auth is implemented
+                # 'user_id': user['user_id'],
+                'plan': plan
+            }
+        }
+
+        # Pre-fill customer email if available
+        # TODO: Uncomment when auth is ready
+        # if user.get('email'):
+        #     session_config['customer_email'] = user['email']
+
+        # If user already has a Stripe customer ID, use it
+        # TODO: Uncomment when auth is ready
+        # if user.get('stripe_customer_id'):
+        #     session_config['customer'] = user['stripe_customer_id']
+
+        session = stripe.checkout.Session.create(**session_config)
+
+        logger.info(f"Created checkout session: {session.id}")
+
+        return jsonify({
+            'success': True,
+            'checkout_url': session.url,
+            'session_id': session.id
+        })
+
+    except Exception as e:
+        logger.error(f"Error creating checkout session: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@payment_bp.route('/checkout-session/<session_id>', methods=['GET'])
+def get_checkout_session(session_id):
+    """
+    Retrieve checkout session details (useful for success page).
+
+    Returns:
+        {
+            "success": true,
+            "session": {
+                "payment_status": "paid",
+                "customer_email": "user@example.com",
+                "amount_total": 2999,
+                ...
+            }
+        }
+    """
+    try:
+        import stripe
+        session = stripe.checkout.Session.retrieve(session_id)
+
+        return jsonify({
+            'success': True,
+            'session': {
+                'id': session.id,
+                'payment_status': session.payment_status,
+                'customer_email': session.customer_details.email if session.customer_details else None,
+                'amount_total': session.amount_total,
+                'currency': session.currency,
+                'customer': session.customer,
+                'subscription': session.subscription,
+                'metadata': session.metadata
+            }
+        })
+
+    except Exception as e:
+        logger.error(f"Error retrieving checkout session: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 # ==================== CUSTOMER ENDPOINTS ====================
 
 @payment_bp.route('/customer/create', methods=['POST'])
