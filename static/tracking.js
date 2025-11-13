@@ -453,7 +453,7 @@
 
             if (useBeacon && navigator.sendBeacon) {
                 // Use sendBeacon for reliable delivery on page unload
-                navigator.sendBeacon(CONFIG.apiEndpoint, payload);
+                navigator.sendBeacon(CONFIG.apiEndpoint, new Blob([payload], { type: 'application/json' }));
                 log('Events sent via beacon:', events.length);
             } else {
                 // Use fetch for normal sending
