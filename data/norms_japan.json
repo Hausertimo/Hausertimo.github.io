@@ -1,0 +1,389 @@
+{
+  "_comment": "Japan compliance norms and standards database. Includes PSE, Radio Law, JIS, VCCI, METI and other Japanese regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "PSE-Category A",
+      "name": "Electrical Appliance and Material Safety Law - Specified Products",
+      "category": "PSE Electrical Safety",
+      "applies_to": "Specified electrical products (116 categories) including power supplies, chargers, lithium batteries",
+      "description": "Mandatory safety certification for Category A products. Requires third-party testing, factory inspection. Diamond-shaped PSE mark. Includes AC adapters, lithium-ion batteries, electrical cords.",
+      "url": "https://www.meti.go.jp/english/policy/consumer/system/index.html"
+    },
+    {
+      "id": "PSE-Category B",
+      "name": "Electrical Appliance and Material Safety Law - Non-Specified Products",
+      "category": "PSE Electrical Safety",
+      "applies_to": "Non-specified electrical products (341 categories) including IT equipment, household appliances",
+      "description": "Self-declaration for Category B products. Circular PSE mark. Testing required but no factory inspection. Includes computers, printers, TVs, most consumer electronics.",
+      "url": "https://www.meti.go.jp/english/policy/consumer/system/index.html"
+    },
+    {
+      "id": "PSE Lithium-Ion Battery",
+      "name": "PSE Certification for Lithium-Ion Batteries",
+      "category": "PSE Electrical Safety",
+      "applies_to": "Lithium-ion batteries and battery packs",
+      "description": "Mandatory PSE certification for lithium-ion batteries as Category A specified product. Technical requirements based on JIS C 8712, JIS C 8714. Factory inspection required.",
+      "url": "https://www.meti.go.jp/policy/consumer/seian/denan/specified_001.html"
+    },
+    {
+      "id": "TELEC",
+      "name": "Technical Conformity Certification for Radio Equipment",
+      "category": "Radio Frequency",
+      "applies_to": "All radio transmitting equipment including WiFi, Bluetooth, cellular",
+      "description": "Mandatory certification under Radio Law. Technical conformity mark required on radio equipment. Covers 2.4GHz, 5GHz WiFi, Bluetooth, cellular, RFID. Testing at MIC-designated labs.",
+      "url": "https://www.tele.soumu.go.jp/e/index.htm"
+    },
+    {
+      "id": "JATE",
+      "name": "Terminal Equipment Approval",
+      "category": "Telecommunications",
+      "applies_to": "Equipment connecting to public telecommunications network",
+      "description": "Approval required for terminal equipment connecting to telecom networks. Prevents harm to network. Includes wired phones, modems, fax machines, VoIP devices.",
+      "url": "https://www.jate.or.jp/en/"
+    },
+    {
+      "id": "VCCI Class B",
+      "name": "Voluntary Control Council for Interference - Residential",
+      "category": "EMC",
+      "applies_to": "Information technology equipment for residential use",
+      "description": "Voluntary EMC certification for residential ITE. Class B (more stringent) for residential environments. VCCI mark widely recognized. Registration required before sale.",
+      "url": "https://www.vcci.jp/vcci_e/"
+    },
+    {
+      "id": "VCCI Class A",
+      "name": "Voluntary Control Council for Interference - Commercial",
+      "category": "EMC",
+      "applies_to": "Information technology equipment for commercial/industrial use",
+      "description": "Voluntary EMC certification for commercial ITE. Class A limits (less stringent than Class B). Must be labeled for commercial use only if Class A.",
+      "url": "https://www.vcci.jp/vcci_e/"
+    },
+    {
+      "id": "JIS C 62368-1",
+      "name": "Audio/Video, ICT Equipment - Safety",
+      "category": "Product Safety Standards",
+      "applies_to": "IT, AV, communication equipment",
+      "description": "Japanese Industrial Standard for ICT equipment safety. Harmonized with IEC 62368-1. Used for PSE certification of Category B products.",
+      "url": "https://webdesk.jsa.or.jp/"
+    },
+    {
+      "id": "JIS C 8712",
+      "name": "Portable Lithium Secondary Cells and Batteries for Use in Portable Equipment - Safety Requirements",
+      "category": "Product Safety Standards",
+      "applies_to": "Portable lithium-ion cells and battery packs",
+      "description": "Japanese safety standard for portable lithium batteries. Based on IEC 62133. Required for PSE lithium battery certification.",
+      "url": "https://webdesk.jsa.or.jp/"
+    },
+    {
+      "id": "JIS C 8714",
+      "name": "Safety Tests for Portable Lithium-Ion Secondary Cells and Batteries",
+      "category": "Product Safety Standards",
+      "applies_to": "Lithium-ion batteries for portable applications",
+      "description": "Test methods for safety evaluation of lithium-ion batteries. Used with JIS C 8712 for PSE certification.",
+      "url": "https://webdesk.jsa.or.jp/"
+    },
+    {
+      "id": "JIS C 6950-1",
+      "name": "Information Technology Equipment - Safety (LEGACY)",
+      "category": "Product Safety Standards",
+      "applies_to": "IT equipment (replaced by JIS C 62368-1)",
+      "description": "LEGACY standard for IT equipment safety. Replaced by JIS C 62368-1 but may still be referenced in older certifications.",
+      "url": "https://webdesk.jsa.or.jp/"
+    },
+    {
+      "id": "JIS C 61000-6-1",
+      "name": "EMC - Generic Immunity Standard - Residential",
+      "category": "EMC Standards",
+      "applies_to": "Equipment for residential, commercial, light industrial",
+      "description": "Generic immunity standard for residential environments. Harmonized with IEC 61000-6-1.",
+      "url": "https://webdesk.jsa.or.jp/"
+    },
+    {
+      "id": "JIS C 61000-6-3",
+      "name": "EMC - Generic Emission Standard - Residential",
+      "category": "EMC Standards",
+      "applies_to": "Equipment for residential, commercial, light industrial",
+      "description": "Generic emission standard for residential environments. Harmonized with IEC 61000-6-3.",
+      "url": "https://webdesk.jsa.or.jp/"
+    },
+    {
+      "id": "ARIB STD-T66",
+      "name": "2.4GHz Band Low Power Data Communication System",
+      "category": "Radio Standards",
+      "applies_to": "2.4GHz wireless devices (WiFi, Bluetooth, Zigbee)",
+      "description": "Technical standard for 2.4GHz band wireless systems. Used for TELEC certification of WiFi, Bluetooth devices. Developed by ARIB (Association of Radio Industries and Businesses).",
+      "url": "https://www.arib.or.jp/english/index.html"
+    },
+    {
+      "id": "ARIB STD-T71",
+      "name": "5GHz Band Wireless Access System",
+      "category": "Radio Standards",
+      "applies_to": "5GHz WiFi devices",
+      "description": "Technical standard for 5GHz wireless LAN. Includes DFS (Dynamic Frequency Selection) requirements. Used for TELEC certification.",
+      "url": "https://www.arib.or.jp/english/index.html"
+    },
+    {
+      "id": "ARIB STD-T113",
+      "name": "920MHz Band Telemeter, Telecontrol and Data Transmission Equipment",
+      "category": "Radio Standards",
+      "applies_to": "920MHz band IoT devices",
+      "description": "Technical standard for 920MHz band low power wide area systems. Common for IoT, smart meters, sensors.",
+      "url": "https://www.arib.or.jp/english/index.html"
+    },
+    {
+      "id": "Fire Service Law",
+      "name": "Fire Prevention for Electrical Equipment",
+      "category": "Fire Safety",
+      "applies_to": "Electrical equipment that may pose fire risk",
+      "description": "Requirements to prevent fire hazards from electrical equipment. May require additional testing for high-power devices, heating elements. Local fire department approval.",
+      "url": "https://www.fdma.go.jp/en/"
+    },
+    {
+      "id": "PAL Medical Devices",
+      "name": "Pharmaceutical Affairs Law - Medical Devices",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including diagnostic software",
+      "description": "Medical device approval under Pharmaceutical and Medical Device Act (PMDA oversight). Classification I-IV based on risk. QMS requirements similar to ISO 13485.",
+      "url": "https://www.pmda.go.jp/english/"
+    },
+    {
+      "id": "PMDA Approval",
+      "name": "Medical Device Pre-Market Approval",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices for Japanese market",
+      "description": "PMDA (Pharmaceuticals and Medical Devices Agency) approval process. Classes II-IV require approval or certification. Class I notification only. Clinical data often required.",
+      "url": "https://www.pmda.go.jp/english/review-services/reviews/0002.html"
+    },
+    {
+      "id": "J-Mark",
+      "name": "JIS Mark Certification",
+      "category": "Quality Standards",
+      "applies_to": "Products complying with JIS standards",
+      "description": "Voluntary certification that product meets JIS (Japanese Industrial Standards). Shows quality commitment. Common for industrial products, materials, components.",
+      "url": "https://www.jisc.go.jp/eng/"
+    },
+    {
+      "id": "S-Mark (JET)",
+      "name": "Japan Electrical Safety and Environment Technology Laboratories Certification",
+      "category": "Quality Standards",
+      "applies_to": "Electrical products",
+      "description": "Voluntary safety certification by JET. Demonstrates compliance beyond PSE requirements. Recognized quality mark. Factory inspection included.",
+      "url": "https://www.jet.or.jp/en/"
+    },
+    {
+      "id": "Energy Conservation Law",
+      "name": "Act on Rational Use of Energy",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-consuming products including electronics, appliances, vehicles",
+      "description": "Top Runner program sets energy efficiency standards. Products must meet efficiency targets. Labeling requirements. Covers 30+ product categories.",
+      "url": "https://www.enecho.meti.go.jp/category/saving_and_new/saving/enterprise/overview/index.html"
+    },
+    {
+      "id": "Top Runner Standards",
+      "name": "Energy Efficiency Top Runner Program",
+      "category": "Energy Efficiency",
+      "applies_to": "Appliances, lighting, vehicles, HVAC equipment",
+      "description": "Sets energy efficiency standards based on most efficient products. Target standards increase over time. Mandatory for covered products. Includes computers, displays, air conditioners.",
+      "url": "https://www.enecho.meti.go.jp/category/saving_and_new/saving/toprunner/"
+    },
+    {
+      "id": "RoHS J-Moss",
+      "name": "Japan RoHS - Marking for Presence of Specific Chemical Substances",
+      "category": "Hazardous Substances",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "Voluntary marking indicating presence/absence of hazardous substances. Green mark if compliant, orange mark with percentage if exceeding limits. Based on EU RoHS but voluntary.",
+      "url": "https://www.meti.go.jp/policy/chemical_management/law/index.html"
+    },
+    {
+      "id": "Chemical Substance Control Law",
+      "name": "Chemical Substances Control Law (CSCL)",
+      "category": "Hazardous Substances",
+      "applies_to": "Products containing chemical substances",
+      "description": "Regulates manufacture, import, use of chemical substances. Classification of Class I (prohibited), Class II (restricted) substances. Notification requirements.",
+      "url": "https://www.meti.go.jp/policy/chemical_management/english/cscl/index.html"
+    },
+    {
+      "id": "Industrial Safety and Health Law",
+      "name": "Occupational Safety and Health",
+      "category": "Workplace Safety",
+      "applies_to": "Industrial equipment, machinery, hazardous substances",
+      "description": "Requirements for workplace safety including machinery safety, chemical substance management. Affects industrial equipment design and labeling.",
+      "url": "https://www.mhlw.go.jp/english/"
+    },
+    {
+      "id": "Waste Management and Public Cleansing Law",
+      "name": "Waste Disposal and Recycling Requirements",
+      "category": "Environmental",
+      "applies_to": "Products generating industrial or municipal waste",
+      "description": "Regulations for waste disposal, recycling. Producer responsibility for certain products. Affects packaging, end-of-life management.",
+      "url": "https://www.env.go.jp/en/laws/"
+    },
+    {
+      "id": "Home Appliance Recycling Law",
+      "name": "Recycling Law for Specified Home Appliances",
+      "category": "Environmental",
+      "applies_to": "Air conditioners, TVs, refrigerators, washing machines",
+      "description": "Mandatory recycling system for specified home appliances. Retailers collect, manufacturers recycle. Consumers pay recycling fee.",
+      "url": "https://www.meti.go.jp/policy/it_policy/kaden_recycle/index.html"
+    },
+    {
+      "id": "Small Rechargeable Battery Recycling",
+      "name": "Law for Promotion of Effective Utilization of Resources - Batteries",
+      "category": "Environmental",
+      "applies_to": "Rechargeable batteries (Ni-Cd, Ni-MH, Li-ion, small sealed lead-acid)",
+      "description": "Mandatory recycling system for rechargeable batteries. Collection mark required. Manufacturers must facilitate collection and recycling.",
+      "url": "https://www.meti.go.jp/policy/recycle/main/admin_info/law/index.html"
+    },
+    {
+      "id": "Road Vehicle Act",
+      "name": "Road Transport Vehicle Law",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and automotive parts",
+      "description": "Type approval for vehicles sold in Japan. Safety standards, emissions requirements. Administered by MLIT (Ministry of Land, Infrastructure, Transport and Tourism).",
+      "url": "https://www.mlit.go.jp/en/"
+    },
+    {
+      "id": "Road Traffic Act",
+      "name": "Road Traffic Safety Requirements",
+      "category": "Automotive",
+      "applies_to": "Vehicles and automotive accessories",
+      "description": "Traffic safety regulations including lighting, mirrors, safety equipment requirements. Affects aftermarket automotive accessories.",
+      "url": "https://www.npa.go.jp/english/"
+    },
+    {
+      "id": "Consumer Product Safety Law",
+      "name": "General Consumer Product Safety",
+      "category": "Product Safety",
+      "applies_to": "Consumer products not covered by specific laws",
+      "description": "General safety requirements for consumer products. Serious product accident reporting obligations. Special Specified Products require PSC mark (pressure vessels, helmets, lighters).",
+      "url": "https://www.meti.go.jp/english/policy/consumer/index.html"
+    },
+    {
+      "id": "PSC Mark",
+      "name": "Product Safety of Consumer Products Mark",
+      "category": "Product Safety",
+      "applies_to": "Special Specified Products (climbing equipment, bicycle helmets, pressure cookers, lighters)",
+      "description": "Mandatory safety certification for Special Specified Products under Consumer Product Safety Law. Third-party testing required. PSC mark mandatory.",
+      "url": "https://www.meti.go.jp/english/policy/consumer/system/index.html"
+    },
+    {
+      "id": "SG Mark",
+      "name": "Safe Goods Mark",
+      "category": "Product Safety",
+      "applies_to": "Consumer products (voluntary)",
+      "description": "Voluntary safety certification by Consumer Product Safety Association. Indicates product meets safety standards. Product liability insurance included. Covers toys, sports goods, household items.",
+      "url": "https://www.sg-mark.org/english/"
+    },
+    {
+      "id": "ST Mark",
+      "name": "Safety Toy Mark",
+      "category": "Toys",
+      "applies_to": "Toys for children",
+      "description": "Voluntary safety standard for toys by Japan Toy Association. Based on ISO 8124 and EN 71. Third-party testing. Widely recognized by consumers.",
+      "url": "https://www.toys.or.jp/st/"
+    },
+    {
+      "id": "Food Sanitation Law",
+      "name": "Food Contact Materials Safety",
+      "category": "Food Contact",
+      "applies_to": "Materials and articles in contact with food",
+      "description": "Safety requirements for food contact materials. Positive lists for certain materials (plastics, metals). Migration testing required. Enforced by Ministry of Health, Labour and Welfare.",
+      "url": "https://www.mhlw.go.jp/english/"
+    },
+    {
+      "id": "JIS Q 9001",
+      "name": "Quality Management Systems (ISO 9001)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing quality management",
+      "description": "Japanese adoption of ISO 9001. Quality management system requirements. JAB (Japan Accreditation Board) accredits certification bodies.",
+      "url": "https://www.jisc.go.jp/eng/"
+    },
+    {
+      "id": "JIS Q 14001",
+      "name": "Environmental Management Systems (ISO 14001)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing environmental management",
+      "description": "Japanese adoption of ISO 14001. Environmental management system requirements.",
+      "url": "https://www.jisc.go.jp/eng/"
+    },
+    {
+      "id": "JIS Q 27001",
+      "name": "Information Security Management Systems (ISO 27001)",
+      "category": "Management Systems",
+      "applies_to": "Organizations managing information security",
+      "description": "Japanese adoption of ISO/IEC 27001. Information security management system requirements. Important for IT products and services.",
+      "url": "https://www.jisc.go.jp/eng/"
+    },
+    {
+      "id": "Personal Information Protection Law",
+      "name": "Act on Protection of Personal Information (APPI)",
+      "category": "Data Protection",
+      "applies_to": "Organizations handling personal information",
+      "description": "Japan's data protection law. Requirements for collection, use, storage of personal information. Similar to GDPR but with differences. Extraterritorial application.",
+      "url": "https://www.ppc.go.jp/en/"
+    },
+    {
+      "id": "Act on Prevention of Unfair Competition",
+      "name": "Unfair Competition Prevention",
+      "category": "Intellectual Property",
+      "applies_to": "Products and business practices",
+      "description": "Protects against unfair competition including trademark infringement, trade secret misappropriation, false origin indications. Affects product marking and labeling.",
+      "url": "https://www.meti.go.jp/english/policy/economy/chizai/chiteki/index.html"
+    },
+    {
+      "id": "Act Against Unjustifiable Premiums",
+      "name": "Restrictions on Premiums and Representations",
+      "category": "Marketing & Labeling",
+      "applies_to": "Product advertising and premiums",
+      "description": "Regulates product advertising, labeling, premium offers. Prevents misleading representations. Affects product claims, promotional materials. Consumer Affairs Agency enforcement.",
+      "url": "https://www.caa.go.jp/en/"
+    },
+    {
+      "id": "JAS Mark",
+      "name": "Japanese Agricultural Standards Mark",
+      "category": "Food & Agriculture",
+      "applies_to": "Food products and agricultural materials",
+      "description": "Quality certification for food and agricultural products. Indicates compliance with JAS standards. Includes organic certification. Not typically for electronics but relevant for packaging, food contact.",
+      "url": "https://www.maff.go.jp/e/jas/"
+    },
+    {
+      "id": "High Pressure Gas Safety Law",
+      "name": "Safety Requirements for Compressed Gas",
+      "category": "Hazardous Materials",
+      "applies_to": "Products containing compressed gas",
+      "description": "Safety requirements for high pressure gas containers and equipment. Affects aerosol products, gas cylinders, refrigerant systems. Licensing and inspection requirements.",
+      "url": "https://www.meti.go.jp/english/policy/"
+    },
+    {
+      "id": "Building Standards Law",
+      "name": "Building Code Compliance for Electrical Equipment",
+      "category": "Construction & Installation",
+      "applies_to": "Electrical equipment for building installation",
+      "description": "Requirements for electrical equipment permanently installed in buildings. Affects lighting fixtures, HVAC systems, building automation. Local building code compliance.",
+      "url": "https://www.mlit.go.jp/en/"
+    },
+    {
+      "id": "Measurement Law",
+      "name": "Specified Measuring Instruments",
+      "category": "Measurement & Testing",
+      "applies_to": "Measuring instruments for trade",
+      "description": "Requirements for measuring instruments used in trade. Type approval, periodic inspection. Affects scales, meters, measuring devices. JCSS (Japan Calibration Service System) for traceability.",
+      "url": "https://www.meti.go.jp/english/policy/economy/hyojun/index.html"
+    },
+    {
+      "id": "Smart Life Safety Certification",
+      "name": "IoT Security Certification",
+      "category": "Cybersecurity",
+      "applies_to": "Connected consumer IoT devices",
+      "description": "Emerging voluntary certification for IoT device security. Based on international standards. Addresses growing security concerns for connected devices.",
+      "url": "https://www.ipa.go.jp/en/"
+    },
+    {
+      "id": "JIS Z 26000",
+      "name": "Social Responsibility Guidance (ISO 26000)",
+      "category": "Corporate Social Responsibility",
+      "applies_to": "Organizations implementing social responsibility",
+      "description": "Japanese adoption of ISO 26000. Guidance on social responsibility including labor practices, environment, fair operating practices. Not certifiable but increasingly important.",
+      "url": "https://www.jisc.go.jp/eng/"
+    }
+  ]
+}

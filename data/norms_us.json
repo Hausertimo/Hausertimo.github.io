@@ -1,0 +1,477 @@
+{
+  "_comment": "United States compliance norms and standards database. Includes FCC, UL, FDA, CPSC, OSHA, EPA, NIST and other US regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "FCC Part 15 Subpart B",
+      "name": "Unintentional Radiators - Computing Devices",
+      "category": "FCC Radio Frequency",
+      "applies_to": "Digital devices, computers, peripherals",
+      "description": "Limits for unintentional radio frequency emissions from digital devices. Class A (industrial) and Class B (residential) limits. Mandatory FCC certification for most digital products.",
+      "url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15/subpart-B"
+    },
+    {
+      "id": "FCC Part 15 Subpart C",
+      "name": "Intentional Radiators - ISM Equipment",
+      "category": "FCC Radio Frequency",
+      "applies_to": "WiFi, Bluetooth, wireless devices in ISM bands",
+      "description": "Technical requirements for intentional radiators operating in unlicensed ISM bands (900MHz, 2.4GHz, 5GHz). Includes WiFi, Bluetooth, Zigbee devices.",
+      "url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15/subpart-C"
+    },
+    {
+      "id": "FCC Part 15 Subpart E",
+      "name": "Unlicensed National Information Infrastructure (U-NII)",
+      "category": "FCC Radio Frequency",
+      "applies_to": "5GHz WiFi devices",
+      "description": "Requirements for U-NII devices operating in 5GHz bands. Includes DFS (Dynamic Frequency Selection) and TPC (Transmit Power Control) requirements.",
+      "url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15/subpart-E"
+    },
+    {
+      "id": "FCC Part 18",
+      "name": "Industrial, Scientific and Medical Equipment",
+      "category": "FCC Radio Frequency",
+      "applies_to": "ISM equipment using RF energy for non-communication purposes",
+      "description": "Requirements for equipment using RF energy for industrial, scientific, medical, or other non-communication purposes (microwave ovens, RF welders, medical diathermy).",
+      "url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-18"
+    },
+    {
+      "id": "FCC Part 22",
+      "name": "Public Mobile Services",
+      "category": "FCC Radio Frequency",
+      "applies_to": "Cellular and mobile communication devices",
+      "description": "Requirements for public mobile services including cellular radiotelephone service.",
+      "url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-22"
+    },
+    {
+      "id": "FCC Part 27",
+      "name": "Miscellaneous Wireless Communications Services",
+      "category": "FCC Radio Frequency",
+      "applies_to": "Broadband wireless devices, LTE equipment",
+      "description": "Requirements for various wireless services including Broadband Radio Service (BRS) and Educational Broadband Service (EBS).",
+      "url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-27"
+    },
+    {
+      "id": "FCC Part 68",
+      "name": "Connection of Terminal Equipment to Telephone Network",
+      "category": "FCC Telecommunications",
+      "applies_to": "Devices connecting to telephone network",
+      "description": "Technical requirements for equipment connecting to public switched telephone network. Prevents harm to network.",
+      "url": "https://www.ecfr.gov/current/title-47/chapter-I/subchapter-B/part-68"
+    },
+    {
+      "id": "FCC SAR Requirements",
+      "name": "Specific Absorption Rate (SAR) for Mobile Devices",
+      "category": "FCC Radio Frequency",
+      "applies_to": "Mobile phones, body-worn wireless devices",
+      "description": "SAR limit of 1.6 W/kg averaged over 1 gram of tissue. Required testing for devices used within 20cm of body.",
+      "url": "https://www.fcc.gov/general/specific-absorption-rate-sar-cellular-telephones"
+    },
+    {
+      "id": "UL 62368-1",
+      "name": "Audio/Video, Information and Communication Technology Equipment",
+      "category": "UL Product Safety",
+      "applies_to": "IT, AV, communication equipment",
+      "description": "US adoption of IEC 62368-1. Hazard-based safety standard for ICT equipment. Replaces UL 60950-1. Mandatory for many products.",
+      "url": "https://www.ul.com/services/audio-video-ict-equipment-testing-and-certification-ul-62368-1"
+    },
+    {
+      "id": "UL 60950-1",
+      "name": "Information Technology Equipment - Safety",
+      "category": "UL Product Safety",
+      "applies_to": "IT equipment (LEGACY)",
+      "description": "LEGACY standard for IT equipment safety. Withdrawn December 2020, replaced by UL 62368-1. Still referenced in some certifications.",
+      "url": "https://www.ul.com/resources/ul-60950-1-standard-safety-information-technology-equipment"
+    },
+    {
+      "id": "UL 2054",
+      "name": "Household and Commercial Batteries",
+      "category": "UL Product Safety",
+      "applies_to": "Lithium-ion and other rechargeable batteries",
+      "description": "Safety requirements for household and commercial batteries including lithium-ion. Covers cell and battery pack safety.",
+      "url": "https://www.ul.com/resources/ul-2054-standard-safety-household-and-commercial-batteries"
+    },
+    {
+      "id": "UL 1642",
+      "name": "Lithium Batteries",
+      "category": "UL Product Safety",
+      "applies_to": "Lithium-ion and lithium metal cells",
+      "description": "Safety standard for lithium batteries used as power sources. Covers design and manufacturing requirements.",
+      "url": "https://www.ul.com/resources/ul-1642-standard-safety-lithium-batteries"
+    },
+    {
+      "id": "UL 2056",
+      "name": "Power Banks",
+      "category": "UL Product Safety",
+      "applies_to": "Portable USB power banks and chargers",
+      "description": "Safety requirements for power banks used to charge mobile devices. Covers electrical, fire, mechanical hazards.",
+      "url": "https://www.ul.com/resources/ul-2056-power-banks-safety-standard"
+    },
+    {
+      "id": "UL 1310",
+      "name": "Class 2 Power Units",
+      "category": "UL Product Safety",
+      "applies_to": "Low voltage power supplies, AC adapters",
+      "description": "Safety standard for Class 2 power units with limited output (100VA). Common for consumer electronics adapters.",
+      "url": "https://www.ul.com/resources/ul-1310-standard-safety-class-2-power-units"
+    },
+    {
+      "id": "UL 1012",
+      "name": "Power Units Other Than Class 2",
+      "category": "UL Product Safety",
+      "applies_to": "Higher power AC-DC adapters",
+      "description": "Safety standard for power units exceeding Class 2 limits. Covers higher wattage power supplies.",
+      "url": "https://www.ul.com/resources/ul-1012-power-supply-standard"
+    },
+    {
+      "id": "UL 153",
+      "name": "Portable Electric Luminaires",
+      "category": "UL Product Safety",
+      "applies_to": "Portable lamps, desk lamps, flashlights",
+      "description": "Safety requirements for portable lighting products. Covers electrical, fire, mechanical hazards.",
+      "url": "https://www.ul.com/resources/ul-153-standard-portable-electric-luminaires"
+    },
+    {
+      "id": "UL 1598",
+      "name": "Luminaires (Fixed)",
+      "category": "UL Product Safety",
+      "applies_to": "Fixed lighting fixtures",
+      "description": "Safety standard for fixed luminaires. Covers installation, construction, electrical safety.",
+      "url": "https://www.ul.com/resources/ul-1598-luminaires-standard"
+    },
+    {
+      "id": "UL 8750",
+      "name": "Light Emitting Diode (LED) Equipment",
+      "category": "UL Product Safety",
+      "applies_to": "LED lighting products",
+      "description": "Safety requirements specific to LED equipment for lighting. Covers electrical, thermal, photobiological hazards.",
+      "url": "https://www.ul.com/resources/ul-8750-led-lighting-standard"
+    },
+    {
+      "id": "UL 9540",
+      "name": "Energy Storage Systems",
+      "category": "UL Product Safety",
+      "applies_to": "Battery energy storage systems",
+      "description": "Safety standard for energy storage systems (ESS) including residential and commercial battery systems.",
+      "url": "https://www.ul.com/resources/ul-9540-energy-storage-systems-standard"
+    },
+    {
+      "id": "UL 2738",
+      "name": "Software Cybersecurity for Network-Connectable Products",
+      "category": "UL Cybersecurity",
+      "applies_to": "Connected IoT devices",
+      "description": "Evaluates software cybersecurity capabilities of network-connectable products. Covers vulnerability management, authentication, cryptography.",
+      "url": "https://www.ul.com/services/cybersecurity-assurance-program-cap"
+    },
+    {
+      "id": "UL 2900-1",
+      "name": "Software Cybersecurity for Network-Connectable Products - General Requirements",
+      "category": "UL Cybersecurity",
+      "applies_to": "All network-connected devices",
+      "description": "General cybersecurity requirements for network-connectable products. Foundation for UL 2900 series.",
+      "url": "https://www.ul.com/resources/ul-2900-1-standard-software-cybersecurity"
+    },
+    {
+      "id": "UL 2900-2-2",
+      "name": "Software Cybersecurity for Healthcare Systems",
+      "category": "UL Cybersecurity",
+      "applies_to": "Connected medical devices",
+      "description": "Cybersecurity requirements specific to healthcare and wellness systems.",
+      "url": "https://www.ul.com/resources/ul-2900-2-2-healthcare-cybersecurity"
+    },
+    {
+      "id": "UL 2900-2-3",
+      "name": "Software Cybersecurity for Security/Life Safety Signaling Systems",
+      "category": "UL Cybersecurity",
+      "applies_to": "Security and alarm systems",
+      "description": "Cybersecurity requirements for connected security and life safety systems.",
+      "url": "https://www.ul.com/resources/ul-2900-2-3-security-systems-cybersecurity"
+    },
+    {
+      "id": "NFPA 70 (NEC)",
+      "name": "National Electrical Code",
+      "category": "Electrical Codes",
+      "applies_to": "All electrical installations in US",
+      "description": "US electrical installation code. Covers wiring, electrical equipment installation. Adopted by most US jurisdictions. Updated every 3 years.",
+      "url": "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70"
+    },
+    {
+      "id": "NFPA 79",
+      "name": "Electrical Standard for Industrial Machinery",
+      "category": "Electrical Codes",
+      "applies_to": "Industrial machinery electrical systems",
+      "description": "Electrical safety requirements for industrial machines. Harmonized with IEC standards.",
+      "url": "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=79"
+    },
+    {
+      "id": "FDA 21 CFR Part 820",
+      "name": "Quality System Regulation (QSR) for Medical Devices",
+      "category": "FDA Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "FDA quality system regulation for medical devices. Covers design controls, CAPA, risk management. Similar to ISO 13485.",
+      "url": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?CFRPart=820"
+    },
+    {
+      "id": "FDA 21 CFR Part 11",
+      "name": "Electronic Records and Electronic Signatures",
+      "category": "FDA Medical Devices",
+      "applies_to": "Regulated industries using electronic records",
+      "description": "Requirements for electronic records and signatures to be trustworthy and equivalent to paper records. Critical for software medical devices.",
+      "url": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?CFRPart=11"
+    },
+    {
+      "id": "FDA 510(k)",
+      "name": "Premarket Notification",
+      "category": "FDA Medical Devices",
+      "applies_to": "Class II medical devices (most medical devices)",
+      "description": "FDA premarket notification process demonstrating device is substantially equivalent to legally marketed device. Required for most medical devices.",
+      "url": "https://www.fda.gov/medical-devices/premarket-submissions-selecting-and-preparing-correct-submission/premarket-notification-510k"
+    },
+    {
+      "id": "FDA PMA",
+      "name": "Premarket Approval",
+      "category": "FDA Medical Devices",
+      "applies_to": "Class III medical devices (high risk)",
+      "description": "Most stringent FDA device marketing application. Required for high-risk devices. Includes clinical data requirements.",
+      "url": "https://www.fda.gov/medical-devices/premarket-submissions-selecting-and-preparing-correct-submission/premarket-approval-pma"
+    },
+    {
+      "id": "FDA 21 CFR Part 177",
+      "name": "Indirect Food Additives: Polymers",
+      "category": "FDA Food Contact",
+      "applies_to": "Plastics in food contact applications",
+      "description": "Regulations for polymeric substances used in food contact. Required for food containers, utensils, packaging.",
+      "url": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?CFRPart=177"
+    },
+    {
+      "id": "FDA Food Contact Notification (FCN)",
+      "name": "Food Contact Substance Notification",
+      "category": "FDA Food Contact",
+      "applies_to": "Materials contacting food",
+      "description": "FDA notification process for food contact substances. Required before marketing food contact materials not already approved.",
+      "url": "https://www.fda.gov/food/food-ingredients-packaging/food-contact-substance-fcs-notification-program"
+    },
+    {
+      "id": "CPSC 16 CFR Part 1700",
+      "name": "Poison Prevention Packaging",
+      "category": "CPSC Consumer Safety",
+      "applies_to": "Products requiring child-resistant packaging",
+      "description": "Requirements for child-resistant packaging. Applies to certain household substances, medications, products hazardous to children.",
+      "url": "https://www.ecfr.gov/current/title-16/chapter-II/subchapter-D/part-1700"
+    },
+    {
+      "id": "CPSC 16 CFR Part 1500",
+      "name": "Hazardous Substances and Articles",
+      "category": "CPSC Consumer Safety",
+      "applies_to": "Household products with hazardous substances",
+      "description": "Requirements for labeling, packaging of hazardous household products. Includes toxicity, flammability, corrosivity requirements.",
+      "url": "https://www.ecfr.gov/current/title-16/chapter-II/subchapter-C/part-1500"
+    },
+    {
+      "id": "CPSC 16 CFR Part 1501",
+      "name": "Small Parts Regulation",
+      "category": "CPSC Consumer Safety",
+      "applies_to": "Toys and articles for children under 3",
+      "description": "Prohibits small parts in toys and articles for young children. Prevents choking hazards. Includes test cylinder requirements.",
+      "url": "https://www.ecfr.gov/current/title-16/chapter-II/subchapter-C/part-1501"
+    },
+    {
+      "id": "CPSIA",
+      "name": "Consumer Product Safety Improvement Act",
+      "category": "CPSC Consumer Safety",
+      "applies_to": "Children's products",
+      "description": "Comprehensive law including lead limits, phthalate restrictions, third-party testing requirements for children's products. Includes tracking labels.",
+      "url": "https://www.cpsc.gov/Regulations-Laws--Standards/Statutes/The-Consumer-Product-Safety-Improvement-Act"
+    },
+    {
+      "id": "California Prop 65",
+      "name": "Safe Drinking Water and Toxic Enforcement Act",
+      "category": "State Regulations",
+      "applies_to": "Products sold in California containing listed chemicals",
+      "description": "Requires warnings for products containing chemicals known to cause cancer or reproductive harm. List includes 900+ chemicals. Required warning label.",
+      "url": "https://oehha.ca.gov/proposition-65"
+    },
+    {
+      "id": "CEC Title 20",
+      "name": "California Energy Efficiency Standards",
+      "category": "State Regulations",
+      "applies_to": "Electronic devices, appliances sold in California",
+      "description": "California energy efficiency requirements for various products including battery chargers, computers, displays. Often stricter than federal standards.",
+      "url": "https://www.energy.ca.gov/rules-and-regulations/appliance-efficiency-regulations-title-20"
+    },
+    {
+      "id": "Energy Star",
+      "name": "Energy Star Certification",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-consuming products (voluntary)",
+      "description": "EPA/DOE voluntary program for energy-efficient products. Market advantage and required for some government procurement. Category-specific requirements.",
+      "url": "https://www.energystar.gov/"
+    },
+    {
+      "id": "DOE 10 CFR Part 430",
+      "name": "Energy Conservation Standards for Consumer Products",
+      "category": "Energy Efficiency",
+      "applies_to": "Covered consumer products and equipment",
+      "description": "Mandatory federal energy efficiency standards for appliances and equipment. Includes test procedures and minimum efficiency levels.",
+      "url": "https://www.ecfr.gov/current/title-10/chapter-II/subchapter-D/part-430"
+    },
+    {
+      "id": "NIST FIPS 140-3",
+      "name": "Security Requirements for Cryptographic Modules",
+      "category": "Cybersecurity Standards",
+      "applies_to": "Products using cryptography for government",
+      "description": "Required for cryptographic modules sold to US government. Defines security levels 1-4. Includes physical security, key management requirements.",
+      "url": "https://csrc.nist.gov/pubs/fips/140-3/final"
+    },
+    {
+      "id": "NIST Cybersecurity Framework",
+      "name": "Framework for Improving Critical Infrastructure Cybersecurity",
+      "category": "Cybersecurity Standards",
+      "applies_to": "Organizations managing cybersecurity risk",
+      "description": "Voluntary framework providing guidelines for cybersecurity. Five functions: Identify, Protect, Detect, Respond, Recover. Widely adopted.",
+      "url": "https://www.nist.gov/cyberframework"
+    },
+    {
+      "id": "NIST SP 800-53",
+      "name": "Security and Privacy Controls for Information Systems",
+      "category": "Cybersecurity Standards",
+      "applies_to": "Federal information systems",
+      "description": "Comprehensive catalog of security and privacy controls for federal systems. Referenced in FedRAMP and defense contracts.",
+      "url": "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final"
+    },
+    {
+      "id": "NIST SP 800-171",
+      "name": "Protecting Controlled Unclassified Information (CUI)",
+      "category": "Cybersecurity Standards",
+      "applies_to": "Non-federal systems processing CUI",
+      "description": "Required for contractors handling CUI including defense contractors. Subset of 800-53 controls. Mandatory for DFARS compliance.",
+      "url": "https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final"
+    },
+    {
+      "id": "ASTM F963",
+      "name": "Standard Consumer Safety Specification for Toy Safety",
+      "category": "ASTM Standards",
+      "applies_to": "Toys for children",
+      "description": "Comprehensive toy safety standard covering mechanical, flammability, toxicity, electrical hazards. Referenced by CPSC. Includes age grading.",
+      "url": "https://www.astm.org/f0963-17.html"
+    },
+    {
+      "id": "ASTM D4169",
+      "name": "Standard Practice for Distribution Packaging",
+      "category": "ASTM Standards",
+      "applies_to": "Packaged products for shipping",
+      "description": "Performance testing of shipping containers. Defines test schedules for various distribution environments. Industry standard for package testing.",
+      "url": "https://www.astm.org/d4169-16.html"
+    },
+    {
+      "id": "ASTM E1527",
+      "name": "Environmental Site Assessments",
+      "category": "ASTM Standards",
+      "applies_to": "Commercial real estate transactions",
+      "description": "Standard for Phase I Environmental Site Assessments. Not directly product-related but important for manufacturing facilities.",
+      "url": "https://www.astm.org/e1527-21.html"
+    },
+    {
+      "id": "ANSI/CTA-2037-A",
+      "name": "Standard Method for Evaluating Sleep Modes",
+      "category": "ANSI Standards",
+      "applies_to": "Electronic devices with power management",
+      "description": "Methodology for measuring and reporting low-power modes in audio, video and information technology equipment.",
+      "url": "https://shop.cta.tech/products/standard-method-for-evaluating-sleep-modes-for-network-connected-residential-audio-and-video-products"
+    },
+    {
+      "id": "IEEE 1725",
+      "name": "Rechargeable Batteries for Mobile Phones",
+      "category": "IEEE Standards",
+      "applies_to": "Rechargeable batteries for portable devices",
+      "description": "Safety standard for rechargeable battery systems for mobile phones and other portable products. Covers electrical, mechanical, environmental tests.",
+      "url": "https://standards.ieee.org/standard/1725-2021.html"
+    },
+    {
+      "id": "IEEE 802.11",
+      "name": "Wireless LAN (WiFi) Standards",
+      "category": "IEEE Standards",
+      "applies_to": "WiFi devices",
+      "description": "Family of standards for wireless local area networks. Includes 802.11a/b/g/n/ac/ax (WiFi 6). Defines MAC and PHY layer requirements.",
+      "url": "https://standards.ieee.org/ieee/802.11/7028/"
+    },
+    {
+      "id": "IEEE 802.15.1",
+      "name": "Wireless Personal Area Networks (Bluetooth)",
+      "category": "IEEE Standards",
+      "applies_to": "Bluetooth devices",
+      "description": "Standard for Bluetooth wireless technology. PHY and MAC layer specifications. Bluetooth SIG manages certification.",
+      "url": "https://standards.ieee.org/ieee/802.15.1/1200/"
+    },
+    {
+      "id": "IEEE 802.3",
+      "name": "Ethernet Standards",
+      "category": "IEEE Standards",
+      "applies_to": "Wired network equipment",
+      "description": "Family of standards for wired Ethernet networks. Includes various speeds from 10Mbps to 400Gbps. Includes Power over Ethernet (PoE).",
+      "url": "https://standards.ieee.org/ieee/802.3/10422/"
+    },
+    {
+      "id": "OSHA General Duty Clause",
+      "name": "Occupational Safety and Health Act Section 5(a)(1)",
+      "category": "Workplace Safety",
+      "applies_to": "All workplaces",
+      "description": "Requires employers to provide workplace free from recognized hazards. Applies when no specific OSHA standard exists.",
+      "url": "https://www.osha.gov/laws-regs/oshact/section5-duties"
+    },
+    {
+      "id": "OSHA 29 CFR 1910",
+      "name": "Occupational Safety and Health Standards",
+      "category": "Workplace Safety",
+      "applies_to": "General industry workplaces",
+      "description": "Comprehensive workplace safety standards covering machinery, electrical, personal protective equipment, hazard communication.",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910"
+    },
+    {
+      "id": "EPA TSCA",
+      "name": "Toxic Substances Control Act",
+      "category": "Environmental",
+      "applies_to": "Chemical substances in commerce",
+      "description": "EPA authority to regulate chemicals. Includes inventory reporting, new chemical review, existing chemical risk evaluation. Asbestos, PCB regulations.",
+      "url": "https://www.epa.gov/laws-regulations/summary-toxic-substances-control-act"
+    },
+    {
+      "id": "EPA RCRA",
+      "name": "Resource Conservation and Recovery Act",
+      "category": "Environmental",
+      "applies_to": "Hazardous waste generators",
+      "description": "Governs hazardous waste from generation to disposal. Affects manufacturers generating hazardous waste. Includes e-waste considerations.",
+      "url": "https://www.epa.gov/laws-regulations/summary-resource-conservation-and-recovery-act"
+    },
+    {
+      "id": "EPA Energy Star",
+      "name": "Energy Star Program Requirements",
+      "category": "Environmental",
+      "applies_to": "Electronics, appliances, lighting (voluntary)",
+      "description": "Voluntary program with category-specific energy efficiency requirements. Provides market differentiation and government procurement preference.",
+      "url": "https://www.energystar.gov/products"
+    },
+    {
+      "id": "DOT 49 CFR Part 173",
+      "name": "Transportation of Dangerous Goods - Lithium Batteries",
+      "category": "Transportation",
+      "applies_to": "Products with lithium batteries being shipped",
+      "description": "Requirements for shipping lithium batteries by air, ground, sea. Includes packaging, labeling, documentation. Harmonized with UN 38.3 testing.",
+      "url": "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-C/part-173"
+    },
+    {
+      "id": "ISTA Testing Standards",
+      "name": "International Safe Transit Association Package Testing",
+      "category": "Packaging Standards",
+      "applies_to": "Packaged products for shipment",
+      "description": "Package performance testing standards. ISTA 2A (packaged products 150 lbs or less) commonly required by retailers like Amazon.",
+      "url": "https://ista.org/testing-standards/"
+    },
+    {
+      "id": "Amazon Package Certification",
+      "name": "ISTA 6-Amazon.com-SIOC",
+      "category": "Retailer Requirements",
+      "applies_to": "Products sold on Amazon",
+      "description": "Ships In Own Container (SIOC) certification. Package must survive distribution without additional packaging. Reduces waste, improves customer experience.",
+      "url": "https://ista.org/ista-6-amazondotcom.php"
+    }
+  ]
+}

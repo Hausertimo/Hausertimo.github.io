@@ -1,0 +1,397 @@
+{
+  "_comment": "Canada compliance norms and standards database. Includes ISED (formerly Industry Canada), CSA, Health Canada, NRCan, CCPSA and other Canadian regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "ICES-003",
+      "name": "Information Technology Equipment (ITE) - EMC Requirements",
+      "category": "ISED EMC",
+      "applies_to": "Digital devices, computers, peripherals",
+      "description": "Interference-Causing Equipment Standard for digital apparatus. Class A (commercial) and Class B (residential) limits. Compliance mark required. Self-certification with test reports.",
+      "url": "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/official-publications/standards/ices-003-issue-7-information-technology-equipment-ite-limits-and-methods-measurement"
+    },
+    {
+      "id": "RSS-Gen",
+      "name": "General Requirements for Radio Equipment",
+      "category": "ISED Radio",
+      "applies_to": "All radio transmitting equipment",
+      "description": "General requirements for radio apparatus. Labeling, technical documentation, RF exposure compliance. Foundation standard for all wireless devices. IC certification mark required.",
+      "url": "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/official-publications/standards/rss-gen-issue-6-general-requirements-and-information-compliance-radio-apparatus"
+    },
+    {
+      "id": "RSS-247",
+      "name": "2.4GHz and 5GHz Licence-Exempt Radio Apparatus",
+      "category": "ISED Radio",
+      "applies_to": "WiFi, Bluetooth, 2.4GHz and 5GHz devices",
+      "description": "Technical requirements for 2.4GHz and 5GHz unlicensed devices. Covers WiFi, Bluetooth, Zigbee. Power limits, DFS requirements for 5GHz. Mandatory for wireless devices.",
+      "url": "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/official-publications/standards/rss-247-issue-3-24-ghz-and-5-ghz-licence-exempt-radio-apparatus"
+    },
+    {
+      "id": "RSS-210",
+      "name": "Low-Power Licence-Exempt Radio Apparatus",
+      "category": "ISED Radio",
+      "applies_to": "Short-range devices, low-power transmitters",
+      "description": "Requirements for various low-power devices including remote controls, wireless sensors, RFID, wireless microphones. Field strength limits by frequency band.",
+      "url": "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/official-publications/standards/rss-210-issue-10-low-power-licence-exempt-radio-apparatus-frequency-bands-30-mhz-1-ghz"
+    },
+    {
+      "id": "RSS-102",
+      "name": "Radio Frequency Exposure Compliance",
+      "category": "ISED Radio",
+      "applies_to": "Radio transmitting devices",
+      "description": "RF exposure evaluation procedures. SAR limits for portable devices (1.6 W/kg averaged over 1g). MPE limits for fixed transmitters. Mandatory compliance evaluation.",
+      "url": "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/official-publications/standards/rss-102-issue-6-radio-frequency-exposure-compliance-radio-apparatus"
+    },
+    {
+      "id": "RSS-132/133",
+      "name": "Cellular and PCS Equipment",
+      "category": "ISED Radio",
+      "applies_to": "Cellular phones, mobile broadband devices",
+      "description": "Technical requirements for cellular equipment operating in various cellular bands. Covers GSM, CDMA, LTE, 5G devices.",
+      "url": "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/official-publications/standards"
+    },
+    {
+      "id": "CSA C22.2 No. 62368-1",
+      "name": "Audio/Video, ICT and Communication Technology Equipment - Safety",
+      "category": "CSA Electrical Safety",
+      "applies_to": "IT, AV, communication equipment",
+      "description": "Canadian adoption of IEC 62368-1. Hazard-based safety standard for ICT equipment. CSA certification mark widely required. Replaces C22.2 No. 60950-1.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CSA C22.2 No. 60950-1",
+      "name": "Information Technology Equipment - Safety (LEGACY)",
+      "category": "CSA Electrical Safety",
+      "applies_to": "IT equipment (replaced by C22.2 No. 62368-1)",
+      "description": "LEGACY standard for IT equipment safety. Withdrawn December 2020, replaced by C22.2 No. 62368-1. May still be valid for existing certifications.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CSA C22.2 No. 0",
+      "name": "General Requirements - Canadian Electrical Code, Part II",
+      "category": "CSA Electrical Safety",
+      "applies_to": "All electrical equipment",
+      "description": "General construction requirements for electrical equipment. Foundation for many product-specific CSA standards. Covers materials, components, construction methods.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CSA C22.2 No. 60335-1",
+      "name": "Household Appliances - Safety - General Requirements",
+      "category": "CSA Electrical Safety",
+      "applies_to": "Household and similar electrical appliances",
+      "description": "General safety requirements for household appliances. Canadian adoption of IEC 60335-1. Part 1 of comprehensive series. CSA mark required.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CSA C22.2 No. 60335-2-X",
+      "name": "Household Appliances - Safety - Particular Requirements",
+      "category": "CSA Electrical Safety",
+      "applies_to": "Specific appliance types",
+      "description": "Part 2 series with specific requirements for different appliances. Multiple parts covering specific products (vacuum cleaners, coffee makers, heaters, etc.).",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CSA C22.2 No. 60065",
+      "name": "Audio, Video and Similar Electronic Apparatus - Safety Requirements",
+      "category": "CSA Electrical Safety",
+      "applies_to": "Audio/video equipment (being replaced by 62368-1)",
+      "description": "Safety standard for AV equipment. Being replaced by C22.2 No. 62368-1. Transition period until full adoption of new standard.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CSA C22.2 No. 62133-2",
+      "name": "Lithium Batteries - Safety Requirements",
+      "category": "CSA Electrical Safety",
+      "applies_to": "Lithium-ion and lithium polymer batteries",
+      "description": "Safety requirements for portable lithium secondary cells and batteries. Canadian adoption of IEC 62133-2. Required for battery products.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CSA C22.2 No. 107.1",
+      "name": "Power Conversion Equipment",
+      "category": "CSA Electrical Safety",
+      "applies_to": "AC-DC power supplies, DC-DC converters",
+      "description": "General use power supplies. Covers AC-DC adapters, internal power supplies, DC-DC converters. Alternative to using 62368-1 for standalone power supplies.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CSA C22.2 No. 250.0",
+      "name": "Luminaires",
+      "category": "CSA Electrical Safety",
+      "applies_to": "Lighting fixtures",
+      "description": "General requirements for luminaires. Covers fixed and portable lighting. Based on UL 1598 with Canadian deviations.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CSA C22.2 No. 250.13",
+      "name": "LED Equipment for Lighting",
+      "category": "CSA Electrical Safety",
+      "applies_to": "LED lighting products",
+      "description": "Safety requirements specific to LED equipment. Covers LED modules, drivers, complete LED luminaires.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "NRCan Energy Efficiency Regulations",
+      "name": "Energy Efficiency Regulations (SOR/2016-152)",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-using products including electronics, appliances, lighting",
+      "description": "Mandatory minimum energy performance standards. Products must meet requirements before import or interprovincial sale. Covers 50+ product categories. Import registration required.",
+      "url": "https://natural-resources.canada.ca/energy-efficiency/regulations-codes-and-standards/6861"
+    },
+    {
+      "id": "EnerGuide Label",
+      "name": "EnerGuide Energy Consumption Label",
+      "category": "Energy Efficiency",
+      "applies_to": "Appliances and equipment with labeling requirements",
+      "description": "Mandatory energy label showing energy consumption. Required for appliances like refrigerators, dishwashers, clothes washers. Helps consumers compare energy use.",
+      "url": "https://natural-resources.canada.ca/energy-efficiency/energuide/12523"
+    },
+    {
+      "id": "ENERGY STAR Canada",
+      "name": "ENERGY STAR Certification (Canadian Program)",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-consuming products (voluntary)",
+      "description": "Voluntary program for energy-efficient products. Administered by NRCan. Canadian specifications often aligned with US EPA but may differ. Market advantage and government procurement preference.",
+      "url": "https://natural-resources.canada.ca/energy-efficiency/energy-star-canada/12519"
+    },
+    {
+      "id": "CCPSA",
+      "name": "Canada Consumer Product Safety Act",
+      "category": "Consumer Safety",
+      "applies_to": "Consumer products",
+      "description": "Framework legislation for consumer product safety. Prohibits sale of dangerous products. Mandatory incident reporting. Recall powers. Enforced by Health Canada.",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/C-1.68/"
+    },
+    {
+      "id": "SOR/2011-17",
+      "name": "Toys Regulations",
+      "category": "Consumer Safety",
+      "applies_to": "Toys intended for children under 14",
+      "description": "Mandatory safety requirements for toys. Mechanical hazards, flammability, toxicity. Heavy metal limits. Choking hazard warnings. Based on ASTM F963 and other international standards.",
+      "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2011-17/"
+    },
+    {
+      "id": "SOR/2016-188",
+      "name": "Phthalates Regulations",
+      "category": "Consumer Safety",
+      "applies_to": "Children's toys and child care articles",
+      "description": "Prohibits phthalates in soft vinyl children's products that can be placed in mouth. Applies to toys and child care articles for children under 4 years.",
+      "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2016-188/"
+    },
+    {
+      "id": "SOR/2018-83",
+      "name": "Surface Coating Materials Regulations (Lead)",
+      "category": "Consumer Safety",
+      "applies_to": "Products with surface coatings accessible to children",
+      "description": "Lead limits in surface coating materials. 90 mg/kg limit. Applies to furniture, toys, equipment accessible to children under 7 years.",
+      "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2018-83/"
+    },
+    {
+      "id": "SOR/2016-178",
+      "name": "Children's Sleepwear Regulations",
+      "category": "Consumer Safety",
+      "applies_to": "Children's sleepwear",
+      "description": "Flammability requirements for children's sleepwear up to size 14X. Tight-fitting design or flame-resistant fabric. Testing requirements.",
+      "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2016-178/"
+    },
+    {
+      "id": "Medical Devices Regulations (SOR/98-282)",
+      "name": "Medical Device Regulation and Licensing",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including software",
+      "description": "Medical device regulations under Food and Drugs Act. Classification I-IV based on risk. Pre-market authorization required (Class II-IV). Medical Device Establishment License (MDEL) required.",
+      "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-98-282/"
+    },
+    {
+      "id": "CAN/CSA ISO 13485",
+      "name": "Medical Devices - Quality Management Systems",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Quality management system requirements for medical device manufacturers. Canadian adoption of ISO 13485. Required for Health Canada licensing.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CAN/CSA ISO 14971",
+      "name": "Medical Devices - Risk Management",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Risk management requirements for medical devices. Canadian adoption of ISO 14971. Required for regulatory submissions.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "MDEL",
+      "name": "Medical Device Establishment License",
+      "category": "Medical Devices",
+      "applies_to": "Medical device importers and distributors",
+      "description": "Mandatory license for importing or distributing medical devices in Canada. QMS requirements. Annual fees. Inspections by Health Canada.",
+      "url": "https://www.canada.ca/en/health-canada/services/drugs-health-products/medical-devices/application-information/guidance-documents/guidance-medical-device-establishment-licences.html"
+    },
+    {
+      "id": "Food and Drug Regulations - Food Contact",
+      "name": "Food Packaging Materials",
+      "category": "Food Contact",
+      "applies_to": "Materials in contact with food",
+      "description": "Requirements for food contact materials under Food and Drugs Act. Lists of permitted substances. Migration limits. No pre-market notification like FDA FCN but must comply with lists.",
+      "url": "https://laws-lois.justice.gc.ca/eng/regulations/C.R.C.,_c._870/"
+    },
+    {
+      "id": "CEPA 1999",
+      "name": "Canadian Environmental Protection Act",
+      "category": "Environmental",
+      "applies_to": "Products containing chemical substances",
+      "description": "Framework for environmental protection including chemicals management. Domestic Substances List (DSL). New substance notification. Toxic substances controls.",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/C-15.31/"
+    },
+    {
+      "id": "Chemicals Management Plan",
+      "name": "CMP - Chemical Assessment and Risk Management",
+      "category": "Environmental",
+      "applies_to": "Products containing assessed chemicals",
+      "description": "Risk assessment and management of chemicals. Some substances prohibited or restricted. Affects product materials and components. Regular updates to assessed substances.",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/canadian-environmental-protection-act-registry/chemicals-management-plan.html"
+    },
+    {
+      "id": "Volatile Organic Compound (VOC) Concentration Limits",
+      "name": "VOC Limits for Consumer Products",
+      "category": "Environmental",
+      "applies_to": "Consumer and commercial products with VOCs",
+      "description": "VOC concentration limits for various product categories including aerosols, adhesives, coatings. Reduces air pollution and smog formation.",
+      "url": "https://www.canada.ca/en/environment-climate-change/services/canadian-environmental-protection-act-registry/volatile-organic-compound-concentration-limits.html"
+    },
+    {
+      "id": "Transportation of Dangerous Goods Regulations",
+      "name": "TDG - Shipping of Dangerous Goods",
+      "category": "Transportation",
+      "applies_to": "Dangerous goods including lithium batteries",
+      "description": "Requirements for shipping dangerous goods. Harmonized with UN Model Regulations. Includes lithium battery shipping requirements (UN 38.3 testing). Classification, packaging, marking, documentation.",
+      "url": "https://tc.canada.ca/en/dangerous-goods/transportation-dangerous-goods-regulations"
+    },
+    {
+      "id": "UN 38.3 (Canada)",
+      "name": "Lithium Battery Transport Testing",
+      "category": "Transportation",
+      "applies_to": "Lithium cells and batteries for shipment",
+      "description": "Mandatory testing for lithium batteries before transport. Eight tests including altitude, thermal, vibration, shock, external short circuit. Test summary required.",
+      "url": "https://tc.canada.ca/en/dangerous-goods/lithium-batteries"
+    },
+    {
+      "id": "Canadian Motor Vehicle Safety Standards (CMVSS)",
+      "name": "Vehicle Safety Requirements",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and vehicle components",
+      "description": "Safety standards for vehicles sold in Canada. Administered by Transport Canada. Similar to US FMVSS but with Canadian-specific requirements. National Safety Mark required.",
+      "url": "https://tc.canada.ca/en/road-transportation/motor-vehicle-safety/canadian-motor-vehicle-safety-standards-cmvss"
+    },
+    {
+      "id": "Consumer Packaging and Labelling Act",
+      "name": "CPLA - Packaging and Labelling Requirements",
+      "category": "Labeling",
+      "applies_to": "Pre-packaged consumer products",
+      "description": "Mandatory packaging and labeling requirements. Bilingual labeling (English and French). Product identity, dealer name/address, net quantity, declaration requirements. Enforced by CFIA.",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/C-38/"
+    },
+    {
+      "id": "Bilingual Labeling",
+      "name": "English and French Language Requirements",
+      "category": "Labeling",
+      "applies_to": "All consumer products sold in Canada",
+      "description": "Mandatory bilingual labeling for consumer products. Both official languages (English and French) required for most label information. Exceptions for some information. Critical compliance requirement.",
+      "url": "https://ised-isde.canada.ca/site/office-consumer-affairs/en/consumer-information/labelling/guide-consumer-products-labelling-and-advertising"
+    },
+    {
+      "id": "Competition Act",
+      "name": "False or Misleading Representations",
+      "category": "Marketing & Advertising",
+      "applies_to": "Product claims and advertising",
+      "description": "Prohibits false or misleading representations to consumers. Applies to advertising, packaging, labeling. Performance claims, testing substantiation. Enforced by Competition Bureau.",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/C-34/"
+    },
+    {
+      "id": "Trademarks Act",
+      "name": "Trademark Protection and False Origin",
+      "category": "Intellectual Property",
+      "applies_to": "Product marking and branding",
+      "description": "Protects trademarks and prohibits false indications of origin. Affects product labeling, branding. Made in Canada claims must be substantiated. Administered by CIPO.",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/T-13/"
+    },
+    {
+      "id": "Personal Information Protection and Electronic Documents Act",
+      "name": "PIPEDA - Privacy Law",
+      "category": "Data Protection",
+      "applies_to": "Organizations collecting, using, disclosing personal information",
+      "description": "Federal privacy law for private sector. Requirements for consent, safeguards, transparency, access. Applies to commercial activities. Enforced by Privacy Commissioner. Relevant for connected devices, software.",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/P-8.6/"
+    },
+    {
+      "id": "CAN/CIOSC Cyber Security",
+      "name": "Canadian Centre for Cyber Security Guidelines",
+      "category": "Cybersecurity",
+      "applies_to": "Connected devices and IT systems",
+      "description": "Cybersecurity guidance and baseline controls. Not mandatory for commercial products but best practices. Important for government procurement and critical infrastructure.",
+      "url": "https://cyber.gc.ca/"
+    },
+    {
+      "id": "CAN/CSA ISO/IEC 27001",
+      "name": "Information Security Management Systems",
+      "category": "Cybersecurity",
+      "applies_to": "Organizations managing information security",
+      "description": "Canadian adoption of ISO/IEC 27001. Information security management requirements. Voluntary but widely adopted. Important for B2B and government sales.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CAN/CSA ISO 9001",
+      "name": "Quality Management Systems",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing quality management",
+      "description": "Canadian adoption of ISO 9001. Quality management system requirements. Voluntary but widely recognized. SCC (Standards Council of Canada) accredits certification bodies.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "CAN/CSA ISO 14001",
+      "name": "Environmental Management Systems",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing environmental management",
+      "description": "Canadian adoption of ISO 14001. Environmental management system requirements. Voluntary but increasingly expected.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "Canadian Electrical Code Part I",
+      "name": "CEC - Electrical Installation Code",
+      "category": "Installation Standards",
+      "applies_to": "Electrical installations",
+      "description": "Electrical installation requirements (C22.1). Not directly for product compliance but affects installed equipment. Provincial adoption. Important for understanding installation context.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "Canadian Standards Association (CSA) Mark",
+      "name": "CSA Certification Mark",
+      "category": "Certification Marks",
+      "applies_to": "Electrical and electronic products",
+      "description": "Widely recognized safety certification mark. CSA Group is OSHA-recognized NRTL. CSA mark accepted in Canada and US. Various marks including C, US, C-US.",
+      "url": "https://www.csagroup.org/"
+    },
+    {
+      "id": "Innovation, Science and Economic Development Canada (ISED) Mark",
+      "name": "IC Certification Mark",
+      "category": "Certification Marks",
+      "applies_to": "Radio and EMC equipment",
+      "description": "Mandatory compliance mark for radio and EMC equipment. Format: IC: XXXXX-YYYYYY (certification number). Must be visible on product or packaging. Formerly Industry Canada.",
+      "url": "https://ised-isde.canada.ca/"
+    },
+    {
+      "id": "Workplace Hazardous Materials Information System",
+      "name": "WHMIS 2015 - GHS Implementation",
+      "category": "Workplace Safety",
+      "applies_to": "Hazardous products used in workplaces",
+      "description": "Canadian implementation of GHS (Globally Harmonized System). Hazard classification, labeling, safety data sheets. Affects chemicals, mixtures, industrial products. Aligned with GHS Rev 5.",
+      "url": "https://www.canada.ca/en/health-canada/services/environmental-workplace-health/occupational-health-safety/workplace-hazardous-materials-information-system.html"
+    },
+    {
+      "id": "Canadian Environmental Assessment Act",
+      "name": "Environmental Impact Assessment",
+      "category": "Environmental",
+      "applies_to": "Major projects and facilities",
+      "description": "Environmental assessment requirements for major projects. Not directly product compliance but relevant for manufacturing facilities, infrastructure.",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/C-15.21/"
+    }
+  ]
+}
