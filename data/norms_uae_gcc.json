@@ -1,0 +1,413 @@
+{
+  "_comment": "United Arab Emirates and GCC (Gulf Cooperation Council) compliance norms and standards database. Includes ESMA, TRA, CITC, G-Mark and GCC-wide regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "ESMA Conformity Assessment",
+      "name": "Emirates Authority for Standardization and Metrology - Conformity Assessment",
+      "category": "Product Safety",
+      "applies_to": "Regulated products under ESMA scope (electronics, construction, toys, cosmetics)",
+      "description": "Mandatory conformity assessment for products on ESMA regulated list. Certificate of Conformity (CoC) required before import. Testing at accredited labs. Covers low voltage equipment, toys, cosmetics, construction products, textiles.",
+      "url": "https://www.esma.gov.ae/en-us"
+    },
+    {
+      "id": "EQM Scheme",
+      "name": "ESMA Quality Mark",
+      "category": "Product Safety",
+      "applies_to": "Products under EQM scheme",
+      "description": "Product certification scheme. Type testing, factory inspection, ongoing surveillance. EQM mark indicates compliance with UAE/GCC standards. Required for certain product categories.",
+      "url": "https://www.esma.gov.ae/en-us"
+    },
+    {
+      "id": "UAE.S IEC 62368-1",
+      "name": "Audio/Video, ICT Equipment - Safety (UAE Standard)",
+      "category": "UAE Standards",
+      "applies_to": "IT, AV, communication equipment",
+      "description": "UAE adoption of IEC 62368-1. Hazard-based safety standard for ICT equipment. Required for ESMA certification of IT products.",
+      "url": "https://www.esma.gov.ae/en-us"
+    },
+    {
+      "id": "UAE.S IEC 60335-1",
+      "name": "Household Appliances - Safety (UAE Standard)",
+      "category": "UAE Standards",
+      "applies_to": "Household electrical appliances",
+      "description": "UAE adoption of IEC 60335-1. General safety requirements for household appliances. Required for ESMA certification.",
+      "url": "https://www.esma.gov.ae/en-us"
+    },
+    {
+      "id": "TRA Type Approval - UAE",
+      "name": "Telecommunications and Digital Government Regulatory Authority - Type Approval",
+      "category": "Telecommunications & Radio",
+      "applies_to": "Telecommunications and radio equipment",
+      "description": "Mandatory type approval for telecom and radio equipment in UAE. Testing at TRA-recognized labs. Type approval certificate required before import or sale. Covers WiFi, Bluetooth, cellular, all radio devices.",
+      "url": "https://www.tra.gov.ae/en"
+    },
+    {
+      "id": "TRA SAR - UAE",
+      "name": "Specific Absorption Rate Requirements (UAE)",
+      "category": "Telecommunications & Radio",
+      "applies_to": "Mobile phones and body-worn wireless devices",
+      "description": "SAR limit: 2.0 W/kg averaged over 10g of tissue. Testing required for handheld devices. Part of TRA type approval process.",
+      "url": "https://www.tra.gov.ae/en"
+    },
+    {
+      "id": "GCC Standardization Organization",
+      "name": "GSO Standards - GCC-Wide Technical Regulations",
+      "category": "GCC Standards",
+      "applies_to": "Products traded within GCC countries",
+      "description": "GCC-wide technical regulations. Harmonized standards for GCC member states (UAE, Saudi Arabia, Kuwait, Qatar, Bahrain, Oman). Mandatory in member states. Covers various product categories.",
+      "url": "https://www.gso.org.sa/en/"
+    },
+    {
+      "id": "GSO Low Voltage Directive",
+      "name": "GSO Technical Regulation for Low Voltage Equipment",
+      "category": "GCC Standards",
+      "applies_to": "Electrical equipment 50-1000V AC or 75-1500V DC",
+      "description": "GCC low voltage equipment regulation. Based on IEC standards. Safety requirements. Mandatory across GCC states. CoC required.",
+      "url": "https://www.gso.org.sa/en/"
+    },
+    {
+      "id": "GSO EMC Regulation",
+      "name": "GSO Electromagnetic Compatibility Regulation",
+      "category": "GCC Standards",
+      "applies_to": "Equipment capable of electromagnetic disturbance",
+      "description": "GCC EMC requirements. Emission and immunity. Based on IEC standards. Mandatory across GCC. Testing at accredited labs.",
+      "url": "https://www.gso.org.sa/en/"
+    },
+    {
+      "id": "GSO RoHS",
+      "name": "GSO Restriction of Hazardous Substances",
+      "category": "GCC Standards",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "GCC RoHS regulation. Restricts lead, mercury, cadmium, hexavalent chromium, PBBs, PBDEs, phthalates. Similar to EU RoHS. Compliance required for EEE in GCC.",
+      "url": "https://www.gso.org.sa/en/"
+    },
+    {
+      "id": "GSO Toy Safety",
+      "name": "GSO Technical Regulation for Toys Safety",
+      "category": "GCC Standards",
+      "applies_to": "Toys for children",
+      "description": "GCC toy safety regulation. Comprehensive safety requirements. Based on ISO 8124. Mechanical, chemical, flammability. Mandatory certification for toys in GCC.",
+      "url": "https://www.gso.org.sa/en/"
+    },
+    {
+      "id": "G-Mark",
+      "name": "Gulf Mark for Product Conformity",
+      "category": "GCC Certification",
+      "applies_to": "Products certified to GCC standards",
+      "description": "GCC conformity mark (G-Mark). Indicates compliance with GSO technical regulations. Recognized across GCC states. Factory inspection and testing required.",
+      "url": "https://www.gso.org.sa/en/"
+    },
+    {
+      "id": "CITC Type Approval - Saudi",
+      "name": "Communications, Space and Technology Commission - Saudi Arabia Type Approval",
+      "category": "Telecommunications - Saudi Arabia",
+      "applies_to": "Telecommunications and radio equipment in Saudi Arabia",
+      "description": "Mandatory type approval for Saudi market. Testing at CITC-accredited labs. Certificate required before customs clearance. Covers all radio and telecom equipment.",
+      "url": "https://www.cst.gov.sa/en"
+    },
+    {
+      "id": "SASO Conformity",
+      "name": "Saudi Standards, Metrology and Quality Organization - Product Conformity",
+      "category": "Product Safety - Saudi Arabia",
+      "applies_to": "Regulated products in Saudi Arabia",
+      "description": "SASO conformity assessment. SALEEM platform for registration. Pre-shipment CoC or shipment-based CoC. Testing to Saudi/GSO standards. Mandatory for customs clearance.",
+      "url": "https://www.saso.gov.sa/en"
+    },
+    {
+      "id": "SASO Energy Efficiency",
+      "name": "Saudi Energy Efficiency Standards and Labeling",
+      "category": "Energy Efficiency - Saudi Arabia",
+      "applies_to": "Appliances, electronics, lighting, HVAC in Saudi Arabia",
+      "description": "Mandatory energy efficiency standards and labeling. SEEC (Saudi Energy Efficiency Center) program. Star rating label. MEPS for various products. Registration required.",
+      "url": "https://www.seec.gov.sa/en/"
+    },
+    {
+      "id": "SFDA Saudi",
+      "name": "Saudi Food and Drug Authority - Medical Device Registration",
+      "category": "Medical Devices - Saudi Arabia",
+      "applies_to": "Medical devices in Saudi Arabia",
+      "description": "Medical device registration with SFDA. Classification based on risk. Pre-market approval. QMS requirements. Local authorized representative required.",
+      "url": "https://www.sfda.gov.sa/en"
+    },
+    {
+      "id": "Kuwait TAC",
+      "name": "Kuwait Type Approval Committee - Telecom Equipment",
+      "category": "Telecommunications - Kuwait",
+      "applies_to": "Telecommunications equipment in Kuwait",
+      "description": "Type approval for telecom equipment in Kuwait. CITRA (Communication and Information Technology Regulatory Authority) oversight. Testing and certification required.",
+      "url": "https://www.citra.gov.kw/en"
+    },
+    {
+      "id": "PAI Kuwait",
+      "name": "Public Authority for Industry - Kuwait Product Conformity",
+      "category": "Product Safety - Kuwait",
+      "applies_to": "Industrial and consumer products in Kuwait",
+      "description": "Conformity assessment for products. Testing to Kuwaiti/GSO standards. Certificate of Conformity required. Covers various product categories.",
+      "url": "https://www.pai.gov.kw/"
+    },
+    {
+      "id": "Qatar TRA",
+      "name": "Communications Regulatory Authority - Qatar Type Approval",
+      "category": "Telecommunications - Qatar",
+      "applies_to": "Telecommunications equipment in Qatar",
+      "description": "Type approval for telecom and radio equipment in Qatar. CRA approval required. Testing at recognized labs. Certificate for customs clearance.",
+      "url": "https://www.cra.gov.qa/en"
+    },
+    {
+      "id": "QS Standards - Qatar",
+      "name": "Qatar General Organization for Standards - Product Conformity",
+      "category": "Product Safety - Qatar",
+      "applies_to": "Regulated products in Qatar",
+      "description": "Conformity assessment with QS (Qatar Standards). Testing to Qatari/GSO standards. Certificate of Conformity. Pre-shipment or shipment-based.",
+      "url": "https://www.qatarstandards.org/en/"
+    },
+    {
+      "id": "Bahrain TRA",
+      "name": "Telecommunications Regulatory Authority - Bahrain Type Approval",
+      "category": "Telecommunications - Bahrain",
+      "applies_to": "Telecommunications equipment in Bahrain",
+      "description": "Type approval for telecom equipment in Bahrain. TRA approval and registration. Testing requirements. Certificate required.",
+      "url": "https://www.tra.org.bh/en"
+    },
+    {
+      "id": "NBSQ Bahrain",
+      "name": "National Bureau for Standards and Quality - Bahrain Conformity",
+      "category": "Product Safety - Bahrain",
+      "applies_to": "Regulated products in Bahrain",
+      "description": "Conformity assessment with NBSQ. Testing to Bahraini/GSO standards. Certificate of Conformity. Quality Mark scheme available.",
+      "url": "https://www.moic.gov.bh/en/Pages/Bureau"
+    },
+    {
+      "id": "Oman TRA",
+      "name": "Telecommunications Regulatory Authority - Oman Type Approval",
+      "category": "Telecommunications - Oman",
+      "applies_to": "Telecommunications equipment in Oman",
+      "description": "Type approval for telecom equipment in Oman. TRA Oman approval. Testing at approved labs. Type approval certificate required.",
+      "url": "https://www.tra.gov.om/home"
+    },
+    {
+      "id": "MOCI Oman",
+      "name": "Ministry of Commerce and Industry - Oman Product Conformity",
+      "category": "Product Safety - Oman",
+      "applies_to": "Regulated products in Oman",
+      "description": "Conformity assessment for products. Testing to Omani/GSO standards. Certificate of Conformity. Mandatory for customs clearance.",
+      "url": "https://www.moci.gov.om/"
+    },
+    {
+      "id": "UAE Customs Classification",
+      "name": "UAE Customs Tariff and HS Classification",
+      "category": "Import/Export - UAE",
+      "applies_to": "All imported products",
+      "description": "HS-based customs classification. Determines duties, regulatory requirements. Customs clearance requires relevant certifications (ESMA, TRA, etc.).",
+      "url": "https://www.fca.gov.ae/en"
+    },
+    {
+      "id": "Dubai Municipality Approvals",
+      "name": "Dubai Municipality - Health and Safety Approvals",
+      "category": "Product Safety - UAE",
+      "applies_to": "Food contact materials, cosmetics, certain consumer products in Dubai",
+      "description": "Dubai Municipality approvals for specific products. Food contact materials, cosmetics, detergents. Testing and registration. Additional to ESMA requirements.",
+      "url": "https://www.dm.gov.ae/en/"
+    },
+    {
+      "id": "UAE Vehicle Type Approval",
+      "name": "Ministry of Interior - Vehicle Type Approval",
+      "category": "Automotive - UAE",
+      "applies_to": "Motor vehicles in UAE",
+      "description": "Type approval for vehicles. GCC type approval or UAE-specific approval. Homologation requirements. ESMA coordination. Safety and emissions standards.",
+      "url": "https://www.moi.gov.ae/en/"
+    },
+    {
+      "id": "Abu Dhabi Quality and Conformity",
+      "name": "Abu Dhabi Quality and Conformity Council",
+      "category": "Product Safety - UAE",
+      "applies_to": "Products in Abu Dhabi emirate",
+      "description": "Quality and conformity requirements specific to Abu Dhabi. Coordination with ESMA. Additional testing or approvals may be required for certain products.",
+      "url": "https://qcc.gov.ae/en"
+    },
+    {
+      "id": "UAE Consumer Protection",
+      "name": "Consumer Protection Law - Federal Law No. 15/2020",
+      "category": "Consumer Protection - UAE",
+      "applies_to": "All consumer products and services",
+      "description": "Consumer rights framework. Product safety, information, recalls, warranties. Ministry of Economy enforcement. Product liability provisions.",
+      "url": "https://www.moec.gov.ae/en"
+    },
+    {
+      "id": "UAE Product Liability",
+      "name": "Product Liability and Recall Requirements",
+      "category": "Consumer Protection - UAE",
+      "applies_to": "Defective or unsafe products",
+      "description": "Liability for defective products. Mandatory recall procedures. Public notification. Ministry of Economy oversight. Penalties for non-compliance.",
+      "url": "https://www.moec.gov.ae/en"
+    },
+    {
+      "id": "UAE Data Protection",
+      "name": "Federal Data Protection Law - Federal Decree-Law No. 45/2021",
+      "category": "Data Protection - UAE",
+      "applies_to": "Organizations processing personal data",
+      "description": "Comprehensive data protection law. Consent requirements, data subject rights, security measures, breach notification. Similar principles to GDPR. Applies to connected devices and services.",
+      "url": "https://u.ae/en/about-the-uae/digital-uae/data/data-protection"
+    },
+    {
+      "id": "UAE Cybersecurity",
+      "name": "Cybersecurity Standards and Regulations",
+      "category": "Cybersecurity - UAE",
+      "applies_to": "Critical infrastructure, government systems, connected devices",
+      "description": "Cybersecurity requirements for critical infrastructure and government. NCEMA (National Emergency Crisis and Disasters Management Authority) standards. Incident reporting. Security controls.",
+      "url": "https://u.ae/en/about-the-uae/digital-uae/cyber-security"
+    },
+    {
+      "id": "SAMA Cybersecurity - Saudi",
+      "name": "Saudi Arabian Monetary Authority - Cybersecurity Framework",
+      "category": "Cybersecurity - Saudi Arabia",
+      "applies_to": "Financial services and fintech in Saudi Arabia",
+      "description": "Cybersecurity framework for financial sector. Applies to fintech products and services. Security controls, risk management, incident response.",
+      "url": "https://www.sama.gov.sa/en-us"
+    },
+    {
+      "id": "CITC IoT Security - Saudi",
+      "name": "IoT Security Framework - Saudi Arabia",
+      "category": "Cybersecurity - Saudi Arabia",
+      "applies_to": "IoT devices in Saudi Arabia",
+      "description": "IoT security guidelines and emerging requirements. CITC oversight. Security by design, vulnerability management, secure updates. Evolving regulatory landscape.",
+      "url": "https://www.cst.gov.sa/en"
+    },
+    {
+      "id": "UAE Food Safety",
+      "name": "Food Safety Requirements - Federal and Emirates Level",
+      "category": "Food Safety - UAE",
+      "applies_to": "Food products and food contact materials",
+      "description": "Food safety requirements. Federal food safety law plus emirate-specific requirements (Dubai Municipality, Abu Dhabi Food Control). Registration, labeling, testing.",
+      "url": "https://u.ae/en/information-and-services/health-and-fitness/food-safety"
+    },
+    {
+      "id": "UAE Labeling Requirements",
+      "name": "Product Labeling Requirements - Arabic Language",
+      "category": "Labeling - UAE",
+      "applies_to": "All consumer products",
+      "description": "Mandatory labeling in Arabic. Product information, warnings, usage instructions, importer details. English permitted as additional language. ESMA requirements.",
+      "url": "https://www.esma.gov.ae/en-us"
+    },
+    {
+      "id": "GCC Nutrition Labeling",
+      "name": "GSO Nutritional Labeling Standard",
+      "category": "Labeling - GCC",
+      "applies_to": "Prepackaged food products",
+      "description": "GCC-wide nutritional labeling requirements. Format, mandatory declarations, health claims. Harmonized across GCC states.",
+      "url": "https://www.gso.org.sa/en/"
+    },
+    {
+      "id": "Halal Certification - GCC",
+      "name": "Halal Product Requirements",
+      "category": "Food & Religious Requirements",
+      "applies_to": "Food products and products with food-grade ingredients",
+      "description": "Halal certification requirements vary by GCC state. Generally required for food products. Approved certifying bodies. Slaughter requirements, ingredients, processing.",
+      "url": "https://www.gso.org.sa/en/"
+    },
+    {
+      "id": "Saudi Halal Authority",
+      "name": "Saudi Food and Drug Authority - Halal Requirements",
+      "category": "Food & Religious Requirements - Saudi Arabia",
+      "applies_to": "Food products in Saudi Arabia",
+      "description": "Halal certification mandatory for food products. SFDA-approved certifying bodies. Specific slaughter requirements for meat. Import requirements.",
+      "url": "https://www.sfda.gov.sa/en"
+    },
+    {
+      "id": "UAE Pharmaceutical",
+      "name": "Ministry of Health - Pharmaceutical and Medical Registration",
+      "category": "Healthcare Products - UAE",
+      "applies_to": "Pharmaceuticals, medical devices, cosmetics",
+      "description": "Registration with MoHAP (Ministry of Health and Prevention). Pharmaceuticals, medical devices, cosmetics. Good Manufacturing Practice. Pre-market approval.",
+      "url": "https://www.mohap.gov.ae/en"
+    },
+    {
+      "id": "DHA Dubai Health",
+      "name": "Dubai Health Authority - Healthcare Product Approvals",
+      "category": "Healthcare Products - UAE",
+      "applies_to": "Healthcare products in Dubai",
+      "description": "DHA approvals for healthcare products in Dubai. Medical devices, pharmaceuticals. Coordination with federal MoHAP. Additional Dubai-specific requirements.",
+      "url": "https://www.dha.gov.ae/en/"
+    },
+    {
+      "id": "Environmental Regulations UAE",
+      "name": "Environmental Protection and Climate Change Requirements",
+      "category": "Environmental - UAE",
+      "applies_to": "Products affecting environment",
+      "description": "Environmental requirements. Ministry of Climate Change and Environment. Chemical registration, waste management, hazardous materials. Affects product materials and disposal.",
+      "url": "https://www.moccae.gov.ae/en"
+    },
+    {
+      "id": "UAE Green Agenda",
+      "name": "UAE Net Zero and Sustainability Initiatives",
+      "category": "Sustainability - UAE",
+      "applies_to": "Products with environmental impact (voluntary but emerging requirements)",
+      "description": "UAE Net Zero 2050 and green agenda. Emerging sustainability requirements. Energy efficiency, carbon footprint, circular economy. Voluntary programs becoming expectations.",
+      "url": "https://u.ae/en/about-the-uae/leaving-no-one-behind/climate-action-in-the-uae"
+    },
+    {
+      "id": "Saudi Green Initiative",
+      "name": "Saudi Green Initiative and Environmental Standards",
+      "category": "Sustainability - Saudi Arabia",
+      "applies_to": "Products with environmental impact in Saudi Arabia",
+      "description": "Saudi environmental initiatives. Emerging sustainability requirements. Energy efficiency, circular economy. Aligns with Vision 2030. Evolving regulatory landscape.",
+      "url": "https://www.saudigreeninitiative.org/"
+    },
+    {
+      "id": "GCC Unified Customs",
+      "name": "GCC Customs Union and Tariff",
+      "category": "Import/Export - GCC",
+      "applies_to": "Products traded within GCC",
+      "description": "GCC customs union. Common external tariff (generally 5% with exceptions). Harmonized HS classification. Free movement within GCC after initial customs clearance.",
+      "url": "https://www.gso.org.sa/en/"
+    },
+    {
+      "id": "UAE Commercial Agencies",
+      "name": "Commercial Agency Law and Distribution",
+      "category": "Business & Trade - UAE",
+      "applies_to": "Product distribution and import",
+      "description": "Commercial agency regulations. Local agent/distributor requirements for foreign companies. Exclusive distribution. Affects product import and distribution arrangements.",
+      "url": "https://www.moec.gov.ae/en"
+    },
+    {
+      "id": "Intellectual Property UAE",
+      "name": "UAE Trademark and Patent Protection",
+      "category": "Intellectual Property - UAE",
+      "applies_to": "Product branding and innovation",
+      "description": "IP protection in UAE. Trademark registration, patent protection, design registration. Ministry of Economy. Enforcement against counterfeits. Important for brand protection.",
+      "url": "https://www.moec.gov.ae/en"
+    },
+    {
+      "id": "Saudi IP",
+      "name": "Saudi Authority for Intellectual Property",
+      "category": "Intellectual Property - Saudi Arabia",
+      "applies_to": "Product branding and innovation in Saudi Arabia",
+      "description": "IP protection in Saudi Arabia. SAIP (Saudi Authority for Intellectual Property) registration. Trademarks, patents, designs. Enforcement mechanisms.",
+      "url": "https://www.saip.gov.sa/en/"
+    },
+    {
+      "id": "Metrology UAE",
+      "name": "Legal Metrology and Weights & Measures",
+      "category": "Metrology - UAE",
+      "applies_to": "Prepackaged goods, measuring instruments",
+      "description": "Legal metrology requirements. ESMA enforcement. Net content declaration. Verification of measuring instruments. Tolerances for packaged goods.",
+      "url": "https://www.esma.gov.ae/en-us"
+    },
+    {
+      "id": "SASO Metrology - Saudi",
+      "name": "Legal Metrology - Saudi Arabia",
+      "category": "Metrology - Saudi Arabia",
+      "applies_to": "Prepackaged goods, measuring instruments in Saudi Arabia",
+      "description": "Legal metrology requirements. SASO enforcement. Net quantity, verification of measuring instruments. Pre-packaging regulations.",
+      "url": "https://www.saso.gov.sa/en"
+    },
+    {
+      "id": "Occupational Health UAE",
+      "name": "Occupational Health and Safety Standards",
+      "category": "Workplace Safety - UAE",
+      "applies_to": "Equipment used in workplaces",
+      "description": "Workplace safety requirements. Ministry of Human Resources standards. Affects machinery, electrical equipment, PPE. Employer obligations.",
+      "url": "https://www.mohre.gov.ae/en"
+    }
+  ]
+}

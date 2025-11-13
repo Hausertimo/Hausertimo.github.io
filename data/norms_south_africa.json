@@ -1,0 +1,437 @@
+{
+  "_comment": "Compliance norms database for South Africa - comprehensive standards and regulations. Last updated: January 2025",
+  "norms": [
+    {
+      "id": "ICASA Type Approval",
+      "name": "Independent Communications Authority of South Africa - Type Approval",
+      "category": "Telecommunications",
+      "applies_to": "Telecommunications equipment, radio equipment, cellular devices",
+      "description": "Mandatory type approval for all telecommunications and radio equipment before sale or use in South Africa. Requires testing to SANS specifications and ICASA approval. Covers mobile phones, wireless devices, broadcasting equipment, satellite terminals.",
+      "url": "https://www.icasa.org.za/"
+    },
+    {
+      "id": "NRCS LOA",
+      "name": "National Regulator for Compulsory Specifications - Letter of Authority",
+      "category": "Product Safety",
+      "applies_to": "Regulated electrical products, gas appliances, automotive components",
+      "description": "Letter of Authority (LOA) required for products covered by compulsory specifications before import or sale. Testing to SANS standards at accredited laboratories. Covers electrical equipment, gas appliances, piping, automotive parts, protective equipment.",
+      "url": "https://www.nrcs.org.za/"
+    },
+    {
+      "id": "SANS 164-2",
+      "name": "South African National Standard 164-2 - Electrical Plugs and Socket-Outlets",
+      "category": "Electrical Safety",
+      "applies_to": "Electrical plugs, sockets, adaptors, extension cords",
+      "description": "Compulsory specification for plugs and socket-outlets for household and similar purposes (15A/16A, 250V). Unique South African plug configuration (Type M/D). All electrical products must comply with SANS 164-2 requirements.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 60950-1",
+      "name": "SANS 60950-1 - IT Equipment Safety",
+      "category": "Product Safety",
+      "applies_to": "Information technology equipment, office equipment, data processing equipment",
+      "description": "Safety requirements for IT equipment including computers, servers, monitors, printers, networking equipment. Harmonized with IEC 60950-1. Testing covers electrical safety, fire hazards, mechanical hazards, energy hazards.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 62368-1",
+      "name": "SANS 62368-1 - Audio/Video and ICT Equipment Safety",
+      "category": "Product Safety",
+      "applies_to": "Audio/video equipment, ICT equipment, consumer electronics",
+      "description": "Hazard-based safety engineering standard for audio/video, information and communication technology equipment. Replaces SANS 60950-1 and SANS 60065. Covers energy sources, fire ignition, mechanical hazards, chemical hazards.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 60335-1",
+      "name": "SANS 60335-1 - Household Appliance Safety",
+      "category": "Product Safety",
+      "applies_to": "Household electrical appliances, similar electrical equipment",
+      "description": "General safety requirements for household and similar electrical appliances. Covers electrical, mechanical, thermal and fire hazards. Applicable to appliances for domestic use, operated at rated voltage not exceeding 250V for single-phase and 480V for other appliances.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1019",
+      "name": "SANS 1019 - Electromagnetic Compatibility (EMC)",
+      "category": "EMC",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "Electromagnetic compatibility requirements for electrical and electronic equipment sold in South Africa. Based on CISPR standards. Covers emission limits and immunity requirements to ensure equipment operates without causing or being affected by electromagnetic interference.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10142-1",
+      "name": "SANS 10142-1 - Wiring of Premises",
+      "category": "Electrical Installation",
+      "applies_to": "Electrical installations in buildings and premises",
+      "description": "Requirements for electrical installations in buildings, residential, commercial and industrial premises. Covers wiring systems, earthing, protection against electric shock, selection and installation of equipment. Similar to IEC 60364 but adapted for South African conditions.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SAHPRA Medical Devices",
+      "name": "South African Health Products Regulatory Authority - Medical Device Registration",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices, in vitro diagnostics, active implantable devices",
+      "description": "Mandatory registration of medical devices before sale or distribution in South Africa. Classification system (Class A-D) based on risk. Requires conformity assessment, technical documentation, quality management system (ISO 13485). Covers all medical devices and IVDs.",
+      "url": "https://www.sahpra.org.za/"
+    },
+    {
+      "id": "SAHPRA Medicines",
+      "name": "SAHPRA - Medicines Registration",
+      "category": "Pharmaceuticals",
+      "applies_to": "Pharmaceutical products, biological medicines, veterinary medicines",
+      "description": "Registration required for all medicines before marketing in South Africa. Submission includes quality, safety, efficacy data. GMP certification required. Post-market surveillance and pharmacovigilance obligations. Covers prescription medicines, OTC products, generics, biologicals.",
+      "url": "https://www.sahpra.org.za/"
+    },
+    {
+      "id": "SANS 941",
+      "name": "SANS 941 - Energy Efficiency for Household Refrigerators",
+      "category": "Energy Efficiency",
+      "applies_to": "Household refrigerators, freezers, combination appliances",
+      "description": "Minimum energy performance standards (MEPS) and energy labeling for household refrigerators and freezers. Compulsory energy rating label showing energy consumption. Testing according to SANS 62552. Applies to all household refrigeration appliances.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 60086",
+      "name": "SANS 60086 - Primary Batteries",
+      "category": "Product Safety",
+      "applies_to": "Primary batteries, disposable batteries, button cells",
+      "description": "Requirements for primary batteries including dimensions, electrical performance, safety features. Covers alkaline, zinc-carbon, lithium primary cells. Safety requirements include leak resistance, temperature performance, mechanical strength.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 62133",
+      "name": "SANS 62133 - Rechargeable Battery Safety",
+      "category": "Product Safety",
+      "applies_to": "Rechargeable batteries, lithium-ion batteries, battery packs",
+      "description": "Safety requirements for portable sealed secondary cells and batteries containing alkaline or other non-acid electrolytes. Covers lithium-ion, lithium polymer, nickel-metal hydride batteries. Testing includes electrical tests, mechanical tests, environmental tests, abuse tests.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "POPIA",
+      "name": "Protection of Personal Information Act",
+      "category": "Data Protection",
+      "applies_to": "All organizations processing personal information in South Africa",
+      "description": "Comprehensive data protection law governing processing of personal information. Eight conditions for lawful processing: accountability, processing limitation, purpose specification, further processing, information quality, openness, security safeguards, data subject participation. Enforced by Information Regulator.",
+      "url": "https://www.justice.gov.za/inforeg/"
+    },
+    {
+      "id": "ECRA Cybersecurity",
+      "name": "Electronic Communications and Transactions Act - Cybersecurity",
+      "category": "Cybersecurity",
+      "applies_to": "Electronic transactions, communications service providers, data messages",
+      "description": "Legal framework for electronic communications and transactions including cybersecurity requirements. Addresses digital signatures, electronic authentication, cybercrime, consumer protection in e-commerce. Critical infrastructure protection obligations for communications providers.",
+      "url": "https://www.gov.za/"
+    },
+    {
+      "id": "SANS 27001",
+      "name": "SANS/ISO/IEC 27001 - Information Security Management",
+      "category": "Information Security",
+      "applies_to": "Organizations managing sensitive information",
+      "description": "Information security management system requirements. Identical to ISO/IEC 27001. Risk-based approach to protecting information assets. Covers security policies, organization of information security, asset management, access control, cryptography, physical security, operations security, incident management.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1478",
+      "name": "SANS 1478 - Chemical Substances Labeling",
+      "category": "Chemical Safety",
+      "applies_to": "Hazardous chemical substances, dangerous goods",
+      "description": "Requirements for labeling and material safety data sheets for hazardous chemical substances. Aligned with GHS (Globally Harmonized System). Mandatory for manufacturers, importers, suppliers of hazardous chemicals. Covers classification, hazard communication, SDS requirements.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10228",
+      "name": "SANS 10228 - Automotive LPG Systems",
+      "category": "Automotive",
+      "applies_to": "LPG vehicle conversion kits, automotive gas systems",
+      "description": "Requirements for liquefied petroleum gas systems for motor vehicles. Covers installation, components, testing, certification of LPG conversion kits. Mandatory compliance for all vehicle LPG installations. Ensures safety of pressurized gas systems in vehicles.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10400",
+      "name": "SANS 10400 - National Building Regulations",
+      "category": "Building & Construction",
+      "applies_to": "Building construction, structural works, building installations",
+      "description": "Application of the National Building Regulations including structural design, fire safety, drainage, electrical installations, energy efficiency. Multiple parts covering different aspects (10400-A through 10400-XA). Mandatory for all building works in South Africa.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10400-XA",
+      "name": "SANS 10400-XA - Energy Efficiency in Buildings",
+      "category": "Energy Efficiency",
+      "applies_to": "New buildings, building alterations, building extensions",
+      "description": "Energy efficiency requirements for buildings. Part of National Building Regulations. Covers thermal performance of building envelope, lighting efficiency, solar water heating, renewable energy considerations. Applies to residential and commercial buildings.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1200",
+      "name": "SANS 1200 - Standardized Specifications for Construction",
+      "category": "Building & Construction",
+      "applies_to": "Civil engineering works, building construction materials",
+      "description": "Standardized specifications for civil engineering construction. Multiple parts covering different materials and works. Commonly referenced in construction contracts. Covers concrete works, earthworks, roadworks, pipework, structural steelwork.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10403",
+      "name": "SANS 10403 - Transportation of Dangerous Goods",
+      "category": "Transportation",
+      "applies_to": "Dangerous goods, hazardous materials transport",
+      "description": "Requirements for transportation of dangerous goods by road or rail. Aligned with UN Recommendations on the Transport of Dangerous Goods. Covers classification, packaging, labeling, documentation, vehicle requirements, driver training.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 61508",
+      "name": "SANS 61508 - Functional Safety",
+      "category": "Functional Safety",
+      "applies_to": "Safety-related systems, industrial automation, process control",
+      "description": "Functional safety of electrical/electronic/programmable electronic safety-related systems. Identical to IEC 61508. Risk-based approach to safety integrity levels (SIL 1-4). Covers safety lifecycle, management, hardware and software requirements. Applied across industries.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1350",
+      "name": "SANS 1350 - Toy Safety",
+      "category": "Product Safety",
+      "applies_to": "Toys, children's products, play equipment",
+      "description": "Safety requirements for toys. Covers mechanical and physical properties, flammability, chemical properties, electrical properties. Age grading requirements. Testing for sharp edges, small parts, toxic substances, choking hazards. Harmonized with ISO 8124 and EN 71.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 61000",
+      "name": "SANS 61000 Series - Electromagnetic Compatibility",
+      "category": "EMC",
+      "applies_to": "All electrical and electronic equipment",
+      "description": "Comprehensive EMC standard series covering immunity and emission requirements. Harmonized with IEC 61000 series. Defines limits and test methods for conducted and radiated emissions, immunity to various disturbances (ESD, radiated fields, transients, voltage dips).",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 60529",
+      "name": "SANS 60529 - IP Codes (Ingress Protection)",
+      "category": "Product Safety",
+      "applies_to": "Electrical enclosures, equipment housings, outdoor equipment",
+      "description": "Degrees of protection provided by enclosures (IP Code). First digit: protection against solid objects (0-6). Second digit: protection against liquids (0-9). Common ratings: IP44 (splash-proof), IP65 (dust-tight, water-jet proof), IP68 (submersible).",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1450",
+      "name": "SANS 1450 - Electrical Cables",
+      "category": "Electrical Safety",
+      "applies_to": "Power cables, electrical wiring cables, flexible cords",
+      "description": "Requirements for electric cables for fixed installations. Covers voltage ratings, conductor sizes, insulation materials, temperature ratings. Multiple parts for different cable types. Ensures safe electrical distribution in buildings and industrial installations.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 60598",
+      "name": "SANS 60598 - Luminaire Safety",
+      "category": "Product Safety",
+      "applies_to": "Lighting fixtures, lamps, luminaires",
+      "description": "Safety requirements for luminaires including electrical, thermal, mechanical and photobiological safety. Multiple parts for different luminaire types (household, commercial, emergency, recessed, outdoor). Covers LED luminaires, traditional lighting, special purpose lighting.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 60601-1",
+      "name": "SANS 60601-1 - Medical Electrical Equipment Safety",
+      "category": "Medical Devices",
+      "applies_to": "Medical electrical equipment, medical devices with electrical components",
+      "description": "General requirements for basic safety and essential performance of medical electrical equipment. Covers electrical safety, mechanical hazards, radiation hazards, usability engineering, risk management. Basis for all medical electrical equipment certification.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1186",
+      "name": "SANS 1186 - Automotive Tyres",
+      "category": "Automotive",
+      "applies_to": "Passenger car tyres, light truck tyres, heavy vehicle tyres",
+      "description": "Performance and safety requirements for pneumatic tyres. Compulsory specification for tyres sold in South Africa. Covers dimensions, load ratings, speed ratings, endurance testing, high-speed performance. Ensures minimum quality and safety standards.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SABS Mark",
+      "name": "SABS Product Certification Mark",
+      "category": "Product Certification",
+      "applies_to": "Various products voluntarily certified to SANS standards",
+      "description": "Voluntary certification mark indicating conformity to SANS standards. Demonstrates quality, safety, performance. Recognized quality mark in South African market. Requires factory inspections, ongoing compliance monitoring. Applicable to wide range of products beyond compulsory specifications.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1063",
+      "name": "SANS 1063 - Helmets (Protective)",
+      "category": "Personal Protective Equipment",
+      "applies_to": "Safety helmets, industrial helmets, construction helmets",
+      "description": "Requirements for industrial safety helmets protecting against impact and penetration. Covers shock absorption, penetration resistance, flame resistance, electrical insulation. Classifications for different industrial applications. Compulsory for workplace safety compliance.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 20345",
+      "name": "SANS 20345 - Safety Footwear",
+      "category": "Personal Protective Equipment",
+      "applies_to": "Safety shoes, safety boots, industrial footwear",
+      "description": "Requirements for safety footwear with toe protection. Covers impact resistance, compression resistance, slip resistance, penetration resistance, electrical properties. Different protection levels based on workplace hazards. Essential for occupational health and safety compliance.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1804",
+      "name": "SANS 1804 - Gas Appliances",
+      "category": "Product Safety",
+      "applies_to": "Domestic gas appliances, LPG appliances, natural gas appliances",
+      "description": "Safety requirements for gas-burning appliances for domestic use. Compulsory specification administered by NRCS. Covers cookers, heaters, water heaters, barbecues operating on LPG or natural gas. Testing includes combustion performance, gas safety, ventilation requirements.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1158",
+      "name": "SANS 1158 - Pressure Equipment",
+      "category": "Industrial Safety",
+      "applies_to": "Pressure vessels, boilers, piping systems, pressure equipment",
+      "description": "Requirements for design, manufacture, inspection of pressure equipment. Covers unfired pressure vessels, piping, boilers, pressure accessories. Classification based on pressure and volume. Mandatory inspections by authorized inspection authorities. Critical for industrial safety.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10049",
+      "name": "SANS 10049 - Water Supply",
+      "category": "Water Quality",
+      "applies_to": "Drinking water, potable water systems, water treatment",
+      "description": "Code of practice for water supply in the food industry. Covers water quality requirements, treatment, distribution, monitoring. Ensures safe water for food production. Testing requirements for microbiological and chemical parameters. Part of food safety compliance.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1853",
+      "name": "SANS 1853 - Fire Detection and Alarm Systems",
+      "category": "Fire Safety",
+      "applies_to": "Fire alarm systems, smoke detectors, fire detection equipment",
+      "description": "Requirements for design, installation, commissioning and maintenance of fire detection and alarm systems in buildings. Covers system components, zoning, power supplies, testing procedures. Based on international best practices adapted for South African conditions.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10139",
+      "name": "SANS 10139 - Passive Fire Protection",
+      "category": "Fire Safety",
+      "applies_to": "Fire-resistant materials, fire barriers, fire-stopping systems",
+      "description": "Requirements for fire resistance of building elements. Covers fire doors, fire walls, fire-stopping of service penetrations, fire-resistant coatings. Testing and classification of fire resistance periods (30min, 60min, 90min, 120min). Essential for building code compliance.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10234",
+      "name": "SANS 10234 - Concrete Industrial Floors",
+      "category": "Building & Construction",
+      "applies_to": "Industrial floors, warehouse floors, commercial concrete slabs",
+      "description": "Code of practice for design and construction of concrete industrial floors. Covers floor design, materials, construction methods, joints, surface finishes, quality control. Applicable to warehouses, factories, commercial buildings requiring heavy-duty floors.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10252",
+      "name": "SANS 10252 - Water Supply and Drainage for Buildings",
+      "category": "Building Services",
+      "applies_to": "Plumbing systems, water supply systems, drainage systems",
+      "description": "Requirements for water supply, drainage and sanitation systems in buildings. Covers pipe materials, pipe sizing, fittings, fixtures, hot water systems, stormwater drainage. Multiple parts addressing different aspects. Ensures safe, efficient plumbing installations.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 204",
+      "name": "SANS 204 - Energy Efficiency for Air Conditioners",
+      "category": "Energy Efficiency",
+      "applies_to": "Air conditioning units, heat pumps, cooling equipment",
+      "description": "Energy efficiency requirements and labeling for air conditioners. Minimum energy performance standards (MEPS) and mandatory energy labels. Testing according to SANS ISO standards. Covers split systems, ducted systems, packaged units. Aims to reduce energy consumption.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1428",
+      "name": "SANS 1428 - Accessibility Standards",
+      "category": "Accessibility",
+      "applies_to": "Buildings, public facilities, built environment",
+      "description": "Code of practice for application of the National Building Regulations Part S (Facilities for disabled persons). Covers accessible routes, ramps, parking, entrances, sanitary facilities, signage. Ensures buildings are accessible to persons with disabilities.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 242",
+      "name": "SANS 242 - Mineral and Petroleum Activities",
+      "category": "Mining Safety",
+      "applies_to": "Mining equipment, petroleum installations, mineral processing",
+      "description": "Code of practice for health and safety in mineral and petroleum activities. Covers equipment standards, electrical installations in hazardous areas, mechanical handling, ventilation, emergency systems. Compliance with Mine Health and Safety Act requirements.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 60079",
+      "name": "SANS 60079 - Explosive Atmospheres",
+      "category": "Hazardous Areas",
+      "applies_to": "Equipment for explosive atmospheres, Ex equipment, ATEX equipment",
+      "description": "Requirements for equipment intended for use in explosive atmospheres. Harmonized with IEC 60079 series. Covers protection methods (flameproof, increased safety, intrinsic safety, pressurization). Essential for petrochemical, mining, chemical industries.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "Consumer Protection Act",
+      "name": "Consumer Protection Act (CPA)",
+      "category": "Consumer Protection",
+      "applies_to": "All consumer goods and services in South Africa",
+      "description": "Comprehensive consumer protection legislation. Covers product safety, product liability, warranties, consumer rights, fair business practices, direct marketing, product recalls. Suppliers liable for harm caused by unsafe goods. National Consumer Commission enforces compliance.",
+      "url": "https://www.thencc.gov.za/"
+    },
+    {
+      "id": "SANS 1697",
+      "name": "SANS 1697 - Steel Structures",
+      "category": "Building & Construction",
+      "applies_to": "Structural steel, steel buildings, steel frameworks",
+      "description": "Code of practice for design of structural steelwork. Based on limit states design principles. Covers structural analysis, design of members, connections, fabrication, erection. Used for steel-framed buildings, bridges, industrial structures.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 1921",
+      "name": "SANS 1921 - Refrigerant Handling",
+      "category": "Environmental",
+      "applies_to": "Refrigeration systems, air conditioning systems, heat pumps",
+      "description": "Requirements for refrigerant handling, installation, servicing of refrigeration and air conditioning equipment. Covers refrigerant recovery, recycling, containment. Addresses environmental protection (ozone depletion, global warming). Mandatory technician certification.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10346",
+      "name": "SANS 10346 - Water Heating",
+      "category": "Energy Efficiency",
+      "applies_to": "Solar water heaters, heat pump water heaters, geyser systems",
+      "description": "Code of practice for installation of solar and heat pump water heating systems. Part of energy efficiency drive in buildings. Covers system design, installation requirements, commissioning, maintenance. Compliance often required for new buildings under SANS 10400-XA.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 10263",
+      "name": "SANS 10263 - Warehousing of Dangerous Goods",
+      "category": "Chemical Safety",
+      "applies_to": "Warehouses, storage facilities, dangerous goods storage",
+      "description": "Requirements for safe warehousing of dangerous goods and hazardous substances. Covers facility design, separation distances, fire protection, ventilation, spill containment, security. Classification of dangerous goods, storage compatibility. Critical for chemical storage compliance.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "National Environmental Management Act",
+      "name": "National Environmental Management Act (NEMA)",
+      "category": "Environmental",
+      "applies_to": "All activities with potential environmental impact",
+      "description": "Framework environmental legislation. Environmental Impact Assessment (EIA) required for listed activities. Covers environmental principles, environmental management, waste management, air quality, biodiversity. Duty of care to prevent pollution and degradation. Enforced by Department of Forestry, Fisheries and Environment.",
+      "url": "https://www.dffe.gov.za/"
+    },
+    {
+      "id": "Waste Act",
+      "name": "National Environmental Management: Waste Act",
+      "category": "Environmental",
+      "applies_to": "Waste management, e-waste, hazardous waste",
+      "description": "Regulation of waste management including generation, storage, treatment, disposal. Extended Producer Responsibility (EPR) for electrical/electronic products, lighting, paper/packaging. Mandatory waste classification, licensing for waste activities. E-waste regulations for WEEE management.",
+      "url": "https://www.dffe.gov.za/"
+    },
+    {
+      "id": "SANS 1327",
+      "name": "SANS 1327 - Concrete Roof Tiles",
+      "category": "Building Materials",
+      "applies_to": "Concrete roof tiles, clay roof tiles, roofing materials",
+      "description": "Requirements for concrete roof tiles. Compulsory specification. Covers dimensions, physical properties, frost resistance, water absorption, transverse strength. Ensures quality and durability of roofing materials. Applicable to all concrete tiles for roof covering.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 227",
+      "name": "SANS 227 - Cement",
+      "category": "Building Materials",
+      "applies_to": "Portland cement, blended cement, construction cement",
+      "description": "Requirements for cement for general building purposes. Multiple types defined (CEM I, CEM II, CEM III, CEM IV, CEM V). Covers chemical composition, physical properties, strength development. Compulsory specification ensuring quality of cement for construction.",
+      "url": "https://www.sabs.co.za/"
+    },
+    {
+      "id": "SANS 50591",
+      "name": "SANS 50591 - Photovoltaic Systems Installation",
+      "category": "Renewable Energy",
+      "applies_to": "Solar PV systems, rooftop solar, grid-connected PV, off-grid PV",
+      "description": "Requirements for design, installation, inspection, operation, maintenance of grid-connected PV systems. Based on IEC 62446 and IEC 61730. Covers electrical safety, structural requirements, documentation, commissioning. Essential for solar installations in South Africa's growing renewable energy sector.",
+      "url": "https://www.sabs.co.za/"
+    }
+  ]
+}
