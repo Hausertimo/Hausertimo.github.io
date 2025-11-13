@@ -4,3 +4,5 @@ requests
 python-dotenv
 redis
 stripe==7.4.0
+supabase
+weasyprint
