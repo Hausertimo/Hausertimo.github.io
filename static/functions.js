@@ -1033,8 +1033,8 @@ async function sendTeaserMessage() {
 
             // Check if AI has enough info to generate report
             if (data.complete) {
-                // AI is ready! Show "Generate Full Report" button
-                showContinueButton();
+                // AI is ready! Check if user is logged in
+                checkAuthAndShowContinue();
                 // Hide input container (conversation is done)
                 document.getElementById('teaserInputContainer').style.display = 'none';
             } else {
@@ -1071,20 +1071,140 @@ function addTeaserMessage(role, content) {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-function showContinueButton() {
+/**
+ * Check auth and show appropriate continue action
+ */
+function checkAuthAndShowContinue() {
+    const user = getCurrentUser();
+
+    if (user) {
+        // User is logged in, show "Create Workspace" button
+        showCreateWorkspaceButton();
+    } else {
+        // User not logged in, show "Sign in to save" message
+        showSignInPrompt();
+    }
+}
+
+/**
+ * Show create workspace button (for logged in users)
+ */
+function showCreateWorkspaceButton() {
     const continueContainer = document.getElementById('teaserContinueContainer');
+    continueContainer.innerHTML = `
+        <button class="btn btn-accent btn-large teaser-continue-btn" onclick="promptWorkspaceName()">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 8px;">
+                <path d="M10 4v12M4 10h12"/>
+            </svg>
+            Create Workspace
+        </button>
+    `;
     continueContainer.style.display = 'block';
 }
 
-function openFullWorkspace() {
+/**
+ * Show sign in prompt (for non-logged in users)
+ */
+function showSignInPrompt() {
+    const continueContainer = document.getElementById('teaserContinueContainer');
+    continueContainer.innerHTML = `
+        <div style="text-align: center; padding: 20px;">
+            <p style="margin-bottom: 16px; color: #666;">Sign in to save your compliance analysis as a workspace</p>
+            <button class="btn btn-accent btn-large" onclick="showLoginModal()">
+                Sign In to Save Workspace
+            </button>
+        </div>
+    `;
+    continueContainer.style.display = 'block';
+}
+
+/**
+ * Prompt user for workspace name
+ */
+function promptWorkspaceName() {
+    const name = prompt('Name your workspace:', 'Compliance Analysis');
+
+    if (!name) {
+        return; // User cancelled
+    }
+
+    createWorkspaceFromSession(name);
+}
+
+/**
+ * Create workspace from teaser session
+ */
+async function createWorkspaceFromSession(workspaceName) {
     if (!teaserSessionId) {
         alert('No active session found. Please start a conversation first.');
         return;
     }
 
-    // Open /develope page with session_id parameter in a new tab
-    const url = `/develope?session_id=${teaserSessionId}`;
-    window.open(url, '_blank');
+    try {
+        // Show loading
+        const continueContainer = document.getElementById('teaserContinueContainer');
+        continueContainer.innerHTML = `
+            <div style="text-align: center; padding: 20px;">
+                <div class="loading-spinner" style="margin: 0 auto 16px;"></div>
+                <p>Creating your workspace...</p>
+            </div>
+        `;
+
+        // Get session data from develope API
+        const sessionResponse = await fetch(`/api/develope/${teaserSessionId}`, {
+            credentials: 'include'
+        });
+
+        if (!sessionResponse.ok) {
+            throw new Error('Failed to get session data');
+        }
+
+        const sessionData = await sessionResponse.json();
+
+        // Create workspace
+        const response = await fetch('/api/workspaces/create', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            credentials: 'include',
+            body: JSON.stringify({
+                name: workspaceName,
+                product_description: sessionData.history[0]?.content || 'No description',
+                matched_norms: sessionData.matched_norms || [],
+                all_results: sessionData.all_results || {}
+            })
+        });
+
+        if (!response.ok) {
+            const data = await response.json();
+            if (data.limit_exceeded) {
+                alert(data.error);
+                return;
+            }
+            throw new Error('Failed to create workspace');
+        }
+
+        const data = await response.json();
+
+        // Redirect to workspace
+        window.location.href = `/workspace/${data.workspace.id}`;
+
+    } catch (error) {
+        console.error('Error creating workspace:', error);
+        alert('Failed to create workspace. Please try again.');
+
+        // Restore button
+        showCreateWorkspaceButton();
+    }
+}
+
+function showContinueButton() {
+    // Legacy function for backwards compatibility
+    checkAuthAndShowContinue();
+}
+
+function openFullWorkspace() {
+    // Legacy function - redirect to prompt workspace name
+    promptWorkspaceName();
 }
 
 // Allow Enter key to send message in teaser
