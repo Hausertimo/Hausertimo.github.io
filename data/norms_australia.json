@@ -1,0 +1,405 @@
+{
+  "_comment": "Australia and New Zealand compliance norms and standards database. Includes RCM, ACMA, AS/NZS standards, GEMS, TGA and other regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "RCM",
+      "name": "Regulatory Compliance Mark",
+      "category": "RCM Compliance",
+      "applies_to": "Electrical equipment, EMC equipment, telecommunications equipment",
+      "description": "Unified compliance mark replacing C-Tick (EMC) and A-Tick (telecommunications). Mandatory for prescribed electrical equipment. Indicates compliance with electrical safety, EMC, and telecommunications requirements. Supplier Declaration of Conformity required.",
+      "url": "https://www.acma.gov.au/rcm"
+    },
+    {
+      "id": "AS/NZS 3820",
+      "name": "Essential Safety Requirements for Electrical Equipment",
+      "category": "Electrical Safety",
+      "applies_to": "All prescribed electrical equipment",
+      "description": "Defines essential safety requirements for electrical equipment in Australia and New Zealand. Foundation standard for electrical safety compliance. Risk-based approach.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 62368.1",
+      "name": "Audio/Video, ICT and Communication Technology Equipment - Safety",
+      "category": "Electrical Safety",
+      "applies_to": "IT equipment, AV equipment, communication equipment",
+      "description": "Australia/New Zealand adoption of IEC 62368-1. Hazard-based safety standard for ICT equipment. Required for RCM compliance for ICT products.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 60950.1",
+      "name": "Information Technology Equipment - Safety (LEGACY)",
+      "category": "Electrical Safety",
+      "applies_to": "IT equipment (replaced by AS/NZS 62368.1)",
+      "description": "LEGACY standard for IT equipment safety. Withdrawn and replaced by AS/NZS 62368.1. May still be referenced in older certifications until transition period ends.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS CISPR 22",
+      "name": "Information Technology Equipment - Radio Disturbance Characteristics",
+      "category": "EMC",
+      "applies_to": "IT equipment, computing devices",
+      "description": "EMC emission requirements for IT equipment. Class A (commercial) and Class B (residential) limits. Required for RCM compliance.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS CISPR 32",
+      "name": "Multimedia Equipment - EMC Requirements - Emission",
+      "category": "EMC",
+      "applies_to": "Multimedia equipment, IT equipment",
+      "description": "Emission requirements for multimedia equipment. Replaces AS/NZS CISPR 22 for newer equipment. Required for RCM.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS CISPR 35",
+      "name": "Multimedia Equipment - EMC Requirements - Immunity",
+      "category": "EMC",
+      "applies_to": "Multimedia equipment, IT equipment",
+      "description": "Immunity requirements for multimedia equipment. Works with CISPR 32 for complete EMC compliance.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 4252.1",
+      "name": "Mobile Phones - RF Exposure - Maximum SAR",
+      "category": "Radio Frequency Safety",
+      "applies_to": "Mobile phones and handheld radio devices",
+      "description": "SAR (Specific Absorption Rate) limits for mobile phones. 2.0 W/kg averaged over 10g of tissue. Required for ACMA approval.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "ACMA Radio Communications (Compliance Labelling) Notice",
+      "name": "Radio Equipment Compliance Framework",
+      "category": "Radio Frequency",
+      "applies_to": "All radio transmitting equipment",
+      "description": "Framework for radio equipment compliance. Supplier Declaration of Conformity required. RCM mark mandatory. Covers WiFi, Bluetooth, cellular, all radio equipment.",
+      "url": "https://www.acma.gov.au/compliance-labelling-devices"
+    },
+    {
+      "id": "AS/NZS 4268",
+      "name": "Radio Frequency Exposure - Human Exposure to EMF",
+      "category": "Radio Frequency Safety",
+      "applies_to": "Radio transmitting equipment",
+      "description": "Limits for human exposure to radio frequency electromagnetic fields. 3 kHz to 300 GHz. Required for devices with RF transmission above specified power levels.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 4771",
+      "name": "Performance Criteria - RF Transmitters 9kHz to 400GHz",
+      "category": "Radio Frequency",
+      "applies_to": "Radio transmitting equipment",
+      "description": "Performance criteria for radio frequency transmitters. Technical requirements for ACMA compliance. Covers frequency stability, spurious emissions, power limits.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 60335.1",
+      "name": "Household Appliances - Safety - General Requirements",
+      "category": "Appliance Safety",
+      "applies_to": "Household and similar electrical appliances",
+      "description": "General safety requirements for household appliances. Harmonized with IEC 60335-1. Part 1 of comprehensive series. Required for RCM compliance of appliances.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 60335.2.X",
+      "name": "Household Appliances - Safety - Particular Requirements",
+      "category": "Appliance Safety",
+      "applies_to": "Specific appliance types",
+      "description": "Part 2 series with specific requirements for different appliances. Over 100 parts covering specific products (vacuum cleaners, coffee makers, heaters, etc.).",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 3100",
+      "name": "Approval and Test Specification - General Requirements for Electrical Equipment",
+      "category": "Electrical Safety",
+      "applies_to": "Electrical equipment for approval",
+      "description": "General requirements for electrical equipment approval. Covers construction, testing, marking requirements. Foundation standard for many product categories.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 2172",
+      "name": "Automatic Circuit Reclosers",
+      "category": "Electrical Components",
+      "applies_to": "Automatic circuit breakers and protection devices",
+      "description": "Requirements for automatic circuit reclosers for distribution systems. Relevant for power protection devices.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 61558.1",
+      "name": "Safety of Power Transformers - General Requirements",
+      "category": "Power Supplies",
+      "applies_to": "Power transformers, power supplies, converters",
+      "description": "Safety requirements for power transformers and similar equipment. Includes AC-DC adapters, power supplies. Required for RCM.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 61558.2.6",
+      "name": "Safety of Transformers - Particular Requirements for Safety Isolating Transformers",
+      "category": "Power Supplies",
+      "applies_to": "Safety isolating transformers",
+      "description": "Specific requirements for safety isolating transformers. Used in power supplies for portable equipment.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 62133.2",
+      "name": "Secondary Cells and Batteries - Portable Lithium Batteries",
+      "category": "Battery Safety",
+      "applies_to": "Lithium-ion and lithium polymer batteries",
+      "description": "Safety requirements for portable lithium secondary cells and batteries. Required for battery compliance. Harmonized with IEC 62133-2.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 62321",
+      "name": "Determination of Certain Substances in Electrotechnical Products",
+      "category": "Hazardous Substances",
+      "applies_to": "Electrical and electronic products",
+      "description": "Test methods for determination of regulated substances (lead, mercury, cadmium, hexavalent chromium, PBBs, PBDEs, phthalates). Used for voluntary RoHS-like compliance.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "GEMS Registration",
+      "name": "Greenhouse and Energy Minimum Standards - Product Registration",
+      "category": "Energy Efficiency",
+      "applies_to": "GEMS regulated products including appliances, lighting, electronics",
+      "description": "Mandatory energy efficiency and labeling requirements. Products must be registered in GEMS database before supply. Includes minimum energy performance standards (MEPS) and energy rating labels.",
+      "url": "https://www.energyrating.gov.au/"
+    },
+    {
+      "id": "GEMS MEPS",
+      "name": "Minimum Energy Performance Standards",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-consuming products (appliances, electronics, lighting)",
+      "description": "Mandatory minimum energy efficiency levels. Products must meet MEPS to be sold. Covers 30+ product categories including computers, TVs, refrigerators, air conditioners.",
+      "url": "https://www.energyrating.gov.au/products"
+    },
+    {
+      "id": "Energy Rating Label",
+      "name": "Energy Rating Label (Stars System)",
+      "category": "Energy Efficiency",
+      "applies_to": "Appliances and equipment with energy rating requirements",
+      "description": "Mandatory energy rating label showing star rating (1-10 stars) and energy consumption. Required for appliances like fridges, air conditioners, TVs, computers.",
+      "url": "https://www.energyrating.gov.au/"
+    },
+    {
+      "id": "TGA Medical Devices",
+      "name": "Therapeutic Goods Administration - Medical Device Regulation",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including diagnostic software",
+      "description": "Medical device regulation by TGA. Classification I-III, IIa, IIb based on risk. Conformity assessment required. Pre-market approval or listing on Australian Register of Therapeutic Goods (ARTG).",
+      "url": "https://www.tga.gov.au/medical-devices"
+    },
+    {
+      "id": "AS/NZS ISO 13485",
+      "name": "Medical Devices - Quality Management Systems",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Quality management system requirements for medical device manufacturers. Australia/New Zealand adoption of ISO 13485. Required for TGA compliance.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 14971",
+      "name": "Medical Devices - Risk Management",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Risk management requirements for medical devices. Australia/New Zealand adoption of ISO 14971. Required for TGA compliance.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "Australian Consumer Law",
+      "name": "Consumer Protection and Product Safety",
+      "category": "Consumer Protection",
+      "applies_to": "All consumer products and services",
+      "description": "Comprehensive consumer protection law. Consumer guarantees, product safety obligations, recall requirements, misleading conduct prohibitions. Enforced by ACCC.",
+      "url": "https://www.accc.gov.au/consumers/consumer-rights-protections/consumer-guarantees"
+    },
+    {
+      "id": "Product Safety Standards",
+      "name": "Mandatory Product Safety Standards",
+      "category": "Consumer Protection",
+      "applies_to": "Products with mandatory safety standards",
+      "description": "Mandatory safety standards for specific products (toys, prams, baby walkers, flotation devices, bunk beds, etc.). Compliance mandatory before supply. Enforced by ACCC.",
+      "url": "https://www.productsafety.gov.au/"
+    },
+    {
+      "id": "AS/NZS ISO 8124",
+      "name": "Safety of Toys",
+      "category": "Toys",
+      "applies_to": "Toys for children",
+      "description": "Comprehensive toy safety standard. Covers mechanical/physical properties, flammability, migration of elements. Australia/New Zealand adoption of ISO 8124. Referenced in mandatory standards.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "Competition and Consumer (Consumer Goods Safety Standard) (Toys for Children up to and including 36 Months of Age) 2023",
+      "name": "Mandatory Toy Safety Standard",
+      "category": "Toys",
+      "applies_to": "Toys for children 36 months and under",
+      "description": "Mandatory safety requirements for toys for young children. References AS/NZS ISO 8124. Small parts, choking hazards, toxic substances. ACCC enforced.",
+      "url": "https://www.productsafety.gov.au/products/babies-kids/toys"
+    },
+    {
+      "id": "AS/NZS 2080",
+      "name": "Safety Requirements for Toys",
+      "category": "Toys",
+      "applies_to": "Toys and children's products",
+      "description": "Australian/New Zealand toy safety standard. Comprehensive safety requirements. Used with ISO 8124 for complete compliance.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "EPBC Act",
+      "name": "Environment Protection and Biodiversity Conservation Act",
+      "category": "Environmental",
+      "applies_to": "Products and activities affecting environment",
+      "description": "Federal environmental protection law. Protects matters of national environmental significance. Affects product design, materials, end-of-life. Administered by Department of Climate Change, Energy, Environment.",
+      "url": "https://www.dcceew.gov.au/environment/epbc"
+    },
+    {
+      "id": "National Television and Computer Recycling Scheme",
+      "name": "E-Waste Recycling Obligations",
+      "category": "Environmental",
+      "applies_to": "TVs, computers, printers, computer accessories",
+      "description": "Product stewardship scheme for e-waste. Importers and manufacturers fund recycling. Covers TVs, computers, printers, keyboards, mice. Free collection for consumers.",
+      "url": "https://www.dcceew.gov.au/environment/protection/waste/product-stewardship/tv-computer-recycling"
+    },
+    {
+      "id": "AS/NZS 5377",
+      "name": "Collection, Storage, Transport and Treatment of E-waste",
+      "category": "Environmental",
+      "applies_to": "Electronic waste management",
+      "description": "Requirements for e-waste collection, storage, transport, treatment. Ensures environmentally sound management. Relevant for product take-back programs.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS ISO 14001",
+      "name": "Environmental Management Systems",
+      "category": "Environmental",
+      "applies_to": "Organizations implementing environmental management",
+      "description": "Australia/New Zealand adoption of ISO 14001. Environmental management system requirements. Voluntary but widely adopted.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "Packaging Covenant",
+      "name": "Australian Packaging Covenant (APCO)",
+      "category": "Packaging",
+      "applies_to": "Companies importing or manufacturing packaged goods",
+      "description": "Industry-government voluntary initiative for sustainable packaging. Members commit to sustainable packaging practices. Reporting requirements. Increasing importance for market access.",
+      "url": "https://apco.org.au/"
+    },
+    {
+      "id": "AS/NZS 4736",
+      "name": "Product Packaging - Biodegradable Plastics Suitable for Composting",
+      "category": "Packaging",
+      "applies_to": "Compostable packaging materials",
+      "description": "Requirements for compostable plastics. Biodegradability, compostability testing. Used for sustainable packaging claims.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "WHS Regulations",
+      "name": "Work Health and Safety Regulations",
+      "category": "Workplace Safety",
+      "applies_to": "Products used in workplaces",
+      "description": "Workplace health and safety requirements. Affects industrial equipment, machinery, hazardous substances. Harmonized across Australian states/territories. Administered by Safe Work Australia.",
+      "url": "https://www.safeworkaustralia.gov.au/"
+    },
+    {
+      "id": "AS/NZS 4024",
+      "name": "Safety of Machinery",
+      "category": "Machinery",
+      "applies_to": "Industrial machinery and equipment",
+      "description": "Series of standards for machinery safety. Covers design, safeguarding, risk assessment. Australia/New Zealand approach to machinery safety.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 60204.1",
+      "name": "Safety of Machinery - Electrical Equipment",
+      "category": "Machinery",
+      "applies_to": "Electrical equipment of machines",
+      "description": "Electrical safety requirements for machinery. Harmonized with IEC 60204-1. Required for industrial equipment.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 3000",
+      "name": "Electrical Installations (Wiring Rules)",
+      "category": "Installation Standards",
+      "applies_to": "Electrical installations in buildings",
+      "description": "Electrical installation requirements. Australian/New Zealand wiring rules. Affects fixed electrical equipment, building installations. Not directly for product compliance but important for installed equipment.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS 3760",
+      "name": "In-Service Safety Inspection and Testing of Electrical Equipment",
+      "category": "Testing & Maintenance",
+      "applies_to": "Portable electrical equipment in workplaces",
+      "description": "Requirements for testing and tagging of portable electrical equipment. Required in workplaces. Affects portable appliances, tools, extension cords.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "Building Code of Australia (NCC)",
+      "name": "National Construction Code",
+      "category": "Building & Construction",
+      "applies_to": "Products for use in buildings",
+      "description": "Building standards for construction in Australia. Affects electrical equipment, fire safety equipment, plumbing products for building installation. State-based adoption.",
+      "url": "https://www.abcb.gov.au/"
+    },
+    {
+      "id": "AS 3745",
+      "name": "Planning for Emergencies in Facilities",
+      "category": "Emergency Management",
+      "applies_to": "Emergency equipment and systems",
+      "description": "Requirements for emergency planning. Affects emergency lighting, alarm systems, safety equipment. Relevant for buildings and facilities.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS ISO 9001",
+      "name": "Quality Management Systems",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing quality management",
+      "description": "Australia/New Zealand adoption of ISO 9001. Quality management system requirements. Voluntary but widely recognized. JAS-ANZ accredits certification bodies.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "AS/NZS ISO/IEC 27001",
+      "name": "Information Security Management Systems",
+      "category": "Cybersecurity",
+      "applies_to": "Organizations managing information security",
+      "description": "Australia/New Zealand adoption of ISO/IEC 27001. Information security management requirements. Increasingly important for connected products.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "Privacy Act 1988",
+      "name": "Privacy and Data Protection",
+      "category": "Data Protection",
+      "applies_to": "Organizations handling personal information",
+      "description": "Australian privacy law. 13 Australian Privacy Principles (APPs). Applies to personal information handling. Relevant for connected devices, software, services. Enforced by OAIC.",
+      "url": "https://www.oaic.gov.au/"
+    },
+    {
+      "id": "AS/NZS ISO/IEC 15408",
+      "name": "IT Security Evaluation (Common Criteria)",
+      "category": "Cybersecurity",
+      "applies_to": "IT security products",
+      "description": "Australia/New Zealand adoption of Common Criteria. Framework for IT security evaluation. Used for government procurement, high-security products.",
+      "url": "https://www.standards.org.au/"
+    },
+    {
+      "id": "Australian Cyber Security Centre (ACSC) Guidelines",
+      "name": "Essential Eight and ISM",
+      "category": "Cybersecurity",
+      "applies_to": "Government systems and critical infrastructure",
+      "description": "Cybersecurity guidelines including Essential Eight mitigation strategies and Information Security Manual (ISM). Relevant for products used in government and critical infrastructure.",
+      "url": "https://www.cyber.gov.au/"
+    },
+    {
+      "id": "Trade Marks Act 1995",
+      "name": "Trademark and False Origin Marking",
+      "category": "Intellectual Property",
+      "applies_to": "Product marking and labeling",
+      "description": "Protects trademarks and prohibits false origin markings. Affects product labeling, country of origin claims. Enforced by IP Australia and ACCC.",
+      "url": "https://www.ipaustralia.gov.au/"
+    },
+    {
+      "id": "Country of Origin Labelling",
+      "name": "Country of Origin Food Labelling Information Standard",
+      "category": "Labeling",
+      "applies_to": "Food products and some non-food consumer goods",
+      "description": "Mandatory country of origin labeling for food. Voluntary for other products but consumer expectation. Kangaroo logo, bar chart, text requirements.",
+      "url": "https://www.accc.gov.au/business/advertising-and-promotions/country-of-origin"
+    }
+  ]
+}

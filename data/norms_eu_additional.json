@@ -1,0 +1,405 @@
+{
+  "_comment": "Additional EU compliance norms not covered in main EU norms database. Includes new 2024-2025 regulations, specific product directives, and emerging compliance requirements. Complements data/norms.json.",
+  "norms": [
+    {
+      "id": "REG-2022/2065",
+      "name": "Digital Services Act (DSA)",
+      "category": "Digital & Software",
+      "applies_to": "Online platforms, intermediary services, digital services",
+      "description": "Comprehensive regulation for digital services establishing obligations for content moderation, transparency, user protection. Applies to platforms, marketplaces, search engines. Mandatory from February 2024.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2022/2065/oj"
+    },
+    {
+      "id": "REG-2022/1925",
+      "name": "Digital Markets Act (DMA)",
+      "category": "Digital & Software",
+      "applies_to": "Large digital platforms designated as gatekeepers",
+      "description": "Ensures fair competition in digital markets by imposing obligations on gatekeeper platforms. Covers app stores, search engines, messaging, social networks.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2022/1925/oj"
+    },
+    {
+      "id": "REG-2024/2847",
+      "name": "AI Act (Artificial Intelligence Act)",
+      "category": "Emerging Technology",
+      "applies_to": "AI systems and general-purpose AI models",
+      "description": "World's first comprehensive AI regulation. Risk-based approach: prohibited practices, high-risk systems requiring conformity assessment, transparency obligations. Enforcement begins 2025-2027.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj"
+    },
+    {
+      "id": "Cyber Resilience Act",
+      "name": "Regulation on Cybersecurity Requirements for Products with Digital Elements (CRA)",
+      "category": "Cybersecurity",
+      "applies_to": "Hardware and software products with digital elements",
+      "description": "Mandatory cybersecurity requirements for connected products. Covers vulnerability management, security updates, incident reporting. Expected enforcement 2025-2027. Major impact on IoT and software.",
+      "url": "https://www.european-cyber-resilience-act.com/"
+    },
+    {
+      "id": "DIR-2006/42/EC",
+      "name": "Machinery Directive",
+      "category": "Machinery & Equipment",
+      "applies_to": "Machinery, interchangeable equipment, safety components, lifting equipment",
+      "description": "Core directive for machinery safety. Covers essential health and safety requirements, risk assessment, CE marking. Being replaced by Machinery Regulation 2023/1230 from 2027.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2006/42/oj"
+    },
+    {
+      "id": "REG-2023/1230",
+      "name": "Machinery Regulation (replacing 2006/42/EC)",
+      "category": "Machinery & Equipment",
+      "applies_to": "Machinery and related products",
+      "description": "Replaces Machinery Directive from January 2027. Updates essential requirements for digitalization, AI, robotics. Extended scope including safety-related software.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/1230/oj"
+    },
+    {
+      "id": "DIR-2009/48/EC",
+      "name": "Toy Safety Directive",
+      "category": "Toys & Children's Products",
+      "applies_to": "Toys intended for children under 14",
+      "description": "Comprehensive safety requirements for toys including mechanical/physical properties, flammability, chemical substances, electrical properties, hygiene, radioactivity.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2009/48/oj"
+    },
+    {
+      "id": "EN 71-1:2014",
+      "name": "Toy Safety - Mechanical and Physical Properties",
+      "category": "Toys & Children's Products",
+      "applies_to": "Toys and children's products",
+      "description": "Harmonized standard for mechanical and physical properties of toys. Covers small parts, sharp edges, strength, stability. Referenced by Toy Safety Directive.",
+      "url": "https://www.en-standard.eu/EN-71-1"
+    },
+    {
+      "id": "EN 71-2:2020",
+      "name": "Toy Safety - Flammability",
+      "category": "Toys & Children's Products",
+      "applies_to": "Toys with combustible materials",
+      "description": "Flammability requirements and test methods for toys. Categories include beards, costumes, soft-filled toys, hair.",
+      "url": "https://www.en-standard.eu/EN-71-2"
+    },
+    {
+      "id": "EN 71-3:2019",
+      "name": "Toy Safety - Migration of Certain Elements",
+      "category": "Toys & Children's Products",
+      "applies_to": "Toys accessible to children",
+      "description": "Limits for migration of hazardous elements (heavy metals, etc.) from toy materials. Covers 19 elements including lead, cadmium, mercury.",
+      "url": "https://www.en-standard.eu/EN-71-3"
+    },
+    {
+      "id": "REG-2016/425",
+      "name": "Personal Protective Equipment (PPE) Regulation",
+      "category": "Personal Protective Equipment",
+      "applies_to": "Equipment designed to be worn or held for protection against risks",
+      "description": "Regulates design and manufacture of PPE. Three risk categories with different conformity assessment procedures. Includes safety goggles, gloves, protective clothing.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/425/oj"
+    },
+    {
+      "id": "REG-2017/745",
+      "name": "Medical Devices Regulation (MDR)",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including software",
+      "description": "Comprehensive medical device regulation replacing directives 93/42/EEC and 90/385/EEC. Stricter requirements, clinical evaluation, post-market surveillance. Fully applicable since May 2021.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2017/745/oj"
+    },
+    {
+      "id": "REG-2017/746",
+      "name": "In Vitro Diagnostic Medical Devices Regulation (IVDR)",
+      "category": "Medical Devices",
+      "applies_to": "In vitro diagnostic medical devices",
+      "description": "Regulation for IVD medical devices. Risk-based classification, performance evaluation requirements. Full application from May 2022 with transition periods.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2017/746/oj"
+    },
+    {
+      "id": "DIR-2013/29/EU",
+      "name": "Pyrotechnic Articles Directive",
+      "category": "Specific Products",
+      "applies_to": "Fireworks, theatrical pyrotechnic articles, pyrotechnic articles for technical purposes",
+      "description": "Safety requirements for pyrotechnic articles. Classification system, age restrictions, labeling requirements.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2013/29/oj"
+    },
+    {
+      "id": "DIR-2013/53/EU",
+      "name": "Recreational Craft Directive",
+      "category": "Specific Products",
+      "applies_to": "Recreational craft 2.5-24m, personal watercraft, marine engines",
+      "description": "Essential requirements for recreational craft and personal watercraft. Covers design, construction, propulsion, emissions.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2013/53/oj"
+    },
+    {
+      "id": "REG-2019/2144",
+      "name": "Vehicle Safety Regulation - Advanced Driver Assistance Systems",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and trailers",
+      "description": "Mandatory advanced safety features for vehicles including emergency braking, lane keeping, driver drowsiness detection, event data recorder. Phased implementation 2022-2024.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2019/2144/oj"
+    },
+    {
+      "id": "REG-2018/858",
+      "name": "Vehicle Type-Approval Regulation",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and their trailers, systems, components",
+      "description": "EU type-approval framework for vehicles. Includes market surveillance, recall procedures, cybersecurity and software update provisions.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2018/858/oj"
+    },
+    {
+      "id": "DIR-2014/90/EU",
+      "name": "Marine Equipment Directive",
+      "category": "Specific Products",
+      "applies_to": "Marine equipment on EU-flagged ships",
+      "description": "Requirements for marine equipment to be placed on board EU ships. Ensures compliance with international maritime conventions.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2014/90/oj"
+    },
+    {
+      "id": "DIR-2014/68/EU",
+      "name": "Pressure Equipment Directive (PED)",
+      "category": "Industrial Equipment",
+      "applies_to": "Pressure equipment and assemblies with max allowable pressure >0.5 bar",
+      "description": "Safety requirements for pressure equipment. Risk-based categories, conformity assessment procedures. Covers vessels, piping, safety accessories.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2014/68/oj"
+    },
+    {
+      "id": "DIR-2014/33/EU",
+      "name": "Lifts Directive",
+      "category": "Industrial Equipment",
+      "applies_to": "Lifts and safety components for lifts",
+      "description": "Essential health and safety requirements for lifts permanently serving buildings and constructions. Includes passenger and goods lifts.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2014/33/oj"
+    },
+    {
+      "id": "REG-2023/988",
+      "name": "General Product Safety Regulation (GPSR)",
+      "category": "Product Safety",
+      "applies_to": "All consumer products not covered by specific sectoral legislation",
+      "description": "Replaces GPSD 2001/95/EC. Strengthened safety requirements, online marketplace obligations, product recalls, Safety Gate. Mandatory from December 2024.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/988/oj"
+    },
+    {
+      "id": "REG-2023/1542-Art47",
+      "name": "Battery Due Diligence and Supply Chain Requirements",
+      "category": "Supply Chain & Sustainability",
+      "applies_to": "Batteries above certain capacity thresholds",
+      "description": "Due diligence obligations for battery supply chain including social and environmental risk assessment. Digital battery passport requirement from 2027.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/1542/oj"
+    },
+    {
+      "id": "REG-2024/1781",
+      "name": "Ecodesign for Sustainable Products Regulation (ESPR)",
+      "category": "Environmental & Sustainability",
+      "applies_to": "Physical goods placed on EU market",
+      "description": "Replaces Ecodesign Directive 2009/125/EC. Broader scope beyond energy-related products. Includes durability, reusability, recyclability, digital product passports. Implementation ongoing 2024-2030.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1781/oj"
+    },
+    {
+      "id": "REG-2024/1799",
+      "name": "Right to Repair - Common Rules on Repair of Goods",
+      "category": "Environmental & Sustainability",
+      "applies_to": "Technically repairable goods",
+      "description": "Promotes repair over replacement. Obligations for repair information, spare parts availability, reasonable pricing. Applies after legal guarantee period. Effective 2025-2026.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1799/oj"
+    },
+    {
+      "id": "DIR-2019/882",
+      "name": "Single-Use Plastics Directive",
+      "category": "Environmental & Sustainability",
+      "applies_to": "Single-use plastic products",
+      "description": "Reduces impact of certain plastic products on environment. Bans specific single-use plastics, marking requirements, extended producer responsibility.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2019/904/oj"
+    },
+    {
+      "id": "REG-2019/1021",
+      "name": "Persistent Organic Pollutants (POPs) Regulation",
+      "category": "Environmental & Sustainability",
+      "applies_to": "Substances and products containing POPs",
+      "description": "Prohibits or restricts production, use, release of persistent organic pollutants. Includes limits for substances in products and waste.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2019/1021/oj"
+    },
+    {
+      "id": "REG-2023/2055",
+      "name": "Fluorinated Greenhouse Gases Regulation",
+      "category": "Environmental & Sustainability",
+      "applies_to": "Products containing or relying on fluorinated gases",
+      "description": "Phasing down HFCs and other F-gases. Restrictions on products containing F-gases, leak checking, recovery requirements. Significant impact on refrigeration, air conditioning.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/2055/oj"
+    },
+    {
+      "id": "DIR-2000/53/EC",
+      "name": "End-of-Life Vehicles Directive",
+      "category": "Environmental & Sustainability",
+      "applies_to": "Motor vehicles and automotive components",
+      "description": "Requirements for vehicle recyclability, hazardous substance restrictions, producer responsibility for end-of-life treatment. Being revised in 2024-2025.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2000/53/oj"
+    },
+    {
+      "id": "REG-2024/573",
+      "name": "Packaging and Packaging Waste Regulation (PPWR)",
+      "category": "Packaging & Labeling",
+      "applies_to": "All packaging placed on EU market",
+      "description": "Replaces DIR-94/62/EC. Comprehensive packaging requirements: design for recyclability, recycled content obligations, reduction targets, reuse systems. Phased implementation 2025-2030.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/573/oj"
+    },
+    {
+      "id": "REG-2023/2405",
+      "name": "Foreign Subsidies Regulation",
+      "category": "Market Surveillance & Trade",
+      "applies_to": "Companies benefiting from foreign subsidies in M&A or public procurement",
+      "description": "Addresses distortive effects of foreign subsidies in EU internal market. Notification obligations for large transactions and public tenders.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/2405/oj"
+    },
+    {
+      "id": "REG-2019/1020",
+      "name": "Market Surveillance and Product Compliance Regulation",
+      "category": "Market Surveillance & Trade",
+      "applies_to": "Products subject to EU harmonization legislation",
+      "description": "Strengthened market surveillance framework. Union testing facilities, enhanced customs cooperation, obligations for online marketplaces, economic operators.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2019/1020/oj"
+    },
+    {
+      "id": "REG-2023/1114",
+      "name": "Markets in Crypto-Assets Regulation (MiCA)",
+      "category": "Financial & Digital Assets",
+      "applies_to": "Crypto-assets, stablecoins, crypto-asset service providers",
+      "description": "Comprehensive regulation for crypto-assets and service providers. Authorization requirements, operational standards, consumer protection. Applicable from 2024-2025.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/1114/oj"
+    },
+    {
+      "id": "DIR-2022/2464",
+      "name": "Corporate Sustainability Reporting Directive (CSRD)",
+      "category": "Corporate Compliance",
+      "applies_to": "Large companies and listed SMEs",
+      "description": "Extends sustainability reporting obligations. Detailed disclosure on environmental, social, governance matters. Phased application from 2024. Affects products indirectly through supply chain.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2022/2464/oj"
+    },
+    {
+      "id": "REG-2023/1115",
+      "name": "Deforestation-Free Products Regulation",
+      "category": "Supply Chain & Sustainability",
+      "applies_to": "Products linked to deforestation (cattle, cocoa, coffee, palm oil, soy, wood, rubber, derivatives)",
+      "description": "Prohibits products linked to deforestation from EU market. Due diligence obligations, traceability, geolocation requirements. Mandatory from December 2024.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/1115/oj"
+    },
+    {
+      "id": "REG-2017/852",
+      "name": "Mercury Regulation",
+      "category": "Hazardous Substances",
+      "applies_to": "Products containing mercury",
+      "description": "Prohibits manufacture, import, export of mercury-added products. Includes dental amalgam restrictions, measuring devices, lamps, batteries, switches.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2017/852/oj"
+    },
+    {
+      "id": "REG-2019/1021",
+      "name": "Persistent Organic Pollutants (Updated)",
+      "category": "Hazardous Substances",
+      "applies_to": "Products containing POPs including PFAS",
+      "description": "Bans or restricts POPs under Stockholm Convention. Recently updated to include additional PFAS substances. Affects coatings, textiles, plastics.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2019/1021/oj"
+    },
+    {
+      "id": "DIR-2008/68/EC",
+      "name": "Inland Transport of Dangerous Goods",
+      "category": "Transportation",
+      "applies_to": "Dangerous goods transported by road, rail, inland waterway",
+      "description": "Adopts ADR (road), RID (rail), ADN (inland waterway) requirements. Affects lithium battery shipments, chemicals, flammable materials.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2008/68/oj"
+    },
+    {
+      "id": "EN 50581:2012",
+      "name": "Technical Documentation for RoHS Compliance",
+      "category": "RoHS & Materials",
+      "applies_to": "Electrical and electronic equipment subject to RoHS",
+      "description": "Standard for assessing electrical and electronic equipment regarding restriction of hazardous substances. Defines technical documentation requirements.",
+      "url": "https://www.en-standard.eu/EN-50581"
+    },
+    {
+      "id": "EN 50604-1",
+      "name": "Specification for Marking of Cables",
+      "category": "Cables & Wiring",
+      "applies_to": "Cables and wires",
+      "description": "Requirements for identification and marking of insulated cables. Includes color coding, labeling, traceability.",
+      "url": "https://www.en-standard.eu/EN-50604-1"
+    },
+    {
+      "id": "EN 50525",
+      "name": "Electric Cables - Low Voltage",
+      "category": "Cables & Wiring",
+      "applies_to": "Low voltage cables and cords",
+      "description": "Series of standards for electric cables for rated voltages up to 450/750V. Common for appliance cords, internal wiring.",
+      "url": "https://www.en-standard.eu/EN-50525"
+    },
+    {
+      "id": "EN 60529",
+      "name": "Ingress Protection (IP) Rating",
+      "category": "Product Testing",
+      "applies_to": "Electrical equipment enclosures",
+      "description": "Classification system for degree of protection provided by enclosures against ingress of solid objects, dust, water. IP ratings (IP67, IP68, etc.).",
+      "url": "https://www.en-standard.eu/EN-60529"
+    },
+    {
+      "id": "EN 60068",
+      "name": "Environmental Testing",
+      "category": "Product Testing",
+      "applies_to": "Electrical and electronic products",
+      "description": "Series of standards for environmental testing including temperature, humidity, vibration, shock, salt spray. Used for reliability and durability testing.",
+      "url": "https://www.en-standard.eu/EN-60068"
+    },
+    {
+      "id": "EN 60335-1",
+      "name": "Household Appliances - Safety - General Requirements",
+      "category": "Appliances",
+      "applies_to": "Household and similar electrical appliances",
+      "description": "General safety requirements for household appliances. Covers electrical, mechanical, thermal hazards. Part 1 of comprehensive multi-part standard.",
+      "url": "https://www.en-standard.eu/EN-60335-1"
+    },
+    {
+      "id": "EN 60335-2-X",
+      "name": "Household Appliances - Safety - Particular Requirements",
+      "category": "Appliances",
+      "applies_to": "Specific appliance types",
+      "description": "Part 2 series with specific requirements for different appliance types (vacuum cleaners, coffee makers, heaters, etc.). Over 100 parts covering specific products.",
+      "url": "https://www.en-standard.eu/EN-60335-2"
+    },
+    {
+      "id": "EN 60601-1",
+      "name": "Medical Electrical Equipment - General Requirements for Safety",
+      "category": "Medical Devices",
+      "applies_to": "Medical electrical equipment and systems",
+      "description": "International standard for safety and effectiveness of medical electrical equipment. Risk management approach, essential performance requirements.",
+      "url": "https://www.en-standard.eu/EN-60601-1"
+    },
+    {
+      "id": "EN 60601-1-2",
+      "name": "Medical Electrical Equipment - EMC Requirements",
+      "category": "Medical Devices",
+      "applies_to": "Medical electrical equipment",
+      "description": "Collateral standard for electromagnetic compatibility of medical electrical equipment. Stricter than general EMC directive due to safety-critical nature.",
+      "url": "https://www.en-standard.eu/EN-60601-1-2"
+    },
+    {
+      "id": "EN 62304",
+      "name": "Medical Device Software - Lifecycle Processes",
+      "category": "Medical Devices",
+      "applies_to": "Medical device software",
+      "description": "Software lifecycle requirements for medical device software. Risk-based approach with safety classes A, B, C. Required for MDR compliance.",
+      "url": "https://www.en-standard.eu/EN-62304"
+    },
+    {
+      "id": "EN 50155",
+      "name": "Railway Applications - Electronic Equipment",
+      "category": "Transportation",
+      "applies_to": "Electronic equipment for railway rolling stock",
+      "description": "Requirements for electronic equipment used on railway vehicles. Covers harsh environmental conditions, vibration, EMC.",
+      "url": "https://www.en-standard.eu/EN-50155"
+    },
+    {
+      "id": "EN 45545",
+      "name": "Railway Applications - Fire Protection",
+      "category": "Transportation",
+      "applies_to": "Materials and components for railway vehicles",
+      "description": "Fire protection requirements for railway vehicles. Material fire behavior, smoke toxicity, fire barriers. Multi-part standard.",
+      "url": "https://www.en-standard.eu/EN-45545"
+    },
+    {
+      "id": "EN 50121",
+      "name": "Railway Applications - EMC",
+      "category": "Transportation",
+      "applies_to": "Railway vehicles and systems",
+      "description": "EMC requirements specific to railway applications. Covers rolling stock, signaling, infrastructure. Harsh electromagnetic environment considerations.",
+      "url": "https://www.en-standard.eu/EN-50121"
+    }
+  ]
+}

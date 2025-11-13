@@ -1,0 +1,405 @@
+{
+  "_comment": "ISO international standards database. ISO standards are developed by the International Organization for Standardization and are widely adopted globally. Many are referenced by national regulations. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "ISO 9001:2015",
+      "name": "Quality Management Systems - Requirements",
+      "category": "Management Systems",
+      "applies_to": "Organizations of all sizes and sectors",
+      "description": "Specifies requirements for a quality management system. Organizations use the standard to demonstrate ability to consistently provide products and services that meet customer and regulatory requirements.",
+      "url": "https://www.iso.org/standard/62085.html"
+    },
+    {
+      "id": "ISO 14001:2015",
+      "name": "Environmental Management Systems - Requirements",
+      "category": "Management Systems",
+      "applies_to": "Organizations wanting to improve environmental performance",
+      "description": "Specifies requirements for an environmental management system to enhance environmental performance and demonstrate commitment to environmental protection.",
+      "url": "https://www.iso.org/standard/60857.html"
+    },
+    {
+      "id": "ISO 45001:2018",
+      "name": "Occupational Health and Safety Management Systems",
+      "category": "Management Systems",
+      "applies_to": "Organizations of all sizes concerned with occupational health and safety",
+      "description": "Specifies requirements for an OH&S management system to provide safe and healthy workplaces, prevent work-related injury and ill health.",
+      "url": "https://www.iso.org/standard/63787.html"
+    },
+    {
+      "id": "ISO/IEC 27001:2022",
+      "name": "Information Security Management Systems - Requirements",
+      "category": "Cybersecurity & IT",
+      "applies_to": "Organizations handling sensitive information",
+      "description": "Specifies requirements for establishing, implementing, maintaining and continually improving an information security management system (ISMS).",
+      "url": "https://www.iso.org/standard/82875.html"
+    },
+    {
+      "id": "ISO/IEC 27002:2022",
+      "name": "Information Security Controls",
+      "category": "Cybersecurity & IT",
+      "applies_to": "Organizations implementing information security controls",
+      "description": "Provides guidance on organizational information security standards and information security management practices including controls for selection and implementation.",
+      "url": "https://www.iso.org/standard/75652.html"
+    },
+    {
+      "id": "ISO/IEC 27701:2019",
+      "name": "Privacy Information Management",
+      "category": "Cybersecurity & IT",
+      "applies_to": "Organizations processing personal data",
+      "description": "Extension to ISO/IEC 27001 and 27002 for privacy information management. Relevant for GDPR and other privacy regulations compliance.",
+      "url": "https://www.iso.org/standard/71670.html"
+    },
+    {
+      "id": "ISO/IEC 15408:2022",
+      "name": "Common Criteria for IT Security Evaluation",
+      "category": "Cybersecurity & IT",
+      "applies_to": "IT security products and systems",
+      "description": "Framework for specifying security functional and assurance requirements for IT products and systems. Used for security certification.",
+      "url": "https://www.iso.org/standard/72891.html"
+    },
+    {
+      "id": "ISO/IEC 20000-1:2018",
+      "name": "IT Service Management Systems",
+      "category": "Cybersecurity & IT",
+      "applies_to": "IT service providers",
+      "description": "Specifies requirements for establishing, implementing, maintaining and continually improving a service management system (SMS).",
+      "url": "https://www.iso.org/standard/70636.html"
+    },
+    {
+      "id": "ISO/IEC 17025:2017",
+      "name": "General Requirements for Testing and Calibration Laboratories",
+      "category": "Testing & Certification",
+      "applies_to": "Testing and calibration laboratories",
+      "description": "Specifies general requirements for competence, impartiality and consistent operation of laboratories. Required for lab accreditation.",
+      "url": "https://www.iso.org/standard/66912.html"
+    },
+    {
+      "id": "ISO/IEC 17065:2012",
+      "name": "Conformity Assessment - Product Certification Bodies",
+      "category": "Testing & Certification",
+      "applies_to": "Product certification bodies",
+      "description": "Contains requirements for bodies certifying products, processes and services. Ensures consistency and credibility of certification.",
+      "url": "https://www.iso.org/standard/46568.html"
+    },
+    {
+      "id": "ISO 13485:2016",
+      "name": "Medical Devices - Quality Management Systems",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers and suppliers",
+      "description": "Specifies requirements for quality management systems where organizations need to demonstrate ability to provide medical devices and related services that consistently meet customer and regulatory requirements.",
+      "url": "https://www.iso.org/standard/59752.html"
+    },
+    {
+      "id": "ISO 14971:2019",
+      "name": "Medical Devices - Application of Risk Management",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Specifies terminology, principles and process for risk management of medical devices including software as a medical device.",
+      "url": "https://www.iso.org/standard/72704.html"
+    },
+    {
+      "id": "ISO 10993-1:2018",
+      "name": "Biological Evaluation of Medical Devices - Part 1",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices with patient or user contact",
+      "description": "Framework for biological evaluation and testing of medical devices within a risk management process. Part of comprehensive 10993 series.",
+      "url": "https://www.iso.org/standard/68936.html"
+    },
+    {
+      "id": "ISO/IEC 62304:2006+AMD1:2015",
+      "name": "Medical Device Software - Life Cycle Processes",
+      "category": "Medical Devices",
+      "applies_to": "Medical device software",
+      "description": "Defines life cycle requirements for medical device software development and maintenance. Safety classification based on potential harm.",
+      "url": "https://www.iso.org/standard/38421.html"
+    },
+    {
+      "id": "ISO/IEC 62366-1:2015",
+      "name": "Medical Devices - Usability Engineering",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices requiring human interaction",
+      "description": "Specifies process for manufacturers to analyze, specify, develop and evaluate usability of medical devices. Focuses on safety-related use errors.",
+      "url": "https://www.iso.org/standard/63179.html"
+    },
+    {
+      "id": "ISO 15189:2022",
+      "name": "Medical Laboratories - Requirements for Quality and Competence",
+      "category": "Medical Devices",
+      "applies_to": "Medical testing laboratories",
+      "description": "Specifies requirements for quality and competence specific to medical laboratories. Used for laboratory accreditation.",
+      "url": "https://www.iso.org/standard/76677.html"
+    },
+    {
+      "id": "ISO 26262-1:2018",
+      "name": "Road Vehicles - Functional Safety - Part 1",
+      "category": "Automotive",
+      "applies_to": "Automotive electrical/electronic systems",
+      "description": "International standard for functional safety of electrical and electronic systems in production automobiles. Part of comprehensive 12-part series.",
+      "url": "https://www.iso.org/standard/68383.html"
+    },
+    {
+      "id": "ISO 21434:2021",
+      "name": "Road Vehicles - Cybersecurity Engineering",
+      "category": "Automotive",
+      "applies_to": "Automotive systems with cyber-physical interfaces",
+      "description": "Specifies cybersecurity engineering requirements for electrical and electronic systems in road vehicles throughout the lifecycle.",
+      "url": "https://www.iso.org/standard/70918.html"
+    },
+    {
+      "id": "ISO 20022-1:2022",
+      "name": "Financial Services - Universal Financial Industry Message Scheme - Part 1",
+      "category": "Financial Services",
+      "applies_to": "Financial messaging systems",
+      "description": "Updated messaging standard for financial services. ISO 20022 methodology and metamodel. Widely adopted for payments, securities, cards.",
+      "url": "https://www.iso.org/standard/79876.html"
+    },
+    {
+      "id": "ISO 16750:2010",
+      "name": "Road Vehicles - Environmental Conditions and Testing - Electrical/Electronic Equipment",
+      "category": "Automotive",
+      "applies_to": "Automotive electronic equipment",
+      "description": "Specifies environmental conditions and tests for electrical and electronic equipment in road vehicles. Multi-part standard covering climatic, mechanical, chemical conditions.",
+      "url": "https://www.iso.org/standard/46255.html"
+    },
+    {
+      "id": "ISO/IEC 80079-34:2020",
+      "name": "Explosive Atmospheres - Application of Quality Systems",
+      "category": "Hazardous Environments",
+      "applies_to": "Equipment for explosive atmospheres",
+      "description": "Specifies quality system requirements for manufacturers of equipment intended for use in explosive atmospheres. Complements ATEX/IECEx.",
+      "url": "https://www.iso.org/standard/66504.html"
+    },
+    {
+      "id": "ISO/IEC 60079-0:2017",
+      "name": "Explosive Atmospheres - General Requirements",
+      "category": "Hazardous Environments",
+      "applies_to": "Equipment for explosive atmospheres",
+      "description": "Specifies general requirements for construction, testing and marking of electrical equipment for explosive gas atmospheres.",
+      "url": "https://www.iso.org/standard/66154.html"
+    },
+    {
+      "id": "ISO 50001:2018",
+      "name": "Energy Management Systems - Requirements",
+      "category": "Environmental & Energy",
+      "applies_to": "Organizations of all types and sizes",
+      "description": "Specifies requirements for establishing, implementing, maintaining and improving an energy management system to improve energy performance.",
+      "url": "https://www.iso.org/standard/69426.html"
+    },
+    {
+      "id": "ISO 14040:2006",
+      "name": "Environmental Management - Life Cycle Assessment - Principles and Framework",
+      "category": "Environmental & Energy",
+      "applies_to": "Products and services requiring lifecycle assessment",
+      "description": "Describes principles and framework for life cycle assessment (LCA) including definition of goal and scope, inventory analysis, impact assessment.",
+      "url": "https://www.iso.org/standard/37456.html"
+    },
+    {
+      "id": "ISO 14044:2006",
+      "name": "Environmental Management - Life Cycle Assessment - Requirements and Guidelines",
+      "category": "Environmental & Energy",
+      "applies_to": "LCA studies and reports",
+      "description": "Specifies requirements and provides guidelines for life cycle assessment. Used with ISO 14040 for comprehensive LCA.",
+      "url": "https://www.iso.org/standard/38498.html"
+    },
+    {
+      "id": "ISO 14067:2018",
+      "name": "Greenhouse Gases - Carbon Footprint of Products",
+      "category": "Environmental & Energy",
+      "applies_to": "Products requiring carbon footprint quantification",
+      "description": "Specifies principles, requirements and guidelines for quantification and communication of carbon footprint of products.",
+      "url": "https://www.iso.org/standard/71206.html"
+    },
+    {
+      "id": "ISO 22000:2018",
+      "name": "Food Safety Management Systems - Requirements",
+      "category": "Food & Consumer Safety",
+      "applies_to": "Organizations in food chain",
+      "description": "Specifies requirements for food safety management system including interactive communication, system management, prerequisite programs, HACCP principles.",
+      "url": "https://www.iso.org/standard/65464.html"
+    },
+    {
+      "id": "ISO 22301:2019",
+      "name": "Business Continuity Management Systems - Requirements",
+      "category": "Management Systems",
+      "applies_to": "Organizations requiring business continuity",
+      "description": "Specifies requirements for planning, establishing, implementing, operating, monitoring and improving a business continuity management system.",
+      "url": "https://www.iso.org/standard/75106.html"
+    },
+    {
+      "id": "ISO 31000:2018",
+      "name": "Risk Management - Guidelines",
+      "category": "Management Systems",
+      "applies_to": "All organizations and activities",
+      "description": "Provides principles, framework and process for managing risk. Can be used by any organization regardless of size, activity or sector.",
+      "url": "https://www.iso.org/standard/65694.html"
+    },
+    {
+      "id": "ISO 55000:2014",
+      "name": "Asset Management - Overview, Principles and Terminology",
+      "category": "Management Systems",
+      "applies_to": "Organizations managing physical assets",
+      "description": "Provides overview of asset management and asset management systems. Part of 55000 series for comprehensive asset management.",
+      "url": "https://www.iso.org/standard/55088.html"
+    },
+    {
+      "id": "ISO/IEC 12207:2017",
+      "name": "Systems and Software Engineering - Software Life Cycle Processes",
+      "category": "Software & Systems",
+      "applies_to": "Software development organizations",
+      "description": "Establishes common framework for software life cycle processes with well-defined terminology. Applicable to acquisition, supply, development, operation and maintenance.",
+      "url": "https://www.iso.org/standard/63712.html"
+    },
+    {
+      "id": "ISO/IEC 25010:2023",
+      "name": "Systems and Software Quality Requirements and Evaluation (SQuaRE) - Product Quality Model",
+      "category": "Software & Systems",
+      "applies_to": "Software products and systems",
+      "description": "Defines product quality model for software including functional suitability, performance efficiency, compatibility, usability, reliability, security, maintainability, portability.",
+      "url": "https://www.iso.org/standard/78176.html"
+    },
+    {
+      "id": "ISO/IEC 27017:2015",
+      "name": "Cloud Services Information Security Controls",
+      "category": "Cybersecurity & IT",
+      "applies_to": "Cloud service providers and users",
+      "description": "Provides guidelines for information security controls for cloud services based on ISO/IEC 27002.",
+      "url": "https://www.iso.org/standard/43757.html"
+    },
+    {
+      "id": "ISO/IEC 27018:2019",
+      "name": "Cloud Privacy",
+      "category": "Cybersecurity & IT",
+      "applies_to": "Public cloud PII processors",
+      "description": "Code of practice for protection of personally identifiable information (PII) in public clouds acting as PII processors.",
+      "url": "https://www.iso.org/standard/76559.html"
+    },
+    {
+      "id": "ISO/IEC 29100:2011",
+      "name": "Privacy Framework",
+      "category": "Cybersecurity & IT",
+      "applies_to": "ICT systems processing PII",
+      "description": "Provides high-level privacy framework for protection of PII within ICT systems. Defines privacy principles.",
+      "url": "https://www.iso.org/standard/45123.html"
+    },
+    {
+      "id": "ISO/IEC 29151:2017",
+      "name": "Code of Practice for PII Protection",
+      "category": "Cybersecurity & IT",
+      "applies_to": "Organizations processing personal data",
+      "description": "Code of practice for protecting personally identifiable information. Links to ISO/IEC 27001 for PII protection.",
+      "url": "https://www.iso.org/standard/62726.html"
+    },
+    {
+      "id": "ISO 10006:2017",
+      "name": "Quality Management - Guidelines for Project Management",
+      "category": "Management Systems",
+      "applies_to": "Project-based organizations",
+      "description": "Provides guidelines for quality management in projects. Applicable to projects of varying complexity, small or large, short or long duration.",
+      "url": "https://www.iso.org/standard/70376.html"
+    },
+    {
+      "id": "ISO 21500:2021",
+      "name": "Project, Programme and Portfolio Management - Context and Concepts",
+      "category": "Management Systems",
+      "applies_to": "All organizations managing projects",
+      "description": "Provides high-level description of concepts and processes that are considered to form good practice in project, programme and portfolio management.",
+      "url": "https://www.iso.org/standard/75704.html"
+    },
+    {
+      "id": "ISO 20022:2013",
+      "name": "Financial Services - Universal Financial Industry Message Scheme",
+      "category": "Financial Services",
+      "applies_to": "Financial institutions and fintech",
+      "description": "Methodology for developing financial message standards. Used for payments, securities, trade services, cards and foreign exchange.",
+      "url": "https://www.iso.org/standard/55005.html"
+    },
+    {
+      "id": "ISO 8601-1:2019",
+      "name": "Date and Time - Representations for Information Interchange",
+      "category": "Data Standards",
+      "applies_to": "Systems exchanging date/time information",
+      "description": "Specifies representations of dates, times of day, time intervals and recurring time intervals for information interchange.",
+      "url": "https://www.iso.org/standard/70907.html"
+    },
+    {
+      "id": "ISO/IEC 25051:2014",
+      "name": "Software Product Quality Requirements and Evaluation (SQuaRE) - COTS Software",
+      "category": "Software & Systems",
+      "applies_to": "Commercial off-the-shelf software",
+      "description": "Provides requirements and recommendations for quality requirements and testing of commercial off-the-shelf (COTS) software products.",
+      "url": "https://www.iso.org/standard/61897.html"
+    },
+    {
+      "id": "ISO/IEC 15504:2004",
+      "name": "Information Technology - Process Assessment (SPICE)",
+      "category": "Software & Systems",
+      "applies_to": "Software process assessment",
+      "description": "Framework for assessment of software processes. Also known as SPICE (Software Process Improvement and Capability Determination).",
+      "url": "https://www.iso.org/standard/38932.html"
+    },
+    {
+      "id": "ISO/IEC 42001:2023",
+      "name": "Artificial Intelligence - Management System",
+      "category": "Emerging Technology",
+      "applies_to": "Organizations developing or using AI systems",
+      "description": "First ISO standard for AI management systems. Specifies requirements for establishing, implementing, maintaining and continually improving an AI management system.",
+      "url": "https://www.iso.org/standard/81230.html"
+    },
+    {
+      "id": "ISO/IEC 23894:2023",
+      "name": "Artificial Intelligence - Risk Management",
+      "category": "Emerging Technology",
+      "applies_to": "AI systems and applications",
+      "description": "Provides guidance on risk management for AI systems throughout the lifecycle.",
+      "url": "https://www.iso.org/standard/77304.html"
+    },
+    {
+      "id": "ISO/IEC 22989:2022",
+      "name": "Artificial Intelligence Concepts and Terminology",
+      "category": "Emerging Technology",
+      "applies_to": "AI systems",
+      "description": "Establishes terminology and concepts for artificial intelligence. Provides foundation for AI standards.",
+      "url": "https://www.iso.org/standard/74296.html"
+    },
+    {
+      "id": "ISO 37001:2016",
+      "name": "Anti-Bribery Management Systems",
+      "category": "Compliance & Ethics",
+      "applies_to": "Organizations wanting to prevent bribery",
+      "description": "Specifies requirements for establishing, implementing, maintaining and improving an anti-bribery management system.",
+      "url": "https://www.iso.org/standard/65034.html"
+    },
+    {
+      "id": "ISO 37301:2021",
+      "name": "Compliance Management Systems - Requirements with Guidance",
+      "category": "Compliance & Ethics",
+      "applies_to": "All organizations",
+      "description": "Specifies requirements for establishing, developing, implementing, evaluating, maintaining and improving an effective compliance management system.",
+      "url": "https://www.iso.org/standard/75080.html"
+    },
+    {
+      "id": "ISO 10012:2003",
+      "name": "Measurement Management Systems",
+      "category": "Testing & Certification",
+      "applies_to": "Organizations requiring measurement traceability",
+      "description": "Specifies generic requirements and provides guidance for management of measurement processes and metrological confirmation of measuring equipment.",
+      "url": "https://www.iso.org/standard/26033.html"
+    },
+    {
+      "id": "ISO/IEC Guide 51:2014",
+      "name": "Safety Aspects - Guidelines for their Inclusion in Standards",
+      "category": "Product Safety",
+      "applies_to": "Product safety standards development",
+      "description": "Provides guidelines for including safety aspects in standards for products, processes and services at all stages of life cycle.",
+      "url": "https://www.iso.org/standard/53940.html"
+    },
+    {
+      "id": "ISO 10377:2013",
+      "name": "Consumer Product Safety - Guidelines for Suppliers",
+      "category": "Product Safety",
+      "applies_to": "Consumer product manufacturers and suppliers",
+      "description": "Provides guidance to suppliers on developing and implementing appropriate customer-focused processes related to consumer product safety.",
+      "url": "https://www.iso.org/standard/56100.html"
+    }
+  ]
+}

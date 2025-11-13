@@ -1,0 +1,437 @@
+{
+  "_comment": "China (PRC) compliance norms and standards database. Includes CCC, GB standards, SRRC, MIIT, NMPA and other Chinese regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "CCC",
+      "name": "China Compulsory Certification (3C)",
+      "category": "CCC Certification",
+      "applies_to": "Products on CCC catalogue (22 categories including IT, AV, household appliances, cables, automotive)",
+      "description": "Mandatory safety certification for products on CCC catalogue. Testing, factory inspection, ongoing surveillance. CCC mark required on product and packaging. Cannot import or sell without CCC.",
+      "url": "https://www.certification.gov.cn/"
+    },
+    {
+      "id": "CCC-IT",
+      "name": "CCC for Information Technology Equipment",
+      "category": "CCC Certification",
+      "applies_to": "Computers, monitors, printers, servers, network equipment",
+      "description": "CCC certification for IT equipment category. Testing to GB 4943.1 (safety) and GB 9254/17625.1 (EMC). Factory inspection required. Validity 5 years with annual surveillance.",
+      "url": "https://www.certification.gov.cn/"
+    },
+    {
+      "id": "CCC-AV",
+      "name": "CCC for Audio/Video Equipment",
+      "category": "CCC Certification",
+      "applies_to": "TVs, audio equipment, set-top boxes, projectors",
+      "description": "CCC certification for AV equipment. Testing to GB 8898 (safety) and GB 13837 (EMC). Factory inspection. Different from IT equipment certification.",
+      "url": "https://www.certification.gov.cn/"
+    },
+    {
+      "id": "CCC-Appliances",
+      "name": "CCC for Household Appliances",
+      "category": "CCC Certification",
+      "applies_to": "Household appliances (refrigerators, washing machines, air conditioners, etc.)",
+      "description": "CCC certification for household appliances. Testing to GB 4706 series (safety). Multiple subcategories with specific requirements.",
+      "url": "https://www.certification.gov.cn/"
+    },
+    {
+      "id": "CCC-Cables",
+      "name": "CCC for Cables and Wires",
+      "category": "CCC Certification",
+      "applies_to": "Power cords, cables, wiring",
+      "description": "CCC certification for cables. Testing to GB 5013, GB 5023 and other cable standards. Mark must be on cable itself at regular intervals.",
+      "url": "https://www.certification.gov.cn/"
+    },
+    {
+      "id": "CCC-Power Supplies",
+      "name": "CCC for Power Supply Units",
+      "category": "CCC Certification",
+      "applies_to": "AC-DC and DC-DC power supplies, chargers, adapters",
+      "description": "CCC certification for power supply units. Testing to GB 4943.1 or GB 8898 depending on application. Factory inspection required.",
+      "url": "https://www.certification.gov.cn/"
+    },
+    {
+      "id": "CCC-Batteries",
+      "name": "CCC for Lithium-Ion Batteries and Power Banks",
+      "category": "CCC Certification",
+      "applies_to": "Lithium-ion batteries, power banks",
+      "description": "CCC certification for portable electronic products lithium-ion batteries and power banks. Added to CCC catalogue in 2023. Testing to GB 31241. Factory inspection.",
+      "url": "https://www.certification.gov.cn/"
+    },
+    {
+      "id": "GB 4943.1-2022",
+      "name": "Safety of Information Technology Equipment",
+      "category": "GB Safety Standards",
+      "applies_to": "IT equipment, computers, servers, networking equipment",
+      "description": "Chinese safety standard for IT equipment. Based on IEC 62368-1 but with Chinese deviations. Required for CCC certification of IT products. Replaces GB 4943.1-2011.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 8898-2011",
+      "name": "Safety Requirements for Audio, Video and Similar Electronic Apparatus",
+      "category": "GB Safety Standards",
+      "applies_to": "Audio, video, similar electronic equipment",
+      "description": "Safety standard for AV equipment. Based on IEC 60065 but with Chinese requirements. Used for CCC certification of AV products.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 4706.1-2005",
+      "name": "Household and Similar Electrical Appliances - Safety - General Requirements",
+      "category": "GB Safety Standards",
+      "applies_to": "Household appliances",
+      "description": "General safety requirements for household appliances. Based on IEC 60335-1. Part 1 of comprehensive series used for CCC certification.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 4706.2-X",
+      "name": "Household Appliances - Safety - Particular Requirements",
+      "category": "GB Safety Standards",
+      "applies_to": "Specific appliance types",
+      "description": "Part 2 series with specific safety requirements for different appliances. Multiple parts covering specific products.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 31241-2022",
+      "name": "Safety Requirements for Portable Electronic Devices Lithium-Ion Cells and Batteries",
+      "category": "GB Safety Standards",
+      "applies_to": "Lithium-ion batteries for portable devices",
+      "description": "Safety requirements for lithium batteries. Based on IEC 62133 with additional Chinese requirements. Required for CCC certification of batteries. Updated 2022.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 9254-2008",
+      "name": "Information Technology Equipment - Radio Disturbance Characteristics - Limits and Methods of Measurement",
+      "category": "GB EMC Standards",
+      "applies_to": "IT equipment",
+      "description": "EMC emission requirements for IT equipment. Class A (commercial) and Class B (residential) limits. Used for CCC EMC testing.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 17625.1-2012",
+      "name": "Limits for Harmonic Current Emissions",
+      "category": "GB EMC Standards",
+      "applies_to": "Equipment with input current ≤16A per phase",
+      "description": "Harmonic current emission limits. Based on IEC 61000-3-2. Required for CCC EMC testing.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 13837-2012",
+      "name": "EMC Requirements for Sound and Television Broadcast Receivers and Associated Equipment",
+      "category": "GB EMC Standards",
+      "applies_to": "Audio, video, broadcast equipment",
+      "description": "EMC requirements for AV equipment. Emission and immunity requirements. Used for CCC certification.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "SRRC",
+      "name": "State Radio Regulation of China - Radio Type Approval",
+      "category": "Radio Frequency",
+      "applies_to": "All radio transmitting equipment including WiFi, Bluetooth, cellular",
+      "description": "Mandatory radio type approval. Testing of RF parameters, frequency, power, spurious emissions. SRRC certificate and label required. Cannot import or sell radio equipment without SRRC.",
+      "url": "http://www.srrc.org.cn/"
+    },
+    {
+      "id": "SRRC-CMIIT ID",
+      "name": "Radio Equipment Model Approval Code",
+      "category": "Radio Frequency",
+      "applies_to": "Radio transmitting products",
+      "description": "CMIIT ID number issued after SRRC approval. Must be labeled on product. Format: CMIIT ID: 2024XXXXXXXX. Unique identifier for each radio model.",
+      "url": "http://www.srrc.org.cn/"
+    },
+    {
+      "id": "GB 21288-2007",
+      "name": "Safety Requirements for Mobile Phones",
+      "category": "GB Safety Standards",
+      "applies_to": "Mobile phones, smartphones",
+      "description": "Safety requirements specific to mobile phones. Includes SAR limits (2.0 W/kg over 10g). Required for mobile phone certification.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "SAR Testing China",
+      "name": "Specific Absorption Rate Requirements",
+      "category": "Radio Frequency Safety",
+      "applies_to": "Mobile phones and body-worn wireless devices",
+      "description": "SAR limit: 2.0 W/kg averaged over 10g of tissue. Testing required for mobile phones. Part of SRRC and CCC requirements for wireless devices.",
+      "url": "http://www.srrc.org.cn/"
+    },
+    {
+      "id": "NAL Network Access License",
+      "name": "Telecommunications Equipment Network Access License",
+      "category": "Telecommunications",
+      "applies_to": "Equipment connecting to public telecommunications network",
+      "description": "Mandatory for telecom terminal equipment. Testing at MIIT-designated labs. Includes wired phones, modems, networking equipment connecting to carriers. NAL mark required.",
+      "url": "https://www.miit.gov.cn/"
+    },
+    {
+      "id": "China RoHS (MIIT Order 32)",
+      "name": "Management Methods for Restriction of Hazardous Substances in Electrical and Electronic Products",
+      "category": "Hazardous Substances",
+      "applies_to": "Electrical and electronic products",
+      "description": "China RoHS 2.0. Marking requirements for all EEE. Basic marking or qualified marking. Management catalogue for restricted substances. Limits for lead, mercury, cadmium, Cr6+, PBB, PBDE.",
+      "url": "https://www.miit.gov.cn/"
+    },
+    {
+      "id": "China RoHS Logo",
+      "name": "Environmental Protection Use Period (EPUP) Marking",
+      "category": "Hazardous Substances",
+      "applies_to": "All electrical and electronic products",
+      "description": "Mandatory marking showing number of years product can be used without hazardous substances leaking. E-logo with number (10, 20, 25, etc.). Orange version if exceeds limits.",
+      "url": "https://www.miit.gov.cn/"
+    },
+    {
+      "id": "GB/T 26572-2011",
+      "name": "Requirements for Concentration Limits for Certain Restricted Substances",
+      "category": "Hazardous Substances",
+      "applies_to": "Electronic products",
+      "description": "Concentration limits for hazardous substances similar to EU RoHS. Testing methodology for China RoHS compliance.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "China Energy Label",
+      "name": "China Energy Efficiency Label",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-consuming products in catalogue",
+      "description": "Mandatory energy efficiency label. 1-5 grade scale (Grade 1 most efficient). Required for appliances, electronics, lighting in catalogue. Registration before sale. Administered by NDRC/AQSIQ.",
+      "url": "https://www.energylabel.gov.cn/"
+    },
+    {
+      "id": "GB 21455",
+      "name": "Minimum Allowable Values of Energy Efficiency and Energy Efficiency Grades - Computers",
+      "category": "Energy Efficiency",
+      "applies_to": "Desktop computers, laptops, tablets",
+      "description": "Energy efficiency requirements and grading for computers. Mandatory minimum efficiency. Energy label required.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 24850",
+      "name": "Minimum Allowable Values of Energy Efficiency and Energy Efficiency Grades - External Power Supplies",
+      "category": "Energy Efficiency",
+      "applies_to": "AC-DC external power supplies",
+      "description": "Energy efficiency requirements for external power supplies. Minimum efficiency levels. Energy label required for products in scope.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "NMPA Medical Device Registration",
+      "name": "National Medical Products Administration - Medical Device Approval",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including diagnostic software",
+      "description": "Medical device registration by NMPA (formerly CFDA). Classification I, II, III based on risk. Pre-market approval required. Clinical trials often needed. Quality system inspection.",
+      "url": "https://www.nmpa.gov.cn/english/"
+    },
+    {
+      "id": "YY/T 0316",
+      "name": "Medical Devices - Risk Management",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Chinese medical device risk management standard. Based on ISO 14971. Required for NMPA registration.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "YY/T 0287",
+      "name": "Medical Devices - Quality Management System - Requirements",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Chinese medical device quality management system. Based on ISO 13485. Required for NMPA registration and manufacturing license.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 9706.1",
+      "name": "Medical Electrical Equipment - General Requirements for Safety",
+      "category": "Medical Devices",
+      "applies_to": "Medical electrical equipment",
+      "description": "General safety requirements for medical electrical equipment. Based on IEC 60601-1. Required for medical device registration.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "Cybersecurity Law",
+      "name": "Cybersecurity Law of the People's Republic of China",
+      "category": "Cybersecurity & Data",
+      "applies_to": "Network operators, critical information infrastructure",
+      "description": "Comprehensive cybersecurity law. Data localization, security assessments, incident reporting. Affects connected devices, cloud services, data processing. Enforcement since 2017.",
+      "url": "http://www.cac.gov.cn/"
+    },
+    {
+      "id": "MLPS 2.0",
+      "name": "Multi-Level Protection Scheme",
+      "category": "Cybersecurity & Data",
+      "applies_to": "Information systems handling sensitive data",
+      "description": "Cybersecurity classification and protection system. 5 levels based on impact if compromised. Level 2+ requires assessment and filing. Affects enterprise systems, cloud platforms.",
+      "url": "http://www.cac.gov.cn/"
+    },
+    {
+      "id": "PIPL",
+      "name": "Personal Information Protection Law",
+      "category": "Cybersecurity & Data",
+      "applies_to": "Organizations processing personal information",
+      "description": "China's comprehensive data privacy law. Similar to GDPR. Consent requirements, data subject rights, cross-border transfer restrictions. Enforcement since November 2021. High penalties.",
+      "url": "http://www.cac.gov.cn/"
+    },
+    {
+      "id": "Data Security Law",
+      "name": "Data Security Law of the People's Republic of China",
+      "category": "Cybersecurity & Data",
+      "applies_to": "Organizations processing data",
+      "description": "Framework for data security. Data classification, protection obligations, cross-border transfer reviews. Complements Cybersecurity Law and PIPL. Enforcement since 2021.",
+      "url": "http://www.cac.gov.cn/"
+    },
+    {
+      "id": "Critical Information Infrastructure Security Protection",
+      "name": "Regulations on Security Protection of Critical Information Infrastructure",
+      "category": "Cybersecurity & Data",
+      "applies_to": "Operators of critical information infrastructure",
+      "description": "Enhanced cybersecurity requirements for critical sectors (telecom, energy, finance, etc.). Network security products certification. Data localization.",
+      "url": "http://www.cac.gov.cn/"
+    },
+    {
+      "id": "GB/T 22239",
+      "name": "Information Security Technology - Baseline for Classified Protection of Cybersecurity",
+      "category": "Cybersecurity & Data",
+      "applies_to": "Information systems (MLPS compliance)",
+      "description": "Technical requirements for MLPS 2.0 compliance. Security controls by protection level. Used for MLPS assessment.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB/T 35273",
+      "name": "Information Security Technology - Personal Information Security Specification",
+      "category": "Cybersecurity & Data",
+      "applies_to": "Organizations collecting personal information",
+      "description": "Best practices for personal information protection. Consent, minimization, transparency, security measures. Referenced for PIPL compliance.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "CCRC Certification",
+      "name": "China Cybersecurity Review Technology Certification Center",
+      "category": "Cybersecurity & Data",
+      "applies_to": "Network security products and services",
+      "description": "Voluntary cybersecurity certification. Becoming required for critical sectors. Certifies security products (firewall, VPN, etc.) and cloud services.",
+      "url": "https://www.isccc.gov.cn/"
+    },
+    {
+      "id": "GB 18401",
+      "name": "National General Safety Technical Code for Textile Products",
+      "category": "Textiles & Apparel",
+      "applies_to": "Textile products including clothing",
+      "description": "Safety requirements for textiles. pH limits, formaldehyde limits, colorfastness, banned azo dyes. Categories: A (infant), B (direct skin contact), C (non-direct contact).",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 6675",
+      "name": "Safety Technical Requirements for Toys",
+      "category": "Toys",
+      "applies_to": "Toys for children under 14",
+      "description": "Comprehensive toy safety standard. Mechanical/physical properties, flammability, chemical hazards, electrical safety. Required for toy products. CCC certification for some toy categories.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 28480",
+      "name": "Children's Footwear Safety Technical Requirements",
+      "category": "Children's Products",
+      "applies_to": "Children's footwear",
+      "description": "Safety requirements for children's shoes. Physical, mechanical, chemical requirements. Heavy metal limits, phthalate restrictions.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 7000.1",
+      "name": "Luminaires - General Requirements and Tests",
+      "category": "Lighting",
+      "applies_to": "Lighting fixtures",
+      "description": "General safety requirements for luminaires. Based on IEC 60598-1. Used with specific standards for different luminaire types.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 24906",
+      "name": "Safety Requirements for Ordinary Lighting LED Modules",
+      "category": "Lighting",
+      "applies_to": "LED modules and LED lighting",
+      "description": "Safety requirements specific to LED modules. Thermal, electrical, photobiological safety. Required for LED products.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "Food Safety Law",
+      "name": "Food Safety Law - Food Contact Materials",
+      "category": "Food Contact",
+      "applies_to": "Materials and articles in contact with food",
+      "description": "Safety requirements for food contact materials. GB standards for different materials (plastics, metals, ceramics, etc.). Migration testing. Pre-market approval for some substances.",
+      "url": "http://www.nhc.gov.cn/"
+    },
+    {
+      "id": "GB 4806 Series",
+      "name": "Food Contact Materials - National Food Safety Standards",
+      "category": "Food Contact",
+      "applies_to": "Food contact materials and articles",
+      "description": "Series of standards for food contact materials. General requirements (GB 4806.1) plus specific standards for plastics, metals, paper, etc. Migration limits, compositional requirements.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 18580",
+      "name": "Indoor Decorating and Refurbishing Materials - Limit of Formaldehyde Emission of Wood-Based Panels and Finishing Products",
+      "category": "Environmental & Chemical",
+      "applies_to": "Wood products, furniture, building materials",
+      "description": "Formaldehyde emission limits for wood products. E1 class required (≤0.124 mg/m³). Important for furniture, flooring, cabinetry.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB/T 18885",
+      "name": "Ecological Textile Assessment - Technical Requirements",
+      "category": "Environmental & Chemical",
+      "applies_to": "Textiles with environmental claims",
+      "description": "Eco-label requirements for textiles. Limits for harmful substances, environmental performance. Voluntary certification.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 19083",
+      "name": "Technical Requirements for Protective Face Masks for Medical Use",
+      "category": "PPE",
+      "applies_to": "Medical face masks",
+      "description": "Technical requirements for medical protective masks. Filtration efficiency, breathing resistance, blood penetration resistance. Required for medical mask registration.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "GB 2626",
+      "name": "Respiratory Protective Equipment - Non-Powered Air-Purifying Particle Respirator",
+      "category": "PPE",
+      "applies_to": "Respiratory protection equipment",
+      "description": "Requirements for respiratory protection. Filtration classes: KN (non-oil) and KP (oil-resistant) with 90, 95, 100 levels. Important for industrial PPE.",
+      "url": "http://www.gb688.cn/"
+    },
+    {
+      "id": "Law on Product Quality",
+      "name": "Product Quality Law of the People's Republic of China",
+      "category": "Product Quality",
+      "applies_to": "All products",
+      "description": "Framework law for product quality. Manufacturer responsibilities, quality requirements, liability. Basis for product recalls and penalties.",
+      "url": "http://www.npc.gov.cn/"
+    },
+    {
+      "id": "Standardization Law",
+      "name": "Standardization Law of the People's Republic of China",
+      "category": "Standards System",
+      "applies_to": "Standards development and implementation",
+      "description": "Framework for Chinese standards system. GB (mandatory national), GB/T (recommended national), industry standards, enterprise standards. Defines legal status.",
+      "url": "http://www.npc.gov.cn/"
+    },
+    {
+      "id": "Environmental Protection Law",
+      "name": "Environmental Protection Law of the People's Republic of China",
+      "category": "Environmental",
+      "applies_to": "Products and manufacturing affecting environment",
+      "description": "Comprehensive environmental protection law. Pollution control, environmental impact assessment, liability. Affects manufacturing operations and product environmental performance.",
+      "url": "https://www.mee.gov.cn/"
+    },
+    {
+      "id": "Advertising Law",
+      "name": "Advertising Law of the People's Republic of China",
+      "category": "Marketing & Claims",
+      "applies_to": "Product advertising and claims",
+      "description": "Regulations for advertising and product claims. Prohibition of false/misleading claims. Specific requirements for certain products (food, medical, children's products). High penalties.",
+      "url": "http://www.npc.gov.cn/"
+    },
+    {
+      "id": "Trademark Law",
+      "name": "Trademark Law of the People's Republic of China",
+      "category": "Intellectual Property",
+      "applies_to": "Product branding and marking",
+      "description": "Trademark protection and registration. Affects product branding, labeling. Well-known trademark protection. Administered by CNIPA (China National Intellectual Property Administration).",
+      "url": "https://www.cnipa.gov.cn/col/col1681/index.html"
+    }
+  ]
+}

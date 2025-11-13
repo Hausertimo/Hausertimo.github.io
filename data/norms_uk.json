@@ -1,0 +1,453 @@
+{
+  "_comment": "United Kingdom compliance norms and standards database. Includes UKCA, BS standards, OFCOM, MHRA and other UK regulatory requirements post-Brexit. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "UKCA Mark",
+      "name": "UK Conformity Assessed Marking",
+      "category": "UKCA Compliance",
+      "applies_to": "Products covered by UK Product Safety and Metrology legislation for Great Britain market",
+      "description": "Mandatory conformity marking for Great Britain (England, Wales, Scotland). Replaces CE mark for GB market. Covers similar product categories as CE. Self-declaration with technical documentation. Transitional arrangements ended for most products.",
+      "url": "https://www.gov.uk/guidance/using-the-ukca-marking"
+    },
+    {
+      "id": "UKNI Mark",
+      "name": "UK Conformity Assessed Northern Ireland Mark",
+      "category": "UKCA Compliance",
+      "applies_to": "Products placed on Northern Ireland market",
+      "description": "Conformity mark for qualifying Northern Ireland goods. Used alongside CE mark for products covered by Northern Ireland Protocol. Applies to goods placed on NI market.",
+      "url": "https://www.gov.uk/guidance/using-the-ukni-marking"
+    },
+    {
+      "id": "Electrical Equipment (Safety) Regulations 2016",
+      "name": "UK LVD - Low Voltage Directive Implementation",
+      "category": "Electrical Safety",
+      "applies_to": "Electrical equipment 50-1000V AC or 75-1500V DC",
+      "description": "UK implementation of LVD. Essential safety requirements for electrical equipment. UKCA marking required for GB. Harmonized standards for presumption of conformity.",
+      "url": "https://www.legislation.gov.uk/uksi/2016/1101"
+    },
+    {
+      "id": "Electromagnetic Compatibility Regulations 2016",
+      "name": "UK EMC - EMC Directive Implementation",
+      "category": "EMC",
+      "applies_to": "Equipment capable of generating or being affected by electromagnetic disturbance",
+      "description": "UK implementation of EMC Directive. Emission and immunity requirements. UKCA marking required for GB. Harmonized standards available.",
+      "url": "https://www.legislation.gov.uk/uksi/2016/1091"
+    },
+    {
+      "id": "Radio Equipment Regulations 2017",
+      "name": "UK RED - Radio Equipment Directive Implementation",
+      "category": "Radio Equipment",
+      "applies_to": "All radio transmitting equipment",
+      "description": "UK implementation of RED. Essential requirements for radio equipment: safety, EMC, efficient spectrum use. UKCA marking required for GB. OFCOM notification for some devices.",
+      "url": "https://www.legislation.gov.uk/uksi/2017/1206"
+    },
+    {
+      "id": "Restriction of the Use of Certain Hazardous Substances in Electrical and Electronic Equipment Regulations 2012",
+      "name": "UK RoHS",
+      "category": "Hazardous Substances",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "UK implementation of RoHS Directive. Restricts lead, mercury, cadmium, hexavalent chromium, PBBs, PBDEs, phthalates. UKCA marking. Technical documentation required.",
+      "url": "https://www.legislation.gov.uk/uksi/2012/3032"
+    },
+    {
+      "id": "Waste Electrical and Electronic Equipment Regulations 2013",
+      "name": "UK WEEE",
+      "category": "Environmental",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "UK WEEE regulations. Producer responsibility for collection and recycling. Registration required. Crossed-out wheeled bin symbol. Collection targets and reporting.",
+      "url": "https://www.legislation.gov.uk/uksi/2013/3113"
+    },
+    {
+      "id": "BS EN 62368-1",
+      "name": "Audio/Video, ICT and Communication Technology Equipment - Safety",
+      "category": "BS Standards",
+      "applies_to": "IT, AV, communication equipment",
+      "description": "UK adoption of IEC 62368-1. Hazard-based safety standard. Designated standard for UK Electrical Equipment (Safety) Regulations. Replaces BS EN 60950-1.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN 60950-1",
+      "name": "Information Technology Equipment - Safety (LEGACY)",
+      "category": "BS Standards",
+      "applies_to": "IT equipment (replaced by BS EN 62368-1)",
+      "description": "LEGACY standard for IT equipment. Withdrawn December 2020, replaced by BS EN 62368-1. May still be valid for existing certifications during transition.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN 60335-1",
+      "name": "Household Appliances - Safety - General Requirements",
+      "category": "BS Standards",
+      "applies_to": "Household and similar electrical appliances",
+      "description": "General safety requirements for household appliances. UK adoption of IEC 60335-1. Designated standard. Part 1 of comprehensive series.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN 60335-2-X",
+      "name": "Household Appliances - Safety - Particular Requirements",
+      "category": "BS Standards",
+      "applies_to": "Specific appliance types",
+      "description": "Part 2 series with specific requirements for different appliances. Multiple parts covering specific products. UK adoption of IEC standards.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN 62133-2",
+      "name": "Secondary Cells and Batteries - Portable Lithium Batteries",
+      "category": "BS Standards",
+      "applies_to": "Lithium-ion and lithium polymer batteries",
+      "description": "Safety requirements for portable lithium batteries. UK adoption of IEC 62133-2. Used for UK compliance.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN 61000 Series",
+      "name": "Electromagnetic Compatibility Standards",
+      "category": "BS Standards",
+      "applies_to": "Electronic equipment (EMC testing)",
+      "description": "Comprehensive EMC standards series. Generic emission and immunity standards. Product-specific standards. UK adoption of IEC 61000 series. Used for EMC Regulations compliance.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN 55032",
+      "name": "Multimedia Equipment - EMC - Emission Requirements",
+      "category": "BS Standards",
+      "applies_to": "IT equipment, multimedia equipment",
+      "description": "EMC emission requirements for multimedia equipment. UK adoption of IEC/CISPR 32. Designated standard for EMC Regulations.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN 55035",
+      "name": "Multimedia Equipment - EMC - Immunity Requirements",
+      "category": "BS Standards",
+      "applies_to": "IT equipment, multimedia equipment",
+      "description": "EMC immunity requirements for multimedia equipment. UK adoption of IEC/CISPR 35. Works with BS EN 55032.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN 300 328",
+      "name": "Wideband Transmission Systems - 2.4GHz",
+      "category": "Radio Standards",
+      "applies_to": "2.4GHz devices (WiFi, Bluetooth)",
+      "description": "UK adoption of ETSI EN 300 328. Technical requirements for 2.4GHz equipment. Designated standard for Radio Equipment Regulations.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN 301 893",
+      "name": "5GHz RLAN Equipment",
+      "category": "Radio Standards",
+      "applies_to": "5GHz WiFi devices",
+      "description": "UK adoption of ETSI EN 301 893 (now EN 303 417). Requirements for 5GHz wireless LAN. DFS and TPC requirements.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN 301 489 Series",
+      "name": "EMC for Radio Equipment",
+      "category": "Radio Standards",
+      "applies_to": "Radio equipment",
+      "description": "EMC requirements specific to radio equipment. UK adoption of ETSI EN 301 489 series. Part 1 general, part 2 product-specific.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "OFCOM Interface Requirements",
+      "name": "Radio Equipment Interface Requirements",
+      "category": "Radio Regulation",
+      "applies_to": "Radio transmitting equipment",
+      "description": "OFCOM technical requirements for radio equipment. Frequency allocations, power limits, technical standards. Notification scheme for some equipment. Enforcement of Radio Equipment Regulations.",
+      "url": "https://www.ofcom.org.uk/spectrum/information/radio-equipment-requirements"
+    },
+    {
+      "id": "SAR Requirements UK",
+      "name": "Specific Absorption Rate Limits",
+      "category": "Radio Regulation",
+      "applies_to": "Mobile phones and body-worn wireless devices",
+      "description": "SAR limit: 2.0 W/kg averaged over 10g of tissue. Assessment required for devices used within 20cm of body. Part of Radio Equipment Regulations compliance.",
+      "url": "https://www.ofcom.org.uk/"
+    },
+    {
+      "id": "Medical Devices Regulations 2002 (as amended)",
+      "name": "UK Medical Devices Regulation",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including software",
+      "description": "UK medical device regulations. Transition from EU MDR to UK-specific regime. UKCA marking required. MHRA approval. Classification I-III, IIa, IIb. Approved Body involvement for higher classes.",
+      "url": "https://www.legislation.gov.uk/uksi/2002/618"
+    },
+    {
+      "id": "MHRA Registration",
+      "name": "Medicines and Healthcare products Regulatory Agency - Device Registration",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices for UK market",
+      "description": "Registration with MHRA required for medical devices. Manufacturers, authorized representatives must register. Annual fee. Device listing. UKCA marking.",
+      "url": "https://www.gov.uk/guidance/regulating-medical-devices-in-the-uk"
+    },
+    {
+      "id": "BS EN ISO 13485",
+      "name": "Medical Devices - Quality Management Systems",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Quality management system requirements. UK adoption of ISO 13485. Required for UK medical device compliance. UK Approved Body audit.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN ISO 14971",
+      "name": "Medical Devices - Risk Management",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Risk management requirements. UK adoption of ISO 14971. Required for MHRA compliance.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "Product Safety and Metrology etc. Regulations 2022",
+      "name": "General Product Safety Framework",
+      "category": "Product Safety",
+      "applies_to": "Consumer products not covered by specific legislation",
+      "description": "General safety requirement for consumer products. Product safety obligations, reporting, recalls. Replaces previous GPS regulations post-Brexit.",
+      "url": "https://www.legislation.gov.uk/uksi/2022/1092"
+    },
+    {
+      "id": "Toys (Safety) Regulations 2011",
+      "name": "UK Toy Safety",
+      "category": "Product Safety",
+      "applies_to": "Toys for children under 14",
+      "description": "UK toy safety regulations. Essential safety requirements including mechanical, physical, flammability, chemical, electrical properties. UKCA marking. Based on EN 71 standards.",
+      "url": "https://www.legislation.gov.uk/uksi/2011/1881"
+    },
+    {
+      "id": "BS EN 71 Series",
+      "name": "Safety of Toys Standards",
+      "category": "Product Safety",
+      "applies_to": "Toys",
+      "description": "Comprehensive toy safety standards. UK adoption of EN 71 series. Mechanical/physical properties, flammability, migration of elements. Designated standards for Toys (Safety) Regulations.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "Personal Protective Equipment (Enforcement) Regulations 2018",
+      "name": "UK PPE Regulation",
+      "category": "Personal Protective Equipment",
+      "applies_to": "Personal protective equipment",
+      "description": "UK PPE requirements. Essential health and safety requirements. Risk categories I, II, III. UKCA marking. Type examination for higher risk categories.",
+      "url": "https://www.legislation.gov.uk/uksi/2018/390"
+    },
+    {
+      "id": "Supply of Machinery (Safety) Regulations 2008",
+      "name": "UK Machinery Safety",
+      "category": "Machinery",
+      "applies_to": "Machinery and safety components",
+      "description": "UK machinery safety regulations. Essential health and safety requirements. UKCA marking. Technical file, risk assessment. Note: Being updated to align with EU Machinery Regulation.",
+      "url": "https://www.legislation.gov.uk/uksi/2008/1597"
+    },
+    {
+      "id": "Ecodesign for Energy-Related Products Regulations 2010",
+      "name": "UK Ecodesign Requirements",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-related products",
+      "description": "UK ecodesign framework. Product-specific regulations set requirements. Energy efficiency, resource efficiency. Post-Brexit UK-specific requirements.",
+      "url": "https://www.legislation.gov.uk/uksi/2010/2617"
+    },
+    {
+      "id": "Energy Information Regulations 2011",
+      "name": "UK Energy Labelling",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-related products with labeling requirements",
+      "description": "UK energy labelling framework. A-G scale. Product-specific labeling requirements. Post-Brexit UK energy labels (rescaled from A+++ system). Supplier obligations.",
+      "url": "https://www.legislation.gov.uk/uksi/2011/1524"
+    },
+    {
+      "id": "UK Energy Label",
+      "name": "UK Energy Efficiency Label",
+      "category": "Energy Efficiency",
+      "applies_to": "Appliances, electronics, lighting",
+      "description": "Mandatory energy label for covered products. A-G scale (rescaled post-Brexit). QR code linking to product database. Required for GB market. Similar to but separate from EU label.",
+      "url": "https://www.gov.uk/guidance/placing-energy-related-products-on-the-uk-market"
+    },
+    {
+      "id": "REACH etc. (Amendment etc.) (EU Exit) Regulations 2020",
+      "name": "UK REACH",
+      "category": "Chemicals",
+      "applies_to": "Chemical substances in products",
+      "description": "UK chemical regulation post-Brexit. Based on EU REACH but UK-specific. Registration with HSE. SVHC restrictions. Downstream user obligations. Applies to GB market.",
+      "url": "https://www.legislation.gov.uk/uksi/2020/1577"
+    },
+    {
+      "id": "Batteries and Accumulators (Placing on the Market) Regulations 2008",
+      "name": "UK Battery Regulations",
+      "category": "Batteries",
+      "applies_to": "Batteries and accumulators",
+      "description": "UK battery requirements. Labeling (crossed-out wheeled bin, capacity). Heavy metal restrictions. Producer registration and recycling obligations. Note: Being updated to align with EU Battery Regulation.",
+      "url": "https://www.legislation.gov.uk/uksi/2008/2164"
+    },
+    {
+      "id": "UK Data Protection Act 2018",
+      "name": "UK GDPR and Data Protection",
+      "category": "Data Protection",
+      "applies_to": "Organizations processing personal data",
+      "description": "UK data protection law. UK GDPR provisions plus additional UK requirements. Similar to EU GDPR but UK-specific. ICO enforcement. Applies to products/services processing personal data.",
+      "url": "https://www.legislation.gov.uk/ukpga/2018/12"
+    },
+    {
+      "id": "UK GDPR",
+      "name": "UK General Data Protection Regulation",
+      "category": "Data Protection",
+      "applies_to": "Personal data processing",
+      "description": "UK version of GDPR post-Brexit. Data protection principles, lawful basis, data subject rights, security requirements, breach notification. Enforced by ICO. Similar to EU GDPR with UK adaptations.",
+      "url": "https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/"
+    },
+    {
+      "id": "Privacy and Electronic Communications Regulations 2003",
+      "name": "PECR - ePrivacy",
+      "category": "Data Protection",
+      "applies_to": "Electronic communications, cookies, marketing",
+      "description": "Electronic communications privacy. Cookie consent, marketing communications, network security. Applies to connected devices, websites, apps. ICO enforcement.",
+      "url": "https://www.legislation.gov.uk/uksi/2003/2426"
+    },
+    {
+      "id": "NCSC Guidance",
+      "name": "National Cyber Security Centre - Security Guidance",
+      "category": "Cybersecurity",
+      "applies_to": "Connected devices and systems",
+      "description": "UK cybersecurity best practices. Code of Practice for Consumer IoT Security. Secure by Default principles. Not mandatory for most products but increasingly expected. Government procurement requirements.",
+      "url": "https://www.ncsc.gov.uk/"
+    },
+    {
+      "id": "Code of Practice for Consumer IoT Security",
+      "name": "IoT Security Guidelines",
+      "category": "Cybersecurity",
+      "applies_to": "Consumer IoT devices",
+      "description": "13 guidelines for IoT security including default passwords, vulnerability disclosure, secure communication. Basis for Product Security and Telecommunications Infrastructure (PSTI) Act.",
+      "url": "https://www.gov.uk/government/publications/code-of-practice-for-consumer-iot-security"
+    },
+    {
+      "id": "Product Security and Telecommunications Infrastructure Act 2022",
+      "name": "PSTI Act - IoT Security Requirements",
+      "category": "Cybersecurity",
+      "applies_to": "Consumer connectable products",
+      "description": "Mandatory security requirements for consumer IoT. No default passwords, vulnerability disclosure policy, security update period transparency. Enforcement from 2024. Applies to products with network/internet connectivity.",
+      "url": "https://www.legislation.gov.uk/ukpga/2022/46"
+    },
+    {
+      "id": "Consumer Rights Act 2015",
+      "name": "Consumer Protection and Rights",
+      "category": "Consumer Protection",
+      "applies_to": "Consumer goods and services",
+      "description": "Consumer rights framework. Goods must be of satisfactory quality, fit for purpose, as described. Digital content provisions. Remedies for faulty goods. Enforced by Trading Standards and CMA.",
+      "url": "https://www.legislation.gov.uk/ukpga/2015/15"
+    },
+    {
+      "id": "Consumer Protection Act 1987",
+      "name": "Product Liability",
+      "category": "Consumer Protection",
+      "applies_to": "Consumer products",
+      "description": "Product liability law. Strict liability for defective products causing damage. No-fault basis. Applies to manufacturers, importers. Important for product safety considerations.",
+      "url": "https://www.legislation.gov.uk/ukpga/1987/43"
+    },
+    {
+      "id": "Consumer Protection from Unfair Trading Regulations 2008",
+      "name": "Unfair Commercial Practices",
+      "category": "Consumer Protection",
+      "applies_to": "Product marketing and sales",
+      "description": "Prohibits unfair commercial practices including misleading actions/omissions, aggressive practices. Applies to product claims, advertising, sales practices. Trading Standards enforcement.",
+      "url": "https://www.legislation.gov.uk/uksi/2008/1277"
+    },
+    {
+      "id": "Packaging (Essential Requirements) Regulations 2015",
+      "name": "UK Packaging Requirements",
+      "category": "Packaging",
+      "applies_to": "Product packaging",
+      "description": "Essential requirements for packaging. Minimize volume/weight, reusability/recoverability, limits for heavy metals. Note: Extended Producer Responsibility being introduced.",
+      "url": "https://www.legislation.gov.uk/uksi/2015/1640"
+    },
+    {
+      "id": "Extended Producer Responsibility",
+      "name": "EPR for Packaging",
+      "category": "Packaging",
+      "applies_to": "Packaging producers (manufacturers, importers, brand owners)",
+      "description": "New EPR scheme for packaging. Full net cost recovery from producers. Registration, data reporting, fees. Phased introduction from 2024. Significant compliance burden.",
+      "url": "https://www.gov.uk/government/collections/extended-producer-responsibility-for-packaging"
+    },
+    {
+      "id": "BS 7671",
+      "name": "IET Wiring Regulations - UK Electrical Installation Code",
+      "category": "Installation Standards",
+      "applies_to": "Fixed electrical installations",
+      "description": "UK electrical installation requirements. Not directly for product compliance but affects installed equipment. 18th Edition current (2018+amendments). Referenced in Building Regulations.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "Building Regulations 2010",
+      "name": "Building Standards for England and Wales",
+      "category": "Construction",
+      "applies_to": "Products for building installation",
+      "description": "Building standards including electrical safety (Part P), fire safety, energy efficiency. Affects electrical equipment, building materials, fixtures. Similar regulations in Scotland, Northern Ireland.",
+      "url": "https://www.legislation.gov.uk/uksi/2010/2214"
+    },
+    {
+      "id": "Construction Products Regulation",
+      "name": "UK CPR - Construction Products",
+      "category": "Construction",
+      "applies_to": "Construction products",
+      "description": "Requirements for construction products. UKCA marking for GB (CE for NI). Performance declaration. Harmonized standards. Post-Brexit UK-specific regime.",
+      "url": "https://www.gov.uk/guidance/construction-products-regulation-in-great-britain"
+    },
+    {
+      "id": "BS EN ISO 9001",
+      "name": "Quality Management Systems",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing quality management",
+      "description": "UK adoption of ISO 9001. Quality management system requirements. UKAS accredits certification bodies in UK. Widely recognized globally.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN ISO 14001",
+      "name": "Environmental Management Systems",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing environmental management",
+      "description": "UK adoption of ISO 14001. Environmental management system requirements. UKAS accreditation for certification bodies.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "BS EN ISO/IEC 27001",
+      "name": "Information Security Management Systems",
+      "category": "Management Systems",
+      "applies_to": "Organizations managing information security",
+      "description": "UK adoption of ISO/IEC 27001. Information security management requirements. Important for technology products and services. UKAS accreditation.",
+      "url": "https://www.bsigroup.com/"
+    },
+    {
+      "id": "Health and Safety at Work etc. Act 1974",
+      "name": "Workplace Health and Safety Framework",
+      "category": "Workplace Safety",
+      "applies_to": "Workplace equipment and materials",
+      "description": "Framework for workplace health and safety. Duty of care for employers, equipment suppliers. Affects design of workplace equipment. HSE enforcement.",
+      "url": "https://www.legislation.gov.uk/ukpga/1974/37"
+    },
+    {
+      "id": "PUWER 1998",
+      "name": "Provision and Use of Work Equipment Regulations",
+      "category": "Workplace Safety",
+      "applies_to": "Work equipment",
+      "description": "Requirements for work equipment safety. Suitable for use, maintained, inspected. Affects industrial equipment, tools, machinery. HSE enforcement.",
+      "url": "https://www.legislation.gov.uk/uksi/1998/2306"
+    },
+    {
+      "id": "Trade Marks Act 1994",
+      "name": "Trademark Protection",
+      "category": "Intellectual Property",
+      "applies_to": "Product branding and marking",
+      "description": "Trademark protection and registration. Prevents unauthorized use of protected marks. Administered by UK IPO. Criminal and civil enforcement.",
+      "url": "https://www.legislation.gov.uk/ukpga/1994/26"
+    },
+    {
+      "id": "Kitemark",
+      "name": "BSI Kitemark Certification",
+      "category": "Voluntary Certification",
+      "applies_to": "Various products (voluntary)",
+      "description": "Voluntary BSI quality and safety certification mark. Demonstrates compliance beyond regulatory minimum. Recognized mark of quality. Regular audit and testing. Various schemes available.",
+      "url": "https://www.bsigroup.com/en-GB/kitemark/"
+    },
+    {
+      "id": "CE UKCA Marking Transition",
+      "name": "CE and UKCA Marking Arrangements",
+      "category": "Regulatory Transition",
+      "applies_to": "Products for UK and EU markets",
+      "description": "Post-Brexit marking arrangements. UKCA for GB market, CE (with UKNI where applicable) for NI market. CE acceptance in GB ended for most products. Dual marking strategies needed for UK and EU.",
+      "url": "https://www.gov.uk/guidance/using-the-ukca-marking"
+    }
+  ]
+}
