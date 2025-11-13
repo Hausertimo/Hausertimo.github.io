@@ -22,7 +22,7 @@ from typing import Optional, Dict, Any, List
 from flask import (
     Blueprint, request, jsonify, redirect, session,
     make_response, send_file, render_template_string, url_for,
-    send_from_directory
+    render_template
 )
 from supabase import create_client, Client
 
@@ -510,14 +510,14 @@ pages_bp = Blueprint('pages', __name__)
 @require_auth
 def dashboard_page():
     """Serve the dashboard page"""
-    return send_from_directory('static', 'dashboard.html')
+    return render_template('dashboard.html')
 
 
 @pages_bp.route('/workspace/<workspace_id>')
 @require_auth
 def workspace_page(workspace_id):
     """Serve the workspace view page"""
-    return send_from_directory('static', 'workspace_view.html')
+    return render_template('workspace_view.html')
 
 
 # ============================================================================

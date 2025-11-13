@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - NormScout{% endblock %}
+
+{% block nav_links %}
+    <a href="/" class="nav-link">Home</a>
+    <a href="/contact" class="nav-link">Contact</a>
+{% endblock %}
+
+{% block content %}
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <div class="container">
+            <!-- Welcome Section -->
+            <div class="dashboard-welcome">
+                <div class="welcome-header">
+                    <div>
+                        <h1 class="dashboard-title">Welcome back, <span id="userName">User</span>!</h1>
+                        <p class="dashboard-subtitle" id="userEmailDisplay">user@email.com</p>
+                    </div>
+                    <a href="/develope" class="btn btn-accent">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px;">
+                            <path d="M8 2v12M2 8h12"/>
+                        </svg>
+                        Create New Workspace
+                    </a>
+                </div>
+            </div>
+
+            <!-- Workspaces Section -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 8px;">
+                            <path d="M3 3h6v6H3V3zm8 0h6v6h-6V3zM3 11h6v6H3v-6zm8 0h6v6h-6v-6z"/>
+                        </svg>
+                        Your Workspaces
+                        <span id="workspaceCount" class="count-badge">0</span>
+                    </h2>
+                    <div class="workspace-filters">
+                        <button class="filter-btn active" data-sort="last_accessed">Recently Opened</button>
+                        <button class="filter-btn" data-sort="created_at">Newest First</button>
+                        <button class="filter-btn" data-sort="name">Name (A-Z)</button>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="workspacesLoading" class="loading-state" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Loading your workspaces...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div id="workspacesEmpty" class="empty-state" style="display: none;">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="empty-icon">
+                        <path d="M16 16h32v32H16V16z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M24 28h16M24 36h12" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <h3>No workspaces yet</h3>
+                    <p>Create your first compliance analysis to get started</p>
+                    <a href="/develope" class="btn btn-accent">Create Workspace</a>
+                </div>
+
+                <!-- Workspaces Grid -->
+                <div id="workspacesGrid" class="workspaces-grid" style="display: none;">
+                    <!-- Workspace cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Account Section -->
+            <div id="account" class="dashboard-section">
+                <h2 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M10 10a4 4 0 100-8 4 4 0 000 8zm-6 8a6 6 0 0112 0H4z"/>
+                    </svg>
+                    Account Settings
+                </h2>
+                <div class="account-info">
+                    <div class="account-info-item">
+                        <label>Email</label>
+                        <span id="accountEmail">user@email.com</span>
+                    </div>
+                    <div class="account-info-item">
+                        <label>Provider</label>
+                        <span id="accountProvider">Loading...</span>
+                    </div>
+                    <div class="account-info-item">
+                        <label>Member since</label>
+                        <span id="accountCreated">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rename Workspace Modal -->
+    <div id="renameModal" class="modal" style="display: none;">
+        <div class="modal-content modal-small">
+            <button class="modal-close" onclick="hideRenameModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Rename Workspace</h2>
+            </div>
+            <div class="modal-body">
+                <label for="newWorkspaceName">Workspace Name</label>
+                <input type="text" id="newWorkspaceName" class="input-field" placeholder="Enter new name">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="hideRenameModal()">Cancel</button>
+                <button class="btn btn-accent" onclick="saveRename()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal" style="display: none;">
+        <div class="modal-content modal-small">
+            <button class="modal-close" onclick="hideDeleteModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Delete Workspace?</h2>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete "<strong id="deleteWorkspaceName"></strong>"?</p>
+                <p class="text-muted">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="hideDeleteModal()">Cancel</button>
+                <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="/static/dashboard.js"></script>
+{% endblock %}

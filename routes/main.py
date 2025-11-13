@@ -2,7 +2,7 @@
 Main routes for static pages and resources
 """
 
-from flask import Blueprint, send_file, send_from_directory
+from flask import Blueprint, send_file, send_from_directory, render_template
 
 main_bp = Blueprint('main', __name__)
 
@@ -10,7 +10,7 @@ main_bp = Blueprint('main', __name__)
 @main_bp.route("/")
 def serve_index():
     """Serve the main landing page"""
-    return send_file('static/index.html')
+    return render_template('index.html')
 
 
 @main_bp.route("/privacy")
