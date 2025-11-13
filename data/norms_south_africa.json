@@ -26,14 +26,6 @@
       "url": "https://www.sabs.co.za/"
     },
     {
-      "id": "SANS 60950-1",
-      "name": "SANS 60950-1 - IT Equipment Safety",
-      "category": "Product Safety",
-      "applies_to": "Information technology equipment, office equipment, data processing equipment",
-      "description": "Safety requirements for IT equipment including computers, servers, monitors, printers, networking equipment. Harmonized with IEC 60950-1. Testing covers electrical safety, fire hazards, mechanical hazards, energy hazards.",
-      "url": "https://www.sabs.co.za/"
-    },
-    {
       "id": "SANS 62368-1",
       "name": "SANS 62368-1 - Audio/Video and ICT Equipment Safety",
       "category": "Product Safety",
