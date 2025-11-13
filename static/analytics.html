@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - NormScout</title>
+    <link rel="icon" type="image/x-icon" href="/static/logo.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .controls {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .controls label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .controls select {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: white;
+        }
+
+        .controls select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .controls button {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .controls button:hover {
+            transform: translateY(-2px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-card .label {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-card .trend {
+            font-size: 0.9rem;
+            color: #667eea;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .chart-container h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .page-list {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .page-list h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .page-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.2s;
+        }
+
+        .page-item:hover {
+            background: #f9f9f9;
+        }
+
+        .page-item:last-child {
+            border-bottom: none;
+        }
+
+        .page-info {
+            flex: 1;
+        }
+
+        .page-path {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .page-stats {
+            display: flex;
+            gap: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .page-metric {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+
+        .page-metric .metric-label {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        .page-metric .metric-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #ff4444;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+
+        .empty-state svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .page-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .page-stats {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Analytics Dashboard</h1>
+            <p>Track user behavior and site performance</p>
+        </div>
+
+        <div class="controls">
+            <label for="time-range">Time Range:</label>
+            <select id="time-range">
+                <option value="1">Last 24 hours</option>
+                <option value="7" selected>Last 7 days</option>
+                <option value="30">Last 30 days</option>
+                <option value="90">Last 90 days</option>
+            </select>
+            <button onclick="loadAnalytics()">Refresh</button>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            Loading analytics...
+        </div>
+
+        <div id="error" style="display: none;"></div>
+
+        <div id="content" style="display: none;">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="label">Total Visitors</div>
+                    <div class="value" id="total-visitors">-</div>
+                    <div class="trend" id="visitors-trend"></div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="label">Today's Visitors</div>
+                    <div class="value" id="today-visitors">-</div>
+                    <div class="trend">Real-time</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="label">Total Page Views</div>
+                    <div class="value" id="total-views">-</div>
+                    <div class="trend" id="views-trend"></div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="label">Avg. Pages/Visitor</div>
+                    <div class="value" id="avg-pages">-</div>
+                    <div class="trend">Engagement metric</div>
+                </div>
+            </div>
+
+            <div class="page-list">
+                <h2>Page Performance</h2>
+                <div id="page-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentData = null;
+
+        async function loadAnalytics() {
+            const timeRange = document.getElementById('time-range').value;
+
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('content').style.display = 'none';
+
+            try {
+                // Fetch analytics data
+                const response = await fetch(`/api/tracking/analytics?days=${timeRange}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                currentData = data;
+
+                // Update UI
+                updateDashboard(data);
+
+                // Hide loading, show content
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error loading analytics:', error);
+
+                // Show error
+                document.getElementById('loading').style.display = 'none';
+                const errorDiv = document.getElementById('error');
+                errorDiv.className = 'error';
+                errorDiv.textContent = `Failed to load analytics: ${error.message}`;
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        function updateDashboard(data) {
+            // Update visitor stats
+            document.getElementById('total-visitors').textContent =
+                formatNumber(data.visitors.total);
+
+            document.getElementById('today-visitors').textContent =
+                formatNumber(data.visitors.today);
+
+            document.getElementById('visitors-trend').textContent =
+                `${data.visitors.avg_per_day} per day`;
+
+            // Update page view stats
+            document.getElementById('total-views').textContent =
+                formatNumber(data.page_views.total);
+
+            document.getElementById('avg-pages').textContent =
+                data.page_views.avg_per_visitor.toFixed(1);
+
+            // Update page list
+            updatePageList(data.top_pages);
+        }
+
+        function updatePageList(pages) {
+            const container = document.getElementById('page-list');
+
+            if (!pages || pages.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                            </path>
+                        </svg>
+                        <p>No page data available yet</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = pages.map(page => `
+                <div class="page-item">
+                    <div class="page-info">
+                        <div class="page-path">${escapeHtml(page.page)}</div>
+                    </div>
+                    <div class="page-stats">
+                        <div class="page-metric">
+                            <div class="metric-label">Views</div>
+                            <div class="metric-value">${formatNumber(page.views)}</div>
+                        </div>
+                        <div class="page-metric">
+                            <div class="metric-label">Avg Time</div>
+                            <div class="metric-value">${formatTime(page.avg_time)}</div>
+                        </div>
+                        <div class="page-metric">
+                            <div class="metric-label">Engagement</div>
+                            <div class="metric-value">${page.engagement_rate}%</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num.toString();
+        }
+
+        function formatTime(seconds) {
+            if (seconds < 60) {
+                return seconds + 's';
+            } else {
+                const minutes = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                return `${minutes}m ${secs}s`;
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Load on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAnalytics();
+
+            // Auto-refresh every 30 seconds
+            setInterval(loadAnalytics, 30000);
+        });
+
+        // Reload when time range changes
+        document.getElementById('time-range').addEventListener('change', loadAnalytics);
+    </script>
+</body>
+</html>

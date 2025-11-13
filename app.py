@@ -48,6 +48,7 @@ from routes.compliance import compliance_bp, init_dependencies as init_complianc
 from routes.fields import field_bp
 from routes.develope import develope_bp
 from routes.workspace import workspace_bp
+from routes.tracking import init_tracking_routes
 
 # Import services
 from services.openrouter import analyze_product_compliance, validate_product_input
@@ -74,6 +75,7 @@ init_compliance_deps(
     TextAreaField,
     ButtonField
 )
+init_tracking_routes(app, redis_client)
 
 logger.info("All blueprints registered successfully")
 
