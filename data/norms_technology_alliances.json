@@ -1,0 +1,429 @@
+{
+  "_comment": "Technology Alliance Certifications and Compliance Programs - comprehensive database of industry consortium standards. Last updated: January 2025",
+  "norms": [
+    {
+      "id": "Bluetooth SIG Certification",
+      "name": "Bluetooth Special Interest Group - Product Qualification",
+      "category": "Wireless Technology",
+      "applies_to": "Bluetooth devices, Bluetooth modules, wireless audio products",
+      "description": "Mandatory certification for products using Bluetooth technology. Declaration ID (DID) required. Covers Bluetooth Classic, Bluetooth Low Energy (LE), Bluetooth 5.0/5.1/5.2/5.3/5.4. Testing includes RF performance, protocol conformance, interoperability. Required before use of Bluetooth wordmark and logo.",
+      "url": "https://www.bluetooth.com/"
+    },
+    {
+      "id": "Bluetooth LE Audio",
+      "name": "Bluetooth LE Audio Specification",
+      "category": "Wireless Technology",
+      "applies_to": "Wireless earbuds, hearing aids, audio streaming devices",
+      "description": "Next-generation Bluetooth audio standard. LC3 codec for higher quality at lower bitrates. Auracast broadcast audio for audio sharing. Multi-Stream Audio for true wireless stereo. Hearing Aid support. Part of Bluetooth 5.2+. Certification available through Bluetooth SIG.",
+      "url": "https://www.bluetooth.com/learn-about-bluetooth/recent-enhancements/le-audio/"
+    },
+    {
+      "id": "Wi-Fi Alliance Certification",
+      "name": "Wi-Fi Alliance - Wi-Fi CERTIFIED Program",
+      "category": "Wireless Technology",
+      "applies_to": "Wi-Fi devices, wireless routers, access points, IoT devices",
+      "description": "Certification program ensuring Wi-Fi device interoperability. Wi-Fi 4 (802.11n), Wi-Fi 5 (802.11ac), Wi-Fi 6 (802.11ax), Wi-Fi 6E (6GHz), Wi-Fi 7 (802.11be). Testing covers performance, security, coexistence. Required for Wi-Fi CERTIFIED logo usage.",
+      "url": "https://www.wi-fi.org/"
+    },
+    {
+      "id": "Wi-Fi 6E Certification",
+      "name": "Wi-Fi CERTIFIED 6E",
+      "category": "Wireless Technology",
+      "applies_to": "Wi-Fi 6E devices operating in 6 GHz band",
+      "description": "Certification for Wi-Fi 6 devices operating in 6 GHz spectrum (5.925-7.125 GHz). Provides up to 1200 MHz of additional spectrum. Reduced interference, higher throughput, lower latency. Supports wider channels (160 MHz standard). Requires Wi-Fi 6 certification first.",
+      "url": "https://www.wi-fi.org/discover-wi-fi/wi-fi-certified-6"
+    },
+    {
+      "id": "Wi-Fi 7 Certification",
+      "name": "Wi-Fi CERTIFIED 7",
+      "category": "Wireless Technology",
+      "applies_to": "Wi-Fi 7 devices (802.11be)",
+      "description": "Latest Wi-Fi certification for 802.11be devices. Up to 46 Gbps throughput. 320 MHz channels. Multi-Link Operation (MLO). 4K-QAM modulation. Enhanced latency for real-time applications, AR/VR, gaming. Backwards compatible with Wi-Fi 6/6E. Certification launched 2024.",
+      "url": "https://www.wi-fi.org/discover-wi-fi/wi-fi-certified-7"
+    },
+    {
+      "id": "WPA3 Certification",
+      "name": "Wi-Fi Protected Access 3 (WPA3)",
+      "category": "Wireless Security",
+      "applies_to": "Wi-Fi devices requiring enhanced security",
+      "description": "Latest Wi-Fi security protocol. WPA3-Personal: Simultaneous Authentication of Equals (SAE), protection against offline dictionary attacks, forward secrecy. WPA3-Enterprise: 192-bit security. Mandatory for Wi-Fi CERTIFIED devices since 2020. Enhanced Open for open networks.",
+      "url": "https://www.wi-fi.org/discover-wi-fi/security"
+    },
+    {
+      "id": "Wi-Fi EasyMesh",
+      "name": "Wi-Fi EasyMesh Certification",
+      "category": "Wireless Technology",
+      "applies_to": "Mesh Wi-Fi systems, multi-AP networks",
+      "description": "Certification for multi-access point Wi-Fi networks. Enables seamless roaming, coordinated network management, self-organizing, self-healing mesh networks. Multi-vendor interoperability. Centralized or distributed control. Dynamic path selection, load balancing.",
+      "url": "https://www.wi-fi.org/discover-wi-fi/wi-fi-easymesh"
+    },
+    {
+      "id": "USB-IF Certification",
+      "name": "USB Implementers Forum - Compliance Program",
+      "category": "Connectivity",
+      "applies_to": "USB devices, cables, chargers, hubs",
+      "description": "Certification for USB products. Covers USB 2.0, USB 3.2, USB4. Testing includes electrical, protocol, interoperability. USB-C connector certification. USB Power Delivery (PD) certification. TID (Test ID) assigned upon passing. Required for USB logo usage.",
+      "url": "https://www.usb.org/"
+    },
+    {
+      "id": "USB-C Certification",
+      "name": "USB Type-C Cable and Connector Specification",
+      "category": "Connectivity",
+      "applies_to": "USB-C cables, connectors, receptacles",
+      "description": "Certification for USB Type-C products. Reversible connector, alternate modes (DisplayPort, Thunderbolt, HDMI). USB-C authentication. Cable e-marker requirements. Different certifications for USB 2.0, USB 3.2 Gen 1/2, USB4 cables. Power delivery up to 240W (USB PD 3.1).",
+      "url": "https://www.usb.org/usb-type-c"
+    },
+    {
+      "id": "USB Power Delivery",
+      "name": "USB Power Delivery (USB PD) Specification",
+      "category": "Power Delivery",
+      "applies_to": "USB PD chargers, power banks, USB-C devices",
+      "description": "Certification for USB Power Delivery products. USB PD 3.1 supports up to 240W (Extended Power Range). Programmable Power Supply (PPS) for adaptive charging. Power profiles: 5V/3A, 9V/3A, 15V/3A, 20V/5A, 28V/5A, 36V/5A, 48V/5A. Bi-directional power flow. Required for USB PD logo.",
+      "url": "https://www.usb.org/usb-charger-pd"
+    },
+    {
+      "id": "USB4 Certification",
+      "name": "USB4 Specification Compliance",
+      "category": "Connectivity",
+      "applies_to": "USB4 devices, USB4 cables, USB4 hubs",
+      "description": "Certification for USB4 products. Up to 40 Gbps (USB4 Version 1.0) or 80 Gbps (USB4 Version 2.0). Based on Thunderbolt 3 protocol. Tunneling of USB 3.2, DisplayPort, PCI Express. Backwards compatible. Mandatory USB-C connector. Dynamic bandwidth allocation.",
+      "url": "https://www.usb.org/usb4"
+    },
+    {
+      "id": "HDMI Licensing",
+      "name": "HDMI Licensing Administrator - Adopter Program",
+      "category": "Audio/Video",
+      "applies_to": "HDMI devices, cables, TVs, monitors, AV receivers",
+      "description": "Licensing and compliance program for HDMI products. HDMI 2.0 (18 Gbps), HDMI 2.1 (48 Gbps). Features: 4K, 8K, 10K, Dynamic HDR, eARC, Variable Refresh Rate (VRR), Auto Low Latency Mode (ALLM), Quick Frame Transport (QFT). Compliance testing required for logo usage.",
+      "url": "https://www.hdmi.org/"
+    },
+    {
+      "id": "HDMI 2.1",
+      "name": "HDMI 2.1 Specification",
+      "category": "Audio/Video",
+      "applies_to": "High-bandwidth HDMI devices supporting 4K 120Hz, 8K 60Hz",
+      "description": "Latest HDMI specification. 48 Gbps bandwidth. Supports 4K 120 Hz, 8K 60 Hz, 10K. Enhanced Audio Return Channel (eARC). Variable Refresh Rate (VRR) for gaming. Quick Media Switching (QMS). Dynamic HDR. Display Stream Compression (DSC) 1.2. Game Mode VRR.",
+      "url": "https://www.hdmi.org/spec21sub/ultrahighspeedhdmicable"
+    },
+    {
+      "id": "DisplayPort Certification",
+      "name": "VESA DisplayPort Compliance",
+      "category": "Audio/Video",
+      "applies_to": "DisplayPort devices, monitors, graphics cards, cables",
+      "description": "VESA certification for DisplayPort products. DisplayPort 1.4 (32.4 Gbps), DisplayPort 2.0 (80 Gbps), DisplayPort 2.1 (80 Gbps). Supports 8K, 10K, 16K displays. Adaptive-Sync (variable refresh rate). DisplayPort Alt Mode over USB-C. Compliance testing ensures interoperability.",
+      "url": "https://www.displayport.org/"
+    },
+    {
+      "id": "Thunderbolt Certification",
+      "name": "Intel Thunderbolt Certified",
+      "category": "Connectivity",
+      "applies_to": "Thunderbolt devices, cables, docks, eGPUs",
+      "description": "Certification for Thunderbolt products. Thunderbolt 3 (40 Gbps), Thunderbolt 4 (40 Gbps with enhanced requirements), Thunderbolt 5 (120 Gbps). USB-C connector. Tunnels PCIe, DisplayPort, USB. Daisy-chaining. Thunderbolt 4 requires dual 4K display support, wake from sleep, Intel VT-d protection.",
+      "url": "https://www.intel.com/content/www/us/en/architecture-and-technology/thunderbolt/thunderbolt-technology-general.html"
+    },
+    {
+      "id": "Thunderbolt 5",
+      "name": "Thunderbolt 5 Specification",
+      "category": "Connectivity",
+      "applies_to": "Next-generation Thunderbolt devices (2024+)",
+      "description": "Latest Thunderbolt specification announced 2023. 120 Gbps bi-directional, 80 Gbps uni-directional (Bandwidth Boost for video). Supports three 4K displays at 144 Hz or dual 8K displays. USB4 v2 based. PCIe 4.0. DisplayPort 2.1. USB-C connector. Backwards compatible.",
+      "url": "https://www.intel.com/thunderbolt"
+    },
+    {
+      "id": "NFC Forum Certification",
+      "name": "NFC Forum - Product Certification",
+      "category": "Wireless Technology",
+      "applies_to": "NFC devices, contactless payment terminals, smart cards",
+      "description": "Certification for Near Field Communication products. NFC-A, NFC-B, NFC-F (FeliCa), NFC-V. Peer-to-peer, reader/writer, card emulation modes. Compliance to NFC Forum specifications. Analog and digital protocol certification. Required for NFC Forum logo. Ensures global interoperability.",
+      "url": "https://nfc-forum.org/"
+    },
+    {
+      "id": "EMVCo Contactless",
+      "name": "EMVCo Contactless Payment Specification",
+      "category": "Payment Technology",
+      "applies_to": "Contactless payment cards, mobile payment devices, POS terminals",
+      "description": "Global standard for contactless payment systems. EMV (Europay, Mastercard, Visa) chip card specifications. Contactless Level 1 (analog), Level 2 (digital), Level 3 (application). NFC-based payments. Covers card readers, payment terminals, mobile devices. Certification ensures global payment interoperability.",
+      "url": "https://www.emvco.com/"
+    },
+    {
+      "id": "PCI DSS",
+      "name": "Payment Card Industry Data Security Standard",
+      "category": "Payment Security",
+      "applies_to": "Payment processors, merchants, payment applications",
+      "description": "Security standard for organizations handling credit card data. Version 4.0.1 (2024). 12 requirements: firewall, password security, cardholder data protection, encryption, anti-virus, secure systems, access control, unique IDs, physical access, monitoring, testing, security policy. Compliance validation required.",
+      "url": "https://www.pcisecuritystandards.org/"
+    },
+    {
+      "id": "PCI PTS",
+      "name": "PCI PIN Transaction Security - POS Device Approval",
+      "category": "Payment Technology",
+      "applies_to": "Payment terminals, PIN pads, POS devices",
+      "description": "Security requirements for PIN entry devices (PEDs). PCI PTS POI (Point of Interaction) device approval. Physical security, logical security, key management, application security. Protects against skimming, PIN capture, tampering. Mandatory for devices accepting debit/credit card PINs.",
+      "url": "https://www.pcisecuritystandards.org/"
+    },
+    {
+      "id": "Zigbee Certification",
+      "name": "Zigbee Alliance - Product Certification (Now CSA)",
+      "category": "IoT / Smart Home",
+      "applies_to": "Zigbee devices, smart home products, industrial sensors",
+      "description": "Certification for Zigbee wireless mesh networking products. Zigbee 3.0 unified standard. Zigbee PRO, Zigbee Green Power. Application profiles: Home Automation, Light Link, Building Automation. 2.4 GHz (global), sub-GHz regional. Now administered by Connectivity Standards Alliance (CSA).",
+      "url": "https://csa-iot.org/"
+    },
+    {
+      "id": "Matter Certification",
+      "name": "Matter (Project CHIP) - Smart Home Standard",
+      "category": "IoT / Smart Home",
+      "applies_to": "Smart home devices, IoT products, home automation systems",
+      "description": "Unified smart home connectivity standard by CSA (Connectivity Standards Alliance). Matter 1.0 launched 2022, Matter 1.2 (2023), Matter 1.3 (2024). IP-based protocol. Works over Wi-Fi, Thread, Ethernet. Interoperability between Apple HomeKit, Google Home, Amazon Alexa, Samsung SmartThings. Mandatory certification program.",
+      "url": "https://csa-iot.org/all-solutions/matter/"
+    },
+    {
+      "id": "Thread Certification",
+      "name": "Thread Group - Product Certification",
+      "category": "IoT / Smart Home",
+      "applies_to": "Thread mesh network devices, border routers, IoT sensors",
+      "description": "Certification for Thread networking products. IPv6-based mesh networking protocol. Low-power, secure, scalable. 802.15.4 physical layer (2.4 GHz). Self-healing mesh. No single point of failure. Border routers connect to IP networks. Foundation for Matter smart home standard.",
+      "url": "https://www.threadgroup.org/"
+    },
+    {
+      "id": "Z-Wave Certification",
+      "name": "Z-Wave Alliance - Product Certification",
+      "category": "IoT / Smart Home",
+      "applies_to": "Z-Wave smart home devices, home automation products",
+      "description": "Certification for Z-Wave wireless mesh networking products. Sub-GHz operation (868.42 MHz EU, 908.42 MHz US, 919.8 MHz AU). Z-Wave Plus, Z-Wave Plus V2. Low latency, long range, low power. SmartStart, S2 Security. Interoperability certification ensures multi-vendor compatibility.",
+      "url": "https://z-wavealliance.org/"
+    },
+    {
+      "id": "LoRaWAN Certification",
+      "name": "LoRa Alliance - LoRaWAN Certification",
+      "category": "IoT / LPWAN",
+      "applies_to": "LoRaWAN devices, LPWAN sensors, IoT gateways",
+      "description": "Certification for LoRaWAN (Long Range Wide Area Network) products. LPWAN protocol for IoT. Long range (2-15 km), low power, low data rate. Sub-GHz unlicensed spectrum. LoRaWAN 1.0.x, 1.1. Device classes: Class A (bi-directional), Class B (beacon), Class C (continuous). Regional parameters.",
+      "url": "https://lora-alliance.org/"
+    },
+    {
+      "id": "FIDO2 Certification",
+      "name": "FIDO Alliance - FIDO2 Certification",
+      "category": "Authentication",
+      "applies_to": "Authentication devices, security keys, biometric authenticators",
+      "description": "Certification for passwordless authentication. FIDO2 = WebAuthn + CTAP. Public key cryptography. Phishing-resistant. Security keys, platform authenticators (Windows Hello, Touch ID, Face ID). FIDO2 Level 1 (Authenticator Assurance), Level 2 (Authenticator Certification). Biometric Component Certification.",
+      "url": "https://fidoalliance.org/"
+    },
+    {
+      "id": "FIDO UAF",
+      "name": "FIDO Universal Authentication Framework",
+      "category": "Authentication",
+      "applies_to": "Biometric authentication, mobile authentication apps",
+      "description": "FIDO Universal Authentication Framework for passwordless authentication on mobile and embedded devices. Biometric authentication (fingerprint, face, iris). Local authentication, no secrets transmitted. Protocol bridges device authenticators with relying party servers. Certification ensures security and interoperability.",
+      "url": "https://fidoalliance.org/specifications/"
+    },
+    {
+      "id": "PCI-SIG Compliance",
+      "name": "PCI Express Compliance and Integrators List",
+      "category": "Connectivity",
+      "applies_to": "PCI Express devices, add-in cards, integrated endpoints",
+      "description": "Compliance program for PCI Express products. PCIe Gen 3 (8 GT/s), Gen 4 (16 GT/s), Gen 5 (32 GT/s), Gen 6 (64 GT/s). Electrical, protocol, interoperability testing. Integrators List publication. CEM (Card Electromechanical) compliance. Required for PCI-SIG logo usage.",
+      "url": "https://pcisig.com/"
+    },
+    {
+      "id": "PCIe 5.0",
+      "name": "PCI Express 5.0 Specification",
+      "category": "Connectivity",
+      "applies_to": "High-performance PCIe devices, SSDs, GPUs, network cards",
+      "description": "PCIe Generation 5 specification. 32 GT/s, up to 64 GB/s bi-directional (x16). Double Gen 4 bandwidth. 128b/130b encoding. Backwards compatible. Used in enterprise SSDs, high-end GPUs, AI accelerators, data center networking. Low latency, high reliability.",
+      "url": "https://pcisig.com/specifications"
+    },
+    {
+      "id": "PCIe 6.0",
+      "name": "PCI Express 6.0 Specification",
+      "category": "Connectivity",
+      "applies_to": "Next-generation PCIe devices (2024+)",
+      "description": "PCIe Generation 6 specification finalized 2022. 64 GT/s, up to 128 GB/s bi-directional (x16). PAM4 signaling (pulse amplitude modulation). Forward Error Correction (FEC). FLIT (Flow Control Unit) mode. L0p low-power state. Target: AI/ML accelerators, 800G+ networking, high-performance computing.",
+      "url": "https://pcisig.com/pci-express-6.0-specification"
+    },
+    {
+      "id": "NVMe Compliance",
+      "name": "NVM Express Integrators List",
+      "category": "Storage",
+      "applies_to": "NVMe SSDs, NVMe controllers, storage devices",
+      "description": "Compliance program for NVM Express products. NVMe 1.4, NVMe 2.0. Low latency, parallelism, efficient command set for SSDs. Over PCIe interface. Supports queue pairs (up to 64K). NVMe-oF (over Fabrics) for networked storage. Compliance ensures interoperability.",
+      "url": "https://nvmexpress.org/"
+    },
+    {
+      "id": "NVMe-MI",
+      "name": "NVMe Management Interface",
+      "category": "Storage",
+      "applies_to": "NVMe drive management, out-of-band management",
+      "description": "Management interface for NVMe storage devices. Out-of-band and in-band management. Health monitoring, firmware updates, configuration, diagnostics. SMBus/I2C physical interface for OOB. Administrative commands over PCIe for in-band. Essential for data center SSD management.",
+      "url": "https://nvmexpress.org/specifications/"
+    },
+    {
+      "id": "JEDEC Standards",
+      "name": "JEDEC - Semiconductor Engineering Standards",
+      "category": "Memory & Semiconductors",
+      "applies_to": "Memory modules, DRAM, flash storage, semiconductors",
+      "description": "Standards organization for microelectronics industry. DDR SDRAM standards (DDR3, DDR4, DDR5), LPDDR for mobile. Flash standards: eMMC, UFS. Semiconductor packaging, thermal management. JESD standards. Membership-based standards development. Industry-wide adoption.",
+      "url": "https://www.jedec.org/"
+    },
+    {
+      "id": "DDR5 Specification",
+      "name": "JEDEC DDR5 SDRAM Standard",
+      "category": "Memory & Semiconductors",
+      "applies_to": "DDR5 memory modules, DDR5 DRAM, motherboards",
+      "description": "JESD79-5 DDR5 SDRAM specification. 4.8 to 8.4 GT/s data rates (initial). On-die ECC. Dual 32-bit channels per module. PMIC (Power Management IC) on DIMM. Improved power efficiency. Decision feedback equalization (DFE). Adopted in servers, PCs, workstations from 2021.",
+      "url": "https://www.jedec.org/standards-documents/docs/jesd79-5"
+    },
+    {
+      "id": "UFS Specification",
+      "name": "JEDEC Universal Flash Storage (UFS)",
+      "category": "Mobile Storage",
+      "applies_to": "Smartphone storage, embedded flash storage, automotive storage",
+      "description": "Universal Flash Storage standard for mobile and embedded devices. UFS 3.1 (23.2 Gbps per lane), UFS 4.0 (46.4 Gbps per lane). Low-power high-performance interface. Full-duplex operation. Command queue. Superior to eMMC. Used in flagship smartphones, automotive, AR/VR devices.",
+      "url": "https://www.jedec.org/standards-documents/focus/flash/universal-flash-storage-ufs"
+    },
+    {
+      "id": "MIPI Alliance",
+      "name": "MIPI Alliance - Mobile Interface Standards",
+      "category": "Mobile Interfaces",
+      "applies_to": "Mobile device components, camera modules, displays, processors",
+      "description": "Standards for mobile and mobile-influenced industries. MIPI CSI-2 (Camera Serial Interface), MIPI DSI (Display Serial Interface), MIPI D-PHY, MIPI C-PHY. Used in smartphones, tablets, IoT, automotive. Enables component interoperability. Compliance program ensures implementation quality.",
+      "url": "https://www.mipi.org/"
+    },
+    {
+      "id": "MIPI CSI-2",
+      "name": "MIPI Camera Serial Interface 2 (CSI-2)",
+      "category": "Mobile Interfaces",
+      "applies_to": "Camera modules, image sensors, mobile processors",
+      "description": "Camera interface standard for mobile devices. High-speed serial interface for image sensors. CSI-2 v4.0 supports up to 64 Gbps. Multiple data lanes. Virtual channels. RAW, RGB, YUV formats. Used in smartphone cameras, automotive cameras, machine vision. Industry standard.",
+      "url": "https://www.mipi.org/specifications/csi-2"
+    },
+    {
+      "id": "MIPI DSI",
+      "name": "MIPI Display Serial Interface (DSI)",
+      "category": "Mobile Interfaces",
+      "applies_to": "Mobile displays, display controllers, processors",
+      "description": "Display interface standard for mobile devices. High-speed serial interface between processor and display. DSI-2 v2.0 supports up to 10 Gbps per lane. Command mode and video mode. Multiple virtual channels. Packet-based protocol. Standard for smartphone, tablet, wearable displays.",
+      "url": "https://www.mipi.org/specifications/dsi"
+    },
+    {
+      "id": "Qi Wireless Charging",
+      "name": "Wireless Power Consortium - Qi Certification",
+      "category": "Wireless Power",
+      "applies_to": "Wireless charging transmitters, receivers, smartphones, chargers",
+      "description": "Certification for Qi wireless charging products. Inductive power transfer. Qi v1.3 (15W), Extended Power Profile (up to 30W in development). Magnetic Power Profile for alignment (similar to MagSafe). Foreign object detection. Interoperability between brands. Mandatory certification for Qi logo.",
+      "url": "https://www.wirelesspowerconsortium.com/"
+    },
+    {
+      "id": "Qi2",
+      "name": "Wireless Power Consortium - Qi2 Standard",
+      "category": "Wireless Power",
+      "applies_to": "Next-generation wireless chargers, smartphones with magnetic alignment",
+      "description": "Qi2 (Qi version 2) wireless charging standard announced 2023. Magnetic Power Profile mandatory (based on Apple MagSafe). Perfect alignment for efficiency. Up to 15W. Improved energy efficiency. Faster charging. Future-proof for higher power. Expected broad adoption 2024-2025.",
+      "url": "https://www.wirelesspowerconsortium.com/qi2/"
+    },
+    {
+      "id": "AirFuel Alliance",
+      "name": "AirFuel Alliance - Wireless Charging Standards",
+      "category": "Wireless Power",
+      "applies_to": "Resonant wireless charging, RF wireless power",
+      "description": "Alternative wireless power standards. AirFuel Resonant (6.78 MHz, longer range than Qi). AirFuel RF (radio frequency power, 2.4/5.8 GHz, distance charging). Less market adoption than Qi. Certification program. Used in some automotive, retail, furniture installations.",
+      "url": "https://airfuel.org/"
+    },
+    {
+      "id": "DLNA Certification",
+      "name": "Digital Living Network Alliance - Interoperability Guidelines",
+      "category": "Home Networking",
+      "applies_to": "Media servers, smart TVs, network media players, NAS devices",
+      "description": "Certification for media interoperability in home networks. Enables sharing photos, music, video across devices. UPnP/DLNA protocols. Device classes: Digital Media Server (DMS), Digital Media Player (DMP), Digital Media Renderer (DMR). While organization dissolved, DLNA remains widely supported.",
+      "url": "https://www.dlna.org/"
+    },
+    {
+      "id": "UPnP Forum",
+      "name": "UPnP (Universal Plug and Play) Device Architecture",
+      "category": "Home Networking",
+      "applies_to": "Network devices, routers, media devices, IoT products",
+      "description": "Protocols for peer-to-peer network connectivity. Zero-configuration networking. Device discovery, description, control, eventing. Used in DLNA, smart home devices, network equipment. UPnP Device Control Protocol (DCP). IGD (Internet Gateway Device) for NAT traversal.",
+      "url": "https://openconnectivity.org/"
+    },
+    {
+      "id": "OCF Certification",
+      "name": "Open Connectivity Foundation - IoTivity Certification",
+      "category": "IoT",
+      "applies_to": "IoT devices, smart home products, industrial IoT",
+      "description": "Certification for IoT device interoperability. OCF Core Framework based on IoTivity open-source project. RESTful architecture. CoAP protocol. Bridging to other ecosystems. Security architecture. Resource model. Certification ensures multi-vendor IoT interoperability.",
+      "url": "https://openconnectivity.org/"
+    },
+    {
+      "id": "LonMark Certification",
+      "name": "LonMark International - LonWorks Certification",
+      "category": "Building Automation",
+      "applies_to": "Building automation devices, lighting controls, HVAC systems",
+      "description": "Certification for LonWorks control network products. ISO/IEC 14908 standard. Distributed control for building automation. LonTalk protocol. Interoperable functional profiles. Plug-and-play installation. Used in commercial buildings, street lighting, industrial control.",
+      "url": "https://www.lonmark.org/"
+    },
+    {
+      "id": "BACnet Certification",
+      "name": "BACnet International - BTL Certification",
+      "category": "Building Automation",
+      "applies_to": "Building automation and control systems, HVAC, lighting",
+      "description": "Building Automation and Control Networks protocol certification. ISO 16484-5, ASHRAE 135. BTL (BACnet Testing Laboratories) listing. Protocol Implementation Conformance Statement (PICS). Ensures interoperability of building automation systems from different manufacturers.",
+      "url": "https://www.bacnetinternational.org/"
+    },
+    {
+      "id": "KNX Certification",
+      "name": "KNX Association - Product Certification",
+      "category": "Building Automation",
+      "applies_to": "Home automation, building controls, smart building devices",
+      "description": "Worldwide standard for home and building control (ISO/IEC 14543). KNX Twisted Pair, KNX Powerline, KNX RF (radio frequency), KNX IP. Manufacturer-independent. Interoperable devices for lighting, HVAC, security, energy management. ETS (Engineering Tool Software) for configuration.",
+      "url": "https://www.knx.org/"
+    },
+    {
+      "id": "ONVIF Conformance",
+      "name": "ONVIF (Open Network Video Interface Forum) - Conformance",
+      "category": "Video Surveillance",
+      "applies_to": "IP cameras, video management systems, network video recorders",
+      "description": "Open standard for IP-based physical security products. Profile S (streaming), Profile C (access control), Profile G (recording and storage), Profile T (advanced video streaming). SOAP-based web services. Manufacturer-independent interoperability for surveillance systems.",
+      "url": "https://www.onvif.org/"
+    },
+    {
+      "id": "HDBaseT Certification",
+      "name": "HDBaseT Alliance - Product Certification",
+      "category": "Audio/Video",
+      "applies_to": "AV extenders, matrix switchers, long-distance HDMI transmission",
+      "description": "5Play convergent technology: uncompressed ultra-HD video, audio, Ethernet, control, USB over single CAT cable. Up to 100 meters. HDBaseT 2.0 (18 Gbps), HDBaseT 3.0 (48 Gbps for HDMI 2.1). Used in residential, commercial AV installations. Interoperability certification.",
+      "url": "https://hdbaset.org/"
+    },
+    {
+      "id": "Dante Certification",
+      "name": "Audinate Dante - Audio Networking Certification",
+      "category": "Professional Audio",
+      "applies_to": "Professional audio equipment, mixers, amplifiers, speakers",
+      "description": "Digital audio networking technology. Uncompressed multi-channel audio over Ethernet. Dante AV for video. Low latency, synchronization. Automatic device discovery, easy routing. Level 1 (Basic Interoperability), Level 2 (Advanced Features) certification. Industry-standard for pro audio.",
+      "url": "https://www.audinate.com/"
+    },
+    {
+      "id": "AES67",
+      "name": "AES67 - High-Performance Audio-Over-IP Interoperability",
+      "category": "Professional Audio",
+      "applies_to": "Audio-over-IP systems, professional audio networks",
+      "description": "Audio Engineering Society standard for high-performance streaming audio over IP networks. Interoperability layer for different AoIP systems (Dante, Ravenna, Q-LAN, Livewire). RTP/RTCP transport, PTP clock synchronization (IEEE 1588). Enables multi-vendor audio networking.",
+      "url": "https://www.aes.org/"
+    },
+    {
+      "id": "SMPTE ST 2110",
+      "name": "SMPTE ST 2110 - Professional Media Over IP",
+      "category": "Broadcast Video",
+      "applies_to": "Broadcast equipment, professional video production, live video",
+      "description": "Suite of standards for transport of professional media over IP. Uncompressed video, audio, ancillary data as separate essence flows. ST 2110-20 (video), ST 2110-30 (audio), ST 2110-40 (ancillary). PTP synchronization. Enables IP-based broadcast workflows.",
+      "url": "https://www.smpte.org/"
+    },
+    {
+      "id": "Dante Domain Manager",
+      "name": "Audinate Dante Domain Manager",
+      "category": "Professional Audio",
+      "applies_to": "Enterprise Dante networks, multi-site audio installations",
+      "description": "Enterprise software for managing large-scale Dante networks. Role-based access control, device enrollment, secure configuration. AES67 compatibility. Redundant controller. Audit logging. Used in stadiums, campuses, corporate facilities, broadcast studios.",
+      "url": "https://www.audinate.com/products/software/dante-domain-manager"
+    }
+  ]
+}

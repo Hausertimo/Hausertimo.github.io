@@ -1,0 +1,397 @@
+{
+  "_comment": "Industry-Specific Standards Database - comprehensive standards for aviation, military, railway, marine, automotive, medical, food safety, and other specialized sectors. Last updated: January 2025",
+  "norms": [
+    {
+      "id": "DO-160G",
+      "name": "RTCA DO-160G - Airborne Equipment Environmental Conditions and Test Procedures",
+      "category": "Aviation",
+      "applies_to": "Airborne electronic and electrical equipment",
+      "description": "Standard environmental test conditions and procedures for airborne equipment. Sections: temperature/altitude, temperature variation, humidity, operational shocks/crash safety, vibration, waterproofness, fluids susceptibility, sand/dust, fungus, salt spray, magnetic effect, power input, voltage spike, audio frequency conducted susceptibility, induced signal susceptibility, RF susceptibility, RF emission, lightning, icing, flammability, fire, electrostatic discharge. Required for avionics certification.",
+      "url": "https://www.rtca.org/"
+    },
+    {
+      "id": "DO-178C",
+      "name": "RTCA DO-178C - Software Considerations in Airborne Systems",
+      "category": "Aviation",
+      "applies_to": "Aviation software, flight control software, avionics software",
+      "description": "Software certification standard for airborne systems. Five software levels: A (catastrophic), B (hazardous), C (major), D (minor), E (no safety effect). Requirements-based testing, structural coverage analysis, traceability. DO-178C (2011) added model-based development supplement (DO-331), object-oriented supplement (DO-332), formal methods (DO-333). Critical for flight safety software.",
+      "url": "https://www.rtca.org/"
+    },
+    {
+      "id": "DO-254",
+      "name": "RTCA DO-254 - Hardware Design Assurance for Airborne Electronic Hardware",
+      "category": "Aviation",
+      "applies_to": "Airborne electronic hardware, complex electronic hardware",
+      "description": "Design assurance guidance for airborne electronic hardware. Covers ASIC, FPGA, PLD development. Five design assurance levels: A-E (similar to DO-178C). Planning, design, verification, configuration management, quality assurance, certification liaison. Ensures hardware design integrity for avionics.",
+      "url": "https://www.rtca.org/"
+    },
+    {
+      "id": "AS9100",
+      "name": "AS9100 - Quality Management Systems for Aviation, Space, Defense",
+      "category": "Aviation",
+      "applies_to": "Aerospace and defense manufacturers and suppliers",
+      "description": "Quality management system standard for aviation, space, defense industry. Based on ISO 9001 with additional aerospace requirements. AS9100D (2016 revision). Covers configuration management, risk management, product safety, counterfeit parts prevention. Certification demonstrates aerospace quality capability. Essential for aerospace supply chain.",
+      "url": "https://www.sae.org/standards/content/as9100d/"
+    },
+    {
+      "id": "AS9120",
+      "name": "AS9120 - Quality Management Systems for Aviation, Space, Defense Distributors",
+      "category": "Aviation",
+      "applies_to": "Aerospace distributors and stockists",
+      "description": "Quality management system standard for aviation, space, defense distributors. Based on ISO 9001 and AS9100 adapted for distribution. Focus on product authenticity, traceability, counterfeit prevention, storage conditions, handling. AS9120B current version. Demonstrates aerospace distribution quality capability.",
+      "url": "https://www.sae.org/standards/content/as9120b/"
+    },
+    {
+      "id": "MIL-STD-810",
+      "name": "MIL-STD-810H - Environmental Engineering Considerations and Laboratory Tests",
+      "category": "Military/Defense",
+      "applies_to": "Military equipment, ruggedized electronics, defense systems",
+      "description": "US Military Standard for environmental testing. Method categories: low pressure (altitude), high temperature, low temperature, temperature shock, solar radiation, rain, humidity, fungus, salt fog, sand/dust, explosive atmosphere, immersion, acceleration, vibration, acoustic noise, shock, pyroshock, gunfire vibration, icing/freezing rain, transport shock. MIL-STD-810H (2019). Widely adopted beyond military.",
+      "url": "https://quicksearch.dla.mil/"
+    },
+    {
+      "id": "MIL-STD-461",
+      "name": "MIL-STD-461G - Requirements for the Control of Electromagnetic Interference",
+      "category": "Military/Defense",
+      "applies_to": "Military electronics, defense systems requiring EMC compliance",
+      "description": "US Military EMC requirements for defense systems. Emission limits (conducted, radiated), susceptibility requirements (conducted, radiated, transients). Subsystems, equipment, installations on platforms (ships, aircraft, ground vehicles, space). Latest: MIL-STD-461G (2015). Complemented by MIL-STD-464 (system-level), MIL-STD-469 (radar EMC).",
+      "url": "https://quicksearch.dla.mil/"
+    },
+    {
+      "id": "MIL-STD-1553",
+      "name": "MIL-STD-1553 - Digital Time Division Command/Response Multiplex Data Bus",
+      "category": "Military/Defense",
+      "applies_to": "Military avionics data buses, defense communication systems",
+      "description": "Military data bus standard for avionics and defense systems. Dual-redundant balanced line serial bus. 1 Mbps. Bus controller, remote terminals, bus monitor architecture. Deterministic, reliable communication. MIL-STD-1553B widely deployed in military aircraft, missiles, spacecraft. High reliability, radiation tolerance.",
+      "url": "https://quicksearch.dla.mil/"
+    },
+    {
+      "id": "MIL-STD-883",
+      "name": "MIL-STD-883 - Test Method Standard Microcircuits",
+      "category": "Military/Defense",
+      "applies_to": "Military-grade integrated circuits, semiconductor devices",
+      "description": "Test methods for microelectronic devices for military applications. Hundreds of test methods covering: environmental testing, electrical testing, mechanical testing, screening procedures, quality conformance inspection. Defines military temperature grades, quality levels. Latest: MIL-STD-883H. Ensures reliability of military semiconductors.",
+      "url": "https://quicksearch.dla.mil/"
+    },
+    {
+      "id": "ITAR",
+      "name": "International Traffic in Arms Regulations",
+      "category": "Military/Defense",
+      "applies_to": "Defense articles, technical data on US Munitions List",
+      "description": "US regulations controlling export/import of defense-related articles and services. US Munitions List (USML). Registration with DDTC (Directorate of Defense Trade Controls). Export licenses required. Restrictions on foreign persons access to technical data. Severe penalties for violations. Compliance programs required for defense contractors.",
+      "url": "https://www.pmddtc.state.gov/ddtc_public"
+    },
+    {
+      "id": "EN 50155",
+      "name": "EN 50155 - Railway Applications: Electronic Equipment for Rolling Stock",
+      "category": "Railway",
+      "applies_to": "Railway electronic equipment, train control systems, rolling stock electronics",
+      "description": "European standard for electronic equipment used on railway rolling stock. Environmental conditions: temperature, humidity, altitude, vibration, shock, contamination. EMC requirements. Power supply characteristics (battery, line). Equipment classes based on operating location (enclosed, open, driver's cab, underframe). Essential for railway equipment certification.",
+      "url": "https://www.cenelec.eu/"
+    },
+    {
+      "id": "EN 50121",
+      "name": "EN 50121 - Railway Applications: Electromagnetic Compatibility",
+      "category": "Railway",
+      "applies_to": "Railway systems, rolling stock, signaling, infrastructure",
+      "description": "Railway-specific EMC standard series. Part 1: General. Part 2: Whole railway system. Part 3-1: Rolling stock - train and complete vehicle. Part 3-2: Rolling stock - apparatus. Part 4: Signaling and telecommunications. Part 5: Fixed installations. Covers emission and immunity in harsh railway electromagnetic environment.",
+      "url": "https://www.cenelec.eu/"
+    },
+    {
+      "id": "EN 45545",
+      "name": "EN 45545 - Railway Applications: Fire Protection",
+      "category": "Railway",
+      "applies_to": "Railway materials, components, rolling stock fire safety",
+      "description": "European standard for fire protection on railway vehicles. Part 2: Requirements for fire behavior of materials and components. Hazard levels (HL1-HL3) based on vehicle type, design. R categories for different material applications. Toxicity, smoke density, heat release testing. Mandatory for railway vehicles operating in Europe.",
+      "url": "https://www.cenelec.eu/"
+    },
+    {
+      "id": "IRIS",
+      "name": "IRIS - International Railway Industry Standard (Now ISO/TS 22163)",
+      "category": "Railway",
+      "applies_to": "Railway industry suppliers, rolling stock manufacturers",
+      "description": "Quality management system standard for railway industry. Developed by UNIFE. Based on ISO 9001 with railway-specific requirements. IRIS Certification superseded by ISO/TS 22163:2017. Covers configuration management, obsolescence management, RAM/LCC, project management. Demonstrates railway industry quality capability.",
+      "url": "https://www.iso.org/standard/72010.html"
+    },
+    {
+      "id": "CENELEC Railway Standards",
+      "name": "CENELEC EN 5xxxx Railway Standards Series",
+      "category": "Railway",
+      "applies_to": "Railway systems, signaling, infrastructure, rolling stock",
+      "description": "Comprehensive European railway standards. EN 50126 (RAMS - Reliability, Availability, Maintainability, Safety), EN 50128 (Software for railway control and protection systems), EN 50129 (Safety related electronic systems for signaling), EN 50159 (Safety-related communication), EN 50129 (Signaling systems safety). Foundation for railway safety.",
+      "url": "https://www.cenelec.eu/"
+    },
+    {
+      "id": "IMO SOLAS",
+      "name": "International Maritime Organization - Safety of Life at Sea Convention",
+      "category": "Marine",
+      "applies_to": "Ships, marine equipment, maritime safety systems",
+      "description": "International treaty for maritime safety. SOLAS chapters cover: construction, fire protection, life-saving appliances, radio communications, navigation safety, carriage of cargoes, dangerous goods, nuclear ships, ship security. Updated regularly. Equipment must meet SOLAS requirements for type approval. Enforced through flag state and port state control.",
+      "url": "https://www.imo.org/en/About/Conventions/Pages/International-Convention-for-the-Safety-of-Life-at-Sea-(SOLAS),-1974.aspx"
+    },
+    {
+      "id": "Marine Equipment Directive",
+      "name": "EU Marine Equipment Directive 2014/90/EU",
+      "category": "Marine",
+      "applies_to": "Marine equipment placed on EU-flagged vessels",
+      "description": "EU directive for marine equipment on ships flying EU member state flags. Ensures equipment meets international standards (IMO, IEC, ISO). CE marking with ship's wheel. Notified body conformity assessment. Categories: navigation equipment, radio communication, fire protection, life-saving appliances, pollution prevention. MED Mark required.",
+      "url": "https://ec.europa.eu/growth/sectors/maritime/marine-equipment_en"
+    },
+    {
+      "id": "IACS",
+      "name": "International Association of Classification Societies - Unified Requirements",
+      "category": "Marine",
+      "applies_to": "Ships, offshore structures, marine systems",
+      "description": "Technical standards (Unified Requirements) and procedures developed by classification societies. IACS members: DNV, Lloyd's Register, ABS, Bureau Veritas, ClassNK, RINA, etc. URs cover structural, mechanical, electrical, safety systems. Class societies certify ships meet requirements. Essential for marine insurance, port access.",
+      "url": "https://www.iacs.org.uk/"
+    },
+    {
+      "id": "DNV Rules",
+      "name": "Det Norske Veritas (DNV) Classification Rules",
+      "category": "Marine",
+      "applies_to": "Ships, offshore units, marine technology",
+      "description": "Classification society rules for ships and offshore structures. DNV Rules for Classification of Ships. Rules for offshore units. Service specifications. Type approval of marine equipment. Cybersecurity, digitalization rules. Merged organization: DNV GL became DNV (2021). Leading classification society globally.",
+      "url": "https://www.dnv.com/"
+    },
+    {
+      "id": "IEC 60092 Series",
+      "name": "IEC 60092 - Electrical Installations in Ships",
+      "category": "Marine",
+      "applies_to": "Ship electrical systems, marine electrical equipment",
+      "description": "IEC standards for marine electrical installations. Part 101: Definitions and general requirements. Part 201: System design - general. Part 350: Shipboard power cables. Part 401: Installation and test of completed installation. Part 502: Tankers - special features. Part 504: Special features - control and instrumentation. Multiple parts covering different aspects.",
+      "url": "https://webstore.iec.ch/"
+    },
+    {
+      "id": "ISO 26262",
+      "name": "ISO 26262 - Road Vehicles Functional Safety",
+      "category": "Automotive",
+      "applies_to": "Automotive electrical/electronic systems, ADAS, autonomous vehicles",
+      "description": "Automotive functional safety standard. Adaptation of IEC 61508 for automotive. 12 parts covering: management, concept, system design, hardware, software, production, support, ASIL determination. Automotive Safety Integrity Levels: ASIL A (lowest) to ASIL D (highest). ISO 26262:2018 second edition. Critical for ADAS, EV, autonomous vehicles.",
+      "url": "https://www.iso.org/standard/68383.html"
+    },
+    {
+      "id": "IATF 16949",
+      "name": "IATF 16949 - Automotive Quality Management System",
+      "category": "Automotive",
+      "applies_to": "Automotive production and service part manufacturers",
+      "description": "Global automotive quality management system standard. Based on ISO 9001 with automotive-specific requirements. Developed by International Automotive Task Force. Replaces ISO/TS 16949. Covers product safety, risk management, manufacturing process design, problem solving, supplier management. Mandatory for automotive OEM supply chain.",
+      "url": "https://www.iatfglobaloversight.org/"
+    },
+    {
+      "id": "Automotive SPICE",
+      "name": "Automotive SPICE - Software Process Improvement and Capability Determination",
+      "category": "Automotive",
+      "applies_to": "Automotive software development processes",
+      "description": "Process assessment model for automotive software development. Based on ISO/IEC 33000 series. Capability levels 0-5. Process categories: acquisition, supply, systems engineering, software engineering, supporting, management, reuse. ASPICE 3.1 (2017). Widely required by automotive OEMs for software supplier assessment.",
+      "url": "https://www.automotivespice.com/"
+    },
+    {
+      "id": "ISO 21448",
+      "name": "ISO 21448 - Road Vehicles Safety of the Intended Functionality (SOTIF)",
+      "category": "Automotive",
+      "applies_to": "Automated driving systems, ADAS",
+      "description": "Standard addressing safety risks from functional insufficiencies and human misuse. Complements ISO 26262 (systematic failures). Addresses scenarios: unknown unsafe, known unsafe, unknown safe, known safe. Validation, verification of intended functionality. Critical for Level 2+ automated driving. Published 2022.",
+      "url": "https://www.iso.org/standard/77490.html"
+    },
+    {
+      "id": "ISO 13485",
+      "name": "ISO 13485 - Medical Devices Quality Management Systems",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers, suppliers",
+      "description": "Quality management system standard for medical device industry. Based on ISO 9001 structure but standalone. Covers design, production, installation, servicing of medical devices. Risk management, sterile devices, traceability, software validation. ISO 13485:2016 current version. Required for medical device regulatory approvals globally.",
+      "url": "https://www.iso.org/standard/59752.html"
+    },
+    {
+      "id": "ISO 14971",
+      "name": "ISO 14971 - Medical Devices Risk Management",
+      "category": "Medical Devices",
+      "applies_to": "All medical devices requiring risk management",
+      "description": "Application of risk management to medical devices. Risk analysis, risk evaluation, risk control, residual risk evaluation, risk management review, production and post-production information. ISO 14971:2019 current version. Required by EU MDR, FDA QSR. Foundation for medical device safety and effectiveness.",
+      "url": "https://www.iso.org/standard/72704.html"
+    },
+    {
+      "id": "ISO 10993",
+      "name": "ISO 10993 - Biological Evaluation of Medical Devices",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices contacting body tissues, blood, or bodily fluids",
+      "description": "Standard series for biocompatibility testing. Part 1: Evaluation and testing within a risk management process. Parts cover specific tests: cytotoxicity, sensitization, irritation, systemic toxicity, implantation, hemocompatibility, carcinogenicity, reproductive toxicity, chemical characterization. Contact types: surface, external communicating, implant devices.",
+      "url": "https://www.iso.org/standard/68936.html"
+    },
+    {
+      "id": "ISO 11137",
+      "name": "ISO 11137 - Sterilization of Health Care Products: Radiation",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices sterilized using radiation",
+      "description": "Requirements for radiation sterilization of medical devices. Part 1: Requirements for development, validation and routine control. Part 2: Establishing sterilization dose. Part 3: Guidance on dosimetric aspects. Gamma, electron beam, X-ray sterilization. Method 1 (25 kGy), Method 2 (dose substantiation). VDmax approach for validation.",
+      "url": "https://www.iso.org/standard/33952.html"
+    },
+    {
+      "id": "ISO 17665",
+      "name": "ISO 17665 - Sterilization of Health Care Products: Moist Heat (Steam)",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices sterilized using steam sterilization",
+      "description": "Requirements for steam sterilization of medical devices. Part 1: Requirements for development, validation and routine control. Moist heat sterilization processes. Typical cycles: 121°C/15 min, 132°C/3 min. Validation requirements: installation qualification (IQ), operational qualification (OQ), performance qualification (PQ). Routine monitoring.",
+      "url": "https://www.iso.org/standard/43187.html"
+    },
+    {
+      "id": "ISO 11135",
+      "name": "ISO 11135 - Sterilization of Health Care Products: Ethylene Oxide",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices sterilized using ethylene oxide",
+      "description": "Requirements for ethylene oxide (EO) sterilization. Part 1: Requirements for development, validation and routine control. Used for heat-sensitive devices. Process variables: EO concentration, temperature, humidity, time. Half-cycle approach. Aeration requirements to remove residuals. Safety considerations for toxic, flammable gas.",
+      "url": "https://www.iso.org/standard/56137.html"
+    },
+    {
+      "id": "EU MDR",
+      "name": "EU Medical Device Regulation 2017/745",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices placed on EU market",
+      "description": "EU Medical Device Regulation replacing Medical Device Directive (MDD). Stricter requirements: clinical evidence, post-market surveillance, traceability (UDI), notified body oversight, person responsible for regulatory compliance. Classification changes. Implant cards. Stricter software rules. Full application since May 2021. Transition periods extended.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2017/745/oj"
+    },
+    {
+      "id": "EU IVDR",
+      "name": "EU In Vitro Diagnostic Regulation 2017/746",
+      "category": "Medical Devices",
+      "applies_to": "In vitro diagnostic devices placed on EU market",
+      "description": "EU In Vitro Diagnostic Medical Device Regulation replacing IVDD. Extended scope including laboratory-developed tests. Classification system (A-D). Notified body involvement expanded. Performance evaluation requirements. UDI system. Full application May 2022, extended transition periods. Significant impact on IVD manufacturers.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2017/746/oj"
+    },
+    {
+      "id": "FDA 21 CFR 820",
+      "name": "FDA 21 CFR Part 820 - Quality System Regulation",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers selling in USA",
+      "description": "US FDA Quality System Regulation for medical devices. Requirements for: management responsibility, design controls, document controls, purchasing controls, production and process controls, corrective and preventive action (CAPA), records. Inspection compliance. FDA moving toward ISO 13485 harmonization.",
+      "url": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?CFRPart=820"
+    },
+    {
+      "id": "ISO 22000",
+      "name": "ISO 22000 - Food Safety Management Systems",
+      "category": "Food Safety",
+      "applies_to": "Food chain organizations: processing, transport, storage, retail",
+      "description": "International food safety management system standard. Combines ISO management system approach with HACCP. Prerequisite programs (PRPs), operational PRPs. ISO 22000:2018 current version. Applicable to all food chain organizations. Certification by accredited bodies. Can be integrated with ISO 9001, ISO 14001.",
+      "url": "https://www.iso.org/standard/65464.html"
+    },
+    {
+      "id": "FSSC 22000",
+      "name": "Food Safety System Certification 22000",
+      "category": "Food Safety",
+      "applies_to": "Food manufacturers requiring GFSI-recognized certification",
+      "description": "GFSI-recognized certification scheme. Based on ISO 22000 plus sector-specific prerequisite programs (ISO/TS 22002 series) plus additional FSSC requirements. FSSC 22000 Version 6 (2023). Covers food manufacturing, animal feed, food packaging. Accepted by major retailers. Equivalent to BRC, IFS for GFSI benchmarking.",
+      "url": "https://www.fssc.com/"
+    },
+    {
+      "id": "BRC Food Safety",
+      "name": "BRC Global Standard for Food Safety",
+      "category": "Food Safety",
+      "applies_to": "Food manufacturers supplying retailers, food service",
+      "description": "GFSI-recognized food safety standard developed by British Retail Consortium. Issue 9 (2022). Requirements: HACCP, quality management system, factory environment standards, product control, process control, personnel. Audit grades: AA+, AA, A+, A, B, C, D. Widely required by UK and international retailers.",
+      "url": "https://www.brcgs.com/"
+    },
+    {
+      "id": "IFS Food",
+      "name": "International Featured Standards - Food",
+      "category": "Food Safety",
+      "applies_to": "Food manufacturers, especially in Europe",
+      "description": "GFSI-recognized food safety and quality standard. Developed by German and French retail federations. IFS Food Version 8 (2023). Requirements similar to BRC: senior management responsibility, quality/food safety management, resource management, production process, measurements. Scoring levels: Basic, Foundation, Higher. Common in European supply chains.",
+      "url": "https://www.ifs-certification.com/"
+    },
+    {
+      "id": "SQF Code",
+      "name": "Safe Quality Food (SQF) Code",
+      "category": "Food Safety",
+      "applies_to": "Food producers, manufacturers, distributors, retailers",
+      "description": "GFSI-recognized food safety and quality code. Managed by SQF Institute (SQFI). Edition 9 (2023). Two-tier approach: SQF Fundamentals (HACCP-based), SQF Quality Code (full certification). Modules for different sectors: primary production, manufacturing, distribution, retail. Strong in North America, Australia.",
+      "url": "https://www.sqfi.com/"
+    },
+    {
+      "id": "HACCP",
+      "name": "Hazard Analysis and Critical Control Points",
+      "category": "Food Safety",
+      "applies_to": "All food businesses identifying and controlling food safety hazards",
+      "description": "Systematic preventive approach to food safety. Codex Alimentarius standard. Seven principles: conduct hazard analysis, determine CCPs, establish critical limits, establish monitoring procedures, establish corrective actions, establish verification procedures, establish documentation and record keeping. Foundation for all food safety management systems.",
+      "url": "https://www.fao.org/fao-who-codexalimentarius/themes/haccp/en/"
+    },
+    {
+      "id": "GLOBALG.A.P.",
+      "name": "GLOBALG.A.P. - Good Agricultural Practices",
+      "category": "Agriculture",
+      "applies_to": "Agricultural producers, farms, aquaculture",
+      "description": "Pre-farm-gate standard for Good Agricultural Practices. Integrated Farm Assurance (IFA) for crops, livestock, aquaculture. Covers food safety, environmental sustainability, worker health/safety, animal welfare, Integrated Crop/Pest Management. Option 1 (full certification), Option 2 (producer groups). Required by many retailers.",
+      "url": "https://www.globalgap.org/"
+    },
+    {
+      "id": "GFSI Recognition",
+      "name": "Global Food Safety Initiative Benchmarking",
+      "category": "Food Safety",
+      "applies_to": "Food safety certification schemes seeking recognition",
+      "description": "Benchmarking organization for food safety certification schemes. GFSI-recognized schemes accepted by major retailers, manufacturers. Recognized schemes: FSSC 22000, BRC, IFS, SQF, GLOBALG.A.P., GRMS, PrimusGFS, others. Reduces audit duplication. 'Once certified, accepted everywhere' principle. Managed by Consumer Goods Forum.",
+      "url": "https://mygfsi.com/"
+    },
+    {
+      "id": "GMP Food",
+      "name": "Good Manufacturing Practice for Food",
+      "category": "Food Safety",
+      "applies_to": "Food processing facilities, food manufacturers",
+      "description": "Guidelines ensuring food products are consistently produced and controlled to quality standards. Covers: premises, equipment, personnel hygiene, sanitation, production, quality control, documentation, complaints. Codex General Principles of Food Hygiene. Various GMP codes (FDA, WHO, regional). Foundation for HACCP implementation.",
+      "url": "https://www.fda.gov/food/guidance-regulation-food-and-dietary-supplements/current-good-manufacturing-practices-cgmps-food-and-dietary-supplements"
+    },
+    {
+      "id": "ISO 22716",
+      "name": "ISO 22716 - Cosmetics Good Manufacturing Practices",
+      "category": "Cosmetics",
+      "applies_to": "Cosmetic product manufacturers",
+      "description": "Guidelines on Good Manufacturing Practices for cosmetics. Covers: personnel, premises and equipment, documentation, production, quality control, subcontracting, deviations, complaints and recalls. Harmonized with EU Cosmetics Regulation, FDA requirements. Demonstrates manufacturing quality for cosmetics. Used globally.",
+      "url": "https://www.iso.org/standard/36437.html"
+    },
+    {
+      "id": "ICH Guidelines",
+      "name": "International Council for Harmonisation of Technical Requirements for Pharmaceuticals",
+      "category": "Pharmaceuticals",
+      "applies_to": "Pharmaceutical development, manufacturing, registration",
+      "description": "Harmonized guidelines for pharmaceutical development. Quality guidelines (Q1-Q14): stability, analytical validation, impurities, GMP, quality by design, pharmaceutical development. Safety guidelines (S): toxicology. Efficacy guidelines (E): clinical studies. Multidisciplinary guidelines (M): CTD. Enables global pharmaceutical harmonization.",
+      "url": "https://www.ich.org/"
+    },
+    {
+      "id": "ISO 20121",
+      "name": "ISO 20121 - Event Sustainability Management Systems",
+      "category": "Event Management",
+      "applies_to": "Event organizers, venues, suppliers",
+      "description": "Management system standard for sustainable events. Covers: sustainable development principles, stakeholder engagement, supply chain management, communications, operational planning and control, monitoring and measurement. Applicable to events of all types and sizes: Olympics, conferences, festivals, meetings. Demonstrates commitment to sustainable event management.",
+      "url": "https://www.iso.org/standard/54552.html"
+    },
+    {
+      "id": "ISO 20000",
+      "name": "ISO 20000 - IT Service Management",
+      "category": "IT Management",
+      "applies_to": "IT service providers, managed service providers",
+      "description": "International standard for IT service management (ITSM). Based on ITIL best practices. Part 1: Service management system requirements. Covers: service delivery, relationship, resolution and control, integration and release processes. ISO/IEC 20000-1:2018 current version. Demonstrates IT service quality. Certification by accredited bodies.",
+      "url": "https://www.iso.org/standard/70636.html"
+    },
+    {
+      "id": "ISO 27001",
+      "name": "ISO 27001 - Information Security Management Systems",
+      "category": "Information Security",
+      "applies_to": "Organizations managing sensitive information",
+      "description": "International standard for information security management. Risk-based approach. Controls from ISO 27002. 14 domains: security policies, organization, human resources, asset management, access control, cryptography, physical security, operations security, communications security, acquisition/development/maintenance, supplier relationships, incident management, business continuity, compliance. ISO/IEC 27001:2022 latest.",
+      "url": "https://www.iso.org/standard/27001"
+    },
+    {
+      "id": "SOC 2",
+      "name": "SOC 2 - Service Organization Control",
+      "category": "Information Security",
+      "applies_to": "Service providers, SaaS companies, cloud providers",
+      "description": "Audit framework for service organizations. Trust Service Criteria: security (required), availability, processing integrity, confidentiality, privacy (optional). Type I (point in time), Type II (period of time, typically 6-12 months). CPA-performed audit. SOC 2 reports demonstrate controls to customers. Common for SaaS, cloud providers.",
+      "url": "https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/sorhome.html"
+    },
+    {
+      "id": "PCI DSS v4.0",
+      "name": "Payment Card Industry Data Security Standard Version 4.0",
+      "category": "Payment Security",
+      "applies_to": "Merchants, processors, service providers handling payment cards",
+      "description": "Latest PCI DSS version (2022, effective March 2024). 12 principal requirements expanded with targeted risk analysis, customized approaches. Enhanced multifactor authentication, password requirements, encryption. Expanded e-commerce, phishing requirements. Transition period until March 2025. Compliance levels based on transaction volume. QSA or internal audits.",
+      "url": "https://www.pcisecuritystandards.org/document_library/?document=pci_dss"
+    }
+  ]
+}

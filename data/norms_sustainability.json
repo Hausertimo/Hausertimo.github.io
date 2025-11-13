@@ -1,0 +1,413 @@
+{
+  "_comment": "Sustainability Certifications and Environmental Standards - comprehensive database of eco-labels, carbon standards, circular economy certifications. Last updated: January 2025",
+  "norms": [
+    {
+      "id": "ISO 14001",
+      "name": "ISO 14001 - Environmental Management Systems",
+      "category": "Environmental Management",
+      "applies_to": "All organizations seeking systematic environmental management",
+      "description": "International standard for environmental management systems (EMS). Provides framework for protecting environment, responding to environmental conditions, balancing with socio-economic needs. Plan-Do-Check-Act cycle. Requires commitment to pollution prevention, legal compliance, continual improvement. Certified by third-party auditors.",
+      "url": "https://www.iso.org/iso-14001-environmental-management.html"
+    },
+    {
+      "id": "ISO 14064",
+      "name": "ISO 14064 - Greenhouse Gas Accounting and Verification",
+      "category": "Carbon/Climate",
+      "applies_to": "Organizations measuring and reporting GHG emissions",
+      "description": "Standard for quantification, monitoring, reporting and verification of greenhouse gas emissions. Part 1: Organization-level GHG inventories. Part 2: Project-level GHG emission reductions. Part 3: Validation and verification. Aligns with GHG Protocol. Supports carbon accounting, climate reporting.",
+      "url": "https://www.iso.org/standard/66453.html"
+    },
+    {
+      "id": "GHG Protocol",
+      "name": "Greenhouse Gas Protocol - Corporate Standard",
+      "category": "Carbon/Climate",
+      "applies_to": "Organizations accounting for greenhouse gas emissions",
+      "description": "Most widely used GHG accounting standard. Developed by WRI and WBCSD. Scope 1 (direct emissions), Scope 2 (electricity indirect), Scope 3 (value chain indirect). Corporate Standard, Scope 3 Standard, Product Standard. Foundation for climate reporting (CDP, TCFD, SBTi).",
+      "url": "https://ghgprotocol.org/"
+    },
+    {
+      "id": "SBTi",
+      "name": "Science Based Targets initiative",
+      "category": "Carbon/Climate",
+      "applies_to": "Companies setting emissions reduction targets aligned with climate science",
+      "description": "Framework for setting corporate GHG emission reduction targets consistent with Paris Agreement (limiting warming to 1.5°C). Near-term targets (5-10 years), net-zero targets (by 2050). Covers Scope 1, 2, 3 emissions. Validation by SBTi. Over 4,000 companies committed. Gold standard for climate ambition.",
+      "url": "https://sciencebasedtargets.org/"
+    },
+    {
+      "id": "PAS 2060",
+      "name": "PAS 2060 - Carbon Neutrality Specification",
+      "category": "Carbon/Climate",
+      "applies_to": "Organizations and products claiming carbon neutrality",
+      "description": "BSI specification for demonstrating carbon neutrality. Requires: GHG measurement (to ISO 14064-1 or GHG Protocol), reduction plan, offsetting residual emissions with quality offsets, public disclosure. Prevents greenwashing. Third-party verification recommended. Applicable to organizations, products, services, events.",
+      "url": "https://www.bsigroup.com/en-GB/PAS-2060-Carbon-Neutrality/"
+    },
+    {
+      "id": "Carbon Trust Standard",
+      "name": "Carbon Trust Standard for Carbon/Water/Waste",
+      "category": "Carbon/Climate",
+      "applies_to": "Organizations demonstrating carbon reduction, water reduction, waste reduction",
+      "description": "Certification demonstrating real carbon, water or waste reductions year-on-year. Carbon Trust Standard requires: measurement of footprint, reduction strategy, annual improvements, third-party verification. Carbon, Water, Waste, Zero Waste to Landfill variants. Prestigious UK-based certification.",
+      "url": "https://www.carbontrust.com/what-we-do/assurance-and-certification/carbon-trust-standard"
+    },
+    {
+      "id": "EU Ecolabel",
+      "name": "EU Ecolabel - European Flower",
+      "category": "Eco-labels",
+      "applies_to": "Consumer products, services meeting EU environmental criteria",
+      "description": "Official EU eco-label for products and services meeting high environmental standards throughout lifecycle. Covers 24+ product groups: electronics, appliances, paper, textiles, cleaning products, tourism. Criteria based on lifecycle assessment. Voluntary, Type I eco-label (ISO 14024). Recognized across EU member states.",
+      "url": "https://environment.ec.europa.eu/topics/circular-economy/eu-ecolabel_en"
+    },
+    {
+      "id": "Energy Star",
+      "name": "ENERGY STAR Certification",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-efficient products, buildings, manufacturing plants",
+      "description": "US EPA program for energy efficiency. Products must meet strict energy performance criteria. Over 75 product categories: appliances, electronics, HVAC, lighting, office equipment. Energy Star for Buildings (commercial buildings), Industrial plants. Label recognized globally. Estimated $450B+ consumer savings since 1992.",
+      "url": "https://www.energystar.gov/"
+    },
+    {
+      "id": "Nordic Swan Ecolabel",
+      "name": "Nordic Swan Ecolabel (Svanen)",
+      "category": "Eco-labels",
+      "applies_to": "Products and services in Nordic countries",
+      "description": "Official eco-label of Nordic countries (Denmark, Finland, Iceland, Norway, Sweden). Type I eco-label (ISO 14024). Lifecycle-based criteria covering 60+ product groups. Climate, chemicals, circular economy focus. Strict requirements for environmental performance. Recognized across Nordic region.",
+      "url": "https://www.nordic-ecolabel.org/"
+    },
+    {
+      "id": "Blue Angel",
+      "name": "Blue Angel (Blauer Engel) - Germany",
+      "category": "Eco-labels",
+      "applies_to": "Environmentally friendly products and services",
+      "description": "World's first and Germany's official eco-label (since 1978). Type I eco-label (ISO 14024). Over 120 product categories. Lifecycle approach. Criteria for climate protection, resource conservation, health protection. Administered by German Federal Environment Agency. Internationally recognized.",
+      "url": "https://www.blauer-engel.de/en"
+    },
+    {
+      "id": "TCO Certified",
+      "name": "TCO Certified - IT Products Sustainability",
+      "category": "Eco-labels",
+      "applies_to": "IT products: computers, displays, smartphones, tablets, headsets",
+      "description": "Comprehensive sustainability certification for IT products. Covers social responsibility (working conditions), environmental responsibility (climate, circular design, hazardous substances), product safety (ergonomics, emissions, energy). TCO Certified Generation 9 (2021). Independent verification. Widely adopted in IT procurement.",
+      "url": "https://tcocertified.com/"
+    },
+    {
+      "id": "EPEAT",
+      "name": "EPEAT - Electronic Product Environmental Assessment Tool",
+      "category": "Eco-labels",
+      "applies_to": "Electronics: computers, displays, imaging equipment, TVs, mobile phones, servers",
+      "description": "Global ecolabel for electronics. Managed by Global Electronics Council. Based on IEEE 1680 standards family. Criteria: climate change, energy efficiency, hazardous materials, circular design, supply chain responsibility. Bronze/Silver/Gold tiers. Used in sustainable procurement by governments, corporations.",
+      "url": "https://globalelectronicscouncil.org/epeat/"
+    },
+    {
+      "id": "Cradle to Cradle",
+      "name": "Cradle to Cradle Certified",
+      "category": "Circular Economy",
+      "applies_to": "Products designed for circular economy, material health",
+      "description": "Multi-attribute certification for circular economy. Five categories: material health, material reuse, renewable energy & carbon management, water stewardship, social fairness. Achievement levels: Basic, Bronze, Silver, Gold, Platinum. Product Circularity Data Sheet. v4.0 standard (2021). Emphasizes safe, circular, responsible products.",
+      "url": "https://c2ccertified.org/"
+    },
+    {
+      "id": "ISO 14040/14044",
+      "name": "ISO 14040/14044 - Life Cycle Assessment",
+      "category": "Environmental Assessment",
+      "applies_to": "Products, services, systems requiring environmental impact assessment",
+      "description": "International standards for Life Cycle Assessment (LCA). ISO 14040: Principles and framework. ISO 14044: Requirements and guidelines. Phases: Goal and scope definition, inventory analysis (LCI), impact assessment (LCIA), interpretation. Identifies environmental hotspots. Foundation for EPDs, eco-design, carbon footprints.",
+      "url": "https://www.iso.org/standard/37456.html"
+    },
+    {
+      "id": "ISO 14025",
+      "name": "ISO 14025 - Environmental Product Declarations (EPD)",
+      "category": "Environmental Assessment",
+      "applies_to": "Products requiring transparent environmental performance data",
+      "description": "Type III environmental declarations (EPDs). Quantified environmental data using predetermined parameters based on ISO 14040 standards (LCA). Product Category Rules (PCR) define calculation methodology. Third-party verification. Provides transparent, comparable environmental data. Used in green procurement, green building certification.",
+      "url": "https://www.iso.org/standard/38131.html"
+    },
+    {
+      "id": "EPD International",
+      "name": "International EPD System",
+      "category": "Environmental Assessment",
+      "applies_to": "Products with Environmental Product Declarations",
+      "description": "Global program operator for EPDs. Administers EPD registration, PCR development, verification. Open, transparent system. Mutual recognition agreements with regional EPD programs. Database of EPDs. Supports green building schemes (LEED, BREEAM). Enables environmental comparisons.",
+      "url": "https://www.environdec.com/"
+    },
+    {
+      "id": "LEED Certification",
+      "name": "Leadership in Energy and Environmental Design",
+      "category": "Green Buildings",
+      "applies_to": "Buildings, neighborhoods, cities seeking sustainability certification",
+      "description": "World's most widely used green building rating system. US Green Building Council (USGBC). LEED v4.1 (2021). Credits across: location, water efficiency, energy & atmosphere, materials, indoor environmental quality, innovation. Levels: Certified, Silver, Gold, Platinum. LEED for Building Design, Operations, Interiors, Neighborhoods.",
+      "url": "https://www.usgbc.org/leed"
+    },
+    {
+      "id": "BREEAM",
+      "name": "Building Research Establishment Environmental Assessment Method",
+      "category": "Green Buildings",
+      "applies_to": "Buildings and infrastructure sustainability assessment",
+      "description": "World's first green building rating system (1990). UK-based, globally used. Assesses: management, health & wellbeing, energy, transport, water, materials, waste, land use, ecology, pollution, innovation. Ratings: Pass, Good, Very Good, Excellent, Outstanding. BREEAM schemes for New Construction, Refurbishment, In-Use.",
+      "url": "https://bregroup.com/products/breeam/"
+    },
+    {
+      "id": "WELL Building Standard",
+      "name": "WELL Building Standard - Health & Wellness",
+      "category": "Green Buildings",
+      "applies_to": "Buildings prioritizing human health and wellness",
+      "description": "Performance-based certification for buildings promoting human health and wellness. International WELL Building Institute (IWBI). WELL v2 (2020). Ten concepts: air, water, nourishment, light, movement, thermal comfort, sound, materials, mind, community. Levels: Bronze, Silver, Gold, Platinum. Evidence-based approach.",
+      "url": "https://www.wellcertified.com/"
+    },
+    {
+      "id": "Living Building Challenge",
+      "name": "Living Building Challenge - Regenerative Design",
+      "category": "Green Buildings",
+      "applies_to": "Buildings achieving highest sustainability performance",
+      "description": "Most rigorous built environment performance standard. International Living Future Institute. Seven performance categories (Petals): Place, Water, Energy, Health & Happiness, Materials, Equity, Beauty. Net positive energy, net positive water, waste diversion, biophilic design. Zero Carbon, Zero Waste certifications available separately.",
+      "url": "https://living-future.org/lbc/"
+    },
+    {
+      "id": "FSC Certification",
+      "name": "Forest Stewardship Council - Responsible Forest Management",
+      "category": "Sustainable Materials",
+      "applies_to": "Wood, paper, forest products from responsibly managed forests",
+      "description": "Certification for responsibly managed forests and forest products. Forest Management (FM) certification for forest owners. Chain of Custody (CoC) certification for processors, manufacturers, traders. FSC 100%, FSC Mix, FSC Recycled labels. Ensures environmental, social, economic sustainability. Internationally recognized.",
+      "url": "https://fsc.org/"
+    },
+    {
+      "id": "PEFC Certification",
+      "name": "Programme for the Endorsement of Forest Certification",
+      "category": "Sustainable Materials",
+      "applies_to": "Wood, paper, non-timber forest products",
+      "description": "World's largest forest certification system. Endorses national forest certification standards. Sustainable Forest Management (SFM) and Chain of Custody (CoC) certification. Mutual recognition of national schemes. Supports small forest owners. Covers 330+ million hectares. Complements FSC in sustainable forestry.",
+      "url": "https://www.pefc.org/"
+    },
+    {
+      "id": "Fairtrade Certification",
+      "name": "Fairtrade International - Fair Trade Standards",
+      "category": "Social Responsibility",
+      "applies_to": "Agricultural products: coffee, cocoa, cotton, tea, sugar, bananas, flowers",
+      "description": "Certification ensuring fair prices, decent working conditions, environmental protection for farmers and workers. Fairtrade Minimum Price, Fairtrade Premium for community development. Standards for small producer organizations, hired labor, traders. Independent certification by FLOCERT. Recognized Fairtrade Mark.",
+      "url": "https://www.fairtrade.net/"
+    },
+    {
+      "id": "Rainforest Alliance",
+      "name": "Rainforest Alliance Certified",
+      "category": "Sustainable Agriculture",
+      "applies_to": "Agricultural products: coffee, cocoa, tea, bananas, tropical fruits",
+      "description": "Certification for sustainable agriculture. 2020 Sustainable Agriculture Standard. Covers: forest and ecosystem conservation, climate-smart agriculture, improved livelihoods, human rights, gender equity, land rights, supply chain transparency. Assurance levels based on compliance. Green frog seal.",
+      "url": "https://www.rainforest-alliance.org/"
+    },
+    {
+      "id": "RSPO Certification",
+      "name": "Roundtable on Sustainable Palm Oil",
+      "category": "Sustainable Agriculture",
+      "applies_to": "Palm oil and palm oil derivatives",
+      "description": "Certification for sustainable palm oil production. RSPO Principles & Criteria. Environmental criteria (HCV, HCS protection, no deforestation). Social criteria (labor rights, community consultation, FPIC). Supply chain models: Identity Preserved, Segregated, Mass Balance, Book & Claim. Independent certification.",
+      "url": "https://rspo.org/"
+    },
+    {
+      "id": "Global Organic Textile Standard",
+      "name": "GOTS - Global Organic Textile Standard",
+      "category": "Sustainable Materials",
+      "applies_to": "Organic textiles, organic clothing, organic fabrics",
+      "description": "Leading textile processing standard for organic fibres. Covers processing, manufacturing, packaging, labelling, trading, distribution. Environmental criteria: prohibited substances, wastewater treatment, residue limits. Social criteria based on ILO. Minimum 70% organic fibres. GOTS label (95%+ organic) or Made with Organic label (70-94%).",
+      "url": "https://www.global-standard.org/"
+    },
+    {
+      "id": "OEKO-TEX Standard 100",
+      "name": "OEKO-TEX Standard 100 - Textile Harmful Substances",
+      "category": "Product Safety",
+      "applies_to": "Textiles, garments, fabrics tested for harmful substances",
+      "description": "Independent certification for textiles tested for harmful substances. Product classes: I (babies), II (skin contact), III (no skin contact), IV (decoration). Tests for: prohibited substances, regulated substances, harmful chemicals. Annual testing. Addresses consumer safety, not environmental production. Widely recognized label.",
+      "url": "https://www.oeko-tex.com/en/our-standards/standard-100-by-oeko-tex"
+    },
+    {
+      "id": "bluesign",
+      "name": "bluesign - Textile Sustainability System",
+      "category": "Sustainable Materials",
+      "applies_to": "Textile manufacturing, chemical suppliers, brands",
+      "description": "Comprehensive textile sustainability system. Covers entire textile supply chain: chemical suppliers (bluefinder), textile manufacturers (bluesign SYSTEM PARTNER), brands (bluesign PRODUCT). Eliminates harmful substances, resource productivity (water, energy), emissions control, worker safety. Strictest textile environmental standard.",
+      "url": "https://www.bluesign.com/"
+    },
+    {
+      "id": "RCS",
+      "name": "Recycled Claim Standard (RCS)",
+      "category": "Circular Economy",
+      "applies_to": "Products containing recycled content",
+      "description": "Chain of custody standard for recycled content. Verifies presence and amount of recycled material. Tracks material from source to final product. Covers any product with 5%+ recycled content. RCS 100 (100% recycled), RCS Blended (5-99%). Managed by Textile Exchange. Applies across industries.",
+      "url": "https://textileexchange.org/standards/recycled-claim-standard-global-recycled-standard/"
+    },
+    {
+      "id": "GRS",
+      "name": "Global Recycled Standard (GRS)",
+      "category": "Circular Economy",
+      "applies_to": "Products with 20%+ recycled content requiring full certification",
+      "description": "Comprehensive recycled content standard. Requires minimum 20% recycled content. Verifies recycled content AND production processes (environmental, social). Chain of custody tracking. Chemical restrictions, wastewater treatment, social requirements. Managed by Textile Exchange. Recognized in apparel, home goods, other sectors.",
+      "url": "https://textileexchange.org/standards/recycled-claim-standard-global-recycled-standard/"
+    },
+    {
+      "id": "Responsible Minerals Initiative",
+      "name": "Responsible Minerals Initiative (RMI) - Conflict Minerals",
+      "category": "Supply Chain Responsibility",
+      "applies_to": "Companies sourcing 3TG minerals (tin, tantalum, tungsten, gold)",
+      "description": "Program addressing conflict minerals from high-risk areas (e.g., DRC). Responsible Minerals Assurance Process (RMAP) for smelters/refiners. Conformant smelter lists. Due diligence guidance based on OECD framework. Conflict Minerals Reporting Template (CMRT). Essential for electronics supply chain compliance.",
+      "url": "https://www.responsiblemineralsinitiative.org/"
+    },
+    {
+      "id": "B Corp Certification",
+      "name": "B Corporation Certification",
+      "category": "Social Responsibility",
+      "applies_to": "For-profit companies meeting social and environmental standards",
+      "description": "Certification for businesses meeting high standards of social and environmental performance, accountability, transparency. B Impact Assessment: governance, workers, community, environment, customers. Minimum score 80/200. Legal requirement to consider stakeholder impact. Over 6,000+ B Corps globally. Certified by B Lab.",
+      "url": "https://www.bcorporation.net/"
+    },
+    {
+      "id": "ISO 26000",
+      "name": "ISO 26000 - Social Responsibility Guidance",
+      "category": "Social Responsibility",
+      "applies_to": "All organizations integrating social responsibility",
+      "description": "Guidance standard (not certifiable) on social responsibility. Seven core subjects: organizational governance, human rights, labor practices, environment, fair operating practices, consumer issues, community involvement. Helps organizations contribute to sustainable development. Applicable to all organizations regardless of size or location.",
+      "url": "https://www.iso.org/iso-26000-social-responsibility.html"
+    },
+    {
+      "id": "SA8000",
+      "name": "SA8000 - Social Accountability Standard",
+      "category": "Social Responsibility",
+      "applies_to": "Workplaces ensuring decent working conditions",
+      "description": "Certifiable standard for decent work. Nine social performance areas: child labor, forced labor, health & safety, freedom of association, discrimination, disciplinary practices, working hours, compensation, management systems. Based on ILO conventions, UN declarations. Third-party audited. Supply chain application.",
+      "url": "http://www.sa-intl.org/"
+    },
+    {
+      "id": "ISO 45001",
+      "name": "ISO 45001 - Occupational Health and Safety Management",
+      "category": "Health & Safety",
+      "applies_to": "Organizations implementing OH&S management systems",
+      "description": "International standard for occupational health and safety (OH&S) management systems. Replaces OHSAS 18001. Proactive prevention of work-related injury and ill health. Worker participation, leadership commitment. Risk-based approach. Compatible with ISO 9001, ISO 14001. Certification by accredited bodies.",
+      "url": "https://www.iso.org/iso-45001-occupational-health-and-safety.html"
+    },
+    {
+      "id": "WaterSense",
+      "name": "EPA WaterSense Labeled Products",
+      "category": "Water Efficiency",
+      "applies_to": "Water-efficient products, irrigation systems, homes",
+      "description": "US EPA program for water efficiency. Products must be 20% more efficient than standard products while maintaining performance. Categories: faucets, showerheads, toilets, irrigation controllers, spray sprinkler bodies. WaterSense homes. Certification by licensed bodies. Estimated 6.4 trillion gallons water saved since 2006.",
+      "url": "https://www.epa.gov/watersense"
+    },
+    {
+      "id": "AWS",
+      "name": "Alliance for Water Stewardship (AWS) Standard",
+      "category": "Water Stewardship",
+      "applies_to": "Sites with significant water use or impact",
+      "description": "Certifiable water stewardship standard. Five-step framework: Gather, Commit, Plan, Implement, Evaluate. Criteria: good water governance, sustainable water balance, good water quality, important water-related areas, safe WASH. Core, Advanced, Platinum levels. Catchment-based approach. Multi-stakeholder engagement.",
+      "url": "https://a4ws.org/"
+    },
+    {
+      "id": "Ocean Bound Plastic",
+      "name": "Ocean Bound Plastic Certification",
+      "category": "Circular Economy",
+      "applies_to": "Products containing plastic recovered from ocean-bound areas",
+      "description": "Certification for plastic waste collected from areas at risk of ocean pollution (within 50km of coastlines, waterways in countries with poor waste management). Chain of custody verification. Supports cleanup, recycling, prevents ocean plastic pollution. Zero Plastic Oceans program. Recognized in packaging, consumer products.",
+      "url": "https://oceanbound.com/"
+    },
+    {
+      "id": "Plastic Bank",
+      "name": "Social Plastic - Plastic Bank",
+      "category": "Social & Environmental",
+      "applies_to": "Products using recycled plastic from Plastic Bank ecosystem",
+      "description": "Social enterprise collecting plastic waste in coastal communities, exchanging for money, goods, services. Social Plastic® feedstock for brands. Prevents ocean plastic AND alleviates poverty. Blockchain-verified collection. Operating in Indonesia, Philippines, Brazil, Egypt, Cameroon. Impact certification available.",
+      "url": "https://plasticbank.com/"
+    },
+    {
+      "id": "How2Recycle",
+      "name": "How2Recycle Label System",
+      "category": "Circular Economy",
+      "applies_to": "Consumer packaging requiring clear recycling instructions",
+      "description": "Standardized labeling system for recyclability in North America. Clear instructions: Widely Recyclable, Check Locally, Not Yet Recyclable, Store Drop-off. Component-specific guidance. Based on Federal Trade Commission Green Guides. Managed by Sustainable Packaging Coalition. Over 500+ member companies. Reduces consumer confusion.",
+      "url": "https://how2recycle.info/"
+    },
+    {
+      "id": "Ellen MacArthur Foundation",
+      "name": "EMF Circular Economy Commitment",
+      "category": "Circular Economy",
+      "applies_to": "Organizations committing to circular economy principles",
+      "description": "Not a certification, but influential commitment framework. New Plastics Economy Global Commitment: eliminate problematic plastics, innovate for circularity, circulate products/materials. Fashion commitment. Circular Economy 100 (CE100) network. Thought leadership, research, case studies shaping circular economy transition.",
+      "url": "https://www.ellenmacarthurfoundation.org/"
+    },
+    {
+      "id": "Green-e",
+      "name": "Green-e Energy Certification",
+      "category": "Renewable Energy",
+      "applies_to": "Renewable energy products, RECs, carbon offsets",
+      "description": "Leading voluntary renewable energy certification in North America. Certifies renewable energy products (renewable electricity, RECs), carbon offsets. Ensures renewable energy is additional, verified, delivered. Prevents double-counting. Transparent environmental disclosure. Green-e Climate for carbon offsets. Administered by Center for Resource Solutions.",
+      "url": "https://www.green-e.org/"
+    },
+    {
+      "id": "I-REC Standard",
+      "name": "International Renewable Energy Certificate (I-REC) Standard",
+      "category": "Renewable Energy",
+      "applies_to": "Renewable energy attribute tracking in non-European markets",
+      "description": "Global attribute tracking standard for renewable energy. Operates in markets without mature renewable energy certificate systems. Covers electricity, thermal, transport fuels. One I-REC = 1 MWh renewable electricity. Used for Scope 2 emissions accounting, RE100 reporting. Operates across Africa, Asia, Latin America, Middle East.",
+      "url": "https://www.irecstandard.org/"
+    },
+    {
+      "id": "Guarantees of Origin",
+      "name": "Guarantees of Origin (EU) - Renewable Energy Tracking",
+      "category": "Renewable Energy",
+      "applies_to": "Renewable electricity in Europe",
+      "description": "European system for tracking renewable electricity. One GO = 1 MWh renewable electricity. Issued by national registries. Enables renewable electricity claims. Covers EU member states, Norway, Iceland, Switzerland. Primary mechanism for Scope 2 renewable electricity claims in Europe. Similar to RECs in US.",
+      "url": "https://www.aib-net.org/"
+    },
+    {
+      "id": "RE100",
+      "name": "RE100 - 100% Renewable Electricity Commitment",
+      "category": "Renewable Energy",
+      "applies_to": "Large companies committing to 100% renewable electricity",
+      "description": "Global corporate renewable electricity initiative by The Climate Group and CDP. Companies commit to 100% renewable electricity. Progress reporting requirements. Acceptable procurement mechanisms: PPAs, unbundled RECs/GOs, on-site generation, green tariffs. 400+ members including tech giants, manufacturers, retailers. Drives corporate renewable energy demand.",
+      "url": "https://www.there100.org/"
+    },
+    {
+      "id": "EV100",
+      "name": "EV100 - Electric Vehicle Commitment",
+      "category": "Transportation",
+      "applies_to": "Companies committing to electric vehicle transition",
+      "description": "Global initiative for companies committing to electric vehicles. Commitment options: transition fleet to EVs by 2030, install EV charging, enable employee EV adoption. The Climate Group initiative. Members include logistics, automotive, retail, tech companies. Accelerates EV transition, charging infrastructure deployment.",
+      "url": "https://www.theclimategroup.org/ev100"
+    },
+    {
+      "id": "Verified Carbon Standard",
+      "name": "Verra VCS - Verified Carbon Standard",
+      "category": "Carbon Offsets",
+      "applies_to": "Carbon offset projects requiring verification and validation",
+      "description": "Leading voluntary carbon market standard. VCS Program for carbon offset projects (VCUs - Verified Carbon Units). Rigorous project validation, verification. Project categories: renewable energy, energy efficiency, forestry/land use, waste management, industrial processes. CCB Standards for biodiversity/community benefits. Over 1,900 projects.",
+      "url": "https://verra.org/programs/verified-carbon-standard/"
+    },
+    {
+      "id": "Gold Standard",
+      "name": "Gold Standard for the Global Goals",
+      "category": "Carbon Offsets",
+      "applies_to": "High-quality carbon offset and sustainable development projects",
+      "description": "Premium carbon offset and sustainable development certification. Ensures projects deliver emissions reductions AND sustainable development impacts (SDGs). Project types: renewable energy, energy efficiency, water purification, forestation. Gold Standard VERs (Verified Emission Reductions). Independent third-party verification. Emphasis on quality and integrity.",
+      "url": "https://www.goldstandard.org/"
+    },
+    {
+      "id": "Climate Neutral Certified",
+      "name": "Climate Neutral Brand Certification",
+      "category": "Carbon/Climate",
+      "applies_to": "Brands committing to measure, offset, reduce carbon footprint",
+      "description": "Certification for brands taking climate action. Three-step process: measure carbon footprint, purchase carbon offsets (become carbon neutral), reduce future emissions. Annual recertification. Transparent Carbon Reduction Action Plan. Climate Neutral Certified label. Simple, accessible certification for consumer brands.",
+      "url": "https://www.climateneutral.org/"
+    },
+    {
+      "id": "Zero Waste Certification",
+      "name": "TRUE (Total Resource Use and Efficiency) Zero Waste Certification",
+      "category": "Waste Management",
+      "applies_to": "Facilities achieving zero waste to landfill and incineration",
+      "description": "Certification for zero waste facilities. TRUE Certified, TRUE Gold, TRUE Platinum (90%, 95%, 100% diversion from landfill/incineration). Administered by Green Business Certification Inc. Measures waste diversion, promotes circular economy, waste reduction. Applicable to facilities, campuses, communities, events.",
+      "url": "https://www.usgbc.org/true"
+    },
+    {
+      "id": "Circular Economy Product",
+      "name": "Circular Economy Product Label (CEP)",
+      "category": "Circular Economy",
+      "applies_to": "Products designed for circularity",
+      "description": "Emerging certification for products designed with circular economy principles. Criteria: design for durability, disassembly, repair, reuse, recycling; recycled content; material health; take-back programs; business model innovation (product-as-service). Various national and regional circular economy labels developing.",
+      "url": "https://www.circulareconomyproduct.com/"
+    }
+  ]
+}

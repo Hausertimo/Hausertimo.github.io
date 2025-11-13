@@ -1,0 +1,469 @@
+{
+  "_comment": "IEC (International Electrotechnical Commission) standards database - comprehensive electrical, electronic, and related technology standards. Last updated: January 2025",
+  "norms": [
+    {
+      "id": "IEC 62368-1",
+      "name": "IEC 62368-1 - Audio/Video, ICT Equipment Safety (HBSE)",
+      "category": "Product Safety",
+      "applies_to": "Audio/video equipment, ICT equipment, communication equipment",
+      "description": "Hazard-based safety engineering (HBSE) standard for audio/video, information and communication technology equipment. Replaces IEC 60950-1 (IT) and IEC 60065 (AV). Covers energy sources, fire ignition, mechanical hazards, chemical hazards. Risk-based methodology focusing on safeguards against pain, injury, and fire.",
+      "url": "https://webstore.iec.ch/publication/6793"
+    },
+    {
+      "id": "IEC 60950-1",
+      "name": "IEC 60950-1 - IT Equipment Safety (Superseded)",
+      "category": "Product Safety",
+      "applies_to": "Information technology equipment, office equipment",
+      "description": "Safety requirements for IT equipment including mains-powered and battery-powered equipment. Superseded by IEC 62368-1 in 2020 but still widely recognized. Covers electrical safety, fire hazards, mechanical hazards, energy hazards, thermal hazards. Edition 2.2 (2013) was final version.",
+      "url": "https://webstore.iec.ch/publication/3979"
+    },
+    {
+      "id": "IEC 60335-1",
+      "name": "IEC 60335-1 - Household Appliance Safety Part 1: General Requirements",
+      "category": "Product Safety",
+      "applies_to": "Household electrical appliances, similar electrical equipment up to 250V",
+      "description": "General safety requirements for household and similar electrical appliances. Foundation standard with specific Part 2 requirements for different appliance types. Covers electrical, mechanical, thermal hazards, protection against electric shock, insulation requirements, stability, mechanical strength.",
+      "url": "https://webstore.iec.ch/publication/1555"
+    },
+    {
+      "id": "IEC 60335-2-X",
+      "name": "IEC 60335-2 Series - Particular Requirements for Specific Appliances",
+      "category": "Product Safety",
+      "applies_to": "Specific household appliance types (over 100 parts)",
+      "description": "Particular requirements supplementing IEC 60335-1 for specific appliances. Examples: Part 2-6 (cooking ranges), Part 2-7 (washing machines), Part 2-24 (refrigerators), Part 2-40 (heat pumps), Part 2-89 (commercial refrigeration). Each part addresses hazards specific to appliance type.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 61000 Series",
+      "name": "IEC 61000 - Electromagnetic Compatibility (EMC)",
+      "category": "EMC",
+      "applies_to": "All electrical and electronic equipment",
+      "description": "Comprehensive EMC standard series. Part 4: Testing and measurement techniques. Part 6: Generic standards (immunity/emission for residential, commercial, industrial). Defines immunity to ESD, radiated RF, electrical fast transients, surge, conducted disturbances, voltage dips/interruptions, harmonics, flicker.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 61000-4-2",
+      "name": "IEC 61000-4-2 - Electrostatic Discharge (ESD) Immunity",
+      "category": "EMC",
+      "applies_to": "All electronic equipment susceptible to ESD",
+      "description": "Testing and measurement techniques for electrostatic discharge immunity. Defines test levels (1-4), test methods (contact discharge, air discharge), test equipment requirements. Contact discharge: ±2kV to ±8kV. Air discharge: ±2kV to ±15kV. Essential for equipment reliability.",
+      "url": "https://webstore.iec.ch/publication/4188"
+    },
+    {
+      "id": "IEC 61000-4-3",
+      "name": "IEC 61000-4-3 - Radiated RF Immunity",
+      "category": "EMC",
+      "applies_to": "Equipment in electromagnetic RF environments",
+      "description": "Radiated, radio-frequency, electromagnetic field immunity test. Frequency range 80 MHz to 6 GHz. Test levels: 1 V/m to 30 V/m. Amplitude modulation 80% at 1 kHz. Ensures equipment immunity to RF transmitters, mobile phones, wireless devices.",
+      "url": "https://webstore.iec.ch/publication/4189"
+    },
+    {
+      "id": "IEC 61000-4-4",
+      "name": "IEC 61000-4-4 - Electrical Fast Transient/Burst Immunity",
+      "category": "EMC",
+      "applies_to": "Equipment connected to AC/DC power, control, signal lines",
+      "description": "Immunity to electrical fast transients (EFT/burst) from switching transients. Test levels 0.5 kV to 4 kV. Simulates transients from relay switching, circuit breaker operation. Tests AC power, DC power, signal/control ports. Critical for industrial equipment reliability.",
+      "url": "https://webstore.iec.ch/publication/4190"
+    },
+    {
+      "id": "IEC 61000-4-5",
+      "name": "IEC 61000-4-5 - Surge Immunity",
+      "category": "EMC",
+      "applies_to": "Equipment connected to power/telecommunication lines",
+      "description": "Immunity to surges (1.2/50μs voltage, 8/20μs current waveform) caused by switching, lightning. Line-to-line: 0.5 kV to 2 kV. Line-to-earth: 0.5 kV to 4 kV. Tests AC power, DC power, signal lines. Essential for outdoor installations and lightning-prone areas.",
+      "url": "https://webstore.iec.ch/publication/4191"
+    },
+    {
+      "id": "IEC 61000-3-2",
+      "name": "IEC 61000-3-2 - Harmonic Current Emission Limits",
+      "category": "EMC",
+      "applies_to": "Equipment with input current ≤16A per phase",
+      "description": "Limits for harmonic current emissions (up to 40th harmonic). Equipment classified: Class A (balanced 3-phase), Class B (portable tools), Class C (lighting), Class D (personal computers, monitors, TVs). Prevents harmonic distortion in power supply networks.",
+      "url": "https://webstore.iec.ch/publication/4150"
+    },
+    {
+      "id": "IEC 61000-3-3",
+      "name": "IEC 61000-3-3 - Voltage Fluctuations and Flicker Limits",
+      "category": "EMC",
+      "applies_to": "Equipment with input current ≤16A per phase",
+      "description": "Limitation of voltage changes, voltage fluctuations and flicker in low-voltage supply systems. Addresses cyclic load variations causing light flicker. Pst (short-term flicker) and Plt (long-term flicker) limits. Important for lighting quality and sensitive equipment.",
+      "url": "https://webstore.iec.ch/publication/4151"
+    },
+    {
+      "id": "IEC 62133",
+      "name": "IEC 62133 Parts 1 & 2 - Rechargeable Battery Safety",
+      "category": "Product Safety",
+      "applies_to": "Lithium-ion, lithium polymer, nickel-based rechargeable batteries",
+      "description": "Safety requirements for portable sealed secondary cells and batteries. Part 1: Nickel systems. Part 2: Lithium systems. Covers cells and batteries for use in portable applications. Tests include electrical abuse, mechanical abuse, thermal abuse, forced discharge, short circuit, overcharge.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62619",
+      "name": "IEC 62619 - Industrial Battery Safety",
+      "category": "Product Safety",
+      "applies_to": "Industrial lithium-ion batteries, energy storage systems",
+      "description": "Safety requirements for secondary lithium cells and batteries for industrial applications including stationary applications. Covers battery systems >12V and >100Wh. More stringent than IEC 62133. Tests include thermal stability, overcharge, over-discharge, external short circuit, mechanical tests.",
+      "url": "https://webstore.iec.ch/publication/7299"
+    },
+    {
+      "id": "IEC 62660-1/2/3",
+      "name": "IEC 62660 Series - EV Battery Cells",
+      "category": "Automotive",
+      "applies_to": "Electric vehicle battery cells, traction battery cells",
+      "description": "Secondary lithium-ion cells for propulsion of electric road vehicles. Part 1: Performance testing. Part 2: Reliability and abuse testing. Part 3: Safety requirements. Covers high-power cells for xEVs. Includes crush test, thermal shock, nail penetration, overcharge.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 61508",
+      "name": "IEC 61508 - Functional Safety of E/E/PE Safety-Related Systems",
+      "category": "Functional Safety",
+      "applies_to": "Safety-related systems across all industries",
+      "description": "Foundation standard for functional safety of electrical/electronic/programmable electronic safety-related systems. 7 parts covering safety lifecycle, management, hardware requirements (Part 2), software requirements (Part 3). Defines Safety Integrity Levels (SIL 1-4). Basis for industry-specific standards.",
+      "url": "https://webstore.iec.ch/publication/5515"
+    },
+    {
+      "id": "IEC 61511",
+      "name": "IEC 61511 - Functional Safety: Process Industry Sector",
+      "category": "Functional Safety",
+      "applies_to": "Safety instrumented systems in process industries",
+      "description": "Functional safety standard specific to process industry (chemical, petrochemical, oil & gas, pharmaceutical). Sector implementation of IEC 61508. Covers safety lifecycle, SIS requirements, design, operation, maintenance. Defines Safety Integrity Level (SIL) requirements for protection layers.",
+      "url": "https://webstore.iec.ch/publication/5527"
+    },
+    {
+      "id": "IEC 62061",
+      "name": "IEC 62061 - Machinery Safety: Electrical Control Systems",
+      "category": "Functional Safety",
+      "applies_to": "Machinery electrical safety-related control systems",
+      "description": "Safety of machinery – Functional safety of safety-related electrical, electronic and programmable electronic control systems. Alternative to ISO 13849-1 for machinery safety. Derived from IEC 61508. Defines Safety Integrity Level (SIL) approach. Applies to safety functions on machinery.",
+      "url": "https://webstore.iec.ch/publication/6424"
+    },
+    {
+      "id": "IEC 60601-1",
+      "name": "IEC 60601-1 - Medical Electrical Equipment Safety",
+      "category": "Medical Devices",
+      "applies_to": "Medical electrical equipment and medical electrical systems",
+      "description": "General requirements for basic safety and essential performance of medical electrical equipment. Foundation standard with collateral standards (60601-1-X) and particular standards (60601-2-X). Covers electrical safety, mechanical hazards, radiation, usability engineering, risk management. Edition 3.1 includes major changes.",
+      "url": "https://webstore.iec.ch/publication/2606"
+    },
+    {
+      "id": "IEC 60601-1-2",
+      "name": "IEC 60601-1-2 - Medical Equipment EMC",
+      "category": "Medical Devices",
+      "applies_to": "Medical electrical equipment and medical electrical systems",
+      "description": "Collateral standard: Electromagnetic disturbances – Requirements and tests for medical electrical equipment and systems. Edition 4.0 (2014) increased immunity test levels, added risk management process for EMC, extended frequency ranges. Emission and immunity requirements specific to medical environment.",
+      "url": "https://webstore.iec.ch/publication/2610"
+    },
+    {
+      "id": "IEC 60601-1-6",
+      "name": "IEC 60601-1-6 - Medical Equipment Usability",
+      "category": "Medical Devices",
+      "applies_to": "Medical electrical equipment usability engineering",
+      "description": "Collateral standard: Usability. Application of usability engineering to medical electrical equipment. Usability engineering process integrated with risk management. Covers user interface design, formative evaluation, summative evaluation. Harmonized with IEC 62366-1.",
+      "url": "https://webstore.iec.ch/publication/2612"
+    },
+    {
+      "id": "IEC 60601-1-8",
+      "name": "IEC 60601-1-8 - Medical Equipment Alarms",
+      "category": "Medical Devices",
+      "applies_to": "Medical electrical equipment alarm systems",
+      "description": "Collateral standard: General requirements, tests and guidance for alarm systems in medical electrical equipment and medical electrical systems. Covers alarm signals (auditory, visual, other), alarm conditions (high, medium, low priority), alarm system design, alarm testing. Addresses alarm fatigue.",
+      "url": "https://webstore.iec.ch/publication/2614"
+    },
+    {
+      "id": "IEC 60601-2-X",
+      "name": "IEC 60601-2 Series - Particular Medical Equipment Requirements",
+      "category": "Medical Devices",
+      "applies_to": "Specific types of medical electrical equipment",
+      "description": "Particular standards for specific medical equipment types supplementing IEC 60601-1. Over 80 parts. Examples: 60601-2-2 (high frequency surgical), 60601-2-24 (infusion pumps), 60601-2-37 (ultrasound), 60601-2-47 (ambulatory ECG), 60601-2-52 (beds). Each addresses specific hazards.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 60529",
+      "name": "IEC 60529 - Degrees of Protection (IP Code)",
+      "category": "Product Safety",
+      "applies_to": "Enclosures for electrical equipment",
+      "description": "Ingress Protection (IP) rating system. First digit (0-6): protection against solid objects. Second digit (0-9): protection against liquids. Common codes: IP20 (touch-proof), IP44 (splash-proof), IP65 (dust-tight, water-jet), IP67 (temporary immersion), IP68 (continuous immersion). Third edition includes IPX9 (high pressure, high temperature).",
+      "url": "https://webstore.iec.ch/publication/2452"
+    },
+    {
+      "id": "IEC 60079 Series",
+      "name": "IEC 60079 - Explosive Atmospheres Equipment",
+      "category": "Hazardous Areas",
+      "applies_to": "Electrical equipment for explosive gas atmospheres",
+      "description": "Comprehensive series for equipment intended for use in explosive atmospheres. Part 0: General requirements. Protection methods: Ex d (flameproof), Ex e (increased safety), Ex i (intrinsic safety), Ex p (pressurization), Ex m (encapsulation), Ex o (oil immersion). Essential for ATEX/IECEx certification.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 60079-0",
+      "name": "IEC 60079-0 - Explosive Atmospheres: General Requirements",
+      "category": "Hazardous Areas",
+      "applies_to": "All Ex equipment for explosive gas atmospheres",
+      "description": "General requirements for construction, testing and marking of electrical equipment intended for use in explosive gas atmospheres. Defines Equipment Protection Levels (EPL): Ga (very high), Gb (high), Gc (enhanced). Temperature classification (T1-T6). Gas groups (IIA, IIB, IIC).",
+      "url": "https://webstore.iec.ch/publication/635"
+    },
+    {
+      "id": "IEC 60079-10-1",
+      "name": "IEC 60079-10-1 - Explosive Atmospheres: Area Classification for Gases",
+      "category": "Hazardous Areas",
+      "applies_to": "Classification of areas with explosive gas atmospheres",
+      "description": "Classification of areas where explosive gas atmospheres may occur. Defines Zone 0 (continuous), Zone 1 (likely), Zone 2 (unlikely). Methodology for extent determination considering release characteristics, ventilation, density. Critical for proper Ex equipment selection and installation.",
+      "url": "https://webstore.iec.ch/publication/639"
+    },
+    {
+      "id": "IEC 61215",
+      "name": "IEC 61215 - Crystalline Silicon PV Modules",
+      "category": "Renewable Energy",
+      "applies_to": "Crystalline silicon photovoltaic modules",
+      "description": "Terrestrial photovoltaic (PV) modules – Design qualification and type approval. Part 1: Test requirements. Part 2: Test procedures. Covers visual inspection, maximum power determination, insulation test, temperature coefficients, outdoor exposure, hot-spot endurance, UV test, thermal cycling, humidity-freeze, damp heat, mechanical load, hail test.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 61730",
+      "name": "IEC 61730 - PV Module Safety Qualification",
+      "category": "Renewable Energy",
+      "applies_to": "Photovoltaic modules safety construction",
+      "description": "Photovoltaic (PV) module safety qualification. Part 1: Requirements for construction. Part 2: Requirements for testing. Covers electrical safety, fire safety, mechanical safety. Module classification (Class A, B, C) based on accessibility and voltage. Essential for PV module certification.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62109-1/2",
+      "name": "IEC 62109 - PV Inverter Safety",
+      "category": "Renewable Energy",
+      "applies_to": "Photovoltaic inverters, power converters",
+      "description": "Safety of power converters for use in photovoltaic power systems. Part 1: General requirements. Part 2: Particular requirements for inverters. Covers electrical safety, fire hazards, mechanical hazards. Addresses DC isolation, ground fault protection, arc fault detection, anti-islanding.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 61400-1",
+      "name": "IEC 61400-1 - Wind Turbine Design Requirements",
+      "category": "Renewable Energy",
+      "applies_to": "Wind turbines, wind power generation systems",
+      "description": "Wind energy generation systems – Part 1: Design requirements. Covers structural, mechanical, electrical, control systems. Wind turbine classes (I, II, III, IV) based on wind conditions. Loads analysis, safety factors, design life (20+ years). Foundation for wind turbine certification.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62040-1",
+      "name": "IEC 62040-1 - UPS Safety Requirements",
+      "category": "Product Safety",
+      "applies_to": "Uninterruptible power systems (UPS)",
+      "description": "Safety requirements for UPS used in operator accessible areas or restricted access locations. Covers electrical hazards, fire hazards, mechanical hazards, energy hazards. Battery safety requirements. Output terminals classification. Essential for UPS certification.",
+      "url": "https://webstore.iec.ch/publication/6494"
+    },
+    {
+      "id": "IEC 62040-2",
+      "name": "IEC 62040-2 - UPS Electromagnetic Compatibility",
+      "category": "EMC",
+      "applies_to": "Uninterruptible power systems (UPS)",
+      "description": "Electromagnetic compatibility (EMC) requirements for UPS systems. Emission limits for conducted and radiated disturbances. Immunity to electrical disturbances. Special considerations for bypass mode, battery mode, normal mode. Ensures UPS doesn't interfere with connected equipment.",
+      "url": "https://webstore.iec.ch/publication/6495"
+    },
+    {
+      "id": "IEC 61851",
+      "name": "IEC 61851 - EV Charging Systems",
+      "category": "Automotive",
+      "applies_to": "Electric vehicle charging systems, EVSE",
+      "description": "Electric vehicle conductive charging system. Part 1: General requirements. Part 21: AC requirements. Part 23: DC requirements. Part 24: Control communication. Defines charging modes (1-4), connector types, safety requirements, communication protocols. Basis for EV charging infrastructure.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62196",
+      "name": "IEC 62196 - EV Charging Connectors",
+      "category": "Automotive",
+      "applies_to": "EV charging plugs, socket-outlets, vehicle connectors",
+      "description": "Plugs, socket-outlets, vehicle connectors and vehicle inlets – Conductive charging of electric vehicles. Part 1: General requirements. Part 2: AC pin and contact-tube accessories. Part 3: DC and AC/DC pin and contact-tube vehicle couplers. Defines Type 1 (SAE J1772), Type 2 (Mennekes), CCS.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62368-3",
+      "name": "IEC 62368-3 - DC Power Transfer for ICT Equipment",
+      "category": "Product Safety",
+      "applies_to": "DC-powered ICT equipment, USB-PD systems, PoE systems",
+      "description": "Safety aspects for DC power transfer through communication cables and ports. Covers USB Power Delivery, Power over Ethernet (PoE), and other DC transfer systems. Maximum voltages, current limits, safeguards. Ensures safe power transfer for ICT equipment without separate power supplies.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 60598-1",
+      "name": "IEC 60598-1 - Luminaire Safety",
+      "category": "Product Safety",
+      "applies_to": "Lighting fixtures, luminaires, lamps",
+      "description": "General requirements for luminaires. Electrical, thermal, photobiological, mechanical safety. Covers construction, external and internal wiring, terminals, provisions for earthing, insulation requirements, thermal tests, fault conditions, IP classification. Foundation for luminaire safety.",
+      "url": "https://webstore.iec.ch/publication/2526"
+    },
+    {
+      "id": "IEC 60598-2-X",
+      "name": "IEC 60598-2 Series - Particular Luminaire Requirements",
+      "category": "Product Safety",
+      "applies_to": "Specific luminaire types",
+      "description": "Particular requirements supplementing IEC 60598-1. Over 30 parts. Examples: Part 2-1 (fixed general purpose), Part 2-2 (recessed), Part 2-3 (road lighting), Part 2-4 (portable), Part 2-22 (emergency lighting). Each addresses specific luminaire type hazards and requirements.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62031",
+      "name": "IEC 62031 - LED Modules for General Lighting",
+      "category": "Product Safety",
+      "applies_to": "LED modules, LED light engines, LED arrays",
+      "description": "LED modules for general lighting – Safety specifications. Covers electrical, thermal, photobiological safety of LED modules. Thermal management, photobiological risk groups, marking requirements. Self-contained LED modules and semi-integrated modules. Essential for LED lighting certification.",
+      "url": "https://webstore.iec.ch/publication/6355"
+    },
+    {
+      "id": "IEC 62471",
+      "name": "IEC 62471 - Photobiological Safety of Lamps and Lamp Systems",
+      "category": "Product Safety",
+      "applies_to": "Lamps, LED lighting, light sources",
+      "description": "Photobiological safety of lamps and lamp systems including LEDs. Risk groups: Exempt, RG1 (low risk), RG2 (moderate risk), RG3 (high risk). Addresses blue light hazard, UV hazard, infrared hazard, thermal hazard to skin. Measurement and classification procedures.",
+      "url": "https://webstore.iec.ch/publication/7076"
+    },
+    {
+      "id": "IEC 61010-1",
+      "name": "IEC 61010-1 - Measurement, Control, Laboratory Equipment Safety",
+      "category": "Product Safety",
+      "applies_to": "Test equipment, measurement instruments, laboratory equipment",
+      "description": "Safety requirements for electrical equipment for measurement, control, and laboratory use. Part 1: General requirements. Covers equipment for professional and domestic use. Measurement categories (CAT I-IV), overvoltage protection, working voltage, pollution degree, insulation coordination. Critical for test equipment.",
+      "url": "https://webstore.iec.ch/publication/4277"
+    },
+    {
+      "id": "IEC 61010-2-X",
+      "name": "IEC 61010-2 Series - Particular Requirements for Specific Equipment",
+      "category": "Product Safety",
+      "applies_to": "Specific measurement/test equipment types",
+      "description": "Particular requirements supplementing IEC 61010-1. Examples: Part 2-030 (oscilloscopes), Part 2-031 (handheld multimeters), Part 2-033 (current clamps), Part 2-101 (in vitro diagnostic equipment). Each addresses specific hazards and measurement categories.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 60950-22",
+      "name": "IEC 60950-22 - Outdoor IT Equipment",
+      "category": "Product Safety",
+      "applies_to": "Outdoor IT equipment, telecommunications infrastructure",
+      "description": "Equipment to be installed outdoors. Supplementary requirements to IEC 60950-1 for outdoor locations. Covers temperature extremes, solar radiation, precipitation, wind, ice, seismic, dust, corrosion, animals/insects, lightning, vandalism. Essential for telecom cabinets, outdoor installations.",
+      "url": "https://webstore.iec.ch/publication/3998"
+    },
+    {
+      "id": "IEC 62368-2",
+      "name": "IEC 62368-2 - Outdoor AV/ICT Equipment (Under Development)",
+      "category": "Product Safety",
+      "applies_to": "Outdoor audio/video, ICT equipment",
+      "description": "Safety requirements for audio/video, information and communication technology equipment to be installed in outdoor locations. Will replace IEC 60950-22 for outdoor AV/ICT equipment. Covers environmental hazards: temperature, precipitation, wind, seismic, corrosion, lightning.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 60950-23",
+      "name": "IEC 60950-23 - Large Data Storage Equipment",
+      "category": "Product Safety",
+      "applies_to": "Data storage equipment, storage arrays, SAN/NAS systems",
+      "description": "Large data storage equipment. Supplementary requirements to IEC 60950-1 for equipment with high power, large dimensions, heavy weight. Covers installation, serviceable parts, power distribution, thermal management, mechanical hazards. Applicable to enterprise storage systems.",
+      "url": "https://webstore.iec.ch/publication/3999"
+    },
+    {
+      "id": "IEC 62368-4",
+      "name": "IEC 62368-4 - AV/ICT Equipment Data Centers (Under Development)",
+      "category": "Product Safety",
+      "applies_to": "Data center equipment, servers, networking equipment",
+      "description": "Safety requirements for audio/video, information and communication technology equipment installed in data centers and large data storage applications. Will replace IEC 60950-23. Addresses high-power density, cooling, power distribution, installation, maintenance hazards.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62368-5",
+      "name": "IEC 62368-5 - Wireless Power Transfer (Under Development)",
+      "category": "Product Safety",
+      "applies_to": "Wireless charging systems, inductive power transfer",
+      "description": "Safety requirements for wireless power transfer for AV/ICT equipment. Covers inductive coupling, resonant coupling, RF power transfer. Frequency ranges, power levels, safety distances, EMF exposure limits, foreign object detection, thermal management.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62304",
+      "name": "IEC 62304 - Medical Device Software Lifecycle",
+      "category": "Medical Devices",
+      "applies_to": "Medical device software, software as medical device (SaMD)",
+      "description": "Medical device software – Software life cycle processes. Defines software safety classes (A, B, C). Covers software development planning, requirements analysis, architectural design, detailed design, unit implementation and verification, integration and integration testing, system testing, software release, maintenance.",
+      "url": "https://webstore.iec.ch/publication/6792"
+    },
+    {
+      "id": "IEC 62366-1",
+      "name": "IEC 62366-1 - Medical Device Usability Engineering",
+      "category": "Medical Devices",
+      "applies_to": "Medical device user interfaces",
+      "description": "Application of usability engineering to medical devices. Usability engineering process integrated with risk management per ISO 14971. Covers user interface specification, formative evaluation, summative evaluation, usability validation. Prevents use errors. Essential for medical device approvals.",
+      "url": "https://webstore.iec.ch/publication/6879"
+    },
+    {
+      "id": "IEC 60601-1-11",
+      "name": "IEC 60601-1-11 - Medical Equipment for Home Healthcare",
+      "category": "Medical Devices",
+      "applies_to": "Home healthcare medical equipment",
+      "description": "Collateral standard: Requirements for medical electrical equipment and medical electrical systems used in the home healthcare environment. Addresses lay operator use, home environment hazards, simplified instructions, electromagnetic environment, reliability, usability for non-professionals.",
+      "url": "https://webstore.iec.ch/publication/2616"
+    },
+    {
+      "id": "IEC 60601-1-12",
+      "name": "IEC 60601-1-12 - Medical Equipment Cybersecurity (Under Development)",
+      "category": "Medical Devices",
+      "applies_to": "Networked medical devices, connected medical equipment",
+      "description": "Collateral standard: Requirements for medical electrical equipment and medical electrical systems related to cybersecurity. Under development. Addresses security risk management, security controls, vulnerability management, incident response, software updates, secure development lifecycle.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62443 Series",
+      "name": "IEC 62443 - Industrial Automation and Control Systems Security",
+      "category": "Cybersecurity",
+      "applies_to": "Industrial control systems, SCADA, DCS, PLC",
+      "description": "Comprehensive cybersecurity standard for industrial automation and control systems (IACS). Multiple parts: General (62443-1), Policies and procedures (62443-2), System (62443-3), Component (62443-4). Defines Security Levels (SL 1-4). Risk-based approach. Critical infrastructure protection.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62443-3-3",
+      "name": "IEC 62443-3-3 - IACS System Security Requirements",
+      "category": "Cybersecurity",
+      "applies_to": "Industrial automation control system installations",
+      "description": "System security requirements and security levels for IACS. Defines 7 foundational requirements (FR): Identification and authentication, Use control, System integrity, Data confidentiality, Restricted data flow, Timely response, Resource availability. Each FR has requirements for SL 1-4.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62443-4-1",
+      "name": "IEC 62443-4-1 - Secure Product Development Lifecycle",
+      "category": "Cybersecurity",
+      "applies_to": "IACS product manufacturers",
+      "description": "Secure product development lifecycle requirements for IACS products. Covers security development lifecycle, security requirements, security architecture, secure implementation, security verification and validation, defect management, patch management, end of life.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 62443-4-2",
+      "name": "IEC 62443-4-2 - IACS Component Technical Security Requirements",
+      "category": "Cybersecurity",
+      "applies_to": "IACS components (controllers, HMIs, field devices)",
+      "description": "Technical security requirements for IACS components. Defines security levels (SL-C 1-4) for components. Same 7 foundational requirements as 62443-3-3 but applied at component level. Covers identification/authentication, use control, system integrity, data confidentiality.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 60034",
+      "name": "IEC 60034 Series - Rotating Electrical Machines",
+      "category": "Industrial Equipment",
+      "applies_to": "Electric motors, generators, rotating machines",
+      "description": "Comprehensive standard series for rotating electrical machines. Multiple parts covering ratings, testing, construction, cooling, terminal markings, mounting arrangements, efficiency classes (IE1-IE5), vibration, noise. Essential for motor selection and specification.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 61439",
+      "name": "IEC 61439 Series - Low-Voltage Switchgear and Controlgear Assemblies",
+      "category": "Electrical Distribution",
+      "applies_to": "Switchboards, panelboards, motor control centers, distribution boards",
+      "description": "Low-voltage switchgear and controlgear assemblies. Part 1: General rules. Part 2: Power switchgear and controlgear assemblies (PSC). Part 3: Distribution boards. Covers type-tested and partially type-tested assemblies (PTTA). Verification methods, temperature rise, short-circuit withstand.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 60947",
+      "name": "IEC 60947 Series - Low-Voltage Switchgear and Controlgear",
+      "category": "Electrical Distribution",
+      "applies_to": "Circuit breakers, contactors, switches, relays",
+      "description": "Low-voltage switchgear and controlgear. Multiple parts: Part 1 (general rules), Part 2 (circuit-breakers), Part 3 (switches), Part 4-1 (contactors and motor-starters), Part 5 (control circuit devices). Covers electrical, mechanical, thermal endurance, short-circuit performance.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "IEC 60364",
+      "name": "IEC 60364 Series - Electrical Installations of Buildings",
+      "category": "Electrical Installation",
+      "applies_to": "Building electrical installations, wiring systems",
+      "description": "Low-voltage electrical installations. Multiple parts covering fundamental principles, protection for safety, selection and erection of electrical equipment, verification, special installations. Foundation for national wiring regulations. Covers earthing, protection against electric shock, overcurrent protection.",
+      "url": "https://webstore.iec.ch/publication/"
+    }
+  ]
+}

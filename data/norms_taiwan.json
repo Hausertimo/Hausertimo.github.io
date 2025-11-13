@@ -1,0 +1,413 @@
+{
+  "_comment": "Taiwan compliance norms and standards database. Includes BSMI, NCC, CNS standards, TFDA and other Taiwan regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "BSMI Certification",
+      "name": "Bureau of Standards, Metrology and Inspection - Commodity Inspection",
+      "category": "Product Safety",
+      "applies_to": "Electrical and electronic products, IT equipment, household appliances",
+      "description": "Mandatory commodity inspection for products on BSMI list. Registration, Declaration of Conformity, or Type Approval depending on product category. BSMI mark required on product. Covers electronics, IT equipment, household appliances, toys.",
+      "url": "https://www.bsmi.gov.tw/wSite/mp?mp=ebs"
+    },
+    {
+      "id": "BSMI RPC",
+      "name": "Registration of Product Certification",
+      "category": "Product Safety",
+      "applies_to": "High-risk products requiring registration",
+      "description": "Most stringent BSMI certification scheme. Factory inspection required. Ongoing surveillance. Third-party testing at BSMI-recognized labs. Applies to products with higher safety risks. RPC certificate and BSMI mark required.",
+      "url": "https://www.bsmi.gov.tw/wSite/mp?mp=ebs"
+    },
+    {
+      "id": "BSMI DoC",
+      "name": "Declaration of Conformity",
+      "category": "Product Safety",
+      "applies_to": "Medium-risk products",
+      "description": "Self-declaration scheme. Manufacturer/importer declares compliance with CNS standards. Testing at accredited labs required. No factory inspection. Technical file must be maintained. BSMI mark still required on product.",
+      "url": "https://www.bsmi.gov.tw/wSite/mp?mp=ebs"
+    },
+    {
+      "id": "CNS 14336-1",
+      "name": "Audio/Video, ICT Equipment - Safety",
+      "category": "CNS Standards",
+      "applies_to": "IT, AV, communication equipment",
+      "description": "Taiwan adoption of IEC 62368-1. Hazard-based safety standard for ICT equipment. Required for BSMI certification of IT products. Replaces CNS 14336 (IEC 60950-1).",
+      "url": "https://www.cnsonline.com.tw/"
+    },
+    {
+      "id": "CNS 60335-1",
+      "name": "Household Appliances - Safety - General Requirements",
+      "category": "CNS Standards",
+      "applies_to": "Household electrical appliances",
+      "description": "Taiwan adoption of IEC 60335-1. General safety requirements for household appliances. Required for BSMI certification. Part of comprehensive CNS 60335 series.",
+      "url": "https://www.cnsonline.com.tw/"
+    },
+    {
+      "id": "CNS 15364",
+      "name": "Lithium Batteries - Safety Requirements",
+      "category": "CNS Standards",
+      "applies_to": "Lithium-ion and lithium polymer batteries",
+      "description": "Taiwan standard for lithium battery safety. Based on IEC 62133. Required for BSMI certification of battery products and power banks.",
+      "url": "https://www.cnsonline.com.tw/"
+    },
+    {
+      "id": "NCC Type Approval",
+      "name": "National Communications Commission - Telecom Equipment Type Approval",
+      "category": "Telecommunications & Radio",
+      "applies_to": "All radio transmitting equipment and telecommunications equipment",
+      "description": "Mandatory type approval for radio and telecom equipment. Testing at NCC-accredited labs. Type approval certificate and NCC marking required. Covers WiFi, Bluetooth, cellular, all radio devices.",
+      "url": "https://www.ncc.gov.tw/english/"
+    },
+    {
+      "id": "LP0002",
+      "name": "Low Power Radio Frequency Equipment Technical Regulations",
+      "category": "Telecommunications & Radio",
+      "applies_to": "Low power radio equipment (WiFi, Bluetooth, ISM devices)",
+      "description": "Technical requirements for low power radio devices. Part of NCC type approval. Covers 2.4GHz, 5GHz, and other ISM bands. Power limits, frequency stability, spurious emissions.",
+      "url": "https://www.ncc.gov.tw/english/"
+    },
+    {
+      "id": "Taiwan SAR",
+      "name": "Specific Absorption Rate Requirements",
+      "category": "Telecommunications & Radio",
+      "applies_to": "Mobile phones and body-worn wireless devices",
+      "description": "SAR limit: 2.0 W/kg averaged over 10g of tissue. Testing required for handheld and body-worn devices. Part of NCC type approval. Declaration required.",
+      "url": "https://www.ncc.gov.tw/english/"
+    },
+    {
+      "id": "CNS 13438",
+      "name": "EMC for Information Technology Equipment",
+      "category": "CNS Standards",
+      "applies_to": "IT equipment",
+      "description": "Taiwan EMC standard for IT equipment. Based on CISPR 22/32. Class A and Class B limits. Required for BSMI EMC compliance.",
+      "url": "https://www.cnsonline.com.tw/"
+    },
+    {
+      "id": "Energy Label Taiwan",
+      "name": "Energy Efficiency Labeling Program",
+      "category": "Energy Efficiency",
+      "applies_to": "Appliances, electronics, lighting",
+      "description": "Mandatory energy efficiency labeling. 5-grade system (Grade 1 most efficient). Required for products in mandatory category (refrigerators, air conditioners, etc.). BOE (Bureau of Energy) administered.",
+      "url": "https://www.energylabel.org.tw/"
+    },
+    {
+      "id": "MEPS Taiwan",
+      "name": "Minimum Energy Performance Standards",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-consuming products",
+      "description": "Mandatory minimum energy efficiency standards. Products must meet MEPS before import or sale. Various standards for different product categories. BOE enforcement.",
+      "url": "https://www.energylabel.org.tw/"
+    },
+    {
+      "id": "TFDA Medical Device",
+      "name": "Taiwan Food and Drug Administration - Medical Device Registration",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including software",
+      "description": "Mandatory registration for medical devices. Classification I, II, III based on risk. QMS requirements. Clinical data may be required. Pre-market approval for Classes II and III. Manufacturing license for domestic production.",
+      "url": "https://www.fda.gov.tw/ENG/"
+    },
+    {
+      "id": "Taiwan GMP Medical",
+      "name": "Good Manufacturing Practice for Medical Devices",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Taiwan GMP requirements for medical devices. Based on ISO 13485. TFDA inspection and certification. Required for device registration and manufacturing license.",
+      "url": "https://www.fda.gov.tw/ENG/"
+    },
+    {
+      "id": "VSCC Vehicle Safety",
+      "name": "Vehicle Safety Certification Center - Type Approval",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and components",
+      "description": "Vehicle type approval requirements. Safety standards, emissions. VSCC (under MOTC) conducts testing or recognizes test reports. Based on international standards with Taiwan requirements.",
+      "url": "https://www.vscc.org.tw/"
+    },
+    {
+      "id": "Taiwan Emission Standards",
+      "name": "Vehicle Emission Standards",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles",
+      "description": "Vehicle emission limits. Phase 6 and Phase 7 standards (equivalent to Euro 5/6). Type approval testing. EPA Taiwan oversight. OBD requirements.",
+      "url": "https://www.epa.gov.tw/"
+    },
+    {
+      "id": "Toy Safety Taiwan",
+      "name": "BSMI Toy Safety Certification",
+      "category": "Children's Products",
+      "applies_to": "Toys for children",
+      "description": "Mandatory BSMI certification for toys. Safety requirements based on CNS 4797 and ISO 8124. Mechanical, chemical, flammability, electrical hazards. Age grading. Testing at accredited labs.",
+      "url": "https://www.bsmi.gov.tw/wSite/mp?mp=ebs"
+    },
+    {
+      "id": "CNS 4797",
+      "name": "Safety of Toys",
+      "category": "Children's Products",
+      "applies_to": "Toys",
+      "description": "Taiwan toy safety standard. Based on ISO 8124. Covers mechanical properties, flammability, migration of elements. Used for BSMI toy certification.",
+      "url": "https://www.cnsonline.com.tw/"
+    },
+    {
+      "id": "Taiwan RoHS",
+      "name": "Restriction of Hazardous Substances",
+      "category": "Hazardous Substances",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "Restriction on hazardous substances in EEE. Similar to EU RoHS. Limits for lead, mercury, cadmium, hexavalent chromium, PBBs, PBDEs. Voluntary marking scheme. Increasingly enforced.",
+      "url": "https://www.epa.gov.tw/"
+    },
+    {
+      "id": "Taiwan WEEE",
+      "name": "Waste Management Act - E-Waste Recycling",
+      "category": "Environmental",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "Producer responsibility for e-waste. Recycling fee collection system. Registration and reporting requirements. Four-in-one recycling program. EPA Taiwan enforcement.",
+      "url": "https://www.epa.gov.tw/"
+    },
+    {
+      "id": "Recycling Fee",
+      "name": "Recycling Management Fund Fee",
+      "category": "Environmental",
+      "applies_to": "Products subject to recycling fees (EEE, batteries, vehicles, containers)",
+      "description": "Mandatory recycling fees for designated products. Fee paid by manufacturers/importers. Supports recycling infrastructure. Different rates for different product categories. EPA collection.",
+      "url": "https://www.epa.gov.tw/"
+    },
+    {
+      "id": "Food Contact Taiwan",
+      "name": "Food Sanitation Act - Food Contact Materials",
+      "category": "Food Safety",
+      "applies_to": "Materials in contact with food",
+      "description": "Safety requirements for food contact materials. Standards for plastics, metals, ceramics, paper. Migration limits. Positive lists. TFDA enforcement.",
+      "url": "https://www.fda.gov.tw/ENG/"
+    },
+    {
+      "id": "Personal Data Protection Act",
+      "name": "PDPA - Personal Data Protection",
+      "category": "Data Protection",
+      "applies_to": "Organizations processing personal data",
+      "description": "Taiwan data protection law. Consent requirements, data subject rights, security measures, breach notification. Similar principles to GDPR. Applies to connected devices and services.",
+      "url": "https://www.ndc.gov.tw/en/"
+    },
+    {
+      "id": "Cybersecurity Management Act",
+      "name": "Cybersecurity Requirements for Critical Infrastructure",
+      "category": "Cybersecurity",
+      "applies_to": "Critical infrastructure operators and government systems",
+      "description": "Cybersecurity requirements for critical infrastructure. Security audits, incident reporting, vulnerability management. Affects network equipment, security products. Evolving requirements.",
+      "url": "https://nicst.ey.gov.tw/en"
+    },
+    {
+      "id": "Consumer Protection Law",
+      "name": "Consumer Protection Act",
+      "category": "Consumer Protection",
+      "applies_to": "All consumer products and services",
+      "description": "Consumer rights framework. Product safety, information, recalls, liability. Consumer dispute resolution. CPC (Consumer Protection Committee) enforcement. Product testing programs.",
+      "url": "https://www.ey.gov.tw/cpc/en"
+    },
+    {
+      "id": "Product Liability",
+      "name": "Product Liability Provisions",
+      "category": "Consumer Protection",
+      "applies_to": "All products",
+      "description": "Strict liability for defective products. No-fault liability under Consumer Protection Act. Manufacturers, importers, sellers can be liable. Product recall authority.",
+      "url": "https://www.ey.gov.tw/cpc/en"
+    },
+    {
+      "id": "Commodity Labeling Act",
+      "name": "Commodity Labeling Requirements",
+      "category": "Labeling",
+      "applies_to": "Consumer commodities",
+      "description": "Mandatory labeling for commodities. Product name, manufacturer/importer information, country of origin, contents, warnings. Chinese language required. BSMI enforcement.",
+      "url": "https://www.bsmi.gov.tw/wSite/mp?mp=ebs"
+    },
+    {
+      "id": "Weights and Measures Act",
+      "name": "Legal Metrology Requirements",
+      "category": "Metrology",
+      "applies_to": "Prepackaged commodities, measuring instruments",
+      "description": "Net content declaration requirements. Tolerances. Verification of measuring instruments used in trade. BSMI enforcement and inspection.",
+      "url": "https://www.bsmi.gov.tw/wSite/mp?mp=ebs"
+    },
+    {
+      "id": "Customs Classification",
+      "name": "Taiwan Customs Import Classification",
+      "category": "Import/Export",
+      "applies_to": "All imported products",
+      "description": "HS-based commodity classification. Determines duties, regulatory requirements. Accurate classification required for customs clearance. BSMI, NCC, TFDA clearance for regulated products.",
+      "url": "https://web.customs.gov.tw/singlewindow/en/"
+    },
+    {
+      "id": "Import Registration",
+      "name": "Importer Registration Requirements",
+      "category": "Import/Export",
+      "applies_to": "Companies importing regulated products",
+      "description": "Company registration required for importing. Authorized agent for foreign companies. Responsible for product compliance, certifications, documentation. BSMI/NCC certificate holder registration.",
+      "url": "https://web.customs.gov.tw/singlewindow/en/"
+    },
+    {
+      "id": "Trademark Law",
+      "name": "Trademark Act - Brand Protection",
+      "category": "Intellectual Property",
+      "applies_to": "Product branding and marking",
+      "description": "Trademark registration and protection. TIPO (Taiwan Intellectual Property Office) administration. Prevents unauthorized use. Enforcement against counterfeits. Important for brand protection.",
+      "url": "https://www.tipo.gov.tw/en/"
+    },
+    {
+      "id": "Patent Law",
+      "name": "Patent Act - Innovation Protection",
+      "category": "Intellectual Property",
+      "applies_to": "Innovative products and technologies",
+      "description": "Patent protection for inventions, utility models, designs. TIPO registration. Affects product design, technology licensing. 20-year protection for inventions.",
+      "url": "https://www.tipo.gov.tw/en/"
+    },
+    {
+      "id": "Chemical Registration",
+      "name": "Toxic and Concerned Chemical Substances Control Act",
+      "category": "Chemical Substances",
+      "applies_to": "Chemical substances and products containing chemicals",
+      "description": "Registration and control of toxic chemicals. Notification for new substances. Restrictions on specific chemicals. EPA Taiwan enforcement. Affects product materials and composition.",
+      "url": "https://www.epa.gov.tw/"
+    },
+    {
+      "id": "Air Pollution Act",
+      "name": "Air Pollution Control - VOC Limits",
+      "category": "Environmental",
+      "applies_to": "Products emitting volatile organic compounds",
+      "description": "VOC limits for certain products (paints, coatings, adhesives, cleaning products). Environmental protection requirements. EPA enforcement.",
+      "url": "https://www.epa.gov.tw/"
+    },
+    {
+      "id": "Green Mark",
+      "name": "Taiwan Green Mark Eco-Label",
+      "category": "Eco-Labels",
+      "applies_to": "Environmentally friendly products (voluntary)",
+      "description": "Voluntary environmental labeling program. Type I eco-label (ISO 14024). Criteria for various product categories. EPA Taiwan certification. Market preference and government procurement advantage.",
+      "url": "https://greenliving.epa.gov.tw/newPublic/en"
+    },
+    {
+      "id": "Energy Star Taiwan",
+      "name": "Energy Star Certification (Taiwan Program)",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-efficient products (voluntary)",
+      "description": "Voluntary energy efficiency certification. Taiwan adaptation of US Energy Star. Market differentiation for efficient products. BOE recognition.",
+      "url": "https://www.energylabel.org.tw/"
+    },
+    {
+      "id": "Carbon Footprint Label",
+      "name": "Product Carbon Footprint Labeling",
+      "category": "Eco-Labels",
+      "applies_to": "Products with carbon footprint quantification (voluntary)",
+      "description": "Voluntary carbon footprint labeling. Quantifies product lifecycle carbon emissions. EPA Taiwan program. Increasing market relevance for sustainability.",
+      "url": "https://www.epa.gov.tw/"
+    },
+    {
+      "id": "Occupational Safety",
+      "name": "Occupational Safety and Health Act",
+      "category": "Workplace Safety",
+      "applies_to": "Equipment used in workplaces",
+      "description": "Workplace safety requirements. Affects machinery, electrical equipment, PPE. MOL (Ministry of Labor) enforcement. Standards for various workplace hazards.",
+      "url": "https://www.mol.gov.tw/english/"
+    },
+    {
+      "id": "PPE Certification Taiwan",
+      "name": "Personal Protective Equipment Standards",
+      "category": "Workplace Safety",
+      "applies_to": "Personal protective equipment",
+      "description": "CNS standards for PPE. Safety helmets, gloves, goggles, respirators. BSMI certification for some PPE categories. MOL requirements for workplace use.",
+      "url": "https://www.bsmi.gov.tw/wSite/mp?mp=ebs"
+    },
+    {
+      "id": "Building Code",
+      "name": "Building Technical Regulations",
+      "category": "Construction",
+      "applies_to": "Building products and systems",
+      "description": "Building safety and construction standards. Affects electrical systems, fire safety, structural materials. Local government enforcement. Product certifications often required.",
+      "url": "https://www.cpami.gov.tw/"
+    },
+    {
+      "id": "Fire Safety",
+      "name": "Fire Services Act - Fire Safety Equipment",
+      "category": "Fire Safety",
+      "applies_to": "Fire safety equipment and building fire protection",
+      "description": "Fire safety requirements for buildings and equipment. Fire detection, suppression, emergency lighting. NFA (National Fire Agency) standards and approval.",
+      "url": "https://www.nfa.gov.tw/"
+    },
+    {
+      "id": "Pharmaceutical Affairs Act",
+      "name": "Pharmaceutical and Cosmetic Regulations",
+      "category": "Health Products",
+      "applies_to": "Pharmaceuticals, cosmetics, health products",
+      "description": "Registration and safety requirements for drugs and cosmetics. TFDA pre-market approval. GMP requirements. Labeling and advertising regulations.",
+      "url": "https://www.fda.gov.tw/ENG/"
+    },
+    {
+      "id": "Health Food Act",
+      "name": "Health Food Regulation",
+      "category": "Health Products",
+      "applies_to": "Health foods and supplements",
+      "description": "Registration required for health foods (functional foods). Health claim substantiation. TFDA approval. Labeling requirements. Distinguishes from general food and pharmaceutical drugs.",
+      "url": "https://www.fda.gov.tw/ENG/"
+    },
+    {
+      "id": "Telecommunications Act",
+      "name": "Telecommunications Business Law",
+      "category": "Telecommunications",
+      "applies_to": "Telecommunications services and equipment",
+      "description": "Framework for telecom regulation. NCC authority. Service licensing, technical standards, consumer protection. Affects telecom equipment and services.",
+      "url": "https://www.ncc.gov.tw/english/"
+    },
+    {
+      "id": "Fair Trade Act",
+      "name": "Fair Trade Law - Consumer Protection",
+      "category": "Consumer Protection",
+      "applies_to": "Product advertising and marketing",
+      "description": "Prohibits unfair competition and deceptive practices. False advertising restrictions. FTC (Fair Trade Commission) enforcement. Affects product claims and marketing.",
+      "url": "https://www.ftc.gov.tw/internet/english/"
+    },
+    {
+      "id": "CNS 12681",
+      "name": "Electromagnetic Compatibility - General Requirements",
+      "category": "CNS Standards",
+      "applies_to": "Electronic equipment (EMC)",
+      "description": "General EMC requirements for electronic equipment. Emission and immunity. Based on international standards. Used for BSMI EMC compliance.",
+      "url": "https://www.cnsonline.com.tw/"
+    },
+    {
+      "id": "CNS 14336 (Legacy)",
+      "name": "Information Technology Equipment - Safety (IEC 60950-1)",
+      "category": "CNS Standards",
+      "applies_to": "IT equipment (being replaced)",
+      "description": "Legacy safety standard for IT equipment. Being replaced by CNS 14336-1 (IEC 62368-1). Transition period. May still be valid for existing certifications.",
+      "url": "https://www.cnsonline.com.tw/"
+    },
+    {
+      "id": "TAF Accreditation",
+      "name": "Taiwan Accreditation Foundation",
+      "category": "Conformity Assessment",
+      "applies_to": "Testing labs, certification bodies, inspection bodies",
+      "description": "National accreditation body. Accredits labs and certification bodies for BSMI/NCC testing and certification. ISO/IEC 17025, 17065, 17020 compliance. TAF accreditation widely required.",
+      "url": "https://www.taftw.org.tw/en/"
+    },
+    {
+      "id": "CNS ISO 9001",
+      "name": "Quality Management Systems (Taiwan Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing quality management",
+      "description": "Taiwan adoption of ISO 9001. Quality management system certification. TAF accredits certification bodies. Important for supplier qualification.",
+      "url": "https://www.cnsonline.com.tw/"
+    },
+    {
+      "id": "CNS ISO 14001",
+      "name": "Environmental Management Systems (Taiwan Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing environmental management",
+      "description": "Taiwan adoption of ISO 14001. Environmental management system certification. Increasingly required for suppliers to major Taiwan corporations.",
+      "url": "https://www.cnsonline.com.tw/"
+    },
+    {
+      "id": "CNS ISO/IEC 27001",
+      "name": "Information Security Management Systems (Taiwan Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations managing information security",
+      "description": "Taiwan adoption of ISO/IEC 27001. Information security management certification. Important for IT products, services, and government contracts.",
+      "url": "https://www.cnsonline.com.tw/"
+    }
+  ]
+}
