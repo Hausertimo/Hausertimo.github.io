@@ -339,11 +339,52 @@ def callback():
     Supabase redirects here after user authenticates with provider
     """
     try:
-        # Supabase sends the session as URL fragment (#access_token=...)
-        # We need to use JavaScript to extract it
-        # Return HTML page that extracts token and sends to backend
+        # Get authorization code from query parameters
+        code = request.args.get('code')
 
-        html = """
+        if not code:
+            return render_template_string("""
+                <!DOCTYPE html>
+                <html>
+                <head><title>Login Failed</title></head>
+                <body>
+                    <h2>Login Failed</h2>
+                    <p>No authorization code received from provider.</p>
+                    <a href="/">Return to Home</a>
+                </body>
+                </html>
+            """), 400
+
+        # Exchange code for session with Supabase
+        try:
+            auth_response = supabase.auth.exchange_code_for_session({
+                "auth_code": code
+            })
+
+            if not auth_response or not auth_response.session:
+                raise Exception("No session received from Supabase")
+
+            session = auth_response.session
+            access_token = session.access_token
+            refresh_token = session.refresh_token
+            user = auth_response.user
+
+        except Exception as e:
+            print(f"ERROR: Code exchange failed: {e}")
+            return render_template_string("""
+                <!DOCTYPE html>
+                <html>
+                <head><title>Login Failed</title></head>
+                <body>
+                    <h2>Login Failed</h2>
+                    <p>Failed to exchange authorization code: """ + str(e) + """</p>
+                    <a href="/">Return to Home</a>
+                </body>
+                </html>
+            """), 500
+
+        # Return HTML that sets the cookie and redirects
+        html = f"""
         <!DOCTYPE html>
         <html>
         <head>
@@ -352,31 +393,23 @@ def callback():
         <body>
             <p>Logging you in...</p>
             <script>
-                // Extract access_token from URL fragment
-                const hashParams = new URLSearchParams(window.location.hash.substring(1));
-                const accessToken = hashParams.get('access_token');
-                const refreshToken = hashParams.get('refresh_token');
-
-                if (accessToken) {
-                    // Send token to backend to set cookie
-                    fetch('/auth/session', {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({
-                            access_token: accessToken,
-                            refresh_token: refreshToken
-                        })
-                    }).then(response => {
-                        if (response.ok) {
-                            // Redirect to dashboard or saved redirect
-                            window.location.href = '/dashboard';
-                        } else {
-                            document.body.innerHTML = '<p>Login failed. Please try again.</p>';
-                        }
-                    });
-                } else {
-                    document.body.innerHTML = '<p>Login failed. No token received.</p>';
-                }
+                // Send token to backend to set cookie
+                fetch('/auth/session', {{
+                    method: 'POST',
+                    headers: {{'Content-Type': 'application/json'}},
+                    body: JSON.stringify({{
+                        access_token: '{access_token}',
+                        refresh_token: '{refresh_token}'
+                    }})
+                }}).then(response => {{
+                    if (response.ok) {{
+                        window.location.href = '/dashboard';
+                    }} else {{
+                        document.body.innerHTML = '<p>Login failed. Could not create session.</p>';
+                    }}
+                }}).catch(err => {{
+                    document.body.innerHTML = '<p>Login failed: ' + err + '</p>';
+                }});
             </script>
         </body>
         </html>
@@ -385,7 +418,18 @@ def callback():
         return render_template_string(html)
 
     except Exception as e:
-        return jsonify({"error": f"Callback failed: {str(e)}"}), 500
+        print(f"ERROR: Callback failed: {e}")
+        return render_template_string("""
+            <!DOCTYPE html>
+            <html>
+            <head><title>Login Failed</title></head>
+            <body>
+                <h2>Login Failed</h2>
+                <p>An unexpected error occurred: """ + str(e) + """</p>
+                <a href="/">Return to Home</a>
+            </body>
+            </html>
+        """), 500
 
 
 @auth_bp.route('/session', methods=['POST'])
