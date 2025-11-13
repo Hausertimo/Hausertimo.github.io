@@ -38,16 +38,16 @@
       "name": "Telecommunications and Digital Government Regulatory Authority - Type Approval",
       "category": "Telecommunications & Radio",
       "applies_to": "Telecommunications and radio equipment",
-      "description": "Mandatory type approval for telecom and radio equipment in UAE. Testing at TRA-recognized labs. Type approval certificate required before import or sale. Covers WiFi, Bluetooth, cellular, all radio devices.",
-      "url": "https://www.tra.gov.ae/en"
+      "description": "Mandatory type approval for telecom and radio equipment in UAE. Testing at TDRA-recognized labs. Type approval certificate required before import or sale. Covers WiFi, Bluetooth, cellular, all radio devices.",
+      "url": "https://www.tdra.gov.ae/"
     },
     {
       "id": "TRA SAR - UAE",
       "name": "Specific Absorption Rate Requirements (UAE)",
       "category": "Telecommunications & Radio",
       "applies_to": "Mobile phones and body-worn wireless devices",
-      "description": "SAR limit: 2.0 W/kg averaged over 10g of tissue. Testing required for handheld devices. Part of TRA type approval process.",
-      "url": "https://www.tra.gov.ae/en"
+      "description": "SAR limit: 2.0 W/kg averaged over 10g of tissue. Testing required for handheld devices. Part of TDRA type approval process.",
+      "url": "https://www.tdra.gov.ae/"
     },
     {
       "id": "GCC Standardization Organization",

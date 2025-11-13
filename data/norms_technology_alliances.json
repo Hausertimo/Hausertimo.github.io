@@ -150,7 +150,7 @@
       "name": "Payment Card Industry Data Security Standard",
       "category": "Payment Security",
       "applies_to": "Payment processors, merchants, payment applications",
-      "description": "Security standard for organizations handling credit card data. Version 4.0 (2022). 12 requirements: firewall, password security, cardholder data protection, encryption, anti-virus, secure systems, access control, unique IDs, physical access, monitoring, testing, security policy. Compliance validation required.",
+      "description": "Security standard for organizations handling credit card data. Version 4.0.1 (2024). 12 requirements: firewall, password security, cardholder data protection, encryption, anti-virus, secure systems, access control, unique IDs, physical access, monitoring, testing, security policy. Compliance validation required.",
       "url": "https://www.pcisecuritystandards.org/"
     },
     {
