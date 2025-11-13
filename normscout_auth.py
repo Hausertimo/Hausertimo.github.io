@@ -24,7 +24,15 @@ from flask import (
     make_response, send_file, render_template_string, url_for
 )
 from supabase import create_client, Client
-from weasyprint import HTML
+
+# WeasyPrint is optional - only needed for PDF export
+try:
+    from weasyprint import HTML
+    WEASYPRINT_AVAILABLE = True
+except (ImportError, OSError) as e:
+    WEASYPRINT_AVAILABLE = False
+    print(f"⚠️  WeasyPrint not available - PDF export will be disabled: {e}")
+    print("   For local development, this is fine. For production, install GTK libraries.")
 
 # ============================================================================
 # CONFIGURATION
@@ -730,6 +738,13 @@ def ask_question(workspace_id: str):
 @require_auth
 def export_workspace_pdf(workspace_id: str):
     """Export workspace as PDF"""
+    # Check if WeasyPrint is available
+    if not WEASYPRINT_AVAILABLE:
+        return jsonify({
+            "error": "PDF export is not available. WeasyPrint library is not installed.",
+            "hint": "This feature requires GTK libraries. It may not work on Windows locally."
+        }), 503
+
     try:
         user_id = get_current_user_id()
 
