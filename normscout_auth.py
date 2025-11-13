@@ -31,8 +31,8 @@ try:
     WEASYPRINT_AVAILABLE = True
 except (ImportError, OSError) as e:
     WEASYPRINT_AVAILABLE = False
-    print(f"⚠️  WeasyPrint not available - PDF export will be disabled: {e}")
-    print("   For local development, this is fine. For production, install GTK libraries.")
+    print(f"WARNING: WeasyPrint not available - PDF export will be disabled: {e}")
+    print("         For local development, this is fine. For production, install GTK libraries.")
 
 # ============================================================================
 # CONFIGURATION
@@ -874,7 +874,7 @@ def init_app(app):
     # Register blueprints
     register_blueprints(app)
 
-    print("✅ Supabase Auth module initialized")
+    print("OK: Supabase Auth module initialized")
 
 
 # ============================================================================
