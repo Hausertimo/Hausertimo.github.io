@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Payment Example - NormScout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.popular {
+            border: 3px solid #667eea;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .plan-interval {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            padding: 10px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .plan-features li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #5568d3;
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        /* Payment Form Styles */
+        .payment-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-section h2 {
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        #card-element {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        #card-element.StripeElement--focus {
+            border-color: #667eea;
+        }
+
+        #card-errors {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        .subscription-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .subscription-info h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subscription-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💳 NormScout Payment Integration Example</h1>
+
+        <!-- Pricing Cards Section -->
+        <div id="pricing-section" class="pricing-grid">
+            <!-- Free Plan -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Free</h3>
+                <div class="plan-price">$0<span>/mo</span></div>
+                <p class="plan-interval">Perfect for trying out</p>
+                <ul class="plan-features">
+                    <li>5 product analyses per month</li>
+                    <li>Basic compliance overview</li>
+                    <li>Single market search</li>
+                    <li>Community support</li>
+                </ul>
+                <button class="btn btn-secondary" onclick="alert('Already on Free plan!')">Current Plan</button>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <h3 class="plan-name">Pro</h3>
+                <div class="plan-price">$29<span>/mo</span></div>
+                <p class="plan-interval">Billed monthly</p>
+                <ul class="plan-features">
+                    <li>Unlimited product analyses</li>
+                    <li>Detailed compliance reports</li>
+                    <li>All markets supported</li>
+                    <li>Export to PDF</li>
+                    <li>Priority email support</li>
+                    <li>Regulatory updates</li>
+                </ul>
+                <button class="btn" onclick="startCheckout('pro', 2999)">Subscribe to Pro</button>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Enterprise</h3>
+                <div class="plan-price">$99<span>/mo</span></div>
+                <p class="plan-interval">Billed monthly</p>
+                <ul class="plan-features">
+                    <li>Everything in Pro</li>
+                    <li>API access</li>
+                    <li>Bulk analysis</li>
+                    <li>Custom integrations</li>
+                    <li>Dedicated account manager</li>
+                    <li>SLA guarantee</li>
+                </ul>
+                <button class="btn" onclick="startCheckout('enterprise', 9999)">Subscribe to Enterprise</button>
+            </div>
+        </div>
+
+        <!-- Payment Form Section (Hidden by default) -->
+        <div id="payment-section" class="payment-section hidden">
+            <h2>Complete Your Subscription</h2>
+
+            <div class="subscription-info">
+                <h3 id="selected-plan-name"></h3>
+                <p id="selected-plan-description"></p>
+            </div>
+
+            <div id="payment-message" class="hidden"></div>
+
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="card-element">Card Information</label>
+                    <div id="card-element"></div>
+                    <div id="card-errors" role="alert"></div>
+                </div>
+
+                <button type="submit" id="submit-button" class="btn">
+                    <span id="button-text">Subscribe Now</span>
+                </button>
+            </form>
+
+            <div class="back-link">
+                <a href="#" onclick="showPricing(); return false;">&larr; Back to pricing</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+        // Initialize Stripe with your publishable key
+        // TODO: Replace with your actual publishable key or fetch from /api/payment/config
+        const stripe = Stripe('pk_test_your_publishable_key_here');
+
+        // Create Stripe Elements
+        const elements = stripe.elements();
+        const cardElement = elements.create('card', {
+            style: {
+                base: {
+                    fontSize: '16px',
+                    color: '#32325d',
+                    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
+                    '::placeholder': {
+                        color: '#aab7c4',
+                    },
+                },
+                invalid: {
+                    color: '#e74c3c',
+                },
+            },
+        });
+
+        // Mount card element
+        cardElement.mount('#card-element');
+
+        // Handle card validation errors
+        cardElement.on('change', function(event) {
+            const displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+
+        // Store current plan selection
+        let selectedPlan = null;
+        let selectedAmount = 0;
+
+        // Start checkout process
+        function startCheckout(planName, amount) {
+            selectedPlan = planName;
+            selectedAmount = amount;
+
+            // Update UI
+            document.getElementById('pricing-section').classList.add('hidden');
+            document.getElementById('payment-section').classList.remove('hidden');
+
+            // Update plan info
+            const planNames = {
+                'pro': 'Pro Plan - $29.99/month',
+                'enterprise': 'Enterprise Plan - $99.99/month'
+            };
+            const planDescriptions = {
+                'pro': 'Unlimited access to all compliance features',
+                'enterprise': 'Everything in Pro plus API access and dedicated support'
+            };
+
+            document.getElementById('selected-plan-name').textContent = planNames[planName];
+            document.getElementById('selected-plan-description').textContent = planDescriptions[planName];
+        }
+
+        // Show pricing section
+        function showPricing() {
+            document.getElementById('payment-section').classList.add('hidden');
+            document.getElementById('pricing-section').classList.remove('hidden');
+        }
+
+        // Show message
+        function showMessage(message, type = 'success') {
+            const messageDiv = document.getElementById('payment-message');
+            messageDiv.className = type === 'success' ? 'alert alert-success' : 'alert alert-error';
+            messageDiv.textContent = message;
+            messageDiv.classList.remove('hidden');
+
+            setTimeout(() => {
+                messageDiv.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Handle form submission
+        const form = document.getElementById('payment-form');
+        const submitButton = document.getElementById('submit-button');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            setLoading(true);
+
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+
+            try {
+                // Step 1: Create payment intent
+                const response = await fetch('/api/payment/create-payment-intent', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        amount: selectedAmount,
+                        currency: 'usd',
+                        description: `NormScout ${selectedPlan} subscription`,
+                        plan: selectedPlan
+                    }),
+                });
+
+                const { success, client_secret, error } = await response.json();
+
+                if (!success) {
+                    throw new Error(error || 'Failed to create payment');
+                }
+
+                // Step 2: Confirm payment with Stripe
+                const { error: stripeError, paymentIntent } = await stripe.confirmCardPayment(
+                    client_secret,
+                    {
+                        payment_method: {
+                            card: cardElement,
+                            billing_details: {
+                                name: name,
+                                email: email,
+                            },
+                        },
+                    }
+                );
+
+                if (stripeError) {
+                    throw new Error(stripeError.message);
+                }
+
+                // Step 3: Payment successful
+                if (paymentIntent.status === 'succeeded') {
+                    showMessage('Payment successful! Redirecting...', 'success');
+
+                    // Redirect to success page or dashboard
+                    setTimeout(() => {
+                        // window.location.href = '/dashboard';
+                        alert('Payment completed! In production, you would be redirected to dashboard.');
+                        showPricing();
+                    }, 2000);
+                }
+
+            } catch (err) {
+                showMessage(err.message, 'error');
+                console.error('Payment error:', err);
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        // Show loading state
+        function setLoading(isLoading) {
+            submitButton.disabled = isLoading;
+
+            if (isLoading) {
+                document.getElementById('button-text').innerHTML =
+                    '<span class="loading"></span>Processing...';
+            } else {
+                document.getElementById('button-text').textContent = 'Subscribe Now';
+            }
+        }
+
+        // ALTERNATIVE: Subscription-based payment flow
+        // Uncomment this function if you want to use subscriptions instead of one-time payments
+
+        /*
+        async function createSubscription(planName) {
+            setLoading(true);
+
+            try {
+                // Get price ID for the plan
+                const priceIds = {
+                    'pro': 'price_xxx',  // Replace with actual price ID
+                    'enterprise': 'price_yyy'
+                };
+
+                const email = document.getElementById('email').value;
+                const name = document.getElementById('name').value;
+
+                // Step 1: Create customer (or get existing customer_id from auth)
+                const customerResponse = await fetch('/api/payment/customer/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, name })
+                });
+
+                const { customer_id } = await customerResponse.json();
+
+                // Step 2: Create subscription
+                const subscriptionResponse = await fetch('/api/payment/subscription/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        customer_id: customer_id,
+                        price_id: priceIds[planName],
+                        trial_days: 14  // Optional: offer 14-day trial
+                    })
+                });
+
+                const { client_secret } = await subscriptionResponse.json();
+
+                // Step 3: Confirm payment
+                const { error, paymentIntent } = await stripe.confirmCardPayment(client_secret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: { name, email }
+                    }
+                });
+
+                if (error) {
+                    throw new Error(error.message);
+                }
+
+                showMessage('Subscription activated!', 'success');
+                setTimeout(() => window.location.href = '/dashboard', 2000);
+
+            } catch (err) {
+                showMessage(err.message, 'error');
+            } finally {
+                setLoading(false);
+            }
+        }
+        */
+
+        // Fetch Stripe config on page load (optional)
+        async function initializeStripe() {
+            try {
+                const response = await fetch('/api/payment/config');
+                const { publishable_key } = await response.json();
+
+                if (publishable_key && publishable_key !== stripe.key) {
+                    // Re-initialize Stripe with actual key
+                    console.log('Loaded publishable key from server');
+                    // stripe = Stripe(publishable_key);
+                }
+            } catch (err) {
+                console.warn('Could not fetch Stripe config:', err);
+            }
+        }
+
+        // Initialize on page load
+        // initializeStripe();
+    </script>
+</body>
+</html>
