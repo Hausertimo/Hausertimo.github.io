@@ -1,0 +1,485 @@
+{
+  "_comment": "Chemicals Industry - EU and Switzerland Focus. Compliance norms for chemical substance registration, classification, labeling, safety, manufacturing, transport, and environmental protection. Updated for 2025.",
+  "norms": [
+    {
+      "id": "EU REACH",
+      "name": "REACH Regulation (EC) No 1907/2006",
+      "category": "Chemical Registration",
+      "applies_to": "Manufacturing, importing, using chemical substances in EU",
+      "description": "Registration, Evaluation, Authorisation and Restriction of Chemicals. Core EU chemical legislation. Substances manufactured/imported ≥1 tonne/year must be registered with ECHA. No data, no market principle. Dossiers required: technical, chemical safety report (CSR) for ≥10 tonnes. Downstream user obligations. Supply chain communication. Updated regularly with new restrictions and authorizations.",
+      "url": "https://echa.europa.eu/regulations/reach/understanding-reach"
+    },
+    {
+      "id": "REACH Registration",
+      "name": "REACH Registration Requirements",
+      "category": "Chemical Registration",
+      "applies_to": "Manufacturers and importers of chemical substances",
+      "description": "Registration dossier requirements under REACH. Tonnage bands: 1-10, 10-100, 100-1000, ≥1000 tonnes/year with increasing data requirements. IUCLID format submission. Joint submissions for same substance. Lead registrant concept. Substance identity, manufacture/use, classification/labeling, physicochemical properties, toxicology, ecotoxicology, exposure assessment, risk characterization. Registration deadlines completed but ongoing for new substances.",
+      "url": "https://echa.europa.eu/regulations/reach/registration"
+    },
+    {
+      "id": "REACH CSR",
+      "name": "Chemical Safety Report (CSR) under REACH",
+      "category": "Safety Assessment",
+      "applies_to": "Substances ≥10 tonnes/year requiring registration",
+      "description": "Chemical Safety Report documents hazard assessment and risk characterization. Part A: hazard assessment. Part B: exposure assessment and risk characterization for identified uses. Exposure scenarios derived from CSR. Safe use conditions defined. Communicated via extended Safety Data Sheet (eSDS). Iterative process throughout substance lifecycle. ECHA guidance documents available.",
+      "url": "https://echa.europa.eu/chemical-safety-report"
+    },
+    {
+      "id": "REACH Evaluation",
+      "name": "REACH Substance Evaluation",
+      "category": "Risk Assessment",
+      "applies_to": "Substances selected for evaluation by member states",
+      "description": "Evaluation process to clarify substance risks. Dossier evaluation: ECHA checks compliance of registration dossiers. Substance evaluation: Member State Competent Authorities evaluate substances of concern (CoRAP - Community Rolling Action Plan). Additional data may be requested. Decision-making process. Can lead to identification as SVHC or regulatory risk management.",
+      "url": "https://echa.europa.eu/regulations/reach/evaluation"
+    },
+    {
+      "id": "REACH Authorization",
+      "name": "REACH Authorisation Process - Annex XIV",
+      "category": "Substance Restrictions",
+      "applies_to": "Substances of Very High Concern (SVHC)",
+      "description": "Authorization required for Annex XIV substances (SVHCs). Aim to substitute or control most hazardous substances. Application for authorization required for continued use. Adequate control or socio-economic analysis route. Review period granted. Sunset date after which use prohibited without authorization. Alternatives assessment mandatory. Transparency through public consultations.",
+      "url": "https://echa.europa.eu/regulations/reach/authorisation"
+    },
+    {
+      "id": "REACH SVHC",
+      "name": "Substances of Very High Concern (SVHC)",
+      "category": "Hazardous Substances",
+      "applies_to": "CMR substances, PBT, vPvB, endocrine disruptors, equivalent concern",
+      "description": "SVHCs identified for Candidate List. Criteria: CMR (carcinogenic, mutagenic, reprotoxic) category 1A/1B; PBT (persistent, bioaccumulative, toxic); vPvB (very persistent, very bioaccumulative); endocrine disrupting properties; equivalent level of concern. Notification obligation if substance in article >0.1% w/w and >1 tonne/year. Communication in supply chain. Candidate List updated regularly (150+ substances as of 2025).",
+      "url": "https://echa.europa.eu/candidate-list-table"
+    },
+    {
+      "id": "REACH Restrictions",
+      "name": "REACH Restrictions - Annex XVII",
+      "category": "Substance Restrictions",
+      "applies_to": "Substances with unacceptable risks requiring EU-wide restrictions",
+      "description": "Annex XVII lists restrictions on manufacture, placing on market, use of dangerous substances. Conditions or bans. Covers pure substances, mixtures, articles. Examples: asbestos ban, phthalates in toys, cadmium in jewelry, PAHs in consumer products, microplastics restrictions (2025). Restriction process via ECHA dossier preparation. Member State or ECHA initiative. RAC/SEAC opinions. EU Commission decision.",
+      "url": "https://echa.europa.eu/regulations/reach/restriction"
+    },
+    {
+      "id": "REACH Only Representative",
+      "name": "REACH Only Representative for Non-EU Manufacturers",
+      "category": "Legal Compliance",
+      "applies_to": "Non-EU manufacturers exporting to EU",
+      "description": "Only Representative (OR) allows non-EU manufacturer to fulfill REACH obligations. OR established in EU, appointed by non-EU manufacturer. OR becomes registrant instead of EU importers. Single point of compliance. Simplifies supply chain. OR must have sufficient capacity and knowledge. Formal appointment required. Benefits: control over data, reduced burden on importers, consistent EU compliance.",
+      "url": "https://echa.europa.eu/support/registration/how-to-register-a-substance-only-representative-of-a-non-eu-manufacturer"
+    },
+    {
+      "id": "CLP Regulation",
+      "name": "CLP Regulation (EC) No 1272/2008",
+      "category": "Classification and Labeling",
+      "applies_to": "Substances and mixtures placed on EU market",
+      "description": "Classification, Labelling and Packaging regulation. Implements UN GHS (Globally Harmonized System) in EU. Replaces dangerous substances/preparations directives. Hazard classification based on physical, health, environmental properties. Hazard classes and categories. Pictograms, signal words, hazard/precautionary statements. Label requirements. Packaging requirements. Notification to Classification & Labelling Inventory. Harmonized classifications for Annex VI substances. Self-classification for others.",
+      "url": "https://echa.europa.eu/regulations/clp/understanding-clp"
+    },
+    {
+      "id": "CLP Classification",
+      "name": "CLP Hazard Classification Requirements",
+      "category": "Classification and Labeling",
+      "applies_to": "Manufacturers, importers, downstream users of substances/mixtures",
+      "description": "Obligation to classify substances and mixtures according to CLP criteria. Harmonized classification (Annex VI, legally binding) or self-classification. Assessment of available data: test data, literature, QSAR. Hazard classes: physical (explosives, flammable, oxidizing, etc.), health (acute toxicity, carcinogenicity, etc.), environmental (aquatic toxicity, ozone layer). Calculation methods for mixtures. Bridging principles. Classification criteria detailed in CLP Regulation Annex I.",
+      "url": "https://echa.europa.eu/regulations/clp/classification"
+    },
+    {
+      "id": "CLP Labeling",
+      "name": "CLP Labelling and Packaging Requirements",
+      "category": "Classification and Labeling",
+      "applies_to": "Hazardous substances and mixtures",
+      "description": "Label must include: supplier identification, nominal quantity (for mixtures to general public), product identifiers, hazard pictograms, signal word (Danger/Warning), hazard statements (H-codes), precautionary statements (P-codes), supplemental information. Label language: official language of member state. Packaging must prevent loss of contents, be safe. Special rules for small packages, gas cylinders. Updated labels when classification changes.",
+      "url": "https://echa.europa.eu/regulations/clp/labelling"
+    },
+    {
+      "id": "CLP C&L Inventory",
+      "name": "Classification and Labelling Inventory Notifications",
+      "category": "Classification and Labeling",
+      "applies_to": "Substances placed on EU market",
+      "description": "Manufacturers/importers must notify ECHA of classifications. Deadline: one month from placing on market (if not registered under REACH). Information submitted: substance identity, classification, labeling elements. Public C&L Inventory database. Harmonization of classifications where significant differences exist. Supports consistency across supply chain. >150,000 substances in inventory.",
+      "url": "https://echa.europa.eu/information-on-chemicals/cl-inventory-database"
+    },
+    {
+      "id": "Swiss ChemO",
+      "name": "Swiss Chemicals Ordinance (ChemO)",
+      "category": "Chemical Regulation",
+      "applies_to": "Substances and preparations in Switzerland",
+      "description": "Swiss Chemikalienverordnung (ChemO/OChim). Implements Swiss Chemical Act (ChemG). Closely aligned with EU REACH and CLP but Swiss-specific provisions. Registration requirements for certain substances. Notification to Swiss Product Register. Classification and labeling following GHS. Special provisions for CMR substances, very toxic substances. FOEN (Federal Office for the Environment) and FOPH (Federal Office of Public Health) oversight. Mutual recognition with EU where possible.",
+      "url": "https://www.bafu.admin.ch/bafu/en/home/topics/chemicals.html"
+    },
+    {
+      "id": "Swiss Product Register",
+      "name": "Swiss Notification to Product Register for Chemical Products",
+      "category": "Chemical Regulation",
+      "applies_to": "Substances, mixtures placed on Swiss market",
+      "description": "Obligation to notify certain chemical products to Swiss notification authority. Products for professional use or dangerous preparations for consumers. Information: composition, classification, labeling, safety data sheet. Anmeldestelle Chemikalien (Notification Office for Chemical Products). Database for poison information centres and authorities. Annual fees. Electronic submission. Similar to EU poison centres notification but Swiss-specific system.",
+      "url": "https://www.anmeldestelle.admin.ch/chem/en/home.html"
+    },
+    {
+      "id": "Swiss GHS",
+      "name": "Swiss Implementation of GHS",
+      "category": "Classification and Labeling",
+      "applies_to": "Chemical products in Switzerland",
+      "description": "Switzerland implements UN GHS aligned with EU CLP. Hazard communication via labels and safety data sheets. Pictograms, signal words, H/P statements. Swiss-specific transition periods and provisions. Regular updates following GHS revisions. Coordination with EU to facilitate trade. FOEN and FOPH guidance documents. Training requirements for persons handling chemicals.",
+      "url": "https://www.bafu.admin.ch/bafu/en/home/topics/chemicals/info-specialists/ghs.html"
+    },
+    {
+      "id": "SDS REACH",
+      "name": "Safety Data Sheets under REACH - Annex II",
+      "category": "Safety Information",
+      "applies_to": "Hazardous substances/mixtures, PBT/vPvB substances",
+      "description": "SDS mandatory for hazardous substances/mixtures and substances subject to authorization/restriction. 16 sections: identification, hazards, composition, first aid, firefighting, accidental release, handling/storage, exposure controls, physical/chemical properties, stability/reactivity, toxicology, ecology, disposal, transport, regulatory, other. Competent authority language. Extended SDS (eSDS) includes exposure scenarios for substances ≥10 t/y. Update requirements when new information. Format specified in REACH Annex II (revised 2020).",
+      "url": "https://echa.europa.eu/regulations/reach/safety-data-sheets"
+    },
+    {
+      "id": "eSDS Exposure Scenarios",
+      "name": "Extended Safety Data Sheets and Exposure Scenarios",
+      "category": "Safety Information",
+      "applies_to": "Registered substances ≥10 tonnes/year",
+      "description": "Extended SDS (eSDS) contains exposure scenarios in annex. Exposure scenarios describe conditions of safe use: operational conditions (OCs) and risk management measures (RMMs). Developed from Chemical Safety Assessment. Cover identified uses. DNELs/PNECs applied. Downstream users must implement conditions or perform own CSA. Exposure scenario format: short title, use descriptor system (SU, PC, PROC, ERC, AC codes), OCs, RMMs, waste handling. ECHA guidance and tools (Chesar, ECETOC TRA).",
+      "url": "https://echa.europa.eu/support/guidance-on-reach-and-clp-implementation/guidance-in-a-nutshell/exposure-scenarios"
+    },
+    {
+      "id": "ECHA",
+      "name": "European Chemicals Agency (ECHA)",
+      "category": "Regulatory Authority",
+      "applies_to": "Chemical industry operating in EU",
+      "description": "ECHA is central EU agency managing REACH, CLP, BPR, PIC regulations. Based in Helsinki. Responsibilities: registration systems (REACH-IT), database management, evaluation, risk management, guidance, helpdesk. Committees: MSC (Member State Committee), RAC (Risk Assessment), SEAC (Socio-Economic Analysis), BPC (Biocidal Products). Dissemination portal provides public access to chemical information. IUCLID software for dossier preparation.",
+      "url": "https://echa.europa.eu/about-us"
+    },
+    {
+      "id": "ECHA Guidance",
+      "name": "ECHA Guidance Documents",
+      "category": "Technical Guidance",
+      "applies_to": "Companies implementing REACH, CLP, BPR",
+      "description": "Comprehensive guidance library. Core guidance: registration, information requirements, CSA, downstream users. Specific guidance: substance identity, polymers, waste, articles, nanomaterials, intermediates. Updated regularly following regulatory changes and experience. Available in multiple languages. Practical guides, case studies. Forums and helpdesk support implementation. Critical resource for compliance. Guidance on data sharing, consortia, cost-sharing.",
+      "url": "https://echa.europa.eu/guidance-documents"
+    },
+    {
+      "id": "ECHA Dissemination",
+      "name": "ECHA Dissemination Portal",
+      "category": "Chemical Information",
+      "applies_to": "Public access to chemical data",
+      "description": "Public database providing access to REACH registration data. Brief profiles for registered substances. Information on classification and labelling (C&L Inventory). Biocidal products. Candidate List (SVHC). Authorization applications. Dossier evaluation decisions. Restriction proposals. Promotes transparency. Supports supply chain communication. Searchable by substance name, CAS number, EC number.",
+      "url": "https://echa.europa.eu/information-on-chemicals"
+    },
+    {
+      "id": "BPR",
+      "name": "Biocidal Products Regulation (EU) No 528/2012",
+      "category": "Biocides",
+      "applies_to": "Biocidal products and treated articles",
+      "description": "Regulation of biocidal products (disinfectants, preservatives, pest control). Two-tier system: active substance approval (EU level), product authorization (national or EU). 22 product types in 4 main groups. Review programme for existing substances. Mutual recognition of product authorizations. Union authorization procedure. Treated articles provisions. Data protection and compensation. Transition measures. Simplified authorization for low-risk products. BPC (Biocidal Products Committee) at ECHA.",
+      "url": "https://echa.europa.eu/regulations/biocidal-products-regulation"
+    },
+    {
+      "id": "BPR Active Substances",
+      "name": "BPR Active Substance Approval",
+      "category": "Biocides",
+      "applies_to": "Active substances in biocidal products",
+      "description": "Active substances must be approved before use in biocidal products. Application dossier similar to REACH. Evaluation by Rapporteur Member State. BPC opinion. EU Commission decision. Inclusion in Union List (Article 9(2)). Product-type specific approval. Renewal every 5-15 years. Data requirements in BPR annexes. Equivalence for similar active substances. Generic risk assessment for substance. Suppliers list maintained.",
+      "url": "https://echa.europa.eu/regulations/biocidal-products-regulation/approval-of-active-substances"
+    },
+    {
+      "id": "BPR Product Authorization",
+      "name": "BPR Product Authorisation",
+      "category": "Biocides",
+      "applies_to": "Biocidal products placed on EU market",
+      "description": "Biocidal products require authorization. National authorization (single member state), mutual recognition (extension to other MS), Union authorization (entire EU). Assessment of efficacy, human/environmental risks. Product-specific assessment. Labels, SDS requirements. Authorization holder responsibilities. Renewal every 1-10 years. Simplified procedure for certain product types. Parallel trade provisions. 22 product types: PT1 (human hygiene) to PT22 (embalming/taxidermist fluids).",
+      "url": "https://echa.europa.eu/regulations/biocidal-products-regulation/product-authorisation"
+    },
+    {
+      "id": "Seveso III",
+      "name": "Seveso III Directive 2012/18/EU",
+      "category": "Major Accident Hazards",
+      "applies_to": "Establishments with dangerous substances above threshold quantities",
+      "description": "Control of major-accident hazards involving dangerous substances. Named after Seveso disaster (1976). Replaces Seveso II. Two-tier approach: lower-tier and upper-tier establishments based on dangerous substance quantities. Major Accident Prevention Policy (MAPP) required. Safety Management System (SMS) for upper-tier. Safety reports. Emergency planning (internal and external). Public information. Land-use planning. Inspections by competent authorities. Notification to EU Commission of major accidents. Annex I lists qualifying dangerous substances.",
+      "url": "https://ec.europa.eu/environment/seveso/"
+    },
+    {
+      "id": "Seveso SMS",
+      "name": "Seveso III Safety Management Systems",
+      "category": "Major Accident Hazards",
+      "applies_to": "Upper-tier Seveso establishments",
+      "description": "Safety Management System required for upper-tier sites. Annex III elements: organization and personnel, identification and evaluation of major hazards, operational control, management of change, planning for emergencies, monitoring performance, audit and review. Documentation of SMS. Integration with ISO 45001 or other management systems. Continuous improvement. Operator responsibility. Inspections verify SMS implementation. Safety report includes SMS description.",
+      "url": "https://ec.europa.eu/environment/seveso/management.htm"
+    },
+    {
+      "id": "Swiss Major Accidents Ordinance",
+      "name": "Swiss Ordinance on Protection against Major Accidents (StFV)",
+      "category": "Major Accident Hazards",
+      "applies_to": "Swiss facilities with major accident potential",
+      "description": "Störfallverordnung (StFV/OPAM). Controls major accident risks from facilities, transport routes, pipelines. Establishments must assess risks, take precautionary measures. Risk assessment, safety concept, emergency planning. Authorities: FOEN (environmental), SUVA (occupational), cantonal authorities. Threshold quantities for hazardous substances. Short report or detailed report depending on risk. Aligned with Seveso principles but Swiss-specific thresholds and procedures. Regular review and updates.",
+      "url": "https://www.bafu.admin.ch/bafu/en/home/topics/major-accidents.html"
+    },
+    {
+      "id": "POPs Regulation",
+      "name": "POPs Regulation (EU) 2019/1021",
+      "category": "Environmental Protection",
+      "applies_to": "Persistent organic pollutants",
+      "description": "Persistent Organic Pollutants regulation implements Stockholm Convention in EU. Prohibits or restricts manufacture, use, release of POPs. Annexes: I (elimination), II (restriction), III (production/use restriction), IV (waste), V (monitoring). Substances include PCBs, dioxins, DDT, HCBs, PFOS, SCCPs, PFOA (added 2020). Exemptions specified. Waste management provisions. Updates follow Stockholm Convention amendments. Member State enforcement. Interaction with REACH restrictions.",
+      "url": "https://ec.europa.eu/environment/chemicals/international_conventions/index_en.htm"
+    },
+    {
+      "id": "PIC Regulation",
+      "name": "PIC Regulation (EU) No 649/2012",
+      "category": "International Trade",
+      "applies_to": "Export/import of certain hazardous chemicals",
+      "description": "Prior Informed Consent regulation implements Rotterdam Convention. Export notification and consent for chemicals banned/severely restricted in EU. Annex I lists chemicals subject to PIC. Export notification to ECHA. Import decisions from other countries respected. Information exchange. Applies to industrial chemicals and pesticides. Explicit consent required for first export. Annual re-export. Complements REACH for international trade. Ensures informed decision-making in importing countries.",
+      "url": "https://echa.europa.eu/regulations/pic/understanding-pic"
+    },
+    {
+      "id": "Cosmetics Regulation",
+      "name": "Cosmetics Regulation (EC) No 1223/2009",
+      "category": "Consumer Products",
+      "applies_to": "Cosmetic products placed on EU market",
+      "description": "EU regulation ensuring safety of cosmetic products. Product safety assessment mandatory before placing on market. Qualified safety assessor. Cosmetic Product Safety Report (CPSR). Responsible Person established in EU. Good Manufacturing Practice. Product Information File (PIF). Notification to CPNP (Cosmetic Products Notification Portal). Labeling requirements. Restrictions on substances (Annexes II-VI). Animal testing ban. Market surveillance by member states. SCCS (Scientific Committee on Consumer Safety) opinions.",
+      "url": "https://ec.europa.eu/growth/sectors/cosmetics_en"
+    },
+    {
+      "id": "CPSR",
+      "name": "Cosmetic Product Safety Report (CPSR)",
+      "category": "Consumer Products",
+      "applies_to": "All cosmetic products in EU",
+      "description": "Safety assessment required for every cosmetic product. CPSR contains Part A (product safety information) and Part B (safety assessment). Qualified person with relevant diploma. Assessment of: product formulation, physicochemical properties, toxicology, exposure, safety. Conclusion on product safety. Updated when needed (new information, reformulation). Kept in Product Information File. Available to competent authorities. Attachment to CPNP notification (summary information).",
+      "url": "https://ec.europa.eu/growth/sectors/cosmetics/products_en"
+    },
+    {
+      "id": "Swiss Cosmetics",
+      "name": "Swiss Cosmetics Legislation",
+      "category": "Consumer Products",
+      "applies_to": "Cosmetic products in Switzerland",
+      "description": "Swiss cosmetics ordinance aligned with EU Regulation 1223/2009. Swissmedic oversight. Notification to Swiss authorities. Safety assessment requirements. Labeling in official languages. Responsible person in Switzerland or mutual recognition. GMP requirements. Prohibited substances align with EU. Market surveillance. Import regulations for products from outside EU/Switzerland. Transitional provisions for regulatory updates.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/cosmetics.html"
+    },
+    {
+      "id": "Detergents Regulation",
+      "name": "Detergents Regulation (EC) No 648/2004",
+      "category": "Consumer Products",
+      "applies_to": "Detergents and surfactants",
+      "description": "Regulation of detergents for household, institutional, industrial use. Surfactant biodegradability requirements. Labeling of ingredients (sensitizing fragrances, preservatives). Dosage instructions. Data sheet for professional detergents. Restrictions on phosphates in consumer laundry/dishwasher detergents. Testing methods (biodegradation). Derogations procedure for poorly biodegradable surfactants. Market surveillance. Notification of new surfactants. Supports environmental protection (water quality).",
+      "url": "https://ec.europa.eu/growth/sectors/chemicals/detergents_en"
+    },
+    {
+      "id": "OECD Test Guidelines",
+      "name": "OECD Test Guidelines for Chemical Testing",
+      "category": "Testing Methods",
+      "applies_to": "Chemical testing for regulatory purposes",
+      "description": "Internationally harmonized test guidelines. Sections: physical-chemical properties, environmental fate, ecotoxicology, health effects. Accepted under REACH, CLP, BPR. OECD Mutual Acceptance of Data (MAD) reduces duplicate testing, costs. Regular updates: new methods, alternative methods (3Rs - reduce, refine, replace animal testing). GLP (Good Laboratory Practice) required. In vitro methods increasingly used. QSAR and read-across complement testing.",
+      "url": "https://www.oecd.org/chemicalsafety/testing/oecdguidelinesforthetestingofchemicals.htm"
+    },
+    {
+      "id": "GLP",
+      "name": "Good Laboratory Practice for Chemical Testing",
+      "category": "Testing Quality",
+      "applies_to": "Safety studies for regulatory submissions",
+      "description": "GLP ensures quality and integrity of non-clinical safety studies. OECD Principles of GLP. EU Directive 2004/10/EC. Test facility organization, personnel, quality assurance, facilities, equipment, SOPs, study conduct, reporting, archives. GLP inspections by national authorities. GLP compliance required for REACH, BPR, pesticides registration data. Study director responsibility. Raw data integrity. Multi-site studies. Computer system validation.",
+      "url": "https://www.oecd.org/chemicalsafety/testing/goodlaboratorypracticeglp.htm"
+    },
+    {
+      "id": "QSAR",
+      "name": "QSAR and Read-Across for Data Gap Filling",
+      "category": "Alternative Methods",
+      "applies_to": "Chemical hazard assessment",
+      "description": "Quantitative Structure-Activity Relationships predict properties from chemical structure. Read-across uses data from analogous substances. Accepted under REACH for data gap filling. Reduces testing needs (cost, time, animals). ECHA guidance on read-across and grouping. QSAR models: OECD QSAR Toolbox, commercial software. Documentation required: analog selection, similarity justification, uncertainty. Category approach for groups of substances. RAAF (Read-Across Assessment Framework) evaluation criteria.",
+      "url": "https://echa.europa.eu/support/registration/how-to-avoid-unnecessary-testing-on-animals/grouping-of-substances-and-read-across"
+    },
+    {
+      "id": "DNEL PNEC",
+      "name": "DNEL and PNEC Derivation",
+      "category": "Risk Assessment",
+      "applies_to": "Chemical safety assessment under REACH",
+      "description": "Derived No-Effect Level (DNEL) for human health: worker, consumer, general population exposure. Predicted No-Effect Concentration (PNEC) for environmental compartments. Based on toxicity/ecotoxicity studies. Assessment factors applied for uncertainties. Route-specific DNELs (inhalation, dermal, oral). Acute and chronic. PNEC for water, sediment, soil, STP, food chain. Thresholds for risk characterisation ratio (RCR). RCR = exposure / DNEL or PNEC. RCR <1 indicates safe use. ECHA guidance on DNELs/PNECs.",
+      "url": "https://echa.europa.eu/support/dossier-submission-tools/reach-it/data-submission"
+    },
+    {
+      "id": "Nanomaterials REACH",
+      "name": "Nanomaterials under REACH and CLP",
+      "category": "Emerging Technologies",
+      "applies_to": "Nanoscale forms of substances",
+      "description": "Specific requirements for nanomaterials. Definition: particle size 1-100 nm in ≥50% number distribution (EU recommendation). REACH: nanoforms identified in registration, specific hazard data. Testing adapted (dissolution, agglomeration, dustiness). Exposure assessment considers particle size. CLP: nanoforms may have different hazards. ECHA guidance on nanomaterials. Reporting obligations: REACH nanoforms registry. Safety assessment challenges. Increasing regulatory focus (2025 updates). Risk management for workers and consumers.",
+      "url": "https://echa.europa.eu/regulations/nanomaterials"
+    },
+    {
+      "id": "Microplastics",
+      "name": "EU Microplastics Restriction",
+      "category": "Environmental Protection",
+      "applies_to": "Intentionally added microplastics in products",
+      "description": "REACH Annex XVII restriction on intentional microplastics (entry 78). Adopted 2023, phased implementation 2023-2027. Applies to synthetic polymer microparticles <5mm. Wide scope: cosmetics, detergents, agricultural products, toys, medicinal products. Exemptions: low release risk, technical infeasibility. Labeling requirements for certain exempted uses. Reporting obligations. Environmental goal: reduce microplastic pollution. Industry reformulation required. Extends beyond cosmetic microbeads.",
+      "url": "https://echa.europa.eu/hot-topics/microplastics"
+    },
+    {
+      "id": "Occupational Exposure Limits",
+      "name": "EU Occupational Exposure Limits for Chemicals",
+      "category": "Worker Protection",
+      "applies_to": "Workplace chemical exposure",
+      "description": "Binding Occupational Exposure Limit Values (BOELVs) set by Carcinogens and Mutagens Directive 2004/37/EC and Chemical Agents Directive 98/24/EC. Indicative Occupational Exposure Limit Values (IOELVs). Member States transpose into national law. 8-hour TWA (time-weighted average) and STEL (short-term exposure limit). Monitoring required. SCOEL (Scientific Committee on Occupational Exposure Limits) recommendations. National limits may be stricter. Harmonized approach but national variations exist.",
+      "url": "https://oshwiki.osha.europa.eu/en/themes/occupational-exposure-limits"
+    },
+    {
+      "id": "Swiss OELs",
+      "name": "Swiss Occupational Exposure Limits (MAK)",
+      "category": "Worker Protection",
+      "applies_to": "Workplace exposure to hazardous substances in Switzerland",
+      "description": "MAK values (Maximale Arbeitsplatzkonzentrationen) define permissible workplace air concentrations. SUVA (Swiss National Accident Insurance Fund) publishes limits. 8-hour TWA values. BAT (Biologische Arbeitsstoff-Toleranzwerte) for biological monitoring. Based on toxicological evaluations. Updated annually. Employer obligations: measure exposure, implement controls, medical surveillance. Lower than many international limits (precautionary approach). Integration with ChemO and labour law.",
+      "url": "https://www.suva.ch/en/prevention/occupational-hazards/chemicals"
+    },
+    {
+      "id": "Carcinogens Mutagens Directive",
+      "name": "Carcinogens and Mutagens Directive 2004/37/EC",
+      "category": "Worker Protection",
+      "applies_to": "Workplace exposure to carcinogens and mutagens",
+      "description": "Protection of workers from risks related to CMR substances. Substitution principle: replace CMR where possible. Closed systems preferred. Exposure minimization. Binding OELs for specific CMRs. Health surveillance. Record-keeping (40 years). Training and information. Regularly updated with new BOELVs. Recent additions: diesel exhaust, respirable crystalline silica, reprotoxic substances (Directive 2022/431). Inspections by labour inspectorates.",
+      "url": "https://osha.europa.eu/en/legislation/directives/directive-2004-37-ec-carcinogens-or-mutagens-at-work"
+    },
+    {
+      "id": "Chemical Agents Directive",
+      "name": "Chemical Agents Directive 98/24/EC",
+      "category": "Worker Protection",
+      "applies_to": "Workplace chemical exposure",
+      "description": "Minimum requirements for protection of workers from chemical agents. Risk assessment mandatory. Hierarchy of controls: elimination, substitution, engineering controls, PPE. OELs (IOELVs). Monitoring exposure. Health surveillance where appropriate. Training and information. Accidents, incidents and emergencies provisions. Prevention principles. Interaction with other OSH directives. National implementation with specific provisions.",
+      "url": "https://osha.europa.eu/en/legislation/directives/directive-98-24-ec-chemical-agents"
+    },
+    {
+      "id": "ADR",
+      "name": "ADR - Transport of Dangerous Goods by Road",
+      "category": "Transport",
+      "applies_to": "Road transport of dangerous goods in Europe",
+      "description": "European Agreement concerning International Carriage of Dangerous Goods by Road. UNECE treaty. Classification, packing, labeling, vehicle requirements, driver training. 9 classes of dangerous goods. UN numbers, proper shipping names. Orange plates, placards, labels. Transport documents. ADR updated biennially. National implementations. Consignor, carrier, consignee responsibilities. Dangerous Goods Safety Adviser (DGSA) requirement. Tunnels restrictions. Security provisions.",
+      "url": "https://unece.org/adr-2023-files"
+    },
+    {
+      "id": "RID",
+      "name": "RID - Transport of Dangerous Goods by Rail",
+      "category": "Transport",
+      "applies_to": "Rail transport of dangerous goods in Europe",
+      "description": "Regulations concerning International Carriage of Dangerous Goods by Rail. Appendix C to COTIF convention. Structure mirrors ADR. Classification, packaging, marking, documentation. Tank codes. Railway wagon requirements. Updated biennially with ADR. Intermodal transport considerations. National dangerous goods advisers. European Agreement on Main International Railway Lines (AGC) lists lines for dangerous goods.",
+      "url": "https://unece.org/rid-2023-files"
+    },
+    {
+      "id": "ADN",
+      "name": "ADN - Transport of Dangerous Goods by Inland Waterways",
+      "category": "Transport",
+      "applies_to": "Inland waterway transport of dangerous goods in Europe",
+      "description": "European Agreement concerning International Carriage of Dangerous Goods by Inland Waterways. UNECE. Classification, vessel requirements, loading/unloading. Updated biennially. Rhine vessels subject to additional requirements (ADNR). Dangerous goods manifest. Vessel approval. Specific provisions for tank vessels. Harmonized with ADR/RID structure. Safety procedures for inland waterway transport.",
+      "url": "https://unece.org/adn-2023-files"
+    },
+    {
+      "id": "IMDG Code",
+      "name": "IMDG Code - Maritime Transport of Dangerous Goods",
+      "category": "Transport",
+      "applies_to": "Sea transport of dangerous goods",
+      "description": "International Maritime Dangerous Goods Code. IMO instrument. Mandatory under SOLAS convention. Classification, packing, marking, labeling, placarding, stowage, segregation. Updated biennially (41-00 edition 2024-2026). EmS (Emergency Schedules), MFAG (Medical First Aid Guide). Multimodal considerations. Port State control inspections. Container packing, vehicle loading. Marine pollutants designation. Limited quantities provisions.",
+      "url": "https://www.imo.org/en/OurWork/Safety/Pages/DangerousGoods-default.aspx"
+    },
+    {
+      "id": "ICAO TI",
+      "name": "ICAO Technical Instructions - Air Transport",
+      "category": "Transport",
+      "applies_to": "Air transport of dangerous goods",
+      "description": "Technical Instructions for Safe Transport of Dangerous Goods by Air. ICAO Annex 18. Mandatory. IATA Dangerous Goods Regulations (DGR) based on TI. Strict limitations: quantities, packaging. Forbidden goods. Notification to pilot-in-command. State variations. Training requirements extensive. Lithium batteries special provisions. Updated annually. Operator variations approved by authorities. Cargo vs. passenger aircraft differences.",
+      "url": "https://www.icao.int/safety/DangerousGoods/Pages/default.aspx"
+    },
+    {
+      "id": "UN Recommendations",
+      "name": "UN Recommendations on Transport of Dangerous Goods - Model Regulations",
+      "category": "Transport",
+      "applies_to": "Global dangerous goods transport (basis for modal agreements)",
+      "description": "UN Model Regulations form basis for all modal transport regulations (ADR, RID, ADN, IMDG, ICAO TI). Developed by TDG Sub-Committee of UNECE. Classification criteria (9 classes), packing groups, packaging instructions, testing protocols. UN numbers (UN 0001 - UN 3600). Biennial revision cycle. GHS alignment for classification. Special provisions (SP codes). Ensures global harmonization. Orange Book (22nd revised edition 2023).",
+      "url": "https://unece.org/transportdangerous-goods"
+    },
+    {
+      "id": "DGSA",
+      "name": "Dangerous Goods Safety Adviser (DGSA)",
+      "category": "Transport",
+      "applies_to": "Companies transporting dangerous goods by road, rail, inland waterway",
+      "description": "Requirement for companies involved in dangerous goods transport. DGSA appointed to advise on compliance. Qualified through examination. Certificate valid 5 years. Responsibilities: monitor compliance, prepare annual report, advise on training, accidents response. Directive 2008/68/EC (EU). National competent authorities conduct examinations. Can be company employee or external consultant. Different certificates for modes (road, rail, inland waterway) and classes.",
+      "url": "https://ec.europa.eu/transport/modes/road/dangerous-goods_en"
+    },
+    {
+      "id": "Chemicals Training",
+      "name": "Employee Training Requirements for Chemical Handling",
+      "category": "Training",
+      "applies_to": "Workers handling hazardous chemicals",
+      "description": "Employers must provide training on chemical hazards, safe handling, emergency procedures. Based on SDS information. CLP hazard communication. REACH exposure scenarios. Training documented. Refresher training. Job-specific training (laboratory, production, storage). Dangerous goods transport training (ADR, RID, IMDG, ICAO). DGSA qualification. Chemical Agents Directive, OSH Framework Directive requirements. Language requirements. Competence assessment.",
+      "url": "https://osha.europa.eu/en/themes/dangerous-substances"
+    },
+    {
+      "id": "Swiss Chemical Safety",
+      "name": "Swiss Chemical Safety in the Workplace",
+      "category": "Worker Protection",
+      "applies_to": "Swiss workplaces using chemicals",
+      "description": "Swiss Federal Act on Safety and Health at Work. SUVA enforcement. Occupational Health and Safety Ordinances (OHS). Chemical safety assessment mandatory. Substitution of hazardous substances. Technical and organizational measures. PPE as last resort. Information and training. Medical surveillance. Accident prevention measures. Coordination with ChemO. Cantonal inspections. Integration with major accidents ordinance for high-risk facilities.",
+      "url": "https://www.suva.ch/en/prevention"
+    },
+    {
+      "id": "GHS UN",
+      "name": "Globally Harmonized System of Classification and Labelling (UN GHS)",
+      "category": "Classification and Labeling",
+      "applies_to": "Global chemical hazard communication",
+      "description": "UN GHS provides framework for worldwide chemical hazard classification and communication. 9th revised edition (2021). Physical, health, environmental hazards. Hazard classes, categories. Pictograms, signal words, hazard statements, precautionary statements. Implemented by EU (CLP), Switzerland, and 60+ countries. Reduces trade barriers. Regular updates. TDG Sub-Committee oversees. Countries adapt implementation (building blocks approach). 2-year update cycle.",
+      "url": "https://unece.org/transport/standards/transport/dangerous-goods/ghs-rev9-2021"
+    },
+    {
+      "id": "EU GHS Implementation",
+      "name": "GHS Implementation in EU via CLP Regulation",
+      "category": "Classification and Labeling",
+      "applies_to": "Substances and mixtures in EU",
+      "description": "EU implements GHS through CLP Regulation 1272/2008. Fully aligned with UN GHS structure but specific implementation choices (building blocks). All GHS hazard classes adopted. EU-specific provisions: notification to C&L Inventory, harmonized classifications (Annex VI), interaction with REACH. CLP updates follow GHS revisions with delay. Suppliers throughout supply chain ensure CLP compliance. Phased deadlines completed. Continuous updates via Adaptations to Technical Progress (ATPs).",
+      "url": "https://echa.europa.eu/regulations/clp/understanding-clp"
+    },
+    {
+      "id": "Swiss GHS Implementation",
+      "name": "GHS Implementation in Switzerland",
+      "category": "Classification and Labeling",
+      "applies_to": "Chemical products in Switzerland",
+      "description": "Switzerland implements GHS through Chemicals Ordinance (ChemO) aligned with EU CLP. Recognizes EU classifications and labels. Facilitates trade with EU. Swiss notification requirements additional to GHS. Language requirements: labels in German, French, Italian (official languages). Regular updates following UN GHS revisions. Guidance documents from FOEN and FOPH. Training for suppliers, downstream users. Transition periods coordinate with EU. Cantonal market surveillance.",
+      "url": "https://www.bafu.admin.ch/bafu/en/home/topics/chemicals/info-specialists/ghs.html"
+    },
+    {
+      "id": "Chemical Waste Management",
+      "name": "EU Waste Framework Directive - Hazardous Waste",
+      "category": "Waste Management",
+      "applies_to": "Hazardous chemical waste",
+      "description": "Waste Framework Directive 2008/98/EC establishes waste management hierarchy: prevention, reuse, recycling, recovery, disposal. Hazardous waste defined by properties (HP codes) aligned with CLP. List of Waste (LoW) classification. Mixing prohibition. Record-keeping. Permits for waste management operations. Duty of care throughout waste chain. Extended Producer Responsibility. Separate collection. Movement of hazardous waste (Shipment Regulation 1013/2006). REACH information duties for waste (Article 9(6) SCIP database).",
+      "url": "https://ec.europa.eu/environment/topics/waste-and-recycling_en"
+    },
+    {
+      "id": "Swiss Waste Ordinance",
+      "name": "Swiss Ordinance on the Avoidance and Disposal of Waste (VVEA)",
+      "category": "Waste Management",
+      "applies_to": "Chemical waste in Switzerland",
+      "description": "Swiss waste ordinance (Abfallverordnung VVEA/OLED). Waste prevention, recovery, disposal. Special waste (hazardous) requires authorization. Waste treatment facilities licensed. Waste oils, solvents, batteries. Producer responsibility for packaging, electronic equipment. Waste codes harmonized with EU. Cantonal waste plans. Export/import of waste controlled. FOEN oversight. Traceability. Incineration or landfill as last resort. Circular economy principles.",
+      "url": "https://www.bafu.admin.ch/bafu/en/home/topics/waste.html"
+    },
+    {
+      "id": "Chemical Registers",
+      "name": "EU Chemical Substance Inventories and Registers",
+      "category": "Legal Compliance",
+      "applies_to": "Chemical substances in EU commerce",
+      "description": "Multiple EU substance lists: REACH Registered Substances (ECHA); EINECS (European Inventory of Existing Commercial Chemical Substances - pre-1981); ELINCS (European List of Notified Chemical Substances - after 1981); No-longer Polymers list; C&L Inventory; Candidate List (SVHC); Authorization List (Annex XIV); Restriction List (Annex XVII). EC numbers assigned. Pre-registration, registration status. Public access via dissemination portal.",
+      "url": "https://echa.europa.eu/information-on-chemicals"
+    },
+    {
+      "id": "Chemical Supply Chain",
+      "name": "Chemical Supply Chain Communication Requirements",
+      "category": "Supply Chain",
+      "applies_to": "Chemical suppliers and downstream users",
+      "description": "REACH and CLP establish supply chain communication obligations. Upstream: substance registration data flows to downstream users via SDS. Downstream: information on uses flows upstream. Obligation to pass information further down supply chain. SDS update within 12 months of new information. Use descriptors (SU, PC, PROC, AC, ERC codes). Notification of new uses to supplier. Qualification as downstream user. Importers become registrants. Article suppliers: SVHC communication, SCIP database notifications.",
+      "url": "https://echa.europa.eu/support/guidance-on-reach-and-clp-implementation/guidance-in-a-nutshell/supply-chain-communication"
+    },
+    {
+      "id": "Downstream User",
+      "name": "Downstream User Obligations under REACH",
+      "category": "Supply Chain",
+      "applies_to": "Industrial and professional users of chemical substances",
+      "description": "Downstream users (DU) use registered substances in industrial/professional activities. Obligations: check supplier registration, apply conditions described in SDS/exposure scenarios, report uses outside conditions to supplier or conduct own CSA, keep records 10 years. DU CSA required if use outside conditions of registration. REACH DU report to ECHA (every 3 years for certain uses). Information flow critical. SIEF participation if needed. Exemptions for formulators within exposure scenarios.",
+      "url": "https://echa.europa.eu/support/guidance-on-reach-and-clp-implementation/guidance-in-a-nutshell/downstream-users"
+    },
+    {
+      "id": "Green Chemistry",
+      "name": "EU Strategy for Sustainable Chemicals (CSS)",
+      "category": "Policy Framework",
+      "applies_to": "Chemical industry sustainability and innovation",
+      "description": "Chemicals Strategy for Sustainability (October 2020) part of European Green Deal. Goals: better protect human health and environment, boost innovation for safe and sustainable chemicals, transition to toxic-free environment. Initiatives: revision of REACH (simplification, mixture assessment, combination effects), restriction roadmap for hazardous substances, essential use concept, safe-by-design criteria, chemical footprint methodology. Major legislative changes expected 2025-2030. Circular economy integration.",
+      "url": "https://environment.ec.europa.eu/strategy/chemicals-strategy_en"
+    }
+  ]
+}

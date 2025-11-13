@@ -1,0 +1,405 @@
+{
+  "_comment": "Pharmaceuticals & Life Sciences Industry - EU and Switzerland Focus. Compliance norms for drug development, manufacturing, clinical trials, quality systems. Updated for 2025.",
+  "norms": [
+    {
+      "id": "EU Pharma Legislation",
+      "name": "EU Pharmaceutical Legislation - Directive 2001/83/EC",
+      "category": "Drug Regulation",
+      "applies_to": "Medicinal products for human use",
+      "description": "Framework directive for authorization, supervision, pharmacovigilance of medicinal products in EU. Marketing authorization requirements, GMP, labeling, advertising. Amended multiple times. Foundation of EU pharmaceutical regulation. EMA coordination.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/overview/legislation-procedures"
+    },
+    {
+      "id": "Swiss Therapeutic Products Act",
+      "name": "Heilmittelgesetz (HMG) - Therapeutic Products Act",
+      "category": "Drug Regulation",
+      "applies_to": "Medicinal products, medical devices in Switzerland",
+      "description": "Swiss federal law regulating therapeutic products. Swissmedic authority. Marketing authorization, clinical trials, manufacturing licenses, pharmacovigilance. Swiss-specific requirements even for products authorized in EU. Mutual recognition agreements exist.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home.html"
+    },
+    {
+      "id": "EMA Centralized Procedure",
+      "name": "European Medicines Agency - Centralized Marketing Authorization",
+      "category": "Drug Approval",
+      "applies_to": "Innovative medicines, biologics, orphan drugs",
+      "description": "Centralized procedure for EU-wide marketing authorization. Single application, single assessment, single authorization valid in all EU member states. Mandatory for biotechnology products, orphan drugs, ATMPs, new active substances for specific indications. CHMP scientific evaluation.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/marketing-authorisation/centralised-procedure"
+    },
+    {
+      "id": "EMA Decentralized Procedure",
+      "name": "Decentralized and Mutual Recognition Procedures",
+      "category": "Drug Approval",
+      "applies_to": "Medicinal products for multiple EU countries",
+      "description": "Decentralized procedure (DCP) for products not yet authorized in any EU country. Mutual recognition procedure (MRP) for products already authorized in one member state. Parallel assessment by multiple countries. Reference member state and concerned member states.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/marketing-authorisation/decentralised-mutual-recognition-procedures"
+    },
+    {
+      "id": "Swissmedic Authorization",
+      "name": "Swiss Marketing Authorization for Medicinal Products",
+      "category": "Drug Approval",
+      "applies_to": "Medicinal products for Swiss market",
+      "description": "National authorization procedure in Switzerland. Standard procedure, reporting procedure (if authorized in reference countries), temporary authorization for pandemic. Swissmedic scientific assessment. Quality, safety, efficacy evaluation. Post-authorization changes and variations.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/humanarzneimittel/authorisations.html"
+    },
+    {
+      "id": "EU GMP",
+      "name": "EU Good Manufacturing Practice - Directive 2003/94/EC",
+      "category": "Manufacturing Quality",
+      "applies_to": "Pharmaceutical manufacturing sites",
+      "description": "GMP requirements for medicinal products in EU. EudraLex Volume 4. Part I (basic requirements), Part II (specific product types), Part III (GMP-related documents), annexes. Manufacturing authorization, quality systems, premises, equipment, documentation, production, quality control. Inspections by national authorities.",
+      "url": "https://health.ec.europa.eu/medicinal-products/eudralex/eudralex-volume-4_en"
+    },
+    {
+      "id": "Swiss GMP",
+      "name": "Swiss Good Manufacturing Practice",
+      "category": "Manufacturing Quality",
+      "applies_to": "Pharmaceutical manufacturing in Switzerland",
+      "description": "Swiss GMP requirements harmonized with EU GMP and PIC/S. Swissmedic manufacturing licenses. Regular GMP inspections. Swiss-specific ordinances supplement international standards. Batch release requirements. Qualified Person (QP) requirements.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/humanarzneimittel/marktueberwachung/good-manufacturing-practice--gmp-.html"
+    },
+    {
+      "id": "ICH Q7",
+      "name": "ICH Q7 - Good Manufacturing Practice for Active Pharmaceutical Ingredients",
+      "category": "Manufacturing Quality",
+      "applies_to": "API manufacturing",
+      "description": "GMP guidance for active pharmaceutical ingredient (API) manufacture. Part of ICH Quality guidelines. Covers quality management, premises and equipment, documentation, production, quality control, contractor and supplier qualification. Implemented in EU and Switzerland.",
+      "url": "https://www.ich.org/page/quality-guidelines"
+    },
+    {
+      "id": "ICH Q8",
+      "name": "ICH Q8(R2) - Pharmaceutical Development",
+      "category": "Drug Development",
+      "applies_to": "Drug product development",
+      "description": "Quality by Design (QbD) principles for pharmaceutical development. Target product profile, critical quality attributes, critical process parameters, design space. Risk-based approach. Encourages enhanced understanding and innovation. Adopted in EU and Switzerland.",
+      "url": "https://www.ich.org/page/quality-guidelines"
+    },
+    {
+      "id": "ICH Q9",
+      "name": "ICH Q9(R1) - Quality Risk Management",
+      "category": "Quality Systems",
+      "applies_to": "Pharmaceutical quality systems",
+      "description": "Risk management principles and tools for pharmaceutical quality. FMEA, HACCP, risk ranking, fishbone diagrams. Revision 1 (2023) adds emphasis on patient and product quality risks. Applied across pharmaceutical lifecycle. EU and Swiss implementation.",
+      "url": "https://www.ich.org/page/quality-guidelines"
+    },
+    {
+      "id": "ICH Q10",
+      "name": "ICH Q10 - Pharmaceutical Quality System",
+      "category": "Quality Systems",
+      "applies_to": "Pharmaceutical quality management systems",
+      "description": "Quality system model for pharmaceutical industry. Builds on ISO 9001 and GMP. Covers product lifecycle from development through discontinuation. Management responsibility, process performance, continuous improvement, CAPA, change management, management review.",
+      "url": "https://www.ich.org/page/quality-guidelines"
+    },
+    {
+      "id": "ICH Q11",
+      "name": "ICH Q11 - Development and Manufacture of Drug Substances",
+      "category": "API Development",
+      "applies_to": "API development and manufacturing",
+      "description": "Guidance on API (drug substance) development and manufacturing. Chemical entities and biotechnological/biological entities. Manufacturing process development, starting materials, critical quality attributes, control strategy. Supports QbD approach.",
+      "url": "https://www.ich.org/page/quality-guidelines"
+    },
+    {
+      "id": "ICH Q12",
+      "name": "ICH Q12 - Lifecycle Management",
+      "category": "Post-Approval Changes",
+      "applies_to": "Post-approval pharmaceutical changes",
+      "description": "Lifecycle management of regulatory post-approval chemistry, manufacturing and controls (CMC) changes. Established Conditions, Post-Approval Change Management Protocol (PACMP), product lifecycle management document. Facilitates continual improvement. Implemented 2019, adopted EU/Switzerland.",
+      "url": "https://www.ich.org/page/quality-guidelines"
+    },
+    {
+      "id": "ICH Q13",
+      "name": "ICH Q13 - Continuous Manufacturing",
+      "category": "Manufacturing",
+      "applies_to": "Continuous manufacturing of drug substances and products",
+      "description": "Guidance on continuous manufacturing. Real-time release testing, process monitoring, control strategies. Contrasts with traditional batch manufacturing. Enhanced process understanding. Final guideline expected 2025. EU/Swiss readiness.",
+      "url": "https://www.ich.org/page/quality-guidelines"
+    },
+    {
+      "id": "ICH Q14",
+      "name": "ICH Q14 - Analytical Procedure Development",
+      "category": "Analytical Quality",
+      "applies_to": "Analytical methods for pharmaceuticals",
+      "description": "Analytical procedure development and revision. Analytical Target Profile (ATP), risk assessment, lifecycle approach. Replaces older ICH Q2 elements. Modernizes analytical development with QbD principles. Final guideline 2023, EU/Swiss implementation.",
+      "url": "https://www.ich.org/page/quality-guidelines"
+    },
+    {
+      "id": "ICH E6(R3)",
+      "name": "ICH E6(R3) - Good Clinical Practice",
+      "category": "Clinical Trials",
+      "applies_to": "Clinical trials of medicinal products",
+      "description": "GCP guideline for design, conduct, monitoring, recording, analysis, reporting of clinical trials. Ensures data integrity and participant protection. Revision 3 under development (expected 2025) addresses decentralized trials, technology use, risk-based monitoring. EU Directive 2001/20/EC and Swiss clinical trial regulation aligned.",
+      "url": "https://www.ich.org/page/efficacy-guidelines"
+    },
+    {
+      "id": "EU Clinical Trials Regulation",
+      "name": "EU Clinical Trials Regulation 536/2014",
+      "category": "Clinical Trials",
+      "applies_to": "Clinical trials in EU",
+      "description": "Replaces Clinical Trials Directive 2001/20/EC. Fully applicable since January 2023. CTIS (Clinical Trials Information System) for electronic submission. Single submission for multinational trials. Assessment within 60 days. Transparency requirements. Streamlined procedures.",
+      "url": "https://health.ec.europa.eu/medicinal-products/clinical-trials_en"
+    },
+    {
+      "id": "Swiss Clinical Trials Ordinance",
+      "name": "Swiss Clinical Trials Ordinance (ClinO)",
+      "category": "Clinical Trials",
+      "applies_to": "Clinical trials in Switzerland",
+      "description": "Regulation of clinical trials with therapeutic products. Swissmedic authorization for clinical trials. Ethics committee approval. GCP compliance. Risk-based approach. Harmonized with international standards but Swiss-specific requirements. Notification and reporting obligations.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/humanarzneimittel/clinical-trials.html"
+    },
+    {
+      "id": "EudraVigilance",
+      "name": "EU Pharmacovigilance System - EudraVigilance",
+      "category": "Pharmacovigilance",
+      "applies_to": "Medicinal products in EU",
+      "description": "EU pharmacovigilance database for adverse drug reaction reports. Mandatory reporting of suspected adverse reactions. PSURs (Periodic Safety Update Reports), RMPs (Risk Management Plans), signal detection. Directive 2010/84/EU and Regulation 1235/2010. EMA coordination.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/research-development/pharmacovigilance/eudravigilance"
+    },
+    {
+      "id": "Swiss Pharmacovigilance",
+      "name": "Swiss Pharmacovigilance Requirements",
+      "category": "Pharmacovigilance",
+      "applies_to": "Medicinal products in Switzerland",
+      "description": "Pharmacovigilance obligations for market authorization holders. Reporting adverse drug reactions to Swissmedic. PSURs, signal management, risk management plans. Harmonized with ICH E2 guidelines and EU requirements but Swiss-specific timelines and formats.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/humanarzneimittel/marktueberwachung/pharmacovigilance.html"
+    },
+    {
+      "id": "EU Falsified Medicines Directive",
+      "name": "Falsified Medicines Directive 2011/62/EU",
+      "category": "Supply Chain Security",
+      "applies_to": "Prescription medicines in EU",
+      "description": "Prevents falsified medicines entering legal supply chain. Safety features: unique identifier (2D barcode) and anti-tampering device on packaging. EU-wide repository system. Serialization and track-and-trace. Verification at dispensing. Delegated Regulation 2016/161 implementation details.",
+      "url": "https://health.ec.europa.eu/medicinal-products/falsified-medicines_en"
+    },
+    {
+      "id": "Swiss Anti-Counterfeiting",
+      "name": "Swiss Measures Against Counterfeit Medicines",
+      "category": "Supply Chain Security",
+      "applies_to": "Medicinal products in Switzerland",
+      "description": "Serialization and verification requirements for prescription medicines. Aligned with EU FMD but Swiss-specific implementation. Swiss national repository. Unique identifiers, authentication. Swissmedic oversight. Protects patient safety and supply chain integrity.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home.html"
+    },
+    {
+      "id": "EU ATMP Regulation",
+      "name": "Advanced Therapy Medicinal Products Regulation 1394/2007",
+      "category": "Advanced Therapies",
+      "applies_to": "Gene therapy, somatic cell therapy, tissue engineered products",
+      "description": "Specific EU rules for ATMPs (advanced therapy medicinal products). Centralized authorization through EMA. CAT (Committee for Advanced Therapies) scientific assessment. Hospital exemption for custom-made products. GMP requirements adapted for ATMPs. Traceability for 30 years.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/overview/advanced-therapy-medicinal-products-overview"
+    },
+    {
+      "id": "EU Orphan Drug Regulation",
+      "name": "Orphan Medicinal Products Regulation 141/2000",
+      "category": "Rare Diseases",
+      "applies_to": "Medicines for rare diseases",
+      "description": "Incentives for development of orphan drugs. Designation by EMA COMP (Committee for Orphan Medicinal Products). Prevalence <5 per 10,000 in EU. 10-year market exclusivity, protocol assistance, fee reductions. Centralized authorization mandatory.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/overview/orphan-designation-overview"
+    },
+    {
+      "id": "EU Paediatric Regulation",
+      "name": "Paediatric Medicines Regulation 1901/2006",
+      "category": "Paediatric Medicines",
+      "applies_to": "New medicinal products, line extensions",
+      "description": "Requirements for paediatric investigation plans (PIPs). Mandatory for new marketing authorizations unless waiver/deferral granted. EMA PDCO (Paediatric Committee) assessment. Paediatric studies required. Rewards: 6-month SPC extension or 2-year PUMA exclusivity. Improves medicines for children.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/research-development/paediatric-medicines"
+    },
+    {
+      "id": "EU Blood Directive",
+      "name": "EU Blood, Tissues and Cells Directives",
+      "category": "Biologics",
+      "applies_to": "Blood, tissues, cells for human application",
+      "description": "Quality and safety standards for blood (2002/98/EC), tissues and cells (2004/23/EC). Donor selection, testing, processing, storage, distribution. Traceability, vigilance systems. National competent authorities. Separate from medicinal products regulation but overlaps for some products.",
+      "url": "https://health.ec.europa.eu/blood-tissues-cells-and-organs_en"
+    },
+    {
+      "id": "EU Plasma Master File",
+      "name": "Plasma Master File Certification",
+      "category": "Biologics",
+      "applies_to": "Plasma-derived medicinal products",
+      "description": "PMF (Plasma Master File) system for documenting plasma sourcing and testing. Part of marketing authorization dossier for plasma products. Separate certification of plasma collection and testing. Ensures safety of starting material. EMA guidance.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/research-development/scientific-guidelines/blood-components-plasma-derived-products"
+    },
+    {
+      "id": "Swiss Blood Regulation",
+      "name": "Swiss Regulation on Therapeutic Products of Human Origin",
+      "category": "Biologics",
+      "applies_to": "Blood, tissues, cells in Switzerland",
+      "description": "Swiss requirements for blood products, tissues, cells. Swissmedic authorization for blood establishments. Quality and safety standards. Donor screening, testing, processing. Harmonized with EU directives but Swiss-specific provisions. Traceability and vigilance.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home.html"
+    },
+    {
+      "id": "EU Veterinary Regulation",
+      "name": "Veterinary Medicinal Products Regulation 2019/6",
+      "category": "Veterinary Medicines",
+      "applies_to": "Veterinary pharmaceuticals",
+      "description": "Comprehensive veterinary medicines framework. Application from 2022. Strengthens antimicrobial stewardship, removes trade barriers, pharmacovigilance improvements, innovation incentives. Centralized, decentralized, mutual recognition, national procedures. EMA CVMP assessment.",
+      "url": "https://www.ema.europa.eu/en/veterinary-regulatory/overview/veterinary-medicines-regulation"
+    },
+    {
+      "id": "EU Medicated Feed Regulation",
+      "name": "Medicated Feed Regulation 2019/4",
+      "category": "Veterinary Medicines",
+      "applies_to": "Medicated feed for animals",
+      "description": "Regulation of veterinary medicinal products administered via feed. Manufacture, distribution, use of medicated feed. Manufacturing authorization, prescriptions, record-keeping. Part of antimicrobial resistance (AMR) strategy. Complements veterinary medicines regulation.",
+      "url": "https://health.ec.europa.eu/medicinal-products/veterinary-medicines_en"
+    },
+    {
+      "id": "ICH M7(R2)",
+      "name": "ICH M7(R2) - Assessment of Mutagenic Impurities",
+      "category": "Impurities",
+      "applies_to": "Drug substance and drug product impurities",
+      "description": "Guidance on identification, categorization, qualification of mutagenic impurities. (Q)SAR, Ames test, acceptable limits. Threshold of Toxicological Concern (TTC). Revision 2 (2023) addresses N-nitrosamines. Critical for quality control. EU/Swiss implementation.",
+      "url": "https://www.ich.org/page/multidisciplinary-guidelines"
+    },
+    {
+      "id": "ICH M10",
+      "name": "ICH M10 - Bioanalytical Method Validation",
+      "category": "Bioanalysis",
+      "applies_to": "Bioanalytical methods for clinical trials",
+      "description": "Guidance on bioanalytical method validation and sample analysis. PK, PD, biomarker studies. Accuracy, precision, selectivity, sensitivity, stability. Ligand binding assays, chromatographic methods. Final guideline 2022. Harmonizes global bioanalytical expectations.",
+      "url": "https://www.ich.org/page/multidisciplinary-guidelines"
+    },
+    {
+      "id": "EMA Guidelines",
+      "name": "EMA Scientific Guidelines Library",
+      "category": "Scientific Guidance",
+      "applies_to": "All aspects of drug development and approval",
+      "description": "Comprehensive collection of EMA guidelines. Quality, safety, efficacy guidance. Disease-specific, product-specific guidelines. Covers all therapeutic areas, product types. Constantly updated. Essential reference for EU submissions. Reflection papers, concept papers, final guidelines.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/research-development/scientific-guidelines"
+    },
+    {
+      "id": "Swiss Ordinances",
+      "name": "Swiss Therapeutic Products Ordinances",
+      "category": "Legal Framework",
+      "applies_to": "All therapeutic products in Switzerland",
+      "description": "Detailed implementing ordinances under HMG. Authorisation Ordinance (AMBV/OAMéd), GMP Ordinance (AMBV/OAMéd), Clinical Trials Ordinance (ClinO/OClin), Pharmacopoeia Ordinance (PhV/OPha). Define specific requirements, procedures, standards.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/legal-basis.html"
+    },
+    {
+      "id": "Ph.Eur.",
+      "name": "European Pharmacopoeia",
+      "category": "Quality Standards",
+      "applies_to": "Starting materials, excipients, finished products",
+      "description": "Official collection of quality standards for substances and preparations used in medicine. Legally binding in EU countries and Switzerland. Monographs for APIs, excipients. General methods, general chapters. Updated regularly. EDQM publishes. Supplements issued multiple times per year.",
+      "url": "https://www.edqm.eu/en/european-pharmacopoeia-ph-eur-11th-edition"
+    },
+    {
+      "id": "USP-NF",
+      "name": "United States Pharmacopeia - National Formulary",
+      "category": "Quality Standards",
+      "applies_to": "APIs, excipients, dosage forms (US reference)",
+      "description": "US pharmacopeia, widely referenced internationally. Many companies use both Ph.Eur. and USP. Monographs, general chapters. Often required for US-destined products manufactured in EU/Switzerland. Dietary supplement standards. Published annually with supplements.",
+      "url": "https://www.usp.org/"
+    },
+    {
+      "id": "Swiss Pharmacopoeia",
+      "name": "Pharmacopoea Helvetica (Ph.Helv.)",
+      "category": "Quality Standards",
+      "applies_to": "Switzerland-specific requirements",
+      "description": "Swiss pharmacopoeia. Historically important, now largely replaced by Ph.Eur. Swiss-specific monographs for products not in Ph.Eur. Herbal medicines, traditional Swiss preparations. Legal reference alongside Ph.Eur.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/humanarzneimittel/pharmacopoeia.html"
+    },
+    {
+      "id": "PIC/S GMP",
+      "name": "Pharmaceutical Inspection Co-operation Scheme",
+      "category": "Inspections",
+      "applies_to": "Pharmaceutical manufacturing (global)",
+      "description": "International GMP inspection cooperation. Harmonized GMP standards. Mutual recognition of inspections. EU countries, Switzerland, and 50+ other authorities participate. PIC/S GMP guide aligned with EU GMP. Facilitates international trade, reduces duplicate inspections.",
+      "url": "https://www.picscheme.org/"
+    },
+    {
+      "id": "MHRA GMP",
+      "name": "UK MHRA Good Manufacturing Practice",
+      "category": "Manufacturing Quality",
+      "applies_to": "UK pharmaceutical manufacturing (post-Brexit reference)",
+      "description": "UK GMP requirements post-Brexit. Aligned with EU GMP but divergence possible. MHRA inspections, manufacturing authorizations. Relevant for EU/Swiss companies exporting to UK. Mutual recognition agreements. Northern Ireland Protocol considerations.",
+      "url": "https://www.gov.uk/guidance/good-manufacturing-practice-and-good-distribution-practice"
+    },
+    {
+      "id": "ISO 13485",
+      "name": "ISO 13485 - Quality Management for Medical Devices",
+      "category": "Quality Systems",
+      "applies_to": "Combination products, medical device aspects",
+      "description": "Quality management system for medical devices. Relevant for drug-device combinations, devices used in pharmaceutical manufacturing (syringes, inhalers, auto-injectors). Complements pharmaceutical GMP. EU MDR and Swiss medical device requirements reference ISO 13485.",
+      "url": "https://www.iso.org/standard/59752.html"
+    },
+    {
+      "id": "GDP",
+      "name": "EU Good Distribution Practice Guidelines",
+      "category": "Distribution",
+      "applies_to": "Pharmaceutical wholesalers, distributors",
+      "description": "Guidelines for distribution of medicinal products. Directive 2001/83/EC and Guidelines 2013/C 343/01. Quality system, premises, equipment, documentation, operations, complaints, recalls, returns, falsified medicines. Wholesale distribution authorization. Inspections by competent authorities.",
+      "url": "https://health.ec.europa.eu/medicinal-products/good-distribution-practice_en"
+    },
+    {
+      "id": "Swiss GDP",
+      "name": "Swiss Good Distribution Practice",
+      "category": "Distribution",
+      "applies_to": "Pharmaceutical distribution in Switzerland",
+      "description": "Swiss requirements for wholesale distribution of medicinal products. Swissmedic wholesale authorization. Storage conditions, temperature monitoring, recalls, serialization verification. Harmonized with EU GDP. Cold chain management for biologics.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home.html"
+    },
+    {
+      "id": "EU Pharma Strategy",
+      "name": "EU Pharmaceutical Strategy for Europe",
+      "category": "Policy Framework",
+      "applies_to": "Future EU pharmaceutical legislation",
+      "description": "2025 pharmaceutical legislation revision. Goals: accessibility, affordability, innovation, sustainability, competitiveness. Proposed changes to orphan/paediatric regulations, data/market exclusivity, environmental risk assessment, supply chain resilience. Major reform in progress.",
+      "url": "https://health.ec.europa.eu/medicinal-products/pharmaceutical-strategy-europe_en"
+    },
+    {
+      "id": "Swiss-EU MRA",
+      "name": "Switzerland-EU Mutual Recognition Agreement",
+      "category": "International Cooperation",
+      "applies_to": "Pharmaceutical products between CH and EU",
+      "description": "MRA facilitates trade between Switzerland and EU. Mutual recognition of GMP inspections, batch certification. Simplified procedures for products approved in both jurisdictions. Updated regularly to maintain alignment. Critical for Swiss pharmaceutical industry access to EU market.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/about-swissmedic/internationale-zusammenarbeit/bilaterale-abkommen.html"
+    },
+    {
+      "id": "Variation Regulation",
+      "name": "EU Variations Regulation 1234/2008",
+      "category": "Post-Approval Changes",
+      "applies_to": "Changes to marketing authorizations",
+      "description": "Classification and procedures for variations to marketing authorizations. Type IA (minor, no prior approval), Type IB (minor, prior notification), Type II (major, prior approval). Extensions, renewals. Union procedures for centralized products. Worksharing for national/MRP/DCP products.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/post-authorisation/variation-procedures"
+    },
+    {
+      "id": "RMP",
+      "name": "Risk Management Plan Requirements",
+      "category": "Pharmacovigilance",
+      "applies_to": "New marketing authorizations and significant changes",
+      "description": "RMP describes risk management system. Safety specification, pharmacovigilance plan, risk minimization measures. Submitted with marketing authorization application. Updated throughout product lifecycle. GVP Module V. Critical for product safety.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/post-authorisation/pharmacovigilance/risk-management"
+    },
+    {
+      "id": "PSMF",
+      "name": "Pharmacovigilance System Master File",
+      "category": "Pharmacovigilance",
+      "applies_to": "Marketing authorization holders",
+      "description": "Description of pharmacovigilance system. QPPV (Qualified Person for Pharmacovigilance), organizational structure, database, processes. Required for all MAHs. Location of PSMF declared to authorities. GVP Module II. Regular updates mandatory.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/post-authorisation/pharmacovigilance"
+    },
+    {
+      "id": "CTD",
+      "name": "Common Technical Document (ICH M4)",
+      "category": "Regulatory Submissions",
+      "applies_to": "Marketing authorization applications",
+      "description": "Standard format for regulatory submissions. Module 1 (regional), Module 2 (summaries), Module 3 (quality), Module 4 (nonclinical), Module 5 (clinical). Harmonized structure used in EU, Switzerland, ICH regions globally. eCTD electronic format mandatory in many regions.",
+      "url": "https://www.ich.org/page/multidisciplinary-guidelines"
+    },
+    {
+      "id": "eCTD",
+      "name": "Electronic Common Technical Document",
+      "category": "Regulatory Submissions",
+      "applies_to": "Electronic regulatory submissions",
+      "description": "Electronic format for CTD. Mandatory for EU centralized procedure (since 2024 for all procedures), Switzerland. XML backbone, PDF files. Lifecycle management of regulatory information. Facilitates review, archiving, searching. eCTD v4.0 current specification.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/research-development/data-medicines-iso-idmp-standards/electronic-common-technical-document-ectd"
+    },
+    {
+      "id": "IDMP",
+      "name": "ISO Identification of Medicinal Products Standards",
+      "category": "Data Standards",
+      "applies_to": "Medicinal product information exchange",
+      "description": "ISO 11615-11240 IDMP standards. Structured product information: MPID (medicinal product), PhPID (pharmaceutical product), PCID (packaged product), PHPID (pharmaceutical product identifier), substances. EMA SPOR implementation (Substances, Products, Organizations, Referentials). Regulatory data standardization.",
+      "url": "https://www.ema.europa.eu/en/human-regulatory/research-development/data-medicines-iso-idmp-standards"
+    }
+  ]
+}
