@@ -55,6 +55,9 @@ from services.openrouter import analyze_product_compliance, validate_product_inp
 from services.field_framework import (FieldRenderer, MarkdownField, FormField,
                                       TextAreaField, ButtonField)
 
+# Import Supabase auth
+from supabase_auth import init_app as init_supabase_auth
+
 # Register all blueprints
 app.register_blueprint(main_bp)
 app.register_blueprint(analytics_bp)
@@ -76,6 +79,9 @@ init_compliance_deps(
     ButtonField
 )
 init_tracking_routes(app, redis_client)
+
+# Initialize Supabase authentication
+init_supabase_auth(app)
 
 logger.info("All blueprints registered successfully")
 
