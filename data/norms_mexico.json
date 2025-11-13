@@ -1,0 +1,373 @@
+{
+  "_comment": "Mexico compliance norms and standards database. Includes NOM standards, IFT, COFEPRIS, SE and other Mexican regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "NOM-001-SCFI",
+      "name": "Electrical Appliances - Safety Requirements",
+      "category": "NOM Standards",
+      "applies_to": "Electrical and electronic products",
+      "description": "Mandatory safety standard for electrical products. Covers household appliances, IT equipment, power supplies, tools. Testing at accredited labs. NOM mark required on product. Third-party certification body approval.",
+      "url": "https://www.gob.mx/se/acciones-y-programas/normalizacion-normalizacion"
+    },
+    {
+      "id": "NOM-016-SCFI",
+      "name": "Consumer Product Information - Commercial Labeling",
+      "category": "Labeling & Information",
+      "applies_to": "All consumer products",
+      "description": "Mandatory labeling in Spanish. Product name, net content, manufacturer/importer info, country of origin, warnings. Applies to all consumer products. SE (Secretaría de Economía) enforcement.",
+      "url": "https://www.gob.mx/se/"
+    },
+    {
+      "id": "IFT Homologation",
+      "name": "Federal Telecommunications Institute - Equipment Homologation",
+      "category": "Telecommunications",
+      "applies_to": "Telecommunications and radio equipment",
+      "description": "Mandatory homologation for telecom and radio equipment. Testing at IFT-accredited labs. Covers WiFi, Bluetooth, cellular, all radio devices. Homologation certificate and IFT mark required before import or sale.",
+      "url": "http://www.ift.org.mx/en"
+    },
+    {
+      "id": "NOM-208-SCFI",
+      "name": "Telecommunications Terminal Equipment",
+      "category": "Telecommunications",
+      "applies_to": "Telecommunications terminal equipment",
+      "description": "Technical requirements for telecom terminal equipment. Covers equipment connecting to telecom networks. Testing at accredited labs. Part of IFT homologation process.",
+      "url": "http://www.ift.org.mx/en"
+    },
+    {
+      "id": "NOM-EM-016-SCFI",
+      "name": "Telecommunications Equipment - EMC Requirements",
+      "category": "EMC",
+      "applies_to": "Telecommunications equipment",
+      "description": "EMC requirements for telecommunications equipment. Emission and immunity limits. Part of IFT homologation. Based on international standards with Mexican requirements.",
+      "url": "http://www.ift.org.mx/en"
+    },
+    {
+      "id": "CONUEE Energy Efficiency",
+      "name": "National Commission for Energy Efficiency - MEPS and Labeling",
+      "category": "Energy Efficiency",
+      "applies_to": "Appliances, electronics, lighting, HVAC",
+      "description": "Energy efficiency standards and labeling. Various NOMs for different products (NOM-015-ENER for refrigerators, NOM-032-ENER for lamps, etc.). Mandatory minimum efficiency. Energy label required.",
+      "url": "https://www.gob.mx/conuee"
+    },
+    {
+      "id": "NOM-015-ENER",
+      "name": "Energy Efficiency for Refrigerators and Freezers",
+      "category": "Energy Efficiency",
+      "applies_to": "Refrigerators, freezers, wine coolers",
+      "description": "Mandatory energy efficiency for refrigeration appliances. Minimum performance standards. Energy label required. Testing at accredited labs. Updated periodically for stricter requirements.",
+      "url": "https://www.gob.mx/conuee"
+    },
+    {
+      "id": "NOM-032-ENER",
+      "name": "Energy Efficiency for LED and CFL Lamps",
+      "category": "Energy Efficiency",
+      "applies_to": "LED lamps, compact fluorescent lamps",
+      "description": "Energy efficiency limits for lamps. Minimum efficacy requirements. Energy label. Covers LED and CFL replacement lamps and integrated lamps.",
+      "url": "https://www.gob.mx/conuee"
+    },
+    {
+      "id": "COFEPRIS Medical Device",
+      "name": "Federal Commission for Protection Against Sanitary Risk - Medical Device Registration",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including software",
+      "description": "Mandatory sanitary registration for medical devices. Classification I, II, III based on risk. Sanitary license for importers and distributors. GMP compliance. Clinical data may be required. Third-party NOM conformity assessment.",
+      "url": "https://www.gob.mx/cofepris/en"
+    },
+    {
+      "id": "NOM-241-SSA1",
+      "name": "Good Manufacturing Practice for Medical Devices",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "GMP requirements for medical device manufacturing. Based on ISO 13485. COFEPRIS inspection and certification. Required for domestic manufacture and import authorization.",
+      "url": "https://www.gob.mx/cofepris/en"
+    },
+    {
+      "id": "SCT Vehicle Standards",
+      "name": "Secretariat of Communications and Transport - Vehicle Standards",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and components",
+      "description": "Vehicle safety and technical standards. Type approval requirements. NOMs for various vehicle systems and components. Based on international standards (UN ECE, FMVSS).",
+      "url": "https://www.gob.mx/sct"
+    },
+    {
+      "id": "NOM-042-SEMARNAT",
+      "name": "Vehicle Emissions Standards",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles - gasoline and diesel",
+      "description": "Vehicle emission limits. Testing procedures. Periodic verification requirements. SEMARNAT (environmental ministry) enforcement. Progressively stricter standards.",
+      "url": "https://www.gob.mx/semarnat"
+    },
+    {
+      "id": "NOM-015/SCFI/SSA",
+      "name": "Toy Safety",
+      "category": "Children's Products",
+      "applies_to": "Toys for children",
+      "description": "Comprehensive toy safety requirements. Mechanical, chemical, flammability, electrical hazards. Based on international standards. Mandatory certification. Age grading and warnings in Spanish.",
+      "url": "https://www.gob.mx/se/"
+    },
+    {
+      "id": "SEMARNAT Hazardous Waste",
+      "name": "Hazardous Waste Management",
+      "category": "Environmental",
+      "applies_to": "Products generating hazardous waste",
+      "description": "Hazardous waste regulations. Generator registration. Manifests for transport. Affects products with batteries, electronics, chemicals. Producer responsibility emerging.",
+      "url": "https://www.gob.mx/semarnat"
+    },
+    {
+      "id": "NOM-052-SEMARNAT",
+      "name": "Characteristics and Listing of Hazardous Wastes",
+      "category": "Environmental",
+      "applies_to": "Hazardous materials and waste",
+      "description": "Classification of hazardous waste. CRETIB characteristics (corrosive, reactive, explosive, toxic, flammable, biohazardous). Lists of hazardous wastes. Affects product materials and disposal.",
+      "url": "https://www.gob.mx/semarnat"
+    },
+    {
+      "id": "NOM-161-SEMARNAT",
+      "name": "E-Waste Classification and Management",
+      "category": "Environmental",
+      "applies_to": "Electronic waste",
+      "description": "Classification of e-waste as hazardous or non-hazardous. Management plans required. Special handling requirements. Producer responsibility provisions.",
+      "url": "https://www.gob.mx/semarnat"
+    },
+    {
+      "id": "PROFECO Consumer Protection",
+      "name": "Federal Consumer Protection Agency - Requirements",
+      "category": "Consumer Protection",
+      "applies_to": "All consumer products and services",
+      "description": "Consumer protection enforcement. Product information, warranties, safety, advertising. PROFECO has broad authority for inspections, fines, recalls. Consumer complaint system.",
+      "url": "https://www.gob.mx/profeco"
+    },
+    {
+      "id": "Federal Consumer Protection Law",
+      "name": "Ley Federal de Protección al Consumidor",
+      "category": "Consumer Protection",
+      "applies_to": "Consumer products and services",
+      "description": "Consumer rights framework. Product safety, information, warranties, liability. Prohibition of misleading practices. PROFECO enforcement powers. Product recalls and corrective measures.",
+      "url": "https://www.gob.mx/profeco"
+    },
+    {
+      "id": "NOM-050-SCFI",
+      "name": "Commercial Information - General Labeling",
+      "category": "Labeling & Information",
+      "applies_to": "Packaged products",
+      "description": "General labeling requirements for products. Information in Spanish. Content declaration. Manufacturer/importer identification. Country of origin. Warnings and instructions.",
+      "url": "https://www.gob.mx/se/"
+    },
+    {
+      "id": "NOM-008-SCFI",
+      "name": "Prepackaged Products - Content Declaration",
+      "category": "Labeling & Information",
+      "applies_to": "Prepackaged products sold by weight or volume",
+      "description": "Net content declaration requirements. Tolerances for variations. Verification procedures. Labeling format. PROFECO enforcement.",
+      "url": "https://www.gob.mx/profeco"
+    },
+    {
+      "id": "LFDA Personal Data Protection",
+      "name": "Federal Law on Protection of Personal Data (LFPDPPP)",
+      "category": "Data Protection",
+      "applies_to": "Private entities processing personal data",
+      "description": "Data protection law for private sector. Consent requirements, privacy notices, data subject rights. INAI (National Transparency Institute) enforcement. Applies to connected devices and services processing Mexican users' data.",
+      "url": "https://home.inai.org.mx/"
+    },
+    {
+      "id": "Cybersecurity Strategy",
+      "name": "National Cybersecurity Strategy",
+      "category": "Cybersecurity",
+      "applies_to": "Critical infrastructure and connected devices",
+      "description": "National cybersecurity framework. Guidelines for critical infrastructure. Incident reporting. Security standards for government systems. Evolving requirements for commercial products.",
+      "url": "https://www.gob.mx/segob"
+    },
+    {
+      "id": "IMPI Trademarks",
+      "name": "Mexican Institute of Industrial Property - Trademark Protection",
+      "category": "Intellectual Property",
+      "applies_to": "Product branding and marking",
+      "description": "Trademark registration and protection. Prevents unauthorized use of marks. Affects product branding, labeling. Enforcement against counterfeits. Industrial property law (patents, designs, trade secrets).",
+      "url": "https://www.gob.mx/impi"
+    },
+    {
+      "id": "COFEPRIS Food Contact",
+      "name": "Sanitary Control for Food Contact Materials",
+      "category": "Food Safety",
+      "applies_to": "Materials in contact with food",
+      "description": "Sanitary requirements for food contact materials. Various NOMs for different materials (plastics, metals, ceramics). Migration limits. Positive lists. COFEPRIS sanitary registry.",
+      "url": "https://www.gob.mx/cofepris/en"
+    },
+    {
+      "id": "NOM-051-SCFI/SSA1",
+      "name": "Food and Beverage Labeling",
+      "category": "Food Safety",
+      "applies_to": "Food and beverage products",
+      "description": "Labeling requirements for food and beverages. Nutritional information. Warning labels for excess calories, sodium, sugars, fats. Ingredient listing. Allergen declarations. Recent updates with warning seals.",
+      "url": "https://www.gob.mx/cofepris/en"
+    },
+    {
+      "id": "FEUM",
+      "name": "Mexican Pharmacopoeia (Farmacopea de los Estados Unidos Mexicanos)",
+      "category": "Pharmaceutical",
+      "applies_to": "Pharmaceutical products and ingredients",
+      "description": "Official compendium of drug standards. Quality specifications for pharmaceutical substances and products. COFEPRIS reference for pharmaceutical regulation.",
+      "url": "https://www.gob.mx/cofepris/en"
+    },
+    {
+      "id": "NOM-004-SCFI",
+      "name": "Commercial Information - Textile Products",
+      "category": "Textiles",
+      "applies_to": "Textile and apparel products",
+      "description": "Labeling for textile products. Fiber content, care instructions, manufacturer information. Labeling in Spanish. Permanent labels required.",
+      "url": "https://www.gob.mx/se/"
+    },
+    {
+      "id": "Customs Regulations",
+      "name": "Foreign Trade Law - Import Requirements",
+      "category": "Import/Export",
+      "applies_to": "All imported products",
+      "description": "Import documentation and procedures. Customs classification (HS codes). Import permits for regulated products. Certificate of conformity with NOMs for applicable products. Customs clearance requirements.",
+      "url": "https://www.gob.mx/se/acciones-y-programas/comercio-exterior"
+    },
+    {
+      "id": "Certificate of NOM Conformity",
+      "name": "NOM Conformity Assessment",
+      "category": "Conformity Assessment",
+      "applies_to": "Products subject to mandatory NOMs",
+      "description": "Conformity assessment by accredited bodies. Testing, certification, surveillance. Certificate of conformity required for customs clearance and sale. Various assessment procedures depending on NOM.",
+      "url": "https://www.gob.mx/se/"
+    },
+    {
+      "id": "EMA Accreditation",
+      "name": "Mexican Accreditation Entity",
+      "category": "Conformity Assessment",
+      "applies_to": "Testing labs, certification bodies, inspection bodies",
+      "description": "National accreditation body. Accredits labs, certification bodies, inspection bodies for NOM conformity assessment. ISO/IEC 17025, 17065, 17020 requirements. EMA seal indicates accreditation.",
+      "url": "https://www.ema.org.mx/"
+    },
+    {
+      "id": "NMX Voluntary Standards",
+      "name": "Mexican Standards (Normas Mexicanas)",
+      "category": "Voluntary Standards",
+      "applies_to": "Various products and services",
+      "description": "Voluntary Mexican standards. Not mandatory unless referenced by NOM or contract. Developed by national standardization bodies. Cover quality, testing methods, terminology. Certification available.",
+      "url": "https://www.gob.mx/se/acciones-y-programas/normalizacion-normalizacion"
+    },
+    {
+      "id": "Building Codes",
+      "name": "Construction Standards and Building Codes",
+      "category": "Construction",
+      "applies_to": "Building products and systems",
+      "description": "Building codes vary by state/municipality. National Construction Manual provides guidance. Affects electrical systems, plumbing, fire safety, structural. Product certifications (NOMs) often required.",
+      "url": "https://www.gob.mx/"
+    },
+    {
+      "id": "NOM-001-SEDE",
+      "name": "National Electrical Code (Mexican NEC)",
+      "category": "Electrical Installation",
+      "applies_to": "Electrical installations",
+      "description": "Electrical installation requirements. Based on US NEC with Mexican adaptations. Affects installed electrical equipment. Not direct product certification but important for compatibility.",
+      "url": "https://www.gob.mx/se/"
+    },
+    {
+      "id": "Fire Protection",
+      "name": "Fire Safety Standards (NOMs STPS)",
+      "category": "Fire Safety",
+      "applies_to": "Fire safety equipment and building protection",
+      "description": "Fire safety requirements for workplaces and buildings. STPS (labor ministry) NOMs for fire protection. Affects fire detection, suppression, emergency lighting, exit signs.",
+      "url": "https://www.gob.mx/stps"
+    },
+    {
+      "id": "STPS Occupational Safety",
+      "name": "Secretariat of Labor - Occupational Safety NOMs",
+      "category": "Occupational Safety",
+      "applies_to": "Equipment used in workplaces",
+      "description": "Occupational safety and health standards. Multiple NOMs for different hazards (electrical, machinery, PPE, chemicals). Affects workplace equipment design and certification. STPS inspection and enforcement.",
+      "url": "https://www.gob.mx/stps"
+    },
+    {
+      "id": "PPE Certification",
+      "name": "Personal Protective Equipment Standards",
+      "category": "Occupational Safety",
+      "applies_to": "Personal protective equipment",
+      "description": "NOMs for PPE (safety helmets, gloves, goggles, respirators, etc.). Performance requirements. Certification by accredited bodies. STPS approval for workplace use.",
+      "url": "https://www.gob.mx/stps"
+    },
+    {
+      "id": "NMX-CC-9001-IMNC",
+      "name": "Quality Management Systems (Mexican Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing quality management",
+      "description": "Mexican adoption of ISO 9001. Quality management system certification. EMA accredits certification bodies. Important for supplier qualification and some government contracts.",
+      "url": "https://www.gob.mx/se/"
+    },
+    {
+      "id": "Chemical Registration",
+      "name": "National Inventory of Chemical Substances",
+      "category": "Chemical Substances",
+      "applies_to": "Chemical substances in commerce",
+      "description": "Emerging chemical registration requirements. SEMARNAT authority. Notification for new substances. Inventory of existing substances. Hazard communication (GHS). Safety data sheets required.",
+      "url": "https://www.gob.mx/semarnat"
+    },
+    {
+      "id": "USMCA Requirements",
+      "name": "United States-Mexico-Canada Agreement - Product Requirements",
+      "category": "Trade Agreements",
+      "applies_to": "Products traded within USMCA",
+      "description": "Trade agreement provisions affecting product standards. Technical barriers to trade. Mutual recognition discussions. Rules of origin for preferential tariffs. Affects product certification and market access.",
+      "url": "https://www.gob.mx/se/"
+    },
+    {
+      "id": "Authorized Importer",
+      "name": "Authorized Importer Requirements",
+      "category": "Import/Export",
+      "applies_to": "Companies importing products",
+      "description": "Importer registration requirements. RFC (tax ID) required. Authorized importer responsible for product compliance. Must maintain certificates, provide documentation to PROFECO on request.",
+      "url": "https://www.gob.mx/sat"
+    },
+    {
+      "id": "Market Surveillance",
+      "name": "PROFECO Market Surveillance and Inspections",
+      "category": "Enforcement",
+      "applies_to": "All consumer products",
+      "description": "PROFECO conducts market surveillance, inspections of retailers and manufacturers. Verification of NOM compliance, labeling, quality, safety. Powers to seize non-compliant products, impose fines. Product testing programs.",
+      "url": "https://www.gob.mx/profeco"
+    },
+    {
+      "id": "Product Recalls",
+      "name": "Product Recall and Corrective Action",
+      "category": "Consumer Protection",
+      "applies_to": "Unsafe or non-compliant products",
+      "description": "PROFECO authority to order recalls. Voluntary recall cooperation encouraged. Public notification requirements. Corrective actions (repair, replace, refund). Penalties for non-compliance.",
+      "url": "https://www.gob.mx/profeco"
+    },
+    {
+      "id": "Warranty Requirements",
+      "name": "Product Warranty Obligations",
+      "category": "Consumer Protection",
+      "applies_to": "Durable consumer goods",
+      "description": "Mandatory warranty provisions. Warranty information must be provided to consumers. Service availability. Genuine parts. Warranty terms in Spanish. PROFECO oversight.",
+      "url": "https://www.gob.mx/profeco"
+    },
+    {
+      "id": "Advertising Regulations",
+      "name": "LFPC Advertising and Marketing Regulations",
+      "category": "Marketing & Advertising",
+      "applies_to": "Product advertising and claims",
+      "description": "Prohibition of misleading advertising. Substantiation of claims required. Specific rules for certain products (food, health, children). PROFECO enforcement. Corrective advertising may be required.",
+      "url": "https://www.gob.mx/profeco"
+    },
+    {
+      "id": "Country of Origin Marking",
+      "name": "NOM-024-SCFI - Country of Origin Information",
+      "category": "Labeling & Information",
+      "applies_to": "Imported products",
+      "description": "Country of origin marking requirements for imported products. Must be visible, legible, indelible. Spanish language. Format requirements. Non-compliance can prevent customs clearance.",
+      "url": "https://www.gob.mx/se/"
+    },
+    {
+      "id": "Extended Warranties",
+      "name": "NOM-152-SCFI - Extended Warranty Information",
+      "category": "Consumer Protection",
+      "applies_to": "Extended warranty and service contracts",
+      "description": "Requirements for extended warranty and service contract offerings. Clear information on coverage, limitations, cancellation rights. Consumer protection provisions.",
+      "url": "https://www.gob.mx/se/"
+    }
+  ]
+}

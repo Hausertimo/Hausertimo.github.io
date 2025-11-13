@@ -1,0 +1,397 @@
+{
+  "_comment": "India compliance norms and standards database. Includes BIS, WPC, TEC, BEE, CDSCO and other Indian regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "BIS CRS",
+      "name": "Bureau of Indian Standards - Compulsory Registration Scheme",
+      "category": "Product Safety",
+      "applies_to": "Electronics, IT equipment, household appliances in CRS schedule",
+      "description": "Mandatory registration for products under Compulsory Registration Scheme. Self-certification with testing at BIS-recognized labs. BIS registration mark (ISI mark) required. Covers electronics, IT equipment, household appliances, cables.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "IS 13252 Part 1",
+      "name": "Information Technology Equipment - Safety - Part 1",
+      "category": "IS Standards",
+      "applies_to": "IT equipment, computers, servers",
+      "description": "Indian standard for IT equipment safety. Based on IEC 62368-1. Required for BIS CRS registration of IT products. Covers electrical, fire, mechanical hazards.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "IS 302-2-6",
+      "name": "Safety of Household and Similar Electrical Appliances - Particular Requirements for Stationary Cooking Ranges",
+      "category": "IS Standards",
+      "applies_to": "Household appliances",
+      "description": "Indian adoption of IEC 60335 series. Safety requirements for household appliances. Multiple parts for different appliance types. Required for BIS certification.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "IS 13252 Part 2",
+      "name": "Lithium Batteries - Safety Requirements",
+      "category": "IS Standards",
+      "applies_to": "Lithium-ion and lithium polymer batteries",
+      "description": "Indian standard for lithium battery safety. Based on IEC 62133. Required for BIS registration of battery products and power banks. Cell and pack level testing.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "IS 15111 Part 32",
+      "name": "Information Technology Equipment - Radiated Emissions",
+      "category": "IS Standards",
+      "applies_to": "IT equipment (EMC)",
+      "description": "EMC emission requirements for IT equipment. Based on CISPR 32. Class A and Class B limits. Required for BIS certification.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "WPC ETA",
+      "name": "Wireless Planning and Coordination - Equipment Type Approval",
+      "category": "Radio Frequency",
+      "applies_to": "All radio transmitting equipment including WiFi, Bluetooth, cellular",
+      "description": "Mandatory approval for radio equipment. Testing at WPC-approved labs (NABL/ILAC accredited). ETA certificate required before import or sale. Covers WiFi, Bluetooth, cellular, IoT devices. WPC marking required.",
+      "url": "https://wpc.dot.gov.in/"
+    },
+    {
+      "id": "SAR India",
+      "name": "Specific Absorption Rate Requirements",
+      "category": "Radio Frequency",
+      "applies_to": "Mobile phones and body-worn wireless devices",
+      "description": "SAR limit: 1.6 W/kg averaged over 1g of tissue (same as US). Testing required for mobile devices. Part of WPC ETA requirements. Must be declared and labeled.",
+      "url": "https://wpc.dot.gov.in/"
+    },
+    {
+      "id": "TEC Approval",
+      "name": "Telecom Engineering Centre - Type Approval",
+      "category": "Telecommunications",
+      "applies_to": "Telecommunications equipment and terminal equipment",
+      "description": "Mandatory type approval for telecom equipment connecting to networks. Testing at TEC or TEC-accredited labs. Required for switches, routers, modems, VoIP equipment, network equipment.",
+      "url": "http://www.tec.gov.in/"
+    },
+    {
+      "id": "MTCTE",
+      "name": "Mandatory Testing and Certification of Telecom Equipment",
+      "category": "Telecommunications",
+      "applies_to": "Telecom products and equipment",
+      "description": "Framework for mandatory testing and certification. Combines safety (BIS), EMI/EMC (TEC), and security requirements. Phased implementation for various product categories.",
+      "url": "http://www.tec.gov.in/"
+    },
+    {
+      "id": "BEE Star Label",
+      "name": "Bureau of Energy Efficiency - Star Labeling Program",
+      "category": "Energy Efficiency",
+      "applies_to": "Appliances, electronics, lighting, HVAC equipment",
+      "description": "Mandatory energy efficiency labeling. 1-5 star rating (5 stars most efficient). Required for products in mandatory category. Voluntary for others. Registration with BEE. Standards under Energy Conservation Act.",
+      "url": "https://www.beeindia.gov.in/"
+    },
+    {
+      "id": "Energy Conservation Standards",
+      "name": "Standards and Labeling Program - Minimum Energy Performance",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-consuming products",
+      "description": "Minimum energy performance standards for appliances and equipment. Products must meet standards before sale in mandatory categories. Covers ACs, refrigerators, fans, pumps, LEDs, more.",
+      "url": "https://www.beeindia.gov.in/"
+    },
+    {
+      "id": "CDSCO Medical Device",
+      "name": "Central Drugs Standard Control Organization - Medical Device Registration",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including software",
+      "description": "Medical device registration and approval. Classification A, B, C, D based on risk. Import license required. Manufacturing license for domestic production. Quality management system requirements. Under Medical Device Rules 2017.",
+      "url": "https://cdsco.gov.in/"
+    },
+    {
+      "id": "Medical Device Rules 2017",
+      "name": "Medical Devices Rules",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers and importers",
+      "description": "Regulatory framework for medical devices. Classification, registration, licensing, labeling, adverse event reporting. Quality management requirements. Clinical investigation rules.",
+      "url": "https://cdsco.gov.in/"
+    },
+    {
+      "id": "IS 14785",
+      "name": "Medical Electrical Equipment - General Requirements for Safety",
+      "category": "Medical Devices",
+      "applies_to": "Medical electrical equipment",
+      "description": "Indian adoption of IEC 60601-1. General safety requirements for medical electrical equipment. Required for medical device registration. EMC requirements in Part 1-2.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "AIS-156",
+      "name": "Automotive Industry Standard - Battery Electric Vehicles Safety",
+      "category": "Automotive",
+      "applies_to": "Electric vehicles and batteries",
+      "description": "Safety requirements for battery electric vehicles. Battery safety, thermal management, crash safety. Mandatory for EV type approval. Covers two-wheelers, three-wheelers, four-wheelers.",
+      "url": "https://www.aepc.in/"
+    },
+    {
+      "id": "CMVR",
+      "name": "Central Motor Vehicle Rules - Type Approval",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and components",
+      "description": "Type approval requirements for vehicles. Safety, emissions, construction standards. Aligning with international standards (UN ECE, AIS). Self-certification for some components. ARAI testing.",
+      "url": "https://morth.nic.in/"
+    },
+    {
+      "id": "BS VI",
+      "name": "Bharat Stage VI Emission Standards",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles",
+      "description": "Vehicle emission standards. Equivalent to Euro 6. Mandatory since 2020. Covers criteria pollutants and particulates. Real driving emissions testing introduced.",
+      "url": "https://morth.nic.in/"
+    },
+    {
+      "id": "AIS-004",
+      "name": "Automotive Industry Standard - Type Approval for Automotive Vehicles",
+      "category": "Automotive",
+      "applies_to": "Complete vehicles and major assemblies",
+      "description": "Framework for vehicle type approval. References multiple AIS standards for specific requirements. Covers construction, safety devices, emissions, electrical systems.",
+      "url": "https://www.aepc.in/"
+    },
+    {
+      "id": "E-Waste Rules 2016",
+      "name": "E-Waste (Management) Rules",
+      "category": "Environmental",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "Extended Producer Responsibility for e-waste. Collection targets, channelization to authorized recyclers, reporting. EPR authorization required. Deposit refund scheme for some products.",
+      "url": "https://cpcb.nic.in/"
+    },
+    {
+      "id": "Plastic Waste Rules",
+      "name": "Plastic Waste Management Rules",
+      "category": "Environmental",
+      "applies_to": "Products with plastic packaging",
+      "description": "Extended Producer Responsibility for plastic packaging. Collection and recycling targets. Registration on EPR portal. Ban on certain single-use plastics. Affects product packaging.",
+      "url": "https://cpcb.nic.in/"
+    },
+    {
+      "id": "Battery Waste Rules",
+      "name": "Battery Waste Management Rules 2022",
+      "category": "Environmental",
+      "applies_to": "Products containing batteries",
+      "description": "EPR for battery waste. Mandatory collection targets. Registration and reporting. Covers all battery types. Importers, manufacturers, dealers all have responsibilities.",
+      "url": "https://cpcb.nic.in/"
+    },
+    {
+      "id": "India RoHS",
+      "name": "E-Waste Rules - Restriction of Hazardous Substances",
+      "category": "Hazardous Substances",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "Reduction of hazardous substances in EEE. Provisions within E-Waste Rules 2016. Threshold limits for lead, mercury, cadmium, hexavalent chromium, PBBs, PBDEs. No separate RoHS legislation but embedded in e-waste rules.",
+      "url": "https://cpcb.nic.in/"
+    },
+    {
+      "id": "Chemicals Registration",
+      "name": "Environment (Protection) Act - Chemical Regulation",
+      "category": "Chemical Substances",
+      "applies_to": "Chemical substances and products",
+      "description": "Regulation of hazardous chemicals under Environment Protection Act. Manufacture, Storage and Import of Hazardous Chemicals Rules. Notification requirements. Material safety data sheets.",
+      "url": "https://moef.gov.in/"
+    },
+    {
+      "id": "BIS Hallmarking",
+      "name": "Hallmarking of Gold and Precious Metals",
+      "category": "Consumer Protection",
+      "applies_to": "Gold and precious metal jewelry",
+      "description": "Mandatory hallmarking for gold jewelry. Purity certification by BIS-licensed assaying and hallmarking centers. Consumer protection measure. HUID (Hallmark Unique Identification) required.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "Toy Safety Rules",
+      "name": "Safety of Toys and Children's Products",
+      "category": "Children's Products",
+      "applies_to": "Toys for children",
+      "description": "Mandatory BIS certification for toys under CRS. Safety requirements based on IS 9873 and IS 15644. Mechanical, physical, chemical, flammability requirements. Third-party testing.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "IS 9873",
+      "name": "Safety of Toys - Part 1: Mechanical and Physical Properties",
+      "category": "Children's Products",
+      "applies_to": "Toys",
+      "description": "Indian toy safety standard. Based on ISO 8124-1. Mechanical and physical properties requirements. Part of comprehensive IS 9873 series covering flammability and chemical migration.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "FSSAI",
+      "name": "Food Safety and Standards Authority - Food Contact Materials",
+      "category": "Food Safety",
+      "applies_to": "Materials in contact with food",
+      "description": "Safety requirements for food contact materials. Standards for plastics, metals, paper, ceramics, glass. Migration limits. Positive lists. Food Safety and Standards Regulations 2011.",
+      "url": "https://www.fssai.gov.in/"
+    },
+    {
+      "id": "FSS Packaging",
+      "name": "Food Safety and Standards (Packaging and Labelling) Regulations",
+      "category": "Food Safety",
+      "applies_to": "Food packaging",
+      "description": "Requirements for food packaging and labeling. Mandatory declarations, nutritional information, allergen labeling. Vegetarian/non-vegetarian marking (green/brown dot). Package size regulations.",
+      "url": "https://www.fssai.gov.in/"
+    },
+    {
+      "id": "Legal Metrology",
+      "name": "Legal Metrology (Packaged Commodities) Rules",
+      "category": "Consumer Protection",
+      "applies_to": "Pre-packaged commodities",
+      "description": "Mandatory declarations on packaged products. MRP (Maximum Retail Price) declaration required. Net quantity, manufacturing details, importer details. Consumer information protection.",
+      "url": "https://consumeraffairs.nic.in/"
+    },
+    {
+      "id": "Consumer Protection Act 2019",
+      "name": "Consumer Protection Act",
+      "category": "Consumer Protection",
+      "applies_to": "All consumer products and services",
+      "description": "Consumer rights framework. Product liability, unfair trade practices, consumer disputes redressal. Central Consumer Protection Authority has recall and enforcement powers.",
+      "url": "https://consumeraffairs.nic.in/"
+    },
+    {
+      "id": "MRP Rules",
+      "name": "Maximum Retail Price Declaration",
+      "category": "Consumer Protection",
+      "applies_to": "Packaged commodities",
+      "description": "Mandatory MRP declaration on all packaged commodities. Price inclusive of all taxes. Cannot sell above MRP. Penalties for violations. Under Legal Metrology Rules.",
+      "url": "https://consumeraffairs.nic.in/"
+    },
+    {
+      "id": "Personal Data Protection",
+      "name": "Digital Personal Data Protection Act 2023",
+      "category": "Data Protection",
+      "applies_to": "Organizations processing personal data",
+      "description": "India's comprehensive data privacy law. Consent requirements, data principal rights, obligations of data fiduciaries, cross-border transfers. Enforcement from 2024. Applies to digital personal data.",
+      "url": "https://www.meity.gov.in/"
+    },
+    {
+      "id": "IT Rules 2021",
+      "name": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules",
+      "category": "Data Protection",
+      "applies_to": "Intermediaries, social media platforms",
+      "description": "Due diligence requirements for intermediaries. Content moderation, grievance redressal, traceability provisions. Affects platforms and digital services.",
+      "url": "https://www.meity.gov.in/"
+    },
+    {
+      "id": "CERT-In Directions",
+      "name": "Indian Computer Emergency Response Team - Cybersecurity Directions",
+      "category": "Cybersecurity",
+      "applies_to": "Service providers, data centers, VPN providers",
+      "description": "Cybersecurity incident reporting requirements. Synchronization of ICT clocks. Log maintenance. KYC for VPN and cloud providers. Mandatory compliance for service providers.",
+      "url": "https://www.cert-in.org.in/"
+    },
+    {
+      "id": "IS/ISO/IEC 27001",
+      "name": "Information Security Management System (Indian Standard)",
+      "category": "Cybersecurity",
+      "applies_to": "Organizations managing information security",
+      "description": "Indian adoption of ISO/IEC 27001. Information security management certification. Increasingly required for IT services, government contracts, critical infrastructure.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "Aadhaar Authentication",
+      "name": "Aadhaar (Targeted Delivery) Act - Authentication Requirements",
+      "category": "Identity & Authentication",
+      "applies_to": "Services using Aadhaar authentication",
+      "description": "Requirements for Aadhaar-based authentication. UIDAI registration required for authentication user agencies. Security and privacy requirements. Affects fintech, identity verification services.",
+      "url": "https://uidai.gov.in/"
+    },
+    {
+      "id": "eKYC Regulations",
+      "name": "Electronic Know Your Customer - RBI Guidelines",
+      "category": "Financial Services",
+      "applies_to": "Financial services using digital identity verification",
+      "description": "Guidelines for electronic KYC using Aadhaar and other methods. Video-based KYC permitted. Affects fintech products and services. Security and audit requirements.",
+      "url": "https://www.rbi.org.in/"
+    },
+    {
+      "id": "Payment Systems",
+      "name": "Payment and Settlement Systems Act - Authorization",
+      "category": "Financial Services",
+      "applies_to": "Payment systems and wallets",
+      "description": "Authorization required for operating payment systems. RBI licensing and regulation. Affects digital wallets, payment gateways, UPI apps. Security and interoperability requirements.",
+      "url": "https://www.rbi.org.in/"
+    },
+    {
+      "id": "Electricity Rules 2005",
+      "name": "Central Electricity Authority (Measures Relating to Safety and Electric Supply) Regulations",
+      "category": "Electrical Safety",
+      "applies_to": "Electrical installations and equipment",
+      "description": "Safety requirements for electrical installations. Standards for equipment, wiring, earthing. Affects building electrical systems and installed equipment. State-level enforcement.",
+      "url": "https://cea.nic.in/"
+    },
+    {
+      "id": "BIS Quality Control Orders",
+      "name": "Quality Control Orders under BIS Act",
+      "category": "Product Quality",
+      "applies_to": "Products under Quality Control Orders",
+      "description": "Mandatory quality certification for products under QCOs. Specific quality parameters must be met. Covers various products from steel to electronics. BIS certification or registration required.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "Foreign Trade Policy",
+      "name": "Directorate General of Foreign Trade - Import Requirements",
+      "category": "Import Requirements",
+      "applies_to": "Imported products",
+      "description": "Import licensing and documentation requirements. IEC (Import Export Code) required. Restricted and prohibited goods lists. Affects customs clearance. Specific requirements for electronics, telecom.",
+      "url": "https://www.dgft.gov.in/"
+    },
+    {
+      "id": "Make in India Electronics",
+      "name": "National Policy on Electronics - Preferential Market Access",
+      "category": "Industry Policy",
+      "applies_to": "Electronics products for government procurement",
+      "description": "Preference for domestically manufactured electronics in government procurement. Phased Manufacturing Program for mobile phones and components. Affects supplier qualification.",
+      "url": "https://www.meity.gov.in/"
+    },
+    {
+      "id": "ISI Mark Scheme",
+      "name": "BIS Product Certification Scheme",
+      "category": "Voluntary Certification",
+      "applies_to": "Products seeking ISI mark (voluntary categories)",
+      "description": "Voluntary certification scheme for products not under CRS. ISI mark demonstrates compliance with IS standards. Factory inspection and testing. Market recognition and preference.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "Gems and Jewellery",
+      "name": "Bureau of Indian Standards - Gems and Jewellery Standards",
+      "category": "Specialized Products",
+      "applies_to": "Gems and jewelry",
+      "description": "Standards for gems and jewelry. Diamond grading, gemstone identification, jewelry manufacturing. BIS certification and hallmarking programs.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "Textile Standards",
+      "name": "Textile and Apparel Standards",
+      "category": "Textiles",
+      "applies_to": "Textiles and clothing",
+      "description": "BIS standards for textiles and apparel. Quality, safety, labeling requirements. Mandatory for some products (baby garments, safety wear). Care labeling requirements.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "Green Building",
+      "name": "Green Building Certification - GRIHA/IGBC",
+      "category": "Construction",
+      "applies_to": "Buildings and construction products",
+      "description": "Green building rating systems (GRIHA, IGBC LEED India). Voluntary but increasingly required for government and commercial projects. Affects building materials and systems.",
+      "url": "https://www.mohua.gov.in/"
+    },
+    {
+      "id": "Fire Safety NOC",
+      "name": "Fire Safety - National Building Code",
+      "category": "Fire Safety",
+      "applies_to": "Building products and fire safety equipment",
+      "description": "Fire safety requirements from National Building Code. Fire resistance, alarm systems, suppression systems. Fire NOC required for buildings. Affects electrical equipment and building materials.",
+      "url": "https://www.bis.gov.in/"
+    },
+    {
+      "id": "Weights and Measures",
+      "name": "Legal Metrology - Weights and Measures",
+      "category": "Metrology",
+      "applies_to": "Weighing and measuring instruments",
+      "description": "Standards and verification for weights, measures, weighing instruments. Mandatory verification for instruments used in trade. Model approval and stamping requirements.",
+      "url": "https://consumeraffairs.nic.in/"
+    },
+    {
+      "id": "IS/ISO 9001",
+      "name": "Quality Management Systems (Indian Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing quality management",
+      "description": "Indian adoption of ISO 9001. Quality management system certification. NAB (National Accreditation Board) accredits certification bodies. Important for supplier qualification.",
+      "url": "https://www.bis.gov.in/"
+    }
+  ]
+}
