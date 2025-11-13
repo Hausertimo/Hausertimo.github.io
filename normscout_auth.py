@@ -21,7 +21,8 @@ from typing import Optional, Dict, Any, List
 
 from flask import (
     Blueprint, request, jsonify, redirect, session,
-    make_response, send_file, render_template_string, url_for
+    make_response, send_file, render_template_string, url_for,
+    send_from_directory
 )
 from supabase import create_client, Client
 
@@ -498,6 +499,28 @@ def get_current_user_info():
 
 
 # ============================================================================
+# PAGE ROUTES (HTML Pages)
+# ============================================================================
+
+# Create a separate blueprint for pages (no /auth prefix)
+pages_bp = Blueprint('pages', __name__)
+
+
+@pages_bp.route('/dashboard')
+@require_auth
+def dashboard_page():
+    """Serve the dashboard page"""
+    return send_from_directory('static', 'dashboard.html')
+
+
+@pages_bp.route('/workspace/<workspace_id>')
+@require_auth
+def workspace_page(workspace_id):
+    """Serve the workspace view page"""
+    return send_from_directory('static', 'workspace_view.html')
+
+
+# ============================================================================
 # WORKSPACE ROUTES
 # ============================================================================
 
@@ -913,6 +936,7 @@ def register_blueprints(app):
     """Register all auth and workspace blueprints with Flask app"""
     app.register_blueprint(auth_bp)
     app.register_blueprint(workspace_bp)
+    app.register_blueprint(pages_bp)
 
 
 def init_app(app):
