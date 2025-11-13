@@ -355,12 +355,14 @@
                 formatted = formatted.replace(/^([A-Z][a-zA-Z\s&\/]+:)(?=\s*\n|$)/gm, '<h5 style="color: var(--text-dark); margin-top: 1rem; margin-bottom: 0.5rem; font-size: 0.95rem; font-weight: 600;">$1</h5>');
 
                 // Process bullet points SECOND
-                formatted = formatted.replace(/^\s*\*\s+(.+)$/gm, '<li>$1</li>');
-                formatted = formatted.replace(/^\s*-\s+(.+)$/gm, '<li>$1</li>');
+                formatted = formatted.replace(/^\s*\*\s+(.+)$/gm, '<li style="margin-bottom: 0.25rem;">$1</li>');
+                formatted = formatted.replace(/^\s*-\s+(.+)$/gm, '<li style="margin-bottom: 0.25rem;">$1</li>');
 
                 // Wrap consecutive <li> elements in <ul> BEFORE converting newlines
                 formatted = formatted.replace(/(<li>.*?<\/li>\n?)+/g, function(match) {
-                    return '<ul style="margin: 0.5rem 0 1rem 1.5rem; padding-left: 1rem;">' + match + '</ul>';
+                    // Remove newlines between list items to prevent extra spacing
+                    const cleanedMatch = match.replace(/<\/li>\n/g, '</li>');
+                    return '<ul style="margin: 0.25rem 0 0.75rem 1.5rem; padding-left: 1rem; list-style-type: disc;">' + cleanedMatch + '</ul>';
                 });
 
                 // Convert newlines LAST
