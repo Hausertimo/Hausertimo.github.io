@@ -1,0 +1,381 @@
+{
+  "_comment": "Singapore compliance norms and standards database. Includes IMDA, PSB, NEA, HSA and other Singapore regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "IMDA Equipment Registration",
+      "name": "Infocomm Media Development Authority - Equipment Registration",
+      "category": "Telecommunications & IT",
+      "applies_to": "Telecommunications equipment, radio equipment, IT equipment",
+      "description": "Mandatory registration for telecom, radio, and dealer-registered IT equipment. Testing at accredited labs. IMDA approval required before import or sale. Covers WiFi, Bluetooth, cellular, networking equipment.",
+      "url": "https://www.imda.gov.sg/"
+    },
+    {
+      "id": "IMDA Type Approval",
+      "name": "Type Approval for Radio Equipment",
+      "category": "Telecommunications & IT",
+      "applies_to": "Radio transmitting equipment",
+      "description": "Type approval for radio equipment. Technical requirements based on international standards. Testing at IMDA-accredited labs. Type approval label required on equipment.",
+      "url": "https://www.imda.gov.sg/"
+    },
+    {
+      "id": "IMDA SAR",
+      "name": "Specific Absorption Rate Requirements",
+      "category": "Telecommunications & IT",
+      "applies_to": "Mobile phones and body-worn wireless devices",
+      "description": "SAR limit: 2.0 W/kg averaged over 10g of tissue. Testing required for devices used within 20cm of body. Part of IMDA equipment registration.",
+      "url": "https://www.imda.gov.sg/"
+    },
+    {
+      "id": "PSB Safety Mark",
+      "name": "Product Safety and Technical Requirements",
+      "category": "Product Safety",
+      "applies_to": "Controlled goods (electrical, electronic, gas appliances)",
+      "description": "Mandatory safety certification for controlled goods. PSB Safety Mark required. Testing at accredited labs. Covers household appliances, power supplies, cables, plugs, switches, LED products.",
+      "url": "https://www.enterprisesg.gov.sg/quality-standards/consumer-protection/consumer-protection-safety-requirements"
+    },
+    {
+      "id": "SS 638",
+      "name": "Singapore Standard - Household Electrical Appliances Safety",
+      "category": "Singapore Standards",
+      "applies_to": "Household electrical appliances",
+      "description": "Singapore safety standard for household appliances. Based on IEC 60335 series. Required for PSB Safety Mark. Part 1 general, Part 2 specific appliances.",
+      "url": "https://www.singaporestandardseshop.sg/"
+    },
+    {
+      "id": "SS 650",
+      "name": "Safety Requirements for IT Equipment",
+      "category": "Singapore Standards",
+      "applies_to": "Information technology equipment",
+      "description": "Singapore standard for IT equipment safety. Based on IEC 62368-1. Required for PSB safety certification or IMDA registration depending on product type.",
+      "url": "https://www.singaporestandardseshop.sg/"
+    },
+    {
+      "id": "SS IEC 62133-2",
+      "name": "Lithium Batteries - Safety Requirements",
+      "category": "Singapore Standards",
+      "applies_to": "Lithium-ion and lithium polymer batteries",
+      "description": "Singapore adoption of IEC 62133-2. Safety requirements for portable lithium batteries. Required for PSB Safety Mark for battery products.",
+      "url": "https://www.singaporestandardseshop.sg/"
+    },
+    {
+      "id": "SPRING Technical Reference",
+      "name": "Technical Reference for Electrical Products",
+      "category": "Product Safety",
+      "applies_to": "Electrical and electronic products",
+      "description": "Technical requirements for various electrical products. References international standards (IEC, EN). Used for PSB Safety Mark assessment. Covers construction, testing, marking.",
+      "url": "https://www.enterprisesg.gov.sg/"
+    },
+    {
+      "id": "Energy Labeling Singapore",
+      "name": "Mandatory Energy Labeling Scheme (MELS)",
+      "category": "Energy Efficiency",
+      "applies_to": "Household appliances, electronics",
+      "description": "Mandatory energy efficiency labeling. Tick rating system (1-5 ticks, 5 most efficient). Required for air conditioners, refrigerators, clothes dryers, lamps, TVs. NEA (National Environment Agency) administered.",
+      "url": "https://www.nea.gov.sg/our-services/climate-change-energy-efficiency/energy-efficiency/household-sector/mandatory-energy-labelling-and-minimum-energy-performance-standards"
+    },
+    {
+      "id": "MEPS Singapore",
+      "name": "Minimum Energy Performance Standards",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-consuming products",
+      "description": "Mandatory minimum energy efficiency standards. Products must meet MEPS before registration. Various standards for different product categories. NEA enforcement.",
+      "url": "https://www.nea.gov.sg/"
+    },
+    {
+      "id": "HSA Medical Device",
+      "name": "Health Sciences Authority - Medical Device Registration",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including software",
+      "description": "Mandatory registration for medical devices. Classification A, B, C, D based on risk. Pre-market approval for higher-risk devices. QMS requirements. Dealer licensing. HSA approval required.",
+      "url": "https://www.hsa.gov.sg/medical-devices"
+    },
+    {
+      "id": "Singapore GMP Medical",
+      "name": "Good Manufacturing Practice for Medical Devices",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "GMP requirements for medical device manufacturing. Based on ISO 13485. HSA inspection and certification. Required for manufacturer licensing.",
+      "url": "https://www.hsa.gov.sg/"
+    },
+    {
+      "id": "LTA Type Approval",
+      "name": "Land Transport Authority - Vehicle Type Approval",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and components",
+      "description": "Type approval for vehicles. Safety standards, emissions requirements. LTA testing or recognition of international approvals. Certificate of Entitlement (COE) system for vehicle registration.",
+      "url": "https://www.lta.gov.sg/"
+    },
+    {
+      "id": "Vehicle Emissions",
+      "name": "Vehicle Emissions Standards",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles",
+      "description": "Strict vehicle emission standards. Euro 6 equivalent for new vehicles. NEA enforcement. Periodic inspection requirements. Carbon emissions-based road tax.",
+      "url": "https://www.nea.gov.sg/"
+    },
+    {
+      "id": "Consumer Protection Fair Trading Act",
+      "name": "CPFTA - Consumer Protection",
+      "category": "Consumer Protection",
+      "applies_to": "All consumer goods and services",
+      "description": "Consumer protection framework. Unfair practices prohibition. Product safety requirements. CCCS (Competition and Consumer Commission) enforcement. Lemon law for defective goods.",
+      "url": "https://www.cccs.gov.sg/"
+    },
+    {
+      "id": "Product Safety Act",
+      "name": "Consumer Protection (Consumer Goods Safety Requirements) Regulations",
+      "category": "Consumer Protection",
+      "applies_to": "Consumer goods",
+      "description": "General safety requirement for consumer goods. Product recall authority. Safety standards for specific products. Enforcement by Enterprise Singapore (ESG).",
+      "url": "https://www.enterprisesg.gov.sg/"
+    },
+    {
+      "id": "Toys Safety Requirements",
+      "name": "Safety Standards for Toys",
+      "category": "Children's Products",
+      "applies_to": "Toys for children",
+      "description": "Safety requirements for toys. Based on international standards (ISO 8124, EN 71, ASTM F963). Voluntary but enforced under general safety requirements. Labeling and warnings required.",
+      "url": "https://www.enterprisesg.gov.sg/"
+    },
+    {
+      "id": "Environmental Protection",
+      "name": "Environmental Public Health Act - Product Requirements",
+      "category": "Environmental",
+      "applies_to": "Products affecting environment and public health",
+      "description": "Environmental and public health requirements. NEA enforcement. Covers air pollution, noise, hazardous substances. Affects product design and emissions.",
+      "url": "https://www.nea.gov.sg/"
+    },
+    {
+      "id": "E-Waste Management",
+      "name": "Extended Producer Responsibility for E-Waste",
+      "category": "Environmental",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "Producer responsibility scheme for e-waste. Registration and reporting. Collection targets. Applies to ICT, batteries, lamps, solar panels. NEA administered.",
+      "url": "https://www.nea.gov.sg/"
+    },
+    {
+      "id": "Packaging Waste",
+      "name": "Mandatory Packaging Reporting",
+      "category": "Environmental",
+      "applies_to": "Companies placing packaged products",
+      "description": "Mandatory reporting for companies placing packaging. Data collection for extended producer responsibility. Reduction and recycling targets. NEA oversight.",
+      "url": "https://www.nea.gov.sg/"
+    },
+    {
+      "id": "Hazardous Substances Act",
+      "name": "Environmental Protection (Hazardous Substances) Regulations",
+      "category": "Hazardous Substances",
+      "applies_to": "Products containing hazardous substances",
+      "description": "Control of hazardous substances. Restrictions on specific chemicals. Permits for import/manufacture. NEA enforcement. Affects product materials and composition.",
+      "url": "https://www.nea.gov.sg/"
+    },
+    {
+      "id": "PDPA",
+      "name": "Personal Data Protection Act",
+      "category": "Data Protection",
+      "applies_to": "Organizations collecting, using, or disclosing personal data",
+      "description": "Comprehensive data protection law. Consent requirements, access rights, accountability. PDPC (Personal Data Protection Commission) enforcement. Applies to connected devices and services.",
+      "url": "https://www.pdpc.gov.sg/"
+    },
+    {
+      "id": "Cybersecurity Act",
+      "name": "Cybersecurity Requirements",
+      "category": "Cybersecurity",
+      "applies_to": "Critical information infrastructure, cybersecurity service providers",
+      "description": "Cybersecurity requirements for critical infrastructure. Incident reporting. CSA (Cyber Security Agency) oversight. Licensing for cybersecurity service providers. Affects security products.",
+      "url": "https://www.csa.gov.sg/"
+    },
+    {
+      "id": "Cybersecurity Code of Practice",
+      "name": "CSA IoT Cybersecurity Guide",
+      "category": "Cybersecurity",
+      "applies_to": "IoT devices and systems",
+      "description": "Cybersecurity guide for IoT. Best practices for manufacturers and system integrators. Four security levels. Voluntary but increasingly expected. CSA guidance.",
+      "url": "https://www.csa.gov.sg/"
+    },
+    {
+      "id": "SFA Food Safety",
+      "name": "Singapore Food Agency - Food Contact Materials",
+      "category": "Food Safety",
+      "applies_to": "Materials in contact with food",
+      "description": "Safety requirements for food contact materials and articles. Standards for various materials. Migration limits. SFA approval and registration.",
+      "url": "https://www.sfa.gov.sg/"
+    },
+    {
+      "id": "Food Labeling",
+      "name": "Sale of Food Act - Labeling Requirements",
+      "category": "Food Safety",
+      "applies_to": "Food and beverage products",
+      "description": "Mandatory labeling requirements for food. Ingredient listing, nutritional information, allergen declarations, date marking. English labeling required. SFA enforcement.",
+      "url": "https://www.sfa.gov.sg/"
+    },
+    {
+      "id": "Trade Marks Act",
+      "name": "Trademark Protection",
+      "category": "Intellectual Property",
+      "applies_to": "Product branding and marking",
+      "description": "Trademark registration and protection. IPOS (Intellectual Property Office of Singapore) administration. Prevents unauthorized use. Strong enforcement against counterfeits.",
+      "url": "https://www.ipos.gov.sg/"
+    },
+    {
+      "id": "Patents Act",
+      "name": "Patent Protection for Innovations",
+      "category": "Intellectual Property",
+      "applies_to": "Innovative products and technologies",
+      "description": "Patent protection for inventions and utility models. IPOS registration. 20-year protection. Important IP hub in Asia.",
+      "url": "https://www.ipos.gov.sg/"
+    },
+    {
+      "id": "Building Control Act",
+      "name": "Building Safety and Construction Standards",
+      "category": "Construction",
+      "applies_to": "Building products and systems",
+      "description": "Building safety requirements. BCA (Building and Construction Authority) regulations. Affects electrical systems, fire safety, building materials. Product approvals required.",
+      "url": "https://www.bca.gov.sg/"
+    },
+    {
+      "id": "Fire Safety Act",
+      "name": "Fire Safety Requirements",
+      "category": "Fire Safety",
+      "applies_to": "Fire safety equipment and building fire protection",
+      "description": "Fire safety requirements for buildings and equipment. SCDF (Singapore Civil Defence Force) approval. Fire detection, suppression, emergency systems. Product certification required.",
+      "url": "https://www.scdf.gov.sg/"
+    },
+    {
+      "id": "WSUD Approval",
+      "name": "Water Efficiency Labeling Scheme",
+      "category": "Water Efficiency",
+      "applies_to": "Water fittings and appliances",
+      "description": "Mandatory water efficiency labeling and registration. Tick rating system. PUB (Public Utilities Board) administered. Covers taps, showerheads, WCs, urinals, washing machines.",
+      "url": "https://www.pub.gov.sg/"
+    },
+    {
+      "id": "Workplace Safety",
+      "name": "Workplace Safety and Health Act",
+      "category": "Occupational Safety",
+      "applies_to": "Equipment used in workplaces",
+      "description": "Workplace safety requirements. MOM (Ministry of Manpower) enforcement. Affects machinery, electrical equipment, PPE. Risk assessment and control measures.",
+      "url": "https://www.mom.gov.sg/workplace-safety-and-health"
+    },
+    {
+      "id": "Green Mark",
+      "name": "BCA Green Mark for Buildings",
+      "category": "Sustainability",
+      "applies_to": "Buildings and construction products",
+      "description": "Green building certification scheme. Voluntary but widely adopted. Affects building materials, systems, equipment. BCA certification.",
+      "url": "https://www.bca.gov.sg/greenmark/"
+    },
+    {
+      "id": "Singapore Green Labeling Scheme",
+      "name": "SGLS Eco-Label",
+      "category": "Sustainability",
+      "applies_to": "Environmentally friendly products (voluntary)",
+      "description": "Voluntary environmental labeling. Type I eco-label (ISO 14024). Criteria for various product categories. SEC (Singapore Environment Council) certification.",
+      "url": "https://sgls.sec.org.sg/"
+    },
+    {
+      "id": "Customs Classification",
+      "name": "Singapore Customs - HS Classification",
+      "category": "Import/Export",
+      "applies_to": "All imported and exported products",
+      "description": "HS-based product classification. Determines duties, GST, regulatory requirements. Accurate classification required for customs clearance. TradeNet system for declarations.",
+      "url": "https://www.customs.gov.sg/"
+    },
+    {
+      "id": "CCA Controlled Goods",
+      "name": "Controlled and Prohibited Goods",
+      "category": "Import/Export",
+      "applies_to": "Regulated products requiring permits",
+      "description": "Import/export permits required for controlled goods. Various agencies (IMDA, PSB, HSA, NEA) issue permits. TradeNet integration. Pre-shipment approval needed.",
+      "url": "https://www.customs.gov.sg/"
+    },
+    {
+      "id": "SS ISO 9001",
+      "name": "Quality Management Systems (Singapore Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing quality management",
+      "description": "Singapore adoption of ISO 9001. Quality management system certification. SAC (Singapore Accreditation Council) accredits certification bodies.",
+      "url": "https://www.singaporestandardseshop.sg/"
+    },
+    {
+      "id": "SS ISO 14001",
+      "name": "Environmental Management Systems (Singapore Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing environmental management",
+      "description": "Singapore adoption of ISO 14001. Environmental management system certification. SAC accreditation.",
+      "url": "https://www.singaporestandardseshop.sg/"
+    },
+    {
+      "id": "SS ISO/IEC 27001",
+      "name": "Information Security Management Systems (Singapore Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations managing information security",
+      "description": "Singapore adoption of ISO/IEC 27001. Information security management certification. Important for IT services and critical infrastructure.",
+      "url": "https://www.singaporestandardseshop.sg/"
+    },
+    {
+      "id": "SAC Accreditation",
+      "name": "Singapore Accreditation Council",
+      "category": "Conformity Assessment",
+      "applies_to": "Testing labs, certification bodies, inspection bodies",
+      "description": "National accreditation body. Accredits labs and certification bodies for product certification, testing. ISO/IEC 17025, 17065, 17020 requirements. SAC accreditation widely required.",
+      "url": "https://www.sac-accreditation.gov.sg/"
+    },
+    {
+      "id": "Competition Act",
+      "name": "Competition and Consumer Protection",
+      "category": "Consumer Protection",
+      "applies_to": "Product marketing and business practices",
+      "description": "Prohibits anti-competitive practices and unfair trading. CCCS enforcement. Affects product pricing, advertising, distribution agreements.",
+      "url": "https://www.cccs.gov.sg/"
+    },
+    {
+      "id": "Sale of Goods Act",
+      "name": "Consumer Rights for Goods",
+      "category": "Consumer Protection",
+      "applies_to": "Sale of goods",
+      "description": "Implied terms for sale of goods. Goods must be of satisfactory quality, fit for purpose, as described. Consumer remedies for defective goods.",
+      "url": "https://sso.agc.gov.sg/"
+    },
+    {
+      "id": "Lemon Law",
+      "name": "Consumer Protection (Lemon Law) Provisions",
+      "category": "Consumer Protection",
+      "applies_to": "Defective consumer goods",
+      "description": "Protection for defective goods. Repair, replacement, refund, or price reduction. Applies within 6 months of delivery. Specific provisions for new motor vehicles.",
+      "url": "https://www.cccs.gov.sg/"
+    },
+    {
+      "id": "Product Liability",
+      "name": "Product Liability Under Consumer Protection Act",
+      "category": "Consumer Protection",
+      "applies_to": "All products",
+      "description": "Liability for defective products causing damage. Strict liability for manufacturers, importers. Complements general tort law. Important for product safety.",
+      "url": "https://www.cccs.gov.sg/"
+    },
+    {
+      "id": "Metrology Act",
+      "name": "Legal Metrology and Weights & Measures",
+      "category": "Metrology",
+      "applies_to": "Measuring instruments, prepackaged goods",
+      "description": "Legal metrology requirements. Verification of measuring instruments used in trade. Prepackaged goods net content. Enterprise Singapore enforcement.",
+      "url": "https://www.enterprisesg.gov.sg/"
+    },
+    {
+      "id": "SES Auditing",
+      "name": "Singapore Energy Storage Safety Standards",
+      "category": "Energy Storage",
+      "applies_to": "Energy storage systems and large battery installations",
+      "description": "Safety requirements for energy storage systems. Fire safety, electrical safety, system integration. SCDF and EMA (Energy Market Authority) oversight. Important for solar+storage, grid storage.",
+      "url": "https://www.ema.gov.sg/"
+    },
+    {
+      "id": "Smart Nation Standards",
+      "name": "Smart Nation Technical Reference Standards",
+      "category": "Digital Infrastructure",
+      "applies_to": "Smart city technologies and IoT devices",
+      "description": "Technical standards for smart nation initiatives. Interoperability, cybersecurity, data exchange. IMDA and Smart Nation initiatives. Affects IoT, sensors, smart city products.",
+      "url": "https://www.smartnation.gov.sg/"
+    }
+  ]
+}
