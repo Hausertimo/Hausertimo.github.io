@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}Workspace - NormScout{% endblock %}
+
+{% block nav_links %}
+    <a href="/dashboard" class="nav-link">Dashboard</a>
+    <a href="/contact" class="nav-link">Contact</a>
+{% endblock %}
+
+{% block content %}
+    <!-- Workspace Content -->
+    <div class="workspace-view-container">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="workspaceLoading" class="loading-state" style="display: flex;">
+                <div class="loading-spinner"></div>
+                <p>Loading workspace...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="workspaceError" class="error-state" style="display: none;">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="error-icon">
+                    <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2"/>
+                    <path d="M32 20v16M32 44v.5" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h2>Workspace Not Found</h2>
+                <p id="errorMessage">This workspace doesn't exist or you don't have access to it.</p>
+                <a href="/dashboard" class="btn btn-accent">Back to Dashboard</a>
+            </div>
+
+            <!-- Workspace Content (hidden until loaded) -->
+            <div id="workspaceContent" style="display: none;">
+                <!-- Workspace Header -->
+                <div class="workspace-header">
+                    <div>
+                        <div class="workspace-breadcrumb">
+                            <a href="/dashboard">Dashboard</a>
+                            <span>/</span>
+                            <span id="workspaceNumber">Workspace</span>
+                        </div>
+                        <h1 id="workspaceName" class="workspace-title">Loading...</h1>
+                    </div>
+                    <div class="workspace-header-actions">
+                        <button class="btn btn-secondary" onclick="exportWorkspace()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 2v10M5 9l3 3 3-3M2 14h12"/>
+                            </svg>
+                            Export PDF
+                        </button>
+                        <button class="btn btn-secondary" onclick="showRenameModal()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2 12l10-10 2 2-10 10H2v-2z"/>
+                            </svg>
+                            Rename
+                        </button>
+                        <button class="btn btn-danger" onclick="showDeleteModal()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M4 4l8 8M12 4l-8 8"/>
+                            </svg>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+
+                <div class="workspace-grid">
+                    <!-- Main Content -->
+                    <div class="workspace-main">
+                        <!-- Product Description -->
+                        <div class="workspace-section">
+                            <h2 class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M4 4h12v12H4V4z"/>
+                                    <path d="M7 8h6M7 11h4"/>
+                                </svg>
+                                Product Description
+                            </h2>
+                            <div class="section-content">
+                                <p id="productDescription">Loading...</p>
+                            </div>
+                        </div>
+
+                        <!-- Compliance Results -->
+                        <div class="workspace-section">
+                            <h2 class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10 2L3 7v6c0 4 7 5 7 5s7-1 7-5V7l-7-5z"/>
+                                    <path d="M7 10l2 2 4-4"/>
+                                </svg>
+                                Compliance Results
+                            </h2>
+                            <div class="section-content">
+                                <div id="complianceResults">Loading...</div>
+                            </div>
+                        </div>
+
+                        <!-- Q&A Section -->
+                        <div class="workspace-section">
+                            <h2 class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M18 10c0 4.4-3.6 8-8 8-1.4 0-2.8-.4-4-1l-4 1 1-4c-.6-1.2-1-2.6-1-4 0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+                                </svg>
+                                Questions & Answers
+                            </h2>
+                            <div class="section-content">
+                                <div id="qaHistory" class="qa-history">
+                                    <!-- Q&A items will be inserted here -->
+                                </div>
+
+                                <!-- Ask Question Form -->
+                                <div class="ask-question-form">
+                                    <textarea
+                                        id="questionInput"
+                                        placeholder="Ask a question about this workspace..."
+                                        rows="3"
+                                    ></textarea>
+                                    <button class="btn btn-accent" onclick="askQuestion()" id="askBtn">
+                                        Send Question
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="workspace-sidebar">
+                        <div class="sidebar-section">
+                            <h3>Workspace Info</h3>
+                            <div class="sidebar-info">
+                                <div class="info-item">
+                                    <label>Created</label>
+                                    <span id="createdDate">Loading...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Last Updated</label>
+                                    <span id="updatedDate">Loading...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Questions Asked</label>
+                                    <span id="qaCount">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rename Modal -->
+    <div id="renameModal" class="modal" style="display: none;">
+        <div class="modal-content modal-small">
+            <button class="modal-close" onclick="hideRenameModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Rename Workspace</h2>
+            </div>
+            <div class="modal-body">
+                <label for="newWorkspaceName">Workspace Name</label>
+                <input type="text" id="newWorkspaceName" class="input-field" placeholder="Enter new name">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="hideRenameModal()">Cancel</button>
+                <button class="btn btn-accent" onclick="saveRename()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="modal" style="display: none;">
+        <div class="modal-content modal-small">
+            <button class="modal-close" onclick="hideDeleteModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Delete Workspace?</h2>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this workspace?</p>
+                <p class="text-muted">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="hideDeleteModal()">Cancel</button>
+                <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="/static/workspace.js"></script>
+{% endblock %}
