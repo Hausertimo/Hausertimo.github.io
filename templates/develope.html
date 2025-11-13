@@ -451,6 +451,58 @@
         let conversationComplete = false;
         let analysisComplete = false;  // NEW - tracks if analysis is done
 
+        // Check for session_id in URL parameters on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const incomingSessionId = urlParams.get('session_id');
+
+            if (incomingSessionId) {
+                // Load existing session from landing page
+                loadExistingSession(incomingSessionId);
+            }
+        });
+
+        async function loadExistingSession(incomingSessionId) {
+            try {
+                // Fetch session data from backend
+                const response = await fetch(`/api/develope/session/${incomingSessionId}`);
+                const sessionData = await response.json();
+
+                if (sessionData.error) {
+                    console.error('Error loading session:', sessionData.error);
+                    addMessage('assistant', 'Welcome back! It looks like your session expired. Please start a new conversation.');
+                    return;
+                }
+
+                // Set session ID
+                sessionId = incomingSessionId;
+                conversationComplete = sessionData.complete || false;
+
+                // Clear default welcome message
+                const chatMessages = document.getElementById('chatMessages');
+                chatMessages.innerHTML = '';
+
+                // Display conversation history
+                if (sessionData.history && sessionData.history.length > 0) {
+                    sessionData.history.forEach(msg => {
+                        addMessage(msg.role, msg.content);
+                    });
+                }
+
+                // If conversation is complete, show analyze button
+                if (conversationComplete) {
+                    showAnalyzeButton();
+                }
+
+                // Focus input
+                document.getElementById('userInput').focus();
+
+            } catch (error) {
+                console.error('Error loading session:', error);
+                addMessage('assistant', 'Sorry, I couldn\'t load your previous conversation. Please start fresh!');
+            }
+        }
+
         // Send message on Enter key
         document.getElementById('userInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {

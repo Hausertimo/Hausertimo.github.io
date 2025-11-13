@@ -968,3 +968,107 @@ async function submitBlockData(blockId) {
         }
     }
 }
+
+// ========== TEASER CHAT FUNCTIONS ==========
+// Global variable to store session ID for handoff to full workspace
+let teaserSessionId = null;
+
+async function sendTeaserMessage() {
+    const input = document.getElementById('teaserProductInput');
+    const message = input.value.trim();
+
+    if (!message) {
+        // Highlight the input field
+        input.style.borderColor = '#ef4444';
+        setTimeout(() => {
+            input.style.borderColor = '';
+        }, 1000);
+        return;
+    }
+
+    // Disable input and button
+    const sendBtn = document.getElementById('teaserSendBtn');
+    input.disabled = true;
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending...';
+
+    // Add user message to chat
+    addTeaserMessage('user', message);
+    input.value = '';
+
+    try {
+        // Call the /api/develope/start endpoint
+        const response = await fetch('/api/develope/start', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({initial_input: message})
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+            addTeaserMessage('assistant', 'Error: ' + data.error);
+        } else {
+            // Store session ID for handoff
+            teaserSessionId = data.session_id;
+
+            // Add AI response
+            addTeaserMessage('assistant', data.message);
+
+            // Show "Continue in Full Workspace" button
+            showContinueButton();
+
+            // Hide input container (user can only continue in workspace now)
+            document.getElementById('teaserInputContainer').style.display = 'none';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        addTeaserMessage('assistant', 'Sorry, something went wrong. Please try again.');
+    } finally {
+        // Re-enable input and button (in case they want to edit)
+        input.disabled = false;
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Start Chat';
+    }
+}
+
+function addTeaserMessage(role, content) {
+    const messagesDiv = document.getElementById('teaserChatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `teaser-message teaser-${role}`;
+
+    const label = role === 'user' ? 'You' : 'NormScout AI';
+    messageDiv.innerHTML = `<strong>${label}</strong><p>${content}</p>`;
+
+    messagesDiv.appendChild(messageDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function showContinueButton() {
+    const continueContainer = document.getElementById('teaserContinueContainer');
+    continueContainer.style.display = 'block';
+}
+
+function openFullWorkspace() {
+    if (!teaserSessionId) {
+        alert('No active session found. Please start a conversation first.');
+        return;
+    }
+
+    // Open /develope page with session_id parameter in a new tab
+    const url = `/develope?session_id=${teaserSessionId}`;
+    window.open(url, '_blank');
+}
+
+// Allow Enter key to send message in teaser
+document.addEventListener('DOMContentLoaded', function() {
+    const teaserInput = document.getElementById('teaserProductInput');
+    if (teaserInput) {
+        teaserInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendTeaserMessage();
+            }
+        });
+    }
+});

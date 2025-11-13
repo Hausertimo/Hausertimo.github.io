@@ -85,11 +85,11 @@
                                 <path d="M18 16h12M18 22h12M18 28h8" stroke="#2048D5" stroke-width="2"/>
                             </svg>
                         </div>
-                        <h3 class="step-title">Drop your product idea</h3>
-                        <p class="step-description">Enter or paste a brief product description.</p>
+                        <h3 class="step-title">Describe your product</h3>
+                        <p class="step-description">Chat with our AI about your product idea—be as detailed or brief as you like.</p>
                     </div>
                 </a>
-                
+
                 <a href="#demo" class="step-card-link">
                     <div class="step-card">
                         <div class="step-icon">
@@ -99,11 +99,11 @@
                                 <path d="M15 30c6-4 12-4 18 0" stroke="#2048D5" stroke-width="2" fill="none"/>
                             </svg>
                         </div>
-                        <h3 class="step-title">Answer a few smart questions</h3>
-                        <p class="step-description">Our AI will ask about category, materials, usage, and risks.</p>
+                        <h3 class="step-title">AI asks smart questions</h3>
+                        <p class="step-description">Our AI gathers details about materials, power, features, and intended use.</p>
                     </div>
                 </a>
-                
+
                 <a href="#demo" class="step-card-link">
                     <div class="step-card">
                         <div class="step-icon">
@@ -113,11 +113,11 @@
                                 <circle cx="24" cy="28" r="4" fill="#2048D5"/>
                             </svg>
                         </div>
-                        <h3 class="step-title">Select country/region</h3>
-                        <p class="step-description">Choose where your product will be sold or shipped.</p>
+                        <h3 class="step-title">Open full workspace</h3>
+                        <p class="step-description">Continue in a dedicated workspace for deep analysis across 68+ EU standards.</p>
                     </div>
                 </a>
-                
+
                 <a href="#demo" class="step-card-link">
                     <div class="step-card">
                         <div class="step-icon">
@@ -126,8 +126,8 @@
                                 <rect x="6" y="6" width="36" height="36" rx="4" stroke="#2048D5" stroke-width="2" fill="none"/>
                             </svg>
                         </div>
-                        <h3 class="step-title">Get actionable rules & summaries</h3>
-                        <p class="step-description">Receive a clear list of binding standards and laws, summarized for instant review.</p>
+                        <h3 class="step-title">Get compliance insights</h3>
+                        <p class="step-description">Receive detailed norms with confidence scores, reasoning, and official links.</p>
                     </div>
                 </a>
             </div>
@@ -214,90 +214,42 @@
         </div>
     </section>
 
-    <!-- Demo Section -->
+    <!-- AI Workspace Teaser Section -->
     <section class="demo-section" id="demo">
         <div class="demo-background-pattern"></div>
         <div class="container">
-            <h2 class="demo-title">Try NormScout Now</h2>
-            <p class="demo-subtitle">Experience compliance discovery in three simple steps</p>
-            
-            <div class="demo-cards-grid">
-                <!-- Step 1: Product Description -->
-                <div class="demo-card">
-                    <div class="demo-card-header">
-                        <div class="demo-icon">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                <path d="M9 4a1 1 0 0 0-1 1v22a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H9z" stroke="#2048D5" stroke-width="2" fill="none"/>
-                                <path d="M12 10h8M12 14h8M12 18h6" stroke="#2048D5" stroke-width="1.5"/>
-                            </svg>
-                        </div>
-                        <div class="demo-card-title">
-                            <h3><span class="step-number">1.</span> Describe Product</h3>
-                            <p>Tell us what you're making</p>
-                        </div>
-                    </div>
-                    <div class="demo-card-content">
-                        <textarea 
-                            placeholder="e.g., 'Wireless Bluetooth headphones with noise cancellation and 30-hour battery life'" 
-                            class="demo-input demo-textarea" 
-                            id="product-description"
-                            aria-label="Product description"
-                            rows="3"
-                        ></textarea>
-                        <div class="input-helper">Be specific about materials, features, and intended use</div>
+            <h2 class="demo-title">Start Your Compliance Analysis</h2>
+            <p class="demo-subtitle">Chat with our AI to get instant product compliance guidance</p>
+
+            <!-- Teaser Chat Interface -->
+            <div class="teaser-chat-container">
+                <div class="teaser-chat-messages" id="teaserChatMessages">
+                    <div class="teaser-message teaser-assistant">
+                        <strong>NormScout AI</strong>
+                        <p>Welcome! Describe your product and I'll help identify all applicable EU compliance norms.</p>
                     </div>
                 </div>
 
-                <!-- Step 2: Country Selection -->
-                <div class="demo-card">
-                    <div class="demo-card-header">
-                        <div class="demo-icon">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                <circle cx="16" cy="16" r="12" stroke="#2048D5" stroke-width="2" fill="none"/>
-                                <path d="M16 8v16M8 16h16" stroke="#2048D5" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <div class="demo-card-title">
-                            <h3><span class="step-number">2.</span> Select Market</h3>
-                            <p>Choose where you'll sell or ship</p>
-                        </div>
-                    </div>
-                    <div class="demo-card-content">
-                        <select class="demo-input demo-select" id="country-selector" aria-label="Target country selection">
-                            <option value="">🌍 Select your target country/region</option>
-                            <option value="us">🇺🇸 United States</option>
-                            <option value="eu">🇪🇺 European Union</option>
-                            <option value="uk">🇬🇧 United Kingdom</option>
-                            <option value="ca">🇨🇦 Canada</option>
-                            <option value="au">🇦🇺 Australia</option>
-                            <option value="jp">🇯🇵 Japan</option>
-                            <option value="ch">🇨🇭 Switzerland</option>
-                        </select>
-                        <div class="input-helper">Each market has unique compliance requirements</div>
-                    </div>
+                <div class="teaser-input-container" id="teaserInputContainer">
+                    <textarea
+                        class="teaser-input"
+                        id="teaserProductInput"
+                        placeholder="e.g., 'USB-powered LED desk lamp with touch controls'"
+                        rows="2"
+                        aria-label="Product description"
+                    ></textarea>
+                    <button class="btn btn-accent teaser-send-btn" id="teaserSendBtn" onclick="sendTeaserMessage()">
+                        Start Chat
+                    </button>
                 </div>
 
-                <!-- Step 3: Get Results -->
-                <div class="demo-card">
-                    <div class="demo-card-header">
-                        <div class="demo-icon">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                <path d="M8 16l4 4L24 8" stroke="#2048D5" stroke-width="2" fill="none"/>
-                                <rect x="4" y="4" width="24" height="24" rx="3" stroke="#2048D5" stroke-width="2" fill="none"/>
-                            </svg>
-                        </div>
-                        <div class="demo-card-title">
-                            <h3><span class="step-number">3.</span> Scout Norms</h3>
-                            <p>Get instant compliance insights</p>
-                        </div>
-                    </div>
-                    <div class="demo-card-content">
-                        <button class="btn btn-accent btn-large demo-button btn-scout-now" onclick="startDemo(event)" aria-label="Start norm scouting process">
-                            <span class="button-icon">🔍</span>
-                            Scout Norms Now
-                        </button>
-                        <div class="input-helper">Our AI will analyze 12,000+ regulations instantly</div>
-                    </div>
+                <!-- "Continue in Full Workspace" button (hidden initially) -->
+                <div class="teaser-continue-container" id="teaserContinueContainer" style="display: none;">
+                    <button class="btn btn-accent btn-large teaser-continue-btn" id="teaserContinueBtn" onclick="openFullWorkspace()">
+                        <span class="button-icon">🚀</span>
+                        Continue in Full Workspace
+                    </button>
+                    <p class="teaser-continue-hint">Get detailed analysis with confidence scores for 68+ EU standards</p>
                 </div>
             </div>
 
