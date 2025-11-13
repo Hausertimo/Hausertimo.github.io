@@ -997,38 +997,65 @@ async function sendTeaserMessage() {
     input.value = '';
 
     try {
-        // Call the /api/develope/start endpoint
-        const response = await fetch('/api/develope/start', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({initial_input: message})
-        });
+        let response, data;
 
-        const data = await response.json();
+        // If we already have a session, continue the conversation
+        if (teaserSessionId) {
+            response = await fetch('/api/develope/respond', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    session_id: teaserSessionId,
+                    message: message
+                })
+            });
+        } else {
+            // First message - start new conversation
+            response = await fetch('/api/develope/start', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({initial_input: message})
+            });
+        }
+
+        data = await response.json();
 
         if (data.error) {
             addTeaserMessage('assistant', 'Error: ' + data.error);
         } else {
-            // Store session ID for handoff
-            teaserSessionId = data.session_id;
+            // Store session ID for handoff (only on first message)
+            if (data.session_id) {
+                teaserSessionId = data.session_id;
+            }
 
             // Add AI response
             addTeaserMessage('assistant', data.message);
 
-            // Show "Continue in Full Workspace" button
-            showContinueButton();
-
-            // Hide input container (user can only continue in workspace now)
-            document.getElementById('teaserInputContainer').style.display = 'none';
+            // Check if AI has enough info to generate report
+            if (data.complete) {
+                // AI is ready! Show "Generate Full Report" button
+                showContinueButton();
+                // Hide input container (conversation is done)
+                document.getElementById('teaserInputContainer').style.display = 'none';
+            } else {
+                // AI needs more info, keep chatting on landing page
+                // Change button text to "Send" for follow-up messages
+                sendBtn.textContent = 'Send';
+            }
         }
     } catch (error) {
         console.error('Error:', error);
         addTeaserMessage('assistant', 'Sorry, something went wrong. Please try again.');
     } finally {
-        // Re-enable input and button (in case they want to edit)
+        // Re-enable input and button
         input.disabled = false;
         sendBtn.disabled = false;
-        sendBtn.textContent = 'Start Chat';
+        // Keep button text as "Send" if we have an active session
+        if (!teaserSessionId) {
+            sendBtn.textContent = 'Start Chat';
+        } else {
+            sendBtn.textContent = 'Send';
+        }
     }
 }
 

@@ -136,7 +136,7 @@ In your `app.py`, add:
 
 ```python
 # Import Supabase auth module
-from supabase_auth import init_app, require_auth, get_current_user_id
+from normscout_auth import init_app, require_auth, get_current_user_id
 
 # Initialize Supabase auth (registers all routes)
 init_app(app)

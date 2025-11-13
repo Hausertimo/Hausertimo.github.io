@@ -56,7 +56,7 @@ from services.field_framework import (FieldRenderer, MarkdownField, FormField,
                                       TextAreaField, ButtonField)
 
 # Import Supabase auth
-from supabase_auth import init_app as init_supabase_auth
+from normscout_auth import init_app as init_supabase_auth
 
 # Register all blueprints
 app.register_blueprint(main_bp)
