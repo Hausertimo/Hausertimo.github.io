@@ -1,0 +1,389 @@
+{
+  "_comment": "South Korea compliance norms and standards database. Includes KC Mark, KCC, K-MEPS, RRA and other Korean regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "KC Mark",
+      "name": "Korea Certification Mark",
+      "category": "Product Safety",
+      "applies_to": "Electrical and electronic products, children's products, lifestyle products",
+      "description": "Mandatory safety certification for products sold in South Korea. Replaces previous EK mark. Self-certification or third-party certification depending on product category. Covers electrical appliances, IT equipment, children's products.",
+      "url": "https://www.kats.go.kr/en/"
+    },
+    {
+      "id": "KC-EMC",
+      "name": "KC EMC Certification",
+      "category": "EMC",
+      "applies_to": "Electrical and electronic products generating electromagnetic interference",
+      "description": "EMC certification required for products that may cause electromagnetic interference. Class A (industrial/commercial) and Class B (residential). Testing at accredited labs. KC mark with EMC designation.",
+      "url": "https://www.rra.go.kr/en/"
+    },
+    {
+      "id": "KCC Certification",
+      "name": "Korea Communications Commission - Radio Equipment Certification",
+      "category": "Radio Frequency",
+      "applies_to": "All radio transmitting equipment including WiFi, Bluetooth, cellular devices",
+      "description": "Mandatory certification for radio equipment. Testing by accredited labs (RRA-designated). Equipment Certification (for mass production) or Interim Certification (for R&D). KCC mark required on product.",
+      "url": "https://www.kcc.go.kr/eng/"
+    },
+    {
+      "id": "RRA Type Approval",
+      "name": "Radio Research Agency Type Approval",
+      "category": "Radio Frequency",
+      "applies_to": "Telecommunications terminal equipment, radio equipment",
+      "description": "Type approval for radio and telecommunications equipment. RRA conducts testing or designates testing labs. Approval number must be displayed on product. Part of KCC certification process.",
+      "url": "https://www.rra.go.kr/en/"
+    },
+    {
+      "id": "K-MEPS",
+      "name": "Korea Minimum Energy Performance Standards",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-consuming products including electronics, appliances, lighting",
+      "description": "Mandatory minimum energy efficiency standards. Products must meet MEPS before sale. Covers over 30 product categories. Administered by KEMCO (Korea Energy Management Corporation).",
+      "url": "https://www.kemco.or.kr/web/en/index.do"
+    },
+    {
+      "id": "Korea Energy Label",
+      "name": "Korea Energy Efficiency Label and Rating",
+      "category": "Energy Efficiency",
+      "applies_to": "Appliances, electronics, lighting, HVAC",
+      "description": "Mandatory energy efficiency labeling. 5-grade system (Grade 1 most efficient). Required for products in scope. Registration with KEMCO. Label shows energy consumption and efficiency grade.",
+      "url": "https://www.kemco.or.kr/web/en/index.do"
+    },
+    {
+      "id": "e-Standby Program",
+      "name": "Energy Standby Power Program",
+      "category": "Energy Efficiency",
+      "applies_to": "Products with standby power consumption",
+      "description": "Voluntary program for standby power reduction. Products meeting criteria can display e-Standby logo. Increasingly important for consumer electronics and appliances.",
+      "url": "https://www.kemco.or.kr/web/en/index.do"
+    },
+    {
+      "id": "KS C IEC 62368-1",
+      "name": "Audio/Video, ICT Equipment - Safety (Korean Standard)",
+      "category": "KS Standards",
+      "applies_to": "IT, AV, communication equipment",
+      "description": "Korean adoption of IEC 62368-1. Hazard-based safety standard for ICT equipment. Used for KC certification of IT products. Replaces KS C IEC 60950-1.",
+      "url": "https://www.kats.go.kr/en/"
+    },
+    {
+      "id": "KS C IEC 60335-1",
+      "name": "Household Appliances - Safety - General Requirements",
+      "category": "KS Standards",
+      "applies_to": "Household electrical appliances",
+      "description": "Korean adoption of IEC 60335-1. General safety requirements for household appliances. Used for KC certification. Part of comprehensive KS C 60335 series.",
+      "url": "https://www.kats.go.kr/en/"
+    },
+    {
+      "id": "KS C 9815",
+      "name": "Information Technology Equipment - Safety",
+      "category": "KS Standards",
+      "applies_to": "IT equipment, office equipment",
+      "description": "Korean safety standard for IT equipment. Based on international standards but with Korean requirements. Used for KC certification compliance.",
+      "url": "https://www.kats.go.kr/en/"
+    },
+    {
+      "id": "KS C IEC 62133-2",
+      "name": "Lithium Batteries - Safety Requirements",
+      "category": "KS Standards",
+      "applies_to": "Lithium-ion and lithium polymer batteries",
+      "description": "Korean adoption of IEC 62133-2. Safety requirements for portable lithium batteries. Required for KC certification of battery products.",
+      "url": "https://www.kats.go.kr/en/"
+    },
+    {
+      "id": "KS C CISPR 32",
+      "name": "Multimedia Equipment - EMC Emission Requirements",
+      "category": "KS Standards",
+      "applies_to": "IT equipment, multimedia equipment",
+      "description": "Korean adoption of CISPR 32. EMC emission requirements for multimedia equipment. Used for KC EMC certification.",
+      "url": "https://www.kats.go.kr/en/"
+    },
+    {
+      "id": "Korea RoHS",
+      "name": "Act on Resource Circulation of Electrical and Electronic Equipment",
+      "category": "Hazardous Substances",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "Korean RoHS restricting hazardous substances. Similar to EU RoHS. Limits for lead, mercury, cadmium, hexavalent chromium, PBBs, PBDEs. Compliance required for EEE.",
+      "url": "https://www.me.go.kr/eng/"
+    },
+    {
+      "id": "Korea WEEE",
+      "name": "Extended Producer Responsibility for EEE",
+      "category": "Environmental",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "Producer responsibility for recycling and disposal of EEE. Registration and reporting requirements. Recycling fee system. Similar to EU WEEE.",
+      "url": "https://www.me.go.kr/eng/"
+    },
+    {
+      "id": "Green Certification",
+      "name": "Korea Environmental Technology and Industry Support Act - Green Certification",
+      "category": "Environmental",
+      "applies_to": "Environmentally friendly products",
+      "description": "Voluntary environmental certification. Green product certification mark. Demonstrates reduced environmental impact. Increasingly important for government procurement.",
+      "url": "https://www.me.go.kr/eng/"
+    },
+    {
+      "id": "MFDS Medical Device",
+      "name": "Ministry of Food and Drug Safety - Medical Device Approval",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including software",
+      "description": "Medical device approval and registration. Classification I-IV based on risk. Pre-market approval for Classes II-IV. QMS requirements similar to ISO 13485. Manufacturer registration required.",
+      "url": "https://www.mfds.go.kr/eng/"
+    },
+    {
+      "id": "KGMP",
+      "name": "Korea Good Manufacturing Practice for Medical Devices",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Korean GMP requirements for medical device manufacturing. Based on ISO 13485 with Korean requirements. Facility inspection and certification. Required for medical device registration.",
+      "url": "https://www.mfds.go.kr/eng/"
+    },
+    {
+      "id": "K-FDA Clinical Trials",
+      "name": "Medical Device Clinical Trial Approval",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices requiring clinical data",
+      "description": "Clinical trial approval process for medical devices. MFDS review and approval required before conducting trials. GCP compliance. Required for innovative or high-risk devices.",
+      "url": "https://www.mfds.go.kr/eng/"
+    },
+    {
+      "id": "Korea Toy Safety",
+      "name": "Safety Requirements for Children's Products",
+      "category": "Children's Products",
+      "applies_to": "Toys and children's products",
+      "description": "Mandatory safety requirements for toys and children's products. KC certification required. Testing for mechanical hazards, chemical substances, flammability. Based on international standards with Korean requirements.",
+      "url": "https://www.kats.go.kr/en/"
+    },
+    {
+      "id": "KS G ISO 8124",
+      "name": "Safety of Toys (Korean Standard)",
+      "category": "Children's Products",
+      "applies_to": "Toys for children",
+      "description": "Korean adoption of ISO 8124. Toy safety standard covering mechanical properties, flammability, migration of elements. Used for KC certification of toys.",
+      "url": "https://www.kats.go.kr/en/"
+    },
+    {
+      "id": "Chemical Registration",
+      "name": "Act on Registration and Evaluation of Chemical Substances (K-REACH)",
+      "category": "Chemical Substances",
+      "applies_to": "Chemical substances and products containing chemicals",
+      "description": "Korean chemical registration system similar to EU REACH. Registration requirements for chemical substances. Notification for products. Restrictions on hazardous chemicals. Administered by ME and NIER.",
+      "url": "https://ncis.nier.go.kr/en/"
+    },
+    {
+      "id": "Chemical Control Act",
+      "name": "Chemicals Control Act - Toxic Chemicals Management",
+      "category": "Chemical Substances",
+      "applies_to": "Products containing toxic or restricted chemicals",
+      "description": "Regulation of toxic chemicals. Prohibited substances, restricted substances, toxic substance management. Affects product materials and labeling. Safety data sheet requirements.",
+      "url": "https://www.me.go.kr/eng/"
+    },
+    {
+      "id": "Biocidal Products Act",
+      "name": "Act on Safety Control of Biocidal Products",
+      "category": "Chemical Substances",
+      "applies_to": "Biocidal products (disinfectants, preservatives, pest control)",
+      "description": "Approval system for biocidal products. Pre-market approval required. Efficacy and safety testing. Labeling requirements. Affects antimicrobial products.",
+      "url": "https://www.me.go.kr/eng/"
+    },
+    {
+      "id": "MOLIT Type Approval",
+      "name": "Ministry of Land, Infrastructure and Transport - Vehicle Type Approval",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and automotive components",
+      "description": "Type approval for vehicles sold in Korea. Safety standards, emissions requirements. Self-certification for some components. Harmonization with international standards but Korean-specific requirements.",
+      "url": "https://www.molit.go.kr/english/"
+    },
+    {
+      "id": "Korea Automotive Standards",
+      "name": "Motor Vehicle Safety Standards (KMVSS)",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and safety components",
+      "description": "Korean motor vehicle safety standards. Similar to UN ECE regulations and other international standards. Covers safety systems, lighting, emissions, construction.",
+      "url": "https://www.molit.go.kr/english/"
+    },
+    {
+      "id": "NIER Emissions",
+      "name": "Vehicle Emissions Standards",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles",
+      "description": "Emissions standards for vehicles. Progressively stricter requirements. Harmonized with Euro standards but Korean testing cycles. Diesel emissions testing post-VW scandal.",
+      "url": "https://www.nier.go.kr/NIER/eng/"
+    },
+    {
+      "id": "Food Contact Materials",
+      "name": "Food Sanitation Act - Food Contact Materials",
+      "category": "Food Safety",
+      "applies_to": "Materials and articles in contact with food",
+      "description": "Safety requirements for food contact materials. Standards for various materials (plastics, metals, ceramics, paper). Migration testing. Positive lists for certain materials. MFDS enforcement.",
+      "url": "https://www.mfds.go.kr/eng/"
+    },
+    {
+      "id": "HACCP",
+      "name": "Hazard Analysis and Critical Control Points",
+      "category": "Food Safety",
+      "applies_to": "Food manufacturing and processing facilities",
+      "description": "Mandatory HACCP for certain food categories. Voluntary for others. Facility certification. Not directly for products but affects food contact equipment and packaging.",
+      "url": "https://www.mfds.go.kr/eng/"
+    },
+    {
+      "id": "Construction Materials KC",
+      "name": "KC Certification for Construction Materials",
+      "category": "Construction",
+      "applies_to": "Building materials and construction products",
+      "description": "KC certification for construction materials including electrical materials, fire protection, structural materials. Performance and safety testing. Required for building installation.",
+      "url": "https://www.kats.go.kr/en/"
+    },
+    {
+      "id": "Fire Safety Certification",
+      "name": "Fire Safety Certification for Products",
+      "category": "Fire Safety",
+      "applies_to": "Products requiring fire safety certification",
+      "description": "Mandatory fire safety certification for certain products (fire extinguishers, fire detectors, emergency lighting, etc.). Testing at approved labs. NFA (National Fire Agency) certification mark.",
+      "url": "https://www.nfa.go.kr/eng/"
+    },
+    {
+      "id": "Personal Information Protection Act",
+      "name": "PIPA - Personal Information Protection",
+      "category": "Data Protection",
+      "applies_to": "Organizations processing personal information",
+      "description": "Korean data protection law. Consent requirements, data subject rights, security measures, breach notification. Similar to GDPR but with Korean characteristics. PIPC enforcement. Applies to connected devices and services.",
+      "url": "https://www.pipc.go.kr/eng/"
+    },
+    {
+      "id": "Information and Communications Network Act",
+      "name": "Act on Promotion of Information and Communications Network Utilization and Information Protection",
+      "category": "Data Protection",
+      "applies_to": "Online services and telecommunications",
+      "description": "Privacy and security requirements for information and communications services. Data retention limits, location data protection, online privacy. Complements PIPA.",
+      "url": "https://www.kcc.go.kr/eng/"
+    },
+    {
+      "id": "Credit Information Act",
+      "name": "Credit Information Use and Protection Act",
+      "category": "Data Protection",
+      "applies_to": "Financial services and credit information",
+      "description": "Protection of credit information and personal financial data. Requirements for financial data processing. Affects fintech products and services.",
+      "url": "https://www.fsc.go.kr/eng/"
+    },
+    {
+      "id": "Information Security Management System",
+      "name": "ISMS-P Certification",
+      "category": "Cybersecurity",
+      "applies_to": "Information and communications service providers",
+      "description": "Information Security Management System with Personal information protection (ISMS-P). Mandatory for certain service providers (telecom, large platforms). Voluntary for others. Annual audit required.",
+      "url": "https://www.kisa.or.kr/eng/"
+    },
+    {
+      "id": "CC Certification Korea",
+      "name": "Common Criteria Certification (Korean Scheme)",
+      "category": "Cybersecurity",
+      "applies_to": "IT security products",
+      "description": "Korean Common Criteria certification scheme. Required for some government procurement. Mutual recognition with other CC schemes. KISA operates evaluation facilities.",
+      "url": "https://www.kisa.or.kr/eng/"
+    },
+    {
+      "id": "Crypto Module Validation",
+      "name": "Cryptographic Module Validation Program",
+      "category": "Cybersecurity",
+      "applies_to": "Cryptographic modules for government/finance",
+      "description": "Validation of cryptographic modules. Required for government and financial sector. Similar to FIPS 140. KISA operates validation program.",
+      "url": "https://www.kisa.or.kr/eng/"
+    },
+    {
+      "id": "KS Q ISO 9001",
+      "name": "Quality Management Systems (Korean Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing quality management",
+      "description": "Korean adoption of ISO 9001. Quality management system certification. KAB (Korea Accreditation Board) accredits certification bodies.",
+      "url": "https://www.kab.or.kr/eng/"
+    },
+    {
+      "id": "KS I ISO 14001",
+      "name": "Environmental Management Systems (Korean Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing environmental management",
+      "description": "Korean adoption of ISO 14001. Environmental management system certification. Increasingly required for suppliers to major Korean corporations.",
+      "url": "https://www.kab.or.kr/eng/"
+    },
+    {
+      "id": "KS Q ISO/IEC 27001",
+      "name": "Information Security Management Systems (Korean Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations managing information security",
+      "description": "Korean adoption of ISO/IEC 27001. Information security management certification. Important for IT products and services. KAB accreditation.",
+      "url": "https://www.kab.or.kr/eng/"
+    },
+    {
+      "id": "Fair Trade Act",
+      "name": "Monopoly Regulation and Fair Trade Act",
+      "category": "Consumer Protection",
+      "applies_to": "Product advertising and business practices",
+      "description": "Prohibits unfair trade practices and misleading advertising. Product labeling requirements. Consumer protection provisions. KFTC (Korea Fair Trade Commission) enforcement.",
+      "url": "https://www.ftc.go.kr/eng/"
+    },
+    {
+      "id": "Consumer Protection Act",
+      "name": "Framework Act on Consumers",
+      "category": "Consumer Protection",
+      "applies_to": "Consumer products and services",
+      "description": "Consumer rights framework. Product safety, recall procedures, consumer information. Defective product liability. Complements specific product safety laws.",
+      "url": "https://www.kca.go.kr/eng/"
+    },
+    {
+      "id": "Product Liability Act",
+      "name": "Product Liability Act",
+      "category": "Consumer Protection",
+      "applies_to": "All products",
+      "description": "Strict liability for defective products. No-fault liability for manufacturers and importers. Similar to EU and US product liability laws. Important for product design and safety.",
+      "url": "https://www.kca.go.kr/eng/"
+    },
+    {
+      "id": "Packaging Waste",
+      "name": "Act on Promotion of Saving and Recycling of Resources - Packaging",
+      "category": "Packaging",
+      "applies_to": "Packaged products",
+      "description": "Extended producer responsibility for packaging. Packaging waste reduction and recycling. Standards for packaging materials. Excess packaging prohibited.",
+      "url": "https://www.me.go.kr/eng/"
+    },
+    {
+      "id": "Korea Eco-Label",
+      "name": "Korea Environmental Industry & Technology Institute - Eco-Label",
+      "category": "Eco-Labels",
+      "applies_to": "Products with environmental benefits",
+      "description": "Voluntary environmental labeling program. Type I eco-label (ISO 14024). Criteria for various product categories. Demonstrates reduced environmental impact throughout lifecycle.",
+      "url": "https://el.keiti.re.kr/eng/"
+    },
+    {
+      "id": "Carbon Footprint Label",
+      "name": "Carbon Footprint Certification and Low Carbon Product Certification",
+      "category": "Eco-Labels",
+      "applies_to": "Products with carbon footprint quantification",
+      "description": "Carbon footprint labeling program. Quantifies and communicates product carbon footprint. Low carbon product certification for products reducing emissions. Voluntary but growing.",
+      "url": "https://www.me.go.kr/eng/"
+    },
+    {
+      "id": "GR Mark",
+      "name": "Good Recycled Mark",
+      "category": "Eco-Labels",
+      "applies_to": "Products made from recycled materials",
+      "description": "Certification for products using recycled materials. Minimum recycled content requirements. Promotes circular economy. Government procurement preference.",
+      "url": "https://www.me.go.kr/eng/"
+    },
+    {
+      "id": "Electrical Safety Technology Act",
+      "name": "Electrical Appliances and Consumer Products Safety Control Act",
+      "category": "Legal Framework",
+      "applies_to": "Electrical products and consumer goods",
+      "description": "Legal framework for electrical product safety. Defines mandatory certification (KC), self-declaration, supplier's declaration. Penalties for non-compliance. Market surveillance authority.",
+      "url": "https://www.kats.go.kr/en/"
+    },
+    {
+      "id": "Radio Waves Act",
+      "name": "Radio Waves Act",
+      "category": "Legal Framework",
+      "applies_to": "Radio transmitting equipment",
+      "description": "Legal framework for radio equipment regulation. Frequency allocation, technical standards, certification requirements. RRA and KCC authority. Penalties for unauthorized equipment.",
+      "url": "https://www.rra.go.kr/en/"
+    }
+  ]
+}

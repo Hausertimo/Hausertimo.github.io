@@ -1,0 +1,389 @@
+{
+  "_comment": "Brazil compliance norms and standards database. Includes ANATEL, INMETRO, NBR standards, ANVISA and other Brazilian regulatory requirements. Updated for 2025 compliance requirements.",
+  "norms": [
+    {
+      "id": "ANATEL Homologation",
+      "name": "National Telecommunications Agency - Product Homologation",
+      "category": "Telecommunications & Radio",
+      "applies_to": "Telecommunications equipment and radio transmitting devices",
+      "description": "Mandatory homologation for telecom products and radio equipment. Testing at ANATEL-accredited labs. Certification required before import or sale. Covers WiFi, Bluetooth, cellular, all radio devices. ANATEL seal required on product.",
+      "url": "https://www.gov.br/anatel/en"
+    },
+    {
+      "id": "ANATEL SAR",
+      "name": "Specific Absorption Rate Requirements",
+      "category": "Telecommunications & Radio",
+      "applies_to": "Mobile phones and body-worn wireless devices",
+      "description": "SAR limit: 2.0 W/kg averaged over 10g of tissue. Testing required for handheld and body-worn devices. Part of ANATEL homologation. Must be declared in documentation.",
+      "url": "https://www.gov.br/anatel/en"
+    },
+    {
+      "id": "ANATEL Resolution 715",
+      "name": "Electromagnetic Compatibility Requirements for Telecom Equipment",
+      "category": "Telecommunications & Radio",
+      "applies_to": "Telecommunications equipment",
+      "description": "EMC requirements for telecom equipment. Emission and immunity testing. Part of ANATEL homologation process. Based on international standards with Brazilian adaptations.",
+      "url": "https://www.gov.br/anatel/en"
+    },
+    {
+      "id": "INMETRO Compulsory Certification",
+      "name": "National Institute of Metrology - Compulsory Certification",
+      "category": "Product Safety",
+      "applies_to": "Products under compulsory certification (electronics, appliances, cables, plugs)",
+      "description": "Mandatory certification for products on INMETRO list. Testing at accredited labs. Factory inspection required. INMETRO mark required on product and packaging. Covers electrical products, toys, personal protective equipment.",
+      "url": "http://www.inmetro.gov.br/"
+    },
+    {
+      "id": "INMETRO Voluntary Certification",
+      "name": "Voluntary Product Certification Program",
+      "category": "Product Quality",
+      "applies_to": "Products seeking voluntary certification",
+      "description": "Voluntary certification demonstrating compliance with Brazilian standards. Market differentiation. Various certification marks available. Testing and factory audit required.",
+      "url": "http://www.inmetro.gov.br/"
+    },
+    {
+      "id": "NBR IEC 62368-1",
+      "name": "Audio/Video, ICT Equipment - Safety",
+      "category": "NBR Standards",
+      "applies_to": "IT, AV, communication equipment",
+      "description": "Brazilian adoption of IEC 62368-1. Hazard-based safety standard for ICT equipment. Required for INMETRO certification of IT products. Replaces NBR IEC 60950-1.",
+      "url": "https://www.abnt.org.br/"
+    },
+    {
+      "id": "NBR IEC 60335-1",
+      "name": "Household Appliances - Safety - General Requirements",
+      "category": "NBR Standards",
+      "applies_to": "Household electrical appliances",
+      "description": "Brazilian adoption of IEC 60335-1. General safety requirements for household appliances. Required for INMETRO certification. Part of comprehensive NBR 60335 series.",
+      "url": "https://www.abnt.org.br/"
+    },
+    {
+      "id": "NBR 14136",
+      "name": "Plugs and Socket-Outlets for Household Use",
+      "category": "NBR Standards",
+      "applies_to": "Electrical plugs, sockets, and cords",
+      "description": "Brazilian standard plug and socket system (Type N). Mandatory for products sold in Brazil. Three-pin grounded configuration. Voltage compatibility (127V or 220V) marking required.",
+      "url": "https://www.abnt.org.br/"
+    },
+    {
+      "id": "NBR IEC 62133-2",
+      "name": "Lithium Batteries - Safety Requirements",
+      "category": "NBR Standards",
+      "applies_to": "Lithium-ion and lithium polymer batteries",
+      "description": "Brazilian adoption of IEC 62133-2. Safety requirements for portable lithium batteries. Required for INMETRO certification of battery products and power banks.",
+      "url": "https://www.abnt.org.br/"
+    },
+    {
+      "id": "NBR CISPR 32",
+      "name": "Multimedia Equipment - EMC Emission Requirements",
+      "category": "NBR Standards",
+      "applies_to": "IT equipment, multimedia equipment",
+      "description": "Brazilian adoption of CISPR 32. EMC emission requirements for multimedia equipment. Used for EMC compliance testing.",
+      "url": "https://www.abnt.org.br/"
+    },
+    {
+      "id": "PBE - Eletrodomésticos",
+      "name": "Brazilian Labeling Program - Household Appliances",
+      "category": "Energy Efficiency",
+      "applies_to": "Household appliances, electronics",
+      "description": "Mandatory energy efficiency labeling (Etiqueta Nacional de Conservação de Energia - ENCE). A-E scale (A most efficient). Required for refrigerators, air conditioners, washing machines, TVs, monitors, etc. INMETRO administered.",
+      "url": "http://www.inmetro.gov.br/consumidor/pbe.asp"
+    },
+    {
+      "id": "PROCEL",
+      "name": "National Program for Electric Energy Conservation - Seal",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-efficient products (voluntary)",
+      "description": "Voluntary energy efficiency seal. PROCEL seal awarded to most efficient products in category. Market recognition and preference. Complements mandatory PBE labeling.",
+      "url": "http://www.procelinfo.com.br/"
+    },
+    {
+      "id": "MEPS Brazil",
+      "name": "Minimum Energy Performance Standards",
+      "category": "Energy Efficiency",
+      "applies_to": "Energy-consuming products",
+      "description": "Mandatory minimum energy efficiency levels. Products must meet MEPS to receive certification. Progressively stricter requirements. Part of PBE program.",
+      "url": "http://www.inmetro.gov.br/"
+    },
+    {
+      "id": "ANVISA Registration - Medical Devices",
+      "name": "National Health Surveillance Agency - Medical Device Registration",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices including software",
+      "description": "Mandatory registration for medical devices. Classification I-IV based on risk. Good Manufacturing Practice certification required. Clinical data may be required. ANVISA pre-market approval.",
+      "url": "https://www.gov.br/anvisa/en"
+    },
+    {
+      "id": "RDC 16/2013",
+      "name": "Good Manufacturing Practices for Medical Devices",
+      "category": "Medical Devices",
+      "applies_to": "Medical device manufacturers",
+      "description": "Brazilian GMP requirements for medical devices. Based on ISO 13485 with Brazilian requirements. Certification required for device registration. Factory inspection by ANVISA or accredited bodies.",
+      "url": "https://www.gov.br/anvisa/en"
+    },
+    {
+      "id": "RDC 185/2001",
+      "name": "Medical Device Registration Requirements",
+      "category": "Medical Devices",
+      "applies_to": "Medical devices for Brazilian market",
+      "description": "Technical requirements for medical device registration. Documentation, labeling in Portuguese, technical reports. Authorized representative in Brazil required for foreign manufacturers.",
+      "url": "https://www.gov.br/anvisa/en"
+    },
+    {
+      "id": "CONTRAN Resolutions",
+      "name": "National Traffic Council - Vehicle Regulations",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles and components",
+      "description": "Vehicle safety and technical regulations. Mandatory equipment, construction standards, type approval. CONTRAN establishes standards, DENATRAN and INMETRO enforce. Based on international standards.",
+      "url": "https://www.gov.br/infraestrutura/pt-br/assuntos/transito/contran"
+    },
+    {
+      "id": "PROCONVE",
+      "name": "Vehicle Air Pollution Control Program",
+      "category": "Automotive",
+      "applies_to": "Motor vehicles",
+      "description": "Vehicle emission standards. Phases P-7 and P-8 current (equivalent to Euro 5/6). Type approval required. OBD requirements. IBAMA (environmental agency) oversight.",
+      "url": "https://www.gov.br/ibama/en"
+    },
+    {
+      "id": "ABNT Certification - Automotive",
+      "name": "Automotive Component Certification",
+      "category": "Automotive",
+      "applies_to": "Automotive safety components",
+      "description": "Certification for automotive safety components. Seat belts, airbags, child restraints, helmets. INMETRO compulsory certification. Testing to NBR standards.",
+      "url": "https://www.abnt.org.br/"
+    },
+    {
+      "id": "Brazil Toy Safety",
+      "name": "INMETRO Toy Safety Certification",
+      "category": "Children's Products",
+      "applies_to": "Toys for children",
+      "description": "Mandatory INMETRO certification for toys. Comprehensive safety requirements: mechanical, chemical, flammability, electrical. Based on NBR NM standards and ISO 8124. Age grading required.",
+      "url": "http://www.inmetro.gov.br/"
+    },
+    {
+      "id": "NBR NM 300",
+      "name": "Safety of Toys - Mercosur Standard",
+      "category": "Children's Products",
+      "applies_to": "Toys",
+      "description": "Mercosur harmonized toy safety standard. Mechanical and physical properties. Used for INMETRO toy certification. Covers choking hazards, sharp edges, toxic materials.",
+      "url": "https://www.abnt.org.br/"
+    },
+    {
+      "id": "ANVISA Food Contact",
+      "name": "Food Contact Materials Regulations",
+      "category": "Food Safety",
+      "applies_to": "Materials and articles in contact with food",
+      "description": "Safety requirements for food contact materials. Resolutions for plastics, metals, ceramics, paper. Migration limits. Positive lists. ANVISA pre-market notification for new substances.",
+      "url": "https://www.gov.br/anvisa/en"
+    },
+    {
+      "id": "RDC 51/2010",
+      "name": "Migration from Plastic Food Contact Materials",
+      "category": "Food Safety",
+      "applies_to": "Plastic food contact materials",
+      "description": "Specific migration limits for plastic food contact materials. Positive list of authorized substances. Testing requirements. Labeling for appropriate use.",
+      "url": "https://www.gov.br/anvisa/en"
+    },
+    {
+      "id": "LGPD",
+      "name": "Lei Geral de Proteção de Dados (General Data Protection Law)",
+      "category": "Data Protection",
+      "applies_to": "Organizations processing personal data",
+      "description": "Brazilian data protection law. Similar to GDPR. Consent requirements, data subject rights, security measures, breach notification. ANPD (National Data Protection Authority) enforcement. Applies to connected devices and services.",
+      "url": "https://www.gov.br/anpd/en"
+    },
+    {
+      "id": "Marco Civil",
+      "name": "Brazilian Civil Rights Framework for the Internet",
+      "category": "Data Protection",
+      "applies_to": "Internet services and applications",
+      "description": "Internet governance and user rights. Net neutrality, privacy, data retention. Complements LGPD. Affects online services and connected devices.",
+      "url": "https://www.gov.br/"
+    },
+    {
+      "id": "CONAMA Resolutions",
+      "name": "National Environment Council - Environmental Regulations",
+      "category": "Environmental",
+      "applies_to": "Products affecting environment",
+      "description": "Environmental regulations for various sectors. Waste management, air/water pollution, hazardous materials. Affects product design, packaging, end-of-life. Multiple resolutions for different product types.",
+      "url": "https://www.gov.br/mma/en"
+    },
+    {
+      "id": "Brazil WEEE",
+      "name": "National Solid Waste Policy - E-Waste",
+      "category": "Environmental",
+      "applies_to": "Electrical and electronic equipment",
+      "description": "Reverse logistics and producer responsibility for e-waste. Sectoral agreements for electronics, batteries, packaging. Collection and recycling obligations. Registration and reporting requirements.",
+      "url": "https://www.gov.br/mma/en"
+    },
+    {
+      "id": "Battery Disposal",
+      "name": "CONAMA Resolution 401/2008 - Battery Disposal",
+      "category": "Environmental",
+      "applies_to": "Products containing batteries",
+      "description": "Limits on heavy metals in batteries. Mandatory collection and recycling. Labeling requirements. Applies to portable batteries, automotive batteries, industrial batteries.",
+      "url": "https://www.gov.br/mma/en"
+    },
+    {
+      "id": "Packaging Law",
+      "name": "National Solid Waste Policy - Packaging",
+      "category": "Packaging",
+      "applies_to": "Packaged products",
+      "description": "Reverse logistics for packaging waste. Shared responsibility between producers, distributors, retailers. Sectoral agreements. Increasing collection and recycling targets.",
+      "url": "https://www.gov.br/mma/en"
+    },
+    {
+      "id": "Forestry Code",
+      "name": "Forest Code - Sustainable Sourcing",
+      "category": "Environmental",
+      "applies_to": "Products using wood or forest materials",
+      "description": "Requirements for legal and sustainable forestry. Traceability of wood and forest products. Affects furniture, packaging, paper products. DOF (Forest Origin Document) required.",
+      "url": "https://www.gov.br/mma/en"
+    },
+    {
+      "id": "Consumer Defense Code",
+      "name": "Código de Defesa do Consumidor (CDC)",
+      "category": "Consumer Protection",
+      "applies_to": "All consumer products and services",
+      "description": "Comprehensive consumer protection law. Product safety, liability, recalls, warranty, consumer rights. PROCON enforcement. Strong consumer rights. Affects labeling, advertising, product design.",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/seus-direitos/consumidor"
+    },
+    {
+      "id": "Product Labeling Requirements",
+      "name": "Consumer Information and Labeling",
+      "category": "Consumer Protection",
+      "applies_to": "Consumer products",
+      "description": "Mandatory labeling in Portuguese. Product information, warnings, usage instructions, manufacturer/importer details. Specific requirements for different product types. INMETRO oversight.",
+      "url": "http://www.inmetro.gov.br/"
+    },
+    {
+      "id": "Product Recalls",
+      "name": "Recall Requirements and Procedures",
+      "category": "Consumer Protection",
+      "applies_to": "Defective or unsafe products",
+      "description": "Mandatory recall procedures for unsafe products. Public notification requirements. SENACON (National Consumer Secretariat) registration. Communication to PROCON and consumers. Repair, replacement, or refund.",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/seus-direitos/consumidor"
+    },
+    {
+      "id": "Warranty Requirements",
+      "name": "Legal Warranty (Garantia Legal)",
+      "category": "Consumer Protection",
+      "applies_to": "Durable goods",
+      "description": "Mandatory legal warranty: 90 days for durable goods, 30 days for non-durable. In addition to manufacturer's commercial warranty. Product must be fit for purpose. Consumer rights to repair, replacement, or refund.",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/seus-direitos/consumidor"
+    },
+    {
+      "id": "INMETRO Legal Metrology",
+      "name": "Legal Metrology - Weights and Measures",
+      "category": "Metrology",
+      "applies_to": "Measuring instruments, pre-packaged products",
+      "description": "Verification of weights, measures, measuring instruments. Mandatory for instruments used in trade. Pre-packaged product quantity verification. Model approval and periodic verification.",
+      "url": "http://www.inmetro.gov.br/"
+    },
+    {
+      "id": "Industrial Property",
+      "name": "Industrial Property Law - Trademarks and Patents",
+      "category": "Intellectual Property",
+      "applies_to": "Product branding and innovation",
+      "description": "Trademark and patent protection. INPI (National Institute of Industrial Property) registration. Affects product marking, branding, technology licensing. Enforcement against counterfeits.",
+      "url": "https://www.gov.br/inpi/en"
+    },
+    {
+      "id": "Geographic Indications",
+      "name": "Protected Geographic Indications",
+      "category": "Intellectual Property",
+      "applies_to": "Products with geographic origin claims",
+      "description": "Protection for geographic indications and appellations of origin. Affects regional products, food, beverages, crafts. INPI registration and protection.",
+      "url": "https://www.gov.br/inpi/en"
+    },
+    {
+      "id": "Fire Safety",
+      "name": "Fire Safety Standards - Building and Products",
+      "category": "Fire Safety",
+      "applies_to": "Building products, fire safety equipment",
+      "description": "Fire safety requirements from building codes. State-specific fire codes (São Paulo Decree, Rio regulations). Affects building materials, electrical equipment, fire detection and suppression. Fire brigade approval.",
+      "url": "https://www.abnt.org.br/"
+    },
+    {
+      "id": "Cybersecurity Framework",
+      "name": "National Cybersecurity Strategy",
+      "category": "Cybersecurity",
+      "applies_to": "Critical infrastructure, connected devices",
+      "description": "Emerging cybersecurity requirements. Critical infrastructure protection. IoT security guidance. Incident reporting to CTIR (Computer Incident Response Team). Evolving regulatory landscape.",
+      "url": "https://www.gov.br/gsi/en"
+    },
+    {
+      "id": "Telecommunications Regulations",
+      "name": "General Telecommunications Law - LGT",
+      "category": "Telecommunications",
+      "applies_to": "Telecommunications services and equipment",
+      "description": "Framework for telecommunications regulation. ANATEL authority. Service authorization, technical requirements, consumer protection. Affects network equipment, terminal equipment.",
+      "url": "https://www.gov.br/anatel/en"
+    },
+    {
+      "id": "Customs Classification",
+      "name": "Mercosur Common Nomenclature (NCM)",
+      "category": "Import/Export",
+      "applies_to": "All imported and exported products",
+      "description": "Product classification system based on HS codes. NCM code required for customs clearance. Determines import duties, IPI (excise tax), regulatory requirements. Accurate classification critical.",
+      "url": "http://www.siscomex.gov.br/"
+    },
+    {
+      "id": "Import Licensing",
+      "name": "SISCOMEX Import Licensing",
+      "category": "Import/Export",
+      "applies_to": "Imported products requiring licenses",
+      "description": "Automatic or non-automatic import licensing. Required for regulated products (electronics, telecom, medical, etc.). INMETRO, ANVISA, ANATEL approval needed before customs clearance. RADAR registration for importers.",
+      "url": "http://www.siscomex.gov.br/"
+    },
+    {
+      "id": "Chemical Registration",
+      "name": "Chemical Substances Inventory and Registration",
+      "category": "Chemical Substances",
+      "applies_to": "Chemical substances and mixtures",
+      "description": "Chemical substance registration under various agencies. ANVISA for health products, IBAMA for pesticides, MAPA for agriculture. Material Safety Data Sheets (FISPQ) required. GHS labeling.",
+      "url": "https://www.gov.br/ibama/en"
+    },
+    {
+      "id": "PPE Certification",
+      "name": "Personal Protective Equipment Certification",
+      "category": "Occupational Safety",
+      "applies_to": "Personal protective equipment",
+      "description": "Mandatory INMETRO certification for PPE. Certificate of Approval (CA) from Ministry of Labor required. Testing to NBR standards. Covers safety helmets, gloves, goggles, respirators, etc.",
+      "url": "http://www.inmetro.gov.br/"
+    },
+    {
+      "id": "Occupational Safety NR",
+      "name": "Regulatory Norms for Occupational Safety (NRs)",
+      "category": "Occupational Safety",
+      "applies_to": "Equipment used in workplaces",
+      "description": "Occupational safety regulatory norms. Mandatory for employers. Affects machinery, electrical equipment, PPE, safety systems. Ministry of Labor enforcement. Various NRs for different hazards.",
+      "url": "https://www.gov.br/trabalho-e-previdencia/en"
+    },
+    {
+      "id": "NBR ISO 9001",
+      "name": "Quality Management Systems (Brazilian Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing quality management",
+      "description": "Brazilian adoption of ISO 9001. Quality management system certification. INMETRO accredits certification bodies. Important for supplier qualification and government contracts.",
+      "url": "https://www.abnt.org.br/"
+    },
+    {
+      "id": "NBR ISO 14001",
+      "name": "Environmental Management Systems (Brazilian Standard)",
+      "category": "Management Systems",
+      "applies_to": "Organizations implementing environmental management",
+      "description": "Brazilian adoption of ISO 14001. Environmental management system certification. Increasingly required for suppliers to major corporations and for environmental licensing.",
+      "url": "https://www.abnt.org.br/"
+    },
+    {
+      "id": "Supplier Development Programs",
+      "name": "Local Content and Supplier Development",
+      "category": "Industry Policy",
+      "applies_to": "Products for government procurement or incentive programs",
+      "description": "Local content requirements for certain sectors (oil/gas, automotive, IT). Supplier development programs. Tax incentives for domestic production. Affects product sourcing and manufacturing location decisions.",
+      "url": "https://www.gov.br/mdic/en"
+    }
+  ]
+}
