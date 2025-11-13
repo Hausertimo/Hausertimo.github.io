@@ -24,7 +24,15 @@ from flask import (
     make_response, send_file, render_template_string, url_for
 )
 from supabase import create_client, Client
-from weasyprint import HTML
+
+# WeasyPrint is optional - only needed for PDF export
+try:
+    from weasyprint import HTML
+    WEASYPRINT_AVAILABLE = True
+except (ImportError, OSError) as e:
+    WEASYPRINT_AVAILABLE = False
+    print(f"WARNING: WeasyPrint not available - PDF export will be disabled: {e}")
+    print("   For local development, this is fine. For production, install GTK libraries.")
 
 # ============================================================================
 # CONFIGURATION
@@ -826,6 +834,12 @@ def export_workspace_pdf(workspace_id: str):
         """
 
         # Convert to PDF
+        if not WEASYPRINT_AVAILABLE:
+            return jsonify({
+                "error": "PDF export is not available in this environment. "
+                        "WeasyPrint requires GTK libraries (Windows) or additional packages (Linux/Mac)."
+            }), 503
+
         pdf = HTML(string=html_content).write_pdf()
 
         # Return as download
@@ -859,7 +873,7 @@ def init_app(app):
     # Register blueprints
     register_blueprints(app)
 
-    print("✅ Supabase Auth module initialized")
+    print("OK: Supabase Auth module initialized")
 
 
 # ============================================================================
