@@ -217,7 +217,35 @@ function isAuthCheckComplete() {
     return authCheckComplete;
 }
 
-// Initialize auth check when page loads
+/**
+ * Initialize mobile menu toggle
+ */
+function initMobileMenu() {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const nav = document.getElementById('nav');
+
+    if (toggle && nav) {
+        toggle.addEventListener('click', function() {
+            nav.classList.toggle('mobile-nav-open');
+            toggle.classList.toggle('mobile-menu-active');
+
+            // Animate hamburger icon
+            const spans = toggle.querySelectorAll('span');
+            if (toggle.classList.contains('mobile-menu-active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+    }
+}
+
+// Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
     checkAuth();
+    initMobileMenu();
 });
