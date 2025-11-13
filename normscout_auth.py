@@ -841,6 +841,12 @@ def export_workspace_pdf(workspace_id: str):
         """
 
         # Convert to PDF
+        if not WEASYPRINT_AVAILABLE:
+            return jsonify({
+                "error": "PDF export is not available in this environment. "
+                        "WeasyPrint requires GTK libraries (Windows) or additional packages (Linux/Mac)."
+            }), 503
+
         pdf = HTML(string=html_content).write_pdf()
 
         # Return as download

@@ -1,0 +1,397 @@
+{
+  "_comment": "Banking & Finance Industry - EU and Switzerland Focus. Compliance norms for banking, insurance, asset management, payments, fintech. Updated for 2025.",
+  "norms": [
+    {
+      "id": "Basel III",
+      "name": "Basel III - International Regulatory Framework",
+      "category": "Banking Regulation",
+      "applies_to": "Banks, credit institutions",
+      "description": "Global regulatory framework for bank capital adequacy, stress testing, liquidity. Minimum capital requirements (CET1, Tier 1, Total Capital), leverage ratio, liquidity coverage ratio (LCR), net stable funding ratio (NSFR). Basel Committee on Banking Supervision. Implemented in EU via CRR/CRD IV, in Switzerland by FINMA.",
+      "url": "https://www.bis.org/bcbs/basel3.htm"
+    },
+    {
+      "id": "Basel IV",
+      "name": "Basel IV (Basel III Finalisation) - Revised Framework",
+      "category": "Banking Regulation",
+      "applies_to": "Banks, systemic financial institutions",
+      "description": "Finalization of Basel III post-crisis reforms. Output floor (72.5% of standardized approach), revised standardized approaches for credit, operational, CVA risk. Implementation begins 2025 (EU), 2025 (Switzerland). Significant capital impact for some banks. Enhances risk sensitivity and comparability.",
+      "url": "https://www.bis.org/bcbs/publ/d424.htm"
+    },
+    {
+      "id": "CRR II",
+      "name": "EU Capital Requirements Regulation II (CRR II)",
+      "category": "Banking Regulation",
+      "applies_to": "Credit institutions, investment firms in EU",
+      "description": "Regulation 2019/876 amending CRR. Implements Basel III standards. Prudential requirements: own funds, large exposures, liquidity, leverage, disclosure. CRR II package with CRD V. NSFR, leverage ratio binding requirements. Market risk (FRTB) implementation phased.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2019/876/oj"
+    },
+    {
+      "id": "CRD V",
+      "name": "EU Capital Requirements Directive V (CRD V)",
+      "category": "Banking Regulation",
+      "applies_to": "Credit institutions in EU member states",
+      "description": "Directive 2019/878 amending CRD IV. Governance, supervision, capital buffers, remuneration, Pillar 2. Complements CRR II. National transposition required. Proportionality principle for smaller institutions. Macroprudential tools for systemic risk.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2019/878/oj"
+    },
+    {
+      "id": "Swiss Banking Act",
+      "name": "Federal Act on Banks and Savings Banks (Banking Act)",
+      "category": "Banking Regulation",
+      "applies_to": "Banks in Switzerland",
+      "description": "Swiss banking regulation. FINMA supervision. Capital requirements, liquidity, risk management, governance. Banking license requirements. Incorporates Basel standards with Swiss adaptations. Systemic importance requirements for UBS, Credit Suisse (now UBS). Too-big-to-fail provisions.",
+      "url": "https://www.finma.ch/en/supervision/banks-and-securities-dealers/"
+    },
+    {
+      "id": "FINMA Capital Adequacy Ordinance",
+      "name": "Swiss Capital Adequacy Ordinance (CAO)",
+      "category": "Banking Regulation",
+      "applies_to": "Swiss banks and securities dealers",
+      "description": "Detailed capital adequacy requirements for Switzerland. Basel III implementation. Risk-weighted assets calculation, capital buffers, leverage ratio. Going concern and gone concern capital for systemically important banks. Swiss finish - stricter than international minimums.",
+      "url": "https://www.finma.ch/en/documentation/finma-guidance/"
+    },
+    {
+      "id": "MiFID II",
+      "name": "Markets in Financial Instruments Directive II",
+      "category": "Investment Services",
+      "applies_to": "Investment firms, trading venues, banks providing investment services",
+      "description": "Directive 2014/65/EU regulating investment services in EU. Investor protection, market transparency, conduct of business rules, best execution, research unbundling, product governance. MiFIR (Regulation 600/2014) complements MiFID II. Pre-trade, post-trade transparency. Not directly applicable in Switzerland but affects Swiss firms serving EU clients.",
+      "url": "https://www.esma.europa.eu/policy-rules/mifid-ii-and-mifir"
+    },
+    {
+      "id": "MiFIR",
+      "name": "Markets in Financial Instruments Regulation",
+      "category": "Investment Services",
+      "applies_to": "Trading venues, investment firms, market data providers",
+      "description": "Regulation 600/2014. Market structure, transparency requirements, position limits for commodities. Directly applicable in all EU member states. Trading obligations (shares on regulated venues, derivatives on platforms). Transaction reporting. Market data unbundling.",
+      "url": "https://www.esma.europa.eu/policy-rules/mifid-ii-and-mifir"
+    },
+    {
+      "id": "Swiss FinSA",
+      "name": "Financial Services Act (FinSA)",
+      "category": "Investment Services",
+      "applies_to": "Financial service providers in Switzerland",
+      "description": "Swiss financial services regulation effective 2020. Rules of conduct, client segmentation (retail, professional, institutional), suitability/appropriateness, product documentation, advertising. Comparable to MiFID II. Affects banks, securities dealers, asset managers, trustees serving Swiss clients.",
+      "url": "https://www.finma.ch/en/supervision/insurers/authorisation-and-supervision/financial-services-act-finsa/"
+    },
+    {
+      "id": "Swiss FinIA",
+      "name": "Financial Institutions Act (FinIA)",
+      "category": "Asset Management",
+      "applies_to": "Asset managers, trustees, portfolio managers in Switzerland",
+      "description": "Swiss regulation of financial institutions effective 2020. Authorization and supervision of fund management companies, asset managers of collective assets, trustees, portfolio managers. FINMA supervision. Organizational requirements, conduct rules, reporting. Level playing field with EU.",
+      "url": "https://www.finma.ch/en/supervision/asset-managers/authorisation-and-supervision/financial-institutions-act-finia/"
+    },
+    {
+      "id": "AIFMD",
+      "name": "Alternative Investment Fund Managers Directive",
+      "category": "Asset Management",
+      "applies_to": "Alternative investment fund managers in EU",
+      "description": "Directive 2011/61/EU regulating managers of alternative investment funds (hedge funds, private equity, real estate funds). Authorization, capital requirements, organizational requirements, transparency, depositary, valuation. Marketing passport. Not applicable in Switzerland but Swiss managers may seek AIFMD authorization for EU business.",
+      "url": "https://www.esma.europa.eu/policy-rules/investment-management/alternative-investment-fund-managers-directive-aifmd"
+    },
+    {
+      "id": "UCITS",
+      "name": "Undertakings for Collective Investment in Transferable Securities Directive",
+      "category": "Asset Management",
+      "applies_to": "UCITS funds and management companies in EU",
+      "description": "Directive 2009/65/EC regulating retail investment funds. Harmonized rules for UCITs funds. EU passport for cross-border distribution. UCITS VI under discussion. Diversification, liquidity, depositary, valuation requirements. KID (Key Information Document) for investors.",
+      "url": "https://www.esma.europa.eu/policy-rules/ucits"
+    },
+    {
+      "id": "Swiss Collective Investment Schemes Act",
+      "name": "Collective Investment Schemes Act (CISA)",
+      "category": "Asset Management",
+      "applies_to": "Investment funds in Switzerland",
+      "description": "Swiss regulation of collective investment schemes. Open-ended and closed-ended funds. Authorization, supervision by FINMA. Fund management company requirements. Swiss funds and foreign funds distributed in Switzerland. Simplified approval for certain EU/EEA funds.",
+      "url": "https://www.finma.ch/en/supervision/asset-managers/"
+    },
+    {
+      "id": "Solvency II",
+      "name": "Solvency II Directive",
+      "category": "Insurance",
+      "applies_to": "Insurance and reinsurance companies in EU",
+      "description": "Directive 2009/138/EC for insurance prudential regulation. Risk-based capital requirements (SCR, MCR), own risk and solvency assessment (ORSA), governance, transparency. Three pillars: quantitative requirements, qualitative requirements, disclosure. Solvency Capital Requirement based on internal models or standard formula.",
+      "url": "https://www.eiopa.europa.eu/browse/solvency-2_en"
+    },
+    {
+      "id": "Swiss Insurance Supervision Act",
+      "name": "Insurance Supervision Act (ISA)",
+      "category": "Insurance",
+      "applies_to": "Insurance companies in Switzerland",
+      "description": "Swiss insurance regulation. FINMA supervision. Swiss Solvency Test (SST) - risk-based capital adequacy. Similar philosophy to Solvency II but Swiss-specific approach. Governance, risk management, reporting. Life insurance, non-life insurance, reinsurance, insurance groups.",
+      "url": "https://www.finma.ch/en/supervision/insurers/"
+    },
+    {
+      "id": "PSD2",
+      "name": "Payment Services Directive 2 (PSD2)",
+      "category": "Payments",
+      "applies_to": "Payment service providers, banks, fintechs in EU",
+      "description": "Directive 2015/2366 regulating payment services. Strong customer authentication (SCA), open banking (access to account - XS2A), third-party providers (AISPs, PISPs), consumer protection. RTS on SCA and secure communication. Enables competition and innovation in payments.",
+      "url": "https://www.ecb.europa.eu/paym/intro/mip-online/2018/html/1803_revisedpsd.en.html"
+    },
+    {
+      "id": "PSD3",
+      "name": "Payment Services Directive 3 (PSD3) - Proposed",
+      "category": "Payments",
+      "applies_to": "Payment service providers (future EU regulation)",
+      "description": "Proposed revision of PSD2. European Commission proposal 2023. PSD3 Directive + PSR Regulation (Payment Services Regulation). Enhanced fraud prevention, stronger SCA, open finance (beyond payments), instant payments, data sharing. Expected adoption 2025-2026.",
+      "url": "https://finance.ec.europa.eu/publications/retail-payments-strategy_en"
+    },
+    {
+      "id": "Swiss Financial Market Infrastructure Act",
+      "name": "Financial Market Infrastructure Act (FMIA)",
+      "category": "Market Infrastructure",
+      "applies_to": "Trading venues, central counterparties, trade repositories, payment systems",
+      "description": "Swiss regulation of financial market infrastructures. Stock exchanges, MTFs, CCPs, central securities depositories, trade repositories, payment systems. FINMA supervision. Comparable to EU EMIR and MiFIR. Cross-border recognition and equivalence.",
+      "url": "https://www.finma.ch/en/supervision/financial-market-infrastructures/"
+    },
+    {
+      "id": "EMIR",
+      "name": "European Market Infrastructure Regulation",
+      "category": "Derivatives",
+      "applies_to": "OTC derivatives, CCPs, trade repositories",
+      "description": "Regulation 648/2012. OTC derivatives clearing obligation, reporting to trade repositories, risk mitigation for non-cleared derivatives. CCP authorization and supervision. EMIR REFIT (2019) amendments. Initial margin and variation margin for non-cleared derivatives.",
+      "url": "https://www.esma.europa.eu/policy-rules/post-trading/european-market-infrastructure-regulation-emir"
+    },
+    {
+      "id": "CSDR",
+      "name": "Central Securities Depositories Regulation",
+      "category": "Market Infrastructure",
+      "applies_to": "Central securities depositories, settlement",
+      "description": "Regulation 909/2014. Harmonized authorization and supervision of CSDs. Settlement discipline (mandatory buy-ins). T+1 settlement (from 2027 in EU). CSD passporting. Affects securities settlement across EU. Interoperability between CSDs.",
+      "url": "https://www.esma.europa.eu/policy-rules/post-trading/central-securities-depositories-regulation-csdr"
+    },
+    {
+      "id": "GDPR Financial Services",
+      "name": "GDPR Application in Financial Services",
+      "category": "Data Protection",
+      "applies_to": "Banks, insurers, asset managers, payment providers processing personal data",
+      "description": "General Data Protection Regulation 2016/679 applies to financial institutions. Customer data, employee data, transaction data. Lawful basis for processing (contract, legal obligation, legitimate interest). Data subject rights, breach notification, DPIAs, DPO requirements. High penalties for non-compliance.",
+      "url": "https://edpb.europa.eu/our-work-tools/general-guidance/guidelines-recommendations-best-practices_en"
+    },
+    {
+      "id": "Swiss FADP",
+      "name": "Swiss Federal Act on Data Protection (FADP)",
+      "category": "Data Protection",
+      "applies_to": "Swiss companies and foreign companies processing Swiss residents' data",
+      "description": "Revised Swiss data protection law effective September 2023. Aligned with GDPR but Swiss-specific provisions. FDPIC (Federal Data Protection and Information Commissioner) enforcement. Data processing principles, data subject rights, data breach notification, data protection impact assessments. Privacy by design.",
+      "url": "https://www.edoeb.admin.ch/edoeb/en/home/data-protection/grundlagen/revised-fadp.html"
+    },
+    {
+      "id": "DORA",
+      "name": "Digital Operational Resilience Act",
+      "category": "IT Security",
+      "applies_to": "Financial entities in EU (banks, insurers, investment firms, crypto-asset service providers)",
+      "description": "Regulation 2022/2554 on digital operational resilience. ICT risk management, incident reporting, testing, third-party risk management (especially critical ICT providers). Applicable from January 2025. Unified framework across financial sector. ESMA, EBA, EIOPA joint standards.",
+      "url": "https://www.digital-operational-resilience-act.com/"
+    },
+    {
+      "id": "NIS2 Directive",
+      "name": "Network and Information Security Directive 2 (NIS2)",
+      "category": "Cybersecurity",
+      "applies_to": "Critical infrastructure including banking and financial market infrastructures",
+      "description": "Directive 2022/2555 replacing NIS Directive. Enhanced cybersecurity requirements. Risk management, incident reporting, business continuity. Supply chain security. Applies to large entities and critical sectors. Member state transposition by October 2024. Complements DORA for financial sector.",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/nis2-directive"
+    },
+    {
+      "id": "AML 6th Directive",
+      "name": "6th Anti-Money Laundering Directive (6AMLD)",
+      "category": "AML/CFT",
+      "applies_to": "Financial institutions, obliged entities in EU",
+      "description": "Directive 2018/1673 on combating money laundering by criminal law. Harmonized criminal offenses, sanctions, liability of legal persons. 22 predicate offenses. Criminal penalties for money laundering. Complements 5th AML Directive and upcoming AML package.",
+      "url": "https://eur-lex.europa.eu/eli/dir/2018/1673/oj"
+    },
+    {
+      "id": "EU AML Package",
+      "name": "EU Anti-Money Laundering Package (AMLA)",
+      "category": "AML/CFT",
+      "applies_to": "All financial and non-financial obliged entities in EU",
+      "description": "New AML framework proposed 2021, adoption expected 2025-2026. Single AML Regulation (directly applicable), new 7th AML Directive, AMLA (Anti-Money Laundering Authority). EU-level supervision for high-risk entities. Harmonized customer due diligence, beneficial ownership, cash restrictions.",
+      "url": "https://finance.ec.europa.eu/publications/anti-money-laundering-and-countering-financing-terrorism-legislative-package_en"
+    },
+    {
+      "id": "Swiss Anti-Money Laundering Act",
+      "name": "Swiss Anti-Money Laundering Act (AMLA)",
+      "category": "AML/CFT",
+      "applies_to": "Financial intermediaries in Switzerland",
+      "description": "Swiss AML/CTF regulation. Customer due diligence, beneficial owner identification, suspicious transaction reporting (MROS), record keeping. FINMA supervision for banks, insurance. Self-regulatory organizations (SROs) for other intermediaries. Aligned with FATF recommendations.",
+      "url": "https://www.finma.ch/en/supervision/anti-money-laundering/"
+    },
+    {
+      "id": "FATF Recommendations",
+      "name": "Financial Action Task Force Recommendations",
+      "category": "AML/CFT",
+      "applies_to": "Global AML/CFT standards",
+      "description": "40 Recommendations by FATF - global standard for AML/CFT. Risk-based approach, customer due diligence, beneficial ownership, politically exposed persons, correspondent banking, wire transfers, targeted financial sanctions. Mutual evaluations of countries. EU and Switzerland implement FATF standards.",
+      "url": "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Fatf-recommendations.html"
+    },
+    {
+      "id": "MiCA",
+      "name": "Markets in Crypto-Assets Regulation",
+      "category": "Crypto Assets",
+      "applies_to": "Crypto-asset service providers, stablecoin issuers in EU",
+      "description": "Regulation 2023/1114 regulating crypto-assets. Authorization of CASPs, capital requirements, consumer protection, market abuse, stablecoin requirements (asset-referenced tokens, e-money tokens). Applicable from 2024-2025 (phased). Creates EU framework for crypto. EBA, ESMA, national authorities supervision.",
+      "url": "https://www.esma.europa.eu/policy-rules/markets-crypto-assets-regulation-mica"
+    },
+    {
+      "id": "Swiss DLT Act",
+      "name": "Swiss DLT Act - Distributed Ledger Technology",
+      "category": "Crypto Assets",
+      "applies_to": "DLT-based services, tokenization, crypto trading in Switzerland",
+      "description": "Amendments to multiple Swiss laws (2021) to accommodate DLT and blockchain. DLT securities, DLT trading facilities, segregation of crypto-assets in bankruptcy. FINMA DLT guidelines. Switzerland's proactive approach to fintech and crypto. Crypto Valley Zug ecosystem.",
+      "url": "https://www.finma.ch/en/news/2021/02/20210211-mm-dlt/"
+    },
+    {
+      "id": "Benchmark Regulation",
+      "name": "EU Benchmark Regulation (BMR)",
+      "category": "Market Integrity",
+      "applies_to": "Benchmark administrators, contributors, users",
+      "description": "Regulation 2016/1011. Governance and controls for benchmark production. LIBOR, EURIBOR, other financial benchmarks. Administrator authorization by ESMA or national authority. Transparency, accuracy, reliability. Transition from LIBOR to risk-free rates (SOFR, €STR). Critical benchmarks designation.",
+      "url": "https://www.esma.europa.eu/policy-rules/benchmarks"
+    },
+    {
+      "id": "Market Abuse Regulation",
+      "name": "Market Abuse Regulation (MAR)",
+      "category": "Market Integrity",
+      "applies_to": "Issuers, trading venues, investment firms, insiders",
+      "description": "Regulation 596/2014. Prohibits insider dealing, unlawful disclosure of inside information, market manipulation. Inside information disclosure, insider lists, managers' transactions, buy-back and stabilization. ESMA guidelines. National competent authorities enforcement. Criminal sanctions in member states.",
+      "url": "https://www.esma.europa.eu/policy-rules/market-abuse"
+    },
+    {
+      "id": "Swiss Stock Exchange Act",
+      "name": "Swiss Stock Exchange and Securities Trading Act (SESTA)",
+      "category": "Securities Trading",
+      "applies_to": "Stock exchanges, securities dealers, trading in Switzerland",
+      "description": "Swiss regulation of securities trading. SIX Swiss Exchange, BX Swiss. Market abuse provisions, insider trading prohibition, ad-hoc publicity. FINMA supervision. Swiss Takeover Board. Disclosure requirements for significant shareholdings.",
+      "url": "https://www.finma.ch/en/supervision/financial-market-infrastructures/"
+    },
+    {
+      "id": "Prospectus Regulation",
+      "name": "EU Prospectus Regulation",
+      "category": "Capital Markets",
+      "applies_to": "Issuers of securities offered to public or admitted to trading",
+      "description": "Regulation 2017/1129. Prospectus requirements for public offers and admissions to trading. EU passport for prospectuses. Exemptions (small offers <€8M, qualified investors, employee shares). Universal Registration Document (URD) for frequent issuers. ESMA format, content, approval.",
+      "url": "https://www.esma.europa.eu/policy-rules/prospectus"
+    },
+    {
+      "id": "Swiss Listing Rules",
+      "name": "SIX Swiss Exchange Listing Rules",
+      "category": "Capital Markets",
+      "applies_to": "Companies listed on SIX Swiss Exchange",
+      "description": "SIX Swiss Exchange regulations for listed companies. Listing requirements, ongoing obligations, ad-hoc publicity, financial reporting (Swiss GAAP FER, IFRS, US GAAP). Corporate governance (Swiss Code of Best Practice). Delisting rules. SIX Regulatory Board enforcement.",
+      "url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/regulation.html"
+    },
+    {
+      "id": "PRIIPs Regulation",
+      "name": "Packaged Retail and Insurance-based Investment Products Regulation",
+      "category": "Consumer Protection",
+      "applies_to": "Manufacturers and distributors of PRIIPs",
+      "description": "Regulation 1286/2014. Key Information Document (KID) for PRIIPs. Standardized 3-page document. Risk/reward, costs, performance scenarios. Retail investor protection. Applies to structured products, investment funds, insurance products. PRIIPs II expected to address shortcomings.",
+      "url": "https://www.esma.europa.eu/policy-rules/investment-management/priips-regulation"
+    },
+    {
+      "id": "IDD",
+      "name": "Insurance Distribution Directive",
+      "category": "Insurance",
+      "applies_to": "Insurance intermediaries, insurers, brokers",
+      "description": "Directive 2016/97. Rules for insurance distribution. Product oversight and governance (POG), conflicts of interest, customer information, IBIPs (insurance-based investment products) - enhanced requirements similar to MiFID. Professional requirements, cross-border activity. Complements Solvency II.",
+      "url": "https://www.eiopa.europa.eu/browse/insurance-distribution-directive-idd_en"
+    },
+    {
+      "id": "Sustainable Finance Disclosure Regulation",
+      "name": "SFDR - Sustainable Finance Disclosure Regulation",
+      "category": "ESG",
+      "applies_to": "Financial market participants, financial advisers in EU",
+      "description": "Regulation 2019/2088. Sustainability-related disclosures. Entity-level (principal adverse impacts), product-level (Article 6, 8 light green, 9 dark green). Taxonomy alignment disclosure. RTS detailing disclosure requirements. Greenwashing prevention. ESG integration transparency.",
+      "url": "https://www.esma.europa.eu/policy-rules/sustainable-finance"
+    },
+    {
+      "id": "EU Taxonomy Regulation",
+      "name": "EU Taxonomy for Sustainable Activities",
+      "category": "ESG",
+      "applies_to": "Large companies, financial market participants",
+      "description": "Regulation 2020/852. Classification system for environmentally sustainable economic activities. Six environmental objectives. Technical screening criteria. Taxonomy-eligible and taxonomy-aligned activities. Non-financial reporting (CSRD), green bonds, benchmarks reference taxonomy. Nuclear and gas inclusion controversial.",
+      "url": "https://finance.ec.europa.eu/sustainable-finance/tools-and-standards/eu-taxonomy-sustainable-activities_en"
+    },
+    {
+      "id": "CSRD",
+      "name": "Corporate Sustainability Reporting Directive",
+      "category": "ESG",
+      "applies_to": "Large companies, listed SMEs in EU",
+      "description": "Directive 2022/2464 replacing NFRD. Enhanced sustainability reporting. ESRS (European Sustainability Reporting Standards). Double materiality (impact and financial). Assurance requirements (initially limited, eventually reasonable). Phased application 2024-2028. Banks, insurers, asset managers covered.",
+      "url": "https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en"
+    },
+    {
+      "id": "Swiss Climate Disclosure",
+      "name": "Swiss Climate and Environmental Reporting Obligations",
+      "category": "ESG",
+      "applies_to": "Large Swiss companies, banks, insurance companies",
+      "description": "Mandatory climate reporting for large Swiss companies from 2024. Ordinance on Climate Disclosures. Based on TCFD recommendations. Greenhouse gas emissions (Scope 1, 2, 3), climate risks and opportunities, targets. Banks and insurers: additional climate compatibility requirements. Aligns with international standards.",
+      "url": "https://www.admin.ch/gov/en/start/documentation/media-releases.msg-id-85925.html"
+    },
+    {
+      "id": "BRRD",
+      "name": "Bank Recovery and Resolution Directive",
+      "category": "Crisis Management",
+      "applies_to": "Banks in EU",
+      "description": "Directive 2014/59/EU. Framework for bank recovery and resolution. Recovery planning, resolution planning, resolution tools (bail-in, sale of business, bridge bank, asset separation). MREL (minimum requirement for own funds and eligible liabilities). Single Resolution Mechanism for Banking Union. Minimizes taxpayer bailouts.",
+      "url": "https://www.eba.europa.eu/regulation-and-policy/recovery-and-resolution"
+    },
+    {
+      "id": "Swiss TBTF",
+      "name": "Swiss Too-Big-To-Fail Regime",
+      "category": "Crisis Management",
+      "applies_to": "Systemically important banks in Switzerland",
+      "description": "Swiss provisions for systemically important banks. Higher capital requirements (going concern, gone concern), emergency plans, organizational requirements. UBS and formerly Credit Suisse subject to TBTF. Resolvability, continuity of critical functions. Stricter than Basel standards.",
+      "url": "https://www.finma.ch/en/supervision/banks-and-securities-dealers/too-big-to-fail/"
+    },
+    {
+      "id": "EBA Guidelines",
+      "name": "European Banking Authority Guidelines and Standards",
+      "category": "Regulatory Guidance",
+      "applies_to": "Banks, competent authorities in EU",
+      "description": "EBA develops regulatory technical standards (RTS), implementing technical standards (ITS), guidelines. Cover all aspects of banking regulation: capital, liquidity, risk management, stress testing, governance, reporting. Comply-or-explain principle for guidelines. Ensures consistent application of EU banking law.",
+      "url": "https://www.eba.europa.eu/regulation-and-policy"
+    },
+    {
+      "id": "FINMA Circulars",
+      "name": "FINMA Circulars and Guidance",
+      "category": "Regulatory Guidance",
+      "applies_to": "Supervised institutions in Switzerland",
+      "description": "FINMA issues circulars concretizing supervisory law. Cover all supervised sectors: banking, insurance, asset management, financial market infrastructures. Circulars on capital adequacy, liquidity, risk management, AML, conduct, corporate governance, accounting. Binding on supervised institutions.",
+      "url": "https://www.finma.ch/en/documentation/finma-guidance/"
+    },
+    {
+      "id": "IFRS 9",
+      "name": "IFRS 9 - Financial Instruments",
+      "category": "Accounting",
+      "applies_to": "Banks, financial institutions using IFRS",
+      "description": "International accounting standard for financial instruments. Classification and measurement, impairment (expected credit loss model), hedge accounting. Replaced IAS 39. Mandatory for IFRS reporters from 2018. Significant impact on bank loan loss provisioning. EU endorsement, Swiss adoption for listed companies.",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-9-financial-instruments/"
+    },
+    {
+      "id": "IFRS 17",
+      "name": "IFRS 17 - Insurance Contracts",
+      "category": "Accounting",
+      "applies_to": "Insurance companies using IFRS",
+      "description": "International accounting standard for insurance contracts. Replaces IFRS 4. Effective from 2023. General measurement model, variable fee approach, premium allocation approach. Contractual service margin, risk adjustment. Major implementation effort for insurers. EU endorsed 2021, Switzerland for listed insurers.",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-17-insurance-contracts/"
+    },
+    {
+      "id": "Swiss GAAP FER",
+      "name": "Swiss GAAP FER - Financial Accounting and Reporting",
+      "category": "Accounting",
+      "applies_to": "Swiss companies (alternative to IFRS)",
+      "description": "Swiss Generally Accepted Accounting Principles. Alternative to IFRS for listed companies in Switzerland. Core standards, specialized standards (banks, insurance, pension funds, public benefit organizations). FER Foundation develops standards. Less complex than IFRS, Swiss-specific approach.",
+      "url": "https://www.fer.ch/en/"
+    },
+    {
+      "id": "EMIR REFIT",
+      "name": "EMIR Refit - Review of European Market Infrastructure Regulation",
+      "category": "Derivatives",
+      "applies_to": "OTC derivatives market participants",
+      "description": "Regulation 2019/834 amending EMIR. Proportionality: reduced reporting for small non-financial counterparties, exemptions for pension funds extended. Deference to third-country CCPs. Simplified intragroup transactions. Operational improvements. Active accounts for EMIR reporting.",
+      "url": "https://www.esma.europa.eu/policy-rules/post-trading/emir-refit"
+    }
+  ]
+}
