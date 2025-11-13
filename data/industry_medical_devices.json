@@ -1,0 +1,501 @@
+{
+  "_comment": "Medical Devices Industry - EU and Switzerland Focus. Compliance norms for medical device design, development, manufacturing, clinical evaluation, post-market surveillance. Updated for 2025.",
+  "norms": [
+    {
+      "id": "EU MDR",
+      "name": "EU Medical Device Regulation 2017/745",
+      "category": "Medical Device Regulation",
+      "applies_to": "Medical devices placed on EU market",
+      "description": "Comprehensive regulation replacing Medical Device Directive 93/42/EEC. Fully applicable since May 2021. Stricter requirements for clinical evaluation, technical documentation, post-market surveillance. Enhanced scrutiny of high-risk devices. Notified body designation requirements strengthened. EUDAMED database. Unique Device Identification (UDI) mandatory. Person Responsible for Regulatory Compliance (PRRC) required.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017R0745"
+    },
+    {
+      "id": "EU IVDR",
+      "name": "EU In Vitro Diagnostic Regulation 2017/746",
+      "category": "Medical Device Regulation",
+      "applies_to": "In vitro diagnostic medical devices in EU",
+      "description": "IVD-specific regulation replacing Directive 98/79/EC. Fully applicable since May 2022. Risk-based classification (A, B, C, D). Performance evaluation requirements. Quality management systems. Notified body involvement for higher risk IVDs. Companion diagnostics framework. UDI requirements. EUDAMED registration.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017R0746"
+    },
+    {
+      "id": "Swiss MepV",
+      "name": "Swiss Medical Devices Ordinance (MepV)",
+      "category": "Medical Device Regulation",
+      "applies_to": "Medical devices in Switzerland",
+      "description": "Swiss medical device regulation. Swissmedic competent authority. Closely aligned with EU MDR/IVDR but Swiss-specific requirements. Conformity assessment, registration, post-market surveillance. Swiss authorized representative for non-Swiss manufacturers. Transition periods aligned with EU where feasible. Quality management system requirements.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/medical-devices.html"
+    },
+    {
+      "id": "Swiss IvDO",
+      "name": "Swiss In Vitro Diagnostics Ordinance (IvDO)",
+      "category": "Medical Device Regulation",
+      "applies_to": "IVD medical devices in Switzerland",
+      "description": "Swiss IVD-specific ordinance. Performance evaluation, classification, conformity assessment. Swissmedic registration and oversight. Aligned with EU IVDR framework. Swiss market access requirements. Notified body or conformity assessment requirements based on risk class.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/medical-devices/market-access.html"
+    },
+    {
+      "id": "MDR Annex I",
+      "name": "MDR Annex I - General Safety and Performance Requirements",
+      "category": "Safety Requirements",
+      "applies_to": "All medical devices under MDR",
+      "description": "Comprehensive list of general safety and performance requirements (GSPRs). Risk management, design and manufacture, information supplied by manufacturer, clinical evidence. Must be addressed in technical documentation. Chapter I (general requirements), Chapter II (requirements regarding design and manufacture), Chapter III (information requirements). Basis for conformity assessment.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017R0745"
+    },
+    {
+      "id": "CE Marking",
+      "name": "CE Marking for Medical Devices",
+      "category": "Market Access",
+      "applies_to": "Medical devices for EU/EEA market",
+      "description": "CE marking signifies conformity with EU MDR/IVDR. Mandatory before placing device on EU market. Affixed by manufacturer after conformity assessment. Indicates compliance with essential requirements. CE mark must include identification number of notified body (if involved). Not a quality mark but regulatory requirement. Declaration of Conformity required.",
+      "url": "https://ec.europa.eu/growth/single-market/ce-marking_en"
+    },
+    {
+      "id": "Notified Bodies",
+      "name": "EU Notified Bodies for Medical Devices",
+      "category": "Conformity Assessment",
+      "applies_to": "Class IIa, IIb, III devices requiring third-party assessment",
+      "description": "Notified bodies designated by EU member states to conduct conformity assessments. NANDO database lists designated bodies. More stringent designation criteria under MDR/IVDR. Capacity constraints during transition. Technical documentation review, quality system audits, product testing. Annex IX (quality management), Annex X (type examination), Annex XI (conformity based on product verification).",
+      "url": "https://ec.europa.eu/growth/tools-databases/nando/index.cfm?fuseaction=directive.notifiedbody&dir_id=34"
+    },
+    {
+      "id": "Swiss Conformity Assessment",
+      "name": "Swiss Conformity Assessment Bodies",
+      "category": "Conformity Assessment",
+      "applies_to": "Medical devices requiring third-party assessment in Switzerland",
+      "description": "Swissmedic-recognized conformity assessment bodies. Similar role to EU notified bodies. Mutual recognition agreements facilitate acceptance of EU notified body certificates. Swiss-specific conformity routes available. Technical file review, quality audits, batch testing where required.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/medical-devices/conformity-assessment-bodies.html"
+    },
+    {
+      "id": "ISO 13485:2016",
+      "name": "ISO 13485:2016 - Medical Devices Quality Management Systems",
+      "category": "Quality Management",
+      "applies_to": "Medical device manufacturers and suppliers",
+      "description": "International standard for quality management systems specific to medical devices. Harmonized with MDR/IVDR requirements. Risk-based approach, design controls, document control, CAPA (Corrective and Preventive Action), supplier management, traceability, post-market surveillance. Third-party certification common. Basis for notified body quality system audits. Differs from ISO 9001 with device-specific requirements.",
+      "url": "https://www.iso.org/standard/59752.html"
+    },
+    {
+      "id": "ISO 14971:2019",
+      "name": "ISO 14971:2019 - Medical Devices Risk Management",
+      "category": "Risk Management",
+      "applies_to": "All medical devices throughout lifecycle",
+      "description": "Cornerstone standard for medical device risk management. Risk analysis, risk evaluation, risk control, residual risk evaluation, risk management review. Production and post-production information monitoring. Risk management file required. Updated 2019 edition with clarifications. Essential for MDR compliance. Integrated throughout device lifecycle from design to post-market.",
+      "url": "https://www.iso.org/standard/72704.html"
+    },
+    {
+      "id": "ISO 14971 TR",
+      "name": "ISO/TR 24971:2020 - Guidance on ISO 14971",
+      "category": "Risk Management",
+      "applies_to": "Medical device risk management implementation",
+      "description": "Technical report providing detailed guidance on applying ISO 14971. Explains concepts, rationale, examples. Helps manufacturers implement risk management processes. Risk acceptability criteria, benefit-risk analysis, information for safety. Non-normative but highly valuable for practical implementation.",
+      "url": "https://www.iso.org/standard/72704.html"
+    },
+    {
+      "id": "Clinical Evaluation MDR",
+      "name": "Clinical Evaluation Requirements under MDR",
+      "category": "Clinical Evidence",
+      "applies_to": "All medical devices, especially implantables and Class III",
+      "description": "Stricter clinical evaluation requirements under MDR. Clinical Evaluation Report (CER) mandatory for all risk classes. Clinical investigations required for implantables and Class III unless equivalence demonstrated. PMCF (Post-Market Clinical Follow-up) required. Sufficient clinical evidence to demonstrate safety and performance. MDR Annex XIV requirements. MEDDEV 2.7/1 Rev.4 guidance.",
+      "url": "https://health.ec.europa.eu/medical-devices-sector/new-regulations/guidance-mdcg-endorsed-documents-and-other-guidance_en"
+    },
+    {
+      "id": "MEDDEV 2.7/1",
+      "name": "MEDDEV 2.7/1 Rev.4 - Clinical Evaluation Guidance",
+      "category": "Clinical Evidence",
+      "applies_to": "Clinical evaluation process",
+      "description": "Comprehensive guidance on clinical evaluation. Clinical evaluation plan, literature review, appraisal of clinical data, equivalence demonstration, clinical evaluation report. Applicable under MDD, provides foundation for MDR requirements. Staged evaluation, clinical development plan, gap analysis. Essential reference despite MDR transition.",
+      "url": "https://health.ec.europa.eu/latest-updates/meddev-271-revision-4-clinical-evaluation-guidance-updated-december-2016-2020-01-29_en"
+    },
+    {
+      "id": "PMCF",
+      "name": "Post-Market Clinical Follow-up (PMCF)",
+      "category": "Post-Market Surveillance",
+      "applies_to": "Medical devices requiring ongoing clinical data",
+      "description": "Proactive collection of clinical data post-market. PMCF plan required as part of clinical evaluation. Continuous gathering of safety and performance data. PMCF evaluation report. Feeds into periodic safety update reports (PSURs) for implantables and Class III devices. MDCG 2020-7 guidance. Essential component of MDR compliance.",
+      "url": "https://health.ec.europa.eu/medical-devices-sector/new-regulations/guidance-mdcg-endorsed-documents-and-other-guidance_en"
+    },
+    {
+      "id": "Clinical Investigation",
+      "name": "Clinical Investigation Requirements - MDR Article 62-82",
+      "category": "Clinical Studies",
+      "applies_to": "Pre-market clinical studies for medical devices",
+      "description": "Clinical investigation requirements under MDR. Sponsor obligations, investigator responsibilities, ethics committee approval, competent authority notification. Informed consent, monitoring, safety reporting. Coordinated assessment procedure for multi-country studies. Clinical Investigation Plan (CIP), Investigator's Brochure (IB). ISO 14155:2020 standard for good clinical practice.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017R0745"
+    },
+    {
+      "id": "ISO 14155:2020",
+      "name": "ISO 14155:2020 - Clinical Investigation of Medical Devices for Human Subjects",
+      "category": "Clinical Studies",
+      "applies_to": "Clinical investigations of investigational medical devices",
+      "description": "Good clinical practice standard for medical device clinical investigations. Study design, ethical considerations, responsibilities of sponsor/investigator, monitoring, documentation. Harmonized with MDR requirements. Updated 2020 edition addresses contemporary trial methodologies. Equivalent to ICH GCP but device-specific.",
+      "url": "https://www.iso.org/standard/71690.html"
+    },
+    {
+      "id": "UDI System",
+      "name": "Unique Device Identification (UDI) System",
+      "category": "Traceability",
+      "applies_to": "All medical devices under MDR/IVDR",
+      "description": "Mandatory UDI system under MDR/IVDR. UDI-DI (device identifier) and UDI-PI (production identifier). GS1, HIBCC, ICCBBA issuing entities. Phased implementation by device class (Class III 2021, Class IIa/IIb 2023, Class I 2027). EUDAMED UDI database. UDI carrier on device label. Traceability throughout supply chain, supports vigilance and recalls.",
+      "url": "https://health.ec.europa.eu/medical-devices-sector/unique-device-identification-udi_en"
+    },
+    {
+      "id": "EUDAMED",
+      "name": "European Database on Medical Devices (EUDAMED)",
+      "category": "Registration and Transparency",
+      "applies_to": "All medical devices, economic operators, notified bodies",
+      "description": "EU-wide database for medical device information. Six modules: actor registration, UDI/device registration, certificates, clinical investigations, vigilance and post-market surveillance, market surveillance. Phased deployment. Transparency for healthcare professionals and public. Manufacturer registration mandatory. Economic operator registration. Supports market surveillance and vigilance.",
+      "url": "https://health.ec.europa.eu/medical-devices-eudamed_en"
+    },
+    {
+      "id": "Swiss Device Registration",
+      "name": "Swiss Medical Device Registration",
+      "category": "Registration and Transparency",
+      "applies_to": "Medical devices placed on Swiss market",
+      "description": "Swissmedic registration requirements for medical devices. Economic operator registration, device registration, UDI implementation. Swiss medical device database. Similar structure to EUDAMED. Pre-market registration mandatory. Post-market updates. Supports market surveillance.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/medical-devices/registration.html"
+    },
+    {
+      "id": "MDSW",
+      "name": "Medical Device Software (MDSW) / Software as Medical Device (SaMD)",
+      "category": "Software",
+      "applies_to": "Standalone medical device software",
+      "description": "Software that qualifies as medical device in its own right. MDR Annex VIII classification rules apply. Risk-based classification. MDCG 2019-11 guidance on qualification and classification. IMDRF SaMD framework referenced. Software lifecycle, cybersecurity, updates and patches. Version control critical. Clinical evaluation for software. IEC 62304 software development standard.",
+      "url": "https://health.ec.europa.eu/medical-devices-sector/new-regulations/guidance-mdcg-endorsed-documents-and-other-guidance_en"
+    },
+    {
+      "id": "IEC 62304:2006+A1:2015",
+      "name": "IEC 62304:2006+AMD1:2015 - Medical Device Software Lifecycle Processes",
+      "category": "Software",
+      "applies_to": "Software that is part of or is a medical device",
+      "description": "Software development lifecycle standard for medical devices. Safety classification (A, B, C), development planning, requirements analysis, architecture design, implementation, testing, maintenance. Software configuration management, problem resolution. Harmonized under MDR. Essential for MDSW/SaMD compliance. Integrated with ISO 13485 and ISO 14971.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "IEC 82304-1:2016",
+      "name": "IEC 82304-1:2016 - Health Software - General Requirements for Product Safety",
+      "category": "Software",
+      "applies_to": "Health software products including SaMD",
+      "description": "Safety and security requirements for health software. Product development, risk management, validation, accompanying documentation. Complements IEC 62304. Software safety classification, secure development, data protection. Particularly relevant for SaMD and wellness applications. Addresses user interface, data security, software updates.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "Cybersecurity MDR",
+      "name": "Medical Device Cybersecurity Requirements",
+      "category": "Cybersecurity",
+      "applies_to": "Connected and software-containing medical devices",
+      "description": "Cybersecurity addressed in MDR Annex I (essential requirements). MDCG 2019-16 cybersecurity guidance. Secure by design principles. Threat modeling, vulnerability management, security risk assessment. Software updates and patches. Cybersecurity in post-market surveillance. Legacy device considerations. Increasing regulatory focus given connected device proliferation.",
+      "url": "https://health.ec.europa.eu/medical-devices-sector/new-regulations/guidance-mdcg-endorsed-documents-and-other-guidance_en"
+    },
+    {
+      "id": "IEC 62443-4-1",
+      "name": "IEC 62443-4-1:2018 - Security for Industrial Automation - Secure Product Development",
+      "category": "Cybersecurity",
+      "applies_to": "Connected medical devices with network capabilities",
+      "description": "Secure development lifecycle for products used in industrial automation and control systems. Increasingly referenced for medical device cybersecurity. Security requirements specification, secure design, implementation, verification and validation, management of security-related issues. Complements IEC 62304 with security-specific practices.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "FDA Cybersecurity Guidance",
+      "name": "FDA Premarket and Postmarket Cybersecurity Guidance",
+      "category": "Cybersecurity",
+      "applies_to": "Medical devices with cybersecurity considerations (US reference)",
+      "description": "FDA guidance on cybersecurity for medical devices. Premarket (design) and postmarket (monitoring and updates). Threat modeling, SBOM (Software Bill of Materials), secure architecture. While US-specific, increasingly referenced in EU/Switzerland. Best practices applicable globally. Regular updates and patches strategy. Cybersecurity transparency.",
+      "url": "https://www.fda.gov/medical-devices/digital-health-center-excellence/cybersecurity"
+    },
+    {
+      "id": "IEC 62366-1:2015",
+      "name": "IEC 62366-1:2015 - Medical Devices - Usability Engineering",
+      "category": "Usability",
+      "applies_to": "Medical devices with user interface",
+      "description": "Application of usability engineering to medical devices. User interface design, use scenarios, hazard-related use scenarios, formative and summative usability testing. Usability engineering file required. Harmonized under MDR. Reduces use errors and associated risks. Critical for complex devices, home-use devices. Integrated with risk management per ISO 14971.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "IEC TR 62366-2:2016",
+      "name": "IEC TR 62366-2:2016 - Usability Engineering Application Guidance",
+      "category": "Usability",
+      "applies_to": "Implementation of usability engineering processes",
+      "description": "Technical report providing guidance on IEC 62366-1 application. Examples, rationale, templates. User research, task analysis, design iterations, usability testing protocols. Helps manufacturers implement effective usability programs. Human factors integration into device development.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "ISO 10993-1:2018",
+      "name": "ISO 10993-1:2018 - Biocompatibility Evaluation and Testing - Part 1",
+      "category": "Biocompatibility",
+      "applies_to": "Devices with direct or indirect body contact",
+      "description": "Framework for biological evaluation of medical devices. Risk management approach to biocompatibility. Categorization by nature and duration of contact. Evaluation plan, existing data review, gap analysis, testing strategy. Cytotoxicity, sensitization, irritation, systemic toxicity, genotoxicity, implantation, hemocompatibility. Foundation for ISO 10993 series. Updated 2018 with enhanced risk-based approach.",
+      "url": "https://www.iso.org/standard/68936.html"
+    },
+    {
+      "id": "ISO 10993-5",
+      "name": "ISO 10993-5:2009 - Tests for In Vitro Cytotoxicity",
+      "category": "Biocompatibility",
+      "applies_to": "Biocompatibility testing for medical devices",
+      "description": "In vitro cytotoxicity testing methods. Extract test, direct contact, indirect contact. Cell viability assessment. Initial screening test for biocompatibility. ISO 10993 series Part 5. Essential for most devices with patient contact. Test methods include MTT, neutral red uptake, colony formation.",
+      "url": "https://www.iso.org/standard/36406.html"
+    },
+    {
+      "id": "ISO 10993-10",
+      "name": "ISO 10993-10:2010 - Tests for Irritation and Skin Sensitization",
+      "category": "Biocompatibility",
+      "applies_to": "Devices with skin or mucosal contact",
+      "description": "Irritation and sensitization testing. Skin irritation, intracutaneous reactivity, sensitization (LLNA, guinea pig maximization). Relevant for devices with prolonged or repeated skin contact. In vivo and alternative methods. Risk-based test selection per ISO 10993-1 framework.",
+      "url": "https://www.iso.org/standard/40884.html"
+    },
+    {
+      "id": "ISO 10993-18",
+      "name": "ISO 10993-18:2020 - Chemical Characterization of Medical Device Materials",
+      "category": "Biocompatibility",
+      "applies_to": "Material characterization for medical devices",
+      "description": "Chemical characterization of materials within risk management framework. Extractables and leachables studies. Analytical methods (GC-MS, LC-MS, ICP-MS). Risk assessment based on chemical composition. Supports toxicological risk assessment. Reduces need for animal testing through chemical-based risk assessment. Updated 2020 edition.",
+      "url": "https://www.iso.org/standard/64750.html"
+    },
+    {
+      "id": "IEC 60601-1:2005+A2:2020",
+      "name": "IEC 60601-1 - Medical Electrical Equipment - General Requirements for Basic Safety and Essential Performance",
+      "category": "Electrical Safety",
+      "applies_to": "Medical electrical equipment",
+      "description": "Fundamental safety standard for medical electrical equipment and systems. Risk management approach. Protection against electrical hazards, mechanical hazards, unwanted or excessive radiation. EMC requirements (see IEC 60601-1-2). Usability engineering (IEC 62366). Programmable electrical medical systems (PEMS). 4th edition current. Numerous collateral and particular standards build on this.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "IEC 60601-1-2",
+      "name": "IEC 60601-1-2:2014+AMD1:2020 - EMC for Medical Electrical Equipment",
+      "category": "EMC",
+      "applies_to": "Medical electrical equipment electromagnetic compatibility",
+      "description": "Collateral standard to IEC 60601-1 for electromagnetic compatibility. Emission requirements, immunity requirements. Protects from electromagnetic interference and prevents device from interfering with other equipment. 4th edition (2014) with Amendment 1 (2020). Test methods, limits, risk management for EMC. Essential for connected and networked medical devices.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "IEC 60601-1-6",
+      "name": "IEC 60601-1-6:2010+AMD1:2013+AMD2:2020 - Usability",
+      "category": "Electrical Safety",
+      "applies_to": "Usability of medical electrical equipment",
+      "description": "Collateral standard addressing usability engineering for medical electrical equipment. Now largely superseded by IEC 62366 for usability, but still referenced. Usability engineering process as part of risk management. Integrates with IEC 60601-1 requirements.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "IEC 60601-1-8",
+      "name": "IEC 60601-1-8:2006+AMD1:2012+AMD2:2020 - Alarms",
+      "category": "Electrical Safety",
+      "applies_to": "Alarm systems in medical electrical equipment",
+      "description": "Collateral standard for alarm systems. Alarm signals (visual, auditory), alarm conditions, alarm system testing. Prevents alarm fatigue, ensures critical alarms are noticed. Applicable to devices with patient monitoring or alarm functions. Risk-based alarm priority.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "IEC 60601-1-11",
+      "name": "IEC 60601-1-11:2015+AMD1:2020 - Requirements for Home Healthcare",
+      "category": "Electrical Safety",
+      "applies_to": "Medical electrical equipment for home healthcare",
+      "description": "Collateral standard for medical devices intended for home use. Addresses lay user environment, reliability, ease of use, home electrical supply variations. Labeling for non-professional users. Increasing importance with shift to home healthcare. Special attention to safe use by patients and caregivers.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "IEC 60601-1-12",
+      "name": "IEC 60601-1-12:2014 - Requirements for Emergency Medical Services",
+      "category": "Electrical Safety",
+      "applies_to": "Medical electrical equipment for emergency medical services",
+      "description": "Collateral standard for EMS environment. Addresses harsh conditions, portability, battery operation, rapid deployment. Applicable to ambulances, emergency response. Environmental stress, mechanical robustness, ingress protection.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "Particular Standards 60601-2",
+      "name": "IEC 60601-2-X Series - Particular Standards",
+      "category": "Electrical Safety",
+      "applies_to": "Specific types of medical electrical equipment",
+      "description": "Particular standards for specific device types. Examples: IEC 60601-2-2 (high frequency surgical), IEC 60601-2-24 (infusion pumps), IEC 60601-2-27 (ECG monitoring), IEC 60601-2-47 (ambulatory ECG), IEC 60601-2-49 (multifunction patient monitoring). Tailored requirements beyond general standard. Over 80 particular standards exist.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "EN 55011",
+      "name": "EN 55011 / CISPR 11 - Emission Standard for ISM Equipment",
+      "category": "EMC",
+      "applies_to": "Medical devices using RF energy (ISM equipment)",
+      "description": "Emission requirements for industrial, scientific and medical (ISM) equipment. Applicable to electrosurgical units, diathermy, RF ablation. Limits radiated and conducted emissions. Group 1 (minimal RF) and Group 2 (intentional RF). Classes A and B based on environment.",
+      "url": "https://www.cenelec.eu/"
+    },
+    {
+      "id": "ISO 11607-1:2019",
+      "name": "ISO 11607-1:2019 - Packaging for Terminally Sterilized Devices - Part 1",
+      "category": "Packaging and Sterilization",
+      "applies_to": "Sterile medical device packaging",
+      "description": "Requirements for materials, sterile barrier systems, packaging systems for terminally sterilized devices. Ensures package maintains sterility until use. Material selection, design, validation. Seal integrity, microbial barrier. Part 1 covers requirements, Part 2 covers validation.",
+      "url": "https://www.iso.org/standard/70788.html"
+    },
+    {
+      "id": "ISO 11607-2:2019",
+      "name": "ISO 11607-2:2019 - Packaging for Terminally Sterilized Devices - Part 2 Validation",
+      "category": "Packaging and Sterilization",
+      "applies_to": "Validation of sterile packaging processes",
+      "description": "Validation requirements for forming, sealing, assembly processes for sterile barrier systems. Installation qualification (IQ), operational qualification (OQ), performance qualification (PQ). Package integrity testing, seal strength testing. Stability and shelf-life validation.",
+      "url": "https://www.iso.org/standard/70789.html"
+    },
+    {
+      "id": "ISO 11135:2014",
+      "name": "ISO 11135:2014 - Sterilization of Healthcare Products - Ethylene Oxide",
+      "category": "Sterilization",
+      "applies_to": "Ethylene oxide sterilization processes",
+      "description": "Requirements for development, validation, routine control of ethylene oxide (EO) sterilization. Process definition, validation protocols, routine monitoring. EO used for heat/moisture sensitive devices. Biological indicators, chemical indicators. Residual EO and EO residuals (ethylene chlorohydrin, ethylene glycol) testing per ISO 10993-7.",
+      "url": "https://www.iso.org/standard/56137.html"
+    },
+    {
+      "id": "ISO 11137-1:2006",
+      "name": "ISO 11137-1:2006 - Sterilization of Healthcare Products - Radiation - Part 1",
+      "category": "Sterilization",
+      "applies_to": "Radiation sterilization (gamma, e-beam)",
+      "description": "Requirements for development, validation, routine control of radiation sterilization processes. Gamma irradiation and electron beam. Part 1 covers general requirements. Dosimetry, product qualification, installation/operational/performance qualification. Sterilization dose establishment (Methods 1, 2, or VDmax). Biological indicators.",
+      "url": "https://www.iso.org/standard/33952.html"
+    },
+    {
+      "id": "ISO 11137-2:2013",
+      "name": "ISO 11137-2:2013 - Sterilization of Healthcare Products - Radiation - Part 2",
+      "category": "Sterilization",
+      "applies_to": "Establishing sterilization dose for radiation",
+      "description": "Methods for establishing sterilization dose for radiation processes. Method 1 (dose substantiation using bioburden), Method 2 (dose selection using bioburden information), VDmax method. Verification dose experiments. Dose audits. Part 2 specific to dose establishment methodologies.",
+      "url": "https://www.iso.org/standard/62383.html"
+    },
+    {
+      "id": "ISO 17665-1:2006",
+      "name": "ISO 17665-1:2006 - Sterilization of Healthcare Products - Moist Heat",
+      "category": "Sterilization",
+      "applies_to": "Steam sterilization processes",
+      "description": "Requirements for moist heat (steam) sterilization. Autoclave processes. Process definition, validation, routine monitoring. F0 concept, biological indicators (Geobacillus stearothermophilus). Temperature distribution, heat penetration studies. Most common sterilization method for heat-stable devices and reusable devices.",
+      "url": "https://www.iso.org/standard/43187.html"
+    },
+    {
+      "id": "ISO 14937:2009",
+      "name": "ISO 14937:2009 - General Requirements for Characterization of Sterilizing Agent",
+      "category": "Sterilization",
+      "applies_to": "All sterilization processes",
+      "description": "General requirements for characterizing sterilizing agents and developing, validating, and routinely controlling sterilization processes. Umbrella standard for all sterilization modalities. Microbicidal effectiveness, process definition, validation, routine monitoring. Referenced by specific sterilization standards.",
+      "url": "https://www.iso.org/standard/44954.html"
+    },
+    {
+      "id": "ISO 20857:2010",
+      "name": "ISO 20857:2010 - Sterilization - Dry Heat",
+      "category": "Sterilization",
+      "applies_to": "Dry heat sterilization processes",
+      "description": "Requirements for dry heat sterilization. Used for heat-stable but moisture-sensitive products. Depyrogenation applications. Process validation, biological indicators, temperature distribution. Less common than moist heat but important for specific applications (oils, powders, glassware).",
+      "url": "https://www.iso.org/standard/51368.html"
+    },
+    {
+      "id": "Design Controls",
+      "name": "Design and Development Controls - MDR Annex I",
+      "category": "Design Controls",
+      "applies_to": "Medical device design and development",
+      "description": "Design control requirements embedded in MDR Annex I and ISO 13485 Clause 7.3. Design planning, inputs, outputs, review, verification, validation, transfer, changes, design history file (DHF). Risk-based approach. Ensures device meets user needs and intended use. Verification (did we build it right?) vs validation (did we build the right thing?).",
+      "url": "https://www.iso.org/standard/59752.html"
+    },
+    {
+      "id": "Technical Documentation",
+      "name": "Technical Documentation Requirements - MDR Annex II and III",
+      "category": "Documentation",
+      "applies_to": "All medical devices under MDR",
+      "description": "Comprehensive technical documentation requirements. Annex II (general), Annex III (Class I devices). Device description, specifications, risk management, verification and validation, clinical evaluation, labeling, instructions for use. Must be maintained and updated. Basis for conformity assessment. Summary of Safety and Clinical Performance (SSCP) for Class III and implantables.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017R0745"
+    },
+    {
+      "id": "SSCP",
+      "name": "Summary of Safety and Clinical Performance (SSCP)",
+      "category": "Clinical Evidence",
+      "applies_to": "Implantable devices and Class III devices",
+      "description": "Public summary document required for implantables and Class III devices. Published in EUDAMED. Device identification, intended purpose, patient population, clinical benefits and risks, alternative treatment options, residual risks, clinical data summary. Transparency for patients and healthcare professionals. Template in MDR Annex XIII.",
+      "url": "https://health.ec.europa.eu/medical-devices-sector/new-regulations/guidance-mdcg-endorsed-documents-and-other-guidance_en"
+    },
+    {
+      "id": "Vigilance System",
+      "name": "Medical Device Vigilance System - MDR Chapter VII",
+      "category": "Post-Market Surveillance",
+      "applies_to": "All medical devices on the market",
+      "description": "Vigilance system for reporting serious incidents and field safety corrective actions (FSCAs). Manufacturer reporting obligations to competent authorities and notified body. Serious incident defined. Reporting timelines (immediate awareness, investigation report). Trend reporting. National competent authorities coordinate. Lessons learned, preventive actions.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017R0745"
+    },
+    {
+      "id": "Swiss Vigilance",
+      "name": "Swiss Medical Device Vigilance System",
+      "category": "Post-Market Surveillance",
+      "applies_to": "Medical devices in Swiss market",
+      "description": "Swissmedic vigilance system for medical devices. Incident reporting, FSCAs (Field Safety Corrective Actions). Parallel to EU system. Cross-border cooperation through mutual recognition agreements. Manufacturers must report incidents in Switzerland. Healthcare professionals can report to Swissmedic.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/medical-devices/market-surveillance/vigilance.html"
+    },
+    {
+      "id": "PMS",
+      "name": "Post-Market Surveillance (PMS) - MDR Article 83-86",
+      "category": "Post-Market Surveillance",
+      "applies_to": "All medical devices throughout market life",
+      "description": "Systematic and proportionate PMS system required. PMS plan, data collection (feedback, vigilance, literature, registries), PMS report (annually for Class I, as part of PSUR for higher classes). Proactive and reactive data collection. Feeds CAPA, clinical evaluation updates, risk management updates. MDCG 2020-7 and 2020-8 guidance.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017R0745"
+    },
+    {
+      "id": "PSUR",
+      "name": "Periodic Safety Update Report (PSUR)",
+      "category": "Post-Market Surveillance",
+      "applies_to": "Class IIa, IIb, III medical devices",
+      "description": "Periodic summary of PMS data, clinical evaluation updates, risk-benefit analysis. Class IIa (every 2 years), Class IIb (annually), Class III (annually). Implantables have specific PMCF requirements. Submitted to notified body. Updates technical documentation. MDR Article 86. Structured format including conclusions and proposed updates.",
+      "url": "https://health.ec.europa.eu/medical-devices-sector/new-regulations/guidance-mdcg-endorsed-documents-and-other-guidance_en"
+    },
+    {
+      "id": "Market Surveillance",
+      "name": "Market Surveillance by Competent Authorities - MDR Chapter VIII",
+      "category": "Market Surveillance",
+      "applies_to": "Medical devices on EU market",
+      "description": "Market surveillance activities by national competent authorities. Inspections, audits, testing, investigations. Safeguard procedures for non-compliant devices. Coordinated activities through MDCG (Medical Device Coordination Group). Unannounced inspections possible. Enforcement powers including device withdrawal, recalls, fines. Protects public health.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017R0745"
+    },
+    {
+      "id": "Swiss Market Surveillance",
+      "name": "Swiss Market Surveillance",
+      "category": "Market Surveillance",
+      "applies_to": "Medical devices on Swiss market",
+      "description": "Swissmedic market surveillance activities. Inspections of manufacturers, authorized representatives, distributors. Product testing, vigilance monitoring. Non-compliance procedures, recalls, enforcement. Cooperation with EU authorities. Risk-based surveillance prioritization.",
+      "url": "https://www.swissmedic.ch/swissmedic/en/home/medical-devices/market-surveillance.html"
+    },
+    {
+      "id": "MDCG",
+      "name": "Medical Device Coordination Group (MDCG)",
+      "category": "Regulatory Coordination",
+      "applies_to": "EU medical device regulation implementation",
+      "description": "EU coordination body for medical device regulations. Representatives from all member states. Develops guidance documents, harmonizes interpretation, coordinates market surveillance. MDCG guidance documents essential for MDR/IVDR implementation. Replaces former working groups. Transparency through published opinions and guidance.",
+      "url": "https://health.ec.europa.eu/medical-devices-sector/new-regulations/medical-device-coordination-group-mdcg_en"
+    },
+    {
+      "id": "ISO 15223-1:2021",
+      "name": "ISO 15223-1:2021 - Medical Device Symbols",
+      "category": "Labeling",
+      "applies_to": "Medical device labeling and symbols",
+      "description": "Symbols for use in medical device labeling. Standardized symbols for manufacturer, date of manufacture, use-by date, batch code, catalog number, serial number, consult instructions for use, caution, etc. Ensures consistent understanding across languages. Updated 2021 edition. Referenced by MDR for labeling requirements.",
+      "url": "https://www.iso.org/standard/77326.html"
+    },
+    {
+      "id": "IEC 60601-1-3",
+      "name": "IEC 60601-1-3:2008+AMD1:2013 - Radiation Protection in Diagnostic X-ray",
+      "category": "Electrical Safety",
+      "applies_to": "Medical diagnostic X-ray equipment",
+      "description": "Collateral standard for radiation protection in diagnostic X-ray equipment. Dose optimization, shielding, exposure control. Protects patients and operators. ALARA principle (As Low As Reasonably Achievable). Complements specific standards for different X-ray modalities.",
+      "url": "https://www.iec.ch/homepage"
+    },
+    {
+      "id": "ISO 13485:2016 Annex",
+      "name": "ISO 13485:2016 Certification and Auditing",
+      "category": "Quality Management",
+      "applies_to": "Medical device quality system certification",
+      "description": "Third-party certification to ISO 13485 by accredited certification bodies. Audits (initial, surveillance, recertification). IAF (International Accreditation Forum) guidance. MDSAP (Medical Device Single Audit Program) for multiple regulatory jurisdictions. Certificate scope definition. Notified bodies accept ISO 13485 certificates as part of conformity assessment.",
+      "url": "https://www.iso.org/standard/59752.html"
+    },
+    {
+      "id": "MDSAP",
+      "name": "Medical Device Single Audit Program (MDSAP)",
+      "category": "Quality Management",
+      "applies_to": "Medical device manufacturers in participating countries",
+      "description": "Single regulatory audit satisfying multiple countries (Australia, Brazil, Canada, Japan, US). Not yet adopted by EU/Switzerland but recognized. Harmonized audit approach. Reduces audit burden. Based on ISO 13485 with country-specific requirements. Potential future EU participation discussed.",
+      "url": "https://www.imdrf.org/workitems/wi-mdsap.asp"
+    },
+    {
+      "id": "IMDRF",
+      "name": "International Medical Device Regulators Forum (IMDRF)",
+      "category": "International Harmonization",
+      "applies_to": "Global medical device regulatory harmonization",
+      "description": "Voluntary group of medical device regulators worldwide. Develops harmonized guidance documents. SaMD framework, UDI guidance, risk categorization, regulatory convergence. Members include EU, US FDA, Health Canada, Japan MHLW/PMDA, Australia TGA, Brazil ANVISA. Guidance often adopted or referenced in regional regulations. Successor to GHTF.",
+      "url": "https://www.imdrf.org/"
+    }
+  ]
+}

@@ -1,0 +1,509 @@
+{
+  "_comment": "Food & Beverage Industry - EU and Switzerland Focus. Compliance norms for food safety, hygiene, labeling, additives, novel foods, organic production, allergen management, and quality systems. Updated for 2025.",
+  "norms": [
+    {
+      "id": "EU General Food Law",
+      "name": "Regulation (EC) No 178/2002 - General Food Law",
+      "category": "General Food Law",
+      "applies_to": "All food and feed businesses in EU",
+      "description": "Foundation of EU food law. Establishes general principles, requirements, procedures. Creates European Food Safety Authority (EFSA). Food safety objectives, traceability, liability, withdrawal/recall procedures. Risk analysis principles. Precautionary principle. Transparency. Framework for entire EU food chain from farm to fork.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002R0178"
+    },
+    {
+      "id": "Swiss Food Act",
+      "name": "Lebensmittelgesetz (LMG) / Loi sur les denrées alimentaires (LDAl) - Swiss Food Act",
+      "category": "General Food Law",
+      "applies_to": "All food businesses in Switzerland",
+      "description": "Swiss federal food law. Protection of consumers against health risks, deception. Food safety requirements, hygiene, labeling, additives. Federal Food Safety and Veterinary Office (FSVO/BLV/OSAV) authority. Cantonal enforcement. Harmonized with EU regulations but Swiss-specific requirements. Self-monitoring obligations.",
+      "url": "https://www.blv.admin.ch/blv/en/home.html"
+    },
+    {
+      "id": "Swiss Food Ordinance",
+      "name": "Lebensmittel- und Gebrauchsgegenständeverordnung (LGV) - Swiss Food and Articles of Use Ordinance",
+      "category": "General Food Law",
+      "applies_to": "Food and food contact materials in Switzerland",
+      "description": "Implementing ordinance under Swiss Food Act. Detailed requirements for food production, composition, hygiene, labeling. Specific provisions for different food categories. Updated regularly to align with EU regulations. Cassis de Dijon principle for EU products.",
+      "url": "https://www.blv.admin.ch/blv/en/home.html"
+    },
+    {
+      "id": "HACCP Codex",
+      "name": "Codex Alimentarius - HACCP Principles",
+      "category": "Food Safety Management",
+      "applies_to": "All food businesses globally",
+      "description": "Seven HACCP principles: hazard analysis, critical control points identification, critical limits, monitoring procedures, corrective actions, verification procedures, documentation and record keeping. International standard recognized by EU and Switzerland. Foundation for food safety management systems. Mandatory implementation in EU via Regulation 852/2004.",
+      "url": "https://www.fao.org/fao-who-codexalimentarius/en/"
+    },
+    {
+      "id": "EU Food Hygiene Regulation 852",
+      "name": "Regulation (EC) No 852/2004 - Hygiene of Foodstuffs",
+      "category": "Food Hygiene",
+      "applies_to": "All stages of food production, processing, distribution",
+      "description": "General hygiene requirements for food businesses. HACCP-based procedures mandatory. Primary production requirements, structural and equipment standards, personal hygiene, food handling, water quality, waste management, training. Applies to all food operators. Complemented by Regulation 853/2004 for animal products.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32004R0852"
+    },
+    {
+      "id": "EU Food Hygiene Regulation 853",
+      "name": "Regulation (EC) No 853/2004 - Hygiene Rules for Food of Animal Origin",
+      "category": "Food Hygiene",
+      "applies_to": "Products of animal origin (meat, dairy, eggs, fish, honey)",
+      "description": "Specific hygiene rules for animal-origin foods. Approval of establishments, structural requirements, temperature control, health marks, HACCP implementation. Fresh meat, minced meat, meat preparations, meat products, live bivalve molluscs, fishery products, raw milk, dairy products, eggs, egg products, frogs' legs, snails. Veterinary controls.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32004R0853"
+    },
+    {
+      "id": "EU Official Controls Regulation",
+      "name": "Regulation (EU) 2017/625 - Official Controls and Other Official Activities",
+      "category": "Food Hygiene",
+      "applies_to": "Food, feed, animal health, plant health, organic production",
+      "description": "Framework for official controls throughout agri-food chain. Replaces multiple previous regulations. Risk-based controls, multi-annual control plans, enforcement measures, laboratories, import controls, non-compliance actions. Competent authority responsibilities. Fraud prevention. Applies from December 2019 with phased implementation.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017R0625"
+    },
+    {
+      "id": "Swiss Hygiene Ordinance",
+      "name": "Swiss Hygiene Ordinance (HyV/OHyg)",
+      "category": "Food Hygiene",
+      "applies_to": "Food businesses in Switzerland",
+      "description": "Swiss hygiene requirements for food production and distribution. Based on HACCP principles. Aligned with EU Regulations 852/2004 and 853/2004. Structural and operational hygiene, personnel hygiene, temperature control, self-monitoring, documentation. Cantonal food inspectors enforce compliance.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen.html"
+    },
+    {
+      "id": "EU Novel Foods Regulation",
+      "name": "Regulation (EU) 2015/2283 - Novel Foods",
+      "category": "Novel Foods",
+      "applies_to": "Foods not significantly consumed in EU before May 1997",
+      "description": "Centralized authorization for novel foods. Pre-market safety assessment by EFSA. Includes new food sources, production processes, nanomaterials, vitamins/minerals in new forms. Traditional foods from third countries. Union list of authorized novel foods. Innovation facilitation while ensuring safety. Insects, algae, cultured meat examples.",
+      "url": "https://food.ec.europa.eu/safety/novel-food_en"
+    },
+    {
+      "id": "Swiss Novel Foods",
+      "name": "Swiss Novel Foods Authorization",
+      "category": "Novel Foods",
+      "applies_to": "Novel foods in Switzerland",
+      "description": "Swiss authorization for foods without significant consumption history before May 1997. FSVO assessment. Harmonized with EU approach but Swiss-specific authorization required. Mutual recognition of EU novel food authorizations under certain conditions. Safety evaluation, labeling requirements.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/lebensmittelsicherheit/neuartige-lebensmittel.html"
+    },
+    {
+      "id": "EU Food Additives Regulation",
+      "name": "Regulation (EC) No 1333/2008 - Food Additives",
+      "category": "Food Additives",
+      "applies_to": "Food additives used in EU",
+      "description": "EU positive list of authorized food additives. E-numbers, permitted uses, maximum levels. Categories: colors, preservatives, antioxidants, emulsifiers, sweeteners, etc. EFSA safety assessment required for authorization. Re-evaluation program ongoing. Quantum satis principle or specific maximum levels. Labeling requirements in Annex II of FIC Regulation.",
+      "url": "https://food.ec.europa.eu/safety/food-improvement-agents/additives_en"
+    },
+    {
+      "id": "EU Food Enzymes Regulation",
+      "name": "Regulation (EC) No 1332/2008 - Food Enzymes",
+      "category": "Food Additives",
+      "applies_to": "Food enzymes used in EU",
+      "description": "Authorization of food enzymes. Union list of permitted enzymes, uses, specifications. EFSA safety assessment. Source (microbial, plant, animal), production method, GMO considerations. Technical necessity requirement. Re-evaluation. Implementation ongoing with transitional periods for existing enzymes.",
+      "url": "https://food.ec.europa.eu/safety/food-improvement-agents/enzymes_en"
+    },
+    {
+      "id": "EU Food Flavourings Regulation",
+      "name": "Regulation (EC) No 1334/2008 - Flavourings",
+      "category": "Food Additives",
+      "applies_to": "Flavourings and source materials",
+      "description": "Rules for flavourings and food ingredients with flavouring properties. Union lists of flavouring substances, preparations, natural flavouring complexes. Source materials, production processes. EFSA evaluation. Labeling requirements ('flavouring', 'natural flavouring'). Smoke flavourings covered by separate Regulation 2065/2003.",
+      "url": "https://food.ec.europa.eu/safety/food-improvement-agents/flavourings_en"
+    },
+    {
+      "id": "Swiss Additives Ordinance",
+      "name": "Swiss Additives Ordinance (ZuV/OAdd)",
+      "category": "Food Additives",
+      "applies_to": "Food additives, enzymes, flavourings in Switzerland",
+      "description": "Swiss authorization of food additives, enzymes, flavourings. Positive lists aligned with EU regulations 1333/2008, 1332/2008, 1334/2008. E-numbers, permitted uses, maximum levels. Swiss-specific provisions for traditional products. FSVO oversight. Regular updates to maintain alignment with EU.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen.html"
+    },
+    {
+      "id": "EU Plastics Regulation",
+      "name": "Regulation (EU) No 10/2011 - Plastic Food Contact Materials",
+      "category": "Food Contact Materials",
+      "applies_to": "Plastic materials intended to contact food",
+      "description": "EU positive list of authorized substances for plastic FCMs. Migration limits (overall, specific), testing conditions, declaration of compliance. Functional barrier concept. Nanomaterials restrictions. Active and intelligent materials. Multi-layer materials. Regular updates to authorized substance list. Microplastics concerns driving further restrictions.",
+      "url": "https://food.ec.europa.eu/safety/chemical-safety/food-contact-materials_en"
+    },
+    {
+      "id": "EU FCM Framework Regulation",
+      "name": "Regulation (EC) No 1935/2004 - Food Contact Materials and Articles",
+      "category": "Food Contact Materials",
+      "applies_to": "All materials and articles intended to contact food",
+      "description": "General framework for food contact materials. Safety requirements: no transfer of constituents endangering human health or causing unacceptable change in food composition/organoleptic properties. Traceability, labeling ('food contact' symbol or wording). Covers plastics, ceramics, glass, metals, paper, wood, coatings, printing inks. Specific measures for plastics, ceramics, regenerated cellulose.",
+      "url": "https://food.ec.europa.eu/safety/chemical-safety/food-contact-materials_en"
+    },
+    {
+      "id": "EU Ceramics Directive",
+      "name": "Directive 84/500/EEC - Ceramic Food Contact Materials",
+      "category": "Food Contact Materials",
+      "applies_to": "Ceramic articles intended to contact food",
+      "description": "Specific rules for ceramic, glass-ceramic, and porcelain articles. Migration limits for lead and cadmium. Testing procedures, sampling, compliance. Protects against heavy metal migration from decorative glazes and materials. Regularly updated limits reflecting safety concerns.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31984L0500"
+    },
+    {
+      "id": "Swiss FCM Ordinance",
+      "name": "Swiss Ordinance on Materials and Articles in Contact with Food (AS/OED)",
+      "category": "Food Contact Materials",
+      "applies_to": "Food contact materials in Switzerland",
+      "description": "Swiss requirements for food contact materials. Aligned with EU Regulations 1935/2004 and 10/2011. Positive lists for plastics, migration limits, testing, declaration of compliance. Additional Swiss requirements for specific materials. FSVO guidance documents. Traceability and documentation.",
+      "url": "https://www.blv.admin.ch/blv/en/home/gebrauchsgegenstaende/materialien-in-kontakt-mit-lebensmitteln.html"
+    },
+    {
+      "id": "EU FIC Regulation",
+      "name": "Regulation (EU) No 1169/2011 - Food Information to Consumers",
+      "category": "Labeling",
+      "applies_to": "All pre-packaged and non-pre-packaged foods",
+      "description": "Comprehensive food labeling regulation. Mandatory particulars: name, ingredients list, allergens (emphasized), quantity, date marking, storage conditions, name/address of FBO, country of origin, nutritional declaration. Legibility requirements (minimum font size 1.2mm). Online sales. Allergen information for non-pre-packaged foods. Applies from December 2014 (nutrition from December 2016).",
+      "url": "https://food.ec.europa.eu/safety/labelling-and-nutrition/food-information-consumers-legislation_en"
+    },
+    {
+      "id": "EU Origin Labeling",
+      "name": "Country of Origin and Place of Provenance Labeling",
+      "category": "Labeling",
+      "applies_to": "Foods where origin may be misleading",
+      "description": "Origin labeling requirements under FIC Regulation 1169/2011. Mandatory for specific products (beef, honey, fresh fruits/vegetables, olive oil, fish, wine). Required when omission would mislead consumers. Primary ingredient origin when different from food origin. Implementing acts for specific sectors. 'Made in' vs 'Product of' distinctions.",
+      "url": "https://food.ec.europa.eu/safety/labelling-and-nutrition/food-information-consumers-legislation_en"
+    },
+    {
+      "id": "Swiss Food Labeling",
+      "name": "Swiss Food Labeling Ordinance (LIV/OEDAl)",
+      "category": "Labeling",
+      "applies_to": "Pre-packaged foods in Switzerland",
+      "description": "Swiss labeling requirements largely aligned with EU FIC Regulation 1169/2011. Mandatory information in Swiss national languages (German, French, Italian) or multiple languages including one national language. Swiss origin indications ('Schweiz', 'Suisse', 'Svizzera', Swiss cross). Swissness legislation for Swiss origin claims. Specific requirements for Swiss products.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/kennzeichnung-und-werbung.html"
+    },
+    {
+      "id": "Swiss Swissness Legislation",
+      "name": "Swiss Ordinance on the Use of Swiss Indications for Food",
+      "category": "Labeling",
+      "applies_to": "Foods bearing Swiss origin indication",
+      "description": "Requirements for using Swiss designations, emblems, direct/indirect Swiss references. At least 80% of raw materials must be from Switzerland (100% for milk/dairy, 100% for meat by weight). Processing must occur in Switzerland. Exceptions for raw materials not available in Switzerland (e.g., cocoa, tropical fruits). Protects Swiss brand reputation.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/kennzeichnung-und-werbung/swissness.html"
+    },
+    {
+      "id": "EU Nutrition Claims Regulation",
+      "name": "Regulation (EC) No 1924/2006 - Nutrition and Health Claims",
+      "category": "Nutrition & Health Claims",
+      "applies_to": "Foods bearing nutrition or health claims",
+      "description": "Authorization and use of nutrition and health claims. Nutrition claims ('low fat', 'high fiber', 'source of protein') with defined conditions in Annex. Health claims require EFSA scientific substantiation and EU authorization. Function claims (Article 13.1), disease risk reduction claims (Article 14.1a), children's development claims (Article 14.1b). EU Register of authorized claims. Prohibited claims.",
+      "url": "https://food.ec.europa.eu/safety/labelling-and-nutrition/claims_en"
+    },
+    {
+      "id": "EU Health Claims Register",
+      "name": "EU Register of Nutrition and Health Claims",
+      "category": "Nutrition & Health Claims",
+      "applies_to": "Authorized health claims on foods",
+      "description": "Database of authorized nutrition and health claims. Approved Article 13.1 function claims, Article 14 authorized claims. Includes claim wording, conditions of use, restrictions. Regularly updated. Rejected claims also listed. Essential reference for food labeling and marketing. EFSA scientific opinions linked.",
+      "url": "https://ec.europa.eu/food/safety/labelling_nutrition/claims/register/public/"
+    },
+    {
+      "id": "Swiss Nutrition Claims",
+      "name": "Swiss Health and Nutrition Claims",
+      "category": "Nutrition & Health Claims",
+      "applies_to": "Foods with nutrition/health claims in Switzerland",
+      "description": "Swiss regulations aligned with EU Regulation 1924/2006. Authorized nutrition and health claims listed in Swiss ordinances. FSVO maintains list. Claims must be scientifically substantiated, truthful, not misleading. Specific provisions for Swiss products. Traditional Swiss foods may have specific claim provisions.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/kennzeichnung-und-werbung.html"
+    },
+    {
+      "id": "EU Organic Regulation",
+      "name": "Regulation (EU) 2018/848 - Organic Production and Labeling",
+      "category": "Organic Production",
+      "applies_to": "Organic food production, processing, distribution",
+      "description": "New EU organic regulation (from January 2022, replacing Regulation 834/2007). Stricter rules, broader scope (wine, salt, cork, beeswax, mate, cotton, wool, essential oils). Group certification for small farmers. Risk-based controls. EU organic logo mandatory for pre-packaged EU products. Private standards must not be more restrictive. Equivalence with third countries. Fraud prevention.",
+      "url": "https://agriculture.ec.europa.eu/farming/organic-farming/organic-legislation_en"
+    },
+    {
+      "id": "EU Organic Logo",
+      "name": "EU Organic Logo (Euro-leaf)",
+      "category": "Organic Production",
+      "applies_to": "Pre-packaged organic foods produced in EU",
+      "description": "Mandatory EU organic logo (green leaf with stars) for pre-packaged organic products produced in EU. Optional for imported organic products and non-pre-packaged products. Must be accompanied by code number of control body and origin indication ('EU Agriculture', 'non-EU Agriculture', or 'EU/non-EU Agriculture'). Minimum 95% organic ingredients required.",
+      "url": "https://agriculture.ec.europa.eu/farming/organic-farming/organic-logo_en"
+    },
+    {
+      "id": "Swiss Organic Ordinance",
+      "name": "Swiss Ordinance on Organic Farming (Bio-Verordnung)",
+      "category": "Organic Production",
+      "applies_to": "Organic production in Switzerland",
+      "description": "Swiss organic production requirements. Recognition of EU Regulation 2018/848 under Swiss-EU equivalence. Swiss 'Bio' or 'Öko' labeling. Inspection and certification by accredited bodies. Aligned with international standards (IFOAM, Codex). Swiss Organic Farming Ordinance updated regularly. Bio Suisse standards go beyond legal minimum.",
+      "url": "https://www.blv.admin.ch/blv/en/home/nachhaltige-produktion/biologische-landwirtschaft.html"
+    },
+    {
+      "id": "Bio Suisse Standards",
+      "name": "Bio Suisse Bud Label Standards",
+      "category": "Organic Production",
+      "applies_to": "Bio Suisse certified organic products in Switzerland",
+      "description": "Private organic certification in Switzerland exceeding legal minimum. Bio Suisse 'Bud' (Knospe/Bourgeon) label. Stricter requirements: whole farm conversion, GMO-free (including animal feed), limited additives, animal welfare standards, fair trade principles. Separate standards for import products. Most recognized organic label in Switzerland. Market leadership position.",
+      "url": "https://www.bio-suisse.ch/en/"
+    },
+    {
+      "id": "EU Pesticide MRLs",
+      "name": "Regulation (EC) No 396/2005 - Maximum Residue Levels of Pesticides",
+      "category": "Pesticides",
+      "applies_to": "Food and feed products",
+      "description": "Harmonized EU maximum residue levels (MRLs) for pesticides. Covers over 500 pesticide active substances in various food commodities. Default MRL of 0.01 mg/kg for non-authorized substances. Regular updates based on authorized uses and import tolerances. EFSA risk assessment. Enforcement through official controls. Database publicly available. Import controls at borders.",
+      "url": "https://food.ec.europa.eu/plants/pesticides/maximum-residue-levels_en"
+    },
+    {
+      "id": "EU Pesticides Database",
+      "name": "EU Pesticides Database - MRLs Search Tool",
+      "category": "Pesticides",
+      "applies_to": "Verification of pesticide MRLs",
+      "description": "Online database for searching pesticide MRLs in EU. Search by pesticide, crop, or combination. Shows current MRLs, pending applications, Codex MRLs. Essential tool for food operators, laboratories, competent authorities. Updated following each Commission regulation amending MRLs. Includes acute reference dose (ARfD) and acceptable daily intake (ADI) information.",
+      "url": "https://ec.europa.eu/food/plant/pesticides/eu-pesticides-database_en"
+    },
+    {
+      "id": "Swiss Pesticide MRLs",
+      "name": "Swiss Maximum Residue Levels for Pesticides",
+      "category": "Pesticides",
+      "applies_to": "Food products in Switzerland",
+      "description": "Swiss pesticide MRLs in Ordinance on Maximum Residue Levels of Pesticides (VMRLV). Aligned with EU Regulation 396/2005 for most substances. Swiss-specific MRLs for products authorized in Switzerland but not EU. Cassis de Dijon principle: EU-compliant products accepted. FSVO oversight. Official control program for pesticide residues in food.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/hoechstgehalte-und-richtwerte/pflanzenschutzmittel.html"
+    },
+    {
+      "id": "EU Contaminants Regulation",
+      "name": "Regulation (EC) No 1881/2006 - Maximum Levels for Contaminants",
+      "category": "Contaminants",
+      "applies_to": "Foodstuffs",
+      "description": "Maximum levels for contaminants in food. Covers mycotoxins (aflatoxins, ochratoxin A, patulin, deoxynivalenol, zearalenone, fumonisins, T-2/HT-2), heavy metals (lead, cadmium, mercury, inorganic arsenic, tin), 3-MCPD, dioxins, PCBs, PAHs, nitrate, melamine. ALARA principle (as low as reasonably achievable). Regular updates based on EFSA assessments. Protects public health.",
+      "url": "https://food.ec.europa.eu/safety/chemical-safety/contaminants_en"
+    },
+    {
+      "id": "EFSA Contaminant Assessments",
+      "name": "EFSA Scientific Assessments on Food Contaminants",
+      "category": "Contaminants",
+      "applies_to": "Risk assessment of chemical hazards",
+      "description": "EFSA CONTAM Panel opinions on contaminants. Exposure assessment, hazard characterization, risk characterization. Tolerable daily intake (TDI), benchmark dose (BMD), margin of exposure (MOE) approaches. Covers mycotoxins, process contaminants (acrylamide, furan, PAHs), heavy metals, natural toxins. Scientific basis for regulatory measures. Public consultations.",
+      "url": "https://www.efsa.europa.eu/en/topics/topic/chemical-contaminants"
+    },
+    {
+      "id": "Swiss Contaminants",
+      "name": "Swiss Maximum Levels for Contaminants in Food",
+      "category": "Contaminants",
+      "applies_to": "Food products in Switzerland",
+      "description": "Swiss contaminant maximum levels in Contaminants Ordinance (VHK/OCont). Aligned with EU Regulation 1881/2006. Mycotoxins, heavy metals, dioxins, PCBs, PAHs, nitrate. FSVO risk assessments. Official control program. Rapid alert system for serious risks. Cassis de Dijon principle applies for EU products meeting EU limits.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/hoechstgehalte-und-richtwerte.html"
+    },
+    {
+      "id": "EU GMO Regulation Food",
+      "name": "Regulation (EC) No 1829/2003 - Genetically Modified Food and Feed",
+      "category": "GMOs",
+      "applies_to": "GM food and feed",
+      "description": "Authorization of genetically modified food and feed. Centralized EU procedure, EFSA safety assessment, Commission/Council/Parliament decision. Authorization valid 10 years, renewable. Labeling mandatory for GM content >0.9% (threshold for adventitious/technically unavoidable presence). 'Contains genetically modified [organism name]' or 'Contains genetically modified [ingredient]'. Traceability throughout chain.",
+      "url": "https://food.ec.europa.eu/plants/genetically-modified-organisms_en"
+    },
+    {
+      "id": "EU GMO Traceability",
+      "name": "Regulation (EC) No 1830/2003 - GMO Traceability and Labeling",
+      "category": "GMOs",
+      "applies_to": "GMOs and GM food/feed",
+      "description": "Traceability and labeling requirements for GMOs and products produced from GMOs. Transmission of information at each stage of placing on market. 'Contains genetically modified organisms' or 'Contains genetically modified [name of organism(s)]'. Unique identifier for each GMO. Documentation requirements. Enables withdrawal, monitoring, risk management.",
+      "url": "https://food.ec.europa.eu/plants/genetically-modified-organisms_en"
+    },
+    {
+      "id": "Swiss GMO Legislation",
+      "name": "Swiss Gene Technology Act and GMO Regulations",
+      "category": "GMOs",
+      "applies_to": "Genetically modified organisms in Switzerland",
+      "description": "Swiss Gene Technology Act (GTA). Moratorium on GMO cultivation extended to 2025. Authorization required for GM food/feed. Labeling mandatory for GM content >0.9%. FSVO assessment based on EFSA opinions. Recognition of EU authorizations under certain conditions. Strict coexistence rules if moratorium ends. Public concerns drive restrictive policy.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/lebensmittelsicherheit/gentechnisch-veraenderte-lebensmittel.html"
+    },
+    {
+      "id": "EU Allergen Labeling",
+      "name": "Allergen Labeling Requirements - Annex II FIC Regulation",
+      "category": "Allergens",
+      "applies_to": "All foods containing allergens",
+      "description": "Mandatory declaration of 14 major allergens: cereals containing gluten, crustaceans, eggs, fish, peanuts, soybeans, milk, nuts, celery, mustard, sesame seeds, sulphur dioxide/sulphites >10 mg/kg, lupin, molluscs. Emphasized in ingredients list (bold, capitals, color, etc.). 'Contains' statements. Precautionary allergen labeling (PAL) not regulated but guidance exists. Non-pre-packaged foods require allergen information.",
+      "url": "https://food.ec.europa.eu/safety/labelling-and-nutrition/food-information-consumers-legislation_en"
+    },
+    {
+      "id": "EU Allergen Management",
+      "name": "Food Allergen Management and Risk Assessment",
+      "category": "Allergens",
+      "applies_to": "Food manufacturers",
+      "description": "Good practices for allergen management in food production. Risk assessment, HACCP integration, segregation, cleaning validation, supplier management, staff training. Prevention of cross-contamination. Precautionary allergen labeling ('may contain') when risk cannot be excluded. Reference dose approaches under development. Industry guidelines (e.g., FoodDrinkEurope). Analytical verification.",
+      "url": "https://food.ec.europa.eu/safety/labelling-and-nutrition/food-information-consumers-legislation_en"
+    },
+    {
+      "id": "Swiss Allergen Labeling",
+      "name": "Swiss Allergen Declaration Requirements",
+      "category": "Allergens",
+      "applies_to": "Foods in Switzerland",
+      "description": "Swiss allergen labeling aligned with EU FIC Regulation Annex II. Same 14 allergen groups. Emphasized declaration in ingredients list. Information must be in Swiss national languages. Non-pre-packaged foods (restaurants, bakeries, etc.) must provide allergen information orally or in writing. Cantonal enforcement varies. Consumer protection priority.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/kennzeichnung-und-werbung.html"
+    },
+    {
+      "id": "Swiss AOP-IGP",
+      "name": "Swiss Protected Designations of Origin and Geographical Indications",
+      "category": "Swiss Quality Schemes",
+      "applies_to": "Swiss products with geographical indications",
+      "description": "Swiss system for Protected Designation of Origin (AOP/PDO) and Protected Geographical Indication (IGP/PGI). Examples: Gruyère AOP, Emmentaler AOP, Tête de Moine AOP, Vacherin Mont-d'Or AOP, Walliser Trockenfleisch IGP. Link between product characteristics and geographical origin. Product specifications, controls. Intellectual property protection. Aligned with EU GI system but separate registration.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/kennzeichnung-und-werbung/geographische-angaben.html"
+    },
+    {
+      "id": "EU Quality Schemes",
+      "name": "EU Quality Schemes - PDO, PGI, TSG",
+      "category": "Quality Schemes",
+      "applies_to": "Protected food names in EU",
+      "description": "EU geographical indications and traditional specialties. PDO (Protected Designation of Origin) - all production in defined area. PGI (Protected Geographical Indication) - one production stage in area. TSG (Traditional Specialty Guaranteed) - traditional character without geographical link. Registration, protection, controls. Over 3000 registered products. Examples: Parmigiano Reggiano PDO, Prosciutto di Parma PDO, Champagne PDO.",
+      "url": "https://agriculture.ec.europa.eu/farming/geographical-indications-and-quality-schemes_en"
+    },
+    {
+      "id": "ISO 22000",
+      "name": "ISO 22000:2018 - Food Safety Management Systems",
+      "category": "Food Safety Standards",
+      "applies_to": "All food chain organizations",
+      "description": "International standard for food safety management systems. Integrates HACCP principles with management system approach. Requirements for prerequisite programs, hazard analysis, operational prerequisite programs, HACCP plan, verification, validation, continuous improvement. Applicable to all food chain organizations. Certification by accredited bodies. Compatible with ISO 9001. Updated 2018 version includes risk-based thinking.",
+      "url": "https://www.iso.org/standard/65464.html"
+    },
+    {
+      "id": "FSSC 22000",
+      "name": "FSSC 22000 - Food Safety System Certification",
+      "category": "Food Safety Standards",
+      "applies_to": "Food manufacturers, packaging, storage/distribution",
+      "description": "Full GFSI-recognized certification scheme based on ISO 22000. Includes ISO 22000, sector-specific prerequisite programs (ISO/TS 22002 series), and additional FSSC requirements. Version 6 (2023) current. Covers food manufacturing (all categories), packaging, storage and distribution, feed, biochemical, catering. Strong emphasis on food fraud, food defense, traceability. Modular structure.",
+      "url": "https://www.fssc.com/"
+    },
+    {
+      "id": "IFS Food",
+      "name": "IFS Food Standard - International Featured Standards",
+      "category": "Food Safety Standards",
+      "applies_to": "Food processors and manufacturers",
+      "description": "GFSI-recognized food safety and quality standard. Developed by German, French, Italian retail federations. IFS Food Version 8 (2023) current. Requirements: senior management responsibility, HACCP, quality/food safety management, resource management, product realization, measurements/analysis/improvement. Scoring system with ratings. Focus on product safety, quality, legality, authenticity. Widely required by European retailers.",
+      "url": "https://www.ifs-certification.com/index.php/en/standards/251-ifs-food-en"
+    },
+    {
+      "id": "BRC Food Safety",
+      "name": "BRC Global Standard for Food Safety",
+      "category": "Food Safety Standards",
+      "applies_to": "Food manufacturers and processors",
+      "description": "GFSI-recognized food safety standard developed by British Retail Consortium. Issue 9 (2022) current. Requirements: senior management commitment, HACCP, food safety and quality management system, site standards, product control, process control, personnel. Grading system (AA+, AA, A+, A, B, C, D). Mandatory clauses. Unannounced audits available. Global recognition, especially for UK market.",
+      "url": "https://www.brcgs.com/our-standards/food-safety/"
+    },
+    {
+      "id": "GFSI",
+      "name": "Global Food Safety Initiative (GFSI) Benchmarking",
+      "category": "Food Safety Standards",
+      "applies_to": "Food safety certification schemes",
+      "description": "Benchmarking of food safety certification schemes to harmonize standards. GFSI-recognized schemes: FSSC 22000, IFS, BRC, SQF, GLOBALG.A.P., etc. Mutual recognition by major retailers and food manufacturers. Reduces audit fatigue. Benchmarking requirements updated regularly. Not a certification itself but recognition framework. Part of The Consumer Goods Forum.",
+      "url": "https://mygfsi.com/"
+    },
+    {
+      "id": "EU Wine Regulation",
+      "name": "Regulation (EU) No 1308/2013 - Common Organization of Wine Market",
+      "category": "Wine & Spirits",
+      "applies_to": "Wine production and marketing in EU",
+      "description": "EU wine market organization. Wine categories: wine without GI, PGI wine, PDO wine. Labeling requirements: origin, vintage, grape variety, wine category, allergens, nutrition. Oenological practices authorized in Annex VIII. Production potential (vineyard register, planting authorizations). Quality control, protection of designations. Traditional terms. Detailed implementing and delegated regulations.",
+      "url": "https://agriculture.ec.europa.eu/farming/crop-productions-and-plant-based-products/wine_en"
+    },
+    {
+      "id": "EU Wine Labeling",
+      "name": "EU Wine Labeling Rules",
+      "category": "Wine & Spirits",
+      "applies_to": "Wine labels in EU",
+      "description": "Mandatory information on wine labels: category, origin (PDO/PGI/country), nominal volume, actual alcoholic strength, provenance indication, bottler, allergens (sulphites, egg, milk products). Optional: vintage, grape variety, sugar content terms, traditional terms, sustainability logos. E-label possibility for ingredients and nutrition (from December 2023). Specific rules for sparkling wines, aromatic wines.",
+      "url": "https://agriculture.ec.europa.eu/farming/crop-productions-and-plant-based-products/wine_en"
+    },
+    {
+      "id": "Swiss Wine Ordinance",
+      "name": "Swiss Wine Ordinance (WeinV/OVin)",
+      "category": "Wine & Spirits",
+      "applies_to": "Wine production and marketing in Switzerland",
+      "description": "Swiss wine production and labeling rules. AOC (Appellation d'Origine Contrôlée) system for quality wines. Protected designations for wine-growing regions (e.g., AOC Lavaux, AOC Valais). Oenological practices authorized. Labeling requirements similar to EU but Swiss-specific provisions. Swiss wine categories. Vintage, grape variety, origin indications. Cantonal wine regulations. FSVO and cantonal oversight.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/lebensmittelkategorien/alkoholische-getraenke.html"
+    },
+    {
+      "id": "EU Spirits Regulation",
+      "name": "Regulation (EU) 2019/787 - Spirit Drinks",
+      "category": "Wine & Spirits",
+      "applies_to": "Production and labeling of spirit drinks in EU",
+      "description": "Definitions, technical requirements, labeling rules for spirit drinks. 46 spirit categories (e.g., whisky, vodka, gin, rum, brandy, liqueur). Production requirements for each category. Geographical indications (e.g., Cognac, Scotch Whisky, Irish Whiskey, Tequila). Maturation, minimum alcoholic strength. Labeling: spirit category, alcoholic strength, origin for GIs, ingredients list, allergens, nutrition declaration. Protects traditional products.",
+      "url": "https://ec.europa.eu/info/food-farming-fisheries/food-safety-and-quality/eu-food-labelling-and-certification/spirit-drinks_en"
+    },
+    {
+      "id": "Swiss Spirits Ordinance",
+      "name": "Swiss Spirits Ordinance",
+      "category": "Wine & Spirits",
+      "applies_to": "Spirit drinks in Switzerland",
+      "description": "Swiss regulation of spirit drinks. Definitions and production requirements aligned with EU Regulation 2019/787. Swiss specialty spirits (e.g., Absinthe, Williamine, Kirschwasser). Labeling requirements: spirit category, alcoholic strength, ingredients, allergens. Recognition of EU geographical indications. FSVO oversight. Fiscal aspects under separate alcohol tax legislation.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/lebensmittelkategorien/alkoholische-getraenke.html"
+    },
+    {
+      "id": "GLOBALG.A.P.",
+      "name": "GLOBALG.A.P. Farm Assurance",
+      "category": "Primary Production",
+      "applies_to": "Agricultural primary production",
+      "description": "Good Agricultural Practices certification for primary producers. Covers fruits, vegetables, livestock, aquaculture. GFSI-recognized for farming schemes. Food safety, environmental sustainability, worker welfare, animal welfare. Traceability from farm to retailer. Widely required by retailers for fresh produce. Pre-farm gate certification. Risk assessment approach. Version updates regular.",
+      "url": "https://www.globalgap.org/"
+    },
+    {
+      "id": "Codex Alimentarius",
+      "name": "Codex Alimentarius - International Food Standards",
+      "category": "International Standards",
+      "applies_to": "Food safety and quality globally",
+      "description": "International food standards, guidelines, codes of practice. Joint FAO/WHO program. Codex standards influence national legislation including EU and Switzerland. Covers food hygiene, contaminants, residues, additives, labeling, methods of analysis, food import/export inspection, certification. Commodity standards. Facilitates international trade. WTO SPS Agreement reference. Scientific basis via JECFA and JMPR.",
+      "url": "https://www.fao.org/fao-who-codexalimentarius/en/"
+    },
+    {
+      "id": "SQF Code",
+      "name": "SQF (Safe Quality Food) Code",
+      "category": "Food Safety Standards",
+      "applies_to": "Food sector across entire supply chain",
+      "description": "GFSI-recognized certification program. Developed by Food Marketing Institute (FMI). SQF Code Edition 9.1. Modular approach: SQF Fundamentals (Level 1), SQF Food Safety Certification (Level 2), SQF Quality Certification (Level 3). Covers primary production, manufacturing, storage/distribution, packaging. HACCP-based. Strong in North American market. Comprehensive food safety and quality management.",
+      "url": "https://www.sqfi.com/"
+    },
+    {
+      "id": "EU Fortified Foods",
+      "name": "Regulation (EC) No 1925/2006 - Addition of Vitamins and Minerals to Foods",
+      "category": "Food Supplements",
+      "applies_to": "Foods with added vitamins, minerals, other substances",
+      "description": "Rules for addition of vitamins, minerals, and certain other substances to foods. Positive lists in Annexes I and II (partially adopted). Minimum and maximum amounts under development. Nutrient profiles. Restrictions for certain substances (Annex III). Safety assessment for new vitamin/mineral sources. Fortification voluntary but regulated. Labeling requirements. Complements nutrition and health claims regulation.",
+      "url": "https://food.ec.europa.eu/safety/labelling-and-nutrition/vitamins-and-minerals-foods_en"
+    },
+    {
+      "id": "EU Food Supplements Directive",
+      "name": "Directive 2002/46/EC - Food Supplements",
+      "category": "Food Supplements",
+      "applies_to": "Food supplements",
+      "description": "Harmonization of rules on food supplements. Definition: concentrated sources of nutrients or other substances with nutritional/physiological effect. Positive lists of vitamins and minerals with permitted forms. Labeling: name of nutrient categories, recommended daily dose, warning not to exceed dose, supplements not substitute for varied diet. Maximum amounts of vitamins/minerals still national competence (harmonization ongoing). Notification procedures.",
+      "url": "https://food.ec.europa.eu/safety/labelling-and-nutrition/dietary-supplements_en"
+    },
+    {
+      "id": "Swiss Food Supplements",
+      "name": "Swiss Ordinance on Food Supplements",
+      "category": "Food Supplements",
+      "applies_to": "Food supplements in Switzerland",
+      "description": "Swiss regulation of food supplements (Nahrungsergänzungsmittel/compléments alimentaires). Aligned with EU Directive 2002/46/EC. Positive lists for vitamins and minerals. Maximum amounts for nutrients. Notification to FSVO required before marketing. Labeling requirements. Distinction from medicinal products important. Health claims subject to authorization. Swiss-specific provisions for traditional products.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/lebensmittelkategorien/nahrungsergaenzungsmittel.html"
+    },
+    {
+      "id": "EU Drinking Water Directive",
+      "name": "Directive (EU) 2020/2184 - Drinking Water Quality",
+      "category": "Water Quality",
+      "applies_to": "Drinking water for human consumption",
+      "description": "Quality standards for drinking water. Microbiological, chemical, indicator parameters. Risk-based approach to water safety. Monitoring requirements, remedial action. Access to water for all. Information to consumers. Applies to public and private water supplies. Aligned with WHO guidelines. Implementation deadline 2026. Replaces previous Directive 98/83/EC. Stricter standards for lead, chromium, chlorate, PFAS.",
+      "url": "https://environment.ec.europa.eu/topics/water/drinking-water_en"
+    },
+    {
+      "id": "Swiss Drinking Water Ordinance",
+      "name": "Swiss Ordinance on Drinking Water, Spring Water and Mineral Water (TBDV/OEDLM)",
+      "category": "Water Quality",
+      "applies_to": "Drinking water in Switzerland",
+      "description": "Swiss drinking water quality standards. Microbiological, chemical, physical parameters. Regular monitoring by water suppliers. Cantonal water quality supervision. Standards aligned with WHO guidelines and EU Drinking Water Directive. High quality Swiss drinking water. Spring water and mineral water specific requirements. Labeling of bottled waters. FSVO oversight of standards.",
+      "url": "https://www.blv.admin.ch/blv/en/home/lebensmittel-und-ernaehrung/rechts-und-vollzugsgrundlagen/lebensmittelkategorien/trinkwasser.html"
+    },
+    {
+      "id": "Halal Certification",
+      "name": "Halal Food Certification Standards",
+      "category": "Religious Food Standards",
+      "applies_to": "Halal food production and certification",
+      "description": "Islamic dietary law requirements. No harmonized EU/Swiss legislation but private certification schemes. Halal slaughter rules in EU Regulation 1099/2009 and Swiss animal welfare legislation. Halal certification bodies (various standards). Important for exports to Muslim-majority countries and serving Muslim consumers. Traceability, segregation, halal ingredients. Certification mark on products. Voluntary in EU/Switzerland.",
+      "url": "https://food.ec.europa.eu/animals/animal-welfare/animal-welfare-practice/animal-welfare-slaughter_en"
+    },
+    {
+      "id": "Kosher Certification",
+      "name": "Kosher Food Certification Standards",
+      "category": "Religious Food Standards",
+      "applies_to": "Kosher food production and certification",
+      "description": "Jewish dietary law (kashrut) requirements. No harmonized EU/Swiss legislation but private certification schemes. Kosher slaughter recognized in EU Regulation 1099/2009 and Swiss animal welfare legislation. Rabbinical supervision, kosher certification bodies (various standards, e.g., OU, OK, KOF-K). Separation of meat and dairy. Permitted/forbidden foods. Important for Jewish consumers and certain export markets. Voluntary certification.",
+      "url": "https://food.ec.europa.eu/animals/animal-welfare/animal-welfare-practice/animal-welfare-slaughter_en"
+    }
+  ]
+}

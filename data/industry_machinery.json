@@ -1,0 +1,421 @@
+{
+  "_comment": "Machinery & Industrial Equipment Industry - EU and Switzerland Focus. Compliance norms for machinery safety, industrial equipment, automation. Updated for 2025.",
+  "norms": [
+    {
+      "id": "EU Machinery Regulation",
+      "name": "Machinery Regulation (EU) 2023/1230",
+      "category": "Product Safety",
+      "applies_to": "Machinery placed on EU market",
+      "description": "New Machinery Regulation replacing Machinery Directive 2006/42/EC. Application from 2027. Modernized safety requirements, digital technologies, AI-enabled machinery, cybersecurity, partly completed machinery. Enhanced market surveillance. Harmonized standards. Manufacturers Declaration of Conformity.",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/1230/oj"
+    },
+    {
+      "id": "Swiss Machinery Directive",
+      "name": "Swiss Machinery and Equipment Directive (MaschV)",
+      "category": "Product Safety",
+      "applies_to": "Machinery placed on Swiss market",
+      "description": "Swiss machinery safety requirements. Aligned with EU Machinery Directive (will update to align with new Regulation). CE marking recognized. Safety principles, risk assessment, essential health and safety requirements. Declaration of conformity. Harmonized standards applicable.",
+      "url": "https://www.seco.admin.ch/seco/en/home/Arbeit/Arbeitsbedingungen/Produktesicherheit/Maschinen.html"
+    },
+    {
+      "id": "EN ISO 12100",
+      "name": "ISO 12100 - Safety of Machinery: General Principles for Design",
+      "category": "Safety Design",
+      "applies_to": "All machinery types",
+      "description": "Fundamental standard for machinery safety. Risk assessment and risk reduction methodology. Hazard identification, risk estimation, risk evaluation. Three-step method: inherently safe design, safeguarding, information for use. Iterative process. Foundation for Type-C standards.",
+      "url": "https://www.iso.org/standard/51528.html"
+    },
+    {
+      "id": "EN ISO 13849-1",
+      "name": "ISO 13849-1 - Safety-Related Parts of Control Systems",
+      "category": "Functional Safety",
+      "applies_to": "Safety control systems on machinery",
+      "description": "Safety-related parts of control systems. Performance Level (PL) approach: PLa to PLe. Categories B, 1, 2, 3, 4. Architecture, reliability (MTTFd), diagnostic coverage (DC), common cause failure (CCF). Alternative to IEC 62061 for machinery safety. Widely used for machine guards, emergency stops, safety PLCs.",
+      "url": "https://www.iso.org/standard/69883.html"
+    },
+    {
+      "id": "IEC 62061",
+      "name": "IEC 62061 - Safety of Machinery: Functional Safety of Electrical Control Systems",
+      "category": "Functional Safety",
+      "applies_to": "Electrical safety-related control systems on machinery",
+      "description": "Functional safety for machinery electrical systems. Safety Integrity Level (SIL) approach: SIL 1-3. Based on IEC 61508. Systematic and random hardware failures. Architecture constraints, HFT, SFF. Software safety requirements. Alternative to ISO 13849-1. Often used together with 13849.",
+      "url": "https://webstore.iec.ch/publication/6424"
+    },
+    {
+      "id": "EN 60204-1",
+      "name": "IEC 60204-1 - Safety of Machinery: Electrical Equipment of Machines",
+      "category": "Electrical Safety",
+      "applies_to": "Electrical equipment of industrial machinery",
+      "description": "Electrical equipment of machines Part 1: General requirements. Supply, motors, protective bonding, motor controls, control circuit protection, emergency stop, pendant controls, cable selection, enclosures (IP ratings), markings. Fundamental Type-B standard. Referenced by many Type-C standards.",
+      "url": "https://webstore.iec.ch/publication/63988"
+    },
+    {
+      "id": "EN ISO 13857",
+      "name": "ISO 13857 - Safety Distances to Prevent Hazard Zones Being Reached",
+      "category": "Safety Design",
+      "applies_to": "Guarding and safety distances on machinery",
+      "description": "Safety distances to prevent reaching hazards with upper limbs, lower limbs. Dimensions for reach over, reach through, reach around guards. Tables for different openings and distances. Critical for proper guard design. Ensures guards are positioned to prevent access to danger zones.",
+      "url": "https://www.iso.org/standard/39255.html"
+    },
+    {
+      "id": "EN ISO 14120",
+      "name": "ISO 14120 - Guards: General Requirements for Design and Construction",
+      "category": "Machine Guarding",
+      "applies_to": "Fixed and movable guards on machinery",
+      "description": "General principles for design of fixed and movable guards. Materials, construction, mounting, guard interlocking. Visibility requirements, maintenance access, preventing bypass. Type-B standard applicable to all machinery. Defines when guards must be interlocked vs. fixed.",
+      "url": "https://www.iso.org/standard/54773.html"
+    },
+    {
+      "id": "EN ISO 14119",
+      "name": "ISO 14119 - Interlocking Devices Associated with Guards",
+      "category": "Machine Guarding",
+      "applies_to": "Interlocked guards on machinery",
+      "description": "Requirements for interlocking devices (guard locking, guard locking with start function, guard locking with guard monitoring). Coding, mechanical/magnetic/electric/electronic types. Fault detection, monitoring, actuator requirements. Defeating protection against. Essential for movable guard safety.",
+      "url": "https://www.iso.org/standard/57399.html"
+    },
+    {
+      "id": "EN 60947-5-1",
+      "name": "IEC 60947-5-1 - Control Circuit Devices and Switching Elements",
+      "category": "Control Components",
+      "applies_to": "Control devices for machinery circuits",
+      "description": "Low-voltage switchgear Part 5-1: Control circuit devices - Electromechanical control circuit devices. Emergency stop devices, position switches, enabling devices, selectors. Requirements for safety-related applications. Referenced in functional safety standards. Compatibility with ISO 13849-1 requirements.",
+      "url": "https://webstore.iec.ch/publication/27775"
+    },
+    {
+      "id": "EN 60947-5-3",
+      "name": "IEC 60947-5-3 - Requirements for Proximity Devices",
+      "category": "Control Components",
+      "applies_to": "Proximity sensors for safety applications",
+      "description": "Requirements for proximity devices for safety functions. Inductive, capacitive, magnetic, optical, ultrasonic proximity switches. Coding, output circuit requirements. Faultdetection. Type 1-4 classification. Used with interlocked guards, position monitoring, safety-related control.",
+      "url": "https://webstore.iec.ch/publication/65641"
+    },
+    {
+      "id": "EN ISO 13850",
+      "name": "ISO 13850 - Emergency Stop Function",
+      "category": "Safety Functions",
+      "applies_to": "Emergency stop devices on machinery",
+      "description": "Emergency stop function: principles for design. Red mushroom button with yellow background. Latching operation. Override by deliberate action. Category 0 or category 1 stop. Does not substitute for safeguarding. Supplementary protective measure. Location, accessibility, marking requirements.",
+      "url": "https://www.iso.org/standard/73481.html"
+    },
+    {
+      "id": "EN ISO 13855",
+      "name": "ISO 13855 - Positioning of Safeguards with Respect to Approach Speeds",
+      "category": "Safety Design",
+      "applies_to": "Presence-sensing safeguards on machinery",
+      "description": "Positioning of protective devices (light curtains, safety mats, two-hand controls) with respect to approach speeds of body parts. Minimum distances based on stopping time and approach speed. K factors: 2000 mm/s (arm), 1600 mm/s (body). Critical for proper positioning of presence-sensing devices.",
+      "url": "https://www.iso.org/standard/69883.html"
+    },
+    {
+      "id": "EN IEC 61496",
+      "name": "IEC 61496 Series - Electro-Sensitive Protective Equipment",
+      "category": "Safety Devices",
+      "applies_to": "Light curtains, laser scanners, safety mats",
+      "description": "Electro-sensitive protective equipment (ESPE). Type 2 (single fault tolerance) and Type 4 (single and some multiple fault detection). Part 1: General requirements. Part 2: Active opto-electronic protective devices (AOPDs). Part 3: Diffuse reflection devices. Widely used for machinery safeguarding.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "EN ISO 10218-1",
+      "name": "ISO 10218-1 - Robots and Robotic Devices: Industrial Robots Safety Requirements",
+      "category": "Robotics",
+      "applies_to": "Industrial robots",
+      "description": "Safety requirements for industrial robots: manufacturer requirements. Hazards, protective measures, information for use. Collaborative operation (power and force limiting, hand guiding, speed and separation monitoring, safety-rated monitored stop). Covers traditional and collaborative robots. Part 1 for robot manufacturer.",
+      "url": "https://www.iso.org/standard/51330.html"
+    },
+    {
+      "id": "EN ISO 10218-2",
+      "name": "ISO 10218-2 - Robots and Robotic Devices: Robot Systems and Integration",
+      "category": "Robotics",
+      "applies_to": "Robot systems and integration",
+      "description": "Safety requirements for robot systems and integration. Integrator responsibilities. Cell design, safeguarding methods, emergency stop, operating modes (automatic, manual). Risk assessment for complete robotic system. Complements Part 1. Part 2 for system integrator.",
+      "url": "https://www.iso.org/standard/61753.html"
+    },
+    {
+      "id": "ISO/TS 15066",
+      "name": "ISO/TS 15066 - Collaborative Robots",
+      "category": "Robotics",
+      "applies_to": "Collaborative robot applications",
+      "description": "Technical specification for collaborative robots. Supplements ISO 10218. Biomechanical limits for transient and quasi-static contact. Pain thresholds for body regions. Force and pressure limits. Validates power and force limiting collaborative applications. Breakthrough for safe human-robot collaboration.",
+      "url": "https://www.iso.org/standard/62996.html"
+    },
+    {
+      "id": "EN ISO 11161",
+      "name": "ISO 11161 - Integrated Manufacturing Systems: Safety",
+      "category": "Manufacturing Systems",
+      "applies_to": "Integrated manufacturing systems, production lines",
+      "description": "Safety of integrated manufacturing systems. Multi-machine installations, transfer lines, automated systems. System integration hazards beyond individual machines. Access requirements, start/stop controls, emergency stop across system. Mode selection, Maintenance access. System-level risk assessment.",
+      "url": "https://www.iso.org/standard/50608.html"
+    },
+    {
+      "id": "EN ISO 11111",
+      "name": "ISO 11111 Series - Textile Machinery Safety",
+      "category": "Industry-Specific Machinery",
+      "applies_to": "Textile machinery",
+      "description": "Common requirements for textile machinery. Part 1: General requirements. Parts 2-7 for specific machine types (preparatory, spinning, winding, knitting, dyeing, finishing, garment). Hazards specific to textile industry. High-speed rotating parts, nip points, noise.",
+      "url": "https://www.iso.org/standard/"
+    },
+    {
+      "id": "EN 692",
+      "name": "EN 692 - Machine Tools: Mechanical Presses Safety",
+      "category": "Industry-Specific Machinery",
+      "applies_to": "Mechanical presses, stamping presses",
+      "description": "Safety requirements for mechanical presses. Press brakes, forging presses, stamping presses. Crushing hazards, two-hand controls, light curtains, die protection. Single-stroke and continuous modes. Anti-repeat, muting. Critical for metal forming industry.",
+      "url": "https://standards.cen.eu/"
+    },
+    {
+      "id": "EN 201",
+      "name": "EN 201 - Plastics and Rubber Machines: Injection Molding Machines",
+      "category": "Industry-Specific Machinery",
+      "applies_to": "Injection molding machines",
+      "description": "Safety requirements for injection molding machines. Clamping unit hazards, injection unit hazards, mold area protection, guarding during operation, hot surfaces, hydraulic/electric hazards. Mold change safety. Purging procedures. Widely used in plastics manufacturing.",
+      "url": "https://standards.cen.eu/"
+    },
+    {
+      "id": "EN 415 Series",
+      "name": "EN 415 Series - Packaging Machines Safety",
+      "category": "Industry-Specific Machinery",
+      "applies_to": "Packaging machinery",
+      "description": "Safety of packaging machines. Multiple parts for different machine types: wrapping, filling, sealing, labeling, palletizing. Common hazards: moving parts, nip points, cutting, hot sealing. Mode selection, operational guarding, access during operation.",
+      "url": "https://standards.cen.eu/"
+    },
+    {
+      "id": "EN 1889-1",
+      "name": "EN 1889-1 - Machinery for Underground Mines",
+      "category": "Industry-Specific Machinery",
+      "applies_to": "Underground mining machinery",
+      "description": "Machinery and equipment for underground mines. Part 1: Mobile machines for underground use. Hazards specific to underground mining: confined spaces, explosive atmospheres, fire, rock falls. Armoured face conveyors, shearer loaders, roof supports.",
+      "url": "https://standards.cen.eu/"
+    },
+    {
+      "id": "EN 16307",
+      "name": "EN 16307 - Industrial Trucks: Safety Requirements",
+      "category": "Mobile Machinery",
+      "applies_to": "Forklifts, industrial trucks",
+      "description": "Industrial trucks with operator (self-propelled). Forklifts, reach trucks, order pickers. Stability (EN 16203), lighting, operator protection, visibility, operating controls. Load capacity, nameplate requirements. Widely used in warehousing, logistics.",
+      "url": "https://standards.cen.eu/"
+    },
+    {
+      "id": "EN 1494",
+      "name": "EN 1494 - Mobile or Movable Jacks and Associated Lifting Equipment",
+      "category": "Lifting Equipment",
+      "applies_to": "Hydraulic jacks, bottle jacks, lifting equipment",
+      "description": "Mobile or movable jacks for lifting vehicles. Hydraulic jacks, screw jacks, pneumatic jacks. Load capacity, stability, operating instructions, warnings. Used in automotive service, construction, industrial maintenance.",
+      "url": "https://standards.cen.eu/"
+    },
+    {
+      "id": "EN 12100",
+      "name": "EN 12100 - Risk Assessment (European Adoption of ISO 12100)",
+      "category": "Risk Assessment",
+      "applies_to": "All machinery types",
+      "description": "European adoption of ISO 12100. Harmonized standard giving presumption of conformity with Machinery Directive/Regulation. Fundamental standard referenced by essentially all Type-C machinery standards. Mandatory risk assessment and risk reduction methodology.",
+      "url": "https://standards.cen.eu/"
+    },
+    {
+      "id": "Pressure Equipment Directive",
+      "name": "Pressure Equipment Directive 2014/68/EU (PED)",
+      "category": "Pressure Vessels",
+      "applies_to": "Pressure vessels, boilers, pressure piping",
+      "description": "Harmonization of pressure equipment throughout EU. Pressure vessels, steam generators, piping, safety accessories, pressure assemblies. Categories I-IV based on hazard. Conformity assessment procedures. CE marking. Essential Safety Requirements. Notified body involvement for higher categories.",
+      "url": "https://ec.europa.eu/growth/sectors/pressure-gas/pressure-equipment_en"
+    },
+    {
+      "id": "Swiss Pressure Equipment Ordinance",
+      "name": "Swiss Pressure Equipment Ordinance (DEV)",
+      "category": "Pressure Vessels",
+      "applies_to": "Pressure equipment in Switzerland",
+      "description": "Swiss regulation of pressure equipment. Aligned with EU PED. Inspection body approval (accredited inspection bodies). Periodic inspections during operation. Boiler operators' licensing. Swiss-specific requirements alongside harmonized standards.",
+      "url": "https://www.seco.admin.ch/"
+    },
+    {
+      "id": "ATEX Directive",
+      "name": "ATEX Directive 2014/34/EU - Equipment for Explosive Atmospheres",
+      "category": "Hazardous Areas",
+      "applies_to": "Electrical and non-electrical equipment for explosive atmospheres",
+      "description": "Equipment intended for use in explosive atmospheres. Gas atmospheres (Group II), mining (Group I). Equipment categories (zones). Protection concepts: flameproof (d), increased safety (e), intrinsic safety (i), pressurization (p). CE marking. Notified body involvement. Ex marking. Based on IEC 60079 series.",
+      "url": "https://ec.europa.eu/growth/sectors/mechanical-engineering/atex_en"
+    },
+    {
+      "id": "ATEX 137 Workplace Directive",
+      "name": "ATEX Directive 1999/92/EC - Workplaces with Explosive Atmospheres",
+      "category": "Workplace Safety",
+      "applies_to": "Workplaces with potentially explosive atmospheres",
+      "description": "Minimum requirements for improving safety and health of workers potentially at risk from explosive atmospheres. Explosion risk assessment, classification of areas into zones (0, 1, 2 for gases; 20, 21, 22 for dusts). Explosion protection document. Organizational measures, equipment selection per ATEX 2014/34/EU.",
+      "url": "https://osha.europa.eu/en/legislation/directives/exposition-to-physical-hazards/osh-directives-dangerous-atmospheres-and-explosive-atmospheres"
+    },
+    {
+      "id": "Swiss Explosion Protection",
+      "name": "Swiss Ordinance on Protection Against Major Accidents (StFV)",
+      "category": "Hazardous Areas",
+      "applies_to": "Facilities with explosion and fire hazards",
+      "description": "Major accidents ordinance covering explosion protection. Risk analysis, safety management systems, emergency planning. Seveso-type regulation adapted for Switzerland. Covers chemical plants, refineries, storage facilities. Explosion-proof equipment requirements aligned with ATEX/IECEx.",
+      "url": "https://www.bafu.admin.ch/bafu/en/home/topics/major-accidents.html"
+    },
+    {
+      "id": "Outdoor Noise Directive",
+      "name": "Outdoor Noise Directive 2000/14/EC",
+      "category": "Environmental",
+      "applies_to": "Outdoor equipment producing noise",
+      "description": "Noise emission in the environment by equipment for use outdoors. 57 equipment types: construction equipment, lawn mowers, compressors, generators, etc. Noise limits (some), labeling (all). Conformity assessment procedures. CE marking. Sound power level declaration.",
+      "url": "https://ec.europa.eu/environment/noise/directive_en.htm"
+    },
+    {
+      "id": "Swiss Noise Protection Ordinance",
+      "name": "Swiss Noise Protection Ordinance (LSV)",
+      "category": "Environmental",
+      "applies_to": "Noise-emitting machinery and equipment",
+      "description": "Limits for noise emissions from machinery and equipment. Construction equipment, lawn equipment, industrial machinery. Noise limits (dB(A)), measurement methods. Municipal enforcement. Type approval for certain equipment categories.",
+      "url": "https://www.bafu.admin.ch/bafu/en/home/topics/noise.html"
+    },
+    {
+      "id": "ISO 4414",
+      "name": "ISO 4414 - Pneumatic Fluid Power: General Rules for Systems",
+      "category": "Fluid Power",
+      "applies_to": "Pneumatic systems on machinery",
+      "description": "General rules and safety requirements for pneumatic systems. Component selection, circuit design, installation, maintenance, operation. Pressure levels, air quality, energy isolation, stored energy dissipation. Relevant for machinery using compressed air.",
+      "url": "https://www.iso.org/standard/10282.html"
+    },
+    {
+      "id": "ISO 4413",
+      "name": "ISO 4413 - Hydraulic Fluid Power: General Rules for Systems",
+      "category": "Fluid Power",
+      "applies_to": "Hydraulic systems on machinery",
+      "description": "General rules and safety requirements for hydraulic fluid power systems. Component selection, circuit design, installation, commissioning, maintenance. Pressure classifications, fluid containment, energy isolation, accumulator safety. Applicable to industrial and mobile hydraulics.",
+      "url": "https://www.iso.org/standard/45312.html"
+    },
+    {
+      "id": "EN 983",
+      "name": "EN 983 - Safety of Machinery: Safety Requirements for Hydraulic Systems",
+      "category": "Fluid Power",
+      "applies_to": "Hydraulic power systems",
+      "description": "Safety requirements specifically for fluid power systems and components on machinery. Pressure control, circuit design, component selection, maintenance access. Addresses high-pressure hazards (injection injuries), fire hazards, noise. Complements ISO 4413 with machinery-specific focus.",
+      "url": "https://standards.cen.eu/"
+    },
+    {
+      "id": "EN ISO 9001",
+      "name": "ISO 9001:2015 - Quality Management Systems",
+      "category": "Quality Management",
+      "applies_to": "Machinery manufacturers",
+      "description": "Quality management system requirements. Applicable to machinery manufacturers for consistent quality, customer satisfaction, continual improvement. Process approach, risk-based thinking, leadership, people engagement. Often required by customers. Can support compliance with Machinery Regulation quality requirements.",
+      "url": "https://www.iso.org/standard/62085.html"
+    },
+    {
+      "id": "EN ISO 14001",
+      "name": "ISO 14001:2015 - Environmental Management Systems",
+      "category": "Environmental Management",
+      "applies_to": "Machinery manufacturers with environmental commitments",
+      "description": "Environmental management system requirements. Pollution prevention, compliance obligations, continual improvement. Applicable to machinery manufacturers managing environmental aspects: energy, waste, emissions. Can support compliance with environmental regulations (noise, substances, energy efficiency).",
+      "url": "https://www.iso.org/standard/60857.html"
+    },
+    {
+      "id": "EN ISO 45001",
+      "name": "ISO 45001:2018 - Occupational Health and Safety Management",
+      "category": "Workplace Safety",
+      "applies_to": "Machinery manufacturers and users",
+      "description": "Occupational health and safety management systems. Replaces OHSAS 18001. Worker participation, hazard identification, risk assessment, legal compliance. Applicable to machinery manufacturers (internal OH&S) and machinery users (OH&S including machine safety).",
+      "url": "https://www.iso.org/standard/63787.html"
+    },
+    {
+      "id": "ANSI B11 Series",
+      "name": "ANSI B11 Machine Tool Safety Standards (US Reference)",
+      "category": "International Reference",
+      "applies_to": "Machine tools (North American market)",
+      "description": "American National Standards for machine tools. ANSI B11.19 (performance requirements for safeguarding). While US standards, often referenced for machinery exported to North America from EU/Switzerland. Different approach than EN/ISO (prescriptive vs. performance-based).",
+      "url": "https://www.b11standards.org/"
+    },
+    {
+      "id": "OSHA Machine Guarding",
+      "name": "OSHA 1910 Subpart O - Machinery and Machine Guarding (US Reference)",
+      "category": "International Reference",
+      "applies_to": "Machinery in US workplaces",
+      "description": "US OSHA regulations for machinery and machine guarding. Relevant for EU/Swiss machinery exported to US. Different regulatory approach than EU (prescriptive requirements). OSHA requirements, ANSI B11 standards, risk assessment per ISO 12100 - all considered for US compliance.",
+      "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910SubpartO"
+    },
+    {
+      "id": "IEC 61511",
+      "name": "IEC 61511 - Functional Safety: Safety Instrumented Systems for Process Industry",
+      "category": "Process Industry Safety",
+      "applies_to": "Process industry safety systems",
+      "description": "Functional safety for process industry sector. Safety instrumented systems (SIS), safety integrity level (SIL 1-4). Lifecycle approach: hazard analysis, SIL determination, design, integration, validation, operation, modification. Applicable to chemical plants, refineries, power generation where machinery is integrated into process.",
+      "url": "https://webstore.iec.ch/publication/5527"
+    },
+    {
+      "id": "Machinery CPR",
+      "name": "EU Construction Products Regulation 305/2011 (for Building Site Equipment)",
+      "category": "Construction Equipment",
+      "applies_to": "Machinery intended as construction products",
+      "description": "When machinery is incorporated into buildings (e.g., lifts, HVAC), CPR may apply alongside Machinery Regulation. CE marking for construction products. Essential characteristics, performance declarations, harmonized standards. Notified body involvement. Construction site temporary machinery may have specific requirements.",
+      "url": "https://single-market-economy.ec.europa.eu/sectors/construction/construction-products-regulation-cpr_en"
+    },
+    {
+      "id": "Lifts Directive",
+      "name": "Lifts Directive 2014/33/EU",
+      "category": "Lifts & Elevators",
+      "applies_to": "Lifts for person/goods transport in buildings",
+      "description": "Safety of lifts and safety components for lifts. Separate directive from Machinery. Essential health and safety requirements. Installation, design, testing. CE marking. Notified body involvement. Periodic inspections by competent authorities. Swiss equivalent regulations exist.",
+      "url": "https://ec.europa.eu/growth/sectors/mechanical-engineering/lifts_en"
+    },
+    {
+      "id": "Simple Pressure Vessels Directive",
+      "name": "Simple Pressure Vessels Directive 2014/29/EU",
+      "category": "Pressure Equipment",
+      "applies_to": "Simple unwelded pressure vessels (air, nitrogen)",
+      "description": "Simplified requirements for series-manufactured welded pressure vessels containing air or nitrogen. Specific design: single compartment, maximum 30 bar, product of pressure and volume ≤10,000 bar·liters. Type examination and production quality assurance. CE marking. Complementary to full PED.",
+      "url": "https://ec.europa.eu/growth/sectors/pressure-gas/simple-pressure-vessels_en"
+    },
+    {
+      "id": "IEC 61439",
+      "name": "IEC 61439 Series - Low-Voltage Switchgear Assemblies",
+      "category": "Electrical Distribution",
+      "applies_to": "Control panels, distribution boards for machinery",
+      "description": "Low-voltage switchgear and controlgear assemblies. Part 1: General rules. Part 2: Power switchgear and controlgear assemblies. Type-tested assemblies (TTA), partially type-tested assemblies (PTTA). Verification, temperature rise, short-circuit withstand. Applicable to machinery control panels.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "EN 1090",
+      "name": "EN 1090 - Execution of Steel and Aluminium Structures",
+      "category": "Structural Components",
+      "applies_to": "Structural metalwork for machinery and equipment",
+      "description": "Execution of steel structures and aluminium structures. Part 1: Conformity assessment. Part 2: Technical requirements for steel. Part 3: Technical requirements for aluminium. Relevant for machinery frames, supports, structural components. Factory production control, welding requirements, CE marking for structural products.",
+      "url": "https://eurocodes.jrc.ec.europa.eu/EN-Eurocodes/eurocode-3-design-steel-structures"
+    },
+    {
+      "id": "ISO 11148",
+      "name": "ISO 11148 Series - Hand-Held Non-Electric Power Tools",
+      "category": "Hand Tools",
+      "applies_to": "Pneumatic, hydraulic hand tools",
+      "description": "Safety requirements for hand-held non-electric power tools. Assembly tools, grinders, sanders, nibblers, shears, drills, impact wrenches. Multiple parts for different tool types. Vibration, noise, ergonomic requirements. Residual risks, information for use.",
+      "url": "https://www.iso.org/standard/"
+    },
+    {
+      "id": "IEC 61000 EMC",
+      "name": "IEC 61000 Series - Electromagnetic Compatibility for Industrial Environments",
+      "category": "EMC",
+      "applies_to": "Machinery electrical/electronic systems",
+      "description": "EMC standards applicable to machinery. Part 6-2: Generic standards for industrial environments. Emission and immunity requirements. Ensures machinery doesn't cause interference and isn't susceptible to interference. Harmonized standard under EMC Directive 2014/30/EU.",
+      "url": "https://webstore.iec.ch/publication/"
+    },
+    {
+      "id": "ISO 14122",
+      "name": "ISO 14122 Series - Permanent Means of Access to Machinery",
+      "category": "Access Equipment",
+      "applies_to": "Stairs, ladders, platforms on machinery",
+      "description": "Safety of machinery - Permanent means of access. Part 1: Selection of fixed means. Part 2: Working platforms and walkways. Part 3: Stairs, stepladders and guard-rails. Part 4: Fixed ladders. Dimensions, load capacity, materials. Safe access for operation and maintenance.",
+      "url": "https://www.iso.org/standard/"
+    },
+    {
+      "id": "ISO 3744",
+      "name": "ISO 3744 - Acoustics: Sound Power Level Determination",
+      "category": "Noise Measurement",
+      "applies_to": "Noise measurement for machinery",
+      "description": "Determination of sound power levels of noise sources using sound pressure. Engineering method in essentially free field over reflecting plane. Used for machinery noise emission declaration. Supports compliance with Outdoor Noise Directive, Machinery Regulation noise requirements.",
+      "url": "https://www.iso.org/standard/23006.html"
+    },
+    {
+      "id": "ISO 7731",
+      "name": "ISO 7731 - Danger Signals for Public and Work Areas: Auditory Danger Signals",
+      "category": "Warning Systems",
+      "applies_to": "Audible warning devices on machinery",
+      "description": "Ergonomic principles for auditory danger signals. Temporal pattern, frequency, sound pressure level. Ensures warning signals are detected, recognized, acted upon. Applicable to machinery alarms, reversing alarms on mobile equipment, emergency evacuation signals.",
+      "url": "https://www.iso.org/standard/14555.html"
+    }
+  ]
+}
