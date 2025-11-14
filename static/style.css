@@ -2491,12 +2491,26 @@ ul li, ol li {
     margin-top: 0;
 }
 
+.product-description-content .md-ul {
+    margin-bottom: 16px;
+    padding-left: 20px;
+}
+
 .product-description-content .md-li {
     margin-bottom: 8px;
     line-height: 1.7;
     color: #333;
     list-style-type: disc;
-    margin-left: 20px;
+}
+
+.product-description-content .md-paragraph {
+    margin-bottom: 16px;
+    line-height: 1.7;
+    color: #333;
+}
+
+.product-description-content .md-paragraph:last-child {
+    margin-bottom: 0;
 }
 
 .product-description-content .md-code {
