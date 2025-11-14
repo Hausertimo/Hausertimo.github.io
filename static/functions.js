@@ -1132,17 +1132,65 @@ async function createWorkspaceFromSession(workspaceName) {
         return;
     }
 
-    try {
-        // Show loading message
-        addTeaserMessage('assistant', 'Creating your workspace...');
+    const sendBtn = document.getElementById('teaserSendBtn');
 
-        const sendBtn = document.getElementById('teaserSendBtn');
+    try {
+        // Step 1: Run the norm analysis
+        addTeaserMessage('assistant', 'Analyzing your product for compliance requirements...');
+
         if (sendBtn) {
             sendBtn.disabled = true;
+            sendBtn.textContent = 'Analyzing...';
+        }
+
+        // Connect to analysis stream
+        const eventSource = new EventSource(`/api/develope/analyze-stream?session_id=${teaserSessionId}`);
+
+        let analysisComplete = false;
+        let analysisResults = null;
+
+        await new Promise((resolve, reject) => {
+            eventSource.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+
+                if (data.phase === 'analyzing') {
+                    // Update with progress
+                    const progress = Math.round((data.progress / data.total) * 100);
+                    if (sendBtn) {
+                        sendBtn.textContent = `Analyzing... ${progress}%`;
+                    }
+                }
+                else if (data.phase === 'complete') {
+                    // Analysis done!
+                    analysisComplete = true;
+                    analysisResults = data;
+                    eventSource.close();
+                    resolve();
+                }
+                else if (data.phase === 'error') {
+                    eventSource.close();
+                    reject(new Error(data.error || 'Analysis failed'));
+                }
+            };
+
+            eventSource.onerror = function(error) {
+                eventSource.close();
+                reject(new Error('Connection to analysis service failed'));
+            };
+        });
+
+        if (!analysisComplete) {
+            throw new Error('Analysis did not complete successfully');
+        }
+
+        // Step 2: Create workspace with analysis results
+        addTeaserMessage('assistant', `Found ${analysisResults.total_norms} relevant compliance norms! Creating your workspace...`);
+
+        if (sendBtn) {
             sendBtn.textContent = 'Creating...';
         }
 
-        // Get session data from develope API
+        // Get session data (now includes analysis results)
         const sessionResponse = await fetch(`/api/develope/session/${teaserSessionId}`, {
             credentials: 'include'
         });
@@ -1154,16 +1202,16 @@ async function createWorkspaceFromSession(workspaceName) {
 
         const sessionData = await sessionResponse.json();
 
-        // Create workspace
+        // Create workspace with REAL analysis data
         const response = await fetch('/api/workspaces/create', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             credentials: 'include',
             body: JSON.stringify({
                 name: workspaceName,
-                product_description: sessionData.history?.[0]?.content || workspaceName,
+                product_description: sessionData.product_description || sessionData.history?.[0]?.content || workspaceName,
                 matched_norms: sessionData.matched_norms || [],
-                all_results: sessionData.all_results || {}
+                all_results: sessionData.all_norm_results || {}
             })
         });
 
@@ -1183,7 +1231,7 @@ async function createWorkspaceFromSession(workspaceName) {
         }
 
         // Success! Show confirmation and redirect
-        addTeaserMessage('assistant', `Great! Your workspace "${workspaceName}" has been created. Redirecting...`);
+        addTeaserMessage('assistant', `Perfect! Your workspace "${workspaceName}" has been created with ${analysisResults.total_norms} compliance norms. Redirecting...`);
 
         // Redirect to workspace after a short delay
         setTimeout(() => {
@@ -1196,7 +1244,6 @@ async function createWorkspaceFromSession(workspaceName) {
 
         // Reset state
         waitingForWorkspaceName = false;
-        const sendBtn = document.getElementById('teaserSendBtn');
         if (sendBtn) {
             sendBtn.disabled = false;
             sendBtn.textContent = 'Send';
