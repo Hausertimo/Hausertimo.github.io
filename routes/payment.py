@@ -645,32 +645,123 @@ def stripe_webhook():
     action = handling_result.get('action')
     metadata = handling_result.get('metadata', {})
 
-    # TODO: Implement actual user updates based on webhook events
+    # Handle webhook events and activate/deactivate packages
     if action == 'grant_access':
         # Payment succeeded - grant access
         user_id = metadata.get('user_id')
         plan = metadata.get('plan', 'pro')
-        # TODO: grant_access(user_id, plan)
-        logger.info(f"TODO: Grant {plan} access to user {user_id}")
+        logger.info(f"Payment succeeded - Grant {plan} access to user {user_id}")
+        # Note: For one-time payments, consider implementing separate logic
 
     elif action == 'activate_subscription':
-        # Subscription created
+        # Subscription created - activate package
         user_id = metadata.get('user_id')
-        # TODO: grant_access(user_id, metadata.get('plan'))
-        logger.info(f"TODO: Activate subscription for user {user_id}")
+        package_type = metadata.get('package_type')
+        subscription_id = handling_result.get('subscription_id')
+        customer_id = handling_result.get('customer_id')
+
+        if user_id and package_type:
+            try:
+                # Import package manager (lazy import to avoid circular dependency)
+                from services.package_manager import PackageManager
+                from normscout_auth import supabase
+
+                # Get Redis client if available
+                try:
+                    from app import redis_client
+                except:
+                    redis_client = None
+
+                pkg_manager = PackageManager(supabase, redis_client)
+
+                # Check if this is a trial subscription
+                is_trial = False
+                if 'subscription' in handling_result:
+                    sub_data = handling_result['subscription']
+                    is_trial = sub_data.get('status') == 'trialing'
+
+                # Activate the package
+                pkg_manager.activate_package(
+                    user_id=user_id,
+                    package_type=package_type,
+                    stripe_subscription_id=subscription_id,
+                    stripe_customer_id=customer_id,
+                    is_trial=is_trial
+                )
+
+                logger.info(f"✅ Activated package {package_type} for user {user_id} (subscription: {subscription_id}, trial: {is_trial})")
+
+            except Exception as e:
+                logger.error(f"❌ Failed to activate package for user {user_id}: {e}")
+                # Don't fail the webhook - Stripe expects 200 response
+        else:
+            logger.warning(f"Missing user_id or package_type in subscription metadata: {metadata}")
 
     elif action == 'revoke_subscription_access':
-        # Subscription cancelled
+        # Subscription cancelled - deactivate package
         user_id = metadata.get('user_id')
-        # TODO: revoke_access(user_id)
-        logger.info(f"TODO: Revoke access for user {user_id}")
+        package_type = metadata.get('package_type')
+        subscription_id = handling_result.get('subscription_id')
+
+        if user_id and package_type:
+            try:
+                from services.package_manager import PackageManager
+                from normscout_auth import supabase
+
+                try:
+                    from app import redis_client
+                except:
+                    redis_client = None
+
+                pkg_manager = PackageManager(supabase, redis_client)
+
+                # Deactivate the package
+                pkg_manager.deactivate_package(
+                    user_id=user_id,
+                    package_type=package_type,
+                    reason='Subscription cancelled via Stripe'
+                )
+
+                logger.info(f"✅ Deactivated package {package_type} for user {user_id} (subscription: {subscription_id})")
+
+            except Exception as e:
+                logger.error(f"❌ Failed to deactivate package for user {user_id}: {e}")
+        else:
+            logger.warning(f"Missing user_id or package_type in cancellation metadata: {metadata}")
 
     elif action == 'update_subscription_status':
-        # Subscription updated
+        # Subscription updated - handle status changes
         subscription_id = handling_result.get('subscription_id')
         status = handling_result.get('status')
-        # TODO: update_subscription_status(subscription_id, status)
-        logger.info(f"TODO: Update subscription {subscription_id} to {status}")
+        user_id = metadata.get('user_id')
+        package_type = metadata.get('package_type')
+
+        logger.info(f"Subscription {subscription_id} updated to status: {status}")
+
+        # Handle trial ending -> active conversion
+        if status == 'active' and user_id and package_type:
+            try:
+                from services.package_manager import PackageManager
+                from normscout_auth import supabase
+
+                try:
+                    from app import redis_client
+                except:
+                    redis_client = None
+
+                pkg_manager = PackageManager(supabase, redis_client)
+
+                # Update the package status from trial to active
+                result = supabase.table('user_packages').update({
+                    'status': 'active',
+                    'is_trial': False
+                }).eq('user_id', user_id).eq('package_type', package_type).eq('status', 'trial').execute()
+
+                if result.data:
+                    logger.info(f"✅ Converted trial to active for user {user_id}, package {package_type}")
+
+            except Exception as e:
+                logger.error(f"❌ Failed to update package status: {e}")
 
     return jsonify({'success': True, 'received': True})
 

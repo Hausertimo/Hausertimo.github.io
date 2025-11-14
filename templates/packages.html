@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}Norm Database Packages - NormScout{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4">Expand Your Compliance Coverage</h1>
+            <p class="text-xl text-gray-600">Rent access to specialized norm databases for your industry and region</p>
+        </div>
+
+        <!-- Savings Alert (if applicable) -->
+        {% if savings_info and savings_info.should_upgrade %}
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    💰
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-yellow-700">
+                        <strong>{{ savings_info.message }}</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Package Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {% for package_type, package in packages.items() %}
+            <div class="package-card bg-white rounded-lg shadow-lg p-6 border-2
+                {% if package_type in active_packages %}border-green-500{% elif package_type in trial_packages %}border-blue-500{% else %}border-gray-200{% endif %}
+                hover:shadow-xl transition-shadow">
+
+                <!-- Icon & Status -->
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-4xl">{{ package.icon }}</div>
+                    {% if package_type in active_packages %}
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Active</span>
+                    {% elif package_type in trial_packages %}
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Trial</span>
+                    {% endif %}
+                </div>
+
+                <!-- Package Info -->
+                <h3 class="text-xl font-bold mb-2">{{ package.name }}</h3>
+                <p class="text-gray-600 text-sm mb-4">{{ package.description }}</p>
+
+                <!-- Pricing -->
+                <div class="mb-4">
+                    <span class="text-3xl font-bold">${{ (package.price / 100)|int }}</span>
+                    <span class="text-gray-500">/month</span>
+                </div>
+
+                <!-- Features -->
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-start text-sm">
+                        <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>{{ package.norm_count }}+ norms</span>
+                    </li>
+                    {% for feature in package.features[:3] %}
+                    <li class="flex items-start text-sm">
+                        <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>{{ feature }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- CTA Button -->
+                {% if package_type in active_packages %}
+                <button class="w-full bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded cursor-not-allowed" disabled>
+                    Currently Active
+                </button>
+                {% elif package_type in trial_packages %}
+                <button class="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600" onclick="upgradeToFull('{{ package_type }}')">
+                    Convert to Paid
+                </button>
+                {% else %}
+                <button class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700" onclick="purchasePackage('{{ package_type }}')">
+                    Rent This Box
+                </button>
+                <button class="w-full mt-2 bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded hover:bg-blue-50" onclick="purchasePackage('{{ package_type }}', true)">
+                    Start {{ package.trial_days }}-Day Trial
+                </button>
+                {% endif %}
+
+                <!-- Preview Link -->
+                <a href="#" onclick="previewPackage('{{ package_type }}')" class="block text-center text-sm text-blue-600 hover:text-blue-800 mt-3">
+                    Preview sample norms →
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- FAQ / Info Section -->
+        <div class="bg-gray-50 rounded-lg p-8">
+            <h2 class="text-2xl font-bold mb-4">How It Works</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold mb-2">🎯 Choose Your Coverage</h3>
+                    <p class="text-sm text-gray-600">Select the database packages that match your products' markets and industries.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">✅ Instant Access</h3>
+                    <p class="text-sm text-gray-600">After checkout, immediately analyze products with your new norm databases.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">📊 Track Usage</h3>
+                    <p class="text-sm text-gray-600">Monitor which databases you're using most in your package dashboard.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">🔄 Cancel Anytime</h3>
+                    <p class="text-sm text-gray-600">No long-term commitments. Cancel or change packages whenever you need.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Preview Modal -->
+<div id="previewModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg p-8 max-w-4xl max-h-screen overflow-y-auto">
+        <div class="flex justify-between items-start mb-4">
+            <h2 id="previewTitle" class="text-2xl font-bold"></h2>
+            <button onclick="closePreview()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+        </div>
+        <div id="previewContent" class="space-y-4">
+            <!-- Dynamic content loaded here -->
+        </div>
+    </div>
+</div>
+
+<script>
+async function purchasePackage(packageType, isTrial = false) {
+    try {
+        const response = await fetch('/api/packages/purchase', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                package_type: packageType,
+                is_trial: isTrial
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // Redirect to Stripe checkout
+            window.location.href = data.checkout_url;
+        } else {
+            alert('Error: ' + data.error);
+        }
+    } catch (error) {
+        console.error('Purchase error:', error);
+        alert('Failed to initiate checkout. Please try again.');
+    }
+}
+
+function upgradeToFull(packageType) {
+    if (confirm('Convert your trial to a paid subscription?')) {
+        purchasePackage(packageType, false);
+    }
+}
+
+async function previewPackage(packageType) {
+    try {
+        const response = await fetch(`/api/packages/${packageType}/preview`);
+        const data = await response.json();
+
+        if (data.success) {
+            const modal = document.getElementById('previewModal');
+            const title = document.getElementById('previewTitle');
+            const content = document.getElementById('previewContent');
+
+            title.textContent = data.package.name + ' - Sample Norms';
+
+            let html = `<p class="text-gray-600 mb-4">Showing ${data.sample_norms.length} of ${data.total_norms} norms in this package</p>`;
+
+            data.sample_norms.forEach(norm => {
+                html += `
+                    <div class="border rounded p-4">
+                        <h3 class="font-semibold">${norm.id}: ${norm.name}</h3>
+                        <p class="text-sm text-gray-600 mt-1"><strong>Applies to:</strong> ${norm.applies_to}</p>
+                        <p class="text-sm text-gray-600 mt-1">${norm.description}</p>
+                    </div>
+                `;
+            });
+
+            content.innerHTML = html;
+            modal.classList.remove('hidden');
+        }
+    } catch (error) {
+        console.error('Preview error:', error);
+        alert('Failed to load preview');
+    }
+}
+
+function closePreview() {
+    document.getElementById('previewModal').classList.add('hidden');
+}
+</script>
+{% endblock %}

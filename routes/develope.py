@@ -170,6 +170,29 @@ def analyze_norms():
         {"product_description": "...", "norms": [...]}
     """
     try:
+        # Get authenticated user and their allowed databases
+        from normscout_auth import get_current_user_id
+        from services.package_manager import PackageManager
+        from normscout_auth import supabase
+
+        user_id = None
+        allowed_databases = None
+
+        try:
+            user_id = get_current_user_id()
+            # Get user's allowed databases based on their packages
+            try:
+                from app import redis_client
+            except:
+                redis_client = None
+
+            pkg_manager = PackageManager(supabase, redis_client)
+            allowed_databases = pkg_manager.get_allowed_databases(user_id)
+            logger.info(f"User {user_id} has access to {len(allowed_databases)} databases: {allowed_databases}")
+        except Exception as e:
+            logger.warning(f"Could not get user packages (user may not be authenticated): {e}")
+            allowed_databases = ['norms.json']  # Default to free tier
+
         data = request.get_json()
         session_id = data.get('session_id')
 
@@ -184,20 +207,34 @@ def analyze_norms():
         # Build final product description
         product_description = build_final_summary(session_data["history"])
 
-        # Match norms (this will take a while)
-        matched_norms = match_norms(product_description, max_workers=10)
+        # Match norms with user's allowed databases
+        matched_norms = match_norms(product_description, max_workers=10, allowed_databases=allowed_databases)
 
         # Store results in session
         session_data["product_description"] = product_description
         session_data["matched_norms"] = matched_norms
         session_data["analyzed"] = datetime.now().isoformat()
 
-        logger.info(f"Analyzed norms for session {session_id}: {len(matched_norms)} norms matched")
+        # Track usage if user is authenticated
+        if user_id and pkg_manager:
+            for database in allowed_databases:
+                try:
+                    pkg_manager.track_usage(
+                        user_id=user_id,
+                        database_name=database,
+                        workspace_id=None,
+                        operation='analysis'
+                    )
+                except Exception as e:
+                    logger.warning(f"Failed to track usage: {e}")
+
+        logger.info(f"Analyzed norms for session {session_id}: {len(matched_norms)} norms matched from {len(allowed_databases)} databases")
 
         return jsonify({
             "product_description": product_description,
             "norms": matched_norms,
-            "total_norms": len(matched_norms)
+            "total_norms": len(matched_norms),
+            "databases_checked": allowed_databases
         })
 
     except Exception as e:
@@ -216,6 +253,30 @@ def analyze_norms_stream():
     Returns:
         SSE stream with progress updates
     """
+    # Get authenticated user and their allowed databases
+    from normscout_auth import get_current_user_id
+    from services.package_manager import PackageManager
+    from normscout_auth import supabase
+
+    user_id = None
+    allowed_databases = None
+    pkg_manager = None
+
+    try:
+        user_id = get_current_user_id()
+        # Get user's allowed databases based on their packages
+        try:
+            from app import redis_client
+        except:
+            redis_client = None
+
+        pkg_manager = PackageManager(supabase, redis_client)
+        allowed_databases = pkg_manager.get_allowed_databases(user_id)
+        logger.info(f"User {user_id} has access to {len(allowed_databases)} databases for streaming analysis")
+    except Exception as e:
+        logger.warning(f"Could not get user packages (user may not be authenticated): {e}")
+        allowed_databases = ['norms.json']  # Default to free tier
+
     session_id = request.args.get('session_id')
 
     if not session_id or session_id not in conversation_sessions:
@@ -233,11 +294,19 @@ def analyze_norms_stream():
 
             product_description = build_final_summary(session_data["history"])
 
+            # Inform user which databases are being checked
+            db_count = len(allowed_databases)
+            db_list = ', '.join([db.replace('norms_', '').replace('.json', '').upper() for db in allowed_databases[:3]])
+            if db_count > 3:
+                db_list += f' and {db_count - 3} more'
+
+            yield f"data: {json.dumps({'phase': 'databases', 'status': f'Checking {db_count} database(s): {db_list}'})}\n\n"
+
             # Phase 2: Stream norm matching with real-time progress
             matched_norms = None
             all_norm_results = None
 
-            for event_type, *event_data in match_norms_streaming(product_description, max_workers=10):
+            for event_type, *event_data in match_norms_streaming(product_description, max_workers=10, allowed_databases=allowed_databases):
                 if event_type == 'progress':
                     completed, total, norm_id = event_data
 
@@ -271,7 +340,20 @@ def analyze_norms_stream():
             session_data["analyzed"] = datetime.now().isoformat()
             session_data["qa_history"] = []  # Initialize Q&A history
 
-            logger.info(f"Analyzed norms for session {session_id}: {len(matched_norms)} norms matched")
+            # Track usage if user is authenticated
+            if user_id and pkg_manager:
+                for database in allowed_databases:
+                    try:
+                        pkg_manager.track_usage(
+                            user_id=user_id,
+                            database_name=database,
+                            workspace_id=None,
+                            operation='analysis'
+                        )
+                    except Exception as e:
+                        logger.warning(f"Failed to track usage: {e}")
+
+            logger.info(f"Analyzed norms for session {session_id}: {len(matched_norms)} norms matched from {len(allowed_databases)} databases")
 
             # Phase 4: Complete with results
             yield f"data: {json.dumps({'phase': 'complete', 'product_description': product_description, 'norms': matched_norms, 'total_norms': len(matched_norms)})}\n\n"

@@ -11,12 +11,47 @@ from .openrouter import call_openrouter
 logger = logging.getLogger(__name__)
 
 
-def load_norms():
-    """Load norms from JSON file"""
-    norms_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "norms.json")
-    with open(norms_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return data["norms"]
+def load_norms(database_names=None):
+    """
+    Load norms from specified database files.
+
+    Args:
+        database_names: List of database filenames (e.g., ['norms_iso.json', 'norms_china.json'])
+                       If None, loads default 'norms.json' (EU base)
+
+    Returns:
+        List of norms with source database metadata
+    """
+    if database_names is None:
+        database_names = ['norms.json']  # Default EU base
+
+    all_norms = []
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+
+    for db_name in database_names:
+        db_path = os.path.join(data_dir, db_name)
+        if not os.path.exists(db_path):
+            logger.warning(f"Database {db_name} not found, skipping")
+            continue
+
+        try:
+            with open(db_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                norms = data.get("norms", [])
+
+                # Add source metadata to each norm
+                for norm in norms:
+                    norm['source_database'] = db_name
+
+                all_norms.extend(norms)
+                logger.info(f"Loaded {len(norms)} norms from {db_name}")
+
+        except Exception as e:
+            logger.error(f"Error loading database {db_name}: {e}")
+            continue
+
+    logger.info(f"Total norms loaded: {len(all_norms)} from {len(database_names)} databases")
+    return all_norms
 
 
 def check_norm_applies(product_description: str, norm: dict) -> dict:
@@ -104,7 +139,7 @@ Be critical, accurate, and precise with numbers."""
     }
 
 
-def match_norms(product_description: str, max_workers: int = 10, progress_callback=None) -> list:
+def match_norms(product_description: str, max_workers: int = 10, progress_callback=None, allowed_databases=None) -> list:
     """
     Match all norms against a product description in parallel.
     Returns list of matching norms with confidence scores.
@@ -113,15 +148,17 @@ def match_norms(product_description: str, max_workers: int = 10, progress_callba
         product_description: Description of the product
         max_workers: Maximum concurrent API calls
         progress_callback: Optional callback function(completed, total, norm_id) for progress updates
+        allowed_databases: Optional list of database filenames to check (e.g., ['norms.json', 'norms_us.json'])
+                          If None, defaults to 'norms.json' only
 
     Returns:
         List of matching norms sorted by confidence
     """
-    norms = load_norms()
+    norms = load_norms(allowed_databases)
     results = []
     completed = 0
 
-    logger.info(f"Checking {len(norms)} norms in parallel (max {max_workers} at a time)")
+    logger.info(f"Checking {len(norms)} norms from {len(allowed_databases or ['norms.json'])} databases in parallel (max {max_workers} at a time)")
 
     # Use ThreadPoolExecutor for parallel API calls
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -158,7 +195,7 @@ def match_norms(product_description: str, max_workers: int = 10, progress_callba
     return results
 
 
-def match_norms_streaming(product_description: str, max_workers: int = 10):
+def match_norms_streaming(product_description: str, max_workers: int = 10, allowed_databases=None):
     """
     Match all norms against a product description in parallel, yielding progress events immediately.
     This is a generator that streams progress updates in real-time.
@@ -166,19 +203,21 @@ def match_norms_streaming(product_description: str, max_workers: int = 10):
     Args:
         product_description: Description of the product
         max_workers: Maximum concurrent API calls
+        allowed_databases: Optional list of database filenames to check (e.g., ['norms.json', 'norms_us.json'])
+                          If None, defaults to 'norms.json' only
 
     Yields:
         Tuples of:
         - ('progress', completed, total, norm_id) for each completed norm
         - ('complete', matched_results, all_results) when all norms are checked
     """
-    norms = load_norms()
+    norms = load_norms(allowed_databases)
     matched_results = []  # Norms that apply
     all_results = []      # ALL checks (for Q&A context)
     completed = 0
     total = len(norms)
 
-    logger.info(f"Checking {total} norms in parallel (max {max_workers} at a time)")
+    logger.info(f"Checking {total} norms from {len(allowed_databases or ['norms.json'])} databases in parallel (max {max_workers} at a time)")
 
     # Use ThreadPoolExecutor for parallel API calls
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
