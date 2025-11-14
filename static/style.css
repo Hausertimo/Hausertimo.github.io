@@ -2410,11 +2410,56 @@ ul li, ol li {
     display: flex;
     align-items: center;
     gap: 8px;
+    color: #2048D5; /* Brand blue instead of boring black */
+    font-weight: 600;
+}
+
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.section-title-row .section-title {
+    margin-bottom: 0;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    font-size: 14px;
 }
 
 .section-content {
     color: #333;
     line-height: 1.6;
+}
+
+/* Product Description Formatting */
+.product-description-content {
+    max-width: none;
+}
+
+.product-description-content.editing {
+    outline: 2px solid #448CF7;
+    outline-offset: 4px;
+    border-radius: 8px;
+    padding: 12px;
+    background: #f8f9ff;
+}
+
+.product-description-content .desc-paragraph {
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+.product-description-content .desc-paragraph:last-child {
+    margin-bottom: 0;
+}
+
+.product-description-content strong {
+    color: #2048D5;
+    font-weight: 600;
 }
 
 /* Compliance Results */
@@ -2425,17 +2470,30 @@ ul li, ol li {
 }
 
 .norm-item {
-    padding: 16px;
+    padding: 20px;
     background: #f8f9fa;
     border-left: 4px solid #2048D5;
-    border-radius: 8px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.norm-item:hover {
+    background: #f0f4ff;
+    box-shadow: 0 2px 8px rgba(32, 72, 213, 0.1);
 }
 
 .norm-header {
     display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.norm-title-row {
+    display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 8px;
+    flex-wrap: wrap;
 }
 
 .norm-icon {
@@ -2443,10 +2501,62 @@ ul li, ol li {
     flex-shrink: 0;
 }
 
+.norm-id {
+    color: #2048D5;
+    font-size: 16px;
+}
+
+.norm-title {
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+.confidence-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.confidence-badge.confidence-high {
+    background: #d4edda;
+    color: #155724;
+}
+
+.confidence-badge.confidence-medium {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.confidence-badge.confidence-low {
+    background: #f8d7da;
+    color: #721c24;
+}
+
 .norm-description {
     margin: 8px 0;
     color: #666;
     font-size: 14px;
+    line-height: 1.6;
+}
+
+.norm-reasoning {
+    margin: 8px 0 0 0;
+    color: #555;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 8px 12px;
+    background: rgba(32, 72, 213, 0.05);
+    border-radius: 6px;
+}
+
+.norm-reasoning em {
+    color: #2048D5;
+    font-style: normal;
+    font-weight: 600;
 }
 
 .norm-badge {
@@ -2555,7 +2665,8 @@ ul li, ol li {
 .sidebar-section h3 {
     font-size: 18px;
     margin: 0 0 16px;
-    color: #333;
+    color: #2048D5; /* Brand blue for consistency */
+    font-weight: 600;
 }
 
 .sidebar-info {
