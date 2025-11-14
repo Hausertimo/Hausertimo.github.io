@@ -1143,10 +1143,11 @@ async function createWorkspaceFromSession(productName) {
         // Step 1: Run the norm analysis
         addTeaserMessage('assistant', 'Analyzing your product for compliance requirements...');
 
-        // Hide input, show progress button
+        // Hide input, show progress button with /develope styling
         if (inputContainer) inputContainer.style.display = 'none';
         if (progressBtn) {
             progressBtn.style.display = 'block';
+            progressBtn.disabled = true;
             progressBtn.classList.add('analyzing');
         }
         if (progressText) progressText.textContent = 'Starting analysis...';
@@ -1163,10 +1164,10 @@ async function createWorkspaceFromSession(productName) {
                 const data = JSON.parse(event.data);
 
                 if (data.phase === 'analyzing') {
-                    // Update the beautiful animated progress bar!
-                    const progress = Math.round((data.progress / data.total) * 100);
-                    if (progressBar) progressBar.style.width = `${progress}%`;
-                    if (progressText) progressText.textContent = `Analyzing compliance norms... ${progress}%`;
+                    // Update the beautiful animated progress bar (like /develope)!
+                    const progressPercent = Math.round((data.progress / data.total) * 100);
+                    if (progressBar) progressBar.style.width = `${progressPercent}%`;
+                    if (progressText) progressText.textContent = `Analyzing compliance norms... ${progressPercent}%`;
                 }
                 else if (data.phase === 'complete') {
                     // Analysis done!
@@ -1174,6 +1175,7 @@ async function createWorkspaceFromSession(productName) {
                     analysisResults = data;
                     eventSource.close();
                     if (progressBar) progressBar.style.width = '100%';
+                    if (progressText) progressText.textContent = 'Analysis complete!';
                     resolve();
                 }
                 else if (data.phase === 'error') {
@@ -1250,11 +1252,14 @@ async function createWorkspaceFromSession(productName) {
         console.error('Error creating project:', error);
         addTeaserMessage('assistant', `Oops! Something went wrong: ${error.message}. Please try again.`);
 
-        // Reset UI state
+        // Reset UI state (like /develope)
         if (progressBtn) {
             progressBtn.style.display = 'none';
             progressBtn.classList.remove('analyzing');
+            progressBtn.disabled = false;
         }
+        if (progressBar) progressBar.style.width = '0%';
+        if (progressText) progressText.textContent = 'Analyzing...';
         if (inputContainer) inputContainer.style.display = 'flex';
         waitingForWorkspaceName = false;
     }

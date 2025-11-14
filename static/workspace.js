@@ -138,10 +138,17 @@ function renderComplianceResults() {
     if (!resultsEl) return;
 
     const norms = workspace.matched_norms;
+    const normsCountEl = document.getElementById('normsCount');
 
     if (!norms || norms.length === 0) {
         resultsEl.innerHTML = '<p class="text-muted">No compliance results yet</p>';
+        if (normsCountEl) normsCountEl.textContent = '';
         return;
+    }
+
+    // Update count badge
+    if (normsCountEl) {
+        normsCountEl.textContent = `${norms.length}`;
     }
 
     let html = '<div class="norms-list">';

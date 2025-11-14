@@ -26,6 +26,7 @@ from flask import (
     render_template
 )
 from supabase import create_client, Client
+from services.openrouter import call_openrouter
 
 # WeasyPrint is optional - only needed for PDF export
 try:
@@ -857,9 +858,51 @@ def ask_question(workspace_id: str):
         if not workspace.data:
             return jsonify({"error": "Workspace not found"}), 404
 
-        # TODO: Call your LLM service here with workspace context
-        # For now, return placeholder
-        answer = "[Your LLM integration goes here]"
+        # Build context from workspace data (matching product_conversation.py style)
+        workspace_data = workspace.data
+        product_desc = workspace_data.get('product_description', 'No description available')
+        norms = workspace_data.get('norms', [])
+
+        # Prepare detailed norm context (show samples to stay within token limits)
+        norms_context = json.dumps(norms[:20], indent=2) if len(norms) > 0 else "None"
+
+        # Build expert prompt (matching product_conversation.py Q&A style)
+        prompt = f"""You are an EU compliance expert. Answer the user's question about this product's compliance analysis.
+
+PRODUCT:
+{product_desc}
+
+APPLICABLE NORMS ({len(norms)} total, showing first 20):
+{norms_context}
+
+USER QUESTION:
+{question}
+
+INSTRUCTIONS:
+- Provide clear, accurate answers based on the analysis results
+- Reference specific norms by their ID (e.g., "EN 62368-1") when relevant
+- If asked "why", quote the reasoning field from the norm analysis
+- If asked about consequences, explain legal/business implications
+- Be concise but thorough (2-4 paragraphs max)
+- Use bullet points for multi-part answers
+- Provide actionable guidance when appropriate
+
+ANSWER:"""
+
+        messages = [{"role": "user", "content": prompt}]
+
+        # Call OpenRouter API with same model as product conversation
+        llm_result = call_openrouter(
+            messages,
+            model="anthropic/claude-3.5-sonnet",
+            temperature=0.5,
+            max_tokens=800
+        )
+
+        if llm_result.get("success"):
+            answer = llm_result.get("content", "Sorry, I couldn't generate an answer.")
+        else:
+            answer = f"I'm having trouble answering right now. Please try again. (Error: {llm_result.get('error', 'Unknown')})"
 
         # Append Q&A to history
         qa_history = workspace.data.get('qa_history', [])
