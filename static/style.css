@@ -2739,6 +2739,72 @@ ul li, ol li {
     to { transform: rotate(360deg); }
 }
 
+/* Proposed Change Card */
+.proposed-change-card {
+    margin: 16px 0;
+    padding: 16px;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f4ff 100%);
+    border: 2px solid #2048D5;
+    border-radius: 12px;
+    animation: slideIn 0.3s ease;
+}
+
+.proposed-change-header {
+    font-size: 16px;
+    color: #2048D5;
+    margin-bottom: 12px;
+}
+
+.proposed-change-preview {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.change-label {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.change-content {
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-size: 14px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.proposed-change-hint {
+    font-size: 13px;
+    color: #2048D5;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Re-analysis Prompt Card */
+.reanalysis-prompt-card {
+    margin: 16px 0;
+    padding: 16px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    animation: slideIn 0.3s ease;
+}
+
+.reanalysis-prompt-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.reanalysis-prompt-buttons button {
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
 /* Workspace Sidebar */
 .workspace-sidebar {
     display: flex;
