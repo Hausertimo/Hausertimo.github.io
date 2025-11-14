@@ -592,17 +592,30 @@ ul li, ol li {
 }
 
 .pain-icon {
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
     margin: 0 auto var(--spacing-lg);
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #f8f9fa, #ffffff);
     border-radius: 50%;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-md);
     position: relative;
     z-index: 1;
+}
+
+.pain-icon svg {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+}
+
+.metric-card .pain-icon {
+    width: 96px;
+    height: 96px;
+    margin-bottom: var(--spacing-md);
 }
 
 .pain-point-card h3 {
@@ -895,12 +908,15 @@ ul li, ol li {
 .investor-cta-box h3 {
     font-size: var(--font-size-2xl);
     margin-bottom: var(--spacing-md);
+    color: var(--white);
+    font-weight: 700;
 }
 
 .investor-cta-box p {
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-xl);
-    opacity: 0.95;
+    color: var(--white);
+    opacity: 1;
 }
 
 .investor-cta-box .btn {
