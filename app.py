@@ -47,6 +47,7 @@ from routes.analytics import analytics_bp, init_redis as init_analytics_redis, i
 from routes.compliance import compliance_bp, init_dependencies as init_compliance_deps
 from routes.fields import field_bp
 from routes.develope import develope_bp
+from routes.survey import survey_bp
 # NOTE: Old Redis-based workspace_bp removed - now using Supabase workspaces from normscout_auth
 from routes.tracking import init_tracking_routes
 from routes.packages import packages_bp, init_packages_dependencies
@@ -65,6 +66,7 @@ app.register_blueprint(analytics_bp)
 app.register_blueprint(compliance_bp)
 app.register_blueprint(field_bp)
 app.register_blueprint(develope_bp)
+app.register_blueprint(survey_bp)
 app.register_blueprint(packages_bp)
 # Old workspace_bp removed - Supabase workspaces registered via init_supabase_auth() below
 

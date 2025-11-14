@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ error }} - NormScout{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="container" style="text-align: center; padding: 80px 24px;">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" style="margin-bottom: 32px;">
+            <circle cx="60" cy="60" r="55" stroke="#dc2626" stroke-width="4" fill="none"/>
+            <path d="M45 45L75 75M75 45L45 75" stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+
+        <h1 style="font-size: 32px; font-weight: 700; color: #2048D5; margin: 0 0 16px 0;">
+            {{ error }}
+        </h1>
+
+        <p style="font-size: 18px; color: #666666; margin: 0 0 32px 0; max-width: 500px; margin-left: auto; margin-right: auto;">
+            {{ message }}
+        </p>
+
+        <div style="display: flex; gap: 16px; justify-content: center;">
+            <a href="/" class="btn btn-accent">Go Home</a>
+            <a href="/dashboard" class="btn btn-primary">Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

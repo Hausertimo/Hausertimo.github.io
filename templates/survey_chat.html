@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+
+{% block title %}{{ survey.name }} - NormScout Survey{% endblock %}
+
+{% block nav_links %}
+    <a href="/" class="nav-link">Home</a>
+{% endblock %}
+
+{% block content %}
+<div class="survey-chat-container">
+    <div class="survey-chat-wrapper">
+        <!-- Survey Header -->
+        <div class="survey-header">
+            <h1 class="survey-title">{{ survey.name }}</h1>
+            {% if survey.description %}
+            <p class="survey-description">{{ survey.description }}</p>
+            {% endif %}
+            <div class="survey-progress-container">
+                <div class="survey-progress-bar">
+                    <div class="survey-progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <span class="survey-progress-text" id="progressText">0% Complete</span>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="chat-messages-container" id="chatMessages">
+            <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Completion View -->
+        <div class="survey-completion" id="completionView" style="display: none;">
+            <div class="completion-icon">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="32" r="30" stroke="#16a34a" stroke-width="3" fill="none"/>
+                    <path d="M20 32l8 8 16-16" stroke="#16a34a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2 class="completion-title">Survey Complete!</h2>
+            <p class="completion-message" id="completionMessage">Thank you for your responses!</p>
+            <div class="completion-summary" id="completionSummary">
+                <!-- Gathered data will be shown here -->
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="chat-input-container" id="inputContainer">
+            <div class="chat-input-wrapper">
+                <input type="text"
+                       id="userInput"
+                       class="chat-input"
+                       placeholder="Type your response..."
+                       autocomplete="off">
+                <button id="sendBtn" class="send-btn" onclick="sendMessage()">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 2l16 8-16 8V2zm2 3v10l11-5L4 5z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden data -->
+<div id="surveyData"
+     data-survey-id="{{ survey.id }}"
+     data-survey-name="{{ survey.name }}"
+     style="display: none;">
+</div>
+
+<style>
+.survey-chat-container {
+    min-height: 80vh;
+    padding: 48px 24px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.survey-chat-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+}
+
+.survey-header {
+    background: linear-gradient(135deg, #3869FA 0%, #2048D5 100%);
+    color: white;
+    padding: 32px 24px 24px 24px;
+}
+
+.survey-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.survey-description {
+    font-size: 15px;
+    opacity: 0.9;
+    margin: 0 0 20px 0;
+}
+
+.survey-progress-container {
+    margin-top: 20px;
+}
+
+.survey-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.survey-progress-fill {
+    height: 100%;
+    background: white;
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}
+
+.survey-progress-text {
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.chat-messages-container {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    min-height: 400px;
+    max-height: 500px;
+}
+
+.chat-message {
+    margin-bottom: 20px;
+    animation: messageSlideIn 0.3s ease;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-assistant {
+    display: flex;
+    gap: 12px;
+    align-items: start;
+}
+
+.message-user {
+    display: flex;
+    gap: 12px;
+    align-items: start;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.avatar-assistant {
+    background: linear-gradient(135deg, #3869FA 0%, #2048D5 100%);
+    color: white;
+}
+
+.avatar-user {
+    background: #e0e0e0;
+    color: #666666;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.bubble-assistant {
+    background: #f1f3f5;
+    color: #333;
+    border-bottom-left-radius: 4px;
+}
+
+.bubble-user {
+    background: linear-gradient(135deg, #3869FA 0%, #2048D5 100%);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 6px;
+    padding: 12px 16px;
+    background: #f1f3f5;
+    border-radius: 12px;
+    width: fit-content;
+    margin-left: 48px;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #999;
+    animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    30% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+.chat-input-container {
+    padding: 20px 24px;
+    border-top: 1px solid #e0e0e0;
+    background: #f8f9fa;
+}
+
+.chat-input-wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #d0d0d0;
+    border-radius: 24px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+}
+
+.chat-input:focus {
+    outline: none;
+    border-color: #3869FA;
+}
+
+.send-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3869FA 0%, #2048D5 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    flex-shrink: 0;
+}
+
+.send-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(56, 105, 250, 0.3);
+}
+
+.send-btn:active {
+    transform: scale(0.95);
+}
+
+.send-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.survey-completion {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+}
+
+.completion-icon {
+    margin-bottom: 24px;
+}
+
+.completion-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2048D5;
+    margin: 0 0 12px 0;
+}
+
+.completion-message {
+    font-size: 18px;
+    color: #666666;
+    margin: 0 0 32px 0;
+}
+
+.completion-summary {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+}
+
+.completion-summary h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2048D5;
+    margin: 0 0 16px 0;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.data-item:last-child {
+    border-bottom: none;
+}
+
+.data-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.data-value {
+    color: #666666;
+    text-align: right;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .survey-chat-container {
+        padding: 24px 12px;
+    }
+
+    .survey-header {
+        padding: 24px 16px 20px 16px;
+    }
+
+    .survey-title {
+        font-size: 22px;
+    }
+
+    .survey-description {
+        font-size: 14px;
+    }
+
+    .chat-messages-container {
+        padding: 16px;
+    }
+
+    .message-bubble {
+        max-width: 85%;
+    }
+
+    .chat-input-container {
+        padding: 16px;
+    }
+
+    .completion-title {
+        font-size: 26px;
+    }
+
+    .completion-message {
+        font-size: 16px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="/static/js/survey_chat.js" defer></script>
+{% endblock %}

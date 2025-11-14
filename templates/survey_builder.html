@@ -1,0 +1,390 @@
+{% extends "base.html" %}
+
+{% block title %}Survey Builder - NormScout{% endblock %}
+
+{% block nav_links %}
+    <a href="/dashboard" class="nav-link">Dashboard</a>
+    <a href="/surveycreate" class="nav-link">Survey Builder</a>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="container">
+        <!-- Header -->
+        <div class="dashboard-welcome">
+            <div class="welcome-header">
+                <div>
+                    <h1 class="dashboard-title">AI Survey Chat Builder</h1>
+                    <p class="dashboard-subtitle">Create interactive conversational surveys powered by AI</p>
+                </div>
+                <button onclick="showCreateSurvey()" class="btn btn-accent">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M8 2v12M2 8h12"/>
+                    </svg>
+                    Create New Survey
+                </button>
+            </div>
+        </div>
+
+        <!-- Surveys List -->
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M3 3h14v14H3V3zm2 2h10v10H5V5z"/>
+                    </svg>
+                    Your Surveys
+                    <span id="surveyCount" class="count-badge">0</span>
+                </h2>
+            </div>
+
+            <!-- Loading State -->
+            <div id="surveysLoading" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading your surveys...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div id="surveysEmpty" class="empty-state" style="display: none;">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="empty-icon">
+                    <path d="M16 16h32v32H16V16z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M24 28h16M24 36h12" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h3>No surveys yet</h3>
+                <p>Create your first AI-powered survey to get started</p>
+                <button onclick="showCreateSurvey()" class="btn btn-accent">Create Survey</button>
+            </div>
+
+            <!-- Surveys Grid -->
+            <div id="surveysGrid" class="workspaces-grid" style="display: none;">
+                <!-- Survey cards will be inserted here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create/Edit Survey Modal -->
+<div id="surveyModal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
+        <button class="modal-close" onclick="hideSurveyModal()">&times;</button>
+        <div class="modal-header">
+            <h2 id="modalTitle">Create New Survey</h2>
+            <p>Configure your AI-powered conversational survey</p>
+        </div>
+        <div class="modal-body">
+            <form id="surveyForm">
+                <!-- Basic Info -->
+                <div class="form-section">
+                    <h3 style="color: #2048D5; margin-bottom: 16px;">Survey Information</h3>
+
+                    <div class="form-group">
+                        <label for="surveyName">Survey Name *</label>
+                        <input type="text" id="surveyName" class="form-control" placeholder="e.g., Customer Feedback Survey" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surveyDescription">Description</label>
+                        <textarea id="surveyDescription" class="form-control" rows="2" placeholder="Brief description of this survey (optional)"></textarea>
+                    </div>
+                </div>
+
+                <!-- AI Configuration -->
+                <div class="form-section" style="margin-top: 24px;">
+                    <h3 style="color: #2048D5; margin-bottom: 16px;">AI Configuration</h3>
+
+                    <div class="form-group">
+                        <label for="modelSelect">AI Model *</label>
+                        <select id="modelSelect" class="form-control">
+                            <optgroup label="OpenAI">
+                                <option value="openai/gpt-4o" selected>GPT-4o (Best Quality)</option>
+                                <option value="openai/gpt-4o-mini">GPT-4o Mini (Recommended - Fast & Affordable)</option>
+                                <option value="openai/gpt-4-turbo">GPT-4 Turbo</option>
+                                <option value="openai/gpt-3.5-turbo">GPT-3.5 Turbo (Cheapest)</option>
+                            </optgroup>
+                            <optgroup label="Anthropic">
+                                <option value="anthropic/claude-3.5-sonnet">Claude 3.5 Sonnet (Best Conversation)</option>
+                                <option value="anthropic/claude-3-opus">Claude 3 Opus</option>
+                                <option value="anthropic/claude-3-haiku">Claude 3 Haiku (Fast)</option>
+                            </optgroup>
+                            <optgroup label="Google">
+                                <option value="google/gemini-pro">Gemini Pro</option>
+                                <option value="google/gemini-flash-1.5">Gemini Flash 1.5 (Fast)</option>
+                            </optgroup>
+                            <optgroup label="Meta">
+                                <option value="meta-llama/llama-3.1-70b-instruct">Llama 3.1 70B (Free!)</option>
+                                <option value="meta-llama/llama-3.1-8b-instruct">Llama 3.1 8B (Free!)</option>
+                            </optgroup>
+                            <optgroup label="Mistral AI">
+                                <option value="mistralai/mistral-large">Mistral Large</option>
+                                <option value="mistralai/mistral-medium">Mistral Medium</option>
+                                <option value="mistralai/mistral-small">Mistral Small</option>
+                            </optgroup>
+                        </select>
+                        <small style="color: #666666; display: block; margin-top: 4px;">Choose the AI model that will conduct the survey conversations</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="temperatureSlider">Temperature: <span id="temperatureValue">0.7</span></label>
+                        <input type="range" id="temperatureSlider" class="form-range" min="0" max="1" step="0.1" value="0.7" oninput="updateTemperature(this.value)">
+                        <div style="display: flex; justify-content: space-between; margin-top: 4px;">
+                            <small style="color: #666666;">0.0 (Focused)</small>
+                            <small style="color: #666666;">1.0 (Creative)</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="characterPrompt">Character & Personality *</label>
+                        <textarea id="characterPrompt" class="form-control" rows="4" placeholder="e.g., You are Emma, a friendly customer success manager. You're warm, professional, and genuinely interested in understanding the user's experience. Keep conversations natural and conversational." required></textarea>
+                        <small style="color: #666666; display: block; margin-top: 4px;">Define the AI's personality, tone, and how it should interact with users</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surveyExplanation">Survey Purpose (AI Context)</label>
+                        <textarea id="surveyExplanation" class="form-control" rows="3" placeholder="e.g., We're gathering feedback to improve our product and better understand our customers' needs. This helps us prioritize features and improvements."></textarea>
+                        <small style="color: #666666; display: block; margin-top: 4px;">Explain to the AI why you're collecting this data (helps guide the conversation)</small>
+                    </div>
+                </div>
+
+                <!-- Survey Topics -->
+                <div class="form-section" style="margin-top: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <h3 style="color: #2048D5; margin: 0;">Survey Topics</h3>
+                        <button type="button" onclick="addTopic()" class="btn btn-primary" style="font-size: 14px; padding: 8px 16px;">
+                            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 4px;">
+                                <path d="M8 2v12M2 8h12"/>
+                            </svg>
+                            Add Topic
+                        </button>
+                    </div>
+                    <p style="color: #666666; margin-bottom: 16px;">Define what information the AI should gather. Topics are asked in order.</p>
+
+                    <div id="topicsList">
+                        <!-- Topics will be added here -->
+                    </div>
+                </div>
+
+                <!-- Submit Buttons -->
+                <div style="display: flex; gap: 12px; margin-top: 32px; padding-top: 24px; border-top: 1px solid #e0e0e0;">
+                    <button type="submit" class="btn btn-accent" style="flex: 1;">
+                        <span id="submitBtnText">Create Survey</span>
+                    </button>
+                    <button type="button" onclick="hideSurveyModal()" class="btn btn-primary">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- View Survey Details Modal -->
+<div id="viewSurveyModal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 1000px; max-height: 90vh; overflow-y: auto;">
+        <button class="modal-close" onclick="hideViewSurveyModal()">&times;</button>
+        <div class="modal-header">
+            <h2 id="viewSurveyName">Survey Details</h2>
+            <div style="display: flex; gap: 12px; margin-top: 12px;">
+                <button onclick="copySurveyLink()" class="btn btn-accent">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 6px;">
+                        <path d="M6 2h8v8h-2V4H6V2zm-2 4h8v8H4V6z"/>
+                    </svg>
+                    Copy Survey Link
+                </button>
+                <button onclick="editCurrentSurvey()" class="btn btn-primary">Edit</button>
+                <button onclick="toggleSurveyStatus()" class="btn btn-primary" id="toggleStatusBtn">Activate</button>
+                <button onclick="deleteSurvey()" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+        <div class="modal-body" id="viewSurveyContent">
+            <!-- Survey details will be loaded here -->
+        </div>
+    </div>
+</div>
+
+<style>
+.form-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #2048D5;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3869FA;
+    box-shadow: 0 0 0 3px rgba(56, 105, 250, 0.1);
+}
+
+.form-range {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #e0e0e0;
+    outline: none;
+}
+
+.form-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #3869FA;
+    cursor: pointer;
+}
+
+.topic-item {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #d0d0d0;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: start;
+}
+
+.topic-drag-handle {
+    cursor: move;
+    color: #999;
+    padding: 4px;
+}
+
+.topic-fields {
+    flex: 1;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.topic-name-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.topic-mandatory {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.topic-mandatory input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.topic-remove {
+    padding: 6px 12px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.topic-remove:hover {
+    background: #cc0000;
+}
+
+.count-badge {
+    background: #3869FA;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.survey-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.survey-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.survey-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 12px;
+}
+
+.survey-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2048D5;
+    margin: 0;
+}
+
+.survey-status-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.survey-status-active {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.survey-status-inactive {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.survey-card-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: #666666;
+    margin-top: 12px;
+}
+
+.survey-card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+</style>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="/static/js/survey_builder.js" defer></script>
+{% endblock %}
