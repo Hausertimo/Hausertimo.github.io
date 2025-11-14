@@ -461,7 +461,16 @@ def callback():
                     }})
                 }}).then(response => {{
                     if (response.ok) {{
-                        window.location.href = '/dashboard';
+                        // Check if there's a pending teaser session
+                        const hasPendingSession = sessionStorage.getItem('pendingTeaserSession');
+
+                        if (hasPendingSession) {{
+                            // Redirect to homepage to resume product creation
+                            window.location.href = '/';
+                        }} else {{
+                            // Normal redirect to dashboard
+                            window.location.href = '/dashboard';
+                        }}
                     }} else {{
                         document.body.innerHTML = '<p>Login failed. Could not create session.</p>';
                     }}

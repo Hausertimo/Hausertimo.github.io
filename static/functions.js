@@ -1097,6 +1097,12 @@ function addTeaserMessage(role, content) {
  * Show sign in prompt in the chat
  */
 function showSignInPromptInChat() {
+    // Save session ID to sessionStorage so we can resume after login
+    if (teaserSessionId) {
+        sessionStorage.setItem('pendingTeaserSession', teaserSessionId);
+        sessionStorage.setItem('pendingTeaserTimestamp', Date.now().toString());
+    }
+
     // Add message prompting sign-in
     addTeaserMessage('assistant', 'To save your workspace and continue the analysis, please sign in.');
 
@@ -1267,6 +1273,72 @@ async function createWorkspaceFromSession(productName) {
 
 // Legacy functions removed - now using chat-based approach
 
+/**
+ * Resume teaser session after login
+ * Called when user returns to homepage after authentication
+ */
+function resumeTeaserSessionAfterLogin() {
+    // Check if there's a pending teaser session
+    const pendingSessionId = sessionStorage.getItem('pendingTeaserSession');
+    const pendingTimestamp = sessionStorage.getItem('pendingTeaserTimestamp');
+
+    if (!pendingSessionId || !pendingTimestamp) {
+        return; // No pending session
+    }
+
+    // Check if session is not too old (30 minutes max)
+    const sessionAge = Date.now() - parseInt(pendingTimestamp);
+    const MAX_SESSION_AGE = 30 * 60 * 1000; // 30 minutes
+
+    if (sessionAge > MAX_SESSION_AGE) {
+        // Session too old, clear it
+        sessionStorage.removeItem('pendingTeaserSession');
+        sessionStorage.removeItem('pendingTeaserTimestamp');
+        return;
+    }
+
+    // Check if user is logged in
+    const user = getCurrentUser();
+    if (!user) {
+        return; // User not logged in yet, wait for auth to complete
+    }
+
+    // Resume the session!
+    teaserSessionId = pendingSessionId;
+    waitingForWorkspaceName = true;
+
+    // Clear from storage
+    sessionStorage.removeItem('pendingTeaserSession');
+    sessionStorage.removeItem('pendingTeaserTimestamp');
+
+    // Scroll to demo section
+    const demoSection = document.getElementById('demo');
+    if (demoSection) {
+        demoSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Show message asking for workspace name
+    setTimeout(() => {
+        addTeaserMessage('assistant', 'Welcome back! What would you like to name your product?');
+
+        // Update UI
+        const sendBtn = document.getElementById('teaserSendBtn');
+        const input = document.getElementById('teaserProductInput');
+        if (sendBtn) sendBtn.textContent = 'Create';
+        if (input) {
+            input.placeholder = 'e.g., Wall Light 5W';
+            input.disabled = false;
+        }
+
+        // Show input container
+        const inputContainer = document.getElementById('teaserInputContainer');
+        if (inputContainer) inputContainer.style.display = 'flex';
+
+        // Focus input
+        if (input) input.focus();
+    }, 500);
+}
+
 // Allow Enter key to send message in teaser
 document.addEventListener('DOMContentLoaded', function() {
     const teaserInput = document.getElementById('teaserProductInput');
@@ -1278,4 +1350,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Wait for auth check, then try to resume session
+    setTimeout(() => {
+        if (isAuthCheckComplete && isAuthCheckComplete()) {
+            resumeTeaserSessionAfterLogin();
+        } else {
+            // Wait for auth check to complete
+            const checkInterval = setInterval(() => {
+                if (isAuthCheckComplete && isAuthCheckComplete()) {
+                    clearInterval(checkInterval);
+                    resumeTeaserSessionAfterLogin();
+                }
+            }, 100);
+
+            // Stop checking after 5 seconds
+            setTimeout(() => clearInterval(checkInterval), 5000);
+        }
+    }, 100);
 });

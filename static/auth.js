@@ -249,3 +249,16 @@ document.addEventListener('DOMContentLoaded', function() {
     checkAuth();
     initMobileMenu();
 });
+
+/**
+ * Re-check auth when page is restored from bfcache (back/forward button)
+ * This fixes the issue where pressing back button shows "not logged in" UI
+ * even though the user is still authenticated
+ */
+window.addEventListener('pageshow', function(event) {
+    // event.persisted is true when page is loaded from bfcache
+    if (event.persisted) {
+        // Page was restored from cache, re-check auth state
+        checkAuth();
+    }
+});
