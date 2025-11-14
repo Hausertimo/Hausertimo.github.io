@@ -113,12 +113,11 @@ function renderWorkspace() {
         workspaceName.textContent = workspace.name;
     }
 
-    // Product description (with formatting)
+    // Product description (rendered as HTML from backend)
     const productDescription = document.getElementById('productDescription');
     if (productDescription) {
-        const description = workspace.product_description || 'No description available';
-        // Format with line breaks and preserve structure
-        productDescription.innerHTML = formatProductDescription(description);
+        // Use pre-rendered HTML from backend (Markdown → HTML)
+        productDescription.innerHTML = workspace.product_description_html || workspace.product_description || 'No description available';
     }
 
     // Compliance results
@@ -154,9 +153,14 @@ function renderComplianceResults() {
         const description = norm.description || norm.summary || '';
         const confidence = norm.confidence || norm.score || 0;
         const reasoning = norm.reasoning || '';
+        const url = norm.url || norm.link || null;
+
+        // Make the whole card clickable if there's a URL
+        const cardTag = url ? 'a' : 'div';
+        const cardAttrs = url ? `href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="norm-item norm-clickable"` : 'class="norm-item"';
 
         html += `
-            <div class="norm-item">
+            <${cardTag} ${cardAttrs}>
                 <div class="norm-header">
                     <div class="norm-title-row">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="norm-icon">
@@ -165,12 +169,15 @@ function renderComplianceResults() {
                         </svg>
                         <strong class="norm-id">${escapeHtml(normId)}</strong>
                         ${confidence > 0 ? `<span class="confidence-badge confidence-${getConfidenceClass(confidence)}">${Math.round(confidence)}%</span>` : ''}
+                        ${url ? `<svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" class="norm-link-icon" style="margin-left: auto;">
+                            <path d="M11 8v3a2 2 0 01-2 2H3a2 2 0 01-2-2V5a2 2 0 012-2h3M9 1h4v4M6 8l7-7"/>
+                        </svg>` : ''}
                     </div>
                     ${title !== normId ? `<h4 class="norm-title">${escapeHtml(title)}</h4>` : ''}
                 </div>
                 ${description ? `<p class="norm-description">${escapeHtml(description)}</p>` : ''}
                 ${reasoning ? `<p class="norm-reasoning"><em>Why it applies:</em> ${escapeHtml(reasoning)}</p>` : ''}
-            </div>
+            </${cardTag}>
         `;
     });
 
@@ -456,30 +463,6 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
-}
-
-/**
- * Format product description with proper line breaks and structure
- */
-function formatProductDescription(text) {
-    if (!text) return '';
-
-    // Replace line breaks with <br> tags
-    let formatted = escapeHtml(text);
-
-    // Convert double line breaks to paragraph breaks
-    formatted = formatted.replace(/\n\n/g, '</p><p class="desc-paragraph">');
-
-    // Convert single line breaks to <br>
-    formatted = formatted.replace(/\n/g, '<br>');
-
-    // Wrap in paragraph
-    formatted = `<p class="desc-paragraph">${formatted}</p>`;
-
-    // Bold section headers (lines ending with colon)
-    formatted = formatted.replace(/([A-Z][^<\n:]+:)/g, '<strong>$1</strong>');
-
-    return formatted;
 }
 
 /**
