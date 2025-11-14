@@ -997,6 +997,9 @@ async function sendTeaserMessage() {
     addTeaserMessage('user', message);
     input.value = '';
 
+    // Show typing indicator
+    addTeaserTypingIndicator();
+
     // Check if we're waiting for workspace name
     if (waitingForWorkspaceName) {
         // User provided workspace name, create workspace
@@ -1027,6 +1030,9 @@ async function sendTeaserMessage() {
         }
 
         data = await response.json();
+
+        // Remove typing indicator
+        removeTeaserTypingIndicator();
 
         if (data.error) {
             addTeaserMessage('assistant', 'Error: ' + data.error);
@@ -1066,6 +1072,7 @@ async function sendTeaserMessage() {
         }
     } catch (error) {
         console.error('Error:', error);
+        removeTeaserTypingIndicator();
         addTeaserMessage('assistant', 'Sorry, something went wrong. Please try again.');
     } finally {
         // Re-enable input and button
@@ -1091,6 +1098,23 @@ function addTeaserMessage(role, content) {
 
     messagesDiv.appendChild(messageDiv);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function addTeaserTypingIndicator() {
+    const messagesDiv = document.getElementById('teaserChatMessages');
+    const typingDiv = document.createElement('div');
+    typingDiv.id = 'teaserTypingIndicator';
+    typingDiv.className = 'teaser-message teaser-assistant ns-message assistant typing-indicator';
+    typingDiv.innerHTML = `<strong>NormScout AI</strong><p>is typing...</p>`;
+    messagesDiv.appendChild(typingDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function removeTeaserTypingIndicator() {
+    const typingDiv = document.getElementById('teaserTypingIndicator');
+    if (typingDiv) {
+        typingDiv.remove();
+    }
 }
 
 /**
