@@ -81,6 +81,10 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
+.ns-message.user p {
+    color: white;
+}
+
 /* Assistant Message (Light Gray) */
 .ns-message.assistant {
     background: #f9fafb;

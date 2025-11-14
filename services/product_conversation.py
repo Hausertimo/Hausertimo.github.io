@@ -210,7 +210,8 @@ def answer_analysis_question(
     product_description: str,
     matched_norms: list,
     all_norms: list,
-    question: str
+    question: str,
+    qa_history: list = None
 ) -> dict:
     """
     Answer user questions about completed compliance analysis.
@@ -220,6 +221,7 @@ def answer_analysis_question(
         matched_norms: Norms that applied (confidence > threshold)
         all_norms: ALL norm check results including rejected ones
         question: User's question about the analysis
+        qa_history: Previous Q&A pairs for conversation context
 
     Returns:
         {
@@ -238,7 +240,7 @@ def answer_analysis_question(
     matched_context = json.dumps(matched_norms[:20], indent=2) if len(matched_norms) > 0 else "None"
     rejected_context = json.dumps(rejected_norms[:10], indent=2) if len(rejected_norms) > 0 else "None"
 
-    prompt = f"""You are an EU compliance expert. Answer the user's question about this product's compliance analysis.
+    system_prompt = f"""You are an EU compliance expert helping users understand and optimize their product's compliance requirements.
 
 PRODUCT:
 {product_description}
@@ -249,28 +251,44 @@ APPLICABLE NORMS ({len(matched_norms)} total):
 REJECTED NORMS ({len(rejected_norms)} total, showing first 10):
 {rejected_context}
 
-USER QUESTION:
-{question}
-
-INSTRUCTIONS:
+YOUR ROLE:
 - Provide clear, accurate answers based on the analysis results
 - Reference specific norms by their ID (e.g., "EN 62368-1") when relevant
 - If asked "why", quote the reasoning field from the norm analysis
 - If asked about consequences, explain legal/business implications
 - If asked about missing norms, check the rejected list
-- Be concise but thorough (2-4 paragraphs max)
-- Use bullet points for multi-part answers
-- Provide actionable guidance when appropriate
 
-ANSWER:"""
+HELPING USERS REDUCE COMPLIANCE BURDEN (LEGITIMATELY):
+- When users ask about reducing applicable norms, suggest LEGITIMATE design changes:
+  * "You could reduce voltage from X to Y to avoid needing Z certification"
+  * "Dropping the current to X would exempt you from norm Y"
+  * "Changing from AC to DC power might eliminate several electrical safety requirements"
+  * "Using materials rated below X temperature can simplify fire safety testing"
+  * "Reducing wireless transmission power below X can avoid RF exposure testing"
+- NEVER suggest circumventing or cheating on requirements
+- ALWAYS explain the trade-offs (e.g., reduced functionality, market limitations)
+- Make it clear these are design optimization strategies, not compliance shortcuts
+- Be helpful and solution-oriented while maintaining safety and legal integrity
 
-    messages = [{"role": "user", "content": prompt}]
+Be concise but thorough (2-4 paragraphs max). Use bullet points for multi-part answers. Provide actionable guidance."""
+
+    # Build message history with system prompt + previous Q&A + new question
+    messages = [{"role": "system", "content": system_prompt}]
+
+    # Add previous conversation history if available
+    if qa_history:
+        for qa in qa_history[-5:]:  # Last 5 Q&A pairs to stay within token limits
+            messages.append({"role": "user", "content": qa.get("question", "")})
+            messages.append({"role": "assistant", "content": qa.get("answer", "")})
+
+    # Add current question
+    messages.append({"role": "user", "content": question})
 
     result = call_openrouter(
         messages,
         model="anthropic/claude-3.5-sonnet",
-        temperature=0.5,
-        max_tokens=800
+        temperature=0.7,  # Slightly higher for more creative suggestions
+        max_tokens=1000  # Increased for more detailed answers
     )
 
     if not result["success"]:

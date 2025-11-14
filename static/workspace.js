@@ -586,11 +586,74 @@ async function saveProductDescription(newDescription) {
 
         workspace.product_description = newDescription;
 
+        // Prompt user to re-run analysis since product changed
+        const shouldReanalyze = confirm(
+            'Product description updated! Would you like to re-run the compliance analysis with the new description?\n\n' +
+            'Click OK to re-analyze now, or Cancel to keep the existing analysis.'
+        );
+
+        if (shouldReanalyze) {
+            await reAnalyzeCompliance();
+        } else {
+            // Add a note in the chat that analysis might be outdated
+            addChatMessage('assistant',
+                '⚠️ Note: Your product description has been updated, but the compliance analysis is based on the previous version. ' +
+                'You may want to re-analyze to ensure the norms match your current product. Ask me "Can you re-analyze my product?" to run a fresh analysis.'
+            );
+        }
+
     } catch (error) {
         console.error('Error saving description:', error);
         alert('Failed to save description. Please try again.');
         // Reload to revert changes
         await loadWorkspace();
+    }
+}
+
+/**
+ * Re-analyze product compliance after description changes
+ */
+async function reAnalyzeCompliance() {
+    // Show loading state in chat
+    addChatMessage('assistant', 'Re-analyzing your product for compliance requirements...');
+
+    try {
+        // Call backend to trigger re-analysis
+        const response = await fetch(`/api/workspaces/${workspaceId}/reanalyze`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'}
+        });
+
+        if (!response.ok) {
+            throw new Error('Re-analysis failed');
+        }
+
+        const data = await response.json();
+
+        // Update workspace with new analysis
+        workspace.matched_norms = data.matched_norms;
+        workspace.analysis = data.analysis;
+
+        // Re-render compliance results
+        renderComplianceResults();
+
+        // Notify success in chat
+        addChatMessage('assistant',
+            `✅ Re-analysis complete! Found ${data.matched_norms.length} applicable compliance norms based on your updated product description.`
+        );
+
+        // Update norms count
+        const normsCountEl = document.getElementById('normsCount');
+        if (normsCountEl) {
+            normsCountEl.textContent = `${data.matched_norms.length}`;
+        }
+
+    } catch (error) {
+        console.error('Error re-analyzing:', error);
+        addChatMessage('assistant',
+            '⚠️ Sorry, I encountered an error while re-analyzing your product. Please try again or ask me a question about your current analysis.'
+        );
     }
 }
 

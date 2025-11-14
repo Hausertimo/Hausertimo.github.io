@@ -325,13 +325,15 @@ def ask_about_analysis():
         product_description = session_data.get("product_description", "")
         matched_norms = session_data.get("matched_norms", [])
         all_norm_results = session_data.get("all_norm_results", [])
+        qa_history = session_data.get("qa_history", [])
 
-        # Call Q&A function
+        # Call Q&A function with chat history for context
         result = answer_analysis_question(
             product_description=product_description,
             matched_norms=matched_norms,
             all_norms=all_norm_results,
-            question=question
+            question=question,
+            qa_history=qa_history
         )
 
         # Store Q&A in history
