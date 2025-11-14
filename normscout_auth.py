@@ -441,6 +441,10 @@ def callback():
                 </html>
             """), 500
 
+        # Get redirect URL from session (set during login initiation)
+        from flask import session as flask_session
+        redirect_url = flask_session.get('auth_redirect', '/dashboard')
+
         # Return HTML that sets the cookie and redirects
         html = f"""
         <!DOCTYPE html>
@@ -461,6 +465,7 @@ def callback():
                     }})
                 }}).then(response => {{
                     if (response.ok) {{
+                        window.location.href = '{redirect_url}';
                         // Check if there's a pending teaser session
                         const hasPendingSession = sessionStorage.getItem('pendingTeaserSession');
 

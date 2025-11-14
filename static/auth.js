@@ -116,14 +116,16 @@ function hideLoginModal() {
  * Login with Google
  */
 function loginWithGoogle() {
-    window.location.href = '/auth/login/google';
+    const redirectTo = localStorage.getItem('redirectAfterLogin') || '/dashboard';
+    window.location.href = `/auth/login/google?redirect_to=${encodeURIComponent(redirectTo)}`;
 }
 
 /**
  * Login with GitHub
  */
 function loginWithGitHub() {
-    window.location.href = '/auth/login/github';
+    const redirectTo = localStorage.getItem('redirectAfterLogin') || '/dashboard';
+    window.location.href = `/auth/login/github?redirect_to=${encodeURIComponent(redirectTo)}`;
 }
 
 /**

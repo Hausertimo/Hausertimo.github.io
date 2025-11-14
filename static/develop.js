@@ -284,6 +284,10 @@ async function createWorkspaceFromDevelop() {
 
         if (progressText) progressText.textContent = 'Complete! Redirecting...';
 
+        // Clear session from localStorage since we're done with it
+        localStorage.removeItem('teaserSessionId');
+        localStorage.removeItem('redirectAfterLogin');
+
         // Redirect to workspace after a short delay
         setTimeout(() => {
             window.location.href = `/workspace/${data.workspace.id}`;
@@ -302,6 +306,77 @@ async function createWorkspaceFromDevelop() {
         if (progressBar) progressBar.style.width = '0%';
         if (progressText) progressText.textContent = 'Analyzing...';
         if (workspaceNameContainer) workspaceNameContainer.style.display = 'flex';
+    }
+}
+
+/**
+ * Restore session from localStorage if available
+ */
+async function restoreSession() {
+    const savedSessionId = localStorage.getItem('teaserSessionId');
+
+    if (!savedSessionId) {
+        return; // No saved session
+    }
+
+    try {
+        // Fetch session data
+        const response = await fetch(`/api/develope/session/${savedSessionId}`, {
+            credentials: 'include'
+        });
+
+        if (!response.ok) {
+            // Session not found or expired, clear localStorage
+            localStorage.removeItem('teaserSessionId');
+            localStorage.removeItem('redirectAfterLogin');
+            return;
+        }
+
+        const sessionData = await response.json();
+
+        // Restore session ID
+        developSessionId = savedSessionId;
+
+        // Display conversation history
+        if (sessionData.history && sessionData.history.length > 0) {
+            // Clear the welcome message
+            const messagesDiv = document.getElementById('developChatMessages');
+            messagesDiv.innerHTML = '';
+
+            // Add all messages from history
+            sessionData.history.forEach(msg => {
+                addDevelopMessage(msg.role === 'user' ? 'user' : 'assistant', msg.content);
+            });
+        }
+
+        // If conversation was complete, show workspace name input
+        if (sessionData.conversation_complete || sessionData.matched_norms) {
+            waitingForWorkspaceName = true;
+
+            // Hide the chat input container
+            const inputContainer = document.getElementById('developInputContainer');
+            if (inputContainer) {
+                inputContainer.style.display = 'none';
+            }
+
+            // Show workspace name input
+            const workspaceNameContainer = document.getElementById('developWorkspaceNameContainer');
+            if (workspaceNameContainer) {
+                workspaceNameContainer.style.display = 'flex';
+            }
+
+            // Add a message prompting for workspace name
+            addDevelopMessage('assistant', 'Welcome back! What would you like to name your workspace?');
+        }
+
+        // Clear the redirect flag
+        localStorage.removeItem('redirectAfterLogin');
+
+    } catch (error) {
+        console.error('Error restoring session:', error);
+        // Clear invalid session
+        localStorage.removeItem('teaserSessionId');
+        localStorage.removeItem('redirectAfterLogin');
     }
 }
 
@@ -326,4 +401,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Restore session if available
+    restoreSession();
 });

@@ -1040,6 +1040,8 @@ async function sendTeaserMessage() {
             // Store session ID for handoff (only on first message)
             if (data.session_id) {
                 teaserSessionId = data.session_id;
+                // Persist to localStorage for session recovery after login
+                localStorage.setItem('teaserSessionId', data.session_id);
             }
 
             // Add AI response
@@ -1129,6 +1131,9 @@ function showSignInPromptInChat() {
 
     // Add message prompting sign-in
     addTeaserMessage('assistant', 'To save your workspace and continue the analysis, please sign in.');
+
+    // Store flag to redirect to /develop after login
+    localStorage.setItem('redirectAfterLogin', '/develop');
 
     // Show sign in button in the continue container
     const continueContainer = document.getElementById('teaserContinueContainer');
@@ -1272,6 +1277,10 @@ async function createWorkspaceFromSession(productName) {
         addTeaserMessage('assistant', `Perfect! "${productName}" has been created with ${analysisResults.total_norms} compliance norms. Redirecting...`);
 
         if (progressText) progressText.textContent = 'Complete! Redirecting...';
+
+        // Clear session from localStorage since we're done with it
+        localStorage.removeItem('teaserSessionId');
+        localStorage.removeItem('redirectAfterLogin');
 
         // Redirect to workspace after a short delay
         setTimeout(() => {
