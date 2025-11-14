@@ -19,6 +19,30 @@ logger = logging.getLogger(__name__)
 workspace_bp = Blueprint('workspace', __name__)
 
 
+def detect_user_confirmation(question: str) -> bool:
+    """Detect if user is confirming a proposed change"""
+    question_lower = question.lower().strip()
+
+    # Positive confirmations
+    affirmative_patterns = [
+        'yes', 'yep', 'yeah', 'sure', 'ok', 'okay', 'apply', 'apply it',
+        'do it', 'make the change', 'go ahead', 'proceed', 'confirm',
+        'apply the change', 'apply changes', 'make it', 'change it',
+        'sounds good', 'looks good', 'perfect', 'correct', 'right'
+    ]
+
+    # Check for exact matches or if question starts with these
+    for pattern in affirmative_patterns:
+        if question_lower == pattern or question_lower.startswith(pattern + ' '):
+            return True
+
+    # Check if question is very short and affirmative
+    if len(question_lower) <= 10 and any(word in question_lower for word in ['yes', 'ok', 'sure', 'yep']):
+        return True
+
+    return False
+
+
 @workspace_bp.route('/workspace/<workspace_id>')
 def workspace_page(workspace_id):
     """
@@ -134,6 +158,47 @@ def api_workspace_ask(workspace_id):
         all_norm_results = workspace['analysis']['all_results']
         qa_history = workspace.get('qa_history', [])
 
+        # Check if user is confirming a pending product change
+        pending_change = workspace.get('pending_product_change')
+        if pending_change and detect_user_confirmation(question):
+            # User confirmed! Apply the change
+            old_description = workspace['product']['description']
+            new_description = pending_change['proposed_description']
+
+            # Store in history for undo
+            if 'description_history' not in workspace:
+                workspace['description_history'] = []
+            workspace['description_history'].append({
+                'description': old_description,
+                'timestamp': datetime.now().isoformat(),
+                'changed_by': 'ai_proposal'
+            })
+
+            # Apply change
+            workspace['product']['description'] = new_description
+            workspace['pending_product_change'] = None  # Clear pending
+
+            # Store confirmation in Q&A
+            if 'qa_history' not in workspace:
+                workspace['qa_history'] = []
+            workspace['qa_history'].append({
+                "question": question,
+                "answer": "✅ I've updated your product description. Would you like me to re-analyze the compliance norms now?",
+                "timestamp": datetime.now().isoformat()
+            })
+
+            update_workspace(redis_client, workspace_id, workspace)
+
+            return jsonify({
+                "qa": {
+                    "question": question,
+                    "answer": "✅ I've updated your product description. Would you like me to re-analyze the compliance norms now?"
+                },
+                "change_applied": True,
+                "new_description": new_description,
+                "prompt_reanalysis": True
+            })
+
         # Call Q&A function with chat history for context
         result = answer_analysis_question(
             product_description=product_description,
@@ -142,6 +207,13 @@ def api_workspace_ask(workspace_id):
             question=question,
             qa_history=qa_history
         )
+
+        # If AI proposed a product change, store it as pending
+        if result.get('proposed_description'):
+            workspace['pending_product_change'] = {
+                'proposed_description': result['proposed_description'],
+                'timestamp': datetime.now().isoformat()
+            }
 
         # Store Q&A in workspace history
         if 'qa_history' not in workspace:
@@ -156,9 +228,9 @@ def api_workspace_ask(workspace_id):
         # Update workspace
         update_workspace(redis_client, workspace_id, workspace)
 
-        logger.info(f"Q&A for workspace {workspace_id}: question_length={len(question)}")
+        logger.info(f"Q&A for workspace {workspace_id}: question_length={len(question)}, proposed_change={result.get('proposed_description') is not None}")
 
-        return jsonify(result)
+        return jsonify({"qa": {"question": question, "answer": result["answer"]}, **{k: v for k, v in result.items() if k != 'answer'}})
 
     except Exception as e:
         logger.exception(f"Error in workspace Q&A: {e}")

@@ -270,17 +270,45 @@ HELPING USERS REDUCE COMPLIANCE BURDEN (LEGITIMATELY):
 - Make it clear these are design optimization strategies, not compliance shortcuts
 - Be helpful and solution-oriented while maintaining safety and legal integrity
 
+MODIFYING PRODUCT SPECIFICATIONS:
+When users ask to change/modify their product (e.g., "Can you change the voltage to 3.3V?", "Reduce current to 1A", "Make it DC instead of AC"):
+
+1. PROPOSE THE CHANGE clearly and explicitly:
+   - State what will change (e.g., "I can change the output current from 2.0A to 1.0A")
+   - List technical implications (voltage, power, electrical characteristics)
+   - Explain compliance impact (which norms might drop off or apply)
+   - Mention functional trade-offs (compatibility, performance, market)
+
+2. GENERATE THE NEW DESCRIPTION:
+   Create the COMPLETE updated product description with the changes applied.
+   Format it using this EXACT pattern at the end of your response:
+
+   ---NEW_DESCRIPTION---
+   [Write the complete updated product description here, with all changes applied]
+   ---END_DESCRIPTION---
+
+3. ASK FOR CONFIRMATION:
+   End with: "Would you like me to apply these changes to your product?"
+
+4. AFTER USER CONFIRMS (user says "yes", "apply it", "do it", "make the change", "go ahead"):
+   Say: "✅ I've updated your product description. Would you like me to re-analyze the compliance norms now?"
+
+IMPORTANT FORMATTING RULES:
+- Only include ---NEW_DESCRIPTION--- block when proposing a specific product modification
+- Make the new description COMPLETE, not just the changed parts
+- Always ask for confirmation before considering the change applied
+- Be conversational and natural - this is a dialogue, not a form
+
 Be concise but thorough (2-4 paragraphs max). Use bullet points for multi-part answers. Provide actionable guidance."""
 
     # Build message history with system prompt + previous Q&A + new question
     messages = [{"role": "system", "content": system_prompt}]
 
-    # Add previous conversation history if available
+    # Add previous conversation history if available (increased to 10 pairs for better context)
     if qa_history:
-        for qa in qa_history[-5:]:  # Last 5 Q&A pairs to stay within token limits
+        for qa in qa_history[-10:]:  # Last 10 Q&A pairs for better conversation tracking
             messages.append({"role": "user", "content": qa.get("question", "")})
             messages.append({"role": "assistant", "content": qa.get("answer", "")})
-
     # Add current question
     messages.append({"role": "user", "content": question})
 
@@ -299,18 +327,35 @@ Be concise but thorough (2-4 paragraphs max). Use bullet points for multi-part a
             "confidence": 0
         }
 
-    # Extract norm IDs mentioned in the answer
+    # Extract answer text
     answer_text = result["content"]
-    relevant_norms = []
 
-    # Simple extraction: look for norm IDs in format "XX XXXXX" or "XX-XXXXX"
+    # Check if AI proposed a product modification
     import re
+    proposed_description = None
+    clean_answer = answer_text
+
+    desc_match = re.search(r'---NEW_DESCRIPTION---(.*?)---END_DESCRIPTION---', answer_text, re.DOTALL)
+    if desc_match:
+        proposed_description = desc_match.group(1).strip()
+        # Remove the description block from the display answer (user will see it in UI)
+        clean_answer = re.sub(r'---NEW_DESCRIPTION---.*?---END_DESCRIPTION---', '', answer_text, flags=re.DOTALL).strip()
+        logger.info(f"AI proposed product modification: {len(proposed_description)} chars")
+
+    # Extract norm IDs mentioned in the answer
+    relevant_norms = []
     norm_pattern = r'\b[A-Z]{2}[\s\-]?\d{4,5}[\-\d]*\b'
     found_ids = re.findall(norm_pattern, answer_text)
     relevant_norms = list(set(found_ids))  # Remove duplicates
 
-    return {
-        "answer": answer_text,
+    response = {
+        "answer": clean_answer,
         "relevant_norms": relevant_norms,
         "confidence": 85  # High confidence for factual Q&A based on analysis
     }
+
+    # Include proposed description if present
+    if proposed_description:
+        response["proposed_description"] = proposed_description
+
+    return response

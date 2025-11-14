@@ -333,6 +333,26 @@ async function askQuestion() {
         // Add AI response to chat
         addChatMessage('assistant', data.qa.answer);
 
+        // Check if AI proposed a product change
+        if (data.proposed_description) {
+            showProposedChange(data.proposed_description);
+        }
+
+        // Check if change was applied
+        if (data.change_applied) {
+            // Update product description display
+            workspace.product.description = data.new_description;
+            const descEl = document.getElementById('productDescription');
+            if (descEl) {
+                descEl.innerHTML = escapeHtml(data.new_description);
+            }
+
+            // Show re-analysis prompt if requested
+            if (data.prompt_reanalysis) {
+                showReanalysisPrompt();
+            }
+        }
+
         // Update sidebar info
         renderSidebarInfo();
 
@@ -608,6 +628,80 @@ async function saveProductDescription(newDescription) {
         // Reload to revert changes
         await loadWorkspace();
     }
+}
+
+/**
+ * Show proposed product change in chat with preview
+ */
+function showProposedChange(newDescription) {
+    const messagesEl = document.getElementById('chatMessages');
+    if (!messagesEl) return;
+
+    const changeCard = document.createElement('div');
+    changeCard.className = 'proposed-change-card';
+    changeCard.innerHTML = `
+        <div class="proposed-change-header">
+            <strong>📝 Proposed Product Update</strong>
+        </div>
+        <div class="proposed-change-preview">
+            <div class="change-label">New Description:</div>
+            <div class="change-content">${escapeHtml(newDescription)}</div>
+        </div>
+        <div class="proposed-change-hint">
+            💡 Just type "yes" or "apply it" to confirm this change
+        </div>
+    `;
+
+    messagesEl.appendChild(changeCard);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+/**
+ * Show re-analysis prompt with quick action buttons
+ */
+function showReanalysisPrompt() {
+    const messagesEl = document.getElementById('chatMessages');
+    if (!messagesEl) return;
+
+    const promptCard = document.createElement('div');
+    promptCard.className = 'reanalysis-prompt-card';
+    promptCard.innerHTML = `
+        <div class="reanalysis-prompt-buttons">
+            <button class="btn btn-accent btn-small" onclick="triggerReanalysisFromPrompt()">
+                🔄 Yes, Re-analyze Now
+            </button>
+            <button class="btn btn-secondary btn-small" onclick="dismissReanalysisPrompt()">
+                Later
+            </button>
+        </div>
+    `;
+
+    messagesEl.appendChild(promptCard);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+/**
+ * Trigger re-analysis from quick action button
+ */
+async function triggerReanalysisFromPrompt() {
+    // Remove the prompt card
+    const promptCard = document.querySelector('.reanalysis-prompt-card');
+    if (promptCard) promptCard.remove();
+
+    // Trigger re-analysis
+    await reAnalyzeCompliance();
+}
+
+/**
+ * Dismiss re-analysis prompt
+ */
+function dismissReanalysisPrompt() {
+    const promptCard = document.querySelector('.reanalysis-prompt-card');
+    if (promptCard) promptCard.remove();
+
+    addChatMessage('assistant',
+        '👍 No problem! You can always ask me to "re-analyze" later when you\'re ready.'
+    );
 }
 
 /**
