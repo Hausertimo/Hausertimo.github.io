@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimations();
     initializeEnhancedFormInteractions();
     initializeVisitorCounter();
+    initializeDemoSuggestions();
 });
 
 // Visitor Counter Functionality
@@ -52,30 +53,36 @@ function initializeVisitorCounter() {
         if (usersElement && usersElement.textContent === '...' && data.total_signups !== undefined) {
             usersElement.textContent = data.total_signups.toLocaleString();
         }
-
-        // Update investment section stats (same data, different location)
-        const investmentNormsElement = document.getElementById('investment-norms-count');
-        if (investmentNormsElement && data.norms_cataloged !== undefined) {
-            investmentNormsElement.textContent = data.norms_cataloged.toLocaleString() + '+';
-        }
-
-        const investmentProductsElement = document.getElementById('investment-products-count');
-        if (investmentProductsElement && data.products_searched !== undefined) {
-            investmentProductsElement.textContent = data.products_searched.toLocaleString();
-        }
-
-        const investmentUsersElement = document.getElementById('investment-users-count');
-        if (investmentUsersElement && data.total_signups !== undefined) {
-            investmentUsersElement.textContent = data.total_signups.toLocaleString();
-        }
     })
     .catch(error => {
         console.log('Metrics unavailable:', error);
         document.getElementById('products-searched-count').textContent = '---';
         document.getElementById('norms-scouted-count').textContent = '---';
-        document.getElementById('investment-norms-count').textContent = '---';
-        document.getElementById('investment-products-count').textContent = '---';
-        document.getElementById('investment-users-count').textContent = '---';
+    });
+}
+
+// Demo suggestion chips functionality
+function initializeDemoSuggestions() {
+    const suggestionChips = document.querySelectorAll('.suggestion-chip');
+    const userInput = document.getElementById('teaserProductInput');
+    const sendButton = document.getElementById('teaserSendBtn');
+
+    suggestionChips.forEach(chip => {
+        chip.addEventListener('click', function() {
+            const suggestion = this.getAttribute('data-suggestion');
+            if (userInput && suggestion) {
+                userInput.value = suggestion;
+                userInput.focus();
+
+                // Optionally auto-submit after clicking suggestion
+                if (sendButton) {
+                    // Add a small delay so user can see the text populated
+                    setTimeout(() => {
+                        sendButton.click();
+                    }, 300);
+                }
+            }
+        });
     });
 }
 
@@ -275,39 +282,6 @@ function updateMetricsDisplay() {
                 // Slower animation for bigger numbers (2-3 seconds based on increment)
                 const duration = Math.min(2000 + (increment * 50), 3000);
                 animateCounterWithPlus(normsElement, currentValue, data.norms_cataloged, duration);
-            }
-        }
-
-        // Also update investment section stats with animations
-        const investmentProductsElement = document.getElementById('investment-products-count');
-        if (investmentProductsElement && data.products_searched !== undefined) {
-            const currentText = investmentProductsElement.textContent.replace(/,/g, '');
-            const currentValue = parseInt(currentText) || 0;
-
-            if (data.products_searched > currentValue) {
-                animateCounter(investmentProductsElement, currentValue, data.products_searched, 800);
-            }
-        }
-
-        const investmentNormsElement = document.getElementById('investment-norms-count');
-        if (investmentNormsElement && data.norms_cataloged !== undefined) {
-            const currentText = investmentNormsElement.textContent.replace('+', '').replace(/,/g, '');
-            const currentValue = parseInt(currentText) || 0;
-
-            if (data.norms_cataloged > currentValue) {
-                const increment = data.norms_cataloged - currentValue;
-                const duration = Math.min(2000 + (increment * 50), 3000);
-                animateCounterWithPlus(investmentNormsElement, currentValue, data.norms_cataloged, duration);
-            }
-        }
-
-        const investmentUsersElement = document.getElementById('investment-users-count');
-        if (investmentUsersElement && data.total_signups !== undefined) {
-            const currentText = investmentUsersElement.textContent.replace(/,/g, '');
-            const currentValue = parseInt(currentText) || 0;
-
-            if (data.total_signups > currentValue) {
-                animateCounter(investmentUsersElement, currentValue, data.total_signups, 800);
             }
         }
     })
