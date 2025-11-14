@@ -1045,15 +1045,15 @@ async function sendTeaserMessage() {
                 const user = getCurrentUser();
 
                 if (user) {
-                    // User is logged in, prepare for workspace name
+                    // User is logged in, prepare for product name
                     waitingForWorkspaceName = true;
 
-                    // Add a clear follow-up prompt for workspace name
-                    addTeaserMessage('assistant', 'What would you like to name your workspace?');
+                    // Add a clear follow-up prompt for product name
+                    addTeaserMessage('assistant', 'What would you like to name your product?');
 
                     // Update UI state
                     sendBtn.textContent = 'Create';
-                    input.placeholder = 'e.g., Wall Light Project';
+                    input.placeholder = 'e.g., Wall Light 5W';
                 } else {
                     // User not logged in, show sign in prompt
                     showSignInPromptInChat();
@@ -1083,7 +1083,8 @@ async function sendTeaserMessage() {
 function addTeaserMessage(role, content) {
     const messagesDiv = document.getElementById('teaserChatMessages');
     const messageDiv = document.createElement('div');
-    messageDiv.className = `teaser-message teaser-${role}`;
+    // Add both old and new classes for styling compatibility
+    messageDiv.className = `teaser-message teaser-${role} ns-message ${role}`;
 
     const label = role === 'user' ? 'You' : 'NormScout AI';
     messageDiv.innerHTML = `<strong>${label}</strong><p>${content}</p>`;
@@ -1120,7 +1121,7 @@ function showSignInPromptInChat() {
 /**
  * Create workspace from teaser session
  */
-async function createWorkspaceFromSession(workspaceName) {
+async function createWorkspaceFromSession(productName) {
     if (!teaserSessionId) {
         addTeaserMessage('assistant', 'Sorry, I couldn\'t find your session. Please refresh and try again.');
         waitingForWorkspaceName = false;
@@ -1132,16 +1133,24 @@ async function createWorkspaceFromSession(workspaceName) {
         return;
     }
 
-    const sendBtn = document.getElementById('teaserSendBtn');
+    // Get UI elements
+    const inputContainer = document.getElementById('teaserInputContainer');
+    const progressBtn = document.getElementById('teaserProgressBtn');
+    const progressBar = document.getElementById('teaserProgressBar');
+    const progressText = document.getElementById('teaserProgressText');
 
     try {
         // Step 1: Run the norm analysis
         addTeaserMessage('assistant', 'Analyzing your product for compliance requirements...');
 
-        if (sendBtn) {
-            sendBtn.disabled = true;
-            sendBtn.textContent = 'Analyzing...';
+        // Hide input, show progress button
+        if (inputContainer) inputContainer.style.display = 'none';
+        if (progressBtn) {
+            progressBtn.style.display = 'block';
+            progressBtn.classList.add('analyzing');
         }
+        if (progressText) progressText.textContent = 'Starting analysis...';
+        if (progressBar) progressBar.style.width = '0%';
 
         // Connect to analysis stream
         const eventSource = new EventSource(`/api/develope/analyze-stream?session_id=${teaserSessionId}`);
@@ -1154,17 +1163,17 @@ async function createWorkspaceFromSession(workspaceName) {
                 const data = JSON.parse(event.data);
 
                 if (data.phase === 'analyzing') {
-                    // Update with progress
+                    // Update the beautiful animated progress bar!
                     const progress = Math.round((data.progress / data.total) * 100);
-                    if (sendBtn) {
-                        sendBtn.textContent = `Analyzing... ${progress}%`;
-                    }
+                    if (progressBar) progressBar.style.width = `${progress}%`;
+                    if (progressText) progressText.textContent = `Analyzing compliance norms... ${progress}%`;
                 }
                 else if (data.phase === 'complete') {
                     // Analysis done!
                     analysisComplete = true;
                     analysisResults = data;
                     eventSource.close();
+                    if (progressBar) progressBar.style.width = '100%';
                     resolve();
                 }
                 else if (data.phase === 'error') {
@@ -1184,11 +1193,9 @@ async function createWorkspaceFromSession(workspaceName) {
         }
 
         // Step 2: Create workspace with analysis results
-        addTeaserMessage('assistant', `Found ${analysisResults.total_norms} relevant compliance norms! Creating your workspace...`);
+        addTeaserMessage('assistant', `Found ${analysisResults.total_norms} relevant compliance norms! Creating your project...`);
 
-        if (sendBtn) {
-            sendBtn.textContent = 'Creating...';
-        }
+        if (progressText) progressText.textContent = 'Creating project...';
 
         // Get session data (now includes analysis results)
         const sessionResponse = await fetch(`/api/develope/session/${teaserSessionId}`, {
@@ -1208,8 +1215,8 @@ async function createWorkspaceFromSession(workspaceName) {
             headers: {'Content-Type': 'application/json'},
             credentials: 'include',
             body: JSON.stringify({
-                name: workspaceName,
-                product_description: sessionData.product_description || sessionData.history?.[0]?.content || workspaceName,
+                name: productName,
+                product_description: sessionData.product_description || sessionData.history?.[0]?.content || productName,
                 matched_norms: sessionData.matched_norms || [],
                 all_results: sessionData.all_norm_results || {}
             })
@@ -1220,18 +1227,19 @@ async function createWorkspaceFromSession(workspaceName) {
         if (!response.ok) {
             if (data.limit_exceeded) {
                 addTeaserMessage('assistant', `Sorry, ${data.error}`);
+                // Reset UI
+                if (progressBtn) progressBtn.style.display = 'none';
+                if (inputContainer) inputContainer.style.display = 'flex';
                 waitingForWorkspaceName = false;
-                if (sendBtn) {
-                    sendBtn.disabled = false;
-                    sendBtn.textContent = 'Send';
-                }
                 return;
             }
-            throw new Error(data.error || 'Failed to create workspace');
+            throw new Error(data.error || 'Failed to create project');
         }
 
         // Success! Show confirmation and redirect
-        addTeaserMessage('assistant', `Perfect! Your workspace "${workspaceName}" has been created with ${analysisResults.total_norms} compliance norms. Redirecting...`);
+        addTeaserMessage('assistant', `Perfect! "${productName}" has been created with ${analysisResults.total_norms} compliance norms. Redirecting...`);
+
+        if (progressText) progressText.textContent = 'Complete! Redirecting...';
 
         // Redirect to workspace after a short delay
         setTimeout(() => {
@@ -1239,15 +1247,16 @@ async function createWorkspaceFromSession(workspaceName) {
         }, 1500);
 
     } catch (error) {
-        console.error('Error creating workspace:', error);
+        console.error('Error creating project:', error);
         addTeaserMessage('assistant', `Oops! Something went wrong: ${error.message}. Please try again.`);
 
-        // Reset state
-        waitingForWorkspaceName = false;
-        if (sendBtn) {
-            sendBtn.disabled = false;
-            sendBtn.textContent = 'Send';
+        // Reset UI state
+        if (progressBtn) {
+            progressBtn.style.display = 'none';
+            progressBtn.classList.remove('analyzing');
         }
+        if (inputContainer) inputContainer.style.display = 'flex';
+        waitingForWorkspaceName = false;
     }
 }
 

@@ -65,6 +65,33 @@
                 <div class="workspace-grid">
                     <!-- Main Content -->
                     <div class="workspace-main">
+                        <!-- Q&A Section (Moved to top for better UX) -->
+                        <div class="workspace-section">
+                            <h2 class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M18 10c0 4.4-3.6 8-8 8-1.4 0-2.8-.4-4-1l-4 1 1-4c-.6-1.2-1-2.6-1-4 0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+                                </svg>
+                                Questions & Answers
+                            </h2>
+                            <div class="section-content">
+                                <div id="qaHistory" class="qa-history">
+                                    <!-- Q&A items will be inserted here -->
+                                </div>
+
+                                <!-- Ask Question Form -->
+                                <div class="ask-question-form">
+                                    <textarea
+                                        id="questionInput"
+                                        placeholder="Ask a question about this workspace..."
+                                        rows="3"
+                                    ></textarea>
+                                    <button class="btn btn-accent" onclick="askQuestion()" id="askBtn">
+                                        Send Question
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Product Description -->
                         <div class="workspace-section">
                             <div class="section-title-row">
@@ -98,33 +125,6 @@
                             </h2>
                             <div class="section-content">
                                 <div id="complianceResults">Loading...</div>
-                            </div>
-                        </div>
-
-                        <!-- Q&A Section -->
-                        <div class="workspace-section">
-                            <h2 class="section-title">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M18 10c0 4.4-3.6 8-8 8-1.4 0-2.8-.4-4-1l-4 1 1-4c-.6-1.2-1-2.6-1-4 0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
-                                </svg>
-                                Questions & Answers
-                            </h2>
-                            <div class="section-content">
-                                <div id="qaHistory" class="qa-history">
-                                    <!-- Q&A items will be inserted here -->
-                                </div>
-
-                                <!-- Ask Question Form -->
-                                <div class="ask-question-form">
-                                    <textarea
-                                        id="questionInput"
-                                        placeholder="Ask a question about this workspace..."
-                                        rows="3"
-                                    ></textarea>
-                                    <button class="btn btn-accent" onclick="askQuestion()" id="askBtn">
-                                        Send Question
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -2475,11 +2475,34 @@ ul li, ol li {
     border-left: 4px solid #2048D5;
     border-radius: 12px;
     transition: all 0.2s ease;
+    display: block;
+}
+
+.norm-item.norm-clickable {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }
 
 .norm-item:hover {
     background: #f0f4ff;
     box-shadow: 0 2px 8px rgba(32, 72, 213, 0.1);
+}
+
+.norm-item.norm-clickable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(32, 72, 213, 0.15);
+    border-left-color: #3869FA;
+}
+
+.norm-link-icon {
+    color: #2048D5;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.norm-item.norm-clickable:hover .norm-link-icon {
+    opacity: 1;
 }
 
 .norm-header {
