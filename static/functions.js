@@ -1045,8 +1045,15 @@ async function sendTeaserMessage() {
                 const user = getCurrentUser();
 
                 if (user) {
-                    // User is logged in, ask for workspace name in the chat
-                    askForWorkspaceNameInChat();
+                    // User is logged in, prepare for workspace name
+                    waitingForWorkspaceName = true;
+
+                    // Add a clear follow-up prompt for workspace name
+                    addTeaserMessage('assistant', 'What would you like to name your workspace?');
+
+                    // Update UI state
+                    sendBtn.textContent = 'Create';
+                    input.placeholder = 'e.g., Wall Light Project';
                 } else {
                     // User not logged in, show sign in prompt
                     showSignInPromptInChat();
@@ -1086,24 +1093,11 @@ function addTeaserMessage(role, content) {
 }
 
 /**
- * Ask for workspace name in the chat (organic!)
- */
-function askForWorkspaceNameInChat() {
-    waitingForWorkspaceName = true;
-    addTeaserMessage('assistant', 'Great! I have all the information I need. What would you like to name your workspace?');
-
-    // Change button text to "Create"
-    const sendBtn = document.getElementById('teaserSendBtn');
-    if (sendBtn) {
-        sendBtn.textContent = 'Create';
-    }
-}
-
-/**
- * Show sign in prompt in the chat (organic!)
+ * Show sign in prompt in the chat
  */
 function showSignInPromptInChat() {
-    addTeaserMessage('assistant', 'Perfect! I have all the information needed. Sign in to save your compliance analysis as a workspace.');
+    // Add message prompting sign-in
+    addTeaserMessage('assistant', 'To save your workspace and continue the analysis, please sign in.');
 
     // Show sign in button in the continue container
     const continueContainer = document.getElementById('teaserContinueContainer');
@@ -1113,7 +1107,7 @@ function showSignInPromptInChat() {
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 8px;">
                     <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                 </svg>
-                Sign In to Save Workspace
+                Sign In to Continue
             </button>
         </div>
     `;
@@ -1149,7 +1143,7 @@ async function createWorkspaceFromSession(workspaceName) {
         }
 
         // Get session data from develope API
-        const sessionResponse = await fetch(`/api/develope/${teaserSessionId}`, {
+        const sessionResponse = await fetch(`/api/develope/session/${teaserSessionId}`, {
             credentials: 'include'
         });
 
