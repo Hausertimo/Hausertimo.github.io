@@ -2,121 +2,121 @@
 
 {% block title %}Norm Database Packages - NormScout{% endblock %}
 
-{% block content %}
-<div class="container mx-auto px-4 py-8">
-    <div class="max-w-6xl mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold mb-4">Expand Your Compliance Coverage</h1>
-            <p class="text-xl text-gray-600">Rent access to specialized norm databases for your industry and region</p>
-        </div>
+{% block nav_links %}
+    <a href="/" class="nav-link">Home</a>
+    <a href="/develop" class="nav-link">Develop</a>
+    <a href="/dashboard" class="nav-link">Dashboard</a>
+{% endblock %}
 
-        <!-- Savings Alert (if applicable) -->
-        {% if savings_info and savings_info.should_upgrade %}
-        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    💰
-                </div>
-                <div class="ml-3">
-                    <p class="text-sm text-yellow-700">
-                        <strong>{{ savings_info.message }}</strong>
-                    </p>
+{% block content %}
+<div class="dashboard-container">
+    <div class="container">
+        <!-- Header -->
+        <div class="dashboard-welcome">
+            <div class="welcome-header">
+                <div>
+                    <h1 class="dashboard-title">Expand Your Compliance Coverage</h1>
+                    <p class="dashboard-subtitle">Rent access to specialized norm databases for your industry and region</p>
                 </div>
             </div>
+        </div>
+
+        <!-- Savings Alert -->
+        {% if savings_info and savings_info.should_upgrade %}
+        <div style="background-color: #FFF3CD; border-left: 4px solid #FFC107; padding: 16px; margin-bottom: 24px; border-radius: 8px;">
+            <p style="margin: 0; color: #856404;">
+                <strong>💰 {{ savings_info.message }}</strong>
+            </p>
         </div>
         {% endif %}
 
-        <!-- Package Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {% for package_type, package in packages.items() %}
-            <div class="package-card bg-white rounded-lg shadow-lg p-6 border-2
-                {% if package_type in active_packages %}border-green-500{% elif package_type in trial_packages %}border-blue-500{% else %}border-gray-200{% endif %}
-                hover:shadow-xl transition-shadow">
+        <!-- Packages Grid -->
+        <div class="dashboard-section">
+            <h2 class="section-title">Available Packages</h2>
 
-                <!-- Icon & Status -->
-                <div class="flex justify-between items-start mb-4">
-                    <div class="text-4xl">{{ package.icon }}</div>
+            <div class="workspaces-grid">
+                {% for package_type, package in packages.items() %}
+                <div class="workspace-card" style="{% if package_type in active_packages %}border-color: #4CAF50;{% elif package_type in trial_packages %}border-color: #2196F3;{% endif %}">
+                    <!-- Icon & Status -->
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                        <div style="font-size: 48px;">{{ package.icon }}</div>
+                        {% if package_type in active_packages %}
+                        <span style="background-color: #E8F5E9; color: #2E7D32; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 12px;">Active</span>
+                        {% elif package_type in trial_packages %}
+                        <span style="background-color: #E3F2FD; color: #1565C0; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 12px;">Trial</span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Package Info -->
+                    <h3 style="font-size: 20px; margin-bottom: 8px;">{{ package.name }}</h3>
+                    <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px;">{{ package.description }}</p>
+
+                    <!-- Pricing -->
+                    <div style="margin-bottom: 16px;">
+                        <span style="font-size: 32px; font-weight: 700;">${{ (package.price / 100)|int }}</span>
+                        <span style="color: var(--text-light);">/month</span>
+                    </div>
+
+                    <!-- Features -->
+                    <ul style="list-style: none; padding: 0; margin-bottom: 20px;">
+                        <li style="display: flex; align-items: start; margin-bottom: 8px; font-size: 14px;">
+                            <span style="color: #4CAF50; margin-right: 8px;">✓</span>
+                            <span>{{ package.norm_count }}+ norms</span>
+                        </li>
+                        {% for feature in package.features[:3] %}
+                        <li style="display: flex; align-items: start; margin-bottom: 8px; font-size: 14px;">
+                            <span style="color: #4CAF50; margin-right: 8px;">✓</span>
+                            <span>{{ feature }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <!-- CTA Buttons -->
                     {% if package_type in active_packages %}
-                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Active</span>
+                    <button class="btn" style="width: 100%; background-color: #E0E0E0; color: #757575; cursor: not-allowed;" disabled>
+                        Currently Active
+                    </button>
                     {% elif package_type in trial_packages %}
-                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Trial</span>
+                    <button class="btn btn-accent" style="width: 100%;" onclick="purchasePackage('{{ package_type }}', false)">
+                        Convert to Paid
+                    </button>
+                    {% else %}
+                    <button class="btn btn-accent" style="width: 100%; margin-bottom: 8px;" onclick="purchasePackage('{{ package_type }}', false)">
+                        Rent This Box
+                    </button>
+                    <button class="btn" style="width: 100%; background-color: white; color: var(--brand-blue); border: 2px solid var(--brand-blue);" onclick="purchasePackage('{{ package_type }}', true)">
+                        Start {{ package.trial_days }}-Day Trial
+                    </button>
                     {% endif %}
+
+                    <!-- Preview Link -->
+                    <a href="#" onclick="previewPackage('{{ package_type }}'); return false;" style="display: block; text-align: center; margin-top: 12px; font-size: 14px; color: var(--brand-blue); text-decoration: none;">
+                        Preview sample norms →
+                    </a>
                 </div>
-
-                <!-- Package Info -->
-                <h3 class="text-xl font-bold mb-2">{{ package.name }}</h3>
-                <p class="text-gray-600 text-sm mb-4">{{ package.description }}</p>
-
-                <!-- Pricing -->
-                <div class="mb-4">
-                    <span class="text-3xl font-bold">${{ (package.price / 100)|int }}</span>
-                    <span class="text-gray-500">/month</span>
-                </div>
-
-                <!-- Features -->
-                <ul class="space-y-2 mb-6">
-                    <li class="flex items-start text-sm">
-                        <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>{{ package.norm_count }}+ norms</span>
-                    </li>
-                    {% for feature in package.features[:3] %}
-                    <li class="flex items-start text-sm">
-                        <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>{{ feature }}</span>
-                    </li>
-                    {% endfor %}
-                </ul>
-
-                <!-- CTA Button -->
-                {% if package_type in active_packages %}
-                <button class="w-full bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded cursor-not-allowed" disabled>
-                    Currently Active
-                </button>
-                {% elif package_type in trial_packages %}
-                <button class="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600" onclick="upgradeToFull('{{ package_type }}')">
-                    Convert to Paid
-                </button>
-                {% else %}
-                <button class="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700" onclick="purchasePackage('{{ package_type }}')">
-                    Rent This Box
-                </button>
-                <button class="w-full mt-2 bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded hover:bg-blue-50" onclick="purchasePackage('{{ package_type }}', true)">
-                    Start {{ package.trial_days }}-Day Trial
-                </button>
-                {% endif %}
-
-                <!-- Preview Link -->
-                <a href="#" onclick="previewPackage('{{ package_type }}')" class="block text-center text-sm text-blue-600 hover:text-blue-800 mt-3">
-                    Preview sample norms →
-                </a>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
 
-        <!-- FAQ / Info Section -->
-        <div class="bg-gray-50 rounded-lg p-8">
-            <h2 class="text-2xl font-bold mb-4">How It Works</h2>
-            <div class="grid md:grid-cols-2 gap-6">
+        <!-- How It Works Section -->
+        <div class="dashboard-section" style="background-color: #F9F9F9; padding: 32px; border-radius: 12px; margin-top: 48px;">
+            <h2 class="section-title">How It Works</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 24px;">
                 <div>
-                    <h3 class="font-semibold mb-2">🎯 Choose Your Coverage</h3>
-                    <p class="text-sm text-gray-600">Select the database packages that match your products' markets and industries.</p>
+                    <h3 style="font-size: 18px; margin-bottom: 8px;">🎯 Choose Your Coverage</h3>
+                    <p style="font-size: 14px; color: var(--text-light);">Select the database packages that match your products' markets and industries.</p>
                 </div>
                 <div>
-                    <h3 class="font-semibold mb-2">✅ Instant Access</h3>
-                    <p class="text-sm text-gray-600">After checkout, immediately analyze products with your new norm databases.</p>
+                    <h3 style="font-size: 18px; margin-bottom: 8px;">✅ Instant Access</h3>
+                    <p style="font-size: 14px; color: var(--text-light);">After checkout, immediately analyze products with your new norm databases.</p>
                 </div>
                 <div>
-                    <h3 class="font-semibold mb-2">📊 Track Usage</h3>
-                    <p class="text-sm text-gray-600">Monitor which databases you're using most in your package dashboard.</p>
+                    <h3 style="font-size: 18px; margin-bottom: 8px;">📊 Track Usage</h3>
+                    <p style="font-size: 14px; color: var(--text-light);">Monitor which databases you're using most in your package dashboard.</p>
                 </div>
                 <div>
-                    <h3 class="font-semibold mb-2">🔄 Cancel Anytime</h3>
-                    <p class="text-sm text-gray-600">No long-term commitments. Cancel or change packages whenever you need.</p>
+                    <h3 style="font-size: 18px; margin-bottom: 8px;">🔄 Cancel Anytime</h3>
+                    <p style="font-size: 14px; color: var(--text-light);">No long-term commitments. Cancel or change packages whenever you need.</p>
                 </div>
             </div>
         </div>
@@ -124,18 +124,21 @@
 </div>
 
 <!-- Preview Modal -->
-<div id="previewModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-    <div class="bg-white rounded-lg p-8 max-w-4xl max-h-screen overflow-y-auto">
-        <div class="flex justify-between items-start mb-4">
-            <h2 id="previewTitle" class="text-2xl font-bold"></h2>
-            <button onclick="closePreview()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+<div id="previewModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; align-items: center; justify-content: center;">
+    <div style="background: white; border-radius: 12px; padding: 32px; max-width: 800px; max-height: 90vh; overflow-y: auto; margin: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px;">
+            <h2 id="previewTitle" style="font-size: 24px; margin: 0;"></h2>
+            <button onclick="closePreview()" style="background: none; border: none; font-size: 32px; cursor: pointer; color: var(--text-light);">&times;</button>
         </div>
-        <div id="previewContent" class="space-y-4">
+        <div id="previewContent">
             <!-- Dynamic content loaded here -->
         </div>
     </div>
 </div>
 
+{% endblock %}
+
+{% block extra_scripts %}
 <script>
 async function purchasePackage(packageType, isTrial = false) {
     try {
@@ -164,12 +167,6 @@ async function purchasePackage(packageType, isTrial = false) {
     }
 }
 
-function upgradeToFull(packageType) {
-    if (confirm('Convert your trial to a paid subscription?')) {
-        purchasePackage(packageType, false);
-    }
-}
-
 async function previewPackage(packageType) {
     try {
         const response = await fetch(`/api/packages/${packageType}/preview`);
@@ -182,20 +179,20 @@ async function previewPackage(packageType) {
 
             title.textContent = data.package.name + ' - Sample Norms';
 
-            let html = `<p class="text-gray-600 mb-4">Showing ${data.sample_norms.length} of ${data.total_norms} norms in this package</p>`;
+            let html = `<p style="color: var(--text-light); margin-bottom: 20px;">Showing ${data.sample_norms.length} of ${data.total_norms} norms in this package</p>`;
 
             data.sample_norms.forEach(norm => {
                 html += `
-                    <div class="border rounded p-4">
-                        <h3 class="font-semibold">${norm.id}: ${norm.name}</h3>
-                        <p class="text-sm text-gray-600 mt-1"><strong>Applies to:</strong> ${norm.applies_to}</p>
-                        <p class="text-sm text-gray-600 mt-1">${norm.description}</p>
+                    <div style="border: 1px solid #E0E0E0; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">${norm.id}: ${norm.name}</h3>
+                        <p style="font-size: 14px; color: var(--text-light); margin-bottom: 4px;"><strong>Applies to:</strong> ${norm.applies_to}</p>
+                        <p style="font-size: 14px; color: var(--text-light);">${norm.description}</p>
                     </div>
                 `;
             });
 
             content.innerHTML = html;
-            modal.classList.remove('hidden');
+            modal.style.display = 'flex';
         }
     } catch (error) {
         console.error('Preview error:', error);
@@ -204,7 +201,7 @@ async function previewPackage(packageType) {
 }
 
 function closePreview() {
-    document.getElementById('previewModal').classList.add('hidden');
+    document.getElementById('previewModal').style.display = 'none';
 }
 </script>
 {% endblock %}

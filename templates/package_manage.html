@@ -2,81 +2,94 @@
 
 {% block title %}My Packages - NormScout{% endblock %}
 
+{% block nav_links %}
+    <a href="/" class="nav-link">Home</a>
+    <a href="/develop" class="nav-link">Develop</a>
+    <a href="/dashboard" class="nav-link">Dashboard</a>
+    <a href="/packages" class="nav-link">Browse Packages</a>
+{% endblock %}
+
 {% block content %}
-<div class="container mx-auto px-4 py-8">
-    <div class="max-w-6xl mx-auto">
+<div class="dashboard-container">
+    <div class="container">
         <!-- Header -->
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold mb-2">My Norm Database Packages</h1>
-            <p class="text-gray-600">Manage your subscriptions and view usage statistics</p>
+        <div class="dashboard-welcome">
+            <div class="welcome-header">
+                <div>
+                    <h1 class="dashboard-title">My Norm Database Packages</h1>
+                    <p class="dashboard-subtitle">Manage your subscriptions and view usage statistics</p>
+                </div>
+                <a href="/packages" class="btn btn-accent">Browse Packages</a>
+            </div>
         </div>
 
         <!-- Active Packages -->
-        <div class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Active Subscriptions</h2>
+        <div class="dashboard-section">
+            <h2 class="section-title">Active Subscriptions</h2>
 
             {% if active_packages %}
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="workspaces-grid">
                 {% for package in active_packages %}
-                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-green-500">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <div class="text-3xl mb-2">{{ package.config.icon }}</div>
-                            <h3 class="text-xl font-bold">{{ package.config.name }}</h3>
-                            <p class="text-sm text-gray-600">{{ package.config.description }}</p>
-                        </div>
-                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Active</span>
+                <div class="workspace-card" style="border-left: 4px solid #4CAF50;">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                        <div style="font-size: 42px;">{{ package.config.icon }}</div>
+                        <span style="background-color: #E8F5E9; color: #2E7D32; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 12px;">Active</span>
                     </div>
 
-                    <div class="space-y-2 mb-4">
-                        <p class="text-sm"><strong>Activated:</strong> {{ package.activated_at[:10] if package.activated_at else 'N/A' }}</p>
+                    <h3 style="font-size: 18px; margin-bottom: 8px;">{{ package.config.name }}</h3>
+                    <p style="font-size: 14px; color: var(--text-light); margin-bottom: 16px;">{{ package.config.description }}</p>
+
+                    <div style="font-size: 14px; margin-bottom: 16px;">
+                        <div style="margin-bottom: 4px;"><strong>Activated:</strong> {{ package.activated_at[:10] if package.activated_at else 'N/A' }}</div>
                         {% if package.expires_at %}
-                        <p class="text-sm"><strong>Renews:</strong> {{ package.expires_at[:10] }}</p>
+                        <div style="margin-bottom: 4px;"><strong>Renews:</strong> {{ package.expires_at[:10] }}</div>
                         {% endif %}
-                        <p class="text-sm"><strong>Price:</strong> ${{ (package.config.price / 100)|int }}/month</p>
-                        <p class="text-sm"><strong>Databases:</strong> {{ package.config.databases|length if package.config.databases != 'all' else 'All databases' }}</p>
+                        <div style="margin-bottom: 4px;"><strong>Price:</strong> ${{ (package.config.price / 100)|int }}/month</div>
+                        <div><strong>Databases:</strong> {{ package.config.databases|length if package.config.databases != 'all' else 'All databases' }}</div>
                     </div>
 
-                    <button onclick="cancelPackage('{{ package.package_type }}')" class="w-full bg-red-100 text-red-700 hover:bg-red-200 font-semibold py-2 px-4 rounded">
+                    <button class="btn" style="width: 100%; background-color: #FFEBEE; color: #C62828;" onclick="cancelPackage('{{ package.package_type }}')">
                         Cancel Subscription
                     </button>
                 </div>
                 {% endfor %}
             </div>
             {% else %}
-            <div class="bg-gray-50 rounded-lg p-8 text-center">
-                <p class="text-gray-600 mb-4">You don't have any active packages yet.</p>
-                <a href="/packages" class="inline-block bg-blue-600 text-white font-semibold py-2 px-6 rounded hover:bg-blue-700">
-                    Browse Packages
-                </a>
+            <div class="empty-state">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="empty-icon">
+                    <path d="M16 16h32v32H16V16z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M24 28h16M24 36h12" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h3>No active packages yet</h3>
+                <p>Browse and rent norm database packages to expand your coverage</p>
+                <a href="/packages" class="btn btn-accent">Browse Packages</a>
             </div>
             {% endif %}
         </div>
 
         <!-- Trial Packages -->
         {% if trial_packages %}
-        <div class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Trial Subscriptions</h2>
-            <div class="grid md:grid-cols-2 gap-6">
+        <div class="dashboard-section">
+            <h2 class="section-title">Trial Subscriptions</h2>
+            <div class="workspaces-grid">
                 {% for package in trial_packages %}
-                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-500">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <div class="text-3xl mb-2">{{ package.config.icon }}</div>
-                            <h3 class="text-xl font-bold">{{ package.config.name }}</h3>
-                            <p class="text-sm text-gray-600">{{ package.config.description }}</p>
-                        </div>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Trial</span>
+                <div class="workspace-card" style="border-left: 4px solid #2196F3;">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                        <div style="font-size: 42px;">{{ package.config.icon }}</div>
+                        <span style="background-color: #E3F2FD; color: #1565C0; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 12px;">Trial</span>
                     </div>
 
-                    <div class="space-y-2 mb-4">
-                        <p class="text-sm"><strong>Trial started:</strong> {{ package.trial_start[:10] if package.trial_start else 'N/A' }}</p>
+                    <h3 style="font-size: 18px; margin-bottom: 8px;">{{ package.config.name }}</h3>
+                    <p style="font-size: 14px; color: var(--text-light); margin-bottom: 16px;">{{ package.config.description }}</p>
+
+                    <div style="font-size: 14px; margin-bottom: 16px;">
+                        <div style="margin-bottom: 4px;"><strong>Trial started:</strong> {{ package.trial_start[:10] if package.trial_start else 'N/A' }}</div>
                         {% if package.trial_end %}
-                        <p class="text-sm"><strong>Trial ends:</strong> {{ package.trial_end[:10] }}</p>
+                        <div><strong>Trial ends:</strong> {{ package.trial_end[:10] }}</div>
                         {% endif %}
                     </div>
 
-                    <a href="/packages" class="block w-full bg-blue-600 text-white text-center font-semibold py-2 px-4 rounded hover:bg-blue-700">
+                    <a href="/packages" class="btn btn-accent" style="width: 100%; text-align: center; text-decoration: none;">
                         Convert to Paid
                     </a>
                 </div>
@@ -86,66 +99,64 @@
         {% endif %}
 
         <!-- Usage Statistics -->
-        <div class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Usage Statistics (Last 30 Days)</h2>
+        <div class="dashboard-section">
+            <h2 class="section-title">Usage Statistics (Last 30 Days)</h2>
 
-            <div class="bg-white rounded-lg shadow p-6">
-                <div class="grid md:grid-cols-3 gap-6 mb-6">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-blue-600">{{ usage_stats.total_accesses }}</div>
-                        <div class="text-sm text-gray-600">Total Analyses</div>
+            <div class="workspace-card">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; margin-bottom: 32px; text-align: center;">
+                    <div>
+                        <div style="font-size: 36px; font-weight: 700; color: var(--brand-blue);">{{ usage_stats.total_accesses }}</div>
+                        <div style="font-size: 14px; color: var(--text-light);">Total Analyses</div>
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-green-600">{{ usage_stats.databases_used }}</div>
-                        <div class="text-sm text-gray-600">Databases Used</div>
+                    <div>
+                        <div style="font-size: 36px; font-weight: 700; color: #4CAF50;">{{ usage_stats.databases_used }}</div>
+                        <div style="font-size: 14px; color: var(--text-light);">Databases Used</div>
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-purple-600">{{ allowed_databases|length }}</div>
-                        <div class="text-sm text-gray-600">Available Databases</div>
+                    <div>
+                        <div style="font-size: 36px; font-weight: 700; color: #9C27B0;">{{ allowed_databases|length }}</div>
+                        <div style="font-size: 14px; color: var(--text-light);">Available Databases</div>
                     </div>
                 </div>
 
                 {% if usage_stats.by_database %}
                 <div>
-                    <h3 class="font-semibold mb-3">Usage by Database</h3>
-                    <div class="space-y-2">
+                    <h3 style="font-size: 18px; margin-bottom: 16px;">Usage by Database</h3>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
                         {% for db_name, count in usage_stats.by_database.items() %}
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm">{{ db_name.replace('norms_', '').replace('.json', '').upper() }}</span>
-                            <div class="flex items-center">
-                                <div class="w-48 bg-gray-200 rounded-full h-2 mr-2">
-                                    <div class="bg-blue-600 h-2 rounded-full" style="width: {{ (count / usage_stats.total_accesses * 100)|int }}%"></div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 14px;">{{ db_name.replace('norms_', '').replace('.json', '').upper() }}</span>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div style="width: 200px; background-color: #E0E0E0; height: 8px; border-radius: 4px; overflow: hidden;">
+                                    <div style="width: {{ (count / usage_stats.total_accesses * 100)|int }}%; background-color: var(--brand-blue); height: 100%;"></div>
                                 </div>
-                                <span class="text-sm font-semibold">{{ count }}</span>
+                                <span style="font-size: 14px; font-weight: 600; min-width: 40px; text-align: right;">{{ count }}</span>
                             </div>
                         </div>
                         {% endfor %}
                     </div>
                 </div>
                 {% else %}
-                <p class="text-gray-600 text-center">No usage data yet. Start analyzing products to see statistics!</p>
+                <p style="text-align: center; color: var(--text-light);">No usage data yet. Start analyzing products to see statistics!</p>
                 {% endif %}
             </div>
         </div>
 
         <!-- Available Databases -->
-        <div class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Your Available Databases</h2>
+        <div class="dashboard-section">
+            <h2 class="section-title">Your Available Databases</h2>
 
-            <div class="bg-white rounded-lg shadow p-6">
-                <div class="grid md:grid-cols-3 gap-3">
+            <div class="workspace-card">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
                     {% for db in allowed_databases %}
-                    <div class="flex items-center bg-green-50 rounded px-3 py-2">
-                        <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-sm font-medium">{{ db.replace('norms_', '').replace('.json', '').upper() }}</span>
+                    <div style="display: flex; align-items: center; background-color: #E8F5E9; padding: 12px; border-radius: 8px;">
+                        <span style="color: #4CAF50; margin-right: 8px; font-size: 18px;">✓</span>
+                        <span style="font-size: 14px; font-weight: 500;">{{ db.replace('norms_', '').replace('.json', '').upper() }}</span>
                     </div>
                     {% endfor %}
                 </div>
 
-                <div class="mt-4 text-center">
-                    <a href="/packages" class="text-blue-600 hover:text-blue-800 text-sm font-semibold">
+                <div style="margin-top: 24px; text-align: center;">
+                    <a href="/packages" style="color: var(--brand-blue); text-decoration: none; font-weight: 600;">
                         Add more databases →
                     </a>
                 </div>
@@ -154,17 +165,17 @@
 
         <!-- Expired Packages -->
         {% if expired_packages %}
-        <div class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Expired Subscriptions</h2>
-            <div class="bg-gray-50 rounded-lg p-4">
-                <ul class="space-y-2">
+        <div class="dashboard-section">
+            <h2 class="section-title">Expired Subscriptions</h2>
+            <div class="workspace-card">
+                <ul style="list-style: none; padding: 0;">
                     {% for package in expired_packages %}
-                    <li class="flex justify-between items-center">
+                    <li style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #E0E0E0;">
                         <div>
-                            <span class="font-medium">{{ package.config.name }}</span>
-                            <span class="text-sm text-gray-600 ml-2">Expired: {{ package.cancelled_at[:10] if package.cancelled_at else 'N/A' }}</span>
+                            <span style="font-weight: 600;">{{ package.config.name }}</span>
+                            <span style="font-size: 14px; color: var(--text-light); margin-left: 8px;">Expired: {{ package.cancelled_at[:10] if package.cancelled_at else 'N/A' }}</span>
                         </div>
-                        <a href="/packages" class="text-blue-600 hover:text-blue-800 text-sm font-semibold">Reactivate</a>
+                        <a href="/packages" style="color: var(--brand-blue); text-decoration: none; font-weight: 600; font-size: 14px;">Reactivate</a>
                     </li>
                     {% endfor %}
                 </ul>
@@ -174,6 +185,9 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block extra_scripts %}
 <script>
 async function cancelPackage(packageType) {
     const reason = prompt('Are you sure you want to cancel? Please tell us why (optional):');
