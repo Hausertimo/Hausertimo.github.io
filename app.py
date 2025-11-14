@@ -47,7 +47,7 @@ from routes.analytics import analytics_bp, init_redis as init_analytics_redis
 from routes.compliance import compliance_bp, init_dependencies as init_compliance_deps
 from routes.fields import field_bp
 from routes.develope import develope_bp
-# NOTE: Old Redis-based workspace_bp removed - now using Supabase workspaces from normscout_auth
+# NOTE: Old Redis-based workspace_bp removed - now using Supabase workspaces from auth package
 from routes.tracking import init_tracking_routes
 
 # Import services
@@ -55,8 +55,8 @@ from services.openrouter import analyze_product_compliance, validate_product_inp
 from services.field_framework import (FieldRenderer, MarkdownField, FormField,
                                       TextAreaField, ButtonField)
 
-# Import Supabase auth
-from normscout_auth import init_app as init_supabase_auth
+# Import Supabase auth (refactored into auth/ package)
+from auth import init_app as init_supabase_auth
 
 # Register all blueprints
 app.register_blueprint(main_bp)
