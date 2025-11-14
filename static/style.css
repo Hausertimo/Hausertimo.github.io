@@ -49,6 +49,7 @@
 
 html {
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 body {
@@ -59,6 +60,10 @@ body {
     background-color: var(--white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Sticky footer setup */
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Container */
@@ -1255,6 +1260,7 @@ ul li, ol li {
     background: linear-gradient(135deg, var(--brand-blue) 0%, var(--royal-blue) 100%);
     color: var(--white);
     padding: var(--spacing-xl) 0 var(--spacing-md);
+    margin-top: auto; /* Pushes footer to bottom when content is short */
 }
 
 .footer-content {

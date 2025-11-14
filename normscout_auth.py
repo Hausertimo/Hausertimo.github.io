@@ -545,9 +545,18 @@ def create_workspace():
         # Check workspace limit
         check_workspace_limit(user_id)
 
-        # Get next workspace number for this user
-        workspace_count = get_workspace_count(user_id)
-        workspace_number = workspace_count + 1
+        # Get next workspace number for this user (MAX + 1, not count + 1)
+        # This prevents duplicate numbers if workspaces are archived
+        max_number_result = supabase.table('workspaces') \
+            .select('workspace_number') \
+            .eq('user_id', user_id) \
+            .order('workspace_number', desc=True) \
+            .limit(1) \
+            .execute()
+
+        workspace_number = 1
+        if max_number_result.data and len(max_number_result.data) > 0:
+            workspace_number = max_number_result.data[0]['workspace_number'] + 1
 
         # Create workspace
         workspace = {
