@@ -202,50 +202,47 @@ function getConfidenceClass(confidence) {
 }
 
 /**
- * Render Q&A history
+ * Render Q&A history as chat messages
  */
 function renderQAHistory() {
-    const historyEl = document.getElementById('qaHistory');
-    if (!historyEl) return;
+    const messagesEl = document.getElementById('chatMessages');
+    if (!messagesEl) return;
 
     const qaHistory = workspace.qa_history || [];
 
     if (qaHistory.length === 0) {
-        historyEl.innerHTML = '<p class="text-muted">No questions asked yet. Ask your first question below!</p>';
+        messagesEl.innerHTML = `
+            <div class="ns-message assistant">
+                <strong>NormScout AI</strong>
+                <p>Hi! I'm here to help answer questions about your product and its compliance requirements. Ask me anything!</p>
+            </div>
+        `;
         return;
     }
 
     let html = '';
     qaHistory.forEach((qa, index) => {
-        const timestamp = qa.timestamp ? new Date(qa.timestamp).toLocaleString() : '';
+        // User question (purple gradient)
         html += `
-            <div class="qa-item">
-                <div class="qa-question">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" fill="none"/>
-                        <text x="8" y="11" text-anchor="middle" font-size="10" fill="currentColor">Q</text>
-                    </svg>
-                    <div>
-                        <strong>Question ${index + 1}</strong>
-                        ${timestamp ? `<span class="qa-timestamp">${timestamp}</span>` : ''}
-                        <p>${escapeHtml(qa.question)}</p>
-                    </div>
-                </div>
-                <div class="qa-answer">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" fill="none"/>
-                        <text x="8" y="11" text-anchor="middle" font-size="10" fill="currentColor">A</text>
-                    </svg>
-                    <div>
-                        <strong>Answer</strong>
-                        <p>${escapeHtml(qa.answer)}</p>
-                    </div>
-                </div>
+            <div class="ns-message user">
+                <strong>You</strong>
+                <p>${escapeHtml(qa.question)}</p>
+            </div>
+        `;
+
+        // AI answer (light gray)
+        html += `
+            <div class="ns-message assistant">
+                <strong>NormScout AI</strong>
+                <p>${escapeHtml(qa.answer)}</p>
             </div>
         `;
     });
 
-    historyEl.innerHTML = html;
+    messagesEl.innerHTML = html;
+
+    // Scroll to bottom to show latest message
+    messagesEl.scrollTop = messagesEl.scrollHeight;
 }
 
 /**
@@ -280,14 +277,28 @@ async function askQuestion() {
     const question = input.value.trim();
 
     if (!question) {
-        alert('Please enter a question');
+        // Highlight input briefly
+        input.style.borderColor = '#ef4444';
+        setTimeout(() => {
+            input.style.borderColor = '';
+        }, 1000);
         return;
     }
 
     // Disable input
     input.disabled = true;
     askBtn.disabled = true;
-    askBtn.textContent = 'Sending...';
+    const originalBtnHTML = askBtn.innerHTML;
+    askBtn.innerHTML = '<span class="spinner" style="display: inline-block; width: 16px; height: 16px; border: 2px solid #fff; border-top-color: transparent; border-radius: 50%; animation: spin 0.6s linear infinite;"></span> Sending...';
+
+    // Add user message immediately to chat
+    addChatMessage('user', question);
+
+    // Clear input immediately for better UX
+    input.value = '';
+
+    // Show typing indicator
+    addTypingIndicator();
 
     try {
         const response = await fetch(`/api/workspaces/${workspaceId}/ask`, {
@@ -297,10 +308,13 @@ async function askQuestion() {
             body: JSON.stringify({ question: question })
         });
 
+        // Remove typing indicator
+        removeTypingIndicator();
+
         if (!response.ok) {
             const data = await response.json();
             if (data.limit_exceeded) {
-                alert(data.error);
+                addChatMessage('assistant', `⚠️ ${data.error}`);
             } else {
                 throw new Error('Failed to send question');
             }
@@ -309,28 +323,74 @@ async function askQuestion() {
 
         const data = await response.json();
 
-        // Add Q&A to history
+        // Add Q&A to workspace history
         if (!workspace.qa_history) {
             workspace.qa_history = [];
         }
         workspace.qa_history.push(data.qa);
         workspace.qa_count = (workspace.qa_count || 0) + 1;
 
-        // Re-render Q&A section
-        renderQAHistory();
-        renderSidebarInfo();
+        // Add AI response to chat
+        addChatMessage('assistant', data.qa.answer);
 
-        // Clear input
-        input.value = '';
+        // Update sidebar info
+        renderSidebarInfo();
 
     } catch (error) {
         console.error('Error asking question:', error);
-        alert('Failed to send question. Please try again.');
+        removeTypingIndicator();
+        addChatMessage('assistant', '⚠️ Sorry, something went wrong. Please try again.');
     } finally {
         // Re-enable input
         input.disabled = false;
         askBtn.disabled = false;
-        askBtn.textContent = 'Send Question';
+        askBtn.innerHTML = originalBtnHTML;
+        input.focus();
+    }
+}
+
+/**
+ * Add a chat message to the UI
+ */
+function addChatMessage(role, content) {
+    const messagesEl = document.getElementById('chatMessages');
+    if (!messagesEl) return;
+
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `ns-message ${role}`;
+
+    const label = role === 'user' ? 'You' : 'NormScout AI';
+    messageDiv.innerHTML = `<strong>${label}</strong><p>${escapeHtml(content)}</p>`;
+
+    messagesEl.appendChild(messageDiv);
+
+    // Scroll to bottom
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+/**
+ * Add typing indicator
+ */
+function addTypingIndicator() {
+    const messagesEl = document.getElementById('chatMessages');
+    if (!messagesEl) return;
+
+    const typingDiv = document.createElement('div');
+    typingDiv.id = 'typingIndicator';
+    typingDiv.className = 'ns-message assistant typing-indicator';
+    typingDiv.innerHTML = '<strong>NormScout AI</strong><p>is typing...</p>';
+
+    messagesEl.appendChild(typingDiv);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+/**
+ * Remove typing indicator
+ */
+function removeTypingIndicator() {
+    const typingDiv = document.getElementById('typingIndicator');
+    if (typingDiv) {
+        typingDiv.remove();
     }
 }
 
@@ -535,13 +595,14 @@ async function saveProductDescription(newDescription) {
 }
 
 /**
- * Handle Enter key in question input
+ * Handle Enter key in question input (send on Enter, new line on Shift+Enter)
  */
 document.addEventListener('DOMContentLoaded', function() {
     const questionInput = document.getElementById('questionInput');
     if (questionInput) {
         questionInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && e.ctrlKey) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
                 askQuestion();
             }
         });

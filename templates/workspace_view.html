@@ -2,6 +2,10 @@
 
 {% block title %}Workspace - NormScout{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="/chat-component.css">
+{% endblock %}
+
 {% block nav_links %}
     <a href="/dashboard" class="nav-link">Dashboard</a>
     <a href="/contact" class="nav-link">Contact</a>
@@ -65,28 +69,31 @@
                 <div class="workspace-grid">
                     <!-- Main Content -->
                     <div class="workspace-main">
-                        <!-- Q&A Section (Moved to top for better UX) -->
+                        <!-- Chat Section (Moved to top for better UX) -->
                         <div class="workspace-section">
                             <h2 class="section-title">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                                     <path d="M18 10c0 4.4-3.6 8-8 8-1.4 0-2.8-.4-4-1l-4 1 1-4c-.6-1.2-1-2.6-1-4 0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
                                 </svg>
-                                Questions & Answers
+                                Chat with AI
                             </h2>
                             <div class="section-content">
-                                <div id="qaHistory" class="qa-history">
-                                    <!-- Q&A items will be inserted here -->
+                                <div id="chatMessages" class="chat-messages-container">
+                                    <!-- Chat messages will be inserted here -->
                                 </div>
 
-                                <!-- Ask Question Form -->
-                                <div class="ask-question-form">
+                                <!-- Chat Input -->
+                                <div class="chat-input-container">
                                     <textarea
                                         id="questionInput"
-                                        placeholder="Ask a question about this workspace..."
-                                        rows="3"
+                                        placeholder="Ask a question about your product or compliance analysis..."
+                                        rows="2"
                                     ></textarea>
                                     <button class="btn btn-accent" onclick="askQuestion()" id="askBtn">
-                                        Send Question
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="display: inline-block; vertical-align: middle;">
+                                            <path d="M1 8l14-6-6 14-2-6-6-2z"/>
+                                        </svg>
+                                        Send
                                     </button>
                                 </div>
                             </div>

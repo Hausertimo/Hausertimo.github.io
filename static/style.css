@@ -2673,83 +2673,70 @@ ul li, ol li {
     font-weight: 500;
 }
 
-/* Q&A Section */
-.qa-history {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-bottom: 24px;
+/* Chat Section in Workspace */
+.chat-messages-container {
+    max-height: 500px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: #fafbfc;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 transparent;
 }
 
-.qa-item {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.chat-messages-container::-webkit-scrollbar {
+    width: 6px;
 }
 
-.qa-question,
-.qa-answer {
+.chat-messages-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-messages-container::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 3px;
+}
+
+.chat-messages-container::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+.chat-input-container {
     display: flex;
     gap: 12px;
+    align-items: flex-end;
 }
 
-.qa-question svg,
-.qa-answer svg {
-    flex-shrink: 0;
-    color: #2048D5;
-}
-
-.qa-question > div,
-.qa-answer > div {
+.chat-input-container textarea {
     flex: 1;
-}
-
-.qa-question strong,
-.qa-answer strong {
-    display: block;
-    margin-bottom: 4px;
-    color: #333;
-    font-size: 14px;
-}
-
-.qa-timestamp {
-    font-size: 12px;
-    color: #999;
-    margin-left: 8px;
-}
-
-.qa-question p,
-.qa-answer p {
-    margin: 0;
-    color: #666;
-    line-height: 1.6;
-}
-
-.qa-answer {
-    padding-left: 28px;
-}
-
-.ask-question-form {
-    display: flex;
-    gap: 12px;
-    flex-direction: column;
-}
-
-.ask-question-form textarea {
-    width: 100%;
-    padding: 12px;
+    padding: 12px 16px;
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 12px;
     font-family: inherit;
     font-size: 15px;
-    resize: vertical;
-    transition: border-color 0.2s ease;
+    resize: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    line-height: 1.5;
+    min-height: 48px;
 }
 
-.ask-question-form textarea:focus {
+.chat-input-container textarea:focus {
     outline: none;
     border-color: #2048D5;
     box-shadow: 0 0 0 3px rgba(32, 72, 213, 0.1);
+}
+
+.chat-input-container button {
+    flex-shrink: 0;
+    padding: 12px 20px;
+    white-space: nowrap;
+}
+
+/* Spinner animation for loading state */
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
 /* Workspace Sidebar */
