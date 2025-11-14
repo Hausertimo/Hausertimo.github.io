@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Investors - NormScout{% endblock %}
+
+{% block meta_description %}Join us in revolutionizing compliance technology. We're seeking CHF 75,000 in preseed funding to accelerate our intelligent compliance platform.{% endblock %}
+{% block meta_keywords %}investors, preseed funding, compliance tech, startup investment, NormScout{% endblock %}
+
+{% block og_title %}Invest in NormScout - Compliance Revolution{% endblock %}
+{% block og_description %}Join us in revolutionizing compliance technology. Seeking CHF 75,000 in preseed funding.{% endblock %}
+{% block og_url %}/investors{% endblock %}
+
+{% block twitter_title %}Invest in NormScout - Compliance Revolution{% endblock %}
+{% block twitter_description %}Join us in revolutionizing compliance technology. Seeking CHF 75,000 in preseed funding.{% endblock %}
+
+{% block nav_links %}
+<a href="/" class="nav-link">View Product</a>
+<a href="/contact" class="nav-link">Contact Us</a>
+<a href="mailto:invest@normscout.ch" class="nav-link btn btn-accent">Get Pitch Deck</a>
+{% endblock %}
+
+{% block content %}
+    <!-- Investment Section -->
+    <section class="investment-section">
+        <div class="container">
+            <h2 class="investment-headline">Ignite the Compliance Revolution</h2>
+
+            <div class="investor-traction">
+                <div class="traction-stat">
+                    <span class="traction-number">68+</span>
+                    <span class="traction-label">EU Standards Cataloged</span>
+                </div>
+                <div class="traction-stat">
+                    <span class="traction-number">50+</span>
+                    <span class="traction-label">Products Analyzed</span>
+                </div>
+                <div class="traction-stat">
+                    <span class="traction-number">CHF 75K</span>
+                    <span class="traction-label">Preseed Target</span>
+                </div>
+            </div>
+
+            <p class="investment-subtitle">We are seeking CHF 75,000 in preseed funding to accelerate our intelligent compliance platform and expand our reach.</p>
+
+            <p class="investment-invite">
+                Compliance tech is a <strong>$12B+ market</strong> dominated by expensive consultants and outdated software. NormScout uses AI to deliver instant, accurate compliance guidance at a fraction of the cost.
+                <br><br>
+                We're seeking <strong>CHF 75,000 in preseed funding</strong> to accelerate product development, expand our EU standards database, and acquire our first 100 paying customers.
+            </p>
+
+            <div class="investor-cta-box">
+                <h3>Join Our Founding Round</h3>
+                <p>Get early equity, shape product direction, and access live metrics dashboard. Limited spots available.</p>
+                <a href="mailto:invest@normscout.ch?subject=Preseed Investment Inquiry" class="btn btn-accent btn-large">Request Pitch Deck</a>
+            </div>
+
+            <div class="investment-cta">
+                <a href="mailto:invest@normscout.ch" class="btn btn-investment">
+                    Request Full Pitch Deck Now
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_scripts %}
+    <!-- Schema.org for Investors Page -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "InvestmentOrFinancialProduct",
+      "name": "NormScout Preseed Investment",
+      "description": "CHF 75,000 preseed funding round for AI-powered compliance platform",
+      "provider": {
+        "@type": "Organization",
+        "name": "NormScout"
+      }
+    }
+    </script>
+
+    <script src="/tracking.js" defer></script>
+{% endblock %}

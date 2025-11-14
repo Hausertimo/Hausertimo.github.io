@@ -2,7 +2,7 @@
 Main routes for static pages and resources
 """
 
-from flask import Blueprint, send_file, send_from_directory, render_template
+from flask import Blueprint, send_file, send_from_directory, render_template, make_response
 
 main_bp = Blueprint('main', __name__)
 
@@ -29,6 +29,14 @@ def serve_terms():
 def serve_contact():
     """Serve the contact page"""
     return send_file('static/contact.html')
+
+
+@main_bp.route("/investors")
+def serve_investors():
+    """Serve the investors page"""
+    response = make_response(render_template('investors.html'))
+    response.headers['Cache-Control'] = 'public, max-age=3600'
+    return response
 
 
 @main_bp.route("/img/<path:filename>")
