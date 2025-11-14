@@ -26,6 +26,7 @@ from flask import (
     render_template
 )
 from supabase import create_client, Client
+from services.openrouter import call_openrouter
 
 # WeasyPrint is optional - only needed for PDF export
 try:
@@ -857,9 +858,55 @@ def ask_question(workspace_id: str):
         if not workspace.data:
             return jsonify({"error": "Workspace not found"}), 404
 
-        # TODO: Call your LLM service here with workspace context
-        # For now, return placeholder
-        answer = "[Your LLM integration goes here]"
+        # Build context from workspace data
+        workspace_data = workspace.data
+        product_desc = workspace_data.get('product_description', 'No description available')
+        norms = workspace_data.get('norms', [])
+
+        # Build context string
+        norms_summary = ""
+        if norms:
+            norms_summary = "\n\nCompliance norms found:\n"
+            for norm in norms[:10]:  # Limit to first 10 to save tokens
+                norm_id = norm.get('norm_id', norm.get('id', 'Unknown'))
+                title = norm.get('title', norm.get('name', ''))
+                reasoning = norm.get('reasoning', '')
+                norms_summary += f"- {norm_id}: {title}\n"
+                if reasoning:
+                    norms_summary += f"  Reason: {reasoning}\n"
+
+        # Call LLM with workspace context
+        messages = [
+            {
+                "role": "system",
+                "content": f"""You are a compliance expert assistant helping users understand their product's regulatory requirements.
+
+Product: {workspace_data.get('name', 'Unnamed Product')}
+
+Product Description:
+{product_desc}
+{norms_summary}
+
+Answer questions about this product's compliance requirements, certifications, and regulatory needs. Be specific and helpful."""
+            },
+            {
+                "role": "user",
+                "content": question
+            }
+        ]
+
+        # Call OpenRouter API
+        llm_result = call_openrouter(
+            messages,
+            model="openai/gpt-4o-mini",
+            temperature=0.3,
+            max_tokens=800
+        )
+
+        if llm_result.get("success"):
+            answer = llm_result.get("content", "Sorry, I couldn't generate an answer.")
+        else:
+            answer = f"I'm having trouble answering right now. Please try again. (Error: {llm_result.get('error', 'Unknown')})"
 
         # Append Q&A to history
         qa_history = workspace.data.get('qa_history', [])
