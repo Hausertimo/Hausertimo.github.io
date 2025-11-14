@@ -972,6 +972,7 @@ async function submitBlockData(blockId) {
 // ========== TEASER CHAT FUNCTIONS ==========
 // Global variable to store session ID for handoff to full workspace
 let teaserSessionId = null;
+let waitingForWorkspaceName = false;
 
 async function sendTeaserMessage() {
     const input = document.getElementById('teaserProductInput');
@@ -995,6 +996,13 @@ async function sendTeaserMessage() {
     // Add user message to chat
     addTeaserMessage('user', message);
     input.value = '';
+
+    // Check if we're waiting for workspace name
+    if (waitingForWorkspaceName) {
+        // User provided workspace name, create workspace
+        await createWorkspaceFromSession(message);
+        return;
+    }
 
     try {
         let response, data;
@@ -1034,9 +1042,15 @@ async function sendTeaserMessage() {
             // Check if AI has enough info to generate report
             if (data.complete) {
                 // AI is ready! Check if user is logged in
-                checkAuthAndShowContinue();
-                // Hide input container (conversation is done)
-                document.getElementById('teaserInputContainer').style.display = 'none';
+                const user = getCurrentUser();
+
+                if (user) {
+                    // User is logged in, ask for workspace name in the chat
+                    askForWorkspaceNameInChat();
+                } else {
+                    // User not logged in, show sign in prompt
+                    showSignInPromptInChat();
+                }
             } else {
                 // AI needs more info, keep chatting on landing page
                 // Change button text to "Send" for follow-up messages
@@ -1050,11 +1064,11 @@ async function sendTeaserMessage() {
         // Re-enable input and button
         input.disabled = false;
         sendBtn.disabled = false;
-        // Keep button text as "Send" if we have an active session
-        if (!teaserSessionId) {
+        // Keep button text as "Send" if we have an active session or waiting for name
+        if (!teaserSessionId && !waitingForWorkspaceName) {
             sendBtn.textContent = 'Start Chat';
         } else {
-            sendBtn.textContent = 'Send';
+            sendBtn.textContent = waitingForWorkspaceName ? 'Create' : 'Send';
         }
     }
 }
@@ -1072,63 +1086,41 @@ function addTeaserMessage(role, content) {
 }
 
 /**
- * Check auth and show appropriate continue action
+ * Ask for workspace name in the chat (organic!)
  */
-function checkAuthAndShowContinue() {
-    const user = getCurrentUser();
+function askForWorkspaceNameInChat() {
+    waitingForWorkspaceName = true;
+    addTeaserMessage('assistant', 'Great! I have all the information I need. What would you like to name your workspace?');
 
-    if (user) {
-        // User is logged in, show "Create Workspace" button
-        showCreateWorkspaceButton();
-    } else {
-        // User not logged in, show "Sign in to save" message
-        showSignInPrompt();
+    // Change button text to "Create"
+    const sendBtn = document.getElementById('teaserSendBtn');
+    if (sendBtn) {
+        sendBtn.textContent = 'Create';
     }
 }
 
 /**
- * Show create workspace button (for logged in users)
+ * Show sign in prompt in the chat (organic!)
  */
-function showCreateWorkspaceButton() {
-    const continueContainer = document.getElementById('teaserContinueContainer');
-    continueContainer.innerHTML = `
-        <button class="btn btn-accent btn-large teaser-continue-btn" onclick="promptWorkspaceName()">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 8px;">
-                <path d="M10 4v12M4 10h12"/>
-            </svg>
-            Create Workspace
-        </button>
-    `;
-    continueContainer.style.display = 'block';
-}
+function showSignInPromptInChat() {
+    addTeaserMessage('assistant', 'Perfect! I have all the information needed. Sign in to save your compliance analysis as a workspace.');
 
-/**
- * Show sign in prompt (for non-logged in users)
- */
-function showSignInPrompt() {
+    // Show sign in button in the continue container
     const continueContainer = document.getElementById('teaserContinueContainer');
     continueContainer.innerHTML = `
         <div style="text-align: center; padding: 20px;">
-            <p style="margin-bottom: 16px; color: #666;">Sign in to save your compliance analysis as a workspace</p>
             <button class="btn btn-accent btn-large" onclick="showLoginModal()">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 8px;">
+                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
                 Sign In to Save Workspace
             </button>
         </div>
     `;
     continueContainer.style.display = 'block';
-}
 
-/**
- * Prompt user for workspace name
- */
-function promptWorkspaceName() {
-    const name = prompt('Name your workspace:', 'Compliance Analysis');
-
-    if (!name) {
-        return; // User cancelled
-    }
-
-    createWorkspaceFromSession(name);
+    // Hide input container
+    document.getElementById('teaserInputContainer').style.display = 'none';
 }
 
 /**
@@ -1136,19 +1128,25 @@ function promptWorkspaceName() {
  */
 async function createWorkspaceFromSession(workspaceName) {
     if (!teaserSessionId) {
-        alert('No active session found. Please start a conversation first.');
+        addTeaserMessage('assistant', 'Sorry, I couldn\'t find your session. Please refresh and try again.');
+        waitingForWorkspaceName = false;
+        const sendBtn = document.getElementById('teaserSendBtn');
+        if (sendBtn) {
+            sendBtn.disabled = false;
+            sendBtn.textContent = 'Send';
+        }
         return;
     }
 
     try {
-        // Show loading
-        const continueContainer = document.getElementById('teaserContinueContainer');
-        continueContainer.innerHTML = `
-            <div style="text-align: center; padding: 20px;">
-                <div class="loading-spinner" style="margin: 0 auto 16px;"></div>
-                <p>Creating your workspace...</p>
-            </div>
-        `;
+        // Show loading message
+        addTeaserMessage('assistant', 'Creating your workspace...');
+
+        const sendBtn = document.getElementById('teaserSendBtn');
+        if (sendBtn) {
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Creating...';
+        }
 
         // Get session data from develope API
         const sessionResponse = await fetch(`/api/develope/${teaserSessionId}`, {
@@ -1156,7 +1154,8 @@ async function createWorkspaceFromSession(workspaceName) {
         });
 
         if (!sessionResponse.ok) {
-            throw new Error('Failed to get session data');
+            const errorData = await sessionResponse.json().catch(() => ({}));
+            throw new Error(errorData.error || 'Failed to get session data');
         }
 
         const sessionData = await sessionResponse.json();
@@ -1168,44 +1167,50 @@ async function createWorkspaceFromSession(workspaceName) {
             credentials: 'include',
             body: JSON.stringify({
                 name: workspaceName,
-                product_description: sessionData.history[0]?.content || 'No description',
+                product_description: sessionData.history?.[0]?.content || workspaceName,
                 matched_norms: sessionData.matched_norms || [],
                 all_results: sessionData.all_results || {}
             })
         });
 
-        if (!response.ok) {
-            const data = await response.json();
-            if (data.limit_exceeded) {
-                alert(data.error);
-                return;
-            }
-            throw new Error('Failed to create workspace');
-        }
-
         const data = await response.json();
 
-        // Redirect to workspace
-        window.location.href = `/workspace/${data.workspace.id}`;
+        if (!response.ok) {
+            if (data.limit_exceeded) {
+                addTeaserMessage('assistant', `Sorry, ${data.error}`);
+                waitingForWorkspaceName = false;
+                if (sendBtn) {
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = 'Send';
+                }
+                return;
+            }
+            throw new Error(data.error || 'Failed to create workspace');
+        }
+
+        // Success! Show confirmation and redirect
+        addTeaserMessage('assistant', `Great! Your workspace "${workspaceName}" has been created. Redirecting...`);
+
+        // Redirect to workspace after a short delay
+        setTimeout(() => {
+            window.location.href = `/workspace/${data.workspace.id}`;
+        }, 1500);
 
     } catch (error) {
         console.error('Error creating workspace:', error);
-        alert('Failed to create workspace. Please try again.');
+        addTeaserMessage('assistant', `Oops! Something went wrong: ${error.message}. Please try again.`);
 
-        // Restore button
-        showCreateWorkspaceButton();
+        // Reset state
+        waitingForWorkspaceName = false;
+        const sendBtn = document.getElementById('teaserSendBtn');
+        if (sendBtn) {
+            sendBtn.disabled = false;
+            sendBtn.textContent = 'Send';
+        }
     }
 }
 
-function showContinueButton() {
-    // Legacy function for backwards compatibility
-    checkAuthAndShowContinue();
-}
-
-function openFullWorkspace() {
-    // Legacy function - redirect to prompt workspace name
-    promptWorkspaceName();
-}
+// Legacy functions removed - now using chat-based approach
 
 // Allow Enter key to send message in teaser
 document.addEventListener('DOMContentLoaded', function() {
