@@ -11,12 +11,40 @@ analytics_bp = Blueprint('analytics', __name__)
 
 # Redis client will be set by app.py
 redis_client = None
+# Supabase client will be set by app.py
+supabase_client = None
 
 
 def init_redis(redis_instance):
     """Initialize redis client for this blueprint"""
     global redis_client
     redis_client = redis_instance
+
+
+def init_supabase(supabase_instance):
+    """Initialize supabase client for this blueprint"""
+    global supabase_client
+    supabase_client = supabase_instance
+
+
+def get_total_signups():
+    """Get total number of registered users from Supabase"""
+    try:
+        if not supabase_client:
+            logger.warning("Supabase client not initialized")
+            return 0
+
+        # Query Supabase auth users table to get count
+        response = supabase_client.auth.admin.list_users()
+
+        if response:
+            # Count total users
+            total_users = len(response) if isinstance(response, list) else 0
+            return total_users
+        return 0
+    except Exception as e:
+        logger.error(f"Error getting Supabase user count: {e}")
+        return 0
 
 
 @analytics_bp.route("/api/visitor-count", methods=["GET", "POST"])
@@ -51,21 +79,18 @@ def get_metrics():
             redis_client.set('products_searched', 703)
             products_count = 703
 
-        # Get norms scouted count (start at 6397)
-        norms_count = redis_client.get('norms_scouted')
-        if norms_count is None:
-            redis_client.set('norms_scouted', 6397)
-            norms_count = 6397
+        # Fixed value for norms cataloged
+        norms_cataloged = 400
 
-        # Get monthly users
-        users_count = redis_client.get('monthly_users') or 413
+        # Get total signups from Supabase
+        total_signups = get_total_signups()
 
         return jsonify({
             "products_searched": int(products_count),
-            "norms_scouted": int(norms_count),
-            "monthly_users": int(users_count)
+            "norms_cataloged": norms_cataloged,
+            "total_signups": total_signups
         })
 
     except Exception as e:
-        logger.error(f"Redis error in metrics: {e}")
+        logger.error(f"Error in metrics: {e}")
         return jsonify({"error": "Metrics temporarily unavailable"}), 503
