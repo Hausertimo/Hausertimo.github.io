@@ -467,24 +467,52 @@ function escapeHtml(text) {
 }
 
 /**
- * Format product description with proper line breaks and structure
+ * Format product description with Markdown-like rendering
  */
 function formatProductDescription(text) {
     if (!text) return '';
 
-    // Replace line breaks with <br> tags
     let formatted = escapeHtml(text);
 
-    // Convert double line breaks to paragraph breaks
-    formatted = formatted.replace(/\n\n/g, '</p><p class="desc-paragraph">');
+    // Headers (### Header, ## Header, # Header)
+    formatted = formatted.replace(/^### (.+)$/gm, '<h3 class="md-h3">$1</h3>');
+    formatted = formatted.replace(/^## (.+)$/gm, '<h2 class="md-h2">$1</h2>');
+    formatted = formatted.replace(/^# (.+)$/gm, '<h1 class="md-h1">$1</h1>');
 
-    // Convert single line breaks to <br>
+    // Bold (**text** or __text__)
+    formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    formatted = formatted.replace(/__(.+?)__/g, '<strong>$1</strong>');
+
+    // Italic (*text* or _text_)
+    formatted = formatted.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    formatted = formatted.replace(/_(.+?)_/g, '<em>$1</em>');
+
+    // Unordered lists (- item or * item)
+    formatted = formatted.replace(/^[*-] (.+)$/gm, '<li class="md-li">$1</li>');
+    formatted = formatted.replace(/(<li class="md-li">.*<\/li>\n?)+/g, '<ul class="md-ul">$&</ul>');
+
+    // Ordered lists (1. item, 2. item)
+    formatted = formatted.replace(/^\d+\. (.+)$/gm, '<li class="md-li">$1</li>');
+
+    // Code inline (`code`)
+    formatted = formatted.replace(/`([^`]+)`/g, '<code class="md-code">$1</code>');
+
+    // Links ([text](url))
+    formatted = formatted.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="md-link">$1</a>');
+
+    // Horizontal rules (--- or ***)
+    formatted = formatted.replace(/^(---|\*\*\*)$/gm, '<hr class="md-hr">');
+
+    // Paragraphs (double line break)
+    formatted = formatted.replace(/\n\n/g, '</p><p class="md-paragraph">');
+
+    // Single line breaks
     formatted = formatted.replace(/\n/g, '<br>');
 
     // Wrap in paragraph
-    formatted = `<p class="desc-paragraph">${formatted}</p>`;
+    formatted = `<div class="md-content"><p class="md-paragraph">${formatted}</p></div>`;
 
-    // Bold section headers (lines ending with colon)
+    // Bold section headers ending with colon (fallback for non-markdown)
     formatted = formatted.replace(/([A-Z][^<\n:]+:)/g, '<strong>$1</strong>');
 
     return formatted;
