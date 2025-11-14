@@ -1132,8 +1132,8 @@ function showSignInPromptInChat() {
     // Add message prompting sign-in
     addTeaserMessage('assistant', 'To save your workspace and continue the analysis, please sign in.');
 
-    // Store flag to redirect to /develop after login
-    localStorage.setItem('redirectAfterLogin', '/develop');
+    // Store flag to redirect back to homepage after login so session can be recovered
+    localStorage.setItem('redirectAfterLogin', '/');
 
     // Show sign in button in the continue container
     const continueContainer = document.getElementById('teaserContinueContainer');
@@ -1350,26 +1350,58 @@ function resumeTeaserSessionAfterLogin() {
         demoSection.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Show message asking for workspace name
-    setTimeout(() => {
-        addTeaserMessage('assistant', 'Welcome back! What would you like to name your product?');
+    // Fetch and restore chat history from backend
+    fetch(`/api/develope/session/${pendingSessionId}`)
+        .then(response => response.json())
+        .then(sessionData => {
+            // Clear the default welcome message
+            const messagesDiv = document.getElementById('teaserChatMessages');
+            if (messagesDiv) messagesDiv.innerHTML = '';
 
-        // Update UI
-        const sendBtn = document.getElementById('teaserSendBtn');
-        const input = document.getElementById('teaserProductInput');
-        if (sendBtn) sendBtn.textContent = 'Create';
-        if (input) {
-            input.placeholder = 'e.g., Wall Light 5W';
-            input.disabled = false;
-        }
+            // Restore chat history
+            if (sessionData.history && sessionData.history.length > 0) {
+                sessionData.history.forEach(msg => {
+                    addTeaserMessage(msg.role, msg.content);
+                });
+            }
 
-        // Show input container
-        const inputContainer = document.getElementById('teaserInputContainer');
-        if (inputContainer) inputContainer.style.display = 'flex';
+            // Add welcome back message
+            addTeaserMessage('assistant', 'Welcome back! What would you like to name your product?');
 
-        // Focus input
-        if (input) input.focus();
-    }, 500);
+            // Update UI
+            const sendBtn = document.getElementById('teaserSendBtn');
+            const input = document.getElementById('teaserProductInput');
+            if (sendBtn) sendBtn.textContent = 'Create';
+            if (input) {
+                input.placeholder = 'e.g., Wall Light 5W';
+                input.disabled = false;
+            }
+
+            // Show input container
+            const inputContainer = document.getElementById('teaserInputContainer');
+            if (inputContainer) inputContainer.style.display = 'flex';
+
+            // Focus input
+            if (input) input.focus();
+        })
+        .catch(error => {
+            console.error('Error restoring chat history:', error);
+            // Fallback: just show welcome message without history
+            addTeaserMessage('assistant', 'Welcome back! What would you like to name your product?');
+
+            // Update UI anyway
+            const sendBtn = document.getElementById('teaserSendBtn');
+            const input = document.getElementById('teaserProductInput');
+            if (sendBtn) sendBtn.textContent = 'Create';
+            if (input) {
+                input.placeholder = 'e.g., Wall Light 5W';
+                input.disabled = false;
+            }
+
+            const inputContainer = document.getElementById('teaserInputContainer');
+            if (inputContainer) inputContainer.style.display = 'flex';
+            if (input) input.focus();
+        });
 }
 
 // Allow Enter key to send message in teaser
