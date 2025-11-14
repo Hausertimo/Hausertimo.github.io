@@ -12,6 +12,7 @@ from services.workspace_storage import (
     delete_workspace
 )
 from services.product_conversation import answer_analysis_question
+from services.norm_matcher import match_norms
 
 logger = logging.getLogger(__name__)
 
@@ -131,13 +132,15 @@ def api_workspace_ask(workspace_id):
         product_description = workspace['product']['description']
         matched_norms = workspace['analysis']['matched_norms']
         all_norm_results = workspace['analysis']['all_results']
+        qa_history = workspace.get('qa_history', [])
 
-        # Call Q&A function
+        # Call Q&A function with chat history for context
         result = answer_analysis_question(
             product_description=product_description,
             matched_norms=matched_norms,
             all_norms=all_norm_results,
-            question=question
+            question=question,
+            qa_history=qa_history
         )
 
         # Store Q&A in workspace history
@@ -159,6 +162,52 @@ def api_workspace_ask(workspace_id):
 
     except Exception as e:
         logger.exception(f"Error in workspace Q&A: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@workspace_bp.route('/api/workspaces/<workspace_id>/reanalyze', methods=['POST'])
+def api_workspace_reanalyze(workspace_id):
+    """
+    Re-run compliance analysis for a workspace after product description changes
+
+    Returns:
+        {"matched_norms": [...], "analysis": {...}}
+    """
+    from app import redis_client
+
+    try:
+        workspace = load_workspace(redis_client, workspace_id)
+
+        if not workspace:
+            return jsonify({"error": "Workspace not found"}), 404
+
+        # Get current product description
+        product_description = workspace['product']['description']
+
+        logger.info(f"Re-analyzing workspace {workspace_id}")
+
+        # Run norm matching analysis
+        matched_norms = match_norms(product_description, max_workers=10)
+
+        # Update workspace with new analysis
+        workspace['analysis'] = {
+            'matched_norms': matched_norms,
+            'all_results': matched_norms,  # Store all for Q&A
+            'analyzed_at': datetime.now().isoformat()
+        }
+
+        # Save updated workspace
+        update_workspace(redis_client, workspace_id, workspace)
+
+        logger.info(f"Re-analysis complete for workspace {workspace_id}: {len(matched_norms)} norms")
+
+        return jsonify({
+            "matched_norms": matched_norms,
+            "analysis": workspace['analysis']
+        })
+
+    except Exception as e:
+        logger.exception(f"Error re-analyzing workspace: {e}")
         return jsonify({"error": str(e)}), 500
 
 
