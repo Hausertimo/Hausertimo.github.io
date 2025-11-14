@@ -15,6 +15,7 @@ Ready to plug into Flask app!
 import os
 import io
 import json
+import markdown
 from datetime import datetime
 from functools import wraps
 from typing import Optional, Dict, Any, List
@@ -227,6 +228,43 @@ def get_current_user() -> Dict[str, Any]:
     if hasattr(request, 'current_user'):
         return request.current_user
     return None
+
+
+def render_markdown(text: str) -> str:
+    """
+    Convert Markdown text to HTML with custom styling classes
+
+    Args:
+        text: Markdown formatted text
+
+    Returns:
+        HTML string with brand-styled elements
+    """
+    if not text:
+        return ''
+
+    # Initialize markdown with extensions
+    md = markdown.Markdown(extensions=[
+        'extra',  # tables, code blocks, etc.
+        'nl2br',  # newline to <br>
+        'sane_lists'  # better list handling
+    ])
+
+    # Convert to HTML
+    html = md.convert(text)
+
+    # Add custom CSS classes for brand styling
+    html = html.replace('<h1>', '<h1 class="md-h1">')
+    html = html.replace('<h2>', '<h2 class="md-h2">')
+    html = html.replace('<h3>', '<h3 class="md-h3">')
+    html = html.replace('<code>', '<code class="md-code">')
+    html = html.replace('<a ', '<a class="md-link" target="_blank" rel="noopener noreferrer" ')
+    html = html.replace('<hr>', '<hr class="md-hr">')
+    html = html.replace('<li>', '<li class="md-li">')
+    html = html.replace('<p>', '<p class="md-paragraph">')
+    html = html.replace('<ul>', '<ul class="md-ul">')
+
+    return f'<div class="md-content">{html}</div>'
 
 
 # ============================================================================
@@ -652,7 +690,12 @@ def get_workspace(workspace_id: str):
             .eq('id', workspace_id) \
             .execute()
 
-        return jsonify(result.data)
+        # Process product description - render Markdown to HTML
+        workspace_data = result.data
+        if workspace_data.get('product_description'):
+            workspace_data['product_description_html'] = render_markdown(workspace_data['product_description'])
+
+        return jsonify(workspace_data)
 
     except Exception as e:
         return jsonify({"error": f"Get failed: {str(e)}"}), 500
