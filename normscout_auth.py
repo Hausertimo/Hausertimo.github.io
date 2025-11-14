@@ -858,48 +858,44 @@ def ask_question(workspace_id: str):
         if not workspace.data:
             return jsonify({"error": "Workspace not found"}), 404
 
-        # Build context from workspace data
+        # Build context from workspace data (matching product_conversation.py style)
         workspace_data = workspace.data
         product_desc = workspace_data.get('product_description', 'No description available')
         norms = workspace_data.get('norms', [])
 
-        # Build context string
-        norms_summary = ""
-        if norms:
-            norms_summary = "\n\nCompliance norms found:\n"
-            for norm in norms[:10]:  # Limit to first 10 to save tokens
-                norm_id = norm.get('norm_id', norm.get('id', 'Unknown'))
-                title = norm.get('title', norm.get('name', ''))
-                reasoning = norm.get('reasoning', '')
-                norms_summary += f"- {norm_id}: {title}\n"
-                if reasoning:
-                    norms_summary += f"  Reason: {reasoning}\n"
+        # Prepare detailed norm context (show samples to stay within token limits)
+        norms_context = json.dumps(norms[:20], indent=2) if len(norms) > 0 else "None"
 
-        # Call LLM with workspace context
-        messages = [
-            {
-                "role": "system",
-                "content": f"""You are a compliance expert assistant helping users understand their product's regulatory requirements.
+        # Build expert prompt (matching product_conversation.py Q&A style)
+        prompt = f"""You are an EU compliance expert. Answer the user's question about this product's compliance analysis.
 
-Product: {workspace_data.get('name', 'Unnamed Product')}
-
-Product Description:
+PRODUCT:
 {product_desc}
-{norms_summary}
 
-Answer questions about this product's compliance requirements, certifications, and regulatory needs. Be specific and helpful."""
-            },
-            {
-                "role": "user",
-                "content": question
-            }
-        ]
+APPLICABLE NORMS ({len(norms)} total, showing first 20):
+{norms_context}
 
-        # Call OpenRouter API
+USER QUESTION:
+{question}
+
+INSTRUCTIONS:
+- Provide clear, accurate answers based on the analysis results
+- Reference specific norms by their ID (e.g., "EN 62368-1") when relevant
+- If asked "why", quote the reasoning field from the norm analysis
+- If asked about consequences, explain legal/business implications
+- Be concise but thorough (2-4 paragraphs max)
+- Use bullet points for multi-part answers
+- Provide actionable guidance when appropriate
+
+ANSWER:"""
+
+        messages = [{"role": "user", "content": prompt}]
+
+        # Call OpenRouter API with same model as product conversation
         llm_result = call_openrouter(
             messages,
-            model="openai/gpt-4o-mini",
-            temperature=0.3,
+            model="anthropic/claude-3.5-sonnet",
+            temperature=0.5,
             max_tokens=800
         )
 
