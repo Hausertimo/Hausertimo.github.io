@@ -73,11 +73,11 @@ def visitor_count():
 def get_metrics():
     """Get all metrics for display"""
     try:
-        # Get products searched count (start at 703)
+        # Get products searched count (start at 50)
         products_count = redis_client.get('products_searched')
         if products_count is None:
-            redis_client.set('products_searched', 703)
-            products_count = 703
+            redis_client.set('products_searched', 50)
+            products_count = 50
 
         # Fixed value for norms cataloged
         norms_cataloged = 400

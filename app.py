@@ -56,7 +56,7 @@ from services.field_framework import (FieldRenderer, MarkdownField, FormField,
                                       TextAreaField, ButtonField)
 
 # Import Supabase auth and client
-from normscout_auth import init_app as init_supabase_auth, supabase
+from normscout_auth import init_app as init_supabase_auth, supabase, init_redis as init_workspace_redis
 
 # Register all blueprints
 app.register_blueprint(main_bp)
@@ -69,6 +69,7 @@ app.register_blueprint(develope_bp)
 # Initialize blueprint dependencies
 init_analytics_redis(redis_client)
 init_analytics_supabase(supabase)
+init_workspace_redis(redis_client)
 init_compliance_deps(
     redis_client,
     validate_product_input,
