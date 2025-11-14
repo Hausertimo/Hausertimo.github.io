@@ -570,6 +570,13 @@ def dashboard_page():
     return render_template('dashboard.html')
 
 
+@pages_bp.route('/develop')
+@require_auth
+def develop_page():
+    """Serve the modern develop page for creating new workspaces"""
+    return render_template('develop.html')
+
+
 @pages_bp.route('/workspace/<workspace_id>')
 @require_auth
 def workspace_page(workspace_id):
