@@ -1184,19 +1184,19 @@ ul li, ol li {
 
 .teaser-input-container {
     display: flex;
-    gap: var(--spacing-sm);
-    align-items: flex-end;
+    flex-direction: column;
+    gap: var(--spacing-md);
 }
 
 .teaser-input {
-    flex: 1;
+    width: 100%;
     padding: var(--spacing-md);
     border: 2px solid #e5e7eb;
     border-radius: 12px;
     font-size: 16px;
     font-family: var(--font-family);
     resize: vertical;
-    min-height: 60px;
+    min-height: 80px;
     transition: all 0.2s;
 }
 
@@ -1207,8 +1207,14 @@ ul li, ol li {
 }
 
 .teaser-send-btn {
+    width: 100%;
     padding: var(--spacing-md) var(--spacing-lg);
     white-space: nowrap;
+}
+
+#teaserProgressBtn {
+    width: 100%;
+    margin-top: var(--spacing-md);
 }
 
 .teaser-continue-container {
@@ -1242,15 +1248,6 @@ ul li, ol li {
     .teaser-message {
         margin-left: 0 !important;
         margin-right: 0 !important;
-    }
-
-    .teaser-input-container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .teaser-send-btn {
-        width: 100%;
     }
 }
 

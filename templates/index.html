@@ -202,13 +202,19 @@
                         class="teaser-input"
                         id="teaserProductInput"
                         placeholder="e.g., 'USB-powered LED desk lamp with touch controls'"
-                        rows="2"
+                        rows="3"
                         aria-label="Product description"
                     ></textarea>
-                    <button class="btn btn-accent teaser-send-btn" id="teaserSendBtn" onclick="sendTeaserMessage()">
+                    <button class="btn btn-accent btn-large teaser-send-btn" id="teaserSendBtn" onclick="sendTeaserMessage()">
                         Start Chat
                     </button>
                 </div>
+
+                <!-- Progress Button (shown during analysis) -->
+                <button id="teaserProgressBtn" class="ns-progress-btn btn-large" style="display: none;">
+                    <div class="ns-progress-bar" id="teaserProgressBar"></div>
+                    <span class="ns-progress-text" id="teaserProgressText">Analyzing...</span>
+                </button>
 
                 <!-- "Continue in Full Workspace" button (hidden initially) -->
                 <div class="teaser-continue-container" id="teaserContinueContainer" style="display: none;">
