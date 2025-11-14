@@ -67,15 +67,23 @@
                     <div class="workspace-main">
                         <!-- Product Description -->
                         <div class="workspace-section">
-                            <h2 class="section-title">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M4 4h12v12H4V4z"/>
-                                    <path d="M7 8h6M7 11h4"/>
-                                </svg>
-                                Product Description
-                            </h2>
+                            <div class="section-title-row">
+                                <h2 class="section-title">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M4 4h12v12H4V4z"/>
+                                        <path d="M7 8h6M7 11h4"/>
+                                    </svg>
+                                    Product Description
+                                </h2>
+                                <button class="btn btn-small btn-secondary" id="editDescBtn" onclick="toggleEditDescription()">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                        <path d="M2 12l10-10 2 2-10 10H2v-2z"/>
+                                    </svg>
+                                    Edit
+                                </button>
+                            </div>
                             <div class="section-content">
-                                <p id="productDescription">Loading...</p>
+                                <div id="productDescription" class="product-description-content">Loading...</div>
                             </div>
                         </div>
 

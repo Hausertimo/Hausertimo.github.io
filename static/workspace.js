@@ -113,10 +113,12 @@ function renderWorkspace() {
         workspaceName.textContent = workspace.name;
     }
 
-    // Product description
+    // Product description (with formatting)
     const productDescription = document.getElementById('productDescription');
     if (productDescription) {
-        productDescription.textContent = workspace.product_description || 'No description available';
+        const description = workspace.product_description || 'No description available';
+        // Format with line breaks and preserve structure
+        productDescription.innerHTML = formatProductDescription(description);
     }
 
     // Compliance results
@@ -146,23 +148,43 @@ function renderComplianceResults() {
     let html = '<div class="norms-list">';
 
     norms.forEach(norm => {
+        // Handle different norm data structures
+        const normId = norm.norm_id || norm.id || norm.standard || 'Unknown Norm';
+        const title = norm.title || norm.name || normId;
+        const description = norm.description || norm.summary || '';
+        const confidence = norm.confidence || norm.score || 0;
+        const reasoning = norm.reasoning || '';
+
         html += `
             <div class="norm-item">
                 <div class="norm-header">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="norm-icon">
-                        <path d="M8 1l7 4v4c0 3-7 4-7 4s-7-1-7-4V5l7-4z"/>
-                        <path d="M6 8l1.5 1.5L11 6"/>
-                    </svg>
-                    <strong>${escapeHtml(norm.name || norm.standard || 'Unknown')}</strong>
+                    <div class="norm-title-row">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="norm-icon">
+                            <path d="M8 1l7 4v4c0 3-7 4-7 4s-7-1-7-4V5l7-4z"/>
+                            <path d="M6 8l1.5 1.5L11 6"/>
+                        </svg>
+                        <strong class="norm-id">${escapeHtml(normId)}</strong>
+                        ${confidence > 0 ? `<span class="confidence-badge confidence-${getConfidenceClass(confidence)}">${Math.round(confidence)}%</span>` : ''}
+                    </div>
+                    ${title !== normId ? `<h4 class="norm-title">${escapeHtml(title)}</h4>` : ''}
                 </div>
-                ${norm.description ? `<p class="norm-description">${escapeHtml(norm.description)}</p>` : ''}
-                ${norm.region ? `<span class="norm-badge">${escapeHtml(norm.region)}</span>` : ''}
+                ${description ? `<p class="norm-description">${escapeHtml(description)}</p>` : ''}
+                ${reasoning ? `<p class="norm-reasoning"><em>Why it applies:</em> ${escapeHtml(reasoning)}</p>` : ''}
             </div>
         `;
     });
 
     html += '</div>';
     resultsEl.innerHTML = html;
+}
+
+/**
+ * Get confidence class for styling
+ */
+function getConfidenceClass(confidence) {
+    if (confidence >= 80) return 'high';
+    if (confidence >= 60) return 'medium';
+    return 'low';
 }
 
 /**
@@ -434,6 +456,92 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+/**
+ * Format product description with proper line breaks and structure
+ */
+function formatProductDescription(text) {
+    if (!text) return '';
+
+    // Replace line breaks with <br> tags
+    let formatted = escapeHtml(text);
+
+    // Convert double line breaks to paragraph breaks
+    formatted = formatted.replace(/\n\n/g, '</p><p class="desc-paragraph">');
+
+    // Convert single line breaks to <br>
+    formatted = formatted.replace(/\n/g, '<br>');
+
+    // Wrap in paragraph
+    formatted = `<p class="desc-paragraph">${formatted}</p>`;
+
+    // Bold section headers (lines ending with colon)
+    formatted = formatted.replace(/([A-Z][^<\n:]+:)/g, '<strong>$1</strong>');
+
+    return formatted;
+}
+
+/**
+ * Toggle edit mode for product description
+ */
+function toggleEditDescription() {
+    const descEl = document.getElementById('productDescription');
+    const editBtn = document.getElementById('editDescBtn');
+    const isEditing = descEl.getAttribute('contenteditable') === 'true';
+
+    if (isEditing) {
+        // Save mode
+        descEl.setAttribute('contenteditable', 'false');
+        descEl.classList.remove('editing');
+        editBtn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M2 12l10-10 2 2-10 10H2v-2z"/>
+            </svg>
+            Edit
+        `;
+
+        // Save the updated description
+        const newDescription = descEl.innerText;
+        saveProductDescription(newDescription);
+    } else {
+        // Edit mode
+        descEl.setAttribute('contenteditable', 'true');
+        descEl.classList.add('editing');
+        editBtn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M2 6l6 6L14 6"/>
+            </svg>
+            Save
+        `;
+        descEl.focus();
+    }
+}
+
+/**
+ * Save product description
+ */
+async function saveProductDescription(newDescription) {
+    try {
+        const response = await fetch(`/api/workspaces/${workspaceId}`, {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            credentials: 'include',
+            body: JSON.stringify({ product_description: newDescription })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to save description');
+        }
+
+        workspace.product_description = newDescription;
+
+    } catch (error) {
+        console.error('Error saving description:', error);
+        alert('Failed to save description. Please try again.');
+        // Reload to revert changes
+        await loadWorkspace();
+    }
 }
 
 /**

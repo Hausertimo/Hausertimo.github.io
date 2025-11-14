@@ -696,6 +696,48 @@ def rename_workspace(workspace_id: str):
         return jsonify({"error": f"Rename failed: {str(e)}"}), 500
 
 
+@workspace_bp.route('/<workspace_id>', methods=['PATCH'])
+@require_auth
+def update_workspace(workspace_id: str):
+    """
+    Update workspace fields
+
+    Request body (can include any of these):
+    {
+        "name": "New Name",
+        "product_description": "Updated description"
+    }
+    """
+    try:
+        user_id = get_current_user_id()
+        data = request.get_json()
+
+        # Build update dict with only allowed fields
+        allowed_fields = ['name', 'product_description']
+        update_data = {k: v for k, v in data.items() if k in allowed_fields}
+
+        if not update_data:
+            return jsonify({"error": "No valid fields to update"}), 400
+
+        # Update workspace
+        result = supabase.table('workspaces') \
+            .update(update_data) \
+            .eq('id', workspace_id) \
+            .eq('user_id', user_id) \
+            .execute()
+
+        if not result.data:
+            return jsonify({"error": "Workspace not found or not authorized"}), 404
+
+        return jsonify({
+            "success": True,
+            "workspace": result.data[0]
+        })
+
+    except Exception as e:
+        return jsonify({"error": f"Update failed: {str(e)}"}), 500
+
+
 @workspace_bp.route('/<workspace_id>', methods=['DELETE'])
 @require_auth
 def delete_workspace(workspace_id: str):
