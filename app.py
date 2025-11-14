@@ -43,7 +43,7 @@ except Exception as e:
 
 # Import blueprints
 from routes.main import main_bp
-from routes.analytics import analytics_bp, init_redis as init_analytics_redis
+from routes.analytics import analytics_bp, init_redis as init_analytics_redis, init_supabase as init_analytics_supabase
 from routes.compliance import compliance_bp, init_dependencies as init_compliance_deps
 from routes.fields import field_bp
 from routes.develope import develope_bp
@@ -55,8 +55,8 @@ from services.openrouter import analyze_product_compliance, validate_product_inp
 from services.field_framework import (FieldRenderer, MarkdownField, FormField,
                                       TextAreaField, ButtonField)
 
-# Import Supabase auth
-from normscout_auth import init_app as init_supabase_auth
+# Import Supabase auth and client
+from normscout_auth import init_app as init_supabase_auth, supabase, init_redis as init_workspace_redis
 
 # Register all blueprints
 app.register_blueprint(main_bp)
@@ -68,6 +68,8 @@ app.register_blueprint(develope_bp)
 
 # Initialize blueprint dependencies
 init_analytics_redis(redis_client)
+init_analytics_supabase(supabase)
+init_workspace_redis(redis_client)
 init_compliance_deps(
     redis_client,
     validate_product_input,

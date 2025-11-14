@@ -41,22 +41,22 @@ function initializeVisitorCounter() {
             productsElement.textContent = data.products_searched.toLocaleString();
         }
 
-        // Update norms scouted with + sign
+        // Update norms cataloged with + sign
         const normsElement = document.getElementById('norms-scouted-count');
-        if (normsElement && data.norms_scouted !== undefined) {
-            normsElement.textContent = data.norms_scouted.toLocaleString() + '+';
+        if (normsElement && data.norms_cataloged !== undefined) {
+            normsElement.textContent = data.norms_cataloged.toLocaleString() + '+';
         }
 
-        // Update monthly users if not already set
+        // Update total signups if not already set
         const usersElement = document.getElementById('monthly-users-count');
-        if (usersElement && usersElement.textContent === '...' && data.monthly_users !== undefined) {
-            usersElement.textContent = data.monthly_users.toLocaleString();
+        if (usersElement && usersElement.textContent === '...' && data.total_signups !== undefined) {
+            usersElement.textContent = data.total_signups.toLocaleString();
         }
 
         // Update investment section stats (same data, different location)
         const investmentNormsElement = document.getElementById('investment-norms-count');
-        if (investmentNormsElement && data.norms_scouted !== undefined) {
-            investmentNormsElement.textContent = data.norms_scouted.toLocaleString() + '+';
+        if (investmentNormsElement && data.norms_cataloged !== undefined) {
+            investmentNormsElement.textContent = data.norms_cataloged.toLocaleString() + '+';
         }
 
         const investmentProductsElement = document.getElementById('investment-products-count');
@@ -65,8 +65,8 @@ function initializeVisitorCounter() {
         }
 
         const investmentUsersElement = document.getElementById('investment-users-count');
-        if (investmentUsersElement && data.monthly_users !== undefined) {
-            investmentUsersElement.textContent = data.monthly_users.toLocaleString();
+        if (investmentUsersElement && data.total_signups !== undefined) {
+            investmentUsersElement.textContent = data.total_signups.toLocaleString();
         }
     })
     .catch(error => {
@@ -261,20 +261,20 @@ function updateMetricsDisplay() {
             }
         }
 
-        // Update norms scouted with smoother animation
+        // Update norms cataloged with smoother animation
         const normsElement = document.getElementById('norms-scouted-count');
-        if (normsElement && data.norms_scouted !== undefined) {
+        if (normsElement && data.norms_cataloged !== undefined) {
             // Remove the '+' and commas for parsing
             const currentText = normsElement.textContent.replace('+', '').replace(/,/g, '');
             const currentValue = parseInt(currentText) || 0;
 
             // Only animate if value increased, with slower animation for visual effect
-            if (data.norms_scouted > currentValue) {
+            if (data.norms_cataloged > currentValue) {
                 // Calculate the increment for smoother animation
-                const increment = data.norms_scouted - currentValue;
+                const increment = data.norms_cataloged - currentValue;
                 // Slower animation for bigger numbers (2-3 seconds based on increment)
                 const duration = Math.min(2000 + (increment * 50), 3000);
-                animateCounterWithPlus(normsElement, currentValue, data.norms_scouted, duration);
+                animateCounterWithPlus(normsElement, currentValue, data.norms_cataloged, duration);
             }
         }
 
@@ -290,24 +290,24 @@ function updateMetricsDisplay() {
         }
 
         const investmentNormsElement = document.getElementById('investment-norms-count');
-        if (investmentNormsElement && data.norms_scouted !== undefined) {
+        if (investmentNormsElement && data.norms_cataloged !== undefined) {
             const currentText = investmentNormsElement.textContent.replace('+', '').replace(/,/g, '');
             const currentValue = parseInt(currentText) || 0;
 
-            if (data.norms_scouted > currentValue) {
-                const increment = data.norms_scouted - currentValue;
+            if (data.norms_cataloged > currentValue) {
+                const increment = data.norms_cataloged - currentValue;
                 const duration = Math.min(2000 + (increment * 50), 3000);
-                animateCounterWithPlus(investmentNormsElement, currentValue, data.norms_scouted, duration);
+                animateCounterWithPlus(investmentNormsElement, currentValue, data.norms_cataloged, duration);
             }
         }
 
         const investmentUsersElement = document.getElementById('investment-users-count');
-        if (investmentUsersElement && data.monthly_users !== undefined) {
+        if (investmentUsersElement && data.total_signups !== undefined) {
             const currentText = investmentUsersElement.textContent.replace(/,/g, '');
             const currentValue = parseInt(currentText) || 0;
 
-            if (data.monthly_users > currentValue) {
-                animateCounter(investmentUsersElement, currentValue, data.monthly_users, 800);
+            if (data.total_signups > currentValue) {
+                animateCounter(investmentUsersElement, currentValue, data.total_signups, 800);
             }
         }
     })

@@ -75,6 +75,15 @@ supabase: Client = create_client(
 auth_bp = Blueprint('supabase_auth', __name__, url_prefix='/auth')
 workspace_bp = Blueprint('supabase_workspace', __name__, url_prefix='/api/workspaces')
 
+# Redis client for metrics tracking
+redis_client = None
+
+
+def init_redis(redis_instance):
+    """Initialize redis client for metrics tracking"""
+    global redis_client
+    redis_client = redis_instance
+
 
 # ============================================================================
 # DATABASE SCHEMA (Run this SQL in Supabase SQL Editor)
@@ -652,6 +661,14 @@ def create_workspace():
 
         if not result.data:
             return jsonify({"error": "Failed to create workspace"}), 500
+
+        # Increment products searched counter
+        if redis_client:
+            try:
+                redis_client.incr('products_searched')
+            except Exception as e:
+                # Log error but don't fail workspace creation
+                print(f"Warning: Failed to increment products_searched: {e}")
 
         return jsonify({
             "success": True,
