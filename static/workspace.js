@@ -625,11 +625,12 @@ async function reAnalyzeCompliance() {
             headers: {'Content-Type': 'application/json'}
         });
 
-        if (!response.ok) {
-            throw new Error('Re-analysis failed');
-        }
-
         const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            const errorMsg = data.error || 'Re-analysis failed';
+            throw new Error(errorMsg);
+        }
 
         // Update workspace with new analysis
         workspace.matched_norms = data.matched_norms;
@@ -652,7 +653,7 @@ async function reAnalyzeCompliance() {
     } catch (error) {
         console.error('Error re-analyzing:', error);
         addChatMessage('assistant',
-            '⚠️ Sorry, I encountered an error while re-analyzing your product. Please try again or ask me a question about your current analysis.'
+            `⚠️ ${error.message || 'Sorry, I encountered an error while re-analyzing your product. Please try again or ask me a question about your current analysis.'}`
         );
     }
 }

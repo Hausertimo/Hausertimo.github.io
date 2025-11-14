@@ -186,29 +186,40 @@ def api_workspace_reanalyze(workspace_id):
 
         logger.info(f"Re-analyzing workspace {workspace_id}")
 
-        # Run norm matching analysis
-        matched_norms = match_norms(product_description, max_workers=10)
+        # Run norm matching analysis - collect all results
+        from services.norm_matcher import match_norms_streaming
+
+        matched_norms = []
+        all_results = []
+
+        # Consume the streaming generator to get final results
+        for event in match_norms_streaming(product_description, max_workers=10):
+            if event[0] == 'complete':
+                matched_norms = event[1]  # matched_results
+                all_results = event[2]     # all_results including rejected
+                break
 
         # Update workspace with new analysis
         workspace['analysis'] = {
             'matched_norms': matched_norms,
-            'all_results': matched_norms,  # Store all for Q&A
+            'all_results': all_results,  # Now includes rejected norms for Q&A
             'analyzed_at': datetime.now().isoformat()
         }
 
         # Save updated workspace
         update_workspace(redis_client, workspace_id, workspace)
 
-        logger.info(f"Re-analysis complete for workspace {workspace_id}: {len(matched_norms)} norms")
+        logger.info(f"Re-analysis complete for workspace {workspace_id}: {len(matched_norms)} matched, {len(all_results)} total")
 
         return jsonify({
             "matched_norms": matched_norms,
-            "analysis": workspace['analysis']
+            "analysis": workspace['analysis'],
+            "success": True
         })
 
     except Exception as e:
         logger.exception(f"Error re-analyzing workspace: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "Failed to re-analyze product. Please try again.", "success": False}), 500
 
 
 @workspace_bp.route('/api/workspace/<workspace_id>/delete', methods=['DELETE'])
