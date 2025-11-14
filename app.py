@@ -50,6 +50,7 @@ from routes.develope import develope_bp
 # NOTE: Old Redis-based workspace_bp removed - now using Supabase workspaces from normscout_auth
 from routes.tracking import init_tracking_routes
 from routes.packages import packages_bp, init_packages_dependencies
+from routes.survey import survey_bp, init_dependencies as init_survey_deps
 
 # Import services
 from services.openrouter import analyze_product_compliance, validate_product_input
@@ -66,6 +67,7 @@ app.register_blueprint(compliance_bp)
 app.register_blueprint(field_bp)
 app.register_blueprint(develope_bp)
 app.register_blueprint(packages_bp)
+app.register_blueprint(survey_bp)
 # Old workspace_bp removed - Supabase workspaces registered via init_supabase_auth() below
 
 # Initialize blueprint dependencies
@@ -88,10 +90,13 @@ init_tracking_routes(app, redis_client)
 stripe_api_key = os.getenv('STRIPE_SECRET_KEY')  # Optional - will use env var if not provided
 init_packages_dependencies(redis_client, stripe_api_key)
 
+# Initialize survey blueprint
+init_survey_deps(supabase, redis_client)
+
 # Initialize Supabase authentication
 init_supabase_auth(app)
 
-logger.info("All blueprints registered successfully (including packages)")
+logger.info("All blueprints registered successfully (including packages and survey)")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
