@@ -27,6 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chat-component.css">
 </head>
 <body>
     <!-- Header -->
@@ -259,15 +260,15 @@
             <p class="demo-subtitle">Chat with our AI to get instant product compliance guidance</p>
 
             <!-- Teaser Chat Interface -->
-            <div class="teaser-chat-container">
-                <div class="teaser-chat-messages" id="teaserChatMessages">
-                    <div class="teaser-message teaser-assistant">
+            <div class="teaser-chat-container ns-chat-container">
+                <div class="teaser-chat-messages ns-chat-messages" id="teaserChatMessages">
+                    <div class="teaser-message teaser-assistant ns-message assistant">
                         <strong>NormScout AI</strong>
                         <p>Welcome! Describe your product and I'll help identify all applicable EU compliance norms.</p>
                     </div>
                 </div>
 
-                <div class="teaser-input-container" id="teaserInputContainer">
+                <div class="teaser-input-container ns-input-group" id="teaserInputContainer">
                     <textarea
                         class="teaser-input"
                         id="teaserProductInput"
@@ -279,6 +280,12 @@
                         Start Chat
                     </button>
                 </div>
+
+                <!-- Analysis Progress Button (with animated progress bar) -->
+                <button id="teaserProgressBtn" class="ns-progress-btn" style="display: none;">
+                    <div class="ns-progress-bar" id="teaserProgressBar"></div>
+                    <span class="ns-progress-text" id="teaserProgressText">Analyzing...</span>
+                </button>
 
                 <!-- "Continue in Full Workspace" button (hidden initially) -->
                 <div class="teaser-continue-container" id="teaserContinueContainer" style="display: none;">

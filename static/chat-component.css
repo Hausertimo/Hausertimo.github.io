@@ -1,0 +1,247 @@
+/**
+ * NormScout Reusable Chat Component
+ * Can be used in homepage, develope page, workspace, etc.
+ *
+ * Usage:
+ * 1. Include this CSS file
+ * 2. Use class names: .ns-chat-container, .ns-chat-messages, etc.
+ * 3. Initialize with chat-component.js
+ */
+
+/* Chat Container */
+.ns-chat-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(56, 105, 250, 0.1);
+}
+
+/* Messages Area */
+.ns-chat-messages {
+    max-height: 500px;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+    padding-right: 0.5rem;
+}
+
+.ns-chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ns-chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.ns-chat-messages::-webkit-scrollbar-thumb {
+    background: #3869FA;
+    border-radius: 10px;
+}
+
+/* Message Bubbles */
+.ns-message {
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+    line-height: 1.6;
+    animation: ns-slideIn 0.3s ease;
+}
+
+@keyframes ns-slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ns-message strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.ns-message p {
+    margin: 0;
+}
+
+/* User Message (Purple Gradient) */
+.ns-message.user {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-left: 3rem;
+}
+
+.ns-message.user strong {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Assistant Message (Light Gray) */
+.ns-message.assistant {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    margin-right: 3rem;
+}
+
+.ns-message.assistant strong {
+    color: #2048D5;
+}
+
+.ns-message.assistant p {
+    color: #1a1a1a;
+}
+
+/* Input Group */
+.ns-input-group {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.ns-input-group input,
+.ns-input-group textarea {
+    flex: 1;
+    padding: 0.875rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    resize: vertical;
+}
+
+.ns-input-group input:focus,
+.ns-input-group textarea:focus {
+    outline: none;
+    border-color: #3869FA;
+    box-shadow: 0 0 0 3px rgba(56, 105, 250, 0.1);
+}
+
+.ns-input-group button {
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, #3869FA 0%, #2048D5 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.ns-input-group button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 105, 250, 0.3);
+}
+
+.ns-input-group button:active {
+    transform: translateY(0);
+}
+
+.ns-input-group button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Progress Button (The Beautiful One!) */
+.ns-progress-btn {
+    display: block;
+    width: 100%;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.ns-progress-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.ns-progress-btn:active {
+    transform: translateY(0);
+}
+
+.ns-progress-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.ns-progress-btn.analyzing {
+    background: #e5e7eb;
+    cursor: wait;
+}
+
+/* The Magic Progress Bar */
+.ns-progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #3869FA 0%, #2048D5 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+    z-index: 0;
+}
+
+.ns-progress-text {
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.ns-progress-btn.analyzing .ns-progress-text {
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    animation: ns-pulse-text 2s ease-in-out infinite;
+}
+
+@keyframes ns-pulse-text {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.85;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .ns-chat-container {
+        padding: 1.5rem;
+    }
+
+    .ns-message.user {
+        margin-left: 0;
+    }
+
+    .ns-message.assistant {
+        margin-right: 0;
+    }
+
+    .ns-input-group {
+        flex-direction: column;
+    }
+
+    .ns-input-group button {
+        width: 100%;
+    }
+}
