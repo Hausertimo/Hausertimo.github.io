@@ -335,10 +335,10 @@ async function askQuestion() {
 }
 
 /**
- * Export workspace as PDF
+ * Print workspace
  */
 function exportWorkspace() {
-    window.location.href = `/api/workspaces/${workspaceId}/export/pdf`;
+    window.print();
 }
 
 /**

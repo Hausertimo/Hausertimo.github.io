@@ -244,6 +244,23 @@ def render_markdown(text: str) -> str:
     if not text:
         return ''
 
+    # Preprocess: ensure lists have blank lines before them for proper parsing
+    # Markdown requires a blank line before lists to recognize them
+    import re
+    lines = text.split('\n')
+    processed_lines = []
+
+    for i, line in enumerate(lines):
+        # Check if this line starts a list (-, *, or numbered)
+        if re.match(r'^[\s]*[-*]\s+', line) or re.match(r'^[\s]*\d+\.\s+', line):
+            # Check if previous line exists and is not blank
+            if i > 0 and processed_lines and processed_lines[-1].strip():
+                # Add blank line before list
+                processed_lines.append('')
+        processed_lines.append(line)
+
+    text = '\n'.join(processed_lines)
+
     # Initialize markdown with extensions
     md = markdown.Markdown(extensions=[
         'extra',  # tables, code blocks, etc.
@@ -264,6 +281,7 @@ def render_markdown(text: str) -> str:
     html = html.replace('<li>', '<li class="md-li">')
     html = html.replace('<p>', '<p class="md-paragraph">')
     html = html.replace('<ul>', '<ul class="md-ul">')
+    html = html.replace('<ol>', '<ol class="md-ul">')  # Same style for ordered lists
 
     return f'<div class="md-content">{html}</div>'
 
@@ -448,6 +466,16 @@ def callback():
                 }}).then(response => {{
                     if (response.ok) {{
                         window.location.href = '{redirect_url}';
+                        // Check if there's a pending teaser session
+                        const hasPendingSession = sessionStorage.getItem('pendingTeaserSession');
+
+                        if (hasPendingSession) {{
+                            // Redirect to homepage to resume product creation
+                            window.location.href = '/';
+                        }} else {{
+                            // Normal redirect to dashboard
+                            window.location.href = '/dashboard';
+                        }}
                     }} else {{
                         document.body.innerHTML = '<p>Login failed. Could not create session.</p>';
                     }}

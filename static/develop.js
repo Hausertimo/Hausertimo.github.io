@@ -33,6 +33,9 @@ async function sendDevelopMessage() {
     addDevelopMessage('user', message);
     input.value = '';
 
+    // Show typing indicator
+    addDevelopTypingIndicator();
+
     try {
         let response, data;
 
@@ -56,6 +59,9 @@ async function sendDevelopMessage() {
         }
 
         data = await response.json();
+
+        // Remove typing indicator
+        removeDevelopTypingIndicator();
 
         if (data.error) {
             addDevelopMessage('assistant', 'Error: ' + data.error);
@@ -94,6 +100,7 @@ async function sendDevelopMessage() {
         }
     } catch (error) {
         console.error('Error:', error);
+        removeDevelopTypingIndicator();
         addDevelopMessage('assistant', 'Sorry, something went wrong. Please try again.');
     } finally {
         // Re-enable input and button
@@ -122,6 +129,29 @@ function addDevelopMessage(role, content) {
 
     messagesDiv.appendChild(messageDiv);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+/**
+ * Add typing indicator to develop chat
+ */
+function addDevelopTypingIndicator() {
+    const messagesDiv = document.getElementById('developChatMessages');
+    const typingDiv = document.createElement('div');
+    typingDiv.id = 'developTypingIndicator';
+    typingDiv.className = 'teaser-message teaser-assistant typing-indicator';
+    typingDiv.innerHTML = `<strong>NormScout AI</strong><p>is typing...</p>`;
+    messagesDiv.appendChild(typingDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+/**
+ * Remove typing indicator from develop chat
+ */
+function removeDevelopTypingIndicator() {
+    const typingDiv = document.getElementById('developTypingIndicator');
+    if (typingDiv) {
+        typingDiv.remove();
+    }
 }
 
 /**

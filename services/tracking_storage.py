@@ -84,8 +84,8 @@ class TrackingStorage:
         if not data:
             return None
 
-        # Convert bytes to strings
-        return {k.decode('utf-8'): v.decode('utf-8') for k, v in data.items()}
+        # Data is already decoded (decode_responses=True)
+        return data
 
     def increment_session_counter(self, session_id: str, field: str, amount: int = 1):
         """Increment a counter in session data."""
@@ -220,8 +220,8 @@ class TrackingStorage:
                 "engagement_rate": 0
             }
 
-        # Convert bytes to integers
-        metrics = {k.decode('utf-8'): int(v) for k, v in data.items()}
+        # Convert to integers (data is already decoded)
+        metrics = {k: int(v) for k, v in data.items()}
 
         # Calculate averages
         views = metrics.get("views", 0)
@@ -245,8 +245,8 @@ class TrackingStorage:
 
         metrics = []
         for key in keys:
-            # Extract page path from key
-            page = key.decode('utf-8').split(":", 2)[-1]
+            # Extract page path from key (data is already decoded)
+            page = key.split(":", 2)[-1]
             metrics.append(self.get_page_metrics(page))
 
         # Sort by views descending
@@ -295,7 +295,8 @@ class TrackingStorage:
             date_str = current.strftime("%Y-%m-%d")
             key = self._key("daily_sessions", date_str)
             sessions = self.redis.smembers(key)
-            all_sessions.update(s.decode('utf-8') for s in sessions)
+            # Data is already decoded (decode_responses=True)
+            all_sessions.update(sessions)
             current += timedelta(days=1)
 
         return len(all_sessions)
