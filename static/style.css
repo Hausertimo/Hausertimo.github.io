@@ -486,27 +486,49 @@ ul li, ol li {
 }
 
 .metric-card {
-    background-color: var(--white);
-    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: var(--spacing-xl) var(--spacing-2xl);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--medium-gray);
+    box-shadow: 0 4px 12px rgba(32, 72, 213, 0.08);
+    border: 2px solid var(--medium-gray);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--royal-blue));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
 }
 
 .metric-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(32, 72, 213, 0.15);
     border-color: var(--accent-blue);
 }
 
+.metric-card:hover::after {
+    transform: scaleX(1);
+}
+
 .metric-number {
-    font-size: var(--font-size-3xl);
+    font-size: 3rem;
     font-weight: 700;
-    color: var(--royal-blue);
+    background: linear-gradient(135deg, var(--royal-blue), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: var(--spacing-xs);
     display: block;
 }
@@ -540,20 +562,47 @@ ul li, ol li {
     padding: var(--spacing-2xl);
     border-radius: var(--radius-lg);
     text-align: center;
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--medium-gray);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border: 2px solid var(--medium-gray);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.pain-point-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(56, 105, 250, 0.03), rgba(32, 72, 213, 0.03));
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .pain-point-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--accent-blue);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: rgba(56, 105, 250, 0.3);
+}
+
+.pain-point-card:hover::before {
+    opacity: 1;
 }
 
 .pain-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-md);
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    border-radius: 50%;
+    padding: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
 }
 
 .pain-point-card h3 {
