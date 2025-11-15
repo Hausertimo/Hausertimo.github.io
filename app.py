@@ -44,7 +44,6 @@ except Exception as e:
 # Import blueprints
 from routes.main import main_bp
 from routes.analytics import analytics_bp, init_redis as init_analytics_redis, init_supabase as init_analytics_supabase
-from routes.compliance import compliance_bp, init_dependencies as init_compliance_deps
 from routes.fields import field_bp
 from routes.develope import develope_bp
 # NOTE: Old Redis-based workspace_bp removed - now using Supabase workspaces from normscout_auth
@@ -52,18 +51,12 @@ from routes.tracking import init_tracking_routes
 from routes.packages import packages_bp, init_packages_dependencies
 from routes.survey import survey_bp, init_dependencies as init_survey_deps
 
-# Import services
-from services.openrouter import analyze_product_compliance, validate_product_input
-from services.field_framework import (FieldRenderer, MarkdownField, FormField,
-                                      TextAreaField, ButtonField)
-
 # Import Supabase auth and client
 from normscout_auth import init_app as init_supabase_auth, supabase, init_redis as init_workspace_redis
 
 # Register all blueprints
 app.register_blueprint(main_bp)
 app.register_blueprint(analytics_bp)
-app.register_blueprint(compliance_bp)
 app.register_blueprint(field_bp)
 app.register_blueprint(develope_bp)
 app.register_blueprint(packages_bp)
@@ -74,16 +67,6 @@ app.register_blueprint(survey_bp)
 init_analytics_redis(redis_client)
 init_analytics_supabase(supabase)
 init_workspace_redis(redis_client)
-init_compliance_deps(
-    redis_client,
-    validate_product_input,
-    analyze_product_compliance,
-    FieldRenderer,
-    MarkdownField,
-    FormField,
-    TextAreaField,
-    ButtonField
-)
 init_tracking_routes(app, redis_client)
 
 # Initialize packages blueprint (with Stripe integration)
