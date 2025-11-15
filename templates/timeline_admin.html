@@ -1,0 +1,757 @@
+{% extends "base.html" %}
+
+{% block title %}Timeline Admin - NormScout{% endblock %}
+
+{% block nav_links %}
+    <a href="/" class="nav-link">Home</a>
+    <a href="/timeline" class="nav-link">View Timeline</a>
+    <a href="/dashboard" class="nav-link">Dashboard</a>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="container">
+        <!-- Header -->
+        <div class="dashboard-welcome">
+            <div class="welcome-header">
+                <div>
+                    <h1 class="dashboard-title">Timeline Management</h1>
+                    <p class="dashboard-subtitle">Manage your company milestones and achievements</p>
+                </div>
+                <a href="/timeline" class="btn btn-primary" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M8 0L6.59 1.41 12.17 7H0v2h12.17l-5.58 5.59L8 16l8-8z"/>
+                    </svg>
+                    View Public Timeline
+                </a>
+            </div>
+        </div>
+
+        <!-- Flairs Management Section -->
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M10 2L12 8h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z"/>
+                    </svg>
+                    Flairs / Tags
+                </h2>
+                <button class="btn btn-accent" onclick="showCreateFlairModal()">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M8 2v12M2 8h12"/>
+                    </svg>
+                    New Flair
+                </button>
+            </div>
+
+            <!-- Flairs Grid -->
+            <div id="flairsLoading" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading flairs...</p>
+            </div>
+
+            <div id="flairsEmpty" class="empty-state" style="display: none;">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="empty-icon">
+                    <path d="M24 6L28 18h12l-10 8 4 12-10-8-10 8 4-12-10-8h12z" stroke="currentColor" stroke-width="2" fill="none"/>
+                </svg>
+                <h3>No flairs yet</h3>
+                <p>Create your first flair to categorize timeline entries</p>
+            </div>
+
+            <div id="flairsGrid" class="flairs-grid" style="display: none;">
+                <!-- Flair items will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Timeline Entries Section -->
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="margin-right: 8px;">
+                        <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M10 6v4l3 3"/>
+                    </svg>
+                    Timeline Entries
+                </h2>
+                <button class="btn btn-accent" onclick="showCreateEntryModal()">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M8 2v12M2 8h12"/>
+                    </svg>
+                    New Entry
+                </button>
+            </div>
+
+            <!-- Entries Grid -->
+            <div id="entriesLoading" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading entries...</p>
+            </div>
+
+            <div id="entriesEmpty" class="empty-state" style="display: none;">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="empty-icon">
+                    <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M24 12v12l8 8" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h3>No entries yet</h3>
+                <p>Create your first timeline entry to showcase your journey</p>
+            </div>
+
+            <div id="entriesContainer" class="timeline-admin-entries" style="display: none;">
+                <!-- Entry items will be inserted here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create/Edit Flair Modal -->
+<div id="flairModal" class="modal" style="display: none;">
+    <div class="modal-content modal-small">
+        <button class="modal-close" onclick="hideFlairModal()">&times;</button>
+        <div class="modal-header">
+            <h2 id="flairModalTitle">Create Flair</h2>
+        </div>
+        <div class="modal-body">
+            <form id="flairForm" onsubmit="saveFlair(event)">
+                <input type="hidden" id="flairId" value="">
+
+                <div class="form-group">
+                    <label for="flairName">Flair Name *</label>
+                    <input type="text" id="flairName" class="form-input" required placeholder="e.g., Funding, Product, Team">
+                </div>
+
+                <div class="form-group">
+                    <label for="flairColor">Color *</label>
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="flairColor" class="color-input" value="#3869FA">
+                        <input type="text" id="flairColorText" class="form-input" value="#3869FA" pattern="^#[0-9A-Fa-f]{6}$">
+                    </div>
+                    <small class="form-hint">Choose a color to represent this category</small>
+                </div>
+
+                <div class="color-presets">
+                    <button type="button" class="color-preset" style="background: #3869FA" onclick="setFlairColor('#3869FA')"></button>
+                    <button type="button" class="color-preset" style="background: #2048D5" onclick="setFlairColor('#2048D5')"></button>
+                    <button type="button" class="color-preset" style="background: #10B981" onclick="setFlairColor('#10B981')"></button>
+                    <button type="button" class="color-preset" style="background: #F59E0B" onclick="setFlairColor('#F59E0B')"></button>
+                    <button type="button" class="color-preset" style="background: #EF4444" onclick="setFlairColor('#EF4444')"></button>
+                    <button type="button" class="color-preset" style="background: #8B5CF6" onclick="setFlairColor('#8B5CF6')"></button>
+                    <button type="button" class="color-preset" style="background: #EC4899" onclick="setFlairColor('#EC4899')"></button>
+                    <button type="button" class="color-preset" style="background: #6366F1" onclick="setFlairColor('#6366F1')"></button>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-primary" onclick="hideFlairModal()">Cancel</button>
+                    <button type="submit" class="btn btn-accent">Save Flair</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Create/Edit Entry Modal -->
+<div id="entryModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <button class="modal-close" onclick="hideEntryModal()">&times;</button>
+        <div class="modal-header">
+            <h2 id="entryModalTitle">Create Timeline Entry</h2>
+        </div>
+        <div class="modal-body">
+            <form id="entryForm" onsubmit="saveEntry(event)">
+                <input type="hidden" id="entryId" value="">
+
+                <div class="form-group">
+                    <label for="entryDate">Date *</label>
+                    <input type="date" id="entryDate" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="entryTopic">Topic / Milestone *</label>
+                    <input type="text" id="entryTopic" class="form-input" required placeholder="e.g., Secured Series A Funding">
+                </div>
+
+                <div class="form-group">
+                    <label for="entryFlair">Flair / Category</label>
+                    <select id="entryFlair" class="form-input">
+                        <option value="">No flair</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="entryDescription">Description</label>
+                    <textarea id="entryDescription" class="form-input" rows="4" placeholder="Detailed description of this milestone..."></textarea>
+                    <small class="form-hint">Provide additional context about this milestone</small>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-primary" onclick="hideEntryModal()">Cancel</button>
+                    <button type="submit" class="btn btn-accent">Save Entry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Admin-specific styles */
+.flairs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.flair-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.2s ease;
+}
+
+.flair-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.flair-preview {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.flair-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.flair-actions button {
+    flex: 1;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.timeline-admin-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.entry-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #3869FA;
+    transition: all 0.2s ease;
+}
+
+.entry-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.entry-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 16px;
+}
+
+.entry-card-info {
+    flex: 1;
+}
+
+.entry-card-date {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 8px;
+}
+
+.entry-card-topic {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2048D5;
+    margin-bottom: 8px;
+}
+
+.entry-card-description {
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.entry-card-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.entry-card-actions button {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: var(--font-family);
+    transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #3869FA;
+}
+
+.form-hint {
+    display: block;
+    margin-top: 4px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.color-picker-wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.color-input {
+    width: 60px;
+    height: 48px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.color-presets {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.color-preset {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.color-preset:hover {
+    border-color: #1a1a1a;
+    transform: scale(1.1);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .flairs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .entry-card-header {
+        flex-direction: column;
+    }
+
+    .entry-card-actions {
+        width: 100%;
+    }
+
+    .entry-card-actions button {
+        flex: 1;
+    }
+}
+</style>
+
+<script>
+// Data storage
+let flairs = [];
+let entries = [];
+let currentFlairId = null;
+let currentEntryId = null;
+
+// Load data on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadFlairs();
+    loadEntries();
+    syncColorInputs();
+});
+
+// ============================================================================
+// FLAIRS MANAGEMENT
+// ============================================================================
+
+async function loadFlairs() {
+    const loading = document.getElementById('flairsLoading');
+    const empty = document.getElementById('flairsEmpty');
+    const grid = document.getElementById('flairsGrid');
+
+    try {
+        loading.style.display = 'block';
+        empty.style.display = 'none';
+        grid.style.display = 'none';
+
+        const response = await fetch('/api/timeline/flairs');
+        const data = await response.json();
+
+        if (data.success) {
+            flairs = data.flairs;
+            if (flairs.length > 0) {
+                renderFlairs();
+                loading.style.display = 'none';
+                grid.style.display = 'grid';
+            } else {
+                loading.style.display = 'none';
+                empty.style.display = 'flex';
+            }
+            updateFlairDropdown();
+        }
+    } catch (error) {
+        console.error('Error loading flairs:', error);
+        loading.style.display = 'none';
+        empty.style.display = 'flex';
+    }
+}
+
+function renderFlairs() {
+    const grid = document.getElementById('flairsGrid');
+    grid.innerHTML = '';
+
+    flairs.forEach(flair => {
+        const card = document.createElement('div');
+        card.className = 'flair-card';
+        card.innerHTML = `
+            <span class="flair-preview" style="background-color: ${flair.color}">
+                ${escapeHtml(flair.name)}
+            </span>
+            <div class="flair-actions">
+                <button class="btn btn-primary" onclick="editFlair('${flair.id}')">Edit</button>
+                <button class="btn btn-danger" onclick="deleteFlair('${flair.id}')">Delete</button>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function updateFlairDropdown() {
+    const select = document.getElementById('entryFlair');
+    select.innerHTML = '<option value="">No flair</option>';
+
+    flairs.forEach(flair => {
+        const option = document.createElement('option');
+        option.value = flair.id;
+        option.textContent = flair.name;
+        select.appendChild(option);
+    });
+}
+
+function showCreateFlairModal() {
+    currentFlairId = null;
+    document.getElementById('flairModalTitle').textContent = 'Create Flair';
+    document.getElementById('flairId').value = '';
+    document.getElementById('flairName').value = '';
+    document.getElementById('flairColor').value = '#3869FA';
+    document.getElementById('flairColorText').value = '#3869FA';
+    document.getElementById('flairModal').style.display = 'flex';
+}
+
+function editFlair(id) {
+    const flair = flairs.find(f => f.id === id);
+    if (!flair) return;
+
+    currentFlairId = id;
+    document.getElementById('flairModalTitle').textContent = 'Edit Flair';
+    document.getElementById('flairId').value = id;
+    document.getElementById('flairName').value = flair.name;
+    document.getElementById('flairColor').value = flair.color;
+    document.getElementById('flairColorText').value = flair.color;
+    document.getElementById('flairModal').style.display = 'flex';
+}
+
+function hideFlairModal() {
+    document.getElementById('flairModal').style.display = 'none';
+}
+
+function setFlairColor(color) {
+    document.getElementById('flairColor').value = color;
+    document.getElementById('flairColorText').value = color;
+}
+
+function syncColorInputs() {
+    const colorInput = document.getElementById('flairColor');
+    const textInput = document.getElementById('flairColorText');
+
+    colorInput.addEventListener('input', (e) => {
+        textInput.value = e.target.value;
+    });
+
+    textInput.addEventListener('input', (e) => {
+        if (/^#[0-9A-Fa-f]{6}$/.test(e.target.value)) {
+            colorInput.value = e.target.value;
+        }
+    });
+}
+
+async function saveFlair(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('flairName').value;
+    const color = document.getElementById('flairColor').value;
+    const id = document.getElementById('flairId').value;
+
+    try {
+        const url = id ? `/api/timeline/flairs/${id}` : '/api/timeline/flairs';
+        const method = id ? 'PUT' : 'POST';
+
+        const response = await fetch(url, {
+            method: method,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, color })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            hideFlairModal();
+            loadFlairs();
+        } else {
+            alert('Error: ' + data.error);
+        }
+    } catch (error) {
+        console.error('Error saving flair:', error);
+        alert('Failed to save flair');
+    }
+}
+
+async function deleteFlair(id) {
+    if (!confirm('Are you sure you want to delete this flair? Entries with this flair will have it removed.')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/timeline/flairs/${id}`, {
+            method: 'DELETE'
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            loadFlairs();
+            loadEntries(); // Reload entries as they might reference this flair
+        } else {
+            alert('Error: ' + data.error);
+        }
+    } catch (error) {
+        console.error('Error deleting flair:', error);
+        alert('Failed to delete flair');
+    }
+}
+
+// ============================================================================
+// ENTRIES MANAGEMENT
+// ============================================================================
+
+async function loadEntries() {
+    const loading = document.getElementById('entriesLoading');
+    const empty = document.getElementById('entriesEmpty');
+    const container = document.getElementById('entriesContainer');
+
+    try {
+        loading.style.display = 'block';
+        empty.style.display = 'none';
+        container.style.display = 'none';
+
+        const response = await fetch('/api/timeline/entries');
+        const data = await response.json();
+
+        if (data.success) {
+            entries = data.entries;
+            if (entries.length > 0) {
+                renderEntries();
+                loading.style.display = 'none';
+                container.style.display = 'flex';
+            } else {
+                loading.style.display = 'none';
+                empty.style.display = 'flex';
+            }
+        }
+    } catch (error) {
+        console.error('Error loading entries:', error);
+        loading.style.display = 'none';
+        empty.style.display = 'flex';
+    }
+}
+
+function renderEntries() {
+    const container = document.getElementById('entriesContainer');
+    container.innerHTML = '';
+
+    entries.forEach(entry => {
+        const card = document.createElement('div');
+        card.className = 'entry-card';
+
+        const flair = entry.timeline_flairs;
+        const flairColor = flair?.color || '#3869FA';
+        card.style.borderLeftColor = flairColor;
+
+        const date = new Date(entry.date);
+        const formattedDate = date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        card.innerHTML = `
+            <div class="entry-card-header">
+                <div class="entry-card-info">
+                    ${flair ? `
+                        <span class="flair-preview" style="background-color: ${flairColor}">
+                            ${escapeHtml(flair.name)}
+                        </span>
+                    ` : ''}
+                    <div class="entry-card-date">${formattedDate}</div>
+                    <div class="entry-card-topic">${escapeHtml(entry.topic)}</div>
+                    ${entry.description ? `
+                        <div class="entry-card-description">${escapeHtml(entry.description)}</div>
+                    ` : ''}
+                </div>
+                <div class="entry-card-actions">
+                    <button class="btn btn-primary" onclick="editEntry('${entry.id}')">Edit</button>
+                    <button class="btn btn-danger" onclick="deleteEntry('${entry.id}')">Delete</button>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function showCreateEntryModal() {
+    currentEntryId = null;
+    document.getElementById('entryModalTitle').textContent = 'Create Timeline Entry';
+    document.getElementById('entryId').value = '';
+    document.getElementById('entryDate').value = new Date().toISOString().split('T')[0];
+    document.getElementById('entryTopic').value = '';
+    document.getElementById('entryFlair').value = '';
+    document.getElementById('entryDescription').value = '';
+    document.getElementById('entryModal').style.display = 'flex';
+}
+
+function editEntry(id) {
+    const entry = entries.find(e => e.id === id);
+    if (!entry) return;
+
+    currentEntryId = id;
+    document.getElementById('entryModalTitle').textContent = 'Edit Timeline Entry';
+    document.getElementById('entryId').value = id;
+    document.getElementById('entryDate').value = entry.date;
+    document.getElementById('entryTopic').value = entry.topic;
+    document.getElementById('entryFlair').value = entry.flair_id || '';
+    document.getElementById('entryDescription').value = entry.description || '';
+    document.getElementById('entryModal').style.display = 'flex';
+}
+
+function hideEntryModal() {
+    document.getElementById('entryModal').style.display = 'none';
+}
+
+async function saveEntry(event) {
+    event.preventDefault();
+
+    const date = document.getElementById('entryDate').value;
+    const topic = document.getElementById('entryTopic').value;
+    const flairId = document.getElementById('entryFlair').value || null;
+    const description = document.getElementById('entryDescription').value;
+    const id = document.getElementById('entryId').value;
+
+    try {
+        const url = id ? `/api/timeline/entries/${id}` : '/api/timeline/entries';
+        const method = id ? 'PUT' : 'POST';
+
+        const response = await fetch(url, {
+            method: method,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ date, topic, flair_id: flairId, description })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            hideEntryModal();
+            loadEntries();
+        } else {
+            alert('Error: ' + data.error);
+        }
+    } catch (error) {
+        console.error('Error saving entry:', error);
+        alert('Failed to save entry');
+    }
+}
+
+async function deleteEntry(id) {
+    if (!confirm('Are you sure you want to delete this timeline entry?')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/timeline/entries/${id}`, {
+            method: 'DELETE'
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            loadEntries();
+        } else {
+            alert('Error: ' + data.error);
+        }
+    } catch (error) {
+        console.error('Error deleting entry:', error);
+        alert('Failed to delete entry');
+    }
+}
+
+// ============================================================================
+// UTILITIES
+// ============================================================================
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+</script>
+
+{% endblock %}

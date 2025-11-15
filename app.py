@@ -51,6 +51,7 @@ from routes.develope import develope_bp
 from routes.tracking import init_tracking_routes
 from routes.packages import packages_bp, init_packages_dependencies
 from routes.survey import survey_bp, init_dependencies as init_survey_deps
+from routes.timeline import timeline_bp, init_dependencies as init_timeline_deps
 
 # Import services
 from services.openrouter import analyze_product_compliance, validate_product_input
@@ -68,6 +69,7 @@ app.register_blueprint(field_bp)
 app.register_blueprint(develope_bp)
 app.register_blueprint(packages_bp)
 app.register_blueprint(survey_bp)
+app.register_blueprint(timeline_bp)
 # Old workspace_bp removed - Supabase workspaces registered via init_supabase_auth() below
 
 # Initialize blueprint dependencies
@@ -93,10 +95,13 @@ init_packages_dependencies(redis_client, stripe_api_key)
 # Initialize survey blueprint
 init_survey_deps(supabase, redis_client)
 
+# Initialize timeline blueprint
+init_timeline_deps(supabase)
+
 # Initialize Supabase authentication
 init_supabase_auth(app)
 
-logger.info("All blueprints registered successfully (including packages and survey)")
+logger.info("All blueprints registered successfully (including packages, survey, and timeline)")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)

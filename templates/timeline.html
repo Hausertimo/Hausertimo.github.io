@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+
+{% block title %}Timeline - NormScout{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="container">
+        <!-- Header -->
+        <div class="timeline-header">
+            <h1 class="timeline-main-title">Our Journey</h1>
+            <p class="timeline-subtitle">Tracking our progress and achievements</p>
+        </div>
+
+        <!-- Loading State -->
+        <div id="timelineLoading" class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading timeline...</p>
+        </div>
+
+        <!-- Empty State -->
+        <div id="timelineEmpty" class="empty-state" style="display: none;">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="empty-icon">
+                <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M32 16v16l8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <h3>No milestones yet</h3>
+            <p>Check back soon to see our journey</p>
+        </div>
+
+        <!-- Timeline -->
+        <div id="timelineContainer" class="timeline-container" style="display: none;">
+            <!-- Timeline entries will be inserted here -->
+        </div>
+    </div>
+</div>
+
+<style>
+/* Timeline Specific Styles */
+.timeline-header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding-top: 48px;
+}
+
+.timeline-main-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
+.timeline-subtitle {
+    font-size: 18px;
+    color: #666666;
+}
+
+.timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 48px;
+}
+
+.timeline-entry {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    border-left: 4px solid #3869FA;
+}
+
+.timeline-entry:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 16px;
+}
+
+.timeline-entry-date {
+    font-size: 14px;
+    color: #666666;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.timeline-entry-flair {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timeline-entry-topic {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2048D5;
+    margin-bottom: 12px;
+}
+
+.timeline-entry-description {
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.timeline-entry-description.collapsed {
+    max-height: 60px;
+    overflow: hidden;
+    position: relative;
+}
+
+.timeline-entry-description.collapsed::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(transparent, white);
+}
+
+.timeline-expand-btn {
+    background: none;
+    border: none;
+    color: #3869FA;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+}
+
+.timeline-expand-btn:hover {
+    color: #2048D5;
+}
+
+.timeline-expand-icon {
+    transition: transform 0.2s ease;
+}
+
+.timeline-expand-icon.rotated {
+    transform: rotate(180deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline-main-title {
+        font-size: 32px;
+    }
+
+    .timeline-entry-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .timeline-entry-topic {
+        font-size: 20px;
+    }
+}
+</style>
+
+<script>
+// Timeline data
+let timelineEntries = [];
+
+// Load timeline on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadTimeline();
+});
+
+async function loadTimeline() {
+    const loading = document.getElementById('timelineLoading');
+    const empty = document.getElementById('timelineEmpty');
+    const container = document.getElementById('timelineContainer');
+
+    try {
+        loading.style.display = 'block';
+        empty.style.display = 'none';
+        container.style.display = 'none';
+
+        const response = await fetch('/api/timeline/entries');
+        const data = await response.json();
+
+        if (data.success && data.entries.length > 0) {
+            timelineEntries = data.entries;
+            renderTimeline();
+            loading.style.display = 'none';
+            container.style.display = 'block';
+        } else {
+            loading.style.display = 'none';
+            empty.style.display = 'flex';
+        }
+    } catch (error) {
+        console.error('Error loading timeline:', error);
+        loading.style.display = 'none';
+        empty.style.display = 'flex';
+    }
+}
+
+function renderTimeline() {
+    const container = document.getElementById('timelineContainer');
+    container.innerHTML = '';
+
+    timelineEntries.forEach((entry, index) => {
+        const entryEl = createTimelineEntry(entry, index);
+        container.appendChild(entryEl);
+    });
+}
+
+function createTimelineEntry(entry, index) {
+    const div = document.createElement('div');
+    div.className = 'timeline-entry';
+
+    // Format date
+    const date = new Date(entry.date);
+    const formattedDate = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    // Get flair info
+    const flair = entry.timeline_flairs;
+    const flairColor = flair?.color || '#3869FA';
+    const flairName = flair?.name || 'Milestone';
+
+    // Set border color
+    div.style.borderLeftColor = flairColor;
+
+    // Check if description needs expansion
+    const hasLongDescription = entry.description && entry.description.length > 150;
+
+    div.innerHTML = `
+        <div class="timeline-entry-header">
+            <span class="timeline-entry-flair" style="background-color: ${flairColor}">
+                ${escapeHtml(flairName)}
+            </span>
+            <span class="timeline-entry-date">${formattedDate}</span>
+        </div>
+        <h3 class="timeline-entry-topic">${escapeHtml(entry.topic)}</h3>
+        ${entry.description ? `
+            <div class="timeline-entry-description ${hasLongDescription ? 'collapsed' : ''}" id="desc-${index}">
+                ${escapeHtml(entry.description)}
+            </div>
+            ${hasLongDescription ? `
+                <button class="timeline-expand-btn" onclick="toggleDescription(${index})">
+                    <span id="expand-text-${index}">Read more</span>
+                    <svg class="timeline-expand-icon" id="expand-icon-${index}" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                        <path d="M6 8L2 4h8L6 8z"/>
+                    </svg>
+                </button>
+            ` : ''}
+        ` : ''}
+    `;
+
+    return div;
+}
+
+function toggleDescription(index) {
+    const desc = document.getElementById(`desc-${index}`);
+    const text = document.getElementById(`expand-text-${index}`);
+    const icon = document.getElementById(`expand-icon-${index}`);
+
+    if (desc.classList.contains('collapsed')) {
+        desc.classList.remove('collapsed');
+        text.textContent = 'Read less';
+        icon.classList.add('rotated');
+    } else {
+        desc.classList.add('collapsed');
+        text.textContent = 'Read more';
+        icon.classList.remove('rotated');
+    }
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+</script>
+
+{% endblock %}
