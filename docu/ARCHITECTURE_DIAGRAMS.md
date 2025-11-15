@@ -64,13 +64,8 @@
 │  │ └──────────────────────────────────┘ │                   │
 │  │                                      │                   │
 │  │ ┌──────────────────────────────────┐ │                   │
-│  │ │ field_framework.py               │ │                   │
-│  │ │ (Dynamic forms)                  │ │                   │
-│  │ └──────────────────────────────────┘ │                   │
-│  │                                      │                   │
-│  │ ┌──────────────────────────────────┐ │                   │
-│  │ │ workspace_storage.py             │ │                   │
-│  │ │ (Redis persistence)              │ │                   │
+│  │ │ (workspace_storage.py REMOVED)   │ │                   │
+│  │ │ (Now in normscout_auth.py)       │ │                   │
 │  │ └──────────────────────────────────┘ │                   │
 │  └──────────┬──────────────────────────┘                   │
 │             │                                               │
@@ -433,16 +428,15 @@ Routes (API Endpoints):
     ├── analytics.py       (Metrics)
     ├── compliance.py      (Product validation)
     ├── fields.py          (Dynamic forms)
-    ├── develope.py        (Conversation)
-    └── workspace.py       (Persistence)
+    └── develope.py        (Conversation)
 
 Services (Business Logic):
   /home/user/Hausertimo.github.io/services/
     ├── openrouter.py            (LLM API)
     ├── product_conversation.py  (Conversation AI)
-    ├── norm_matcher.py          (Norm matching)
-    ├── field_framework.py       (Forms)
-    └── workspace_storage.py     (Redis persistence)
+    └── norm_matcher.py          (Norm matching)
+
+Note: Workspace functionality moved to normscout_auth.py (Supabase-based)
 
 Frontend (Static Assets):
   /home/user/Hausertimo.github.io/static/

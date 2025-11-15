@@ -12,7 +12,9 @@
       "Bash(timeout /t 1 /nobreak)",
       "Bash(git add:*)",
       "Bash(start:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(ls -la \"C:\\_git\\Startup\\Normscout\\Website\\Hausertimo.github.io\\services\"\" | grep -E \"workspace)",
+      "Bash(field \")"
     ],
     "deny": [],
     "ask": []

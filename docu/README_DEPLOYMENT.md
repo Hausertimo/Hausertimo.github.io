@@ -148,10 +148,15 @@ curl -X POST https://normscout.fly.dev/api/run \
 ```
 .
 ├── app.py                  # Main Flask application
-├── api/                    # API modules
-│   ├── fields.py          # Field API blueprint
-│   ├── field_framework.py # Dynamic field system
-│   └── openrouter.py      # OpenRouter API client
+├── routes/                 # API route blueprints
+│   ├── main.py            # Main routes
+│   ├── analytics.py       # Analytics endpoints
+│   ├── develope.py        # Workspace creation
+│   └── tracking.py        # Visitor tracking
+├── services/               # Business logic
+│   ├── openrouter.py      # OpenRouter API client
+│   ├── norm_matcher.py    # Norm matching logic
+│   └── product_conversation.py # Conversation AI
 ├── static/                 # Frontend files
 │   ├── index.html         # Main page
 │   ├── bp.html            # Business plan page

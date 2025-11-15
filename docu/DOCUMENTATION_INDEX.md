@@ -99,8 +99,8 @@ Contains information about the norms.json database and compliance requirements.
 
 ### Key Statistics
 
-- **6 Blueprints**: main, analytics, compliance, fields, develope, workspace
-- **5 Service Modules**: openrouter, product_conversation, norm_matcher, field_framework, workspace_storage
+- **4 Blueprints**: main, analytics, compliance, develope
+- **3 Service Modules**: openrouter, product_conversation, norm_matcher
 - **2 Flask Templates**: develope.html, workspace.html
 - **4 Static Pages**: index.html, privacy.html, terms.html, contact.html
 - **1 Data File**: norms.json (EU standards - 548 lines)
@@ -157,16 +157,14 @@ Contains information about the norms.json database and compliance requirements.
 - `/routes/main.py` - Landing page & static routes
 - `/routes/analytics.py` - Metrics & visitor tracking
 - `/routes/compliance.py` - Product validation
-- `/routes/fields.py` - Dynamic form blocks
 - `/routes/develope.py` - Conversational workspace
-- `/routes/workspace.py` - Persistent storage
 
 ### Service Modules
 - `/services/openrouter.py` - LLM API integration
 - `/services/product_conversation.py` - Conversation AI
 - `/services/norm_matcher.py` - Norm matching
-- `/services/field_framework.py` - Dynamic forms
-- `/services/workspace_storage.py` - Redis persistence
+
+Note: Workspace management moved to `/normscout_auth.py` (Supabase-based)
 
 ### Frontend Files
 - `/static/index.html` - Landing page
@@ -219,8 +217,6 @@ GET  /contact             - Contact page
 POST /api/visitor-count   - Increment visitor counter
 GET  /api/metrics         - Get analytics metrics
 POST /api/run             - Product compliance check
-GET  /api/fields/get      - Get field blocks
-POST /api/fields/submit   - Submit field data
 POST /api/feedback/submit - Submit user feedback
 ```
 

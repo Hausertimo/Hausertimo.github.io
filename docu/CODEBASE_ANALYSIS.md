@@ -57,23 +57,12 @@
     - Accepts: `{"product": "...", "country": "..."}`
     - Validates product using LLM
     - Increments counters on valid products
-    - Returns validation status with field blocks for errors
+    - Returns validation status
 - **Dependencies**: Injected at startup
   - Redis client
-  - Field framework components (FieldRenderer, MarkdownField, FormField, etc.)
   - Service functions (validate_product_input, analyze_product_compliance)
 
-#### **Blueprint 4: `field_bp` (fields.py)**
-- **Route Prefix**: `/api`
-- **Purpose**: Dynamic field rendering and form handling
-- **Endpoints**:
-  - `GET /api/fields/get` → Returns rendered field blocks
-  - `POST /api/fields/submit` → Receives submitted field data
-  - `POST /api/feedback/submit` → Saves user feedback to `feedback/feedback.jsonl`
-- **Storage**: In-memory FieldRenderer instance stored in module namespace
-- **Feedback**: Saved as JSON Lines format with timestamp, name, email, product, message
-
-#### **Blueprint 5: `develope_bp` (develope.py)**
+#### **Blueprint 4: `develope_bp` (develope.py)**
 - **Route Prefix**: `/develope` and `/api/develope`
 - **Purpose**: AI-powered conversational workspace for compliance analysis
 - **Endpoints**:
@@ -93,26 +82,12 @@
   - Server-Sent Events (SSE) for streaming progress
   - Post-analysis Q&A functionality
 
-#### **Blueprint 6: `workspace_bp` (workspace.py)**
-- **Route Prefix**: `/workspace` and `/api/workspace`
-- **Purpose**: Persistent workspace storage for completed analyses
-- **Endpoints**:
-  - `GET /workspace/<workspace_id>` → Renders `workspace.html` with workspace data
-  - `POST /api/workspace/create` → Creates persistent workspace from session
-  - `GET /api/workspace/<workspace_id>/data` → Gets workspace JSON data
-  - `POST /api/workspace/<workspace_id>/ask` → Q&A endpoint within workspace
-  - `DELETE /api/workspace/<workspace_id>/delete` → Deletes workspace
-- **Storage**: Redis with 30-day TTL (`workspace:` prefix)
-- **Data Structure**:
-  ```
-  {
-    id, created, updated,
-    product: {description, conversation_history},
-    analysis: {matched_norms, all_results, analyzed_at, total_matched},
-    qa_history: [],
-    metadata: {status, version, session_id}
-  }
-  ```
+#### **Blueprint 6: REMOVED - Old `workspace_bp` (workspace.py)**
+- **Status**: DEPRECATED - Removed from codebase
+- **Replacement**: Workspace functionality moved to `normscout_auth.py` (Supabase-based)
+- **Old Route Prefix**: `/workspace` and `/api/workspace`
+- **New Route Prefix**: `/api/workspaces` (in normscout_auth.py)
+- **Migration**: Redis-based storage replaced with Supabase PostgreSQL database
 
 ---
 
@@ -133,9 +108,9 @@ products_searched  → Integer counter
 norms_scouted      → Integer counter
 ```
 
-#### Workspace Keys:
+#### Workspace Keys (DEPRECATED):
 ```
-workspace:{uuid}  → JSON string with workspace data (30-day TTL)
+workspace:{uuid}  → REMOVED - Now stored in Supabase PostgreSQL (see normscout_auth.py)
 ```
 
 #### Feedback:
@@ -236,7 +211,6 @@ In-memory: conversation_sessions dict (no persistence)
 - fetch('/api/visitor-count', {POST}) // Increment counter
 - fetch('/api/metrics')                // Get all metrics
 - fetch('/api/run', {POST})           // Run compliance analysis
-- fetch('/api/fields/get')            // Get field blocks
 - fetch('/api/develope/start', {POST}) // Start conversation
 ```
 
@@ -322,16 +296,15 @@ redis          - Redis client for database/cache
 │   ├── analytics.py         # Metrics endpoints
 │   ├── compliance.py        # Product validation endpoint
 │   ├── fields.py            # Field rendering/form endpoints
-│   ├── develope.py          # Conversational workspace
-│   └── workspace.py         # Persistent workspaces
+│   └── develope.py          # Conversational workspace
 │
 ├── services/                # Business logic
 │   ├── __init__.py
 │   ├── openrouter.py       # LLM API integration
 │   ├── product_conversation.py # Conversation analysis logic
-│   ├── norm_matcher.py     # Norm matching logic
-│   ├── field_framework.py  # Dynamic field system
-│   └── workspace_storage.py # Redis workspace management
+│   └── norm_matcher.py     # Norm matching logic
+│
+│   Note: Workspace management moved to normscout_auth.py (Supabase-based)
 │
 ├── templates/              # Jinja2 templates
 │   ├── develope.html       # Workspace template
@@ -371,7 +344,7 @@ redis          - Redis client for database/cache
 #### **2. Service Layer Architecture**
 - Business logic separated from routes
 - Reusable service functions
-- Services handle: LLM calls, norm matching, workspace storage, field rendering
+- Services handle: LLM calls, norm matching, workspace storage
 
 #### **3. In-Memory Session Management**
 - Ephemeral conversation sessions stored in Python dict

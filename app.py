@@ -44,7 +44,6 @@ except Exception as e:
 # Import blueprints
 from routes.main import main_bp
 from routes.analytics import analytics_bp, init_redis as init_analytics_redis, init_supabase as init_analytics_supabase
-from routes.fields import field_bp
 from routes.develope import develope_bp
 # NOTE: Old Redis-based workspace_bp removed - now using Supabase workspaces from normscout_auth
 from routes.tracking import init_tracking_routes
@@ -57,7 +56,6 @@ from normscout_auth import init_app as init_supabase_auth, supabase, init_redis 
 # Register all blueprints
 app.register_blueprint(main_bp)
 app.register_blueprint(analytics_bp)
-app.register_blueprint(field_bp)
 app.register_blueprint(develope_bp)
 app.register_blueprint(packages_bp)
 app.register_blueprint(survey_bp)
