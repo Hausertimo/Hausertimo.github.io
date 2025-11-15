@@ -223,6 +223,8 @@ function formatMarkdownToHTML(text) {
     return text;
 }
 
+// Form enhancements
+function initializeEnhancedFormInteractions() {
     const productInput = document.getElementById('product-description');
     const countrySelect = document.getElementById('country-selector');
     
