@@ -2,7 +2,7 @@
 /develope route - AI-powered product compliance development workspace
 Conversational norm matching and compliance guidance
 """
-from flask import Blueprint, render_template, request, jsonify, session, Response, stream_with_context
+from flask import Blueprint, render_template, request, jsonify, session, Response, stream_with_context, redirect
 import logging
 import uuid
 from datetime import datetime
@@ -26,8 +26,8 @@ conversation_sessions = {}
 
 @develope_bp.route('/develope')
 def develope_page():
-    """Render the main develope page"""
-    return render_template('develope.html')
+    """Redirect /develope to landing page (deprecated)"""
+    return redirect('/', code=301)
 
 
 @develope_bp.route('/api/develope/start', methods=['POST'])
