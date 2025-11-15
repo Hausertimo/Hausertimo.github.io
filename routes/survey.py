@@ -219,6 +219,18 @@ def survey_chat_page():
     return render_template('survey.html', survey_id=survey_id)
 
 
+@survey_bp.route('/survey-responses')
+@require_auth
+def survey_responses_page():
+    """Survey responses viewer page"""
+    # Get survey_id from query params
+    survey_id = request.args.get('id')
+    if not survey_id:
+        return "Survey ID required", 400
+
+    return render_template('survey_responses.html', survey_id=survey_id)
+
+
 # ============================================================================
 # SURVEY CRUD API
 # ============================================================================

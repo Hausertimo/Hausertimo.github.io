@@ -667,8 +667,7 @@ function copySurveyLink(surveyId) {
 
 // View responses
 function viewResponses(surveyId) {
-    // TODO: Navigate to responses page or show modal
-    showAlert('Responses viewer coming soon!', 'success');
+    window.location.href = `/survey-responses?id=${surveyId}`;
 }
 
 // Delete survey

@@ -1,0 +1,701 @@
+{% extends "base.html" %}
+
+{% block title %}Survey Responses - NormScout{% endblock %}
+
+{% block extra_css %}
+<style>
+    .dashboard-container {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        min-height: calc(100vh - 80px);
+        padding: 48px 0;
+    }
+
+    .dashboard-section {
+        background: white;
+        border-radius: 16px;
+        padding: 32px;
+        margin-bottom: 24px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .section-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2048D5;
+        margin: 0;
+    }
+
+    .survey-info {
+        background: linear-gradient(135deg, #3869FA 0%, #2048D5 100%);
+        color: white;
+        padding: 24px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+    }
+
+    .survey-info h2 {
+        margin: 0 0 8px 0;
+        font-size: 20px;
+    }
+
+    .survey-meta {
+        display: flex;
+        gap: 24px;
+        font-size: 14px;
+        opacity: 0.9;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    .stat-card {
+        background: white;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .stat-value {
+        font-size: 36px;
+        font-weight: 700;
+        color: #3869FA;
+        margin-bottom: 8px;
+    }
+
+    .stat-label {
+        font-size: 14px;
+        color: #666;
+        font-weight: 600;
+    }
+
+    .responses-list {
+        display: grid;
+        gap: 16px;
+    }
+
+    .response-card {
+        background: white;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+
+    .response-card:hover {
+        border-color: #3869FA;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .response-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .response-id {
+        font-size: 12px;
+        font-family: monospace;
+        color: #666;
+        background: #f0f0f0;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+
+    .response-status {
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .status-completed {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .status-in_progress {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status-abandoned {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .response-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+        margin-bottom: 12px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .response-data {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 12px;
+        margin-top: 12px;
+    }
+
+    .data-item {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .data-label {
+        font-weight: 600;
+        color: #2048D5;
+        min-width: 120px;
+    }
+
+    .data-value {
+        color: #333;
+    }
+
+    .conversation-preview {
+        background: white;
+        border-left: 4px solid #3869FA;
+        padding: 12px;
+        margin-top: 12px;
+        border-radius: 8px;
+        font-size: 13px;
+    }
+
+    .message-count {
+        color: #666;
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: 'Inter', sans-serif;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-accent {
+        background: #3869FA;
+        color: white;
+    }
+
+    .btn-accent:hover {
+        background: #2048D5;
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+
+    .loading-state {
+        text-align: center;
+        padding: 64px;
+        color: #666;
+    }
+
+    .spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #3869FA;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 64px 32px;
+        color: #666;
+    }
+
+    .empty-state-icon {
+        font-size: 64px;
+        margin-bottom: 16px;
+        opacity: 0.3;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        overflow: auto;
+    }
+
+    .modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background: white;
+        border-radius: 16px;
+        max-width: 800px;
+        width: 90%;
+        max-height: 90vh;
+        overflow: auto;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .modal-header {
+        padding: 24px;
+        border-bottom: 2px solid #f0f0f0;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .modal-header h3 {
+        margin: 0;
+        color: #2048D5;
+        font-size: 20px;
+    }
+
+    .modal-body {
+        padding: 24px;
+    }
+
+    .chat-message {
+        margin-bottom: 16px;
+        display: flex;
+        gap: 12px;
+    }
+
+    .message-role {
+        font-weight: 600;
+        min-width: 80px;
+        color: #2048D5;
+        font-size: 13px;
+    }
+
+    .message-role.user {
+        color: #3869FA;
+    }
+
+    .message-content {
+        flex: 1;
+        line-height: 1.6;
+        font-size: 14px;
+    }
+
+    .message-timestamp {
+        font-size: 11px;
+        color: #999;
+        margin-top: 4px;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #666;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+        background: #f0f0f0;
+        color: #333;
+    }
+
+    .export-buttons {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .response-info {
+            grid-template-columns: 1fr;
+        }
+
+        .modal-content {
+            width: 95%;
+            max-height: 95vh;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="container">
+        <!-- Back Button -->
+        <div style="margin-bottom: 24px;">
+            <a href="/surveycreate" class="btn btn-secondary">← Back to Surveys</a>
+        </div>
+
+        <!-- Survey Info -->
+        <div id="surveyInfo" class="survey-info">
+            <h2 id="surveyName">Loading...</h2>
+            <div class="survey-meta" id="surveyMeta"></div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid" id="statsGrid">
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <p>Loading statistics...</p>
+            </div>
+        </div>
+
+        <!-- Export Buttons -->
+        <div class="export-buttons" id="exportButtons" style="display: none;">
+            <button class="btn btn-accent" onclick="exportCSV()">📊 Export CSV</button>
+            <button class="btn btn-secondary" onclick="exportJSON()">📄 Export JSON</button>
+        </div>
+
+        <!-- Responses List -->
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2 class="section-title">Survey Responses</h2>
+            </div>
+
+            <div id="responsesList">
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Loading responses...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Conversation Modal -->
+<div id="conversationModal" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h3 id="modalTitle">Full Conversation</h3>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- Conversation will be loaded here -->
+        </div>
+    </div>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const surveyId = urlParams.get('id');
+let surveyData = null;
+let responsesData = [];
+
+// Load survey and responses
+async function loadData() {
+    if (!surveyId) {
+        document.getElementById('responsesList').innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">⚠️</div>
+                <h3>Survey ID Missing</h3>
+                <p>No survey ID provided in URL</p>
+            </div>
+        `;
+        return;
+    }
+
+    try {
+        // Load survey details
+        const surveyResponse = await fetch(`/api/surveys/${surveyId}`);
+        if (!surveyResponse.ok) {
+            throw new Error('Survey not found');
+        }
+        surveyData = await surveyResponse.json();
+
+        // Update survey info
+        document.getElementById('surveyName').textContent = surveyData.name;
+        document.getElementById('surveyMeta').innerHTML = `
+            <span>📊 ${surveyData.model_name}</span>
+            <span>🎯 ${surveyData.topics.length} topics</span>
+            <span>🌡️ Temperature: ${surveyData.temperature}</span>
+        `;
+
+        // Load responses
+        const responsesResponse = await fetch(`/api/surveys/${surveyId}/responses`);
+        const responsesDataResult = await responsesResponse.json();
+        responsesData = responsesDataResult.responses || [];
+
+        // Calculate stats
+        displayStats();
+
+        // Display responses
+        displayResponses();
+
+        // Show export buttons
+        if (responsesData.length > 0) {
+            document.getElementById('exportButtons').style.display = 'flex';
+        }
+
+    } catch (error) {
+        console.error('Failed to load data:', error);
+        document.getElementById('responsesList').innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">⚠️</div>
+                <h3>Error Loading Data</h3>
+                <p>${error.message}</p>
+            </div>
+        `;
+    }
+}
+
+// Display statistics
+function displayStats() {
+    const total = responsesData.length;
+    const completed = responsesData.filter(r => r.status === 'completed').length;
+    const inProgress = responsesData.filter(r => r.status === 'in_progress').length;
+    const completionRate = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+    document.getElementById('statsGrid').innerHTML = `
+        <div class="stat-card">
+            <div class="stat-value">${total}</div>
+            <div class="stat-label">Total Responses</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">${completed}</div>
+            <div class="stat-label">Completed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">${inProgress}</div>
+            <div class="stat-label">In Progress</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">${completionRate}%</div>
+            <div class="stat-label">Completion Rate</div>
+        </div>
+    `;
+}
+
+// Display responses list
+function displayResponses() {
+    const container = document.getElementById('responsesList');
+
+    if (responsesData.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">📭</div>
+                <h3>No Responses Yet</h3>
+                <p>Share your survey link to start collecting responses!</p>
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = '';
+    const listDiv = document.createElement('div');
+    listDiv.className = 'responses-list';
+
+    responsesData.forEach(response => {
+        const card = document.createElement('div');
+        card.className = 'response-card';
+        card.onclick = () => showConversation(response);
+
+        const statusClass = `status-${response.status}`;
+        const statusLabel = response.status.replace('_', ' ').toUpperCase();
+        const messageCount = response.conversation ? response.conversation.length : 0;
+        const completedTopics = response.completed_topics ? response.completed_topics.length : 0;
+
+        // Format dates
+        const startedDate = new Date(response.started_at).toLocaleString();
+        const lastInteraction = new Date(response.last_interaction_at).toLocaleString();
+
+        // Build collected data display
+        let collectedData = '';
+        if (response.completed_topics && response.completed_topics.length > 0) {
+            collectedData = '<div class="response-data">';
+            response.completed_topics.forEach(topic => {
+                collectedData += `
+                    <div class="data-item">
+                        <span class="data-label">${topic.topic}:</span>
+                        <span class="data-value">${topic.value}</span>
+                    </div>
+                `;
+            });
+            collectedData += '</div>';
+        }
+
+        card.innerHTML = `
+            <div class="response-header">
+                <span class="response-id">${response.id.substring(0, 8)}</span>
+                <span class="response-status ${statusClass}">${statusLabel}</span>
+            </div>
+            <div class="response-info">
+                <div>📅 Started: ${startedDate}</div>
+                <div>🕒 Last: ${lastInteraction}</div>
+                <div>💬 Messages: ${messageCount}</div>
+                <div>✅ Topics: ${completedTopics}/${surveyData.topics.length}</div>
+            </div>
+            ${collectedData}
+            <div class="conversation-preview">
+                <div class="message-count">Click to view full conversation</div>
+            </div>
+        `;
+
+        listDiv.appendChild(card);
+    });
+
+    container.appendChild(listDiv);
+}
+
+// Show conversation modal
+function showConversation(response) {
+    const modal = document.getElementById('conversationModal');
+    const modalBody = document.getElementById('modalBody');
+    const modalTitle = document.getElementById('modalTitle');
+
+    modalTitle.textContent = `Conversation - ${response.id.substring(0, 8)}`;
+
+    let html = '';
+
+    if (!response.conversation || response.conversation.length === 0) {
+        html = '<p>No messages yet</p>';
+    } else {
+        response.conversation.forEach(msg => {
+            const timestamp = msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString() : '';
+            html += `
+                <div class="chat-message">
+                    <div class="message-role ${msg.role}">${msg.role.toUpperCase()}</div>
+                    <div class="message-content">
+                        ${msg.content}
+                        <div class="message-timestamp">${timestamp}</div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    modalBody.innerHTML = html;
+    modal.classList.add('show');
+}
+
+// Close modal
+function closeModal(event) {
+    if (!event || event.target.id === 'conversationModal') {
+        document.getElementById('conversationModal').classList.remove('show');
+    }
+}
+
+// Export to CSV
+function exportCSV() {
+    if (responsesData.length === 0) return;
+
+    // Prepare CSV headers
+    const topicNames = surveyData.topics.map(t => t.name);
+    const headers = ['Response ID', 'Status', 'Started At', 'Completed At', ...topicNames, 'Message Count'];
+
+    // Prepare rows
+    const rows = responsesData.map(response => {
+        const row = [
+            response.id,
+            response.status,
+            response.started_at,
+            response.completed_at || '',
+        ];
+
+        // Add topic values
+        topicNames.forEach(topicName => {
+            const topic = response.completed_topics?.find(t => t.topic === topicName);
+            row.push(topic ? topic.value : '');
+        });
+
+        // Add message count
+        row.push(response.conversation?.length || 0);
+
+        return row;
+    });
+
+    // Build CSV
+    const csv = [headers, ...rows].map(row =>
+        row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')
+    ).join('\n');
+
+    // Download
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${surveyData.name}_responses_${Date.now()}.csv`;
+    a.click();
+}
+
+// Export to JSON
+function exportJSON() {
+    const data = {
+        survey: surveyData,
+        responses: responsesData,
+        exported_at: new Date().toISOString()
+    };
+
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${surveyData.name}_responses_${Date.now()}.json`;
+    a.click();
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', loadData);
+
+// Close modal on Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+</script>
+{% endblock %}
