@@ -21,10 +21,11 @@
     --spacing-xs: 8px;
     --spacing-sm: 16px;
     --spacing-md: 24px;
-    --spacing-lg: 32px;
-    --spacing-xl: 48px;
-    --spacing-2xl: 64px;
-    --spacing-3xl: 96px;
+    --spacing-lg: 40px;
+    --spacing-xl: 56px;
+    --spacing-2xl: 80px;
+    --spacing-3xl: 120px;
+    --spacing-4xl: 160px;
     
     /* Border radius */
     --radius-sm: 4px;
@@ -117,7 +118,7 @@ ul li, ol li {
 /* Global Section Styles */
 .section-title {
     text-align: left;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
     color: var(--text-dark);
 }
 
@@ -263,7 +264,7 @@ ul li, ol li {
 .hero {
     background: linear-gradient(135deg, var(--royal-blue) 0%, #1a3eb3 100%);
     color: var(--white);
-    padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+    padding: var(--spacing-4xl) 0 var(--spacing-3xl);
     margin-top: 80px;
     position: relative;
     overflow: hidden;
@@ -303,7 +304,7 @@ ul li, ol li {
    ================================================ */
 
 .how-it-works {
-    padding: var(--spacing-lg) 0 var(--spacing-2xl) 0;
+    padding: var(--spacing-3xl) 0 var(--spacing-4xl) 0;
     background-color: var(--white);
 }
 
@@ -311,7 +312,7 @@ ul li, ol li {
 .steps-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
 }
 
 /* Step Card Components */
@@ -375,7 +376,7 @@ ul li, ol li {
 
 /* Value Proposition Section */
 .value-proposition {
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-4xl) 0;
     background-color: var(--medium-gray);
     text-align: center;
 }
@@ -474,14 +475,14 @@ ul li, ol li {
 
 /* Metrics Section */
 .metrics-section {
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-3xl) 0;
     background-color: var(--white);
 }
 
 .metrics-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
     text-align: center;
 }
 
@@ -546,15 +547,15 @@ ul li, ol li {
 
 /* Pain Points Section */
 .pain-points-section {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-4xl) 0;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 }
 
 .pain-points-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-    margin-top: var(--spacing-2xl);
+    gap: var(--spacing-2xl);
+    margin-top: var(--spacing-3xl);
 }
 
 .pain-point-card {
@@ -824,7 +825,7 @@ ul li, ol li {
    ================================================ */
 
 .demo-section {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-4xl) 0;
     background: linear-gradient(180deg, #ffffff 0%, #f0f6ff 50%, #ffffff 100%);
     text-align: center;
     position: relative;
