@@ -2674,6 +2674,13 @@ ul li, ol li {
     font-weight: 500;
 }
 
+.norm-subtitle {
+    font-size: 13px;
+    color: #666;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
 .confidence-badge {
     padding: 4px 10px;
     border-radius: 12px;
