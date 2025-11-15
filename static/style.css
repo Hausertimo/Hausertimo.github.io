@@ -21,11 +21,11 @@
     --spacing-xs: 8px;
     --spacing-sm: 16px;
     --spacing-md: 24px;
-    --spacing-lg: 40px;
-    --spacing-xl: 56px;
-    --spacing-2xl: 80px;
-    --spacing-3xl: 120px;
-    --spacing-4xl: 160px;
+    --spacing-lg: 36px;
+    --spacing-xl: 48px;
+    --spacing-2xl: 64px;
+    --spacing-3xl: 88px;
+    --spacing-4xl: 112px;
     
     /* Border radius */
     --radius-sm: 4px;
