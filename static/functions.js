@@ -12,27 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Visitor Counter Functionality
 function initializeVisitorCounter() {
-    // First, increment the visitor count
-    fetch('/api/visitor-count', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        const counterElement = document.getElementById('monthly-users-count');
-        if (counterElement && data.count) {
-            counterElement.textContent = data.count.toLocaleString();
-        }
-    })
-    .catch(error => {
-        console.log('Visitor counter unavailable:', error);
-        const counterElement = document.getElementById('monthly-users-count');
-        if (counterElement) counterElement.textContent = '---';
-    });
-
-    // Then fetch all metrics
+    // Fetch all metrics including real Supabase user count
     fetch('/api/metrics')
     .then(response => response.json())
     .then(data => {
@@ -48,16 +28,20 @@ function initializeVisitorCounter() {
             normsElement.textContent = data.norms_cataloged.toLocaleString() + '+';
         }
 
-        // Update total signups if not already set
+        // Update total signups from real Supabase user count
         const usersElement = document.getElementById('monthly-users-count');
-        if (usersElement && usersElement.textContent === '...' && data.total_signups !== undefined) {
+        if (usersElement && data.total_signups !== undefined) {
             usersElement.textContent = data.total_signups.toLocaleString();
         }
     })
     .catch(error => {
         console.log('Metrics unavailable:', error);
-        document.getElementById('products-searched-count').textContent = '---';
-        document.getElementById('norms-scouted-count').textContent = '---';
+        const productsElement = document.getElementById('products-searched-count');
+        const normsElement = document.getElementById('norms-scouted-count');
+        const usersElement = document.getElementById('monthly-users-count');
+        if (productsElement) productsElement.textContent = '---';
+        if (normsElement) normsElement.textContent = '---';
+        if (usersElement) usersElement.textContent = '---';
     });
 }
 
