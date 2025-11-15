@@ -16,10 +16,10 @@ function initializeVisitorCounter() {
     fetch('/api/metrics')
     .then(response => response.json())
     .then(data => {
-        // Update products searched
-        const productsElement = document.getElementById('products-searched-count');
-        if (productsElement && data.products_searched !== undefined) {
-            productsElement.textContent = data.products_searched.toLocaleString();
+        // Update active products count
+        const productsElement = document.getElementById('active-products-count');
+        if (productsElement && data.active_products !== undefined) {
+            productsElement.textContent = data.active_products.toLocaleString();
         }
 
         // Update norms cataloged with + sign
@@ -36,7 +36,7 @@ function initializeVisitorCounter() {
     })
     .catch(error => {
         console.log('Metrics unavailable:', error);
-        const productsElement = document.getElementById('products-searched-count');
+        const productsElement = document.getElementById('active-products-count');
         const normsElement = document.getElementById('norms-scouted-count');
         const usersElement = document.getElementById('monthly-users-count');
         if (productsElement) productsElement.textContent = '---';

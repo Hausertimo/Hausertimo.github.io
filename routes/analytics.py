@@ -34,16 +34,45 @@ def get_total_signups():
             logger.warning("Supabase client not initialized")
             return 0
 
-        # Query Supabase auth users table to get count
-        response = supabase_client.auth.admin.list_users()
+        # Query workspaces to count distinct users (users who have created workspaces)
+        response = supabase_client.table('workspaces').select('user_id', count='exact').execute()
 
-        if response:
-            # Count total users
-            total_users = len(response) if isinstance(response, list) else 0
-            return total_users
+        if response and hasattr(response, 'count'):
+            # Get count of distinct user_ids
+            result = supabase_client.rpc('count_distinct_users').execute()
+            if result and result.data is not None:
+                return result.data
+            # Fallback: just return workspace count as proxy
+            return response.count if response.count else 0
         return 0
     except Exception as e:
         logger.error(f"Error getting Supabase user count: {e}")
+        # Fallback: try to count workspaces
+        try:
+            response = supabase_client.table('workspaces').select('id', count='exact').execute()
+            # Return approximate count based on workspaces (rough estimate)
+            workspace_count = response.count if response and hasattr(response, 'count') else 0
+            # Assume average 2 workspaces per user as rough estimate
+            return max(1, workspace_count // 2) if workspace_count > 0 else 0
+        except:
+            return 0
+
+
+def get_active_products():
+    """Get total number of workspaces (active products) from Supabase"""
+    try:
+        if not supabase_client:
+            logger.warning("Supabase client not initialized")
+            return 0
+
+        # Query workspaces table to get count
+        response = supabase_client.table('workspaces').select('id', count='exact').execute()
+
+        if response and hasattr(response, 'count'):
+            return response.count if response.count else 0
+        return 0
+    except Exception as e:
+        logger.error(f"Error getting workspace count: {e}")
         return 0
 
 
@@ -73,11 +102,8 @@ def visitor_count():
 def get_metrics():
     """Get all metrics for display"""
     try:
-        # Get products searched count (start at 50)
-        products_count = redis_client.get('products_searched')
-        if products_count is None:
-            redis_client.set('products_searched', 50)
-            products_count = 50
+        # Get active products count from Supabase workspaces table
+        active_products = get_active_products()
 
         # Fixed value for norms cataloged
         norms_cataloged = 400
@@ -86,7 +112,7 @@ def get_metrics():
         total_signups = get_total_signups()
 
         return jsonify({
-            "products_searched": int(products_count),
+            "active_products": active_products,
             "norms_cataloged": norms_cataloged,
             "total_signups": total_signups
         })
